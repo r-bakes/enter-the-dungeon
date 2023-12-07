@@ -1,7 +1,7 @@
 import { Backpack } from "lucide-react"
-import { PlayerData } from "../GameData"
+import { CharacterData } from "../MenuData"
 
-export const inventory: PlayerData = {
+export const inventory: CharacterData = {
     name: "Inventory",
     description: "test",
     icon: Backpack

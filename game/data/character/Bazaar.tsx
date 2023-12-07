@@ -1,7 +1,7 @@
 import { CircleDollarSign } from "lucide-react"
-import { PlayerData } from "../GameData"
+import { CharacterData } from "../MenuData"
 
-export const bazaar: PlayerData = {
+export const bazaar: CharacterData = {
     name: "Bazaar",
     description: "test",
     icon: CircleDollarSign

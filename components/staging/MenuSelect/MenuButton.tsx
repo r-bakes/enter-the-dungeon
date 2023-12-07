@@ -1,5 +1,5 @@
 import { Button } from "@/components/ui/button"
-import { MenuData } from "@/game/data/GameData"
+import { MenuData } from "@/game/data/MenuData"
 import { Label } from "@radix-ui/react-label"
 import { LucideIcon } from "lucide-react"
 

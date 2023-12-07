@@ -1,7 +1,7 @@
 import { Swords } from "lucide-react"
-import { SkillData } from "../GameData"
+import { Skill } from "../MenuData"
 
-export const martial: SkillData = {
+export const martial: Skill = {
     name: "Martial",
     description: "test",
     icon: Swords
