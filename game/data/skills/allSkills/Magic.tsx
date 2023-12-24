@@ -1,8 +1,10 @@
 import { Wand2 } from "lucide-react"
-import { Skill } from "../MenuData"
+import { Skill, TrainingActivity } from "../Skills"
 
 export const magic: Skill = {
+    id: 0,
     name: "Magic",
     description: "test",
-    icon: Wand2
+    icon: Wand2,
+    trainingActivities: []
 }

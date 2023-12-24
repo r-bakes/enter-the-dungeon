@@ -1,7 +1,9 @@
 import { CircleDollarSign } from "lucide-react"
-import { CharacterData } from "../MenuData"
+import { Menu } from "../Menu"
 
-export const bazaar: CharacterData = {
+
+export const bazaar: Menu = {
+    id: "bazaar",
     name: "Bazaar",
     description: "test",
     icon: CircleDollarSign

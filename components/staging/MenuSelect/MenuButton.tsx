@@ -1,14 +1,13 @@
 import { Button } from "@/components/ui/button"
-import { MenuData } from "@/game/data/MenuData"
+import { Menu } from "@/game/data/menus/Menu"
 import { Label } from "@radix-ui/react-label"
-import { LucideIcon } from "lucide-react"
 
 export default function MenuButton({
     menu,
     isSelected,
     onClick,
 }:{
-    menu: MenuData,
+    menu: Menu,
     isSelected: boolean,
     onClick: React.Dispatch<React.SetStateAction<any>>
 }) {
