@@ -16,7 +16,8 @@ export class Skills {
     }
 }
 export interface Skill extends Menu {
-    tasks: {[taskType: string]: Task[]}
+    tasks: {[taskType: string]: Task[]};
+    getAllTasks(): Task[]
 }
 export interface Task extends Menu{
     duration: number;

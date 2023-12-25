@@ -26,7 +26,7 @@ export default function TaskInfo({
     } else {
         let taskProduction = Object.entries(task.lootTable).map(([itemId, percentChance]) => ({item: items.itemById[itemId], chance: percentChance})) 
         content = (
-            <div className="flex flex-col w-full h-full">
+            <div className="flex flex-col w-full h-full ">
                 <CardHeader className="flex flex-row">
                     <div className="w-[56px] h-[56px]">
                         <task.icon size={56} strokeWidth={1.5}></task.icon>
@@ -42,7 +42,7 @@ export default function TaskInfo({
                             <Progress className="w-full h-4 rounded-md" value={(progress / task.duration) * 100}></Progress> : 
                             <Progress className="w-full h-4 rounded-md"></Progress>
                         }
-                        <CardDescription className="mt-2">Training Progress</CardDescription>
+                        <CardDescription className="mt-2">Task Progress</CardDescription>
                     </div>
                     <div className="w-full mt-6 mb-2 border rounded-sm border-gray-700 border-b-[2px]"></div>
                     <div className="flex w-full py-2">

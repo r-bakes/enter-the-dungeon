@@ -15,10 +15,8 @@ export default function SkillMenu({
 } : {
     skill: Skill
 }) {
-    const {character} = useEngineContext();
-    const [task, setTask] = useState<null | Task>(null); 
-
-    
+    const {character, workingTask} = useEngineContext();
+    const [task, setTask] = useState<Task | null>(workingTask != null && skill.getAllTasks().includes(workingTask) ? workingTask : null); 
     let expGainedAtLevel = character.skills.data[skill.id].experience - requiredExpForLevelUp(character.skills.data[skill.id].level - 1)
     let expRemainingForLevelUp = requiredExpForLevelUp(character.skills.data[skill.id].level) - requiredExpForLevelUp(character.skills.data[skill.id].level - 1)
 

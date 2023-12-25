@@ -61,6 +61,14 @@ export const prospecting: Skill = {
             mineSilverOre
         ],
         crafting: []
+    },
+    getAllTasks() {
+        let allTasks: Task[] = []
+        Object.keys(this.tasks).forEach(key => { allTasks.push(...this.tasks[key])});
+        return allTasks;
     }
+
+
+    
 }
 
