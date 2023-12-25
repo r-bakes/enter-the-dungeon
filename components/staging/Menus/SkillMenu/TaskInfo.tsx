@@ -39,7 +39,7 @@ export default function TaskInfo({
                 <CardContent>
                     <div className="flex flex-col w-full">
                         {task == workingTask ? 
-                            <Progress className="w-full h-4 rounded-md" value={(progress / task.duration) * 100}></Progress> : 
+                            <Progress className="w-full h-4 rounded-md" value={(progress / task.durationSec) * 100}></Progress> : 
                             <Progress className="w-full h-4 rounded-md"></Progress>
                         }
                         <CardDescription className="mt-2">Task Progress</CardDescription>
@@ -47,7 +47,7 @@ export default function TaskInfo({
                     <div className="w-full mt-6 mb-2 border rounded-sm border-gray-700 border-b-[2px]"></div>
                     <div className="flex w-full py-2">
                         <div className="w-1/4 text-left">
-                            <Label className="text-s  pointer-events-none">{task.duration}</Label>
+                            <Label className="text-s  pointer-events-none">{task.durationSec}</Label>
                         </div>
                         <div className="w-full border-gray-800 mt-4 mb-2 border-dotted h-1 border-b-[2px]"></div>
                         <div className="w-3/4 text-right">

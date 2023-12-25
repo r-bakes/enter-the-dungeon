@@ -28,7 +28,7 @@ export default function TaskButton({
                 <CardContent className="flex flex-col text-left p-0 pt-2 w-full">
                     <div className="flex w-full">
                         <div className="w-1/4 text-left">
-                            <Label className="text-xs text-gray-800 pointer-events-none">{task.duration}</Label>
+                            <Label className="text-xs text-gray-800 pointer-events-none">{task.durationSec}</Label>
                         </div>
                         <div className="w-3/4 text-right">
                             <Label className="text-xs text-muted-foreground pointer-events-none">seconds</Label>

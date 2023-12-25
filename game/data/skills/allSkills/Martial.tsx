@@ -1,10 +1,10 @@
 import { Swords } from "lucide-react"
-import { Skill, TrainingActivity } from "../Skills"
+import { Skill } from "../Skills"
 
 export const martial: Skill = {
-    id: 1,
+    id: "martial",
     name: "Martial",
     description: "test",
     icon: Swords,
-    trainingActivities: []
+    tasks: {}
 }

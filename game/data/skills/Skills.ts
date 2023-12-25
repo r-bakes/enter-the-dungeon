@@ -20,7 +20,7 @@ export interface Skill extends Menu {
     getAllTasks(): Task[]
 }
 export interface Task extends Menu{
-    duration: number;
+    durationSec: number;
     experience: number;
     lootTable: LootTable 
 }

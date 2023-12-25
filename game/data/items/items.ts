@@ -22,7 +22,7 @@ class Items {
         this.items.forEach(item => this.itemById[item.id] = item)
     }
 
-    get(id: number): Item {
+    get(id: string): Item {
         return this.itemById[id]
     }
 }

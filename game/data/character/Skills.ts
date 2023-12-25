@@ -2,7 +2,7 @@ import { requiredExpForLevelUp } from "../configurations/Configurations";
 
 export class Skills {
 
-    data;
+    data: SkillsData;
 
     constructor(skillsData: SkillsData) {
         this.data = {...skillsData};        

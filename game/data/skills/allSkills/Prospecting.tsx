@@ -6,7 +6,7 @@ const mineCopperOre: Task = {
     name: "Mine Copper",
     description: "Mine copper ore.",
     icon: Mountain,
-    duration: 4,
+    durationSec: 4,
     experience: 1,
     lootTable: {"copper-ore": 100, "sapphire": 2}
 }
@@ -15,7 +15,7 @@ const mineTinOre: Task = {
     name: "Mine Tin",
     description: "Mine tin ore.",
     icon: Mountain,
-    duration: 4,
+    durationSec: 4,
     experience: 1,
     lootTable: {"tin-ore": 100, "sapphire": 2}
 }
@@ -24,7 +24,7 @@ const mineCoal: Task = {
     name: "Mine Coal",
     description: "Mine coal.",
     icon: Mountain,
-    duration: 8,
+    durationSec: 8,
     experience: 2,
     lootTable: {"coal": 100}
 }
@@ -33,7 +33,7 @@ const mineIronOre: Task = {
     name: "Mine Iron",
     description: "Mine iron ore.",
     icon: Mountain,
-    duration: 4,
+    durationSec: 4,
     experience: 5,
     lootTable: {"iron-ore": 100, "sapphire": 2}
 }
@@ -42,7 +42,7 @@ const mineSilverOre: Task = {
     name: "Mine Silver",
     description: "Mine silver ore.",
     icon: Mountain,
-    duration: 4,
+    durationSec: 4,
     experience: 5,
     lootTable: {"silver-ore": 100, "sapphire": 5}
 }

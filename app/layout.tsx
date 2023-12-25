@@ -1,3 +1,4 @@
+import { Toaster } from "@/components/ui/sonner"
 import './globals.css'
 import type { Metadata } from 'next'
 
@@ -15,7 +16,8 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className='flex w-screen h-screen'>
-          {children}
+          <main className="flex w-full h-full">{children}</main>
+          <Toaster position="bottom-right"/>
       </body>
     </html>
   )

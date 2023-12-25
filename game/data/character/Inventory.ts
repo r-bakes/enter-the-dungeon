@@ -7,14 +7,14 @@ export class Inventory {
         this.gold = inventory.gold
     }
 
-    addItem(id: number) {
+    addItem(id: string) {
         if (Object.keys(this.items).includes(id.toString())) {
             this.items[id] += 1
         } else {
             this.items[id] = 1
         }
     }
-    removeItem(id: number) {
+    removeItem(id: string) {
         if (this.items[id] == 1) {
             delete this.items[id];
         } else {
@@ -31,5 +31,5 @@ export class Inventory {
 
 export type InventoryData = {
     gold: number,
-    items: {[itemId: number]: number}
+    items: {[itemId: string]: number}
 } 

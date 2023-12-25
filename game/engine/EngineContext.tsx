@@ -1,7 +1,10 @@
 import { MutableRefObject, createContext, useContext, useEffect, useRef, useState } from "react";
 import { mockCharacter, Character } from "../data/character/Character";
-import { Skill, Task } from "../data/skills/Skills";
+import { LootTable, Skill, Task } from "../data/skills/Skills";
 import { requiredExpForLevelUp, tickRateMs } from "../data/configurations/Configurations";
+import { Item, items } from "../data/items/items";
+import { toast } from "sonner";
+import TaskComplete from "@/components/staging/Toast/TaskComplete";
 
 type EngineContextContents = {
     character: Character,
@@ -52,9 +55,9 @@ export default function EngineProvider({
     useInterval(() => {
         if (workingSkill != null && workingTask != null) {
 
-            if (progress + (tickRateMs/1000) >= workingTask.duration) {
+            if (progress + (tickRateMs/1000) >= workingTask.durationSec) {
                 setProgress(0);
-                updateExp(character, workingSkill, workingTask.experience)
+                updateCharacter(character, workingSkill, workingTask);
             } else {
                 setProgress(progress + (tickRateMs/1000))
             }
@@ -63,9 +66,25 @@ export default function EngineProvider({
         return () => setProgress(0);
     }, tickRateMs);
 
+    const updateCharacter = (character: Character, skill: Skill, task: Task) => {
+        updateExp(character, skill, task.experience)
+        const loot = updateInventory(character, task.lootTable);
+        toast(<TaskComplete skill={skill} task={task} character={character} loot={loot}></TaskComplete>)
+        setCharacter({...character})
+    }
     const updateExp = (character: Character, skill: Skill, exp: number) => {
         character.skills.addExp(skill.id, exp);
-        setCharacter({...character})
+    }
+    const updateInventory = (character: Character, lootTable: LootTable) => {
+        let loot: Item[] = []
+        Object.entries(lootTable).forEach(([itemId, dropRate]) => {
+            let roll = Math.floor(Math.random() * 100)
+            if ((100 - dropRate) <= roll) {
+                character.inventory.addItem(itemId)
+                loot.push(items.get(itemId));
+            }
+        })
+        return loot
     }
 
     return (

@@ -1,10 +1,10 @@
 import { Wand2 } from "lucide-react"
-import { Skill, TrainingActivity } from "../Skills"
+import { Skill } from "../Skills"
 
 export const magic: Skill = {
-    id: 0,
+    id: "magic",
     name: "Magic",
     description: "test",
     icon: Wand2,
-    trainingActivities: []
+    tasks: {}
 }
