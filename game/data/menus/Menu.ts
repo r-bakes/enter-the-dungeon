@@ -3,7 +3,7 @@ import { bazaar } from "./allMenus/Bazaar";
 import { inventory } from "./allMenus/Inventory";
 import { martial } from "../skills/allSkills/Martial";
 import { magic } from "../skills/allSkills/Magic";
-import { map } from "./allMenus/Map";
+import { excursions } from "./allMenus/Excursions";
 import { prospecting } from "../skills/allSkills/Prospecting";
 
 export interface Menu {
@@ -15,7 +15,7 @@ export interface Menu {
 export const miscMenus: Menu[] = [
     bazaar,
     inventory,
-    map,
+    excursions,
 ]
 export const combatMenus: Menu[] = [
     martial,
