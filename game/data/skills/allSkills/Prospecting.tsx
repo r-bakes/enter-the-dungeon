@@ -28,6 +28,24 @@ const mineCoal: Task = {
     experience: 2,
     lootTable: {"coal": 100}
 }
+const mineIronOre: Task = {
+    id: "mine-iron-ore",
+    name: "Mine Iron",
+    description: "Mine iron ore.",
+    icon: Mountain,
+    duration: 4,
+    experience: 5,
+    lootTable: {"iron-ore": 100, "sapphire": 2}
+}
+const mineSilverOre: Task = {
+    id: "mine-silver-ore",
+    name: "Mine Silver",
+    description: "Mine silver ore.",
+    icon: Mountain,
+    duration: 4,
+    experience: 5,
+    lootTable: {"silver-ore": 100, "sapphire": 5}
+}
 
 export const prospecting: Skill = {
     id: "prospecting",
@@ -38,7 +56,9 @@ export const prospecting: Skill = {
         gathering: [
             mineCopperOre,
             mineTinOre,
-            mineCoal
+            mineCoal,
+            mineIronOre,
+            mineSilverOre
         ],
         crafting: []
     }

@@ -3,12 +3,16 @@ import { Menu } from "../menus/Menu";
 import { sapphire } from "./allItems/sapphire";
 import { tinOre } from "./allItems/tinOre";
 import { coal } from "./allItems/coal";
+import { ironOre } from "./allItems/ironOre";
+import { silverOre } from "./allItems/silverOre";
 
 class Items {
 
     items: Item[] = [
         copperOre,
         tinOre,
+        ironOre,
+        silverOre,
         coal,
         sapphire
     ];

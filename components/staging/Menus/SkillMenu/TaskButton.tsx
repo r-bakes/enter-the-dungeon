@@ -1,34 +1,34 @@
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Button } from "@/components/ui/button";
 import { Label } from "@/components/ui/label";
-import { TrainingActivity } from "@/game/data/skills/Skills";
+import { Task } from "@/game/data/skills/Skills";
 
 export default function TaskButton({
-    activity,
+    task,
     onClick,
 } : {
-    activity: TrainingActivity,
+    task: Task,
     onClick: React.Dispatch<React.SetStateAction<any>>
 }) {
 
     return (
-        <Card className="flex w-56 mr-4">
+        <Card className="flex w-56 h-[140px] min-w-[224px] mr-4 shrink-0">
             <Button className={"flex flex-col  w-full h-full items-start justify-start p-4"} onClick={onClick} variant="ghost">
                 <CardHeader className="flex flex-col p-0">
                     <div className="flex flex-row w-full h-full">
                         <div className="w-[30px] h-[30px]">
-                            <activity.icon size={30} strokeWidth={1.4}></activity.icon>
+                            <task.icon size={30} strokeWidth={1.4}></task.icon>
                         </div>
                         <div className="flex pl-3 flex-col text-left">
-                            <CardTitle className="text-xl">{activity.name}</CardTitle>
+                            <CardTitle className="text-xl">{task.name}</CardTitle>
                         </div>
                     </div>
-                    <CardDescription className="text-xs text-left">{activity.description}</CardDescription>
+                    <CardDescription className="text-xs text-left">{task.description}</CardDescription>
                 </CardHeader>
                 <CardContent className="flex flex-col text-left p-0 pt-2 w-full">
                     <div className="flex w-full">
                         <div className="w-1/4 text-left">
-                            <Label className="text-xs text-gray-800 pointer-events-none">{activity.duration}</Label>
+                            <Label className="text-xs text-gray-800 pointer-events-none">{task.duration}</Label>
                         </div>
                         <div className="w-3/4 text-right">
                             <Label className="text-xs text-muted-foreground pointer-events-none">seconds</Label>
@@ -36,7 +36,7 @@ export default function TaskButton({
                     </div>
                     <div className="flex w-full">
                         <div className="w-1/4 text-left">
-                            <Label className="text-xs text-gray-800 pointer-events-none">{activity.experience} </Label>
+                            <Label className="text-xs text-gray-800 pointer-events-none">{task.experience} </Label>
                         </div>
                         <div className="w-3/4 text-right">
                             <Label className="text-xs text-muted-foreground pointer-events-none">experience</Label>

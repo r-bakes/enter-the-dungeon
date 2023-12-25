@@ -1,6 +1,6 @@
-import { ScrollArea } from "@radix-ui/react-scroll-area"
 import TaskButton from "./TaskButton"
 import { Task } from "@/game/data/skills/Skills"
+import { ScrollArea, ScrollBar } from "@/components/ui/scroll-area"
 
 export default function TaskContainer({
     tasks: activities,
@@ -10,10 +10,11 @@ export default function TaskContainer({
     setTask: React.Dispatch<React.SetStateAction<Task | null>>
 }) {
     return (
-        <ScrollArea className="w-full">
-            <div className="flex flex-row">
-                {activities.map(activity => <TaskButton activity={activity} key={activity.name} onClick={() => setTask(activity)}></TaskButton>)}
+        <ScrollArea className="w-full overflow-hidden">
+            <div className="flex mb-4">
+                {activities.map(activity => <TaskButton task={activity} key={activity.name} onClick={() => setTask(activity)}></TaskButton>)}
             </div>
+            <ScrollBar orientation="horizontal" />
         </ScrollArea>
     )
 }

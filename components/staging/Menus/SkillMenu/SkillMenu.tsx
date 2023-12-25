@@ -52,13 +52,11 @@ export default function SkillMenu({
                     <div className="flex w-2/6 h-full mr-3 min-w-[400px]">
                         <TaskInfo task={task} skill={skill}></TaskInfo>
                     </div>
-                    <div className="flex flex-col w-4/6 h-full ml-3">
+                    <div className="flex flex-col w-4/6 h-full ml-3 space-y-4">
                         {
                             Object.entries(skill.tasks).map(([category, activities]) => (
-                            <div key={category}>
-                                <div className="pb-2 pt-4">
-                                    <Label className="text-xl text-muted-foreground font-extralight">{category.charAt(0).toUpperCase() + category.slice(1)}</Label>
-                                </div>     
+                            <div className="flex flex-col space-y-2" key={category}>
+                                <Label className="text-xl text-muted-foreground font-extralight">{category.charAt(0).toUpperCase() + category.slice(1)}</Label>
                                 <TaskContainer tasks={activities} setTask={setTask}></TaskContainer>
                             </div>
                             ))
