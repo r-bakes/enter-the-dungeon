@@ -1,9 +1,11 @@
 import { prospecting } from "./allSkills/Prospecting";
 import { Menu } from "../menus/Menu";
+import { smithing } from "./allSkills/Smithing";
 
 export class Skills {
     skills: Skill[] = [
-        prospecting
+        prospecting,
+        smithing
     ];
     skillById: {[skillId: string]: Skill} = {};
 
@@ -19,10 +21,12 @@ export interface Skill extends Menu {
     tasks: {[taskType: string]: Task[]};
     getAllTasks(): Task[]
 }
-export interface Task extends Menu{
+export interface Task extends Menu {
     durationSec: number;
     experience: number;
-    lootTable: LootTable 
+    requiredLevel: number;
+    lootTable: LootTable;
+    requires?: {[itemid: string]: number}
 }
 export interface LootTable {
     [itemId: string]: number

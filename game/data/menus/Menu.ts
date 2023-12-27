@@ -5,6 +5,7 @@ import { martial } from "../skills/allSkills/Martial";
 import { magic } from "../skills/allSkills/Magic";
 import { excursions } from "./allMenus/Excursions";
 import { prospecting } from "../skills/allSkills/Prospecting";
+import { smithing } from "../skills/allSkills/Smithing";
 
 export interface Menu {
     id: string;
@@ -22,5 +23,6 @@ export const combatMenus: Menu[] = [
     magic
 ]
 export const skillMenus: Menu[] = [
-    prospecting
+    prospecting,
+    smithing
 ] 

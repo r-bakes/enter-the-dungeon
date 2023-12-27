@@ -28,22 +28,27 @@ const characterData = {
     name: "Riley",
     loadoutData: {
         head: null,
-        shoulders: null,
-        chest: null,
-        gloves: null,
-        wrists: null,
-        legs: null,
-        feet: null,
         neck: null,
-        trinket: null,
-        ringOne: null,
-        ringTwo: null,
+        shoulder: null,
+        cloak: null,
+        chest: null,
+        waist: null,
+        leg: null,
+        wrist: null,
+        glove: null,
+        feet: null,
+        ring1: null,
+        ring2: null,
+        trinket1: null,
+        trinket2: null,
         leftHand: null,
-        rightHand: null
+        rightHand: null,
+        flask1: null,
+        flask2: null,
     },
     inventoryData: {
         gold: 10,
-        items: {0: 10}
+        items: {"copper-ore": 10, "geode": 1, "bronze-sword": 1, "tin-ore": 10, "coal": 10}
     },
     skillsData: {
         martial: {
@@ -58,7 +63,12 @@ const characterData = {
         },
         prospecting: {
             id: "prospecting",
-            level: 1,
+            level: 10,
+            experience: 0
+        },
+        smithing: {
+            id: "smithing",
+            level: 10, 
             experience: 0
         }
     }

@@ -1,4 +1,4 @@
-import { HammerIcon, Mountain } from "lucide-react"
+import { Circle, Gem, HammerIcon, Mountain, SearchSlash } from "lucide-react"
 import { Skill, Task } from "../Skills"
 
 const mineCopperOre: Task = {
@@ -8,7 +8,8 @@ const mineCopperOre: Task = {
     icon: Mountain,
     durationSec: 4,
     experience: 1,
-    lootTable: {"copper-ore": 100, "sapphire": 2}
+    requiredLevel: 1,
+    lootTable: {"copper-ore": 100, "geode": 2}
 }
 const mineTinOre: Task = {
     id: "mine-tin-ore",
@@ -17,15 +18,17 @@ const mineTinOre: Task = {
     icon: Mountain,
     durationSec: 4,
     experience: 1,
-    lootTable: {"tin-ore": 100, "sapphire": 2}
+    requiredLevel: 1,
+    lootTable: {"tin-ore": 100, "geode": 2}
 }
 const mineCoal: Task = {
     id: "mine-coal",
     name: "Mine Coal",
     description: "Mine coal.",
-    icon: Mountain,
+    icon: Circle,
     durationSec: 8,
-    experience: 2,
+    experience: 5,
+    requiredLevel: 5,
     lootTable: {"coal": 100}
 }
 const mineIronOre: Task = {
@@ -34,8 +37,9 @@ const mineIronOre: Task = {
     description: "Mine iron ore.",
     icon: Mountain,
     durationSec: 4,
-    experience: 5,
-    lootTable: {"iron-ore": 100, "sapphire": 2}
+    experience: 10,
+    requiredLevel: 10,
+    lootTable: {"iron-ore": 100, "geode": 2}
 }
 const mineSilverOre: Task = {
     id: "mine-silver-ore",
@@ -43,15 +47,27 @@ const mineSilverOre: Task = {
     description: "Mine silver ore.",
     icon: Mountain,
     durationSec: 4,
-    experience: 5,
-    lootTable: {"silver-ore": 100, "sapphire": 5}
+    experience: 20,
+    requiredLevel: 20,
+    lootTable: {"silver-ore": 100, "geode": 5}
+}
+const cutGeode: Task = {
+    id: "cut-geode",
+    name: "Cut Geode",
+    description: "Cut a geode into a gem.",
+    icon: Gem,
+    durationSec: 10,
+    experience: 50,
+    requiredLevel: 10,
+    lootTable: {"sapphire": 100},
+    requires: {"geode": 1}
 }
 
 export const prospecting: Skill = {
     id: "prospecting",
     name: "Prospecting",
     description: "The ability to search for and excavate mineral deposits.",
-    icon: HammerIcon,
+    icon: SearchSlash,
     tasks: {
         gathering: [
             mineCopperOre,
@@ -60,15 +76,14 @@ export const prospecting: Skill = {
             mineIronOre,
             mineSilverOre
         ],
-        crafting: []
+        crafting: [
+            cutGeode
+        ]
     },
     getAllTasks() {
         let allTasks: Task[] = []
         Object.keys(this.tasks).forEach(key => { allTasks.push(...this.tasks[key])});
         return allTasks;
     }
-
-
-    
 }
 

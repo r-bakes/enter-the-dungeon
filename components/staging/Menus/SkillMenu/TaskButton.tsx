@@ -12,7 +12,7 @@ export default function TaskButton({
 }) {
 
     return (
-        <Card className="flex w-56 h-[140px] min-w-[224px] mr-4 shrink-0">
+        <Card className="flex w-max h-[140px] min-w-[224px] mr-4">
             <Button className={"flex flex-col  w-full h-full items-start justify-start p-4"} onClick={onClick} variant="ghost">
                 <CardHeader className="flex flex-col p-0">
                     <div className="flex flex-row w-full h-full">

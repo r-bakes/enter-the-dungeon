@@ -1,10 +1,7 @@
-import { copperOre } from "./allItems/copperOre";
+import { copperOre, geode, silverOre, coal, ironOre, tinOre, sapphire, goldOre } from "./allItems/minerals";
 import { Menu } from "../menus/Menu";
-import { sapphire } from "./allItems/sapphire";
-import { tinOre } from "./allItems/tinOre";
-import { coal } from "./allItems/coal";
-import { ironOre } from "./allItems/ironOre";
-import { silverOre } from "./allItems/silverOre";
+import { bronzeSword, ironGreatSword, ironSword, steelSword } from "./allItems/weapons";
+import { bronzeBar, goldBar, ironBar, silverBar, steelBar } from "./allItems/bars";
 
 class Items {
 
@@ -14,7 +11,18 @@ class Items {
         ironOre,
         silverOre,
         coal,
-        sapphire
+        geode,
+        sapphire,
+        bronzeSword,
+        ironSword,
+        ironGreatSword,
+        bronzeBar,
+        ironBar,
+        steelBar,
+        silverBar,
+        goldBar,
+        goldOre,
+        steelSword
     ];
     itemById: {[itemId: string]: Item} = {};
 
@@ -27,14 +35,14 @@ class Items {
     }
 }
 export interface Item extends Menu {
+    type: "equipment" | "supply" | "trade-good" | "material"
 }
-interface Equipment extends Item {
+export interface Equipment extends Item {
     attackBonus: number
     defenseBonus: number 
     healthBonus: number
 }
-interface Weapon extends Equipment {
-    attack: number
+export interface Weapon extends Equipment {
 }
 
 export const items = new Items();

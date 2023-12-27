@@ -2,6 +2,7 @@ import { Character } from "@/game/data/character/Character"
 import { Item } from "@/game/data/items/items"
 import { Skill, Task } from "@/game/data/skills/Skills"
 import { Label } from "@radix-ui/react-label"
+import { Backpack } from "lucide-react"
 
 export default function TaskComplete({
     skill,
@@ -17,13 +18,16 @@ export default function TaskComplete({
 
     const itemCard = (item: Item) => {
         return (
-            <div className="flex items-center w-28 h-min border rounded-md p-2 space-x-2">
+            <div className="flex items-center w-max h-min border rounded-md p-2 space-x-2">
                 <div className="flex w-min h-min">
                     <item.icon size={24} strokeWidth={1}></item.icon>
                 </div>
                 <div className="flex flex-col">
-                    <Label className="text-sm text-muted-foreground">{item.name}</Label>
-                    <Label className="text-sm text-muted-foreground">+ 1 ({character.inventory.items[item.id]})</Label>
+                    <Label className="text-sm text-muted-foreground shrink-1">{item.name}</Label>
+                    <div className="flex items-center space-x-1">
+                        <Label className="text-sm text-muted-foreground">+ 1 ({character.inventory.items[item.id]})</Label>
+                        <Backpack size={15} strokeWidth={1}></Backpack>
+                    </div>
                 </div>
             </div>
         )

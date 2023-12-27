@@ -5,6 +5,7 @@ import { requiredExpForLevelUp, tickRateMs } from "../data/configurations/Config
 import { Item, items } from "../data/items/items";
 import { toast } from "sonner";
 import TaskComplete from "@/components/staging/Toast/TaskComplete";
+import { Inventory } from "../data/character/Inventory";
 
 type EngineContextContents = {
     character: Character,
@@ -58,6 +59,7 @@ export default function EngineProvider({
             if (progress + (tickRateMs/1000) >= workingTask.durationSec) {
                 setProgress(0);
                 updateCharacter(character, workingSkill, workingTask);
+                canContinueTask(character.inventory, workingTask);
             } else {
                 setProgress(progress + (tickRateMs/1000))
             }
@@ -66,17 +68,38 @@ export default function EngineProvider({
         return () => setProgress(0);
     }, tickRateMs);
 
+    const canContinueTask = (inventory: Inventory, task: Task) => {
+        let canContinue = true;
+        if (task.requires) {
+            Object.entries(task.requires).forEach(([itemId, quantity]) => {
+                if (!(itemId in inventory.items) || inventory.items[itemId] < quantity) {
+                    canContinue = false;
+                }
+            })
+        }
+        
+        if (!canContinue) {
+            setWorkingSkill(null);
+            setWorkingTask(null);
+        }
+    }
     const updateCharacter = (character: Character, skill: Skill, task: Task) => {
         updateExp(character, skill, task.experience)
-        const loot = updateInventory(character, task.lootTable);
-        toast(<TaskComplete skill={skill} task={task} character={character} loot={loot}></TaskComplete>)
+        const loot = updateInventory(character, task.lootTable, task.requires);
+        toast(<TaskComplete skill={skill} task={task} character={character} loot={loot}></TaskComplete>, {duration: 10000})
         setCharacter({...character})
+
     }
     const updateExp = (character: Character, skill: Skill, exp: number) => {
         character.skills.addExp(skill.id, exp);
     }
-    const updateInventory = (character: Character, lootTable: LootTable) => {
+    const updateInventory = (character: Character, lootTable: LootTable, taskConsumed?: {[itemid: string]: number}) => {
         let loot: Item[] = []
+        if (taskConsumed) {
+            Object.entries(taskConsumed).forEach(([itemdId, amount]) => {
+                character.inventory.removeItem(itemdId, amount)
+            })
+        }
         Object.entries(lootTable).forEach(([itemId, dropRate]) => {
             let roll = Math.floor(Math.random() * 100)
             if ((100 - dropRate) <= roll) {
