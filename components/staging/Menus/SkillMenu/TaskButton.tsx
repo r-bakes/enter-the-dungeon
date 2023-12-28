@@ -23,7 +23,7 @@ export default function TaskButton({
                             <CardTitle className="text-xl">{task.name}</CardTitle>
                         </div>
                     </div>
-                    <CardDescription className="text-xs text-left">{task.description}</CardDescription>
+                    <CardDescription className="text-xs text-left text-muted-foreground font-light">{task.description}</CardDescription>
                 </CardHeader>
                 <CardContent className="flex flex-col text-left p-0 pt-2 w-full">
                     <div className="flex w-full">
@@ -31,7 +31,7 @@ export default function TaskButton({
                             <Label className="text-xs text-gray-800 pointer-events-none">{task.durationSec}</Label>
                         </div>
                         <div className="w-3/4 text-right">
-                            <Label className="text-xs text-muted-foreground pointer-events-none">seconds</Label>
+                            <Label className="text-xs text-muted-foreground font-light pointer-events-none">seconds</Label>
                         </div>
                     </div>
                     <div className="flex w-full">
@@ -39,7 +39,7 @@ export default function TaskButton({
                             <Label className="text-xs text-gray-800 pointer-events-none">{task.experience} </Label>
                         </div>
                         <div className="w-3/4 text-right">
-                            <Label className="text-xs text-muted-foreground pointer-events-none">experience</Label>
+                            <Label className="text-xs text-muted-foreground font-light pointer-events-none">experience</Label>
                         </div>
                     </div>
                 </CardContent>

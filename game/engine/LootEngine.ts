@@ -26,20 +26,22 @@ export default function generateLoot(lootTable: LootTable): Loot{
     })
     return loot
 }
-export function generateDropRates(lootTable: LootTable): {item: Item, chance: number}[] {
+export function generateDropRates(lootTable: LootTable): {item: Item, chance: number}[][] {
     let dropRates = []
     
     for (const lootSet in lootTable) {
         let totalWeight = getTotalWeight(lootTable[lootSet])
+        let dropGroup = []
         for (const itemId in lootTable[lootSet]) {
             let data = lootTable[lootSet][itemId]
             if (itemId in items.itemById) {
-                dropRates.push({
+                dropGroup.push({
                     item: items.get(itemId),
                     chance: Math.floor((data.weight / totalWeight) * 100)
                 })
             }
         }
+        dropRates.push(dropGroup)
     } 
 
     return dropRates

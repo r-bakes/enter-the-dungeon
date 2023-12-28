@@ -47,7 +47,7 @@ const characterData = {
         flask2: null,
     },
     inventoryData: {
-        gold: 10,
+        gold: 10000,
         items: {"copper-ore": 10, "geode": 1, "bronze-sword": 1, "tin-ore": 10, "coal": 10}
     },
     skillsData: {
@@ -68,8 +68,8 @@ const characterData = {
         },
         smithing: {
             id: "smithing",
-            level: 5, 
-            experience: 45
+            level: 60, 
+            experience: 10737418239
         }
     }
 }

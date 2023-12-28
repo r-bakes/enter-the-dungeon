@@ -1,7 +1,8 @@
 import { copperOre, geode, silverOre, coal, ironOre, tinOre, sapphire, goldOre, emerald } from "./allItems/minerals";
 import { Menu } from "../menus/Menu";
-import { bronzeSword, ironGreatSword, ironSword, steelSword } from "./allItems/weapons";
+import { bronzeSword, ironGreatSword, ironShield, ironSword, steelSword } from "./allItems/weapons";
 import { bronzeBar, goldBar, ironBar, silverBar, steelBar } from "./allItems/bars";
+import { LoadoutData } from "../character/Loadout";
 
 class Items {
 
@@ -16,6 +17,7 @@ class Items {
         emerald,
         bronzeSword,
         ironSword,
+        ironShield,
         ironGreatSword,
         bronzeBar,
         ironBar,
@@ -42,8 +44,11 @@ export interface Equipment extends Item {
     attackBonus: number
     defenseBonus: number 
     healthBonus: number
+    slot: "head" | "neck" | "shoulder" | "cloak" | "chest" | "waist" | "leg" | "wrist" | "glove" | "feet" | "ring" | "trinket" | "flask" | "hand"
 }
 export interface Weapon extends Equipment {
+    isTwoHanded?: boolean
+    isOffhandOnly?: boolean 
 }
 
 export const items = new Items();

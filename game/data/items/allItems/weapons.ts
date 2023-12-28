@@ -1,5 +1,5 @@
 import { Weapon } from "../items";
-import { Sword } from "lucide-react";
+import { Shield, Sword } from "lucide-react";
 
 export const bronzeSword: Weapon = {
     id: "bronze-sword",
@@ -7,6 +7,7 @@ export const bronzeSword: Weapon = {
     description: "A bronze sword.",
     icon: Sword,
     type: "equipment",
+    slot: "hand",
     attackBonus: 1,
     defenseBonus: 1,
     healthBonus: 0
@@ -17,6 +18,18 @@ export const ironSword: Weapon = {
     description: "An iron sword.",
     icon: Sword,
     type: "equipment",
+    slot: "hand",
+    attackBonus: 10,
+    defenseBonus: 10,
+    healthBonus: 0,
+}
+export const ironShield: Weapon = {
+    id: "iron-shield",
+    name: "Iron Shield",
+    description: "An iron shield.",
+    icon: Shield,
+    type: "equipment",
+    slot: "hand",
     attackBonus: 10,
     defenseBonus: 10,
     healthBonus: 0
@@ -27,6 +40,8 @@ export const ironGreatSword: Weapon = {
     description: "An iron great sword.",
     icon: Sword,
     type: "equipment",
+    isTwoHanded: true,
+    slot: "hand",
     attackBonus: 20,
     defenseBonus: 5,
     healthBonus: 0
@@ -37,6 +52,7 @@ export const steelSword: Weapon = {
     description: "A steel sword.",
     icon: Sword,
     type: "equipment",
+    slot: "hand",
     attackBonus: 20,
     defenseBonus: 20,
     healthBonus: 0

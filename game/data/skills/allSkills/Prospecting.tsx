@@ -6,7 +6,7 @@ const mineCopperOre: Task = {
     name: "Mine Copper",
     description: "Mine copper ore.",
     icon: Mountain,
-    durationSec: 4,
+    durationSec: 2,
     experience: 1,
     requiredLevel: 1,
     lootTable: {
@@ -22,7 +22,7 @@ const mineTinOre: Task = {
     name: "Mine Tin",
     description: "Mine tin ore.",
     icon: Mountain,
-    durationSec: 4,
+    durationSec: 2,
     experience: 1,
     requiredLevel: 1,
     lootTable: {
@@ -38,7 +38,7 @@ const mineCoal: Task = {
     name: "Mine Coal",
     description: "Mine coal.",
     icon: Circle,
-    durationSec: 8,
+    durationSec: 2,
     experience: 5,
     requiredLevel: 5,
     lootTable: {
@@ -50,7 +50,7 @@ const mineIronOre: Task = {
     name: "Mine Iron",
     description: "Mine iron ore.",
     icon: Mountain,
-    durationSec: 4,
+    durationSec: 2,
     experience: 10,
     requiredLevel: 10,
     lootTable: {
@@ -66,7 +66,7 @@ const mineSilverOre: Task = {
     name: "Mine Silver",
     description: "Mine silver ore.",
     icon: Mountain,
-    durationSec: 4,
+    durationSec: 2,
     experience: 20,
     requiredLevel: 20,
     lootTable: {
@@ -82,8 +82,8 @@ const cutGeode: Task = {
     name: "Cut Geode",
     description: "Cut a geode into a gem.",
     icon: Gem,
-    durationSec: 10,
-    experience: 50,
+    durationSec: 8,
+    experience: 100,
     requiredLevel: 10,
     lootTable: {
         gems: {

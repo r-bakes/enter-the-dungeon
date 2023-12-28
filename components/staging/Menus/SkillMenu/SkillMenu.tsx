@@ -5,7 +5,7 @@ import TaskContainer from "./TaskContainer"
 import { Progress } from "@/components/ui/progress"
 import { Label } from "@/components/ui/label"
 import { Skill, Task } from "@/game/data/skills/Skills"
-import { requiredExpForLevelUp } from "@/game/data/configurations/Configurations"
+import { levelCap, requiredExpForLevelUp } from "@/game/data/configurations/Configurations"
 import TaskInfo from "./TaskInfo"
 import { useState } from "react"
 import { useEngineContext } from "@/game/engine/EngineContext"
@@ -34,14 +34,14 @@ export default function SkillMenu({
                                 <CardDescription>{skill.description}</CardDescription>
                             </div>
                             <div className="flex pl-6 flex-col w-[150px]">
-                                <CardTitle>{character.skills.data[skill.id].level} / 99</CardTitle>
+                                <CardTitle>{character.skills.data[skill.id].level} / {levelCap}</CardTitle>
                                 <CardDescription>Level</CardDescription>
                             </div>
                         </CardHeader>
                         <CardContent>
                             <div className="flex flex-col grow">
                                 <Label className="pb-2 text-lg">Experience</Label>
-                                <Progress className="w-full h-4 rounded-md" value={(expGainedAtLevel / expRemainingForLevelUp)*100} ></Progress>
+                                <Progress className="w-full h-4 rounded-sm" value={(expGainedAtLevel / expRemainingForLevelUp)*100} ></Progress>
                                 <CardDescription className="mt-2">{character.skills.data[skill.id].experience + " / " + requiredExpForLevelUp(character.skills.data[skill.id].level)}</CardDescription>
                             </div>
                         </CardContent>

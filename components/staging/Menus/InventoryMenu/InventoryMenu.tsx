@@ -16,12 +16,12 @@ export default function InventoryMenu({} : {}) {
 
     return ( 
         <div className="flex px-8 h-full grow min-w-[800px] space-x-2">
-            <Card className="flex flex-col w-80 space-y-2">
-                <CardHeader className="flex flex-col space-x-2 justify-start items-start text-left">
-                    <Label className="text-sm text-muted-foreground">Gold</Label>
-                    <div className="flex rows space-x-2 align-middle">
+            <Card className="flex flex-col w-80 space-y-1">
+                <CardHeader className="flex flex-col">
+                    {/* <Label className="text-sm text-muted-foreground">Gold</Label> */}
+                    <div className="flex rows space-x-2 items-center">
                         <CircleDollarSign size={24} strokeWidth={1.5}></CircleDollarSign>
-                        <Label className="text-xl">{character.inventory.gold}</Label>
+                        <Label className="text-xl h-full font-light">{character.inventory.gold}</Label>
                     </div>
                 </CardHeader>
                 <CardHeader>

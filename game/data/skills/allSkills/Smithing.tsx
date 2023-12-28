@@ -1,4 +1,4 @@
-import { HammerIcon, RectangleVertical, Sword } from "lucide-react";
+import { Gavel, RectangleVertical, Shield, Sword } from "lucide-react";
 import { Skill, Task } from "../Skills";
 
 const smithBronzeSword: Task = {
@@ -26,6 +26,19 @@ const smithIronSword: Task = {
         sword: {"iron-sword": {weight: 1, minQuantity: 1, maxQuantity: 1}}, 
     },
     requires: {"iron-bar": 1}
+}
+const smithIronShield: Task = {
+    id: "smith-iron-shield",
+    name: "Smith Shield",
+    description: "Smith a shield.",
+    icon: Shield,
+    durationSec: 10,
+    experience: 20,
+    requiredLevel: 10,
+    lootTable: {
+        sword: {"iron-shield": {weight: 1, minQuantity: 1, maxQuantity: 1}}, 
+    },
+    requires: {"iron-bar": 2}
 }
 const smithIronGreatSword: Task = {
     id: "smith-iron-greatsword",
@@ -58,11 +71,11 @@ const smeltBronzeBar: Task = {
     name: "Bronze Bar",
     description: "Smelt a bronze bar.",
     icon: RectangleVertical,
-    durationSec: 10,
+    durationSec: 2,
     experience: 1,
     requiredLevel: 1,
     lootTable: {
-        bar: {"steel-bar": {weight: 1, minQuantity: 1, maxQuantity: 1}}, 
+        bar: {"bronze-bar": {weight: 1, minQuantity: 1, maxQuantity: 1}}, 
     },
     requires: {"copper-ore": 1, "tin-ore": 1, "coal": 1}
 }
@@ -71,20 +84,20 @@ const smeltIronBar: Task = {
     name: "Iron Bar",
     description: "Smelt a iron bar.",
     icon: RectangleVertical,
-    durationSec: 10,
+    durationSec: 2,
     experience: 10,
     requiredLevel: 10,
     lootTable: {
-        bar: {"steel-bar": {weight: 1, minQuantity: 1, maxQuantity: 1}}, 
+        bar: {"iron-bar": {weight: 1, minQuantity: 1, maxQuantity: 1}}, 
     },
     requires: {"iron-ore": 1, "coal": 1}
 }
 const smeltSteelBar: Task = {
-    id: "smelt-iron-bar",
-    name: "Iron Bar",
+    id: "smelt-steel-bar",
+    name: "Steel Bar",
     description: "Smelt a steel bar.",
     icon: RectangleVertical,
-    durationSec: 10,
+    durationSec: 2,
     experience: 20,
     requiredLevel: 20,
     lootTable: {
@@ -97,7 +110,7 @@ const smeltSilverBar: Task = {
     name: "Silver Bar",
     description: "Smelt a silver bar.",
     icon: RectangleVertical,
-    durationSec: 10,
+    durationSec: 2,
     experience: 20,
     requiredLevel: 20,
     lootTable: {
@@ -110,7 +123,7 @@ const smeltGoldBar: Task = {
     name: "Gold Bar",
     description: "Smelt a gold bar.",
     icon: RectangleVertical,
-    durationSec: 10,
+    durationSec: 2,
     experience: 30,
     requiredLevel: 30,
     lootTable: {
@@ -124,11 +137,11 @@ export const smithing: Skill = {
     id: "smithing",
     name: "Smithing",
     description: "The ability to forge arms, armor, and trade goods.",
-    icon: HammerIcon,
+    icon: Gavel,
     tasks: {
         smelting: [smeltBronzeBar, smeltIronBar, smeltSteelBar, smeltSilverBar, smeltGoldBar],
         bronze: [smithBronzeSword],
-        iron: [smithIronSword, smithIronGreatSword],
+        iron: [smithIronSword, smithIronShield, smithIronGreatSword],
         steel: [smithSteelSword],
         mithril: [],
         adamant: []

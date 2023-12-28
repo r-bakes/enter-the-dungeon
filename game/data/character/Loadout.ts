@@ -22,4 +22,6 @@ export type LoadoutData = {
     trinket2: number | null
     flask1: number | null
     flask2: number | null
+    leftHand: number | null
+    rightHand: number | null
 }

@@ -30,8 +30,8 @@ export default function TaskInfo({
         let requirementsMet: boolean = true;
         if (task.requires) {
             taskRequires = Object.entries(task.requires).map(([itemId, quantity]) => ({item: items.itemById[itemId], quantity: quantity, haveEnough: (!(itemId in character.inventory.items) || (quantity > character.inventory.items[itemId]))}))
-            for (let i = 0; i < taskRequires.length; i++) {
-                let reqs = taskRequires[i];
+            for (const element of taskRequires) {
+                let reqs = element;
                 if (!(reqs.item.id in character.inventory.items) || (reqs.quantity > character.inventory.items[reqs.item.id])) {
                     requirementsMet = false;
                 }
@@ -52,8 +52,8 @@ export default function TaskInfo({
                 <CardContent>
                     <div className="flex flex-col w-full">
                         {task == workingTask ? 
-                            <Progress className="w-full h-4 rounded-md" value={(progress / task.durationSec) * 100}></Progress> : 
-                            <Progress className="w-full h-4 rounded-md"></Progress>
+                            <Progress className="w-full h-4 rounded-sm" value={(progress / task.durationSec) * 100}></Progress> : 
+                            <Progress className="w-full h-4 rounded-sm"></Progress>
                         }
                         <CardDescription className="mt-2">Task Progress</CardDescription>
                     </div>
@@ -77,15 +77,22 @@ export default function TaskInfo({
                         </div>
                     </div>
                     <div className="flex w-full py-2">
-                        <div className="flex w-full text-left">
-                            {taskProduction.map(Data => (
-                                <div className="flex flex-col text-center w-20 border rounded-sm items-center p-2 mr-2" key={Data.item.id}>
-                                    <div className="w-[42px] h-[42px]">
-                                        <Data.item.icon size={42} strokeWidth={1}></Data.item.icon>
-                                    </div>
-                                    <Label className="text-xs text-muted-foreground">{Data.item.name}</Label>
-                                    <Label className="text-xs text-muted-foreground">{Data.chance}%</Label>
-                                </div>))}
+                        <div className="flex w-full text-left space-x-1">
+                            {taskProduction.map(lootGroup => (
+                                <div className={"flex " + (lootGroup.length > 1 ? "border rounded-sm px-1" : "")} key={lootGroup[0].item.id}>
+                                {
+                                    lootGroup.map((Data) => (
+                                        <div className="flex flex-col w-max min-w-[80px] text-center w-20 border rounded-sm items-center p-2" key={Data.item.id}>
+                                            <div className="w-[42px] h-[42px]">
+                                                <Data.item.icon size={42} strokeWidth={1}></Data.item.icon>
+                                            </div>
+                                            <Label className="text-xs text-muted-foreground">{Data.item.name}</Label>
+                                            <Label className="text-xs text-muted-foreground">{Data.chance}%</Label>
+                                        </div>
+                                    ))
+                                }
+                                </div>
+                            ))}
                         </div>
                         <div className="w-3/4 text-right">
                             <Label className="text-s text-muted-foreground pointer-events-none">produces</Label>
@@ -95,7 +102,7 @@ export default function TaskInfo({
                     <div className="flex w-full py-2">
                         <div className="flex w-full text-left">
                             {taskRequires.map((Item) => (
-                                <div className="flex flex-col text-center w-20 border rounded-sm items-center p-2 mr-2" key={Item.item.id}>
+                                <div className="flex flex-col text-center w-max min-w-[80px] border rounded-sm items-center p-2 mr-2" key={Item.item.id}>
                                     <div className="w-[42px] h-[42px]">
                                         <Item.item.icon size={42} strokeWidth={1}></Item.item.icon>
                                     </div>
