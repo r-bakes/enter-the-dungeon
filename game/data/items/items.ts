@@ -1,4 +1,4 @@
-import { copperOre, geode, silverOre, coal, ironOre, tinOre, sapphire, goldOre } from "./allItems/minerals";
+import { copperOre, geode, silverOre, coal, ironOre, tinOre, sapphire, goldOre, emerald } from "./allItems/minerals";
 import { Menu } from "../menus/Menu";
 import { bronzeSword, ironGreatSword, ironSword, steelSword } from "./allItems/weapons";
 import { bronzeBar, goldBar, ironBar, silverBar, steelBar } from "./allItems/bars";
@@ -13,6 +13,7 @@ class Items {
         coal,
         geode,
         sapphire,
+        emerald,
         bronzeSword,
         ironSword,
         ironGreatSword,

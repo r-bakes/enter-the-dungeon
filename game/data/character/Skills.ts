@@ -1,4 +1,4 @@
-import { requiredExpForLevelUp } from "../configurations/Configurations";
+import { levelCap, requiredExpForLevelUp } from "../configurations/Configurations";
 
 export class Skills {
 
@@ -9,10 +9,11 @@ export class Skills {
     }
 
     addExp(id: string, exp: number) {
-        while (this.data[id].experience + exp >= requiredExpForLevelUp(this.data[id].level)) {
+        while (this.data[id].experience + exp >= requiredExpForLevelUp(this.data[id].level) && this.data[id].level < levelCap) {
             this.data[id].level += 1
         }
-        this.data[id].experience += exp
+        this.data[id].experience += exp;
+        this.data[id].experience = Math.min(requiredExpForLevelUp(levelCap), this.data[id].experience)
     }
 }
 export type SkillsData = {

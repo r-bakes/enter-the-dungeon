@@ -4,5 +4,6 @@ export function requiredExpForLevelUp(level: number) {
     } 
     return Math.floor(10 * Math.pow(2, (level/2)))
 }
+export const levelCap = 60;
 
 export const tickRateMs = 50;

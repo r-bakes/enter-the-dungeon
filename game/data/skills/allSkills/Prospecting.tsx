@@ -9,7 +9,13 @@ const mineCopperOre: Task = {
     durationSec: 4,
     experience: 1,
     requiredLevel: 1,
-    lootTable: {"copper-ore": 100, "geode": 2}
+    lootTable: {
+        ore: {"copper-ore": {weight: 1, minQuantity: 1, maxQuantity: 1}}, 
+        geode: {
+            _: {weight: 20, minQuantity: 0, maxQuantity: 0},
+            geode: {weight: 1, minQuantity: 1, maxQuantity: 1}
+        }
+    }
 }
 const mineTinOre: Task = {
     id: "mine-tin-ore",
@@ -19,7 +25,13 @@ const mineTinOre: Task = {
     durationSec: 4,
     experience: 1,
     requiredLevel: 1,
-    lootTable: {"tin-ore": 100, "geode": 2}
+    lootTable: {
+        ore: {"tin-ore": {weight: 1, minQuantity: 1, maxQuantity: 1}}, 
+        geode: {
+            _: {weight: 20, minQuantity: 0, maxQuantity: 0},
+            geode: {weight: 1, minQuantity: 1, maxQuantity: 1}
+        }
+    }
 }
 const mineCoal: Task = {
     id: "mine-coal",
@@ -29,7 +41,9 @@ const mineCoal: Task = {
     durationSec: 8,
     experience: 5,
     requiredLevel: 5,
-    lootTable: {"coal": 100}
+    lootTable: {
+        ore: {"coal": {weight: 1, minQuantity: 1, maxQuantity: 1}}
+    }
 }
 const mineIronOre: Task = {
     id: "mine-iron-ore",
@@ -39,7 +53,13 @@ const mineIronOre: Task = {
     durationSec: 4,
     experience: 10,
     requiredLevel: 10,
-    lootTable: {"iron-ore": 100, "geode": 2}
+    lootTable: {
+        ore: {"iron-ore": {weight: 1, minQuantity: 1, maxQuantity: 1}}, 
+        geode: {
+            _: {weight: 20, minQuantity: 0, maxQuantity: 0},
+            geode: {weight: 1, minQuantity: 1, maxQuantity: 1}
+        }
+    }
 }
 const mineSilverOre: Task = {
     id: "mine-silver-ore",
@@ -49,7 +69,13 @@ const mineSilverOre: Task = {
     durationSec: 4,
     experience: 20,
     requiredLevel: 20,
-    lootTable: {"silver-ore": 100, "geode": 5}
+    lootTable: {
+        ore: {"silver-ore": {weight: 1, minQuantity: 1, maxQuantity: 1}}, 
+        geode: {
+            _: {weight: 10, minQuantity: 0, maxQuantity: 0},
+            geode: {weight: 1, minQuantity: 1, maxQuantity: 1}
+        }
+    }
 }
 const cutGeode: Task = {
     id: "cut-geode",
@@ -59,7 +85,12 @@ const cutGeode: Task = {
     durationSec: 10,
     experience: 50,
     requiredLevel: 10,
-    lootTable: {"sapphire": 100},
+    lootTable: {
+        gems: {
+            "sapphire": {weight: 20, minQuantity: 1, maxQuantity: 1},
+            "emerald": {weight: 10, minQuantity: 1, maxQuantity: 1}
+        }, 
+    },
     requires: {"geode": 1}
 }
 

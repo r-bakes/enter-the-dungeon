@@ -1,6 +1,7 @@
 import { prospecting } from "./allSkills/Prospecting";
 import { Menu } from "../menus/Menu";
 import { smithing } from "./allSkills/Smithing";
+import { LootTable } from "@/game/engine/LootEngine";
 
 export class Skills {
     skills: Skill[] = [
@@ -28,6 +29,5 @@ export interface Task extends Menu {
     lootTable: LootTable;
     requires?: {[itemid: string]: number}
 }
-export interface LootTable {
-    [itemId: string]: number
-}
+
+

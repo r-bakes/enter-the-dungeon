@@ -6,6 +6,7 @@ import { Label } from "@radix-ui/react-label"
 import { Play, X , Backpack} from "lucide-react";
 import { Item, items } from "@/game/data/items/items";
 import { useEngineContext } from "@/game/engine/EngineContext";
+import { generateDropRates } from "@/game/engine/LootEngine";
 
 export default function TaskInfo({
     skill,
@@ -24,7 +25,7 @@ export default function TaskInfo({
         </div>
       )  
     } else {
-        let taskProduction = Object.entries(task.lootTable).map(([itemId, percentChance]) => ({item: items.itemById[itemId], chance: percentChance})) 
+        let taskProduction = generateDropRates(task.lootTable);
         let taskRequires: null | {item: Item, quantity: number, haveEnough: boolean}[] = null;
         let requirementsMet: boolean = true;
         if (task.requires) {
@@ -77,13 +78,13 @@ export default function TaskInfo({
                     </div>
                     <div className="flex w-full py-2">
                         <div className="flex w-full text-left">
-                            {taskProduction.map(Item => (
-                                <div className="flex flex-col text-center w-20 border rounded-sm items-center p-2 mr-2" key={Item.item.id}>
+                            {taskProduction.map(Data => (
+                                <div className="flex flex-col text-center w-20 border rounded-sm items-center p-2 mr-2" key={Data.item.id}>
                                     <div className="w-[42px] h-[42px]">
-                                        <Item.item.icon size={42} strokeWidth={1}></Item.item.icon>
+                                        <Data.item.icon size={42} strokeWidth={1}></Data.item.icon>
                                     </div>
-                                    <Label className="text-xs text-muted-foreground">{Item.item.name}</Label>
-                                    <Label className="text-xs text-muted-foreground">{Item.chance}%</Label>
+                                    <Label className="text-xs text-muted-foreground">{Data.item.name}</Label>
+                                    <Label className="text-xs text-muted-foreground">{Data.chance}%</Label>
                                 </div>))}
                         </div>
                         <div className="w-3/4 text-right">
@@ -136,3 +137,4 @@ export default function TaskInfo({
         </Card>        
     )
 }
+

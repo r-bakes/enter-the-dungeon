@@ -64,12 +64,12 @@ const characterData = {
         prospecting: {
             id: "prospecting",
             level: 10,
-            experience: 0
+            experience: 300
         },
         smithing: {
             id: "smithing",
-            level: 10, 
-            experience: 0
+            level: 5, 
+            experience: 45
         }
     }
 }

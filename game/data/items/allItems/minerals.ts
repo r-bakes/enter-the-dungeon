@@ -39,6 +39,13 @@ export const sapphire: Item = {
     icon: Gem,
     type: "material"
 };
+export const emerald: Item = {
+    id: "emerald",
+    name: "emerald",
+    description: "an emerald.",
+    icon: Gem,
+    type: "material"
+};
 export const silverOre: Item = {
     id: "silver-ore",
     name: "silver ore",

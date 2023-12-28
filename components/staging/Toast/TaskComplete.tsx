@@ -1,6 +1,7 @@
 import { Character } from "@/game/data/character/Character"
 import { Item } from "@/game/data/items/items"
 import { Skill, Task } from "@/game/data/skills/Skills"
+import { Loot } from "@/game/engine/LootEngine"
 import { Label } from "@radix-ui/react-label"
 import { Backpack } from "lucide-react"
 
@@ -12,11 +13,11 @@ export default function TaskComplete({
 }:{
     skill: Skill,
     task: Task,
-    loot: Item[],
+    loot: Loot,
     character: Character
 }) {
 
-    const itemCard = (item: Item) => {
+    const itemCard = (item: Item, amount: number) => {
         return (
             <div className="flex items-center w-max h-min border rounded-md p-2 space-x-2">
                 <div className="flex w-min h-min">
@@ -25,7 +26,7 @@ export default function TaskComplete({
                 <div className="flex flex-col">
                     <Label className="text-sm text-muted-foreground shrink-1">{item.name}</Label>
                     <div className="flex items-center space-x-1">
-                        <Label className="text-sm text-muted-foreground">+ 1 ({character.inventory.items[item.id]})</Label>
+                        <Label className="text-sm text-muted-foreground">+ {amount} ({character.inventory.items[item.id]})</Label>
                         <Backpack size={15} strokeWidth={1}></Backpack>
                     </div>
                 </div>
@@ -43,10 +44,8 @@ export default function TaskComplete({
                     <Label className="text-sm text-muted-foreground"> + {task.experience} xp</Label>
                 </div>
                 <div className="flex space-x-2">
-                    {loot.map(item => itemCard(item))}
+                    {loot.map(data => itemCard(data.item, data.amount))}
                 </div>
-                {/* <task.icon size={24} strokeWidth={1}></task.icon> */}
-                {/* <Label className="pl-4 text-sm text-muted-foreground">{menu.name}</Label>        */}
             </div>
     )
 }

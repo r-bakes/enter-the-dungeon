@@ -20,7 +20,7 @@ export default function MenuButton({
                 <menu.icon size={24} strokeWidth={1}></menu.icon>
                 <Label className="text-sm">{menu.name}</Label>
                 <div className="flex grow justify-end ">
-                    {level ? <Label className="text-sm text-muted-foreground">({level} / 99)</Label> : <></>}
+                    {level ? <Label className="text-sm text-muted-foreground">({level} / 60)</Label> : <></>}
                 </div>
             </Button>
     )

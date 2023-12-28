@@ -9,7 +9,9 @@ const smithBronzeSword: Task = {
     durationSec: 10,
     experience: 1,
     requiredLevel: 5,
-    lootTable: {"bronze-sword": 100},
+    lootTable: {
+        sword: {"bronze-sword": {weight: 1, minQuantity: 1, maxQuantity: 1}}, 
+    },
     requires: {"bronze-bar": 1}
 }
 const smithIronSword: Task = {
@@ -20,7 +22,9 @@ const smithIronSword: Task = {
     durationSec: 10,
     experience: 10,
     requiredLevel: 10,
-    lootTable: {"iron-sword": 100},
+    lootTable: {
+        sword: {"iron-sword": {weight: 1, minQuantity: 1, maxQuantity: 1}}, 
+    },
     requires: {"iron-bar": 1}
 }
 const smithIronGreatSword: Task = {
@@ -31,7 +35,9 @@ const smithIronGreatSword: Task = {
     durationSec: 10,
     experience: 20,
     requiredLevel: 10,
-    lootTable: {"iron-greatsword": 100},
+    lootTable: {
+        sword: {"iron-greatsword": {weight: 1, minQuantity: 1, maxQuantity: 1}}, 
+    },
     requires: {"iron-bar": 2}
 }
 const smithSteelSword: Task = {
@@ -42,7 +48,9 @@ const smithSteelSword: Task = {
     durationSec: 10,
     experience: 20,
     requiredLevel: 20,
-    lootTable: {"steel-sword": 100},
+    lootTable: {
+        sword: {"steel-sword": {weight: 1, minQuantity: 1, maxQuantity: 1}}, 
+    },
     requires: {"steel-bar": 1}
 }
 const smeltBronzeBar: Task = {
@@ -53,7 +61,9 @@ const smeltBronzeBar: Task = {
     durationSec: 10,
     experience: 1,
     requiredLevel: 1,
-    lootTable: {"bronze-bar": 100},
+    lootTable: {
+        bar: {"steel-bar": {weight: 1, minQuantity: 1, maxQuantity: 1}}, 
+    },
     requires: {"copper-ore": 1, "tin-ore": 1, "coal": 1}
 }
 const smeltIronBar: Task = {
@@ -64,7 +74,9 @@ const smeltIronBar: Task = {
     durationSec: 10,
     experience: 10,
     requiredLevel: 10,
-    lootTable: {"iron-bar": 100},
+    lootTable: {
+        bar: {"steel-bar": {weight: 1, minQuantity: 1, maxQuantity: 1}}, 
+    },
     requires: {"iron-ore": 1, "coal": 1}
 }
 const smeltSteelBar: Task = {
@@ -75,7 +87,9 @@ const smeltSteelBar: Task = {
     durationSec: 10,
     experience: 20,
     requiredLevel: 20,
-    lootTable: {"steel-bar": 100},
+    lootTable: {
+        bar: {"steel-bar": {weight: 1, minQuantity: 1, maxQuantity: 1}}, 
+    },
     requires: {"iron-ore": 3, "coal": 2}
 }
 const smeltSilverBar: Task = {
@@ -86,7 +100,9 @@ const smeltSilverBar: Task = {
     durationSec: 10,
     experience: 20,
     requiredLevel: 20,
-    lootTable: {"silver-bar": 100},
+    lootTable: {
+        bar: {"silver-bar": {weight: 1, minQuantity: 1, maxQuantity: 1}}, 
+    },
     requires: {"silver-ore": 5, "coal": 1}
 }
 const smeltGoldBar: Task = {
@@ -97,7 +113,9 @@ const smeltGoldBar: Task = {
     durationSec: 10,
     experience: 30,
     requiredLevel: 30,
-    lootTable: {"gold-bar": 100},
+    lootTable: {
+        bar: {"gold-bar": {weight: 1, minQuantity: 1, maxQuantity: 1}}, 
+    },
     requires: {"gold-ore": 5, "coal": 1}
 }
 
@@ -111,7 +129,9 @@ export const smithing: Skill = {
         smelting: [smeltBronzeBar, smeltIronBar, smeltSteelBar, smeltSilverBar, smeltGoldBar],
         bronze: [smithBronzeSword],
         iron: [smithIronSword, smithIronGreatSword],
-        steel: [smithSteelSword]
+        steel: [smithSteelSword],
+        mithril: [],
+        adamant: []
     },
     getAllTasks() {
         let allTasks: Task[] = []
