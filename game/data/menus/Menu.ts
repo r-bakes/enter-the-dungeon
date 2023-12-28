@@ -8,21 +8,11 @@ import { prospecting } from "../skills/allSkills/Prospecting";
 import { smithing } from "../skills/allSkills/Smithing";
 
 export interface Menu {
-    id: string;
-    name: string;
-    description: string;
-    icon: LucideIcon;
+  id: string;
+  name: string;
+  description: string;
+  icon: LucideIcon;
 }
-export const miscMenus: Menu[] = [
-    bazaar,
-    inventory,
-    excursions,
-]
-export const combatMenus: Menu[] = [
-    martial,
-    magic
-]
-export const skillMenus: Menu[] = [
-    prospecting,
-    smithing
-] 
+export const miscMenus: Menu[] = [bazaar, inventory, excursions];
+export const combatMenus: Menu[] = [martial, magic];
+export const skillMenus: Menu[] = [prospecting, smithing];
