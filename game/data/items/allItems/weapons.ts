@@ -1,3 +1,4 @@
+import { defend, slice } from "../../cards/Card";
 import { Weapon } from "../items";
 import { Shield, Sword } from "lucide-react";
 
@@ -8,6 +9,7 @@ export const bronzeSword: Weapon = {
   icon: Sword,
   type: "equipment",
   slot: "hand",
+  cards: [slice, slice],
   attackBonus: 1,
   defenseBonus: 1,
   healthBonus: 0,
@@ -19,6 +21,7 @@ export const ironSword: Weapon = {
   icon: Sword,
   type: "equipment",
   slot: "hand",
+  cards: [slice, slice],
   attackBonus: 10,
   defenseBonus: 10,
   healthBonus: 0,
@@ -30,6 +33,7 @@ export const ironShield: Weapon = {
   icon: Shield,
   type: "equipment",
   slot: "hand",
+  cards: [defend, defend],
   attackBonus: 0,
   defenseBonus: 20,
   healthBonus: 0,
@@ -42,6 +46,7 @@ export const ironGreatSword: Weapon = {
   type: "equipment",
   isTwoHanded: true,
   slot: "hand",
+  cards: [],
   attackBonus: 20,
   defenseBonus: 5,
   healthBonus: 0,
@@ -53,6 +58,7 @@ export const steelSword: Weapon = {
   icon: Sword,
   type: "equipment",
   slot: "hand",
+  cards: [slice, slice],
   attackBonus: 20,
   defenseBonus: 20,
   healthBonus: 0,

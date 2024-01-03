@@ -1,7 +1,11 @@
+import { Button } from "@/components/ui/button";
 import { Label } from "@/components/ui/label";
+import { LoadoutSlots } from "@/game/data/character/Loadout";
 import { Equipment } from "@/game/data/items/items";
+import { useEngineContext } from "@/game/engine/EngineContext";
 
 export default function ItemSlotEquipment({ item }: { item: Equipment }) {
+  const { equip } = useEngineContext();
   return (
     <div className="flex flex-col w-full h-full">
       {item.attackBonus > 0 ? (
@@ -34,6 +38,13 @@ export default function ItemSlotEquipment({ item }: { item: Equipment }) {
       ) : (
         <></>
       )}
+      {item.slot == "hand" ?
+        <div className="flex mt-4 w-full items-center ">
+          <Button onClick={() => equip(item.id, "leftHand")} className="text-xs rounded-l-sm rounded-r-none h-6">Equip - L</Button>
+          <Button onClick={() => equip(item.id, "rightHand")} className="text-xs rounded-r-sm rounded-l-none h-6">Equip - R</Button>
+        </div> :
+          <Button onClick={() => equip(item.id, item.slot as LoadoutSlots)} className="text-xs rounded-sm mt-4 h-6">Equip</Button>
+      }
     </div>
   );
 }

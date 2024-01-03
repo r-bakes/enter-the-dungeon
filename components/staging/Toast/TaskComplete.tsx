@@ -16,7 +16,7 @@ export default function TaskComplete({
 }) {
   const itemCard = (item: Item, amount: number) => {
     return (
-      <div className="flex items-center w-max h-min border rounded-md p-2 space-x-2">
+      <div className="flex items-center w-max h-min border rounded-md p-2 space-x-2" key={item.id}>
         <div className="flex w-min h-min">
           <item.icon size={24} strokeWidth={1}></item.icon>
         </div>

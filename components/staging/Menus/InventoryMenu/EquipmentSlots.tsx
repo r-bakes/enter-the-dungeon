@@ -1,110 +1,57 @@
-import { Label } from "@/components/ui/label";
-import { HardHat } from "lucide-react";
+import EquipmentSlot from "./EquipmentSlot";
+import EquipmentAttributes from "./EquipmentAttributes";
 
 export default function EquipmentSlots({}: {}) {
+
   return (
     <div className="flex flex-col w-full border rounded-md space-y-4">
       <div className="flex w-full h-full">
         <div className="flex-col w-14 grow">
-          <div className="h-14 w-14 border rounded-tl-md text-center">
-            <Label className="text-muted-foreground text-xs font-light">
-              Head
-            </Label>
-          </div>
-          <div className="h-14 w-14 border text-center">
-            <Label className="text-muted-foreground text-xs font-light">
-              Neck
-            </Label>
-          </div>
-          <div className="h-14 w-14 border text-center">
-            <Label className="text-muted-foreground text-xs font-light">
-              Shoulder
-            </Label>
-          </div>
-          <div className="h-14 w-14 border text-center">
-            <Label className="text-muted-foreground text-xs font-light">
-              Cloak
-            </Label>
-          </div>
-          <div className="h-14 w-14 border text-center">
-            <Label className="text-muted-foreground text-xs font-light">
-              Chest
-            </Label>
-          </div>
-          <div className="h-14 w-14 border text-center">
-            <Label className="text-muted-foreground text-xs font-light">
-              Waist
-            </Label>
-          </div>
-          <div className="h-14 w-14 border rounded-bl-md text-center">
-            <Label className="text-muted-foreground text-xs font-light">
-              Leg
-            </Label>
-          </div>
+          <EquipmentSlot
+            slot="head"
+            slotName="Head"
+            rounded="rounded-tl-md"
+          ></EquipmentSlot>
+          <EquipmentSlot slot="neck" slotName="Neck"></EquipmentSlot>
+          <EquipmentSlot slot="shoulder" slotName="Shoulder"></EquipmentSlot>
+          <EquipmentSlot slot="cloak" slotName="Cloak"></EquipmentSlot>
+          <EquipmentSlot slot="chest" slotName="Chest"></EquipmentSlot>
+          <EquipmentSlot slot="waist" slotName="Waist"></EquipmentSlot>
+          <EquipmentSlot slot="leg" slotName="Leg"></EquipmentSlot>
         </div>
-        <div className="flex-col w-full grow"></div>
+        <div className="flex-col w-full h-full items-center justify-center pt-10">
+          <EquipmentAttributes></EquipmentAttributes>
+        </div>
         <div className="flex-col w-14 grow">
-          <div className="h-14 w-14 border rounded-tr-md text-center">
-            <Label className="text-muted-foreground text-xs font-light">
-              Wrist
-            </Label>
-          </div>
-          <div className="h-14 w-14 border text-center">
-            <Label className="text-muted-foreground text-xs font-light">
-              Glove
-            </Label>
-          </div>
-          <div className="h-14 w-14 border text-center">
-            <Label className="text-muted-foreground text-xs font-light">
-              Feet
-            </Label>
-          </div>
-          <div className="h-14 w-14 border text-center">
-            <Label className="text-muted-foreground text-xs font-light">
-              Ring
-            </Label>
-          </div>
-          <div className="h-14 w-14 border text-center">
-            <Label className="text-muted-foreground text-xs font-light">
-              Ring
-            </Label>
-          </div>
-          <div className="h-14 w-14 border rounded-br-md text-center">
-            <Label className="text-muted-foreground text-xs font-light">
-              Trinket
-            </Label>
-          </div>
-          <div className="h-14 w-14 border rounded-br-md text-center">
-            <Label className="text-muted-foreground text-xs font-light">
-              Trinket
-            </Label>
-          </div>
+          <EquipmentSlot
+            slot="wrist"
+            slotName="Wrist"
+            rounded="rounded-tr-md"
+          ></EquipmentSlot>
+          <EquipmentSlot slot="glove" slotName="Glove"></EquipmentSlot>
+          <EquipmentSlot slot="feet" slotName="Feet"></EquipmentSlot>
+          <EquipmentSlot slot="ring1" slotName="Ring"></EquipmentSlot>
+          <EquipmentSlot slot="ring2" slotName="Ring"></EquipmentSlot>
+          <EquipmentSlot slot="trinket1" slotName="Trinket"></EquipmentSlot>
+          <EquipmentSlot slot="trinket2" slotName="Trinket"></EquipmentSlot>
         </div>
       </div>
       <div className="flex w-full justify-between">
         <div className="flex">
-          <div className="h-14 w-14 border rounded-bl-md text-center">
-            <Label className="text-muted-foreground text-xs font-light">
-              Left Hand
-            </Label>
-          </div>
-          <div className="h-14 w-14 border text-center">
-            <Label className="text-muted-foreground text-xs font-light">
-              Right Hand
-            </Label>
-          </div>
+          <EquipmentSlot
+            slot="leftHand"
+            slotName="Left Hand"
+            rounded="rounded-bl-md"
+          ></EquipmentSlot>
+          <EquipmentSlot slot="rightHand" slotName="Right Hand"></EquipmentSlot>
         </div>
         <div className="flex">
-          <div className="h-14 w-14 border text-center">
-            <Label className="text-muted-foreground text-xs font-light">
-              Flask
-            </Label>
-          </div>
-          <div className="h-14 w-14 border rounded-br-md text-center">
-            <Label className="text-muted-foreground text-xs font-light">
-              Flask
-            </Label>
-          </div>
+          <EquipmentSlot slot="flask1" slotName="Flask"></EquipmentSlot>
+          <EquipmentSlot
+            slot="flask2"
+            slotName="Flask"
+            rounded="rounded-br-md"
+          ></EquipmentSlot>
         </div>
       </div>
     </div>

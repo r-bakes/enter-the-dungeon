@@ -8,7 +8,7 @@ export class Inventory {
   }
 
   addItem(id: string, amount: number = 1) {
-    if (Object.keys(this.items).includes(id.toString())) {
+    if (Object.keys(this.items).includes(id)) {
       this.items[id] += amount;
     } else {
       this.items[id] = amount;

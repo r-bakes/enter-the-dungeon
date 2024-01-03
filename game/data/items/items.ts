@@ -24,6 +24,7 @@ import {
   silverBar,
   steelBar,
 } from "./allItems/bars";
+import { Card } from "../cards/Card";
 
 class Items {
   items: Item[] = [
@@ -64,6 +65,7 @@ export interface Equipment extends Item {
   attackBonus: number;
   defenseBonus: number;
   healthBonus: number;
+  cards: Card[];
   slot:
     | "head"
     | "neck"
@@ -82,7 +84,6 @@ export interface Equipment extends Item {
 }
 export interface Weapon extends Equipment {
   isTwoHanded?: boolean;
-  isOffhandOnly?: boolean;
 }
 
 export const items = new Items();

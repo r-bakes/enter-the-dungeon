@@ -6,22 +6,23 @@ export class Loadout {
   }
 }
 export type LoadoutData = {
-  head: number | null;
-  neck: number | null;
-  shoulder: number | null;
-  cloak: number | null;
-  chest: number | null;
-  waist: number | null;
-  leg: number | null;
-  wrist: number | null;
-  glove: number | null;
-  feet: number | null;
-  ring1: number | null;
-  ring2: number | null;
-  trinket1: number | null;
-  trinket2: number | null;
-  flask1: number | null;
-  flask2: number | null;
-  leftHand: number | null;
-  rightHand: number | null;
+  head: string | null;
+  neck: string | null;
+  shoulder: string | null;
+  cloak: string | null;
+  chest: string | null;
+  waist: string | null;
+  leg: string | null;
+  wrist: string | null;
+  glove: string | null;
+  feet: string | null;
+  ring1: string | null;
+  ring2: string | null;
+  trinket1: string | null;
+  trinket2: string | null;
+  flask1: string | null;
+  flask2: string | null;
+  leftHand: string | null;
+  rightHand: string | null;
 };
+export type LoadoutSlots = "head" | "neck" | "shoulder" | "cloak" | "chest" | "waist" | "leg" | "wrist" | "glove" | "feet" | "ring1" | "ring2" | "trinket1" | "trinket2" | "flask1" | "flask2" | "leftHand" | "rightHand";

@@ -2,11 +2,12 @@ import { createContext, useContext, useEffect, useRef, useState } from "react";
 import { mockCharacter, Character } from "../data/character/Character";
 import { Skill, Task } from "../data/skills/Skills";
 import { tickRateMs } from "../data/configurations/Configurations";
-import { Item, items } from "../data/items/items";
+import { Equipment, Item, items } from "../data/items/items";
 import { toast } from "sonner";
 import TaskComplete from "@/components/staging/Toast/TaskComplete";
 import { Inventory } from "../data/character/Inventory";
 import generateLoot, { Loot } from "./LootEngine";
+import { LoadoutSlots } from "../data/character/Loadout";
 
 type EngineContextContents = {
   character: Character;
@@ -15,6 +16,9 @@ type EngineContextContents = {
   workingSkill: Skill | null;
   setWorkingSkill: React.Dispatch<React.SetStateAction<Skill | null>>;
   setWorkingTask: React.Dispatch<React.SetStateAction<Task | null>>;
+  equip: (itemId: string, slot: LoadoutSlots) => void;
+  unequip: (slot: LoadoutSlots) => void;
+  getModifiers: () => {hp: number, atk: number, def: number}
 };
 const EngineContext = createContext({} as EngineContextContents);
 export const useEngineContext = () => useContext(EngineContext);
@@ -121,10 +125,43 @@ export default function EngineProvider({
       character.inventory.addItem(data.item.id, data.amount);
     });
   };
+  const equip = (itemId: string, slot: LoadoutSlots) => {
+    character.inventory.removeItem(itemId, 1);
+    if (character.loadout.loadout[slot] != null) {
+      unequip(slot)
+    }
+    character.loadout.loadout[slot] = itemId;
+    setCharacter({ ...character })
+  };
+  const unequip = (slot: LoadoutSlots) => {
+    let itemId = character.loadout.loadout[slot] as string;
+    character.loadout.loadout[slot] = null;
+    character.inventory.addItem(itemId, 1);
+    setCharacter({ ...character })
+  };
+  const getModifiers = () => {
+    let atk = character.skills.data["martial"].level; 
+    let def = character.skills.data["martial"].level;
+    let hp = 10 * character.skills.data["martial"].level;
+
+    Object.entries(character.loadout.loadout).forEach(([_, equipmentId]) => {
+      if (equipmentId != null) {
+        let item: Equipment = items.get(equipmentId) as Equipment
+        atk += item.attackBonus;
+        def += item.defenseBonus;
+        hp += item.healthBonus;
+      }
+    })
+
+    return {atk, def, hp}
+  }
 
   return (
     <EngineContext.Provider
       value={{
+        getModifiers,
+        equip,
+        unequip,
         setWorkingSkill,
         setWorkingTask,
         character,

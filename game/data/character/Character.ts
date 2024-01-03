@@ -1,3 +1,4 @@
+import { Equipment, items } from "../items/items";
 import { Inventory, InventoryData } from "./Inventory";
 import { Loadout, LoadoutData } from "./Loadout";
 import { Skills, SkillsData } from "./Skills";
@@ -41,7 +42,7 @@ const characterData = {
     ring2: null,
     trinket1: null,
     trinket2: null,
-    leftHand: null,
+    leftHand: "bronze-sword",
     rightHand: null,
     flask1: null,
     flask2: null,

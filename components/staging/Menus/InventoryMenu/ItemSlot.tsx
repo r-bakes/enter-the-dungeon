@@ -7,7 +7,7 @@ import {
 } from "@/components/ui/popover";
 import { Equipment, Item } from "@/game/data/items/items";
 import { Backpack } from "lucide-react";
-import ItemSlotEquipment from "./EquipmentInfo";
+import ItemSlotEquipment from "./ItemSlotEquipment";
 
 export default function ItemSlot({
   item,
@@ -30,7 +30,7 @@ export default function ItemSlot({
         </div>
       </PopoverTrigger>
       <PopoverContent className="mt-1 flex flex-col h-min w-min">
-        <div className="flex flex-col items-start p-2 h-min text-center rounded-md space-y-1 w-max bg-white">
+        <div className="flex flex-col items-start p-2 h-min text-center space-y-1 w-max bg-white">
           <div className="flex w-full space-x-2">
             <div className="flex h-full">
               <item.icon size={35} strokeWidth={1}></item.icon>
