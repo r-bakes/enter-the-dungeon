@@ -4,6 +4,7 @@ Enter the Dungeon is a deck builder rogue-lite with meta progression achieved th
 
 1. Runescape
 2. Slay the Spire
+3. Cookie Clicker
 
 Over the course of 3 weeks, I went from making ugly square divs to something that looks like this and supports features such as:
 
