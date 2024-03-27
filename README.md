@@ -7,12 +7,12 @@ Enter the Dungeon is a deck builder rogue-lite with meta progression achieved th
 
 Over the course of 3 weeks, I went from making ugly square divs to something that looks like this and supports features such as:
 
-### 1. Skilling
+### 1. Leveling Up Gathering & Production Idle Skills
 
 ![sample](./docs/readme/overview.png)
 
 
-### 2. Inventory management and collection
+### 2. Inventory Management, Character Loadouts & Collecting Equipment
 
 ![inventory](./docs/readme/inventory.png)
 
