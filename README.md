@@ -1,6 +1,6 @@
 # Enter the Dungeon
 ## Summary & Screenshots
-Enter the Dungeon is a deck builder rogue-lite with meta progression achieved through leveling up skills. It was developed in late 2024 as a way to explore front-end stacks and WAS compliance. I believe I will keep working on it! It draws inspiration from:
+Enter the Dungeon is a deck builder rogue-lite with meta progression achieved through leveling up skills. It was developed in late 2024 as a way to explore front-end stacks and WAI (Web Accessiblity Initiative) compliance. I believe I will keep working on it! It draws inspiration from:
 
 1. Runescape
 2. Slay the Spire
