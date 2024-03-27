@@ -18,18 +18,18 @@ Over the course of 3 weeks I went from making ugly square divs to something that
 
 ### FAQ
 **Q. Why build a game in typescript?**
-- The purpose was to expose me to modern frontend development using next and react. Making a game was a bonus!
+- The purpose was to expose me to modern frontend development using Typescript, Next and React. Making a game was a bonus!
 
-**Q. How did you make the app so sleek with so little design experince?**
+**Q. How did you make the app look sleek with so little design experince?**
 - I attribute this entirely to the ease of use of the [Shadcn/ui](https://ui.shadcn.com) component library and my reading through [RefactoringUI](https://www.refactoringui.com) by Adam Wathan (the creator of tailwind) and Steve Schoger.
 
 ## Tech Stack
 The main components of the applications implementation
 
 Game Features:
-- [Next / React](https://nextjs.org) - Game Engine
+- Typescript & [Next / React](https://nextjs.org) - Game Engine
 
-Design:
+UX/UI:
 - [Tailwind](https://tailwindcss.com) - UI Formatting
 - [Lucide](https://lucide.dev/icons/) - Game icon library
 - [Shadcn/ui](https://ui.shadcn.com) - Component library
