@@ -17,7 +17,7 @@ Over the course of 3 weeks I went from making ugly square divs to something that
 ![inventory](./docs/readme/inventory.png)
 
 ### FAQ
-**Q. Why build a game in typescript?**
+**Q. Why build a game using Typescript instead of C# / Unity?**
 - The purpose was to expose me to modern frontend development using Typescript, Next and React. Making a game was a bonus!
 
 **Q. How did you make the app look sleek with so little design experince?**
