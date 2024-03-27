@@ -1,6 +1,49 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Enter the Dungeon
+## Summary & Screenshots
+Enter the Dungeon is a rogue-lite with meta progression achieved through leveling up skills. It was developed late 2024 as a way to explore front end stacks and WAS compliance. I believe I will keep working on it! It draws inspiration from:
+
+1. Runescape
+2. Slay the Spire
+
+Over the course of 3 weeks I went from making ugly square divs to something that looks like this and supports features such as
+
+### 1. Skilling
+
+![sample](./docs/readme/overview.png)
+
+
+### 2. Inventory management and collection
+
+![inventory](./docs/readme/inventory.png)
+
+### FAQ
+**Q. Why build a game in typescript?**
+- The purpose was to expose me to modern frontend development using next and react. Making a game was a bonus!
+
+**Q. How did you make the app so sleek with so little design experince?**
+- I attribute this entirely to the ease of use of the [Shadcn/ui](https://ui.shadcn.com) component library and my reading through [RefactoringUI](https://www.refactoringui.com) by Adam Wathan (the creator of tailwind) and Steve Schoger.
+
+## Tech Stack
+The main components of the applications implementation
+
+Game Features:
+- [Next / React](https://nextjs.org) - Game Engine
+
+Design:
+- [Tailwind](https://tailwindcss.com) - UI Formatting
+- [Lucide](https://lucide.dev/icons/) - Game icon library
+- [Shadcn/ui](https://ui.shadcn.com) - Component library
+
+Delivery:
+- [Electron](https://www.electronjs.org) - Application packaging
+- [GCP Firebase](https://firebase.google.com) - Game Backend
+
+### Style
+Code formatted using Prettier
+
 
 ## Getting Started
+This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 First, run the development server:
 
@@ -20,17 +63,3 @@ You can start editing the page by modifying `app/page.tsx`. The page auto-update
 
 This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
 
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
