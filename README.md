@@ -1,60 +1,47 @@
 # Enter the Dungeon
+
 ## Summary & Screenshots
-Enter the Dungeon is a deck builder rogue-lite with meta progression achieved through idle leveling up of skills. It was developed in late 2024 as a way to explore front-end stacks and WAI (Web Accessiblity Initiative) compliance. I believe I will keep working on it! It draws inspiration from:
+Enter the Dungeon is a deck builder rogue-lite with idle skill leveling to encourage meta progression. Developed for exploring modern front-end stacks and Web Accessibility Initiative (WAI) standards, it's inspired by games such as Runescape, Slay the Spire, and Cookie Clicker.
 
-1. Runescape
-2. Slay the Spire
-3. Cookie Clicker
+In just three weeks, I transformed basic visuals into a polished game with features like:
 
-Over the course of 3 weeks, I went from making ugly square divs to something that looks like this and supports features such as:
+### Features
 
-### 1. Leveling Up Gathering & Production Idle Skills
+#### Leveling Up Idle Skills
+Idle skills for gathering and production that level up over time are a key mechanic.
+![Leveling Overview](./docs/readme/overview.png)
 
-![sample](./docs/readme/overview.png)
+#### Inventory and Equipment
+Manage your inventory, arrange character loadouts, and collect equipment.
+![Inventory Management](./docs/readme/inventory.png)
 
+## FAQ
+Answers to common questions about the project's technology choices and design approach.
 
-### 2. Inventory Management, Character Loadouts & Collecting Equipment
+- **Q: Why use Typescript and make your own engine over C# / Unity?**
+  
+  A: To learn modern frontend development; gaming was a secondary goal.
 
-![inventory](./docs/readme/inventory.png)
-
-### FAQ
-**Q. Why build a game using Typescript instead of C# / Unity?**
-- The purpose was to expose me to modern frontend development using Typescript, Next, and React. Making a game was a bonus!
-
-**Q. How did you make the app look sleek with so little design experience?**
-- I attribute this entirely to the ease of use of the [Shadcn/ui](https://ui.shadcn.com) component library and my reading through [RefactoringUI](https://www.refactoringui.com) by Adam Wathan (the creator of Tailwind) and Steve Schoger.
+- **Q: How did you manage a sleek look with minimal design experience?**
+  
+  A: The [Shadcn/ui](https://ui.shadcn.com) library and learning from [RefactoringUI](https://www.refactoringui.com) a book by the Tailwind creator were instrumental.
 
 ## Tech Stack
-The main components of the application's implementation
+A rundown of the technologies used for game features, UX/UI design, and deployment.
 
-Game Features:
-- Typescript & [Next / React](https://nextjs.org) - Game Engine
+- **Game Engine:** Typescript & [Next.js/React](https://nextjs.org)
+- **UI Design:** [Tailwind CSS](https://tailwindcss.com), [Lucide Icons](https://lucide.dev/icons/), [Shadcn/ui](https://ui.shadcn.com) 
+- **Packaging & Backend:** [Electron](https://www.electronjs.org), [Firebase](https://firebase.google.com)
 
-UX/UI:
-- [Tailwind](https://tailwindcss.com) - UI Formatting
-- [Lucide](https://lucide.dev/icons/) - Game icon library
-- [Shadcn/ui](https://ui.shadcn.com) - Component library
-
-Delivery:
-- [Electron](https://www.electronjs.org) - Application packaging
-- [GCP Firebase](https://firebase.google.com) - Game Backend
-
-### Style
-Code formatted using Prettier
-
+### Code Style
+Adherence to consistent code style using Prettier for formatting.
 
 ## Getting Started
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
-
-First, run the development server:
+Set up and run the development server for this Next.js project.
 
 ```bash
+# Choose the package manager you prefer and run the relevant command:
 npm run dev
-# or
 yarn dev
-# or
 pnpm dev
-# or
 bun dev
-```
-
