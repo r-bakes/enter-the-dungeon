@@ -3,7 +3,7 @@
 ## Summary & Screenshots
 Enter the Dungeon is a deck builder rogue-lite with idle skill leveling to encourage meta progression. Developed for exploring modern front-end stacks and Web Accessibility Initiative (WAI) standards, it's inspired by games such as Runescape, Slay the Spire, and Cookie Clicker.
 
-In just three weeks, I transformed basic visuals into a polished game with features like:
+In just three weeks, I progressed from extremely limited frontend knowledge making basic square divs to a polished game with features like:
 
 ### Features
 
