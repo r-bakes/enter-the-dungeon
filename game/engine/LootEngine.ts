@@ -1,7 +1,7 @@
 import { Item, items } from "../data/items/items";
 
 export default function generateLoot(lootTable: LootTable): Loot {
-  let loot: Loot = [];
+  let loot: Loot = {};
 
   Object.entries(lootTable).forEach(([_, lootSet]) => {
     const totalWeight = getTotalWeight(lootSet);
@@ -57,14 +57,12 @@ function getTotalWeight(lootSet: LootSet) {
   return totalWeight;
 }
 
-export type Loot = { item: Item; amount: number }[];
-export type LootTable = {
-  [lootSetId: string]: LootSet;
-};
-type LootSet = {
+export type LootTable = LootSet[];
+export type LootSet = {
   [itemId: string]: {
     weight: number;
     minQuantity: number;
     maxQuantity: number;
   };
 };
+export type Loot = { [itemId: string]: number };

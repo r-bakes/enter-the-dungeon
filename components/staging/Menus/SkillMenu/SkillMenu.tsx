@@ -14,7 +14,7 @@ import { Skill, Task } from "@/game/data/skills/Skills";
 import {
   levelCap,
   requiredExpForLevelUp,
-} from "@/game/data/configurations/Configurations";
+} from "@/game/data/Configurations";
 import TaskInfo from "./TaskInfo";
 import { useState } from "react";
 import { useEngineContext } from "@/game/engine/EngineContext";

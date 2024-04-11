@@ -1,7 +1,7 @@
 import { createContext, useContext, useEffect, useRef, useState } from "react";
 import { mockCharacter, Character } from "../data/character/Character";
 import { Skill, Task } from "../data/skills/Skills";
-import { tickRateMs } from "../data/configurations/Configurations";
+import { tickRateMs } from "../data/Configurations";
 import { Equipment, Item, items } from "../data/items/items";
 import { toast } from "sonner";
 import TaskComplete from "@/components/staging/Toast/TaskComplete";
