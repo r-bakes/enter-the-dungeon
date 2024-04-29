@@ -1,15 +1,16 @@
 import { useEngineContext } from "@/game/engine/EngineContext";
 import EquipmentSlotContent from "./EquipmentSlotContent";
-import { Equipment, items } from "@/game/data/items/items";
 import { Label } from "@/components/ui/label";
-import { LoadoutSlots } from "@/game/data/character/Loadout";
+import { ITEM_BY_ID } from "@/game/data/items/items";
+import { Slot } from "@/game/data/character/Character";
+import { Equipment } from "@/game/data/GameObject";
 
 export default function EquipmentSlot({
   slot,
   slotName,
   rounded,
 }: {
-  slot: LoadoutSlots;
+  slot: Slot;
   slotName: string;
   rounded?:
     | "rounded-tl-md"
@@ -21,11 +22,9 @@ export default function EquipmentSlot({
 
   return (
     <div className={"h-14 w-14 border text-center " + rounded}>
-      {character.loadout.loadout[slot] ? (
+      {character.loadout[slot] != null ? (
         <EquipmentSlotContent
-          item={
-            items.get(character.loadout.loadout[slot] as string) as Equipment
-          }
+          item={ITEM_BY_ID[character.loadout[slot] as string] as Equipment}
           slot={slot}
           rounded={rounded}
         ></EquipmentSlotContent>

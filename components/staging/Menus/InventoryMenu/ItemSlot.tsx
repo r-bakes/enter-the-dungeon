@@ -5,9 +5,9 @@ import {
   PopoverContent,
   PopoverTrigger,
 } from "@/components/ui/popover";
-import { Equipment, Item } from "@/game/data/items/items";
 import { Backpack } from "lucide-react";
 import ItemSlotEquipment from "./ItemSlotEquipment";
+import { Equipment, Item, ItemType } from "@/game/data/GameObject";
 
 export default function ItemSlot({
   item,
@@ -43,7 +43,7 @@ export default function ItemSlot({
             </div>
           </div>
           <div className="flex py-2 w-full h-full">
-            {item.type == "equipment" ? (
+            {item.type == ItemType.EQUIPEMENT ? (
               <ItemSlotEquipment item={item as Equipment}></ItemSlotEquipment>
             ) : (
               <></>

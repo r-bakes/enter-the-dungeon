@@ -9,7 +9,6 @@ import {
   goldOre,
   emerald,
 } from "./allItems/minerals";
-import { Menu } from "../menus/Menu";
 import {
   bronzeSword,
   ironGreatSword,
@@ -24,8 +23,11 @@ import {
   silverBar,
   steelBar,
 } from "./allItems/bars";
+import { Item } from "../GameObject";
+import { gold } from "./allItems/misc";
 
-export const Items = [
+const ALL_ITEMS: Item[] = [
+  gold,
   copperOre,
   tinOre,
   ironOre,
@@ -46,3 +48,7 @@ export const Items = [
   goldOre,
   steelSword,
 ];
+
+export const ITEM_BY_ID: { [itemId: string]: Item } = Object.fromEntries(
+  ALL_ITEMS.map((item) => [item.id, item])
+);

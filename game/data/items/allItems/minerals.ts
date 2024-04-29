@@ -1,68 +1,77 @@
 import { Circle } from "lucide-react";
-import { Item } from "../items";
 import { Mountain } from "lucide-react";
 import { Gem } from "lucide-react";
+import { Item, ItemType } from "../../GameObject";
 
 export const ironOre: Item = {
-  id: "iron-ore",
+  id: "ironOre",
   name: "Iron Ore",
   description: "a lump of iron ore.",
+  value: 1,
   icon: Mountain,
-  type: "material",
+  type: ItemType.MATERIALS,
 };
 export const coal: Item = {
   id: "coal",
   name: "Coal",
   description: "a lump of coal.",
+  value: 1,
   icon: Circle,
-  type: "material",
+  type: ItemType.MATERIALS,
 };
 export const copperOre: Item = {
-  id: "copper-ore",
+  id: "copperOre",
   name: "Copper Ore",
   description: "a lump of copper ore.",
+  value: 1,
   icon: Mountain,
-  type: "material",
+  type: ItemType.MATERIALS,
 };
 export const geode: Item = {
   id: "geode",
   name: "Geode",
   description: "an unknown gem geode.",
+  value: 1,
   icon: Circle,
-  type: "material",
+  type: ItemType.MATERIALS,
 };
 export const sapphire: Item = {
   id: "sapphire",
   name: "Sapphire",
   description: "a sapphire.",
+  value: 1,
   icon: Gem,
-  type: "material",
+  type: ItemType.MATERIALS,
 };
 export const emerald: Item = {
   id: "emerald",
   name: "Emerald",
   description: "an emerald.",
+  value: 1,
   icon: Gem,
-  type: "material",
+  type: ItemType.MATERIALS,
 };
 export const silverOre: Item = {
-  id: "silver-ore",
+  id: "silverOre",
   name: "Silver Ore",
   description: "a lump of silver ore.",
+  value: 1,
   icon: Mountain,
-  type: "material",
+  type: ItemType.MATERIALS,
 };
 export const tinOre: Item = {
-  id: "tin-ore",
+  id: "tinOre",
   name: "Tin Ore",
   description: "a lump of tin ore.",
+  value: 1,
   icon: Mountain,
-  type: "material",
+  type: ItemType.MATERIALS,
 };
 export const goldOre: Item = {
-  id: "gold-ore",
+  id: "goldOre",
   name: "Gold Ore",
   description: "a lump of gold ore.",
+  value: 1,
   icon: Mountain,
-  type: "material",
+  type: ItemType.MATERIALS,
 };

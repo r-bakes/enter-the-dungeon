@@ -1,7 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { Label } from "@/components/ui/label";
-import { LoadoutSlots } from "@/game/data/character/Loadout";
-import { Equipment } from "@/game/data/items/items";
+import { Equipment } from "@/game/data/GameObject";
+import { Slot } from "@/game/data/character/Character";
 import { useEngineContext } from "@/game/engine/EngineContext";
 
 export default function ItemSlotEquipment({ item }: { item: Equipment }) {
@@ -38,12 +38,12 @@ export default function ItemSlotEquipment({ item }: { item: Equipment }) {
       ) : (
         <></>
       )}
-      {item.slot == "hand" ?
+      {item.slots.includes(Slot.LEFTHAND) && item.slots.includes(Slot.RIGHTHAND) ?
         <div className="flex mt-4 w-full items-center ">
-          <Button onClick={() => equip(item.id, "leftHand")} className="text-xs rounded-l-sm rounded-r-none h-6">Equip - L</Button>
-          <Button onClick={() => equip(item.id, "rightHand")} className="text-xs rounded-r-sm rounded-l-none h-6">Equip - R</Button>
+          <Button onClick={() => equip(item.id, Slot.LEFTHAND)} className="text-xs rounded-l-sm rounded-r-none h-6">Equip - L</Button>
+          <Button onClick={() => equip(item.id, Slot.RIGHTHAND)} className="text-xs rounded-r-sm rounded-l-none h-6">Equip - R</Button>
         </div> :
-          <Button onClick={() => equip(item.id, item.slot as LoadoutSlots)} className="text-xs rounded-sm mt-4 h-6">Equip</Button>
+          <Button onClick={() => equip(item.id, item.slots[0])} className="text-xs rounded-sm mt-4 h-6">Equip</Button>
       }
     </div>
   );

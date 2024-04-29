@@ -8,12 +8,12 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import { Progress } from "@/components/ui/progress";
-import { Skill, Task } from "@/game/data/skills/Skills";
 import { Label } from "@radix-ui/react-label";
 import { Play, X, Backpack } from "lucide-react";
-import { Item, items } from "@/game/data/items/items";
 import { useEngineContext } from "@/game/engine/EngineContext";
 import { generateDropRates } from "@/game/engine/LootEngine";
+import { Item, Skill, Task } from "@/game/data/GameObject";
+import { ITEM_BY_ID } from "@/game/data/items/items";
 
 export default function TaskInfo({
   skill,
@@ -40,21 +40,23 @@ export default function TaskInfo({
       | null
       | { item: Item; quantity: number; haveEnough: boolean }[] = null;
     let requirementsMet: boolean = true;
+
     if (task.requires) {
       taskRequires = Object.entries(task.requires).map(
         ([itemId, quantity]) => ({
-          item: items.itemById[itemId],
+          item: ITEM_BY_ID[itemId],
           quantity: quantity,
           haveEnough:
-            !(itemId in character.inventory.items) ||
-            quantity > character.inventory.items[itemId],
+            !(itemId in character.inventory) ||
+            quantity > character.inventory[itemId],
         })
       );
+
       for (const element of taskRequires) {
         let reqs = element;
         if (
-          !(reqs.item.id in character.inventory.items) ||
-          reqs.quantity > character.inventory.items[reqs.item.id]
+          !(reqs.item.id in character.inventory) ||
+          reqs.quantity > character.inventory[reqs.item.id]
         ) {
           requirementsMet = false;
         }
@@ -117,22 +119,22 @@ export default function TaskInfo({
                   }
                   key={lootGroup[0].item.id}
                 >
-                  {lootGroup.map((Data) => (
+                  {lootGroup.map((data) => (
                     <div
                       className="flex flex-col w-max min-w-[80px] text-center w-20 border rounded-sm items-center p-2"
-                      key={Data.item.id}
+                      key={data.item.id}
                     >
                       <div className="w-[42px] h-[42px]">
-                        <Data.item.icon
+                        <data.item.icon
                           size={42}
                           strokeWidth={1}
-                        ></Data.item.icon>
+                        ></data.item.icon>
                       </div>
                       <Label className="text-xs text-muted-foreground">
-                        {Data.item.name}
+                        {data.item.name}
                       </Label>
                       <Label className="text-xs text-muted-foreground">
-                        {Data.chance}%
+                        {data.chance}%
                       </Label>
                     </div>
                   ))}
@@ -148,29 +150,29 @@ export default function TaskInfo({
           {taskRequires ? (
             <div className="flex w-full py-2">
               <div className="flex w-full text-left">
-                {taskRequires.map((Item) => (
+                {taskRequires.map((item) => (
                   <div
                     className="flex flex-col text-center w-max min-w-[80px] border rounded-sm items-center p-2 mr-2"
-                    key={Item.item.id}
+                    key={item.item.id}
                   >
                     <div className="w-[42px] h-[42px]">
-                      <Item.item.icon
+                      <item.item.icon
                         size={42}
                         strokeWidth={1}
-                      ></Item.item.icon>
+                      ></item.item.icon>
                     </div>
                     <Label className="text-xs text-muted-foreground">
-                      {Item.item.name}
+                      {item.item.name}
                     </Label>
                     <div className="flex flex-col">
                       <Label className="text-xs text-muted-foreground">
-                        {Item.quantity}
+                        {item.quantity}
                       </Label>
                       <div className="flex items-center justify-end w-full space-x-1">
                         <Label className="text-xs text-muted-foreground">
                           (
-                          {Item.item.id in character.inventory.items
-                            ? character.inventory.items[Item.item.id]
+                          {item.item.id in character.inventory
+                            ? character.inventory[item.item.id]
                             : 0}
                           )
                         </Label>

@@ -1,38 +1,43 @@
 import { RectangleVertical } from "lucide-react";
-import { Item } from "../items";
+import { Item, ItemType } from "../../GameObject";
 
 export const bronzeBar: Item = {
-  id: "bronze-bar",
+  id: "bronzeBar",
   name: "Bronze Bar",
+  value: 1,
   description: "a bronze bar.",
   icon: RectangleVertical,
-  type: "trade-good",
+  type: ItemType.TRADEGOODS,
 };
 export const ironBar: Item = {
-  id: "iron-bar",
+  id: "ironBar",
   name: "Iron Bar",
+  value: 1,
   description: "an iron bar.",
   icon: RectangleVertical,
-  type: "trade-good",
+  type: ItemType.TRADEGOODS,
 };
 export const steelBar: Item = {
-  id: "steel-bar",
+  id: "steelBar",
   name: "Steel Bar",
   description: "a steel bar.",
+  value: 1,
   icon: RectangleVertical,
-  type: "trade-good",
+  type: ItemType.TRADEGOODS,
 };
 export const silverBar: Item = {
-  id: "silver-bar",
+  id: "silverBar",
   name: "Silver Bar",
   description: "a silver bar.",
+  value: 1,
   icon: RectangleVertical,
-  type: "trade-good",
+  type: ItemType.TRADEGOODS,
 };
 export const goldBar: Item = {
-  id: "gold-bar",
+  id: "goldBar",
   name: "Gold Bar",
   description: "a gold bar.",
+  value: 1,
   icon: RectangleVertical,
-  type: "trade-good",
+  type: ItemType.TRADEGOODS,
 };

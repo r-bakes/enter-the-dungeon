@@ -1,6 +1,6 @@
+import { Item, Task } from "@/game/data/GameObject";
 import { Character } from "@/game/data/character/Character";
-import { Item } from "@/game/data/items/items";
-import { Skill, Task } from "@/game/data/skills/Skills";
+import { ITEM_BY_ID } from "@/game/data/items/items";
 import { Loot } from "@/game/engine/LootEngine";
 import { Label } from "@radix-ui/react-label";
 import { Backpack } from "lucide-react";
@@ -26,7 +26,7 @@ export default function TaskComplete({
           </Label>
           <div className="flex items-center space-x-1">
             <Label className="text-sm text-muted-foreground">
-              + {amount} ({character.inventory.items[item.id]})
+              + {amount} ({character.inventory[item.id]})
             </Label>
             <Backpack size={15} strokeWidth={1}></Backpack>
           </div>
@@ -48,7 +48,7 @@ export default function TaskComplete({
         </Label>
       </div>
       <div className="flex space-x-2">
-        {loot.map((data) => itemCard(data.item, data.amount))}
+        {Object.entries(loot).map(([itemId, number]) => itemCard(ITEM_BY_ID[itemId], number))}
       </div>
     </div>
   );

@@ -1,13 +1,12 @@
 import { createContext, useContext, useEffect, useRef, useState } from "react";
-import { mockCharacter, Character } from "../data/character/Character";
-import { Skill, Task } from "../data/skills/Skills";
-import { tickRateMs } from "../data/Configurations";
-import { Equipment, Item, items } from "../data/items/items";
+import { TICK_RATE_MS } from "../data/Configurations";
 import { toast } from "sonner";
 import TaskComplete from "@/components/staging/Toast/TaskComplete";
-import { Inventory } from "../data/character/Inventory";
 import generateLoot, { Loot } from "./LootEngine";
-import { LoadoutSlots } from "../data/character/Loadout";
+import { Character, Inventory, Loadout, Skills, Slot, testCharacter } from "../data/character/Character";
+import { Equipment, Skill, Task } from "../data/GameObject";
+import { addExp, addItem, removeItem } from "../data/CharaterStateUtilities";
+import { ITEM_BY_ID } from "../data/items/items";
 
 type EngineContextContents = {
   character: Character;
@@ -16,8 +15,8 @@ type EngineContextContents = {
   workingSkill: Skill | null;
   setWorkingSkill: React.Dispatch<React.SetStateAction<Skill | null>>;
   setWorkingTask: React.Dispatch<React.SetStateAction<Task | null>>;
-  equip: (itemId: string, slot: LoadoutSlots) => void;
-  unequip: (slot: LoadoutSlots) => void;
+  equip: (itemId: string, slot: Slot) => void;
+  unequip: (slot: Slot) => void;
   getModifiers: () => {hp: number, atk: number, def: number}
 };
 const EngineContext = createContext({} as EngineContextContents);
@@ -28,13 +27,13 @@ export default function EngineProvider({
 }: {
   children: React.ReactNode;
 }) {
-  const [character, setCharacter] = useState<Character>(mockCharacter);
+  const [character, setCharacter] = useState<Character>(testCharacter);
   const [workingSkill, setWorkingSkill] = useState<Skill | null>(null);
   const [workingTask, setWorkingTask] = useState<Task | null>(null);
-  const [progress, setProgress] = useState(0);
+  const [taskProgress, setTaskProgress] = useState(0);
 
   useEffect(() => {
-    setProgress(0);
+    setTaskProgress(0);
   }, [workingTask]);
 
   const useInterval = (callback, delay: number) => {
@@ -59,45 +58,46 @@ export default function EngineProvider({
 
   useInterval(() => {
     if (workingSkill != null && workingTask != null) {
-      if (progress + tickRateMs / 1000 >= workingTask.durationSec) {
-        setProgress(0);
-        const loot = generateLoot(workingTask.lootTable);
-        updateCharacter(character, workingSkill, workingTask, loot);
+      if (taskProgress + TICK_RATE_MS / 1000 >= workingTask.durationSec) {
+        setTaskProgress(0);
+        updateCharacterTaskComplete(character, workingSkill, workingTask);
         canContinueTask(character.inventory, workingTask);
       } else {
-        setProgress(progress + tickRateMs / 1000);
+        setTaskProgress(taskProgress + TICK_RATE_MS / 1000);
       }
     }
 
-    return () => setProgress(0);
-  }, tickRateMs);
+    return () => setTaskProgress(0);
+  }, TICK_RATE_MS);
 
   const canContinueTask = (inventory: Inventory, task: Task) => {
     let canContinue = true;
     if (task.requires) {
       Object.entries(task.requires).forEach(([itemId, quantity]) => {
         if (
-          !(itemId in inventory.items) ||
-          inventory.items[itemId] < quantity
+          !(itemId in inventory) ||
+          inventory[itemId] < quantity
         ) {
           canContinue = false;
         }
       });
     }
-
     if (!canContinue) {
       setWorkingSkill(null);
       setWorkingTask(null);
     }
   };
-  const updateCharacter = (
+
+  const updateCharacterTaskComplete = (
     character: Character,
     skill: Skill,
     task: Task,
-    loot: Loot
   ) => {
-    updateInventory(character, loot, task.requires);
-    updateExp(character, skill, task.experience);
+    const loot = generateLoot(task.lootTable);
+
+    updateInventory(character.inventory, loot, task.requires);
+    updateExp(character.skills, skill.id, task.experience);
+
     toast(
       <TaskComplete
         task={task}
@@ -108,51 +108,57 @@ export default function EngineProvider({
     );
     setCharacter({ ...character });
   };
-  const updateExp = (character: Character, skill: Skill, exp: number) => {
-    character.skills.addExp(skill.id, exp);
+
+  const updateExp = (skills: Skills, skillId: string, exp: number) => {
+    addExp(skills, skillId, exp);
   };
+
   const updateInventory = (
-    character: Character,
+    inventory: Inventory,
     loot: Loot,
     taskConsumed?: { [itemid: string]: number }
   ) => {
     if (taskConsumed) {
       Object.entries(taskConsumed).forEach(([itemdId, amount]) => {
-        character.inventory.removeItem(itemdId, amount);
+        removeItem(inventory, itemdId, amount);
       });
     }
-    loot.forEach((data) => {
-      character.inventory.addItem(data.item.id, data.amount);
+    Object.entries(loot).forEach(([itemId, amount]) => {
+      addItem(inventory, itemId, amount);
     });
   };
-  const equip = (itemId: string, slot: LoadoutSlots) => {
-    character.inventory.removeItem(itemId, 1);
-    if (character.loadout.loadout[slot] != null) {
+
+  const equip = (itemId: string, slot: Slot) => {
+    removeItem(character.inventory, itemId, 1);
+    if (character.loadout[slot] != null) {
       unequip(slot)
     }
-    character.loadout.loadout[slot] = itemId;
+    character.loadout[slot] = itemId;
     setCharacter({ ...character })
   };
-  const unequip = (slot: LoadoutSlots) => {
-    let itemId = character.loadout.loadout[slot] as string;
-    character.loadout.loadout[slot] = null;
-    character.inventory.addItem(itemId, 1);
-    setCharacter({ ...character })
+  
+  const unequip = (slot: Slot) => {
+    if (character.loadout[slot] != null) {
+      let itemId = character.loadout[slot] as string;
+      character.loadout[slot] = null;
+      addItem(character.inventory, itemId, 1);
+      setCharacter({ ...character })
+    }
   };
+  
   const getModifiers = () => {
-    let atk = character.skills.data["martial"].level; 
-    let def = character.skills.data["martial"].level;
-    let hp = 10 * character.skills.data["martial"].level;
+    let atk = character.skills["martial"].level; 
+    let def = character.skills["martial"].level;
+    let hp = 10 * character.skills["martial"].level;
 
-    Object.entries(character.loadout.loadout).forEach(([_, equipmentId]) => {
+    Object.entries(character.loadout).forEach(([_, equipmentId]) => {
       if (equipmentId != null) {
-        let item: Equipment = items.get(equipmentId) as Equipment
+        let item = ITEM_BY_ID[equipmentId] as Equipment 
         atk += item.attackBonus;
         def += item.defenseBonus;
         hp += item.healthBonus;
       }
     })
-
     return {atk, def, hp}
   }
 
@@ -165,7 +171,7 @@ export default function EngineProvider({
         setWorkingSkill,
         setWorkingTask,
         character,
-        progress,
+        progress: taskProgress,
         workingTask,
         workingSkill,
       }}
@@ -173,4 +179,6 @@ export default function EngineProvider({
       {children}
     </EngineContext.Provider>
   );
+
+  
 }

@@ -1,8 +1,8 @@
-import { Circle, Gem, HammerIcon, Mountain, SearchSlash } from "lucide-react";
-import { Skill, Task } from "../Skills";
+import { Circle, Gem, Mountain, SearchSlash } from "lucide-react";
+import { Skill, Task } from "../../GameObject";
 
 const mineCopperOre: Task = {
-  id: "mine-copper-ore",
+  id: "mineCopperOre",
   name: "Mine Copper",
   description: "Mine copper ore.",
   icon: Mountain,
@@ -10,7 +10,7 @@ const mineCopperOre: Task = {
   experience: 1,
   requiredLevel: 1,
   lootTable: {
-    ore: { "copper-ore": { weight: 1, minQuantity: 1, maxQuantity: 1 } },
+    ore: { copperOre: { weight: 1, minQuantity: 1, maxQuantity: 1 } },
     geode: {
       _: { weight: 20, minQuantity: 0, maxQuantity: 0 },
       geode: { weight: 1, minQuantity: 1, maxQuantity: 1 },
@@ -18,7 +18,7 @@ const mineCopperOre: Task = {
   },
 };
 const mineTinOre: Task = {
-  id: "mine-tin-ore",
+  id: "mineTinOre",
   name: "Mine Tin",
   description: "Mine tin ore.",
   icon: Mountain,
@@ -26,7 +26,7 @@ const mineTinOre: Task = {
   experience: 1,
   requiredLevel: 1,
   lootTable: {
-    ore: { "tin-ore": { weight: 1, minQuantity: 1, maxQuantity: 1 } },
+    ore: { tinOre: { weight: 1, minQuantity: 1, maxQuantity: 1 } },
     geode: {
       _: { weight: 20, minQuantity: 0, maxQuantity: 0 },
       geode: { weight: 1, minQuantity: 1, maxQuantity: 1 },
@@ -34,7 +34,7 @@ const mineTinOre: Task = {
   },
 };
 const mineCoal: Task = {
-  id: "mine-coal",
+  id: "mineCoal",
   name: "Mine Coal",
   description: "Mine coal.",
   icon: Circle,
@@ -46,7 +46,7 @@ const mineCoal: Task = {
   },
 };
 const mineIronOre: Task = {
-  id: "mine-iron-ore",
+  id: "mineIronOre",
   name: "Mine Iron",
   description: "Mine iron ore.",
   icon: Mountain,
@@ -54,7 +54,7 @@ const mineIronOre: Task = {
   experience: 10,
   requiredLevel: 10,
   lootTable: {
-    ore: { "iron-ore": { weight: 1, minQuantity: 1, maxQuantity: 1 } },
+    ore: { ironOre: { weight: 1, minQuantity: 1, maxQuantity: 1 } },
     geode: {
       _: { weight: 20, minQuantity: 0, maxQuantity: 0 },
       geode: { weight: 1, minQuantity: 1, maxQuantity: 1 },
@@ -62,7 +62,7 @@ const mineIronOre: Task = {
   },
 };
 const mineSilverOre: Task = {
-  id: "mine-silver-ore",
+  id: "mineSilverOre",
   name: "Mine Silver",
   description: "Mine silver ore.",
   icon: Mountain,
@@ -70,7 +70,7 @@ const mineSilverOre: Task = {
   experience: 20,
   requiredLevel: 20,
   lootTable: {
-    ore: { "silver-ore": { weight: 1, minQuantity: 1, maxQuantity: 1 } },
+    ore: { silverOre: { weight: 1, minQuantity: 1, maxQuantity: 1 } },
     geode: {
       _: { weight: 10, minQuantity: 0, maxQuantity: 0 },
       geode: { weight: 1, minQuantity: 1, maxQuantity: 1 },
@@ -78,7 +78,7 @@ const mineSilverOre: Task = {
   },
 };
 const cutGeode: Task = {
-  id: "cut-geode",
+  id: "cutGeode",
   name: "Cut Geode",
   description: "Cut a geode into a gem.",
   icon: Gem,
@@ -108,12 +108,5 @@ export const prospecting: Skill = {
       mineSilverOre,
     ],
     crafting: [cutGeode],
-  },
-  getAllTasks() {
-    let allTasks: Task[] = [];
-    Object.keys(this.tasks).forEach((key) => {
-      allTasks.push(...this.tasks[key]);
-    });
-    return allTasks;
   },
 };

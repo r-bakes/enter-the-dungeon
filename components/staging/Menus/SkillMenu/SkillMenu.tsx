@@ -10,29 +10,29 @@ import {
 import TaskContainer from "./TaskContainer";
 import { Progress } from "@/components/ui/progress";
 import { Label } from "@/components/ui/label";
-import { Skill, Task } from "@/game/data/skills/Skills";
 import {
-  levelCap,
-  requiredExpForLevelUp,
+  LEVEL_CAP,
 } from "@/game/data/Configurations";
+import { requiredExpForLevelUp } from "@/game/data/CharaterStateUtilities";
 import TaskInfo from "./TaskInfo";
 import { useState } from "react";
 import { useEngineContext } from "@/game/engine/EngineContext";
 import { ScrollArea, ScrollBar } from "@/components/ui/scroll-area";
+import { Skill, Task, getAllTasks } from "@/game/data/GameObject";
 
 export default function SkillMenu({ skill }: { skill: Skill }) {
   const { character, workingTask } = useEngineContext();
   const [task, setTask] = useState<Task | null>(
-    workingTask != null && skill.getAllTasks().includes(workingTask)
+    workingTask != null && getAllTasks(skill.tasks).includes(workingTask)
       ? workingTask
       : null
   );
   let expGainedAtLevel =
-    character.skills.data[skill.id].experience -
-    requiredExpForLevelUp(character.skills.data[skill.id].level - 1);
+    character.skills[skill.id].experience -
+    requiredExpForLevelUp(character.skills[skill.id].level - 1);
   let expRemainingForLevelUp =
-    requiredExpForLevelUp(character.skills.data[skill.id].level) -
-    requiredExpForLevelUp(character.skills.data[skill.id].level - 1);
+    requiredExpForLevelUp(character.skills[skill.id].level) -
+    requiredExpForLevelUp(character.skills[skill.id].level - 1);
 
   return (
     <div className="flex flex-col px-8 h-full w-full min-w-[800px]">
@@ -48,7 +48,7 @@ export default function SkillMenu({ skill }: { skill: Skill }) {
             </div>
             <div className="flex pl-6 flex-col w-[150px]">
               <CardTitle>
-                {character.skills.data[skill.id].level} / {levelCap}
+                {character.skills[skill.id].level} / {LEVEL_CAP}
               </CardTitle>
               <CardDescription>Level</CardDescription>
             </div>
@@ -61,9 +61,9 @@ export default function SkillMenu({ skill }: { skill: Skill }) {
                 value={(expGainedAtLevel / expRemainingForLevelUp) * 100}
               ></Progress>
               <CardDescription className="mt-2">
-                {character.skills.data[skill.id].experience +
+                {character.skills[skill.id].experience +
                   " / " +
-                  requiredExpForLevelUp(character.skills.data[skill.id].level)}
+                  requiredExpForLevelUp(character.skills[skill.id].level)}
               </CardDescription>
             </div>
           </CardContent>
@@ -84,7 +84,7 @@ export default function SkillMenu({ skill }: { skill: Skill }) {
                   {category.charAt(0).toUpperCase() + category.slice(1)}
                 </Label>
                 <TaskContainer
-                  skillLevel={character.skills.data[skill.id].level}
+                  skillLevel={character.skills[skill.id].level}
                   tasks={tasks}
                   setTask={setTask}
                 ></TaskContainer>

@@ -1,7 +1,7 @@
 import { Backpack } from "lucide-react";
-import { Menu } from "../Menu";
+import { GameObject } from "../../GameObject";
 
-export const inventory: Menu = {
+export const inventory: GameObject = {
   id: "inventory",
   name: "Inventory",
   description: "test",

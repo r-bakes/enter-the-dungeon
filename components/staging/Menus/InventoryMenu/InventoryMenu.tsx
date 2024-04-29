@@ -6,12 +6,13 @@ import { CircleDollarSign } from "lucide-react";
 import EquipmentSlots from "./EquipmentSlots";
 import { TabsContent } from "@radix-ui/react-tabs";
 import InventorySlots from "./InventorySlots";
-import { items } from "@/game/data/items/items";
+import { ITEM_BY_ID } from "@/game/data/items/items";
+import { ItemType } from "@/game/data/GameObject";
 
 export default function InventoryMenu({}: {}) {
   const { character } = useEngineContext();
-  let inventory = Object.entries(character.inventory.items).map(
-    ([itemId, quantity]) => ({ item: items.get(itemId), quantity: quantity })
+  let inventory = Object.entries(character.inventory).filter(item => item[1] > 0).map(
+    ([itemId, quantity]) => ({ item: ITEM_BY_ID[itemId], quantity: quantity })
   );
 
   return (
@@ -44,25 +45,25 @@ export default function InventoryMenu({}: {}) {
         <TabsContent className="h-full" value="equipment">
           <InventorySlots
             inventory={inventory.filter(
-              (data) => data.item.type == "equipment"
+              (data) => data.item.type == ItemType.EQUIPEMENT
             )}
           ></InventorySlots>
         </TabsContent>
         <TabsContent className="h-full" value="supplies">
           <InventorySlots
-            inventory={inventory.filter((data) => data.item.type == "supply")}
+            inventory={inventory.filter((data) => data.item.type == ItemType.SUPPLIES)}
           ></InventorySlots>
         </TabsContent>
         <TabsContent className="h-full" value="trade-goods">
           <InventorySlots
             inventory={inventory.filter(
-              (data) => data.item.type == "trade-good"
+              (data) => data.item.type == ItemType.TRADEGOODS
             )}
           ></InventorySlots>
         </TabsContent>
         <TabsContent className="h-full" value="materials">
           <InventorySlots
-            inventory={inventory.filter((data) => data.item.type == "material")}
+            inventory={inventory.filter((data) => data.item.type == ItemType.MATERIALS)}
           ></InventorySlots>
         </TabsContent>
       </Tabs>

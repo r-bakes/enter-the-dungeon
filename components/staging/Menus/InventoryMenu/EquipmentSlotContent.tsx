@@ -1,12 +1,12 @@
 import { Button } from "@/components/ui/button";
 import { Label } from "@/components/ui/label";
-import { Equipment } from "@/game/data/items/items";
 import {
   Popover,
   PopoverContent,
   PopoverTrigger,
 } from "@/components/ui/popover";
-import { LoadoutSlots } from "@/game/data/character/Loadout";
+import { Equipment } from "@/game/data/GameObject";
+import { Slot } from "@/game/data/character/Character";
 import { useEngineContext } from "@/game/engine/EngineContext";
 
 export default function EquipmentSlotContent({
@@ -15,7 +15,7 @@ export default function EquipmentSlotContent({
   rounded,
 }: {
   item: Equipment;
-  slot: LoadoutSlots;
+  slot: Slot;
   rounded?:
     | "rounded-tl-md"
     | "rounded-br-md"
@@ -28,7 +28,9 @@ export default function EquipmentSlotContent({
       <PopoverTrigger asChild>
         <div className="w-14 h-14">
           <Button
-            className={"flex flex-col w-full h-full p-2 rounded-none " + rounded}
+            className={
+              "flex flex-col w-full h-full p-2 rounded-none " + rounded
+            }
             variant="ghost"
           >
             <item.icon size={56} strokeWidth={1} className="p-1"></item.icon>
