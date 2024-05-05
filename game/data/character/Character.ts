@@ -1,3 +1,6 @@
+import { CombatCard } from "../GameObject";
+import { slice } from "../cards/cards";
+
 // TODO add persistent storage on GCP.
 export type Character = {
   name: string;
@@ -5,6 +8,7 @@ export type Character = {
   inventory: Inventory;
   skills: Skills;
   progress: Progress;
+  deck: Deck;
 };
 
 export type Inventory = {
@@ -25,6 +29,11 @@ export type SkillLevel = {
 };
 
 export type Progress = {};
+
+export type Deck = {
+  equpped: string[]
+  unequipped: string[]
+}
 
 export enum Slot {
   HEAD = "head",
@@ -96,4 +105,8 @@ export const testCharacter: Character = {
     },
   },
   progress: {},
+  deck: {
+    equpped: ["slice", "slice"],
+    unequipped: [],
+  }
 };

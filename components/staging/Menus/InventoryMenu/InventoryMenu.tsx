@@ -3,23 +3,25 @@ import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { useEngineContext } from "@/game/engine/EngineContext";
 import { Label } from "@radix-ui/react-label";
 import { CircleDollarSign } from "lucide-react";
-import EquipmentSlots from "./EquipmentSlots";
 import { TabsContent } from "@radix-ui/react-tabs";
-import InventorySlots from "./InventorySlots";
 import { ITEM_BY_ID } from "@/game/data/items/items";
 import { ItemType } from "@/game/data/GameObject";
+import EquipmentSlots from "./EquipmentSlots";
+import InventorySlots from "./InventorySlots";
 
 export default function InventoryMenu({}: {}) {
   const { character } = useEngineContext();
-  let inventory = Object.entries(character.inventory).filter(item => item[1] > 0).map(
-    ([itemId, quantity]) => ({ item: ITEM_BY_ID[itemId], quantity: quantity })
-  );
+  let inventory = Object.entries(character.inventory)
+    .filter((item) => item[1] > 0)
+    .map(([itemId, quantity]) => ({
+      item: ITEM_BY_ID[itemId],
+      quantity: quantity,
+    }));
 
   return (
     <div className="flex px-8 h-full grow min-w-[800px] space-x-2">
       <Card className="flex flex-col w-80 space-y-1">
         <CardHeader className="flex flex-col">
-          {/* <Label className="text-sm text-muted-foreground">Gold</Label> */}
           <div className="flex rows space-x-2 items-center">
             <CircleDollarSign size={24} strokeWidth={1.5}></CircleDollarSign>
             <Label className="text-xl h-full font-light">
@@ -51,7 +53,9 @@ export default function InventoryMenu({}: {}) {
         </TabsContent>
         <TabsContent className="h-full" value="supplies">
           <InventorySlots
-            inventory={inventory.filter((data) => data.item.type == ItemType.SUPPLIES)}
+            inventory={inventory.filter(
+              (data) => data.item.type == ItemType.SUPPLIES
+            )}
           ></InventorySlots>
         </TabsContent>
         <TabsContent className="h-full" value="trade-goods">
@@ -63,7 +67,9 @@ export default function InventoryMenu({}: {}) {
         </TabsContent>
         <TabsContent className="h-full" value="materials">
           <InventorySlots
-            inventory={inventory.filter((data) => data.item.type == ItemType.MATERIALS)}
+            inventory={inventory.filter(
+              (data) => data.item.type == ItemType.MATERIALS
+            )}
           ></InventorySlots>
         </TabsContent>
       </Tabs>

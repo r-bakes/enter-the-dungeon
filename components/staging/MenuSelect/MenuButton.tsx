@@ -1,5 +1,5 @@
 import { Button } from "@/components/ui/button";
-import { Menu } from "@/game/data/menus/Menu";
+import { GameObject } from "@/game/data/GameObject";
 import { Label } from "@radix-ui/react-label";
 
 export default function MenuButton({
@@ -8,7 +8,7 @@ export default function MenuButton({
   level,
   onClick,
 }: {
-  menu: Menu;
+  menu: GameObject;
   isSelected: boolean;
   level?: number;
   onClick: React.Dispatch<React.SetStateAction<any>>;

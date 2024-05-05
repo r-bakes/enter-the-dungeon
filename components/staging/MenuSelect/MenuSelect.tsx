@@ -1,20 +1,27 @@
+import { GameObject } from "@/game/data/GameObject";
 import Logo from "./Logo";
 import MenuContainer from "./MenuContainer";
 import { Label } from "@radix-ui/react-label";
-import {
-  Menu,
-  combatMenus,
-  miscMenus,
-  skillMenus,
-} from "@/game/data/menus/Menu";
+import { bazaar } from "@/game/data/menus/Bazaar";
+import { excursions } from "@/game/data/menus/Excursions";
+import { inventory } from "@/game/data/menus/Inventory";
+import { martial } from "@/game/data/skills/Martial";
+import { magic } from "@/game/data/skills/Magic";
+import { prospecting } from "@/game/data/skills/Prospecting";
+import { smithing } from "@/game/data/skills/Smithing";
 
 export default function MenuSelect({
   selectedMenu,
   setSelectedMenu,
 }: {
-  selectedMenu: Menu;
-  setSelectedMenu: React.Dispatch<React.SetStateAction<Menu>>;
+  selectedMenu: GameObject;
+  setSelectedMenu: React.Dispatch<React.SetStateAction<GameObject>>;
 }) {
+
+  let miscMenus = [bazaar, excursions, inventory]
+  let combatMenus = [martial, magic]
+  let skillMenus = [prospecting, smithing]
+
   return (
     <div className="flex flex-col w-64 h-full min-w-[256px]">
       <Logo></Logo>

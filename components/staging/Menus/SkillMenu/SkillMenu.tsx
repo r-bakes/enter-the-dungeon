@@ -7,18 +7,18 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import TaskContainer from "./TaskContainer";
 import { Progress } from "@/components/ui/progress";
 import { Label } from "@/components/ui/label";
 import {
   LEVEL_CAP,
 } from "@/game/data/Configurations";
 import { requiredExpForLevelUp } from "@/game/data/CharaterStateUtilities";
-import TaskInfo from "./TaskInfo";
 import { useState } from "react";
 import { useEngineContext } from "@/game/engine/EngineContext";
 import { ScrollArea, ScrollBar } from "@/components/ui/scroll-area";
 import { Skill, Task, getAllTasks } from "@/game/data/GameObject";
+import TaskInfo from "./TaskInfo";
+import TaskContainer from "./TaskContainer";
 
 export default function SkillMenu({ skill }: { skill: Skill }) {
   const { character, workingTask } = useEngineContext();

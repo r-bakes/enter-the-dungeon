@@ -28,7 +28,7 @@ export type Task = {
   requires?: { [itemId: string]: number };
 } & GameObject;
 
-export type Card = {
+export type CombatCard = {
   baseDmg: number
   strikes: number
   baseDef: number
@@ -41,7 +41,7 @@ export type Equipment = {
   defenseBonus: number;
   healthBonus: number;
   isTwoHanded?: boolean,
-  cards: Card[];
+  cards: CombatCard[];
   slots: Slot[];
 } & Item;
 

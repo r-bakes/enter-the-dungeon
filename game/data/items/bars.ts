@@ -1,5 +1,5 @@
 import { RectangleVertical } from "lucide-react";
-import { Item, ItemType } from "../../GameObject";
+import { Item, ItemType } from "../GameObject";
 
 export const bronzeBar: Item = {
   id: "bronzeBar",

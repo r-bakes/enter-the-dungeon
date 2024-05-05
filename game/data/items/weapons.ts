@@ -1,7 +1,7 @@
-import { Equipment, ItemType } from "../../GameObject";
-import { defend, slice } from "../../cards/Card";
+import { Equipment, ItemType } from "../GameObject";
+import { defend, slice } from "../cards/cards";
 import { Shield, Sword } from "lucide-react";
-import { Slot } from "../../character/Character";
+import { Slot } from "../character/Character";
 
 export const bronzeSword: Equipment = {
   id: "bronzeSword",

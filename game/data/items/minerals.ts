@@ -1,7 +1,7 @@
 import { Circle } from "lucide-react";
 import { Mountain } from "lucide-react";
 import { Gem } from "lucide-react";
-import { Item, ItemType } from "../../GameObject";
+import { Item, ItemType } from "../GameObject";
 
 export const ironOre: Item = {
   id: "ironOre",

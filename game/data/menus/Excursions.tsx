@@ -1,5 +1,5 @@
 import { Map } from "lucide-react";
-import { GameObject } from "../../GameObject";
+import { GameObject } from "../GameObject";
 
 export const excursions: GameObject = {
   id: "excursions",

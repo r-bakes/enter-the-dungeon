@@ -1,5 +1,5 @@
 import { CircleDollarSign } from "lucide-react";
-import { Item, ItemType } from "../../GameObject";
+import { Item, ItemType } from "../GameObject";
 
 export const gold: Item = {
     id: "gold",

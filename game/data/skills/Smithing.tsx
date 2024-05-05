@@ -1,5 +1,5 @@
 import { Gavel, RectangleVertical, Shield, Sword } from "lucide-react";
-import { Skill, Task } from "../../GameObject";
+import { Skill, Task } from "../GameObject";
 
 const smithBronzeSword: Task = {
   id: "smithBronzeSword",

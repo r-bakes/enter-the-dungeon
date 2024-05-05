@@ -8,23 +8,23 @@ import {
   sapphire,
   goldOre,
   emerald,
-} from "./allItems/minerals";
+} from "./minerals";
 import {
   bronzeSword,
   ironGreatSword,
   ironShield,
   ironSword,
   steelSword,
-} from "./allItems/weapons";
+} from "./weapons";
 import {
   bronzeBar,
   goldBar,
   ironBar,
   silverBar,
   steelBar,
-} from "./allItems/bars";
+} from "./bars";
 import { Item } from "../GameObject";
-import { gold } from "./allItems/misc";
+import { gold } from "./misc";
 
 const ALL_ITEMS: Item[] = [
   gold,
