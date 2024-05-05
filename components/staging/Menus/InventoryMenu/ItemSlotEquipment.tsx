@@ -5,7 +5,7 @@ import { Slot } from "@/game/data/character/Character";
 import { useEngineContext } from "@/game/engine/EngineContext";
 
 export default function ItemSlotEquipment({ item }: { item: Equipment }) {
-  const { equip } = useEngineContext();
+  const { equipItem: equip } = useEngineContext();
   return (
     <div className="flex flex-col w-full h-full">
       {item.attackBonus > 0 ? (

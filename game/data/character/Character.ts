@@ -31,8 +31,10 @@ export type SkillLevel = {
 export type Progress = {};
 
 export type Deck = {
-  equpped: string[]
-  unequipped: string[]
+  equppedMartial: string[]
+  unequippedMartial: string[]
+  equippedMagic: string[],
+  unequippedMagic: string[]
 }
 
 export enum Slot {
@@ -106,7 +108,9 @@ export const testCharacter: Character = {
   },
   progress: {},
   deck: {
-    equpped: ["slice", "slice"],
-    unequipped: [],
+    equppedMartial: ["slice", "slice"],
+    unequippedMartial: [],
+    equippedMagic: [],
+    unequippedMagic: [],
   }
 };

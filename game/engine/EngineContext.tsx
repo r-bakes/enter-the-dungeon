@@ -1,11 +1,23 @@
 import { createContext, useContext, useEffect, useRef, useState } from "react";
-import { TICK_RATE_MS } from "../data/Configurations";
+import { MAGIC_DECK_LIMIT, MARTIAL_DECK_LIMIT, TICK_RATE_MS } from "../data/Configurations";
 import { toast } from "sonner";
 import TaskComplete from "@/components/staging/Toast/TaskComplete";
 import generateLoot, { Loot } from "./LootEngine";
-import { Character, Inventory, Loadout, Skills, Slot, testCharacter } from "../data/character/Character";
+import {
+  Character,
+  Inventory,
+  Skills,
+  Slot,
+  testCharacter,
+} from "../data/character/Character";
 import { Equipment, Skill, Task } from "../data/GameObject";
-import { addExp, addItem, removeItem } from "../data/CharaterStateUtilities";
+import {
+  addCardsByItemId,
+  addExp,
+  addItem,
+  removeCardsByItem,
+  removeItem,
+} from "./CharaterStateUtilities";
 import { ITEM_BY_ID } from "../data/items/items";
 
 type EngineContextContents = {
@@ -15,9 +27,11 @@ type EngineContextContents = {
   workingSkill: Skill | null;
   setWorkingSkill: React.Dispatch<React.SetStateAction<Skill | null>>;
   setWorkingTask: React.Dispatch<React.SetStateAction<Task | null>>;
-  equip: (itemId: string, slot: Slot) => void;
-  unequip: (slot: Slot) => void;
-  getModifiers: () => {hp: number, atk: number, def: number}
+  equipCard: (cardId: string) => void;
+  unequipCard: (cardId: string) => void;
+  equipItem: (itemId: string, slot: Slot) => void;
+  unequipItem: (slot: Slot) => void;
+  getModifiers: () => { hp: number; atk: number; def: number };
 };
 const EngineContext = createContext({} as EngineContextContents);
 export const useEngineContext = () => useContext(EngineContext);
@@ -74,10 +88,7 @@ export default function EngineProvider({
     let canContinue = true;
     if (task.requires) {
       Object.entries(task.requires).forEach(([itemId, quantity]) => {
-        if (
-          !(itemId in inventory) ||
-          inventory[itemId] < quantity
-        ) {
+        if (!(itemId in inventory) || inventory[itemId] < quantity) {
           canContinue = false;
         }
       });
@@ -91,7 +102,7 @@ export default function EngineProvider({
   const updateCharacterTaskComplete = (
     character: Character,
     skill: Skill,
-    task: Task,
+    task: Task
   ) => {
     const loot = generateLoot(task.lootTable);
 
@@ -128,46 +139,106 @@ export default function EngineProvider({
     });
   };
 
-  const equip = (itemId: string, slot: Slot) => {
+  const equipItem = (itemId: string, slot: Slot) => {
     removeItem(character.inventory, itemId, 1);
     if (character.loadout[slot] != null) {
-      unequip(slot)
+      unequipItem(slot);
     }
     character.loadout[slot] = itemId;
-    setCharacter({ ...character })
+    addCardsByItemId(itemId, character.deck.unequippedMartial);
+    setCharacter({ ...character });
   };
-  
-  const unequip = (slot: Slot) => {
+
+  const unequipItem = (slot: Slot) => {
     if (character.loadout[slot] != null) {
       let itemId = character.loadout[slot] as string;
       character.loadout[slot] = null;
       addItem(character.inventory, itemId, 1);
-      setCharacter({ ...character })
+      removeCardsByItem(
+        itemId,
+        character.deck.equppedMartial,
+        character.deck.unequippedMartial
+      );
+      setCharacter({ ...character });
     }
   };
-  
+
   const getModifiers = () => {
-    let atk = character.skills["martial"].level; 
+    let atk = character.skills["martial"].level;
     let def = character.skills["martial"].level;
     let hp = 10 * character.skills["martial"].level;
 
     Object.entries(character.loadout).forEach(([_, equipmentId]) => {
       if (equipmentId != null) {
-        let item = ITEM_BY_ID[equipmentId] as Equipment 
+        let item = ITEM_BY_ID[equipmentId] as Equipment;
         atk += item.attackBonus;
         def += item.defenseBonus;
         hp += item.healthBonus;
       }
-    })
-    return {atk, def, hp}
-  }
+    });
+    return { atk, def, hp };
+  };
+
+  const equipCard = (cardId: string) => {
+    if (character.deck.unequippedMartial.includes(cardId)) {
+      if (character.deck.equppedMartial.length == MARTIAL_DECK_LIMIT) {
+        toast.error("Deck limit reached!", {dismissible: true, position: "top-center", description: "Unequip a card and try again."});
+        return;
+      }
+      
+      character.deck.unequippedMartial.splice(
+        character.deck.unequippedMartial.findIndex(
+          (unequippedCardId) => unequippedCardId === cardId
+        ),
+        1
+      );
+      character.deck.equppedMartial.push(cardId);
+    } else {
+      if (character.deck.equippedMagic.length == MAGIC_DECK_LIMIT) {
+        toast.error("Deck limit reached!", {dismissible: true, position: "top-center", description: "Unequip a card and try again."});
+        return;
+      }
+
+      character.deck.unequippedMagic.splice(
+        character.deck.unequippedMagic.findIndex(
+          (unequippedCardId) => unequippedCardId === cardId
+        ),
+        1
+      );
+      character.deck.equippedMagic.push(cardId);
+    }
+    setCharacter({ ...character });
+  };
+
+  const unequipCard = (cardId: string) => {
+    if (character.deck.equppedMartial.includes(cardId)) {
+      character.deck.equppedMartial.splice(
+        character.deck.equppedMartial.findIndex(
+          (equippedCardId) => equippedCardId === cardId
+        ),
+        1
+      );
+      character.deck.unequippedMartial.push(cardId);
+    } else {
+      character.deck.equippedMagic.splice(
+        character.deck.equippedMagic.findIndex(
+          (equippedCardId) => equippedCardId === cardId
+        ),
+        1
+      );
+      character.deck.unequippedMagic.push(cardId);
+    }
+    setCharacter({ ...character });
+  };
 
   return (
     <EngineContext.Provider
       value={{
         getModifiers,
-        equip,
-        unequip,
+        equipItem,
+        unequipItem,
+        equipCard,
+        unequipCard,
         setWorkingSkill,
         setWorkingTask,
         character,
@@ -179,6 +250,4 @@ export default function EngineProvider({
       {children}
     </EngineContext.Provider>
   );
-
-  
 }

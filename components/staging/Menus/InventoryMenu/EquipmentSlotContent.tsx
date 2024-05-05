@@ -22,7 +22,7 @@ export default function EquipmentSlotContent({
     | "rounded-tr-md"
     | "rounded-bl-md";
 }) {
-  let { unequip } = useEngineContext();
+  let { unequipItem: unequip } = useEngineContext();
   return (
     <Popover>
       <PopoverTrigger asChild>

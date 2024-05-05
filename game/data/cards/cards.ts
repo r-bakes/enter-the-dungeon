@@ -19,6 +19,7 @@ export const slice: CombatCard = {
     strikes: 1,
     baseDef: 0,
     targets: 1,
+    cost: 1
 }
 export const stab: CombatCard = {
     id: "stab",
@@ -29,6 +30,7 @@ export const stab: CombatCard = {
     strikes: 2,
     baseDef: 0,
     targets: 1,
+    cost: 1
 }
 export const defend: CombatCard = {
     id: "defend",
@@ -39,6 +41,7 @@ export const defend: CombatCard = {
     strikes: 0,
     baseDef: 1,
     targets: 1,
+    cost: 1
 }
 
 export const ALL_CARDS: CombatCard[] = [

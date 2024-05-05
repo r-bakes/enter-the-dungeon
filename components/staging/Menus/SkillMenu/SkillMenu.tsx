@@ -12,7 +12,7 @@ import { Label } from "@/components/ui/label";
 import {
   LEVEL_CAP,
 } from "@/game/data/Configurations";
-import { requiredExpForLevelUp } from "@/game/data/CharaterStateUtilities";
+import { requiredExpForLevelUp } from "@/game/engine/CharaterStateUtilities";
 import { useState } from "react";
 import { useEngineContext } from "@/game/engine/EngineContext";
 import { ScrollArea, ScrollBar } from "@/components/ui/scroll-area";

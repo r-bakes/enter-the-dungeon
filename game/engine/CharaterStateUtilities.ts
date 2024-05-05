@@ -1,5 +1,8 @@
-import { LEVEL_CAP } from "./Configurations";
-import { Inventory, Skills } from "./character/Character";
+import CombatDeckCard from "@/components/cards/CombatDeckCard";
+import { LEVEL_CAP } from "../data/Configurations";
+import { CombatCard, Equipment } from "../data/GameObject";
+import { Deck, Inventory, Skills } from "../data/character/Character";
+import { ITEM_BY_ID } from "../data/items/items";
 
 export function addExp(skills: Skills, skillId: string, exp: number): Skills {
   while (
@@ -18,6 +21,25 @@ export function addExp(skills: Skills, skillId: string, exp: number): Skills {
   return skills;
 }
 
+export function addCardsByItemId(itemId: string, unequipped: String[]) {
+  let item = ITEM_BY_ID[itemId] as (Equipment);
+  
+  item.cards.forEach((card) => unequipped.push(card.id));
+}
+
+export function removeCardsByItem(itemId: string, equipped: string[], unequipped: string[]) {
+  let item = ITEM_BY_ID[itemId] as (Equipment);
+
+  item.cards.forEach(
+    (card) => {
+      if (unequipped.includes(card.id)) {
+        unequipped.splice(unequipped.findIndex(unequippedCard => unequippedCard === card.id), 1);
+      } else {
+        equipped.splice(equipped.findIndex(equippedCard => equippedCard === card.id), 1);
+      }
+    }
+  )
+}
 
 export function addItem(
   inventory: Inventory,
@@ -47,5 +69,4 @@ export function requiredExpForLevelUp(level: number) {
   }
   return Math.floor(10 * Math.pow(2, level / 2));
 }
-
 

@@ -33,6 +33,7 @@ export type CombatCard = {
   strikes: number
   baseDef: number
   targets: number
+  cost: number
 } & GameObject;
 
 export type Equipment = {

@@ -9,7 +9,8 @@ import EngineProvider from "@/game/engine/EngineContext";
 import React from "react";
 import { prospecting } from "@/game/data/skills/Prospecting";
 import { smithing } from "@/game/data/skills/Smithing";
-import MartialMenu from "@/components/staging/menus/MartialMenu/MartialMenu";
+import DeckMenu from "@/components/staging/menus/DeckMenu/DeckMenu";
+import { magic } from "@/game/data/skills/Magic";
 
 export default function Page({}) {
   const [selectedMenu, setSelectedMenu] = React.useState<GameObject>(martial);
@@ -22,7 +23,8 @@ export default function Page({}) {
         <SkillMenu key={menu.id} skill={selectedMenu as Skill}></SkillMenu>
       ))
   );
-  menus[martial.id] = <MartialMenu></MartialMenu>;
+  menus[martial.id] = <DeckMenu isMartial={true}></DeckMenu>;
+  menus[magic.id] = <DeckMenu isMartial={false}></DeckMenu>;
   menus[inventory.id] = <InventoryMenu></InventoryMenu>;
 
   return (
