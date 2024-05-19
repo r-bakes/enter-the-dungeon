@@ -1,7 +1,7 @@
 import { createContext, useContext, useEffect, useRef, useState } from "react";
 import { MAGIC_DECK_LIMIT, MARTIAL_DECK_LIMIT, TICK_RATE_MS } from "../data/Configurations";
 import { toast } from "sonner";
-import TaskComplete from "@/components/staging/Toast/TaskComplete";
+import TaskComplete from "@/components/camp/Toast/TaskComplete";
 import generateLoot, { Loot } from "./LootEngine";
 import {
   Character,
