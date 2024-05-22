@@ -1,10 +1,10 @@
-import { useCampEngineContext } from "@/engine/CampEngineContext";
-import EquipmentSlotContent from "./EquipmentSlotContent";
+import { useCampEngineContext } from "@/engine/campEngineContext";
+import EquipmentSlotContent from "./equipmentSlotContent";
 import { Label } from "@/components/ui/label";
 import { ITEM_BY_ID } from "@/data/items/items";
-import { Slot } from "@/data/character/Character";
-import { Equipment } from "@/data/GameObject";
-import { useCharacterEngineContext } from "@/engine/CharacterEngineContext";
+import { Slot } from "@/data/character/character";
+import { Equipment } from "@/data/items/types";
+import { useCharacterEngineContext } from "@/engine/characterEngineContext";
 
 export default function EquipmentSlot({
   slot,

@@ -1,4 +1,4 @@
-import { CombatCard } from "../GameObject";
+import { CombatCard } from "../cards/cards";
 import { slice } from "../cards/cards";
 
 // TODO add persistent storage on GCP.

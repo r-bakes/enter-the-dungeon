@@ -1,9 +1,9 @@
 import { Button } from "@/components/ui/button";
 import { Label } from "@/components/ui/label";
-import { Equipment } from "@/data/GameObject";
-import { Slot } from "@/data/character/Character";
-import { useCampEngineContext } from "@/engine/CampEngineContext";
-import { useCharacterEngineContext } from "@/engine/CharacterEngineContext";
+import { Equipment } from "@/data/items/types";
+import { Slot } from "@/data/character/character";
+import { useCampEngineContext } from "@/engine/campEngineContext";
+import { useCharacterEngineContext } from "@/engine/characterEngineContext";
 
 export default function ItemSlotEquipment({ item }: { item: Equipment }) {
   const { equipItem: equip } = useCharacterEngineContext();

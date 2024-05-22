@@ -1,11 +1,11 @@
-import CombatDeckCard from "@/components/cards/CombatDeckCard";
+import CombatDeckCard from "@/components/cards/combatDeckCard";
 import { Card, CardContent } from "@/components/ui/card";
 import { Label } from "@/components/ui/label";
 import { ScrollArea, ScrollBar } from "@/components/ui/scroll-area";
-import { MAGIC_DECK_LIMIT, MARTIAL_DECK_LIMIT } from "@/data/Configurations";
+import { MAGIC_DECK_LIMIT, MARTIAL_DECK_LIMIT } from "@/data/configurations";
 import { CARD_BY_ID } from "@/data/cards/cards";
-import { useCampEngineContext } from "@/engine/CampEngineContext";
-import { useCharacterEngineContext } from "@/engine/CharacterEngineContext";
+import { useCampEngineContext } from "@/engine/campEngineContext";
+import { useCharacterEngineContext } from "@/engine/characterEngineContext";
 
 export default function DeckMenu({isMartial}:{isMartial: boolean}) {
     const { character, equipCard, unequipCard } = useCharacterEngineContext();
@@ -14,12 +14,12 @@ export default function DeckMenu({isMartial}:{isMartial: boolean}) {
     let limit = null
 
     if (isMartial) {
-        equipped = character.deck.equppedMartial.map(cardId => <CombatDeckCard onClick={() => unequipCard(cardId)} card={CARD_BY_ID[cardId]}></CombatDeckCard>)
-        unequipped = character.deck.unequippedMartial.map(cardId => <CombatDeckCard onClick={() => equipCard(cardId)} card={CARD_BY_ID[cardId]}></CombatDeckCard>)
+        equipped = character.deck.equppedMartial.map((cardId, id) => <CombatDeckCard key={id + "equipped"} onClick={() => unequipCard(cardId)} card={CARD_BY_ID[cardId]}></CombatDeckCard>)
+        unequipped = character.deck.unequippedMartial.map((cardId, id) => <CombatDeckCard key={id + "unequipped"} onClick={() => equipCard(cardId)} card={CARD_BY_ID[cardId]}></CombatDeckCard>)
         limit = MARTIAL_DECK_LIMIT;
     } else {
-        equipped = character.deck.equippedMagic.map(cardId => <CombatDeckCard onClick={() => unequipCard(cardId)} card={CARD_BY_ID[cardId]}></CombatDeckCard>)
-        unequipped = character.deck.unequippedMagic.map(cardId => <CombatDeckCard onClick={() => equipCard(cardId)} card={CARD_BY_ID[cardId]}></CombatDeckCard>)
+        equipped = character.deck.equippedMagic.map((cardId, id) => <CombatDeckCard key={id + "equipped"} onClick={() => unequipCard(cardId)} card={CARD_BY_ID[cardId]}></CombatDeckCard>)
+        unequipped = character.deck.unequippedMagic.map((cardId, id) => <CombatDeckCard key={id + "unequipped"} onClick={() => equipCard(cardId)} card={CARD_BY_ID[cardId]}></CombatDeckCard>)
         limit = MAGIC_DECK_LIMIT
     }
     

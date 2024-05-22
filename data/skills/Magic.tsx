@@ -1,5 +1,5 @@
 import { Wand2 } from "lucide-react";
-import { Skill } from "../GameObject";
+import { Skill } from "./skills";
 
 export const magic: Skill = {
   id: "magic",

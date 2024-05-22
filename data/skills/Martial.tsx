@@ -1,5 +1,5 @@
 import { Swords } from "lucide-react";
-import { Skill } from "../GameObject";
+import { Skill } from "./skills";
 
 export const martial: Skill = {
   id: "martial",

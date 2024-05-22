@@ -1,9 +1,9 @@
 "use client";
 
-import Arena from "@/components/excursion/arena/Arena";
-import CharacterEngineProvider from "@/engine/CharacterEngineContext";
-import EncounterEngineProvider from "@/engine/EncounterEngineContext";
-import ExcursionEngineProvider from "@/engine/ExcursionEngineContext";
+import Arena from "@/components/excursion/arena/arena";
+import CharacterEngineProvider from "@/engine/characterEngineContext";
+import EncounterEngineProvider from "@/engine/encounterEngineContext";
+import ExcursionEngineProvider from "@/engine/excursionEngineContext";
 
 export default function Page({}) {
   return (

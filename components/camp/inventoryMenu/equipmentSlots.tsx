@@ -1,6 +1,6 @@
-import EquipmentSlot from "./EquipmentSlot";
-import EquipmentAttributes from "./EquipmentAttributes";
-import { Slot } from "@/data/character/Character";
+import EquipmentSlot from "./equipmentSlot";
+import EquipmentAttributes from "./equipmentAttributes";
+import { Slot } from "@/data/character/character";
 
 export default function EquipmentSlots({}: {}) {
   return (

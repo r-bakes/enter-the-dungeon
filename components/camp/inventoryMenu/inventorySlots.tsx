@@ -1,6 +1,6 @@
 import { Card, CardContent } from "@/components/ui/card";
-import ItemSlot from "./ItemSlot";
-import { Item } from "@/data/GameObject";
+import ItemSlot from "./itemSlot";
+import { Item } from "@/data/items/types";
 
 export default function InventorySlots({
   inventory,

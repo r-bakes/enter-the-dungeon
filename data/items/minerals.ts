@@ -1,7 +1,7 @@
 import { Circle } from "lucide-react";
 import { Mountain } from "lucide-react";
 import { Gem } from "lucide-react";
-import { Item, ItemType } from "../GameObject";
+import { Item, ItemType } from "./types";
 
 export const ironOre: Item = {
   id: "ironOre",
@@ -71,6 +71,22 @@ export const goldOre: Item = {
   id: "goldOre",
   name: "Gold Ore",
   description: "a lump of gold ore.",
+  value: 1,
+  icon: Mountain,
+  type: ItemType.MATERIALS,
+};
+export const mithrilOre: Item = {
+  id: "mithrilOre",
+  name: "Mithril Ore",
+  description: "a lump of mithril ore.",
+  value: 1,
+  icon: Mountain,
+  type: ItemType.MATERIALS,
+};
+export const adamantiteOre: Item = {
+  id: "adamantiteOre",
+  name: "Adamantite Ore",
+  description: "a lump of adamantite ore.",
   value: 1,
   icon: Mountain,
   type: ItemType.MATERIALS,

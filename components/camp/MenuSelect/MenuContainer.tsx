@@ -1,8 +1,8 @@
 import { ScrollArea } from "@radix-ui/react-scroll-area";
-import MenuButton from "./MenuButton";
-import { useCampEngineContext } from "@/engine/CampEngineContext";
-import { GameObject } from "@/data/GameObject";
-import { useCharacterEngineContext } from "@/engine/CharacterEngineContext";
+import MenuButton from "./menuButton";
+import { useCampEngineContext } from "@/engine/campEngineContext";
+import { GameObject } from "@/data/gameObject";
+import { useCharacterEngineContext } from "@/engine/characterEngineContext";
 
 export default function MenuContainer({
   menuItems,

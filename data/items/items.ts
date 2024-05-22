@@ -8,12 +8,16 @@ import {
   sapphire,
   goldOre,
   emerald,
+  adamantiteOre,
+  mithrilOre,
 } from "./minerals";
 import {
+  adamantSword,
   bronzeSword,
   ironGreatSword,
   ironShield,
   ironSword,
+  mithrilSword,
   steelSword,
 } from "./weapons";
 import {
@@ -22,9 +26,11 @@ import {
   ironBar,
   silverBar,
   steelBar,
+  mithrilBar,
+  adamantBar,
 } from "./bars";
-import { Item } from "../GameObject";
 import { gold } from "./misc";
+import { Item } from "./types";
 
 const ALL_ITEMS: Item[] = [
   gold,
@@ -32,6 +38,9 @@ const ALL_ITEMS: Item[] = [
   tinOre,
   ironOre,
   silverOre,
+  goldOre,
+  mithrilOre,
+  adamantiteOre,
   coal,
   geode,
   sapphire,
@@ -45,8 +54,11 @@ const ALL_ITEMS: Item[] = [
   steelBar,
   silverBar,
   goldBar,
-  goldOre,
   steelSword,
+  mithrilSword,
+  adamantSword,
+  mithrilBar,
+  adamantBar,
 ];
 
 export const ITEM_BY_ID: { [itemId: string]: Item } = Object.fromEntries(

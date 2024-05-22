@@ -1,6 +1,6 @@
-import { LEVEL_CAP } from "../../data/Configurations";
-import { Equipment } from "../../data/GameObject";
-import { Inventory, Skills } from "../../data/character/Character";
+import { LEVEL_CAP } from "../../data/configurations";
+import { Equipment } from "@/data/items/types";
+import { Inventory, Skills } from "../../data/character/character";
 import { ITEM_BY_ID } from "../../data/items/items";
 
 export function addExp(skills: Skills, skillId: string, exp: number): Skills {

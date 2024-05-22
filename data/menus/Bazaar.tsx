@@ -1,5 +1,5 @@
 import { CircleDollarSign } from "lucide-react";
-import { GameObject } from "../GameObject";
+import { GameObject } from "../gameObject";
 
 export const bazaar: GameObject = {
   id: "bazaar",

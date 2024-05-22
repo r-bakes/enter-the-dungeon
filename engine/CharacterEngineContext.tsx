@@ -1,16 +1,16 @@
-import { Character, Slot, testCharacter } from "@/data/character/Character";
+import { Character, Slot, testCharacter } from "@/data/character/character";
 import { toast } from "sonner";
 
 import React from "react";
-import { MAGIC_DECK_LIMIT, MARTIAL_DECK_LIMIT } from "@/data/Configurations";
+import { MAGIC_DECK_LIMIT, MARTIAL_DECK_LIMIT } from "@/data/configurations";
 import {
   addCardsByItemId,
   addItem,
   removeCardsByItem,
   removeItem,
-} from "./utils/CharaterStateUtilities";
+} from "./utils/charaterStateUtilities";
 import { ITEM_BY_ID } from "@/data/items/items";
-import { Equipment } from "@/data/GameObject";
+import { Equipment } from "@/data/items/types";
 
 type CharacterEngineContextContents = {
   character: Character;

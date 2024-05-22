@@ -9,15 +9,17 @@ import {
 } from "@/components/ui/card";
 import { Progress } from "@/components/ui/progress";
 import { Label } from "@/components/ui/label";
-import { LEVEL_CAP } from "@/data/Configurations";
-import { requiredExpForLevelUp } from "@/engine/utils/CharaterStateUtilities";
+import { LEVEL_CAP } from "@/data/configurations";
+import { requiredExpForLevelUp } from "@/engine/utils/charaterStateUtilities";
 import { useState } from "react";
-import { useCampEngineContext } from "@/engine/CampEngineContext";
+import { useCampEngineContext } from "@/engine/campEngineContext";
 import { ScrollArea, ScrollBar } from "@/components/ui/scroll-area";
-import { Skill, Task, getAllTasks } from "@/data/GameObject";
-import TaskInfo from "./TaskInfo";
-import TaskContainer from "./TaskContainer";
-import { useCharacterEngineContext } from "@/engine/CharacterEngineContext";
+import { getAllTasks } from "@/data/gameObject";
+import { Skill } from "@/data/skills/skills";
+import { Task } from "@/data/skills/skills";
+import TaskInfo from "./taskInfo";
+import TaskContainer from "./taskContainer";
+import { useCharacterEngineContext } from "@/engine/characterEngineContext";
 
 export default function SkillMenu({ skill }: { skill: Skill }) {
   const { character } = useCharacterEngineContext();
@@ -81,7 +83,7 @@ export default function SkillMenu({ skill }: { skill: Skill }) {
                 key={category}
               >
                 <Label className="text-xl text-muted-foreground font-extralight">
-                  {category.charAt(0).toUpperCase() + category.slice(1)}
+                  {category.split(" ").map((word) => word.charAt(0).toUpperCase() + word.slice(1)).join(" ")}
                 </Label>
                 <TaskContainer
                   skillLevel={character.skills[skill.id].level}

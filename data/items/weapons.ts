@@ -1,7 +1,7 @@
-import { Equipment, ItemType } from "../GameObject";
+import { Equipment, ItemType } from "./types";
 import { defend, slice } from "../cards/cards";
 import { Shield, Sword } from "lucide-react";
-import { Slot } from "../character/Character";
+import { Slot } from "../character/character";
 
 export const bronzeSword: Equipment = {
   id: "bronzeSword",
@@ -60,6 +60,32 @@ export const steelSword: Equipment = {
   id: "steelSword",
   name: "Steel Sword",
   description: "A steel sword.",
+  icon: Sword,
+  type: ItemType.EQUIPEMENT,
+  value: 10,
+  slots: [Slot.LEFTHAND, Slot.RIGHTHAND],
+  cards: [slice, slice],
+  attackBonus: 20,
+  defenseBonus: 20,
+  healthBonus: 0,
+};
+export const mithrilSword: Equipment = {
+  id: "mithrilSword",
+  name: "Mithril Sword",
+  description: "A mithril sword.",
+  icon: Sword,
+  type: ItemType.EQUIPEMENT,
+  value: 10,
+  slots: [Slot.LEFTHAND, Slot.RIGHTHAND],
+  cards: [slice, slice],
+  attackBonus: 20,
+  defenseBonus: 20,
+  healthBonus: 0,
+};
+export const adamantSword: Equipment = {
+  id: "adamantSword",
+  name: "Adamant Sword",
+  description: "An adamant sword.",
   icon: Sword,
   type: ItemType.EQUIPEMENT,
   value: 10,

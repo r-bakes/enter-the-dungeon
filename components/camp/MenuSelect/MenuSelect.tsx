@@ -1,14 +1,14 @@
-import { GameObject } from "@/data/GameObject";
-import Logo from "./Logo";
-import MenuContainer from "./MenuContainer";
+import { GameObject } from "@/data/gameObject";
+import Logo from "./logo";
+import MenuContainer from "./menuContainer";
 import { Label } from "@radix-ui/react-label";
-import { bazaar } from "@/data/menus/Bazaar";
-import { excursions } from "@/data/menus/Excursions";
-import { inventory } from "@/data/menus/Inventory";
-import { martial } from "@/data/skills/Martial";
-import { magic } from "@/data/skills/Magic";
-import { prospecting } from "@/data/skills/Prospecting";
-import { smithing } from "@/data/skills/Smithing";
+import { bazaar } from "@/data/menus/bazaar";
+import { excursions } from "@/data/menus/excursions";
+import { inventory } from "@/data/menus/inventory";
+import { martial } from "@/data/skills/martial";
+import { magic } from "@/data/skills/magic";
+import { prospecting } from "@/data/skills/prospecting";
+import { smithing } from "@/data/skills/smithing";
 
 export default function MenuSelect({
   selectedMenu,

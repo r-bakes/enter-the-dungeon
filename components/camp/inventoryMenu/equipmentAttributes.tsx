@@ -1,5 +1,5 @@
 import { Label } from "@/components/ui/label";
-import { useCharacterEngineContext } from "@/engine/CharacterEngineContext";
+import { useCharacterEngineContext } from "@/engine/characterEngineContext";
 import { Heart, Shield, Sword } from "lucide-react";
 
 export default function EquipmentAttributes({}: {}) {

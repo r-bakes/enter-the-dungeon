@@ -1,5 +1,6 @@
 import { Circle, Gem, Mountain, SearchSlash } from "lucide-react";
-import { Skill, Task } from "../GameObject";
+import { Skill } from "./skills";
+import { Task } from "./skills";
 
 const mineCopperOre: Task = {
   id: "mineCopperOre",

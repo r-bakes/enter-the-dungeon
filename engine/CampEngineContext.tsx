@@ -1,12 +1,13 @@
-import { TICK_RATE_MS } from "../data/Configurations";
+import { TICK_RATE_MS } from "../data/configurations";
 import { toast } from "sonner";
-import TaskComplete from "@/components/camp/toast/TaskComplete";
-import generateLoot, { Loot } from "./utils/LootUtilities";
-import { Character, Inventory } from "../data/character/Character";
-import { Skill, Task } from "../data/GameObject";
-import { addExp, addItem, removeItem } from "./utils/CharaterStateUtilities";
-import { useCharacterEngineContext } from "./CharacterEngineContext";
+import generateLoot, { Loot } from "./utils/lootUtilities";
+import { Character, Inventory } from "../data/character/character";
+import { Skill } from "@/data/skills/skills";
+import { Task } from "@/data/skills/skills";
+import { addExp, addItem, removeItem } from "./utils/charaterStateUtilities";
+import { useCharacterEngineContext } from "./characterEngineContext";
 import React from "react";
+import TaskComplete from "@/components/camp/toast/taskComplete";
 
 type CampEngineContextContents = {
   progress: number;

@@ -1,4 +1,4 @@
-import { Item } from "../../data/GameObject";
+import { Item } from "@/data/items/types";
 import { ITEM_BY_ID } from "../../data/items/items";
 
 export default function generateLoot(lootTable: LootTable): Loot {

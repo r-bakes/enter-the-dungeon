@@ -1,5 +1,5 @@
 import { Shield, Sword, Swords } from "lucide-react"
-import { CombatCard } from "../GameObject"
+import { GameObject } from "../gameObject"
 
 let createCombatCardDescription = (
     baseDmg: number,
@@ -52,3 +52,10 @@ export const ALL_CARDS: CombatCard[] = [
 export const CARD_BY_ID: { [cardId: string]: CombatCard } = Object.fromEntries(
     ALL_CARDS.map((cardId) => [cardId.id, cardId])
   );
+export type CombatCard = {
+  baseDmg: number;
+  strikes: number;
+  baseDef: number;
+  targets: number;
+  cost: number;
+} & GameObject;

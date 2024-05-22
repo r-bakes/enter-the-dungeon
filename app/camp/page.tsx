@@ -1,19 +1,20 @@
 "use client";
-import MenuSelect from "@/components/camp/menuSelect/MenuSelect";
-import InventoryMenu from "@/components/camp/menus/InventoryMenu/InventoryMenu";
-import SkillMenu from "@/components/camp/menus/SkillMenu/SkillMenu";
-import { GameObject, Skill } from "@/data/GameObject";
-import { inventory } from "@/data/menus/Inventory";
-import { martial } from "@/data/skills/Martial";
-import CampEngineProvider from "@/engine/CampEngineContext";
+import MenuSelect from "@/components/camp/menuSelect/menuSelect";
+import InventoryMenu from "@/components/camp/inventoryMenu/inventoryMenu";
+import SkillMenu from "@/components/camp/skillMenu/skillMenu";
+import { GameObject } from "@/data/gameObject";
+import { Skill } from "@/data/skills/skills";
+import { inventory } from "@/data/menus/inventory";
+import { martial } from "@/data/skills/martial";
+import CampEngineProvider from "@/engine/campEngineContext";
 import React from "react";
-import { prospecting } from "@/data/skills/Prospecting";
-import { smithing } from "@/data/skills/Smithing";
-import DeckMenu from "@/components/camp/menus/DeckMenu/DeckMenu";
-import { magic } from "@/data/skills/Magic";
-import { excursions } from "@/data/menus/Excursions";
-import ExcursionsMenu from "@/components/camp/menus/ExcursionsMenu/ExcursionsMenu";
-import CharacterEngineProvider from "@/engine/CharacterEngineContext";
+import { prospecting } from "@/data/skills/prospecting";
+import { smithing } from "@/data/skills/smithing";
+import DeckMenu from "@/components/camp/deckMenu/deckMenu";
+import { magic } from "@/data/skills/magic";
+import { excursions } from "@/data/menus/excursions";
+import ExcursionsMenu from "@/components/camp/excursionsMenu/excursionsMenu";
+import CharacterEngineProvider from "@/engine/characterEngineContext";
 
 export default function Page({}) {
   const [selectedMenu, setSelectedMenu] = React.useState<GameObject>(martial);

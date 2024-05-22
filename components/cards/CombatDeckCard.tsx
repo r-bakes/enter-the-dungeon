@@ -1,4 +1,4 @@
-import { CombatCard } from "@/data/GameObject";
+import { CombatCard } from "@/data/cards/cards";
 import { Card, CardDescription, CardHeader, CardTitle } from "../ui/card";
 import { Button } from "../ui/button";
 

@@ -1,17 +1,19 @@
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
+import { Combatant } from "@/data/combatants/combatants";
+import CombatantCard from "./combatantCard";
 
 
-export default function ArenaRow({cards, style} : { cards: JSX.Element[], style?: "sm" | "lg" }) {
+export default function ArenaRow({combatants, style} : { combatants: Combatant[], style?: "sm" | "lg" }) {
 
     let height = "h-80"
     if (style === "sm") {
-        height = "h-56"
+        height = "h-64"
     }
 
     return (
         <Card className={"flex w-full " + height}>
-            <CardContent className="flex items-center justify-center w-full h-full">
-                {cards}
+            <CardContent className="flex items-center p-0 space-x-6 justify-center w-full h-full">
+                {combatants.map((combatant, id) => <CombatantCard key={id} combatant={combatant}></CombatantCard>)}
             </CardContent>
         </Card>
   );

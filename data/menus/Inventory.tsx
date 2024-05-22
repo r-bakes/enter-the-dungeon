@@ -1,5 +1,5 @@
 import { Backpack } from "lucide-react";
-import { GameObject } from "../GameObject";
+import { GameObject } from "../gameObject";
 
 export const inventory: GameObject = {
   id: "inventory",

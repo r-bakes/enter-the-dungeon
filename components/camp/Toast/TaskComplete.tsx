@@ -1,7 +1,8 @@
-import { Item, Task } from "@/data/GameObject";
-import { Character } from "@/data/character/Character";
+import { Item } from "@/data/items/types";
+import { Task } from "@/data/skills/skills";
+import { Character } from "@/data/character/character";
 import { ITEM_BY_ID } from "@/data/items/items";
-import { Loot } from "@/engine/utils/LootUtilities";
+import { Loot } from "@/engine/utils/lootUtilities";
 import { Label } from "@radix-ui/react-label";
 import { Backpack } from "lucide-react";
 
