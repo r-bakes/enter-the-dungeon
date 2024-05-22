@@ -3,11 +3,13 @@ import { useCharacterEngineContext } from "./characterEngineContext";
 import { Loot } from "./utils/lootUtilities";
 import { Combatant } from "@/data/combatants/combatants";
 import { User } from "lucide-react";
-import { Character } from "@/data/character/character";
+import { Character, Deck } from "@/data/character/character";
+import { CARD_BY_ID, CombatCard } from "@/data/cards/cards";
 
 type ExcursionEngineContextContents = {
   character: Character;
   characterCombatant: Combatant;
+  deck: CombatCard[];
   loot: Loot;
   artifacts: String[];
 };
@@ -40,12 +42,16 @@ export default function ExcursionEngineProvider({
   const [characterCombatant, setCharacterCombatant] = React.useState(
     initializeCharacterCombatant()
   );
+  const [deck, setDeck] = React.useState([
+    ...character.deck.equippedMagic,
+    ...character.deck.equppedMartial,
+  ].map((cardId) => CARD_BY_ID[cardId]));
   const [loot, setLoot] = React.useState({} as Loot);
   const [artifacts, setArtifacts] = React.useState([]);
 
   return (
     <ExcursionEngineContext.Provider
-      value={{ character, characterCombatant, loot, artifacts }}
+      value={{ character, characterCombatant, deck, loot, artifacts }}
     >
       {children}
     </ExcursionEngineContext.Provider>

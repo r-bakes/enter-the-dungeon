@@ -10,8 +10,8 @@ type EncounterContextContents = {
   alliedCombatants: Combatant[];
   round: number;
   drawPile: CombatCard[];
-  discardPile: CombatCard[];
   hand: CombatCard[];
+  discardPile: CombatCard[];
 };
 
 const EncounterEngineContext = React.createContext(
@@ -26,16 +26,16 @@ export default function EncounterEngineProvider({
 }: {
   children: React.ReactNode;
 }) {
-  const { characterCombatant } = useExcursionContext();
+  const { characterCombatant, deck } = useExcursionContext();
 
   const [round, setRound] = React.useState(1);
   const [encounter, setEncounter] = React.useState(floor1a);
   const [alliedCombatants, setAlliedCombatants] = React.useState([
     characterCombatant,
   ]);
-  const [drawPile, setDrawPile] = React.useState([]);
-  const [discardPile, setDiscardPile] = React.useState([]);
+  const [drawPile, setDrawPile] = React.useState(deck);
   const [hand, setHand] = React.useState([]);
+  const [discardPile, setDiscardPile] = React.useState([]);
 
   return (
     <EncounterEngineContext.Provider
@@ -44,8 +44,8 @@ export default function EncounterEngineProvider({
         alliedCombatants,
         round,
         drawPile,
-        discardPile,
         hand,
+        discardPile,
       }}
     >
       {children}
