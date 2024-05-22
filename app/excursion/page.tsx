@@ -1,15 +1,20 @@
 "use client";
 
-
 import Arena from "@/components/excursion/arena/Arena";
-import EngineProvider from "@/game/engine/EngineContext";
+import CharacterEngineProvider from "@/engine/CharacterEngineContext";
+import EncounterEngineProvider from "@/engine/EncounterEngineContext";
+import ExcursionEngineProvider from "@/engine/ExcursionEngineContext";
 
 export default function Page({}) {
   return (
     <div className="flex w-full h-full py-10 px-10">
-      <EngineProvider>
-        <Arena></Arena>
-      </EngineProvider>
+      <CharacterEngineProvider>
+        <ExcursionEngineProvider>
+          <EncounterEngineProvider>
+            <Arena></Arena>
+          </EncounterEngineProvider>
+        </ExcursionEngineProvider>
+      </CharacterEngineProvider>
     </div>
   );
 }

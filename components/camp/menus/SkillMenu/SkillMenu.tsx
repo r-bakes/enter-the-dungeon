@@ -9,19 +9,19 @@ import {
 } from "@/components/ui/card";
 import { Progress } from "@/components/ui/progress";
 import { Label } from "@/components/ui/label";
-import {
-  LEVEL_CAP,
-} from "@/game/data/Configurations";
-import { requiredExpForLevelUp } from "@/game/engine/CharaterStateUtilities";
+import { LEVEL_CAP } from "@/data/Configurations";
+import { requiredExpForLevelUp } from "@/engine/utils/CharaterStateUtilities";
 import { useState } from "react";
-import { useEngineContext } from "@/game/engine/EngineContext";
+import { useCampEngineContext } from "@/engine/CampEngineContext";
 import { ScrollArea, ScrollBar } from "@/components/ui/scroll-area";
-import { Skill, Task, getAllTasks } from "@/game/data/GameObject";
+import { Skill, Task, getAllTasks } from "@/data/GameObject";
 import TaskInfo from "./TaskInfo";
 import TaskContainer from "./TaskContainer";
+import { useCharacterEngineContext } from "@/engine/CharacterEngineContext";
 
 export default function SkillMenu({ skill }: { skill: Skill }) {
-  const { character, workingTask } = useEngineContext();
+  const { character } = useCharacterEngineContext();
+  const { workingTask } = useCampEngineContext();
   const [task, setTask] = useState<Task | null>(
     workingTask != null && getAllTasks(skill.tasks).includes(workingTask)
       ? workingTask

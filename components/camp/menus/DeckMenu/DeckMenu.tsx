@@ -2,12 +2,13 @@ import CombatDeckCard from "@/components/cards/CombatDeckCard";
 import { Card, CardContent } from "@/components/ui/card";
 import { Label } from "@/components/ui/label";
 import { ScrollArea, ScrollBar } from "@/components/ui/scroll-area";
-import { MAGIC_DECK_LIMIT, MARTIAL_DECK_LIMIT } from "@/game/data/Configurations";
-import { CARD_BY_ID } from "@/game/data/cards/cards";
-import { useEngineContext } from "@/game/engine/EngineContext";
+import { MAGIC_DECK_LIMIT, MARTIAL_DECK_LIMIT } from "@/data/Configurations";
+import { CARD_BY_ID } from "@/data/cards/cards";
+import { useCampEngineContext } from "@/engine/CampEngineContext";
+import { useCharacterEngineContext } from "@/engine/CharacterEngineContext";
 
 export default function DeckMenu({isMartial}:{isMartial: boolean}) {
-    const { character, equipCard, unequipCard } = useEngineContext();
+    const { character, equipCard, unequipCard } = useCharacterEngineContext();
     let equipped = null;
     let unequipped = null;
     let limit = null

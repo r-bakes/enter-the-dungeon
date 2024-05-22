@@ -7,7 +7,7 @@ import {
 } from "@/components/ui/popover";
 import { Backpack } from "lucide-react";
 import ItemSlotEquipment from "./ItemSlotEquipment";
-import { Equipment, Item, ItemType } from "@/game/data/GameObject";
+import { Equipment, Item, ItemType } from "@/data/GameObject";
 
 export default function ItemSlot({
   item,

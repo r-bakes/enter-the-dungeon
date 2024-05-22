@@ -1,11 +1,12 @@
 import { Button } from "@/components/ui/button";
 import { Label } from "@/components/ui/label";
-import { Equipment } from "@/game/data/GameObject";
-import { Slot } from "@/game/data/character/Character";
-import { useEngineContext } from "@/game/engine/EngineContext";
+import { Equipment } from "@/data/GameObject";
+import { Slot } from "@/data/character/Character";
+import { useCampEngineContext } from "@/engine/CampEngineContext";
+import { useCharacterEngineContext } from "@/engine/CharacterEngineContext";
 
 export default function ItemSlotEquipment({ item }: { item: Equipment }) {
-  const { equipItem: equip } = useEngineContext();
+  const { equipItem: equip } = useCharacterEngineContext();
   return (
     <div className="flex flex-col w-full h-full">
       {item.attackBonus > 0 ? (

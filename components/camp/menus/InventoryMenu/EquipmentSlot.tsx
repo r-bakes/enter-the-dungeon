@@ -1,9 +1,10 @@
-import { useEngineContext } from "@/game/engine/EngineContext";
+import { useCampEngineContext } from "@/engine/CampEngineContext";
 import EquipmentSlotContent from "./EquipmentSlotContent";
 import { Label } from "@/components/ui/label";
-import { ITEM_BY_ID } from "@/game/data/items/items";
-import { Slot } from "@/game/data/character/Character";
-import { Equipment } from "@/game/data/GameObject";
+import { ITEM_BY_ID } from "@/data/items/items";
+import { Slot } from "@/data/character/Character";
+import { Equipment } from "@/data/GameObject";
+import { useCharacterEngineContext } from "@/engine/CharacterEngineContext";
 
 export default function EquipmentSlot({
   slot,
@@ -18,7 +19,7 @@ export default function EquipmentSlot({
     | "rounded-tr-md"
     | "rounded-bl-md";
 }) {
-  const { character } = useEngineContext();
+  const { character } = useCharacterEngineContext();
 
   return (
     <div className={"h-14 w-14 border text-center " + rounded}>

@@ -10,10 +10,11 @@ import {
 import { Progress } from "@/components/ui/progress";
 import { Label } from "@radix-ui/react-label";
 import { Play, X, Backpack } from "lucide-react";
-import { useEngineContext } from "@/game/engine/EngineContext";
-import { generateDropRates } from "@/game/engine/LootEngine";
-import { Item, Skill, Task } from "@/game/data/GameObject";
-import { ITEM_BY_ID } from "@/game/data/items/items";
+import { useCampEngineContext } from "@/engine/CampEngineContext";
+import { generateDropRates } from "@/engine/utils/LootUtilities";
+import { Item, Skill, Task } from "@/data/GameObject";
+import { ITEM_BY_ID } from "@/data/items/items";
+import { useCharacterEngineContext } from "@/engine/CharacterEngineContext";
 
 export default function TaskInfo({
   skill,
@@ -22,8 +23,9 @@ export default function TaskInfo({
   skill: Skill | null;
   task: Task | null;
 }) {
-  const { setWorkingSkill, setWorkingTask, progress, workingTask, character } =
-    useEngineContext();
+  const { setWorkingSkill, setWorkingTask, progress, workingTask } =
+    useCampEngineContext();
+  const { character } = useCharacterEngineContext();
 
   let content = null;
   if (!task) {

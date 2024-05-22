@@ -5,9 +5,9 @@ import {
   PopoverContent,
   PopoverTrigger,
 } from "@/components/ui/popover";
-import { Equipment } from "@/game/data/GameObject";
-import { Slot } from "@/game/data/character/Character";
-import { useEngineContext } from "@/game/engine/EngineContext";
+import { Equipment } from "@/data/GameObject";
+import { Slot } from "@/data/character/Character";
+import { useCharacterEngineContext } from "@/engine/CharacterEngineContext";
 
 export default function EquipmentSlotContent({
   item,
@@ -22,7 +22,7 @@ export default function EquipmentSlotContent({
     | "rounded-tr-md"
     | "rounded-bl-md";
 }) {
-  let { unequipItem: unequip } = useEngineContext();
+  let { unequip } = useCharacterEngineContext();
   return (
     <Popover>
       <PopoverTrigger asChild>

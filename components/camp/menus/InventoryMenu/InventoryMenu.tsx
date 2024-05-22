@@ -1,16 +1,17 @@
 import { Card, CardHeader } from "@/components/ui/card";
 import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { useEngineContext } from "@/game/engine/EngineContext";
+import { useCampEngineContext } from "@/engine/CampEngineContext";
 import { Label } from "@radix-ui/react-label";
 import { CircleDollarSign } from "lucide-react";
 import { TabsContent } from "@radix-ui/react-tabs";
-import { ITEM_BY_ID } from "@/game/data/items/items";
-import { ItemType } from "@/game/data/GameObject";
+import { ITEM_BY_ID } from "@/data/items/items";
+import { ItemType } from "@/data/GameObject";
 import EquipmentSlots from "./EquipmentSlots";
 import InventorySlots from "./InventorySlots";
+import { useCharacterEngineContext } from "@/engine/CharacterEngineContext";
 
 export default function InventoryMenu({}: {}) {
-  const { character } = useEngineContext();
+  const { character } = useCharacterEngineContext();
   let inventory = Object.entries(character.inventory)
     .filter((item) => item[1] > 0)
     .map(([itemId, quantity]) => ({

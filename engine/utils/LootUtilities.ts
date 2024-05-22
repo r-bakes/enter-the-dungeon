@@ -1,5 +1,5 @@
-import { Item } from "../data/GameObject";
-import { ITEM_BY_ID } from "../data/items/items";
+import { Item } from "../../data/GameObject";
+import { ITEM_BY_ID } from "../../data/items/items";
 
 export default function generateLoot(lootTable: LootTable): Loot {
   let loot: Loot = {};

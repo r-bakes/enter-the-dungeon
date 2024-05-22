@@ -1,6 +1,6 @@
 import EquipmentSlot from "./EquipmentSlot";
 import EquipmentAttributes from "./EquipmentAttributes";
-import { Slot } from "@/game/data/character/Character";
+import { Slot } from "@/data/character/Character";
 
 export default function EquipmentSlots({}: {}) {
   return (

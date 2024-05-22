@@ -7,7 +7,7 @@ import {
 } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Label } from "@/components/ui/label";
-import { Task } from "@/game/data/GameObject";
+import { Task } from "@/data/GameObject";
 
 export default function TaskButton({
   task,

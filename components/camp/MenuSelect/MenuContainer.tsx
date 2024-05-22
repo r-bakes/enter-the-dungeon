@@ -1,7 +1,8 @@
 import { ScrollArea } from "@radix-ui/react-scroll-area";
 import MenuButton from "./MenuButton";
-import { useEngineContext } from "@/game/engine/EngineContext";
-import { GameObject } from "@/game/data/GameObject";
+import { useCampEngineContext } from "@/engine/CampEngineContext";
+import { GameObject } from "@/data/GameObject";
+import { useCharacterEngineContext } from "@/engine/CharacterEngineContext";
 
 export default function MenuContainer({
   menuItems,
@@ -12,7 +13,7 @@ export default function MenuContainer({
   selectedMenu: GameObject;
   setSelectedMenu: React.Dispatch<React.SetStateAction<GameObject>>;
 }) {
-  const { character } = useEngineContext();
+  const { character } = useCharacterEngineContext();
   return (
     <ScrollArea className="flex flex-col w-full">
       {menuItems.map((item) => {

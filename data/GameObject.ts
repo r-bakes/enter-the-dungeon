@@ -1,5 +1,5 @@
 import { LucideIcon } from "lucide-react";
-import { LootTable } from "../engine/LootEngine";
+import { LootTable } from "../engine/utils/LootUtilities";
 import { Slot } from "./character/Character";
 
 export type GameObject = {
@@ -35,6 +35,11 @@ export type CombatCard = {
   targets: number
   cost: number
 } & GameObject;
+
+export type Combatant = {
+  hp: number
+  cards: CombatCard[]
+} & GameObject
 
 export type Equipment = {
   type: ItemType.EQUIPEMENT;

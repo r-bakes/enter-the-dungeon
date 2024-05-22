@@ -1,10 +1,10 @@
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
 
 
-export default function ArenaRow({cards, style} : { cards: JSX.Element[], style?: "combatant" | "deck" }) {
+export default function ArenaRow({cards, style} : { cards: JSX.Element[], style?: "sm" | "lg" }) {
 
     let height = "h-80"
-    if (style === "deck") {
+    if (style === "sm") {
         height = "h-56"
     }
 
@@ -14,5 +14,5 @@ export default function ArenaRow({cards, style} : { cards: JSX.Element[], style?
                 {cards}
             </CardContent>
         </Card>
-    )
+  );
 }

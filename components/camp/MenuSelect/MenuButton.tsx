@@ -1,5 +1,5 @@
 import { Button } from "@/components/ui/button";
-import { GameObject } from "@/game/data/GameObject";
+import { GameObject } from "@/data/GameObject";
 import { Label } from "@radix-ui/react-label";
 
 export default function MenuButton({
