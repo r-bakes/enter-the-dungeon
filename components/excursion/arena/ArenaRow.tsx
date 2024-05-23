@@ -1,6 +1,6 @@
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import { Combatant } from "@/data/combatants/combatants";
-import CombatantCard from "./combatantCard";
+import CombatantCard from "../../cards/combatantCard";
 
 
 export default function ArenaRow({combatants, style} : { combatants: Combatant[], style?: "sm" | "lg" }) {

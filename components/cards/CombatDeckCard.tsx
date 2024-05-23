@@ -5,7 +5,7 @@ import { Button } from "../ui/button";
 export default function CombatDeckCard({card, onClick}: {card: CombatCard, onClick: React.Dispatch<React.SetStateAction<any>>}) {
 
     return (
-        <Card className="flex w-36 h-42 shrink-0">
+        <Card className="flex w-36 h-44 shrink-0">
             <Button onClick={onClick} className="flex w-full h-full items-start justify-start p-0" variant="ghost">
                 <CardHeader className="w-full items-center">
                     <card.icon size={32}></card.icon>

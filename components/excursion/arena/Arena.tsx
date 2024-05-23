@@ -11,7 +11,7 @@ export default function Arena({}) {
             <ArenaRow combatants={encounter.combatants}></ArenaRow>
             <ArenaRow combatants={alliedCombatants} style="sm"></ArenaRow>
             <PlayerHudRow></PlayerHudRow>
-            <DeckRow cards={[]}></DeckRow>
+            <DeckRow></DeckRow>
         </div>
     )
 
