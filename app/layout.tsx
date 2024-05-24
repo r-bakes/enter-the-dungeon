@@ -15,7 +15,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className='flex w-screen h-screen select-none'>
+      <body className='flex w-screen h-screen select-none min-w-[320px]'>
           <main className="flex w-full h-full">{children}</main>
           <Toaster position="bottom-right"/>
       </body>

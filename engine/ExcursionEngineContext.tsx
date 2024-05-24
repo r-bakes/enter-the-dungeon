@@ -3,7 +3,7 @@ import { useCharacterEngineContext } from "./characterEngineContext";
 import { Loot } from "./utils/lootUtilities";
 import { Combatant } from "@/data/combatants/combatants";
 import { User } from "lucide-react";
-import { Character, Deck } from "@/data/character/character";
+import { Character } from "@/data/character/character";
 import { CARD_BY_ID, CombatCard } from "@/data/cards/cards";
 
 type ExcursionEngineContextContents = {
@@ -27,31 +27,33 @@ export default function ExcursionEngineProvider({
   children: React.ReactNode;
 }) {
   const { character, getModifiers } = useCharacterEngineContext();
-  let initializeCharacterCombatant = (): Combatant => {
+  let initializeCharacterExcursionState = (): Combatant => {
     let characterStats = getModifiers();
     return {
       id: "spellSword",
-      name: "The Spell Sword",
+      name: "The Spellsword",
       description: "A fearsome foe.",
       icon: User,
       maxHp: characterStats.hp,
       ...characterStats,
       lootTable: {},
+      modifiers: []
     };
   };
-  const [characterCombatant, setCharacterCombatant] = React.useState(
-    initializeCharacterCombatant()
+  const [characterExcursionState, setCharacterExcursionState] = React.useState(
+    initializeCharacterExcursionState()
   );
-  const [deck, setDeck] = React.useState([
-    ...character.deck.equippedMagic,
-    ...character.deck.equppedMartial,
-  ].map((cardId) => CARD_BY_ID[cardId]));
+  const [deck, setDeck] = React.useState(
+    [...character.deck.equippedMagic, ...character.deck.equppedMartial].map(
+      (cardId) => CARD_BY_ID[cardId]
+    )
+  );
   const [loot, setLoot] = React.useState({} as Loot);
   const [artifacts, setArtifacts] = React.useState([]);
 
   return (
     <ExcursionEngineContext.Provider
-      value={{ character, characterCombatant, deck, loot, artifacts }}
+      value={{ character, characterCombatant: characterExcursionState, deck, loot, artifacts }}
     >
       {children}
     </ExcursionEngineContext.Provider>

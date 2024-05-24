@@ -7,4 +7,5 @@ export type Combatant = {
   maxHp: number;
   hp: number;
   lootTable: LootTable;
+  modifiers: []
 } & GameObject;

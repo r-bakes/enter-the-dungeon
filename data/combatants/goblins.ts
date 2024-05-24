@@ -16,4 +16,5 @@ export const goblinRunt: Combatant = {
   def: 1,
   maxHp: 5,
   hp: 5,
+  modifiers: []
 };

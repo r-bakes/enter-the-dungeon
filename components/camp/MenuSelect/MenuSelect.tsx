@@ -23,7 +23,7 @@ export default function MenuSelect({
   let skillMenus = [prospecting, smithing]
 
   return (
-    <div className="flex flex-col w-64 h-full min-w-[256px]">
+    <div className="flex flex-col w-64 h-full shrink-0">
       <Logo></Logo>
       <Label className="text-xs text-muted-foreground pl-10 pt-4 pb-2 ">
         Character
