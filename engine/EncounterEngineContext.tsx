@@ -8,11 +8,17 @@ import { DRAW_LIMIT } from "@/data/configurations";
 
 type EncounterContextContents = {
   encounter: Encounter;
+  enemyCombatants: Combatant[];
   alliedCombatants: Combatant[];
   round: number;
+  stamina: number;
   drawPile: CombatCard[];
   hand: CombatCard[];
   discardPile: CombatCard[];
+  setEnemyCombatants: React.Dispatch<React.SetStateAction<Combatant[]>>;
+  setHand: React.Dispatch<React.SetStateAction<CombatCard[]>>;
+  setDiscardPile: React.Dispatch<React.SetStateAction<CombatCard[]>>;
+  setStamina: React.Dispatch<React.SetStateAction<number>>;
 };
 
 const EncounterEngineContext = React.createContext(
@@ -27,42 +33,95 @@ export default function EncounterEngineProvider({
 }: {
   children: React.ReactNode;
 }) {
-  const { characterCombatant, deck } = useExcursionContext();
+  const { characterCombatant, setCharacterCombatant, deck } =
+    useExcursionContext();
 
-  const [round, setRound] = React.useState(1);
+  const [round, setRound] = React.useState(0);
+  const [stamina, setStamina] = React.useState(2);
   const [encounter, setEncounter] = React.useState(floor1a);
-  const [alliedCombatants, setAlliedCombatants] = React.useState([
-    characterCombatant,
+  const [enemyCombatants, setEnemyCombatants] = React.useState<Combatant[]>([
+    ...encounter.combatants,
   ]);
-  const [drawPile, setDrawPile] = React.useState(deck);
+  const [alliedCombatants, setAlliedCombatants] = React.useState<Combatant[]>(
+    []
+  );
+  const shuffle = (cards: CombatCard[]): CombatCard[] => {
+    for (var i = cards.length - 1; i > 0; i--) {
+      var j = Math.floor(Math.random() * (i + 1));
+      var temp = cards[i];
+      cards[i] = cards[j];
+      cards[j] = temp;
+    }
+    return cards;
+  };
+  let encounterDeck = deck.map((x) => Object.assign({}, x));
+  const [drawPile, setDrawPile] = React.useState(shuffle(encounterDeck));
   const [hand, setHand] = React.useState<CombatCard[]>([]);
   const [discardPile, setDiscardPile] = React.useState<CombatCard[]>([]);
 
   const draw = () => {
     let newHand: CombatCard[] = [];
+    let newDiscardPile = [
+      ...discardPile,
+      ...hand.map((x) => Object.assign({}, x)),
+    ];
+    let newDrawPile = drawPile.map((x) => Object.assign({}, x));
+
     for (let i = 0; i < DRAW_LIMIT; i++) {
-      if (drawPile.length) {
-        newHand.push(drawPile.pop() as CombatCard);
+      if (newDrawPile.length === 0 && newDiscardPile.length > 0) {
+        newDrawPile = shuffle(newDiscardPile.map((x) => Object.assign({}, x)));
+        newDiscardPile = [];
+      }
+      if (newDrawPile.length > 0) {
+        newHand.push(newDrawPile.pop() as CombatCard);
       }
     }
-    setDrawPile(drawPile);
-    setDiscardPile([...discardPile, ...hand]);
+    setDrawPile([...newDrawPile]);
+    setDiscardPile(newDiscardPile);
     setHand([...newHand]);
   };
 
-  React.useEffect(() => {
+  const newRound = () => {
+    setStamina(2);
+    setRound(round + 1);
     draw();
-  }, [round]);
+  };
+
+  const enemeyRound = () => {
+    for (var combatant of enemyCombatants) {
+      characterCombatant.hp -= Math.max(
+        combatant.atk - characterCombatant.def,
+        0
+      );
+    }
+    setCharacterCombatant({ ...characterCombatant });
+  };
+
+  React.useEffect(() => {
+    if ((stamina == 0 || hand.length == 0) && round > 0) {
+      enemeyRound();
+      newRound();
+    }
+  }, [stamina, hand]);
+  React.useEffect(() => {
+    newRound();
+  }, []);
 
   return (
     <EncounterEngineContext.Provider
       value={{
         encounter,
+        enemyCombatants,
         alliedCombatants,
         round,
+        stamina,
         drawPile,
         hand,
         discardPile,
+        setEnemyCombatants,
+        setHand,
+        setDiscardPile,
+        setStamina,
       }}
     >
       {children}

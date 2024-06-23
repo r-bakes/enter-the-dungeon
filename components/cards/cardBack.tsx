@@ -20,7 +20,7 @@ export default function CardBack({
         className="flex w-full h-full items-start justify-start"
         variant="ghost"
       >
-        <CardContent className="flex flex-col w-full h-full justify-start">
+        <CardContent className="flex flex-col w-full h-full justify-start pt-6">
           <Label className=" font-extrabold text-xl ">Enter</Label>
           <Label className="font-extrabold">the</Label>
           <Label className=" font-extrabold text-xl ">Dungeon</Label>

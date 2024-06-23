@@ -1,4 +1,4 @@
-import { CombatCard } from "../cards/cards";
+import { CombatCardTemplate } from "../cards/cards";
 import { Slot } from "../character/character";
 import { GameObject } from "../gameObject";
 
@@ -8,7 +8,7 @@ export type Equipment = {
   defenseBonus: number;
   healthBonus: number;
   isTwoHanded?: boolean;
-  cards: CombatCard[];
+  cards: CombatCardTemplate[];
   slots: Slot[];
 } & Item;
 

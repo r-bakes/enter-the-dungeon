@@ -4,12 +4,28 @@ import { Label } from "@/components/ui/label";
 import { Combatant } from "@/data/combatants/combatants";
 import { Heart, Shield, Sword } from "lucide-react";
 
-export default function CombatantCard({ combatant }: { combatant: Combatant }) {
+export default function CombatantCard({
+  combatant,
+  isSelected,
+  onClick,
+}: {
+  combatant: Combatant;
+  isSelected: boolean;
+  onClick: React.Dispatch<React.SetStateAction<any>>;
+}) {
+  let selectedStyle = isSelected ? "bg-accent" : "";
+
   return (
     <div className="flex flex-col text-center space-y-1">
-      <Label className="text-muted-foreground font-extralight">{combatant.name}</Label>
-      <Card className="w-40">
-        <Button variant="ghost" className="flex flex-col h-full w-full">
+      <Label className="text-muted-foreground font-extralight">
+        {combatant.name}
+      </Label>
+      <Card className={"w-40 " + selectedStyle}>
+        <Button
+          onClick={onClick}
+          className="flex flex-col h-full w-full "
+          variant="ghost"
+        >
           <CardHeader className="items-center justify-center">
             <combatant.icon size={80}></combatant.icon>
           </CardHeader>

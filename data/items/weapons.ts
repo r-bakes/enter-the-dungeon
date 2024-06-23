@@ -13,7 +13,7 @@ export const bronzeSword: Equipment = {
   slots: [Slot.LEFTHAND, Slot.RIGHTHAND],
   cards: [slice, slice],
   attackBonus: 1,
-  defenseBonus: 1,
+  defenseBonus: 0,
   healthBonus: 0,
 };
 export const ironSword: Equipment = {
@@ -25,8 +25,8 @@ export const ironSword: Equipment = {
   value: 10,
   slots: [Slot.LEFTHAND, Slot.RIGHTHAND],
   cards: [slice, slice],
-  attackBonus: 10,
-  defenseBonus: 10,
+  attackBonus: 2,
+  defenseBonus: 0,
   healthBonus: 0,
 };
 export const ironShield: Equipment = {
@@ -39,7 +39,7 @@ export const ironShield: Equipment = {
   slots: [Slot.LEFTHAND, Slot.RIGHTHAND],
   cards: [defend, defend],
   attackBonus: 0,
-  defenseBonus: 20,
+  defenseBonus: 2,
   healthBonus: 0,
 };
 export const ironGreatSword: Equipment = {
@@ -52,8 +52,8 @@ export const ironGreatSword: Equipment = {
   isTwoHanded: true,
   slots: [Slot.LEFTHAND, Slot.RIGHTHAND],
   cards: [],
-  attackBonus: 20,
-  defenseBonus: 5,
+  attackBonus: 4,
+  defenseBonus: 0,
   healthBonus: 0,
 };
 export const steelSword: Equipment = {
@@ -65,8 +65,8 @@ export const steelSword: Equipment = {
   value: 10,
   slots: [Slot.LEFTHAND, Slot.RIGHTHAND],
   cards: [slice, slice],
-  attackBonus: 20,
-  defenseBonus: 20,
+  attackBonus: 3,
+  defenseBonus: 0,
   healthBonus: 0,
 };
 export const mithrilSword: Equipment = {
@@ -78,8 +78,8 @@ export const mithrilSword: Equipment = {
   value: 10,
   slots: [Slot.LEFTHAND, Slot.RIGHTHAND],
   cards: [slice, slice],
-  attackBonus: 20,
-  defenseBonus: 20,
+  attackBonus: 4,
+  defenseBonus: 0,
   healthBonus: 0,
 };
 export const adamantSword: Equipment = {
@@ -91,7 +91,7 @@ export const adamantSword: Equipment = {
   value: 10,
   slots: [Slot.LEFTHAND, Slot.RIGHTHAND],
   cards: [slice, slice],
-  attackBonus: 20,
-  defenseBonus: 20,
+  attackBonus: 5,
+  defenseBonus: 0,
   healthBonus: 0,
 };

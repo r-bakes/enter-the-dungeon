@@ -1,17 +1,17 @@
 import React from "react";
 import { useCharacterEngineContext } from "./characterEngineContext";
 import { Loot } from "./utils/lootUtilities";
-import { Combatant } from "@/data/combatants/combatants";
+import { Combatant, CombatantTemplate } from "@/data/combatants/combatants";
 import { User } from "lucide-react";
 import { Character } from "@/data/character/character";
-import { CARD_BY_ID, CombatCard } from "@/data/cards/cards";
+import { CombatCard, createCombatCard } from "@/data/cards/cards";
 
 type ExcursionEngineContextContents = {
-  character: Character;
   characterCombatant: Combatant;
   deck: CombatCard[];
   loot: Loot;
   artifacts: String[];
+  setCharacterCombatant: React.Dispatch<React.SetStateAction<Combatant>>;
 };
 
 const ExcursionEngineContext = React.createContext(
@@ -30,6 +30,7 @@ export default function ExcursionEngineProvider({
   let initializeCharacterExcursionState = (): Combatant => {
     let characterStats = getModifiers();
     return {
+      combatantId: 0,
       id: "spellSword",
       name: "The Spellsword",
       description: "A fearsome foe.",
@@ -37,23 +38,29 @@ export default function ExcursionEngineProvider({
       maxHp: characterStats.hp,
       ...characterStats,
       lootTable: {},
-      modifiers: []
+      modifiers: [],
     };
   };
-  const [characterExcursionState, setCharacterExcursionState] = React.useState(
+  const [characterCombatant, setCharacterCombatant] = React.useState(
     initializeCharacterExcursionState()
   );
-  const [deck, setDeck] = React.useState(
-    [...character.deck.equippedMagic, ...character.deck.equppedMartial].map(
-      (cardId) => CARD_BY_ID[cardId]
-    )
-  );
-  const [loot, setLoot] = React.useState({} as Loot);
+  let initializedDeck: CombatCard[] = [
+    ...character.deck.equippedMagic,
+    ...character.deck.equppedMartial,
+  ].map((cardId, deckId) => createCombatCard(cardId, deckId));
+  const [deck, setDeck] = React.useState(initializedDeck);
+  const [loot, setLoot] = React.useState<Loot>({});
   const [artifacts, setArtifacts] = React.useState([]);
 
   return (
     <ExcursionEngineContext.Provider
-      value={{ character, characterCombatant: characterExcursionState, deck, loot, artifacts }}
+      value={{
+        characterCombatant,
+        deck,
+        loot,
+        artifacts,
+        setCharacterCombatant,
+      }}
     >
       {children}
     </ExcursionEngineContext.Provider>

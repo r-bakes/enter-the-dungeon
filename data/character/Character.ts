@@ -1,6 +1,3 @@
-import { CombatCard } from "../cards/cards";
-import { slice } from "../cards/cards";
-
 // TODO add persistent storage on GCP.
 export type Character = {
   name: string;
@@ -75,8 +72,8 @@ export const testCharacter: Character = {
     ring2: null,
     trinket1: null,
     trinket2: null,
-    leftHand: "bronzeSword",
-    rightHand: null,
+    leftHand: "ironSword",
+    rightHand: "ironShield",
     flask1: null,
     flask2: null,
   },
@@ -84,7 +81,6 @@ export const testCharacter: Character = {
     gold: 10000,
     copperOre: 10,
     geode: 1,
-    bronzeSword: 1,
     tinOre: 10,
     coal: 10,
   },
@@ -108,7 +104,7 @@ export const testCharacter: Character = {
   },
   progress: {},
   deck: {
-    equppedMartial: ["slice", "slice"],
+    equppedMartial: ["slice", "slice", "defend", "defend"],
     unequippedMartial: [],
     equippedMagic: [],
     unequippedMagic: [],

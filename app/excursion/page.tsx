@@ -2,6 +2,7 @@
 
 import Arena from "@/components/excursion/arena/arena";
 import CharacterEngineProvider from "@/engine/characterEngineContext";
+import CombatCardEngineProvider from "@/engine/combatCardEngineContext";
 import EncounterEngineProvider from "@/engine/encounterEngineContext";
 import ExcursionEngineProvider from "@/engine/excursionEngineContext";
 
@@ -11,7 +12,9 @@ export default function Page({}) {
       <CharacterEngineProvider>
         <ExcursionEngineProvider>
           <EncounterEngineProvider>
-            <Arena></Arena>
+            <CombatCardEngineProvider>
+              <Arena></Arena>
+            </CombatCardEngineProvider>
           </EncounterEngineProvider>
         </ExcursionEngineProvider>
       </CharacterEngineProvider>

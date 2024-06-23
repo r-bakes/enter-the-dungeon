@@ -120,8 +120,8 @@ export default function CharacterEngineProvider({
   };
 
   const getModifiers = () => {
-    let atk = character.skills["martial"].level;
-    let def = character.skills["martial"].level;
+    let atk = 1;
+    let def = 0;
     let hp = 10 * character.skills["martial"].level;
 
     Object.entries(character.loadout).forEach(([_, equipmentId]) => {

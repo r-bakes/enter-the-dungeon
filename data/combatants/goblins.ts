@@ -1,7 +1,7 @@
 import { User } from "lucide-react";
-import { Combatant } from "./combatants";
+import { CombatantTemplate } from "./combatants";
 
-export const goblinRunt: Combatant = {
+export const goblinRunt: CombatantTemplate = {
   id: "goblinRunt",
   name: "Goblin Runt",
   description: "A puny goblin.",

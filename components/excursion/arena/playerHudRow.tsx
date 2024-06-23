@@ -2,10 +2,10 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Label } from "@/components/ui/label";
 import { useEncounterContext } from "@/engine/encounterEngineContext";
-import { Backpack } from "lucide-react";
+import { Backpack, Zap } from "lucide-react";
 
 export default function PlayerHudRow({}: {}) {
-  const { round } = useEncounterContext();
+  const { round, stamina } = useEncounterContext();
   return (
     <div className="flex w-full space-x-4 items-end">
       <div className="flex flex-col space-y-2 w-16 border-r border-r-1">
@@ -17,8 +17,10 @@ export default function PlayerHudRow({}: {}) {
       <div className="flex flex-col space-y-2">
         <Label className="text-muted-foreground font-extralight">Stamina</Label>
         <Card className="flex h-10 w-80">
-          <CardContent className="flex items-center justify-center w-full h-full">
-            {}
+          <CardContent className="p-0 flex items-center justify-start space-x-4 px-4 w-full h-full">
+            {[...Array(stamina)].map((_, i) => (
+              <Zap key={i} className="h-6 w-6"></Zap>
+            ))}
           </CardContent>
         </Card>
       </div>

@@ -1,4 +1,4 @@
-import { Combatant } from "../combatants/combatants"
+import { Combatant, CombatantTemplate } from "../combatants/combatants"
 
 export type Encounter = {
     id: string
