@@ -37,7 +37,7 @@ export default function SkillMenu({ skill }: { skill: Skill }) {
     requiredExpForLevelUp(character.skills[skill.id].level - 1);
 
   return (
-    <div className="flex flex-col px-8 h-full w-full min-w-[800px]">
+    <div className="flex flex-col px-8 h-full w-full min-w-max">
       <Card className="flex flex-col w-full h-60 p-6">
         <div className="w-full">
           <CardHeader className="flex flex-row">

@@ -2,11 +2,11 @@ import { useEncounterContext } from "@/engine/encounterEngineContext";
 import ArenaRow from "./arenaRow";
 import DeckRow from "./deckRow";
 import PlayerHudRow from "./playerHudRow";
-import { useExcursionContext } from "@/engine/excursionEngineContext";
+import { useExpeditionContext } from "@/engine/expeditionEngineContext";
 
 export default function Arena({}) {
   const { alliedCombatants, enemyCombatants } = useEncounterContext();
-  const { characterCombatant } = useExcursionContext();
+  const { characterCombatant } = useExpeditionContext();
 
   return (
     <div className="flex flex-col w-full h-full space-y-4">

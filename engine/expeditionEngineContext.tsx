@@ -1,12 +1,11 @@
 import React from "react";
 import { useCharacterEngineContext } from "./characterEngineContext";
 import { Loot } from "./utils/lootUtilities";
-import { Combatant, CombatantTemplate } from "@/data/combatants/combatants";
+import { Combatant } from "@/data/combatants/combatants";
 import { User } from "lucide-react";
-import { Character } from "@/data/character/character";
 import { CombatCard, createCombatCard } from "@/data/cards/cards";
 
-type ExcursionEngineContextContents = {
+type ExpeditionEngineContextContents = {
   characterCombatant: Combatant;
   deck: CombatCard[];
   loot: Loot;
@@ -14,14 +13,14 @@ type ExcursionEngineContextContents = {
   setCharacterCombatant: React.Dispatch<React.SetStateAction<Combatant>>;
 };
 
-const ExcursionEngineContext = React.createContext(
-  {} as ExcursionEngineContextContents
+const ExpeditionEngineContext = React.createContext(
+  {} as ExpeditionEngineContextContents
 );
 
-export const useExcursionContext = () =>
-  React.useContext(ExcursionEngineContext);
+export const useExpeditionContext = () =>
+  React.useContext(ExpeditionEngineContext);
 
-export default function ExcursionEngineProvider({
+export default function ExpeditionEngineProvider({
   children,
 }: {
   children: React.ReactNode;
@@ -55,7 +54,7 @@ export default function ExcursionEngineProvider({
   const [artifacts, setArtifacts] = React.useState([]);
 
   return (
-    <ExcursionEngineContext.Provider
+    <ExpeditionEngineContext.Provider
       value={{
         characterCombatant,
         deck,
@@ -65,6 +64,6 @@ export default function ExcursionEngineProvider({
       }}
     >
       {children}
-    </ExcursionEngineContext.Provider>
+    </ExpeditionEngineContext.Provider>
   );
 }

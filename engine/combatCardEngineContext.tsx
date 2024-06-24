@@ -2,7 +2,7 @@ import React from "react";
 import { useEncounterContext } from "./encounterEngineContext";
 import { Combatant } from "@/data/combatants/combatants";
 import { CombatCard, Target } from "@/data/cards/cards";
-import { useExcursionContext } from "./excursionEngineContext";
+import { useExpeditionContext } from "./expeditionEngineContext";
 
 type CombatCardEngineContextContents = {
   selectedCard: CombatCard | null;
@@ -25,7 +25,7 @@ export default function CombatCardEngineProvider({
 }: {
   children: React.ReactNode;
 }) {
-  const { characterCombatant, setCharacterCombatant } = useExcursionContext();
+  const { characterCombatant, setCharacterCombatant } = useExpeditionContext();
   const {
     alliedCombatants,
     enemyCombatants,

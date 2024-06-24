@@ -2,7 +2,7 @@ import React from "react";
 import { Encounter } from "@/data/encounters/encounters";
 import { floor1a } from "@/data/encounters/floor1a";
 import { CombatCard } from "@/data/cards/cards";
-import { useExcursionContext } from "./excursionEngineContext";
+import { useExpeditionContext } from "./expeditionEngineContext";
 import { Combatant } from "@/data/combatants/combatants";
 import { DRAW_LIMIT } from "@/data/configurations";
 
@@ -35,7 +35,7 @@ export default function EncounterEngineProvider({
   children: React.ReactNode;
 }) {
   const { characterCombatant, setCharacterCombatant, deck } =
-    useExcursionContext();
+    useExpeditionContext();
 
   const [round, setRound] = React.useState(0);
   const [stamina, setStamina] = React.useState(2);

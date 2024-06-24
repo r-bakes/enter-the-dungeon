@@ -1,3 +1,5 @@
+import { agility } from "../skills/agility";
+
 // TODO add persistent storage on GCP.
 export type Character = {
   name: string;
@@ -100,6 +102,18 @@ export const testCharacter: Character = {
     smithing: {
       level: 60,
       experience: 10737418239,
+    },
+    agility: {
+      level: 1,
+      experience: 0,
+    },
+    crafting: {
+      level: 1,
+      experience: 0,
+    },
+    enchanting: {
+      level: 1,
+      experience: 0,
     },
   },
   progress: {},

@@ -12,14 +12,23 @@ import { prospecting } from "@/data/skills/prospecting";
 import { smithing } from "@/data/skills/smithing";
 import DeckMenu from "@/components/camp/deckMenu/deckMenu";
 import { magic } from "@/data/skills/magic";
-import { excursions } from "@/data/menus/excursions";
-import ExcursionsMenu from "@/components/camp/excursionsMenu/excursionsMenu";
+import { expeditions } from "@/data/menus/expeditions";
+import ExpeditionsMenu from "@/components/camp/expeditionsMenu/expeditionsMenu";
 import CharacterEngineProvider from "@/engine/characterEngineContext";
+import { agility } from "@/data/skills/agility";
+import { crafting } from "@/data/skills/crafting";
+import { enchanting } from "@/data/skills/enchanting";
 
 export default function Page({}) {
   const [selectedMenu, setSelectedMenu] = React.useState<GameObject>(martial);
   let menus: { [menuId: string]: JSX.Element } = {};
-  const skillMenus: GameObject[] = [prospecting, smithing];
+  const skillMenus: GameObject[] = [
+    prospecting,
+    smithing,
+    agility,
+    crafting,
+    enchanting,
+  ];
 
   skillMenus.forEach(
     (menu) =>
@@ -29,11 +38,11 @@ export default function Page({}) {
   );
   menus[martial.id] = <DeckMenu></DeckMenu>;
   menus[magic.id] = <DeckMenu></DeckMenu>;
-  menus[excursions.id] = <ExcursionsMenu></ExcursionsMenu>;
+  menus[expeditions.id] = <ExpeditionsMenu></ExpeditionsMenu>;
   menus[inventory.id] = <InventoryMenu></InventoryMenu>;
 
   return (
-    <div className="flex w-full h-full py-10">
+    <div className="flex w-full h-full py-10 min-w-[800px]">
       <CharacterEngineProvider>
         <CampEngineProvider>
           <MenuSelect
