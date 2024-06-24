@@ -3,20 +3,28 @@ import { GameObject } from "../gameObject";
 
 export type Combatant = {
   combatantId: number;
+  hp: number;
+  atk: number;
+  def: number;
 } & CombatantTemplate;
 
 export type CombatantTemplate = {
-  atk: number;
-  def: number;
-  maxHp: number;
-  hp: number;
+  baseAtk: number;
+  baseDef: number;
+  baseHp: number;
   lootTable: LootTable;
   modifiers: [];
 } & GameObject;
 
-export const createCombatant = (combatant: CombatantTemplate, combatantId: number): Combatant => {
+export const createCombatant = (
+  combatant: CombatantTemplate,
+  combatantId: number
+): Combatant => {
   return {
     combatantId: combatantId,
-    ...combatant
-  }
-}
+    hp: combatant.baseHp,
+    atk: combatant.baseAtk,
+    def: combatant.baseDef,
+    ...combatant,
+  };
+};

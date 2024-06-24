@@ -1,7 +1,7 @@
 import React from "react";
 import { useEncounterContext } from "./encounterEngineContext";
 import { Combatant } from "@/data/combatants/combatants";
-import { CombatCard } from "@/data/cards/cards";
+import { CombatCard, Target } from "@/data/cards/cards";
 import { useExcursionContext } from "./excursionEngineContext";
 
 type CombatCardEngineContextContents = {
@@ -25,7 +25,7 @@ export default function CombatCardEngineProvider({
 }: {
   children: React.ReactNode;
 }) {
-  const { characterCombatant } = useExcursionContext();
+  const { characterCombatant, setCharacterCombatant } = useExcursionContext();
   const {
     alliedCombatants,
     enemyCombatants,
@@ -34,6 +34,7 @@ export default function CombatCardEngineProvider({
     stamina,
     setDiscardPile,
     setEnemyCombatants,
+    setAlliedCombatants,
     setHand,
     setStamina,
   } = useEncounterContext();
@@ -50,17 +51,21 @@ export default function CombatCardEngineProvider({
     if (!selectedCard) {
       return;
     }
-
-    if (
-      selectedCard.target === "enemy" &&
-      enemyCombatants.includes(combatant)
-    ) {
-      setSelectedEnemyCombatants([...selectedEnemyCombatants, combatant]);
-    } else if (
-      selectedCard.target === "ally" &&
-      alliedCombatants.includes(combatant)
-    ) {
-      setSelectedAlliedCombatants([...selectedAlliedCombatants, combatant]);
+    switch (selectedCard.target) {
+      case Target.ENEMIES: {
+        if (enemyCombatants.includes(combatant)) {
+          setSelectedEnemyCombatants([...selectedEnemyCombatants, combatant]);
+        }
+        break;
+      }
+      case Target.ALLIES: {
+        if (
+          alliedCombatants.includes(combatant) ||
+          combatant === characterCombatant
+        ) {
+          setSelectedAlliedCombatants([...selectedAlliedCombatants, combatant]);
+        }
+      }
     }
   };
 
@@ -68,21 +73,25 @@ export default function CombatCardEngineProvider({
     if (!selectedCard) {
       return;
     }
-
-    if (selectedCard.target === "enemy") {
-      setSelectedEnemyCombatants([
-        ...selectedEnemyCombatants.filter(
-          (selectedCombatant) =>
-            selectedCombatant.combatantId != combatant.combatantId
-        ),
-      ]);
-    } else if (selectedCard.target === "ally") {
-      setSelectedAlliedCombatants([
-        ...selectedAlliedCombatants.filter(
-          (selectedCombatant) =>
-            selectedCombatant.combatantId != combatant.combatantId
-        ),
-      ]);
+    switch (selectedCard.target) {
+      case Target.ENEMIES: {
+        setSelectedEnemyCombatants([
+          ...selectedEnemyCombatants.filter(
+            (selectedCombatant) =>
+              selectedCombatant.combatantId != combatant.combatantId
+          ),
+        ]);
+        break;
+      }
+      case Target.ALLIES: {
+        setSelectedAlliedCombatants([
+          ...selectedAlliedCombatants.filter(
+            (selectedCombatant) =>
+              selectedCombatant.combatantId != combatant.combatantId
+          ),
+        ]);
+        break;
+      }
     }
   };
   const selectCard = (card: CombatCard | null) => {
@@ -97,29 +106,64 @@ export default function CombatCardEngineProvider({
       return;
     }
 
-    for (var combatant of selectedEnemyCombatants) {
-      combatant.hp -=
-        characterCombatant.atk * selectedCard.modifier * selectedCard.strikes -
-        combatant.def;
+    switch (selectedCard.target) {
+      case Target.ENEMIES: {
+        executeOffensiveCard(selectedCard);
+        break;
+      }
+      case Target.ALLIES: {
+        executeDefensiveCard(selectedCard);
+        break;
+      }
     }
 
-    setEnemyCombatants([
-      ...enemyCombatants.filter((combatant) => combatant.hp > 0),
-    ]);
     setHand([...hand.filter((card) => card.deckId != selectedCard.deckId)]);
     setDiscardPile([...discardPile, selectedCard]);
     setStamina(stamina - selectedCard.cost);
     resetState();
   };
 
+  const executeOffensiveCard = (selectedCard: CombatCard) => {
+    for (var combatant of selectedEnemyCombatants) {
+      combatant.hp -=
+        characterCombatant.atk * selectedCard.modifier * selectedCard.strikes -
+        combatant.def;
+      combatant.def = combatant.baseDef;
+    }
+
+    setEnemyCombatants([
+      ...enemyCombatants.filter((combatant) => combatant.hp > 0),
+    ]);
+  };
+
+  const executeDefensiveCard = (selectedCard: CombatCard) => {
+    for (var combatant of selectedAlliedCombatants) {
+      combatant.def += characterCombatant.baseDef * selectedCard.modifier;
+      alliedCombatants.filter(
+        (ally) => ally.combatantId != combatant.combatantId
+      );
+    }
+
+    setAlliedCombatants([
+      ...alliedCombatants,
+      ...selectedAlliedCombatants.filter(
+        (combatant) => combatant.combatantId != characterCombatant.combatantId
+      ),
+    ]);
+    setCharacterCombatant({ ...characterCombatant });
+  };
+
   React.useEffect(() => {
     if (
       selectedCard &&
-      selectedEnemyCombatants.length === selectedCard.targets
+      ((selectedEnemyCombatants.length === selectedCard.targets &&
+        selectedCard.target === Target.ENEMIES) ||
+        (selectedAlliedCombatants.length === selectedCard.targets &&
+          selectedCard.target === Target.ALLIES))
     ) {
       executeCard();
     }
-  }, [selectedEnemyCombatants]);
+  }, [selectedEnemyCombatants, selectedAlliedCombatants]);
 
   let resetState = () => {
     setSelectedCard(null);

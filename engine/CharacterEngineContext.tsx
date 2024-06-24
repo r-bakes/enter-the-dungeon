@@ -53,6 +53,7 @@ export default function CharacterEngineProvider({
         1
       );
       character.deck.equppedMartial.push(cardId);
+      character.deck.equppedMartial.sort();
     } else {
       if (character.deck.equippedMagic.length == MAGIC_DECK_LIMIT) {
         toast.error("Deck limit reached!", {
@@ -70,6 +71,7 @@ export default function CharacterEngineProvider({
         1
       );
       character.deck.equippedMagic.push(cardId);
+      character.deck.equippedMagic.sort();
     }
     setCharacter({ ...character });
   };
@@ -107,6 +109,7 @@ export default function CharacterEngineProvider({
         1
       );
       character.deck.unequippedMartial.push(cardId);
+      character.deck.unequippedMartial.sort();
     } else {
       character.deck.equippedMagic.splice(
         character.deck.equippedMagic.findIndex(
@@ -115,6 +118,7 @@ export default function CharacterEngineProvider({
         1
       );
       character.deck.unequippedMagic.push(cardId);
+      character.deck.unequippedMagic.sort();
     }
     setCharacter({ ...character });
   };

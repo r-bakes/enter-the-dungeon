@@ -20,23 +20,39 @@ export default function CombatantCard({
       <Label className="text-muted-foreground font-extralight">
         {combatant.name}
       </Label>
-      <Card className={"w-40 " + selectedStyle}>
+      <Card className={"w-40 h-48 justify-center" + selectedStyle}>
         <Button
           onClick={onClick}
-          className="flex flex-col h-full w-full "
+          className="flex flex-col h-full w-full p-0"
           variant="ghost"
         >
-          <CardHeader className="items-center justify-center">
+          <CardHeader className="items-center justify-center p-0 h-3/5">
             <combatant.icon size={80}></combatant.icon>
           </CardHeader>
-          <CardContent className="flex items-center justify-center space-x-3">
+          <CardContent className="flex items-start justify-center space-x-3 py-0 h-2/5">
             <div className="flex flex-col space-y-1">
               <Sword strokeWidth={1}></Sword>
               <Label className="text-muted-foreground">{combatant.atk}</Label>
+              {combatant.atk > combatant.baseAtk ? (
+                <Label className="text-muted-foreground">
+                  +{combatant.atk - combatant.baseAtk}
+                </Label>
+              ) : (
+                <></>
+              )}
             </div>
             <div className="flex flex-col space-y-1">
               <Shield strokeWidth={1}></Shield>
-              <Label className="text-muted-foreground">{combatant.def}</Label>
+              <Label className="text-muted-foreground">
+                {combatant.baseDef}
+              </Label>
+              {combatant.def > combatant.baseDef ? (
+                <Label className="text-muted-foreground">
+                  +{combatant.def - combatant.baseDef}
+                </Label>
+              ) : (
+                <></>
+              )}
             </div>
             <div className="flex flex-col space-y-1">
               <Heart strokeWidth={1}></Heart>

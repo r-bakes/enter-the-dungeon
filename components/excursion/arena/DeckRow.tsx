@@ -33,6 +33,7 @@ export default function DeckRow({}: {}) {
                   ? selectCard(null)
                   : selectCard(card);
               }}
+              hoverTranslateDirection="u"
               isSelected={
                 selectedCard ? selectedCard.deckId === card.deckId : false
               }

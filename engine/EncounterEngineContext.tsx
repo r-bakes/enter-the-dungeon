@@ -16,6 +16,7 @@ type EncounterContextContents = {
   hand: CombatCard[];
   discardPile: CombatCard[];
   setEnemyCombatants: React.Dispatch<React.SetStateAction<Combatant[]>>;
+  setAlliedCombatants: React.Dispatch<React.SetStateAction<Combatant[]>>;
   setHand: React.Dispatch<React.SetStateAction<CombatCard[]>>;
   setDiscardPile: React.Dispatch<React.SetStateAction<CombatCard[]>>;
   setStamina: React.Dispatch<React.SetStateAction<number>>;
@@ -88,12 +89,13 @@ export default function EncounterEngineProvider({
   };
 
   const enemeyRound = () => {
+    let damageTaken = 0;
     for (var combatant of enemyCombatants) {
-      characterCombatant.hp -= Math.max(
-        combatant.atk - characterCombatant.def,
-        0
-      );
+      damageTaken += combatant.atk;
     }
+    characterCombatant.hp -= Math.max(damageTaken - characterCombatant.def, 0);
+    characterCombatant.def = characterCombatant.baseDef;
+    characterCombatant.atk = characterCombatant.baseAtk;
     setCharacterCombatant({ ...characterCombatant });
   };
 
@@ -119,6 +121,7 @@ export default function EncounterEngineProvider({
         hand,
         discardPile,
         setEnemyCombatants,
+        setAlliedCombatants,
         setHand,
         setDiscardPile,
         setStamina,

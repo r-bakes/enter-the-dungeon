@@ -27,8 +27,8 @@ export default function Page({}) {
         <SkillMenu key={menu.id} skill={selectedMenu as Skill}></SkillMenu>
       ))
   );
-  menus[martial.id] = <DeckMenu isMartial={true}></DeckMenu>;
-  menus[magic.id] = <DeckMenu isMartial={false}></DeckMenu>;
+  menus[martial.id] = <DeckMenu></DeckMenu>;
+  menus[magic.id] = <DeckMenu></DeckMenu>;
   menus[excursions.id] = <ExcursionsMenu></ExcursionsMenu>;
   menus[inventory.id] = <InventoryMenu></InventoryMenu>;
 

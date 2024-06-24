@@ -8,13 +8,12 @@ export const goblinRunt: CombatantTemplate = {
   icon: User,
   lootTable: {
     gems: {
-        sapphire: { weight: 20, minQuantity: 1, maxQuantity: 1 },
-        emerald: { weight: 10, minQuantity: 1, maxQuantity: 1 },
-      },
+      sapphire: { weight: 20, minQuantity: 1, maxQuantity: 1 },
+      emerald: { weight: 10, minQuantity: 1, maxQuantity: 1 },
+    },
   },
-  atk: 1,
-  def: 1,
-  maxHp: 5,
-  hp: 5,
-  modifiers: []
+  baseAtk: 1,
+  baseDef: 1,
+  baseHp: 5,
+  modifiers: [],
 };

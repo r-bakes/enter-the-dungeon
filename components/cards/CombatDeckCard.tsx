@@ -1,21 +1,47 @@
-import { CombatCard } from "@/data/cards/cards";
+import { CombatCard, CombatCardTemplate } from "@/data/cards/cards";
 import { Card, CardDescription, CardHeader, CardTitle } from "../ui/card";
 import { Button } from "../ui/button";
 
 export default function CombatDeckCard({
   card,
-  isSelected,
+  isSelected = false,
+  hoverTranslateDirection,
   onClick,
 }: {
-  card: CombatCard;
-  isSelected: boolean,
+  card: CombatCard | CombatCardTemplate;
+  isSelected?: boolean;
+  hoverTranslateDirection?: "u" | "d" | "l" | "r";
   onClick: React.Dispatch<React.SetStateAction<any>>;
 }) {
+  let selectedStyle = isSelected ? "-translate-y-4 bg-accent" : "";
+  let formattedHoverTranslateDirection = "";
+  switch (hoverTranslateDirection) {
+    case "u": {
+      formattedHoverTranslateDirection = "hover:-translate-y-4 ";
+      break;
+    }
+    case "d": {
+      formattedHoverTranslateDirection = "hover:translate-y-4 ";
+      break;
+    }
+    case "l": {
+      formattedHoverTranslateDirection = "hover:-translate-x-4 ";
+      break;
+    }
+    case "r": {
+      formattedHoverTranslateDirection = "hover:translate-x-4 ";
+      break;
+    }
+  }
 
-    let selectedStyle = isSelected ? "-translate-y-4 bg-accent" : ""
-
-    return (
-    <Card className={"flex w-36 h-44 shrink-0 transition ease-in-out hover:-translate-y-4 duration-300 " + selectedStyle}>
+  return (
+    <Card
+      className={
+        "flex w-36 h-44 shrink-0 transition ease-in-out duration-300 " +
+        formattedHoverTranslateDirection +
+        selectedStyle
+      }
+    >
       <Button
         onClick={onClick}
         className={"flex w-full h-full items-start justify-start p-0"}

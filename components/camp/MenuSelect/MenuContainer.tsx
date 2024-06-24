@@ -3,6 +3,8 @@ import MenuButton from "./menuButton";
 import { useCampEngineContext } from "@/engine/campEngineContext";
 import { GameObject } from "@/data/gameObject";
 import { useCharacterEngineContext } from "@/engine/characterEngineContext";
+import { martial } from "@/data/skills/martial";
+import { magic } from "@/data/skills/magic";
 
 export default function MenuContainer({
   menuItems,
@@ -25,7 +27,11 @@ export default function MenuContainer({
           <MenuButton
             level={level}
             menu={item}
-            isSelected={item.name === selectedMenu.name}
+            isSelected={
+              item.name === selectedMenu.name ||
+              ([martial.name, magic.name].includes(selectedMenu.name) &&
+                [martial.name, magic.name].includes(item.name))
+            }
             key={item.id}
             onClick={() => setSelectedMenu(item)}
           ></MenuButton>
