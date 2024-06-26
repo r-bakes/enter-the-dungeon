@@ -21,6 +21,7 @@ export default function CharacterCombatantCard({
   let rightHand = combatant.loadout.rightHand
     ? ITEM_BY_ID[combatant.loadout.rightHand]
     : undefined;
+  
 
   return (
     <div className="flex flex-col text-center gap-1">
