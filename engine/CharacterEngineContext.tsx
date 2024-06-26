@@ -6,6 +6,8 @@ import { MAGIC_DECK_LIMIT, MARTIAL_DECK_LIMIT } from "@/data/configurations";
 import {
   addCardsByItemId,
   addItem,
+  getAgilityModifiers,
+  getCombatModifiers,
   removeCardsByItem,
   removeItem,
 } from "./utils/charaterStateUtilities";
@@ -19,7 +21,7 @@ type CharacterEngineContextContents = {
   unequipCard: (cardId: string) => void;
   equipItem: (itemId: string, slot: Slot) => void;
   unequip: (slot: Slot) => void;
-  getModifiers: () => { hp: number; atk: number; def: number };
+  getModifiers: () => { hp: number; atk: number; def: number, stamina: number };
 };
 
 const CharacterEngineContext = React.createContext(
@@ -124,19 +126,10 @@ export default function CharacterEngineProvider({
   };
 
   const getModifiers = () => {
-    let atk = 1;
-    let def = 0;
-    let hp = 10 * character.skills["martial"].level;
-
-    Object.entries(character.loadout).forEach(([_, equipmentId]) => {
-      if (equipmentId != null) {
-        let item = ITEM_BY_ID[equipmentId] as Equipment;
-        atk += item.attackBonus;
-        def += item.defenseBonus;
-        hp += item.healthBonus;
-      }
-    });
-    return { atk, def, hp };
+    return {
+      ...getCombatModifiers(character),
+      ...getAgilityModifiers(character.skills.agility.level),
+    };
   };
 
   return (

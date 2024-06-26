@@ -5,9 +5,9 @@ import { useEncounterContext } from "@/engine/encounterEngineContext";
 import { Backpack, Zap } from "lucide-react";
 
 export default function PlayerHudRow({}: {}) {
-  const { round, stamina } = useEncounterContext();
+  const { round, stamina, finishTurn } = useEncounterContext();
   return (
-    <div className="flex w-full min-w-max gap-4 items-end">
+    <div className="flex w-full min-w-full gap-4 items-end">
       <div className="flex flex-col gap-2 w-16 border-r border-r-1">
         <Label className="text-muted-foreground font-extralight">Round</Label>
         <div className="flex h-10 w-10 justify-left text-center">
@@ -46,7 +46,7 @@ export default function PlayerHudRow({}: {}) {
         <Backpack></Backpack>
       </Button>
       <div className="flex grow"></div>
-      <Button className="w-28" variant="destructive">
+      <Button className="w-28" variant="destructive" onClick={finishTurn}>
         End Turn
       </Button>
     </div>

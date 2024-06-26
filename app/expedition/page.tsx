@@ -8,7 +8,7 @@ import ExpeditionEngineProvider from "@/engine/expeditionEngineContext";
 
 export default function Page({}) {
   return (
-    <div className="flex w-full h-full py-10 px-10 min-w-[800px]">
+    <div className="flex w-full h-full py-10 px-10 min-w-max min-h-max">
       <CharacterEngineProvider>
         <ExpeditionEngineProvider>
           <EncounterEngineProvider>

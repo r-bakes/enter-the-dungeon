@@ -9,11 +9,6 @@ const jumpingJacks: Task = {
   durationSec: 10,
   experience: 1,
   requiredLevel: 1,
-  lootTable: {
-    _: {
-      _: { weight: 100, minQuantity: 0, maxQuantity: 0 },
-    },
-  },
 };
 
 export const agility: Skill = {

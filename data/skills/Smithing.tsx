@@ -1,7 +1,20 @@
-import { Gavel, RectangleVertical, Shield, Sword } from "lucide-react";
+import { Gavel, RectangleVertical, Shield, Slice, Sword } from "lucide-react";
 import { Skill } from "./skills";
 import { Task } from "./skills";
 
+const smithBronzeDagger: Task = {
+  id: "smithBronzeDagger",
+  name: "Bronze Dagger",
+  description: "Smith a dagger.",
+  icon: Slice,
+  durationSec: 10,
+  experience: 1,
+  requiredLevel: 5,
+  lootTable: {
+    dagger: { bronzeDagger: { weight: 1, minQuantity: 1, maxQuantity: 1 } },
+  },
+  requires: { bronzeBar: 1 },
+};
 const smithBronzeSword: Task = {
   id: "smithBronzeSword",
   name: "Bronze Sword",
@@ -13,10 +26,36 @@ const smithBronzeSword: Task = {
   lootTable: {
     sword: { bronzeSword: { weight: 1, minQuantity: 1, maxQuantity: 1 } },
   },
-  requires: { bronzeBar: 1 },
+  requires: { bronzeBar: 2 },
+};
+const smithBronzeShield: Task = {
+  id: "smithBronzeShield",
+  name: "Bronze Shield",
+  description: "Smith a shield.",
+  icon: Shield,
+  durationSec: 10,
+  experience: 1,
+  requiredLevel: 5,
+  lootTable: {
+    shield: { bronzeShield: { weight: 1, minQuantity: 1, maxQuantity: 1 } },
+  },
+  requires: { bronzeBar: 2 },
+};
+const smithBronzeGreatSword: Task = {
+  id: "smithBronzeGreatSword",
+  name: "Bronze Great Sword",
+  description: "Smith a great sword.",
+  icon: Sword,
+  durationSec: 10,
+  experience: 1,
+  requiredLevel: 5,
+  lootTable: {
+    sword: { bronzeGreatSword: { weight: 1, minQuantity: 1, maxQuantity: 1 } },
+  },
+  requires: { bronzeBar: 4 },
 };
 const smithIronSword: Task = {
-  id: "smith-iron-sword",
+  id: "smithIronSword",
   name: "Iron Sword",
   description: "Smith a sword.",
   icon: Sword,
@@ -29,7 +68,7 @@ const smithIronSword: Task = {
   requires: { ironBar: 1 },
 };
 const smithIronShield: Task = {
-  id: "smith-iron-shield",
+  id: "smithIronShield",
   name: "Iron Shield",
   description: "Smith a shield.",
   icon: Shield,
@@ -117,7 +156,7 @@ const smeltIronBar: Task = {
   lootTable: {
     bar: { ironBar: { weight: 1, minQuantity: 1, maxQuantity: 1 } },
   },
-  requires: { ironOre: 1, coal: 1 },
+  requires: { ironOre: 1, coal: 2 },
 };
 const smeltSteelBar: Task = {
   id: "smeltSteelBar",
@@ -130,7 +169,7 @@ const smeltSteelBar: Task = {
   lootTable: {
     bar: { steelBar: { weight: 1, minQuantity: 1, maxQuantity: 1 } },
   },
-  requires: { ironOre: 3, coal: 2 },
+  requires: { ironOre: 3, coal: 3 },
 };
 const smeltSilverBar: Task = {
   id: "smeltSilverBar",
@@ -197,9 +236,14 @@ export const smithing: Skill = {
       smeltSilverBar,
       smeltGoldBar,
       smeltMithrilBar,
-      smeltAdamantBar
+      smeltAdamantBar,
     ],
-    "bronze smithing": [smithBronzeSword],
+    "bronze smithing": [
+      smithBronzeDagger,
+      smithBronzeSword,
+      smithBronzeShield,
+      smithBronzeGreatSword,
+    ],
     "iron smithing": [smithIronSword, smithIronShield, smithIronGreatSword],
     "steel smithing": [smithSteelSword],
     "mithril smithing": [smithMithrilSword],

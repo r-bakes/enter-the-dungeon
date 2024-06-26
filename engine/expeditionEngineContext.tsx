@@ -1,16 +1,18 @@
 import React from "react";
 import { useCharacterEngineContext } from "./characterEngineContext";
 import { Loot } from "./utils/lootUtilities";
-import { Combatant } from "@/data/combatants/combatants";
+import { CharacterCombatant, Combatant } from "@/data/combatants/combatants";
 import { User } from "lucide-react";
 import { CombatCard, createCombatCard } from "@/data/cards/cards";
 
 type ExpeditionEngineContextContents = {
-  characterCombatant: Combatant;
+  characterCombatant: CharacterCombatant;
   deck: CombatCard[];
   loot: Loot;
   artifacts: String[];
-  setCharacterCombatant: React.Dispatch<React.SetStateAction<Combatant>>;
+  setCharacterCombatant: React.Dispatch<
+    React.SetStateAction<CharacterCombatant>
+  >;
 };
 
 const ExpeditionEngineContext = React.createContext(
@@ -26,19 +28,21 @@ export default function ExpeditionEngineProvider({
   children: React.ReactNode;
 }) {
   const { character, getModifiers } = useCharacterEngineContext();
-  let initializeCharacterExcursionState = (): Combatant => {
-    let characterStats = getModifiers();
+  let initializeCharacterExcursionState = (): CharacterCombatant => {
+    let characterModifiers = getModifiers();
     return {
       combatantId: 0,
       id: "spellSword",
       name: "The Spellsword",
       description: "A fearsome foe.",
       icon: User,
-      baseHp: characterStats.hp,
-      baseAtk: characterStats.atk,
-      baseDef: characterStats.def,
-      ...characterStats,
+      baseHp: characterModifiers.hp,
+      baseAtk: characterModifiers.atk,
+      baseDef: characterModifiers.def,
+      baseStamina: characterModifiers.stamina,
+      ...characterModifiers,
       lootTable: {},
+      loadout: character.loadout,
       modifiers: [],
     };
   };

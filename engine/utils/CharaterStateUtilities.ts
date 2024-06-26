@@ -1,6 +1,15 @@
-import { LEVEL_CAP } from "../../data/configurations";
+import {
+  AGILITY_LEVELS_FOR_STAMINA_BONUS,
+  LEVEL_CAP,
+} from "../../data/configurations";
 import { Equipment } from "@/data/items/types";
-import { Inventory, Skills } from "../../data/character/character";
+import {
+  Character,
+  Inventory,
+  Loadout,
+  SkillLevel,
+  Skills,
+} from "../../data/character/character";
 import { ITEM_BY_ID } from "../../data/items/items";
 
 export function addExp(skills: Skills, skillId: string, exp: number): Skills {
@@ -75,4 +84,27 @@ export function requiredExpForLevelUp(level: number) {
     return 0;
   }
   return Math.floor(10 * Math.pow(2, level / 2));
+}
+
+export function getCombatModifiers(character: Character) {
+  let atk = 1;
+  let def = 0;
+  let hp = 10 * character.skills.martial.level;
+
+  Object.entries(character.loadout).forEach(([_, equipmentId]) => {
+    if (equipmentId != null) {
+      let item = ITEM_BY_ID[equipmentId] as Equipment;
+      atk += item.attackBonus;
+      def += item.defenseBonus;
+      hp += item.healthBonus;
+    }
+  });
+
+  return { atk, def, hp };
+}
+
+export function getAgilityModifiers(agilityLevel: number) {
+  let stamina = 2 + Math.floor(agilityLevel / AGILITY_LEVELS_FOR_STAMINA_BONUS);
+
+  return { stamina };
 }

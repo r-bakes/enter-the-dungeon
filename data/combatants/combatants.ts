@@ -1,5 +1,6 @@
 import { LootTable } from "@/engine/utils/lootUtilities";
 import { GameObject } from "../gameObject";
+import { Loadout } from "../character/character";
 
 export type Combatant = {
   combatantId: number;
@@ -7,6 +8,12 @@ export type Combatant = {
   atk: number;
   def: number;
 } & CombatantTemplate;
+
+export type CharacterCombatant = {
+  baseStamina: number;
+  stamina: number;
+  loadout: Loadout;
+} & Combatant;
 
 export type CombatantTemplate = {
   baseAtk: number;

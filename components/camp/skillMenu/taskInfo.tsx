@@ -25,7 +25,7 @@ export default function TaskInfo({
   skill: Skill | null;
   task: Task | null;
 }) {
-  const { setWorkingSkill, setWorkingTask, progress, workingTask } =
+  const { setWorkingSkill, setWorkingTask, taskProgress: progress, workingTask } =
     useCampEngineContext();
   const { character } = useCharacterEngineContext();
 

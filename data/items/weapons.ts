@@ -1,8 +1,21 @@
 import { Equipment, ItemType } from "./types";
-import { defend, slice } from "../cards/cards";
-import { Shield, Sword } from "lucide-react";
+import { defend, slice, stab } from "../cards/cards";
+import { Shield, Slice, Sword } from "lucide-react";
 import { Slot } from "../character/character";
 
+export const bronzeDagger: Equipment = {
+  id: "bronzeDagger",
+  name: "Bronze Dagger",
+  description: "A bronze dagger.",
+  icon: Slice,
+  type: ItemType.EQUIPEMENT,
+  value: 10,
+  slots: [Slot.LEFTHAND, Slot.RIGHTHAND],
+  cards: [stab, stab],
+  attackBonus: 1,
+  defenseBonus: 0,
+  healthBonus: 0,
+};
 export const bronzeSword: Equipment = {
   id: "bronzeSword",
   name: "Bronze Sword",
@@ -13,6 +26,33 @@ export const bronzeSword: Equipment = {
   slots: [Slot.LEFTHAND, Slot.RIGHTHAND],
   cards: [slice, slice],
   attackBonus: 1,
+  defenseBonus: 0,
+  healthBonus: 0,
+};
+export const bronzeShield: Equipment = {
+  id: "bronzeShield",
+  name: "Bronze Shield",
+  description: "A bronze shield.",
+  icon: Shield,
+  type: ItemType.EQUIPEMENT,
+  value: 10,
+  slots: [Slot.LEFTHAND, Slot.RIGHTHAND],
+  cards: [defend, defend],
+  attackBonus: 0,
+  defenseBonus: 1,
+  healthBonus: 0,
+};
+export const bronzeGreatSword: Equipment = {
+  id: "bronzeGreatSword",
+  name: "Bronze Great Sword",
+  description: "A bronze great sword.",
+  icon: Sword,
+  type: ItemType.EQUIPEMENT,
+  value: 10,
+  isTwoHanded: true,
+  slots: [Slot.LEFTHAND, Slot.RIGHTHAND],
+  cards: [],
+  attackBonus: 2,
   defenseBonus: 0,
   healthBonus: 0,
 };

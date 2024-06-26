@@ -13,6 +13,9 @@ import {
 } from "./minerals";
 import {
   adamantSword,
+  bronzeDagger,
+  bronzeGreatSword,
+  bronzeShield,
   bronzeSword,
   ironGreatSword,
   ironShield,
@@ -45,7 +48,10 @@ const ALL_ITEMS: Item[] = [
   geode,
   sapphire,
   emerald,
+  bronzeDagger,
   bronzeSword,
+  bronzeShield,
+  bronzeGreatSword,
   ironSword,
   ironShield,
   ironGreatSword,

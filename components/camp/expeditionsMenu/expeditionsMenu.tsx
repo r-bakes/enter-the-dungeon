@@ -8,7 +8,7 @@ export default function ExpeditionsMenu() {
   const router = useRouter();
 
   const enterDungeon = () => {
-    router.push("/excursion");
+    router.push("/expedition");
   };
 
   let icon = <DoorClosed id={"test"} size={512} strokeWidth={1.2}></DoorClosed>;

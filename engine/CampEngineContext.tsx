@@ -10,7 +10,7 @@ import React from "react";
 import TaskComplete from "@/components/camp/toast/taskComplete";
 
 type CampEngineContextContents = {
-  progress: number;
+  taskProgress: number;
   workingTask: Task | null;
   workingSkill: Skill | null;
   setWorkingSkill: React.Dispatch<React.SetStateAction<Skill | null>>;
@@ -87,9 +87,11 @@ export default function CampEngineProvider({
     skill: Skill,
     task: Task
   ) => {
-    const loot = generateLoot(task.lootTable);
-
-    updateInventory(character.inventory, loot, task.requires);
+    let loot = {};
+    if (task.lootTable) {
+      loot = generateLoot(task.lootTable);
+      updateInventory(character.inventory, loot, task.requires);
+    }
     addExp(character.skills, skill.id, task.experience);
 
     toast(
@@ -123,7 +125,7 @@ export default function CampEngineProvider({
       value={{
         setWorkingSkill,
         setWorkingTask,
-        progress: taskProgress,
+        taskProgress,
         workingTask,
         workingSkill,
       }}

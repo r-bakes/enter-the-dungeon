@@ -42,7 +42,7 @@ export default function Page({}) {
   menus[inventory.id] = <InventoryMenu></InventoryMenu>;
 
   return (
-    <div className="flex w-full h-full py-10 min-w-[800px]">
+    <div className="flex w-full h-full py-10 min-w-max min-h-max">
       <CharacterEngineProvider>
         <CampEngineProvider>
           <MenuSelect

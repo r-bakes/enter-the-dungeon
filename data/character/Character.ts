@@ -104,7 +104,7 @@ export const testCharacter: Character = {
       experience: 10737418239,
     },
     agility: {
-      level: 1,
+      level: 15,
       experience: 0,
     },
     crafting: {

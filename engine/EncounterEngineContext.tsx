@@ -20,6 +20,7 @@ type EncounterContextContents = {
   setHand: React.Dispatch<React.SetStateAction<CombatCard[]>>;
   setDiscardPile: React.Dispatch<React.SetStateAction<CombatCard[]>>;
   setStamina: React.Dispatch<React.SetStateAction<number>>;
+  finishTurn: () => void;
 };
 
 const EncounterEngineContext = React.createContext(
@@ -38,7 +39,7 @@ export default function EncounterEngineProvider({
     useExpeditionContext();
 
   const [round, setRound] = React.useState(0);
-  const [stamina, setStamina] = React.useState(2);
+  const [stamina, setStamina] = React.useState(characterCombatant.stamina);
   const [encounter, setEncounter] = React.useState(floor1a);
   const [enemyCombatants, setEnemyCombatants] = React.useState<Combatant[]>([
     ...encounter.combatants,
@@ -83,7 +84,7 @@ export default function EncounterEngineProvider({
   };
 
   const newRound = () => {
-    setStamina(2);
+    setStamina(characterCombatant.stamina);
     setRound(round + 1);
     draw();
   };
@@ -99,12 +100,17 @@ export default function EncounterEngineProvider({
     setCharacterCombatant({ ...characterCombatant });
   };
 
+  const finishTurn = () => {
+    enemeyRound();
+    newRound();
+  };
+
   React.useEffect(() => {
     if ((stamina == 0 || hand.length == 0) && round > 0) {
-      enemeyRound();
-      newRound();
+      finishTurn();
     }
   }, [stamina, hand]);
+
   React.useEffect(() => {
     newRound();
   }, []);
@@ -125,6 +131,7 @@ export default function EncounterEngineProvider({
         setHand,
         setDiscardPile,
         setStamina,
+        finishTurn,
       }}
     >
       {children}
