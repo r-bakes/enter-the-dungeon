@@ -1,5 +1,5 @@
 import { Item } from "@/data/items/types";
-import { ITEM_BY_ID } from "../../data/items/items";
+import { itemTable } from "../../data/items/items";
 
 export default function generateLoot(lootTable: LootTable): Loot {
   let loot: Loot = {};
@@ -13,7 +13,7 @@ export default function generateLoot(lootTable: LootTable): Loot {
       let data = lootTableGroup[itemId];
       currentWeight += data.weight;
       if (roll < currentWeight) {
-        if (!(itemId in ITEM_BY_ID)) {
+        if (!(itemId in itemTable)) {
           break
         }
         loot[itemId] = Math.floor(
@@ -37,14 +37,14 @@ export function generateDropRates(
     let dropGroup = [];
 
     for (const itemId in lootTable[lootTableGroup]) {
-      if (!(itemId in ITEM_BY_ID)) {
+      if (!(itemId in itemTable)) {
         continue
       }
 
       let data = lootTable[lootTableGroup][itemId];
      
       dropGroup.push({
-        item: ITEM_BY_ID[itemId],
+        item: itemTable[itemId],
         chance: Math.floor((data.weight / totalWeight) * 100),
       });
     }

@@ -3,91 +3,93 @@ import { Mountain } from "lucide-react";
 import { Gem } from "lucide-react";
 import { Item, ItemType } from "./types";
 
-export const ironOre: Item = {
-  id: "ironOre",
-  name: "Iron Ore",
-  description: "a lump of iron ore.",
-  value: 1,
-  icon: Mountain,
-  type: ItemType.MATERIALS,
-};
-export const coal: Item = {
-  id: "coal",
-  name: "Coal",
-  description: "a lump of coal.",
-  value: 1,
-  icon: Circle,
-  type: ItemType.MATERIALS,
-};
-export const copperOre: Item = {
-  id: "copperOre",
-  name: "Copper Ore",
-  description: "a lump of copper ore.",
-  value: 1,
-  icon: Mountain,
-  type: ItemType.MATERIALS,
-};
-export const geode: Item = {
-  id: "geode",
-  name: "Geode",
-  description: "an unknown gem geode.",
-  value: 1,
-  icon: Circle,
-  type: ItemType.MATERIALS,
-};
-export const sapphire: Item = {
-  id: "sapphire",
-  name: "Sapphire",
-  description: "a sapphire.",
-  value: 1,
-  icon: Gem,
-  type: ItemType.MATERIALS,
-};
-export const emerald: Item = {
-  id: "emerald",
-  name: "Emerald",
-  description: "an emerald.",
-  value: 1,
-  icon: Gem,
-  type: ItemType.MATERIALS,
-};
-export const silverOre: Item = {
-  id: "silverOre",
-  name: "Silver Ore",
-  description: "a lump of silver ore.",
-  value: 1,
-  icon: Mountain,
-  type: ItemType.MATERIALS,
-};
-export const tinOre: Item = {
-  id: "tinOre",
-  name: "Tin Ore",
-  description: "a lump of tin ore.",
-  value: 1,
-  icon: Mountain,
-  type: ItemType.MATERIALS,
-};
-export const goldOre: Item = {
-  id: "goldOre",
-  name: "Gold Ore",
-  description: "a lump of gold ore.",
-  value: 1,
-  icon: Mountain,
-  type: ItemType.MATERIALS,
-};
-export const mithrilOre: Item = {
-  id: "mithrilOre",
-  name: "Mithril Ore",
-  description: "a lump of mithril ore.",
-  value: 1,
-  icon: Mountain,
-  type: ItemType.MATERIALS,
-};
-export const adamantiteOre: Item = {
-  id: "adamantiteOre",
-  name: "Adamantite Ore",
-  description: "a lump of adamantite ore.",
-  value: 1,
-  icon: Mountain,
-  type: ItemType.MATERIALS,
+export const mineralsTable: { [mineralId: string]: Item } = {
+  ironOre: {
+    id: "ironOre",
+    name: "Iron Ore",
+    description: "a lump of iron ore.",
+    value: 1,
+    icon: Mountain,
+    type: ItemType.MATERIALS,
+  },
+  coal: {
+    id: "coal",
+    name: "Coal",
+    description: "a lump of coal.",
+    value: 1,
+    icon: Circle,
+    type: ItemType.MATERIALS,
+  },
+  copperOre: {
+    id: "copperOre",
+    name: "Copper Ore",
+    description: "a lump of copper ore.",
+    value: 1,
+    icon: Mountain,
+    type: ItemType.MATERIALS,
+  },
+  geode: {
+    id: "geode",
+    name: "Geode",
+    description: "an unknown gem geode.",
+    value: 1,
+    icon: Circle,
+    type: ItemType.MATERIALS,
+  },
+  sapphire: {
+    id: "sapphire",
+    name: "Sapphire",
+    description: "a sapphire.",
+    value: 1,
+    icon: Gem,
+    type: ItemType.MATERIALS,
+  },
+  emerald: {
+    id: "emerald",
+    name: "Emerald",
+    description: "an emerald.",
+    value: 1,
+    icon: Gem,
+    type: ItemType.MATERIALS,
+  },
+  silverOre: {
+    id: "silverOre",
+    name: "Silver Ore",
+    description: "a lump of silver ore.",
+    value: 1,
+    icon: Mountain,
+    type: ItemType.MATERIALS,
+  },
+  tinOre: {
+    id: "tinOre",
+    name: "Tin Ore",
+    description: "a lump of tin ore.",
+    value: 1,
+    icon: Mountain,
+    type: ItemType.MATERIALS,
+  },
+  goldOre: {
+    id: "goldOre",
+    name: "Gold Ore",
+    description: "a lump of gold ore.",
+    value: 1,
+    icon: Mountain,
+    type: ItemType.MATERIALS,
+  },
+  mithrilOre: {
+    id: "mithrilOre",
+    name: "Mithril Ore",
+    description: "a lump of mithril ore.",
+    value: 1,
+    icon: Mountain,
+    type: ItemType.MATERIALS,
+  },
+  adamantiteOre: {
+    id: "adamantiteOre",
+    name: "Adamantite Ore",
+    description: "a lump of adamantite ore.",
+    value: 1,
+    icon: Mountain,
+    type: ItemType.MATERIALS,
+  },
 };

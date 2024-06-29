@@ -11,7 +11,7 @@ import {
   removeCardsByItem,
   removeItem,
 } from "./utils/charaterStateUtilities";
-import { ITEM_BY_ID } from "@/data/items/items";
+import { itemTable } from "@/data/items/items";
 import { Equipment } from "@/data/items/types";
 
 type CharacterEngineContextContents = {

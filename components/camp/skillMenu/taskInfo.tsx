@@ -15,7 +15,7 @@ import { generateDropRates } from "@/engine/utils/lootUtilities";
 import { Item } from "@/data/items/types";
 import { Skill } from "@/data/skills/skills";
 import { Task } from "@/data/skills/skills";
-import { ITEM_BY_ID } from "@/data/items/items";
+import { itemTable } from "@/data/items/items";
 import { useCharacterEngineContext } from "@/engine/characterEngineContext";
 
 export default function TaskInfo({
@@ -48,7 +48,7 @@ export default function TaskInfo({
     if (task.requires) {
       taskRequires = Object.entries(task.requires).map(
         ([itemId, quantity]) => ({
-          item: ITEM_BY_ID[itemId],
+          item: itemTable[itemId],
           quantity: quantity,
           haveEnough:
             !(itemId in character.inventory) ||

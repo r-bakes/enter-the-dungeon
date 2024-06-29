@@ -1,3 +1,4 @@
+import { bronzeHelmet } from "../items/armor";
 import { agility } from "../skills/agility";
 
 // TODO add persistent storage on GCP.
@@ -60,15 +61,15 @@ export enum Slot {
 export const testCharacter: Character = {
   name: "Riley",
   loadout: {
-    head: null,
+    head: "bronzeHelmet",
     neck: null,
     shoulder: null,
     cloak: null,
-    chest: null,
-    waist: null,
-    leg: null,
+    chest: "bronzeChestplate",
+    waist: "bronzeBelt",
+    leg: "bronzePlateleggings",
     wrist: null,
-    glove: null,
+    glove: "bronzeGauntlets",
     feet: null,
     ring1: null,
     ring2: null,

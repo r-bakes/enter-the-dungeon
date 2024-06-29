@@ -2,7 +2,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import { Label } from "@/components/ui/label";
 import { CharacterCombatant } from "@/data/combatants/combatants";
-import { ITEM_BY_ID } from "@/data/items/items";
+import { itemTable } from "@/data/items/items";
 import { Heart, Shield, Sword } from "lucide-react";
 
 export default function CharacterCombatantCard({
@@ -16,10 +16,10 @@ export default function CharacterCombatantCard({
 }) {
   let selectedStyle = isSelected ? "bg-accent" : "";
   let leftHand = combatant.loadout.leftHand
-    ? ITEM_BY_ID[combatant.loadout.leftHand]
+    ? itemTable[combatant.loadout.leftHand]
     : undefined;
   let rightHand = combatant.loadout.rightHand
-    ? ITEM_BY_ID[combatant.loadout.rightHand]
+    ? itemTable[combatant.loadout.rightHand]
     : undefined;
   
 

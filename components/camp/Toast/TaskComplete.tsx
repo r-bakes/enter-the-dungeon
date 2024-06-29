@@ -1,7 +1,7 @@
 import { Item } from "@/data/items/types";
 import { Task } from "@/data/skills/skills";
 import { Character } from "@/data/character/character";
-import { ITEM_BY_ID } from "@/data/items/items";
+import { itemTable } from "@/data/items/items";
 import { Loot } from "@/engine/utils/lootUtilities";
 import { Label } from "@radix-ui/react-label";
 import { Backpack } from "lucide-react";
@@ -49,7 +49,7 @@ export default function TaskComplete({
         </Label>
       </div>
       <div className="flex space-x-2">
-        {Object.entries(loot).map(([itemId, number]) => itemCard(ITEM_BY_ID[itemId], number))}
+        {Object.entries(loot).map(([itemId, number]) => itemCard(itemTable[itemId], number))}
       </div>
     </div>
   );

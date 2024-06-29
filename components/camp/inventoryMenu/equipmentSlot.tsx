@@ -1,7 +1,7 @@
 import { useCampEngineContext } from "@/engine/campEngineContext";
 import EquipmentSlotContent from "./equipmentSlotContent";
 import { Label } from "@/components/ui/label";
-import { ITEM_BY_ID } from "@/data/items/items";
+import { itemTable } from "@/data/items/items";
 import { Slot } from "@/data/character/character";
 import { Equipment } from "@/data/items/types";
 import { useCharacterEngineContext } from "@/engine/characterEngineContext";
@@ -25,7 +25,7 @@ export default function EquipmentSlot({
     <div className={"h-14 w-14 border text-center " + rounded}>
       {character.loadout[slot] != null ? (
         <EquipmentSlotContent
-          item={ITEM_BY_ID[character.loadout[slot] as string] as Equipment}
+          item={itemTable[character.loadout[slot] as string] as Equipment}
           slot={slot}
           rounded={rounded}
         ></EquipmentSlotContent>

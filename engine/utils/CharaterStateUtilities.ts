@@ -10,7 +10,7 @@ import {
   SkillLevel,
   Skills,
 } from "../../data/character/character";
-import { ITEM_BY_ID } from "../../data/items/items";
+import { itemTable } from "../../data/items/items";
 
 export function addExp(skills: Skills, skillId: string, exp: number): Skills {
   while (
@@ -30,7 +30,7 @@ export function addExp(skills: Skills, skillId: string, exp: number): Skills {
 }
 
 export function addCardsByItemId(itemId: string, unequipped: String[]) {
-  let item = ITEM_BY_ID[itemId] as Equipment;
+  let item = itemTable[itemId] as Equipment;
 
   item.cards.forEach((card) => unequipped.push(card.id));
 }
@@ -40,7 +40,7 @@ export function removeCardsByItem(
   equipped: string[],
   unequipped: string[]
 ) {
-  let item = ITEM_BY_ID[itemId] as Equipment;
+  let item = itemTable[itemId] as Equipment;
 
   item.cards.forEach((card) => {
     if (unequipped.includes(card.id)) {
@@ -93,7 +93,7 @@ export function getCombatModifiers(character: Character) {
 
   Object.entries(character.loadout).forEach(([_, equipmentId]) => {
     if (equipmentId != null) {
-      let item = ITEM_BY_ID[equipmentId] as Equipment;
+      let item = itemTable[equipmentId] as Equipment;
       atk += item.attackBonus;
       def += item.defenseBonus;
       hp += item.healthBonus;

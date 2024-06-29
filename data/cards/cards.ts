@@ -8,7 +8,6 @@ export enum Target {
 export type CombatCard = {
   deckId: number;
 } & CombatCardTemplate;
-
 export type CombatCardTemplate = {
   modifier: number;
   strikes: number;
@@ -45,43 +44,41 @@ let createDefensiveCombatCardDescription = (
   );
 };
 
-export const slice: CombatCardTemplate = {
-  id: "slice",
-  name: "Slice",
-  target: Target.ENEMIES,
-  icon: Sword,
-  description: createOffensiveCombatCardDescription(1, 1, 1),
-  strikes: 1,
-  targets: 1,
-  modifier: 1,
-  cost: 1,
+export const cardTable: { [cardId: string]: CombatCardTemplate } = {
+  slice: {
+    id: "slice",
+    name: "Slice",
+    target: Target.ENEMIES,
+    icon: Sword,
+    description: createOffensiveCombatCardDescription(1, 1, 1),
+    strikes: 1,
+    targets: 1,
+    modifier: 1,
+    cost: 1,
+  },
+  stab: {
+    id: "stab",
+    name: "Stab",
+    target: Target.ENEMIES,
+    icon: Swords,
+    description: createOffensiveCombatCardDescription(2, 1, 0.5),
+    strikes: 2,
+    targets: 1,
+    modifier: 0.5,
+    cost: 1,
+  },
+  defend: {
+    id: "defend",
+    name: "Defend",
+    target: Target.ALLIES,
+    icon: Shield,
+    description: createDefensiveCombatCardDescription(1, 1),
+    strikes: 0,
+    targets: 1,
+    modifier: 1,
+    cost: 1,
+  },
 };
-export const stab: CombatCardTemplate = {
-  id: "stab",
-  name: "Stab",
-  target: Target.ENEMIES,
-  icon: Swords,
-  description: createOffensiveCombatCardDescription(2, 1, 0.5),
-  strikes: 2,
-  targets: 1,
-  modifier: 0.5,
-  cost: 1,
-};
-export const defend: CombatCardTemplate = {
-  id: "defend",
-  name: "Defend",
-  target: Target.ALLIES,
-  icon: Shield,
-  description: createDefensiveCombatCardDescription(1, 1),
-  strikes: 0,
-  targets: 1,
-  modifier: 1,
-  cost: 1,
-};
-
-export const ALL_CARD_TEMPLATES: CombatCardTemplate[] = [slice, stab, defend];
-export const CARD_TEMPLATE_BY_ID: { [cardId: string]: CombatCardTemplate } =
-  Object.fromEntries(ALL_CARD_TEMPLATES.map((cardId) => [cardId.id, cardId]));
 
 export const createCombatCard = (
   cardId: string,
@@ -89,6 +86,6 @@ export const createCombatCard = (
 ): CombatCard => {
   return {
     deckId: deckId,
-    ...CARD_TEMPLATE_BY_ID[cardId],
+    ...cardTable[cardId],
   };
 };

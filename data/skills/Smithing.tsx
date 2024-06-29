@@ -1,6 +1,22 @@
-import { Gavel, RectangleVertical, Shield, Slice, Sword } from "lucide-react";
+import {
+  Gavel,
+  Hand,
+  HardHat,
+  RectangleVertical,
+  Shield,
+  Shirt,
+  Slice,
+  Sword,
+  Tangent,
+  ToyBrick,
+} from "lucide-react";
 import { Skill } from "./skills";
 import { Task } from "./skills";
+import {
+  bronzeChestplate,
+  bronzeHelmet,
+  bronzePlateleggings,
+} from "../items/armor";
 
 const smithBronzeDagger: Task = {
   id: "smithBronzeDagger",
@@ -37,7 +53,7 @@ const smithBronzeShield: Task = {
   experience: 1,
   requiredLevel: 5,
   lootTable: {
-    shield: { bronzeShield: { weight: 1, minQuantity: 1, maxQuantity: 1 } },
+    smith: { bronzeShield: { weight: 1, minQuantity: 1, maxQuantity: 1 } },
   },
   requires: { bronzeBar: 2 },
 };
@@ -50,9 +66,78 @@ const smithBronzeGreatSword: Task = {
   experience: 1,
   requiredLevel: 5,
   lootTable: {
-    sword: { bronzeGreatSword: { weight: 1, minQuantity: 1, maxQuantity: 1 } },
+    smith: { bronzeGreatSword: { weight: 1, minQuantity: 1, maxQuantity: 1 } },
   },
   requires: { bronzeBar: 4 },
+};
+const smithBronzeHelmet: Task = {
+  id: "smithBronzeHelmet",
+  name: "Bronze Helmet",
+  description: "Smith a helmet.",
+  icon: HardHat,
+  durationSec: 10,
+  experience: 1,
+  requiredLevel: 5,
+  lootTable: {
+    smith: { bronzeHelmet: { weight: 1, minQuantity: 1, maxQuantity: 1 } },
+  },
+  requires: { bronzeBar: 2 },
+};
+const smithBronzeChestplate: Task = {
+  id: "smithBronzeChestplate",
+  name: "Bronze Chestplate",
+  description: "Smith a chestplate.",
+  icon: Shirt,
+  durationSec: 10,
+  experience: 1,
+  requiredLevel: 5,
+  lootTable: {
+    smith: { bronzeChestplate: { weight: 1, minQuantity: 1, maxQuantity: 1 } },
+  },
+  requires: { bronzeBar: 4 },
+};
+const smithBronzeBelt: Task = {
+  id: "smithBronzeBelt",
+  name: "Bronze Belt",
+  description: "Smith a belt.",
+  icon: Tangent,
+  durationSec: 10,
+  experience: 1,
+  requiredLevel: 5,
+  lootTable: {
+    smith: { bronzeBelt: { weight: 1, minQuantity: 1, maxQuantity: 1 } },
+  },
+  requires: { bronzeBar: 2 },
+};
+const smithBronzePlateleggings: Task = {
+  id: "smithBronzePlatelegs",
+  name: "Bronze Plate Leggings",
+  description: "Smith plateleggings.",
+  icon: ToyBrick,
+  durationSec: 10,
+  experience: 1,
+  requiredLevel: 5,
+  lootTable: {
+    smith: {
+      bronzePlateleggings: { weight: 1, minQuantity: 1, maxQuantity: 1 },
+    },
+  },
+  requires: { bronzeBar: 2 },
+};
+const smithBronzeGauntlets: Task = {
+  id: "smithBronzeGauntlets",
+  name: "Bronze Gauntlets",
+  description: "Smith gauntlets.",
+  icon: Hand,
+  durationSec: 10,
+  experience: 1,
+  requiredLevel: 5,
+  lootTable: {
+    smith: {
+      bronzePlateleggings: { weight: 1, minQuantity: 1, maxQuantity: 1 },
+    },
+  },
+  requires: { bronzeBar: 2 },
 };
 const smithIronSword: Task = {
   id: "smithIronSword",
@@ -63,7 +148,7 @@ const smithIronSword: Task = {
   experience: 10,
   requiredLevel: 10,
   lootTable: {
-    sword: { ironSword: { weight: 1, minQuantity: 1, maxQuantity: 1 } },
+    smith: { ironSword: { weight: 1, minQuantity: 1, maxQuantity: 1 } },
   },
   requires: { ironBar: 1 },
 };
@@ -243,6 +328,11 @@ export const smithing: Skill = {
       smithBronzeSword,
       smithBronzeShield,
       smithBronzeGreatSword,
+      smithBronzeHelmet,
+      smithBronzeChestplate,
+      smithBronzeBelt,
+      smithBronzePlateleggings,
+      smithBronzeGauntlets,
     ],
     "iron smithing": [smithIronSword, smithIronShield, smithIronGreatSword],
     "steel smithing": [smithSteelSword],

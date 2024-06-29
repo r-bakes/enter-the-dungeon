@@ -4,7 +4,7 @@ import { useCampEngineContext } from "@/engine/campEngineContext";
 import { Label } from "@radix-ui/react-label";
 import { CircleDollarSign } from "lucide-react";
 import { TabsContent } from "@radix-ui/react-tabs";
-import { ITEM_BY_ID } from "@/data/items/items";
+import { itemTable } from "@/data/items/items";
 import { ItemType } from "@/data/items/types";
 import EquipmentSlots from "./equipmentSlots";
 import InventorySlots from "./inventorySlots";
@@ -15,7 +15,7 @@ export default function InventoryMenu({}: {}) {
   let inventory = Object.entries(character.inventory)
     .filter((item) => item[1] > 0)
     .map(([itemId, quantity]) => ({
-      item: ITEM_BY_ID[itemId],
+      item: itemTable[itemId],
       quantity: quantity,
     }));
 
