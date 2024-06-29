@@ -1,6 +1,3 @@
-import { bronzeHelmet } from "../items/armor";
-import { agility } from "../skills/agility";
-
 // TODO add persistent storage on GCP.
 export type Character = {
   name: string;

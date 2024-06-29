@@ -2,6 +2,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Label } from "@/components/ui/label";
 import { useEncounterContext } from "@/engine/encounterEngineContext";
+import { motion } from "framer-motion";
 import { Backpack, Zap } from "lucide-react";
 
 export default function PlayerHudRow({}: {}) {
@@ -11,7 +12,18 @@ export default function PlayerHudRow({}: {}) {
       <div className="flex flex-col gap-2 w-16 border-r border-r-1">
         <Label className="text-muted-foreground font-extralight">Round</Label>
         <div className="flex h-10 w-10 justify-left text-center">
-          <Label className="font-bold text-2xl">{round}</Label>
+          <motion.div
+            className="flex"
+            initial={{ opacity: 0, scale: 10 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{
+              duration: 4,
+              delay: 0.5,
+              ease: [0, 0.71, 0.2, 1.01],
+            }}
+          >
+            <Label className="font-bold text-2xl">{round}</Label>
+          </motion.div>
         </div>
       </div>
       <div className="flex flex-col gap-2">
@@ -19,7 +31,18 @@ export default function PlayerHudRow({}: {}) {
         <Card className="flex h-10 w-80">
           <CardContent className="p-0 flex items-center justify-start gap-4 px-4 w-full h-full">
             {[...Array(stamina)].map((_, i) => (
-              <Zap key={i} className="h-6 w-6"></Zap>
+              <motion.div
+                className="flex"
+                initial={{ opacity: 0, scale: 0.5 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{
+                  duration: 4,
+                  delay: 0.5,
+                  ease: [0, 0.71, 0.2, 1.01],
+                }}
+              >
+                <Zap key={i} className="h-6 w-6"></Zap>
+              </motion.div>
             ))}
           </CardContent>
         </Card>

@@ -4,6 +4,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Label } from "@/components/ui/label";
 import { useCombatCardEngineContext } from "@/engine/combatCardEngineContext";
 import { useEncounterContext } from "@/engine/encounterEngineContext";
+import { motion } from "framer-motion";
 
 export default function DeckRow({}: {}) {
   const { drawPile, hand, discardPile } = useEncounterContext();
@@ -25,19 +26,30 @@ export default function DeckRow({}: {}) {
         <div className="border-r h-5/6 "></div>
         <div className="flex grow h-full text-left space-x-2 justify-center items-center">
           {hand.map((card) => (
-            <CombatDeckCard
-              key={card.deckId}
-              card={card}
-              onClick={() => {
-                selectedCard?.deckId === card.deckId
-                  ? selectCard(null)
-                  : selectCard(card);
+            <motion.div
+              className="flex"
+              initial={{ opacity: 0, x: -500 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{
+                duration: 2,
+                delay: 0.5,
+                ease: [0, 0.71, 0.2, 1.01],
               }}
-              hoverTranslateDirection="u"
-              isSelected={
-                selectedCard ? selectedCard.deckId === card.deckId : false
-              }
-            ></CombatDeckCard>
+            >
+              <CombatDeckCard
+                key={card.deckId}
+                card={card}
+                onClick={() => {
+                  selectedCard?.deckId === card.deckId
+                    ? selectCard(null)
+                    : selectCard(card);
+                }}
+                hoverTranslateDirection="u"
+                isSelected={
+                  selectedCard ? selectedCard.deckId === card.deckId : false
+                }
+              ></CombatDeckCard>
+            </motion.div>
           ))}
         </div>
         <div className="border-r h-5/6 "></div>

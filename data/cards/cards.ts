@@ -8,6 +8,7 @@ export enum Target {
 export type CombatCard = {
   deckId: number;
 } & CombatCardTemplate;
+
 export type CombatCardTemplate = {
   modifier: number;
   strikes: number;
