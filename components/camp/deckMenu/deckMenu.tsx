@@ -114,22 +114,6 @@ export default function DeckMenu({}: {}) {
           </div>
         </div>
       </div>
-
-      {/* <Card className="flex w-full h-56 shrink-0">
-        <ScrollArea className="flex w-full h-full overflow-x-auto ">
-          <div className="flex w-full h-56 px-2 space-x-2 items-center">
-            {equipped}
-          </div>
-          <ScrollBar orientation="horizontal" />
-        </ScrollArea>
-      </Card>
-   
-      <Card className="flex w-full h-full">
-        <ScrollArea className="flex w-full h-full">
-          {unequipped}
-          <ScrollBar orientation="vertical" />
-        </ScrollArea>
-      </Card> */}
     </div>
   );
 }

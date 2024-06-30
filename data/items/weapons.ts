@@ -1,5 +1,5 @@
 import { Equipment, ItemType } from "./types";
-import { defend, slice, stab } from "../cards/cards";
+import { cardTable } from "../cards/cards";
 import { Shield, Slice, Sword } from "lucide-react";
 import { Slot } from "../character/character";
 
@@ -12,7 +12,7 @@ export const weaponTable: { [weaponId: string]: Equipment } = {
     type: ItemType.EQUIPEMENT,
     value: 10,
     slots: [Slot.LEFTHAND, Slot.RIGHTHAND],
-    cards: [stab, stab],
+    cards: [cardTable.stab, cardTable.stab, cardTable.stab],
     attackBonus: 1,
     defenseBonus: 0,
     healthBonus: 0,
@@ -25,7 +25,7 @@ export const weaponTable: { [weaponId: string]: Equipment } = {
     type: ItemType.EQUIPEMENT,
     value: 10,
     slots: [Slot.LEFTHAND, Slot.RIGHTHAND],
-    cards: [slice, slice],
+    cards: [cardTable.slice, cardTable.slice, cardTable.slice],
     attackBonus: 1,
     defenseBonus: 0,
     healthBonus: 0,
@@ -38,7 +38,7 @@ export const weaponTable: { [weaponId: string]: Equipment } = {
     type: ItemType.EQUIPEMENT,
     value: 10,
     slots: [Slot.LEFTHAND, Slot.RIGHTHAND],
-    cards: [defend, defend],
+    cards: [cardTable.defend, cardTable.defend, cardTable.defend],
     attackBonus: 0,
     defenseBonus: 1,
     healthBonus: 0,
@@ -65,7 +65,7 @@ export const weaponTable: { [weaponId: string]: Equipment } = {
     type: ItemType.EQUIPEMENT,
     value: 10,
     slots: [Slot.LEFTHAND, Slot.RIGHTHAND],
-    cards: [slice, slice],
+    cards: [cardTable.slice, cardTable.slice, cardTable.slice],
     attackBonus: 2,
     defenseBonus: 0,
     healthBonus: 0,
@@ -78,7 +78,7 @@ export const weaponTable: { [weaponId: string]: Equipment } = {
     type: ItemType.EQUIPEMENT,
     value: 10,
     slots: [Slot.LEFTHAND, Slot.RIGHTHAND],
-    cards: [defend, defend],
+    cards: [cardTable.defend, cardTable.defend, cardTable.defend],
     attackBonus: 0,
     defenseBonus: 2,
     healthBonus: 0,
@@ -105,7 +105,7 @@ export const weaponTable: { [weaponId: string]: Equipment } = {
     type: ItemType.EQUIPEMENT,
     value: 10,
     slots: [Slot.LEFTHAND, Slot.RIGHTHAND],
-    cards: [slice, slice],
+    cards: [cardTable.slice, cardTable.slice, cardTable.slice],
     attackBonus: 3,
     defenseBonus: 0,
     healthBonus: 0,
@@ -118,7 +118,7 @@ export const weaponTable: { [weaponId: string]: Equipment } = {
     type: ItemType.EQUIPEMENT,
     value: 10,
     slots: [Slot.LEFTHAND, Slot.RIGHTHAND],
-    cards: [slice, slice],
+    cards: [cardTable.slice, cardTable.slice, cardTable.slice],
     attackBonus: 4,
     defenseBonus: 0,
     healthBonus: 0,
@@ -131,7 +131,7 @@ export const weaponTable: { [weaponId: string]: Equipment } = {
     type: ItemType.EQUIPEMENT,
     value: 10,
     slots: [Slot.LEFTHAND, Slot.RIGHTHAND],
-    cards: [slice, slice],
+    cards: [cardTable.slice, cardTable.slice, cardTable.slice],
     attackBonus: 5,
     defenseBonus: 0,
     healthBonus: 0,

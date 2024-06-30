@@ -6,8 +6,8 @@ import { useCombatCardEngineContext } from "@/engine/combatCardEngineContext";
 import { useEncounterContext } from "@/engine/encounterEngineContext";
 import { motion } from "framer-motion";
 
-export default function DeckRow({}: {}) {
-  const { drawPile, hand, discardPile } = useEncounterContext();
+export default function DeckRow() {
+  const { drawPile, hand, discardPile, round } = useEncounterContext();
   const { selectCard, selectedCard } = useCombatCardEngineContext();
 
   return (
@@ -18,7 +18,7 @@ export default function DeckRow({}: {}) {
             Deck ({drawPile.length})
           </Label>
           {drawPile.length > 0 ? (
-            <CardBack onClick={null}></CardBack>
+            <CardBack onClick={() => {}}></CardBack>
           ) : (
             <div></div>
           )}
@@ -27,17 +27,17 @@ export default function DeckRow({}: {}) {
         <div className="flex grow h-full text-left space-x-2 justify-center items-center">
           {hand.map((card) => (
             <motion.div
+              key={card.deckId + round * 20}
               className="flex"
               initial={{ opacity: 0, x: -500 }}
               animate={{ opacity: 1, x: 0 }}
+              exit={{ opacity: 0, x: 500 }}
               transition={{
                 duration: 2,
-                delay: 0.5,
                 ease: [0, 0.71, 0.2, 1.01],
               }}
             >
               <CombatDeckCard
-                key={card.deckId}
                 card={card}
                 onClick={() => {
                   selectedCard?.deckId === card.deckId
@@ -59,7 +59,7 @@ export default function DeckRow({}: {}) {
             Discard ({discardPile.length})
           </Label>
           {discardPile.length > 0 ? (
-            <CardBack onClick={null}></CardBack>
+            <CardBack onClick={() => {}}></CardBack>
           ) : (
             <div></div>
           )}

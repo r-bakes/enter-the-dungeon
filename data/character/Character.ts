@@ -116,7 +116,7 @@ export const testCharacter: Character = {
   },
   progress: {},
   deck: {
-    equppedMartial: ["slice", "slice", "defend", "defend"],
+    equppedMartial: ["slice", "slice", "slice", "defend", "defend", "defend"],
     unequippedMartial: [],
     equippedMagic: [],
     unequippedMagic: [],

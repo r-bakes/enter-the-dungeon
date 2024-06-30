@@ -13,13 +13,13 @@ export default function PlayerHudRow({}: {}) {
         <Label className="text-muted-foreground font-extralight">Round</Label>
         <div className="flex h-10 w-10 justify-left text-center">
           <motion.div
+            key={round}
             className="flex"
-            initial={{ opacity: 0, scale: 10 }}
-            animate={{ opacity: 1, scale: 1 }}
+            initial={{ opacity: 0.6, scale: 10, x: 400, y: -200 }}
+            animate={{ opacity: 1, scale: 1, x: 0, y: 0 }}
             transition={{
-              duration: 4,
-              delay: 0.5,
-              ease: [0, 0.71, 0.2, 1.01],
+              duration: 2,
+              delay: 0.2,
             }}
           >
             <Label className="font-bold text-2xl">{round}</Label>

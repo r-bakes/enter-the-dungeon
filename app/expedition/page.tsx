@@ -5,6 +5,7 @@ import CharacterEngineProvider from "@/engine/characterEngineContext";
 import CombatCardEngineProvider from "@/engine/combatCardEngineContext";
 import EncounterEngineProvider from "@/engine/encounterEngineContext";
 import ExpeditionEngineProvider from "@/engine/expeditionEngineContext";
+import { AnimatePresence } from "framer-motion";
 
 export default function Page({}) {
   return (
@@ -13,7 +14,9 @@ export default function Page({}) {
         <ExpeditionEngineProvider>
           <EncounterEngineProvider>
             <CombatCardEngineProvider>
-              <Arena></Arena>
+              <AnimatePresence>
+                <Arena></Arena>
+              </AnimatePresence>
             </CombatCardEngineProvider>
           </EncounterEngineProvider>
         </ExpeditionEngineProvider>

@@ -78,6 +78,8 @@ export default function EncounterEngineProvider({
         newHand.push(newDrawPile.pop() as CombatCard);
       }
     }
+    newHand.sort((a, b) => a.name.localeCompare(b.name));
+
     setDrawPile([...newDrawPile]);
     setDiscardPile(newDiscardPile);
     setHand([...newHand]);
@@ -101,8 +103,10 @@ export default function EncounterEngineProvider({
   };
 
   const finishTurn = () => {
-    enemeyRound();
-    newRound();
+    setTimeout(() => {
+      enemeyRound();
+      newRound();
+    }, 600);
   };
 
   React.useEffect(() => {
