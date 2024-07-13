@@ -1,6 +1,7 @@
 import { CombatCard, CombatCardTemplate } from "@/data/cards/cards";
 import { Card, CardDescription, CardHeader, CardTitle } from "../ui/card";
 import { Button } from "../ui/button";
+import { renderIcon } from "@/data/gameObject";
 
 export default function CombatDeckCard({
   card,
@@ -48,7 +49,13 @@ export default function CombatDeckCard({
         variant="ghost"
       >
         <CardHeader className="w-full items-center">
-          <card.icon size={32}></card.icon>
+          {renderIcon(card.icon, {
+              ...card.iconStyle,
+              size: 32,
+              strokeWidth: 0.5,
+              strokeOpacity: 0.5,
+              fillOpacity: 0.5,
+            })}
           <CardTitle className="text-lg">{card.name}</CardTitle>
           <CardDescription className="text-sm font-light">
             {card.description}

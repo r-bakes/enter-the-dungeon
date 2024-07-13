@@ -5,6 +5,7 @@ import { Combatant } from "@/data/combatants/combatants";
 import { AnimatePresence, motion } from "framer-motion";
 import { Heart, Shield, Sword } from "lucide-react";
 import StatBlock from "./statBlock";
+import { renderIcon } from "@/data/gameObject";
 
 export default function CombatantCard({
   combatant,
@@ -21,7 +22,7 @@ export default function CombatantCard({
     <motion.div
       initial={{ opacity: 0, scale: 0.5 }}
       animate={{ opacity: 1, scale: 1 }}
-      exit={{ scale: [null, 0], rotate: [null, 360], opacity: [null, 0.1]}}
+      exit={{ scale: [null, 0], rotate: [null, 360], opacity: [null, 0.1] }}
       transition={{
         duration: 1,
       }}
@@ -37,7 +38,13 @@ export default function CombatantCard({
             variant="ghost"
           >
             <CardHeader className="items-center justify-center p-0 h-3/5">
-              <combatant.icon size={80}></combatant.icon>
+              {renderIcon(combatant.icon, {
+                ...combatant.iconStyle,
+                size: 80,
+                strokeWidth: 0.5,
+                strokeOpacity: 0.5,
+                fillOpacity: 0.5,
+              })}
             </CardHeader>
             <CardContent className="flex items-start justify-center gap-3 py-0 h-2/5">
               <StatBlock

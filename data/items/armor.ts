@@ -1,6 +1,7 @@
 import { Hand, HardHat, Shirt, Tangent, ToyBrick } from "lucide-react";
 import { Equipment, ItemType } from "./types";
 import { Slot } from "../character/character";
+import { mineralsTable } from "./minerals";
 
 export const armorTable: { [armorId: string]: Equipment } = {
   bronzeHelmet: {
@@ -8,6 +9,7 @@ export const armorTable: { [armorId: string]: Equipment } = {
     name: "Bronze Helmet",
     description: "A bronze helmet.",
     icon: HardHat,
+    iconStyle: {fill: mineralsTable.copperOre.iconStyle.fill},
     type: ItemType.EQUIPEMENT,
     value: 10,
     slots: [Slot.HEAD],
@@ -21,6 +23,7 @@ export const armorTable: { [armorId: string]: Equipment } = {
     name: "Bronze Chestplate",
     description: "A bronze chestplate.",
     icon: Shirt,
+    iconStyle: {fill: mineralsTable.copperOre.iconStyle.fill},
     type: ItemType.EQUIPEMENT,
     value: 10,
     slots: [Slot.CHEST],
@@ -34,6 +37,7 @@ export const armorTable: { [armorId: string]: Equipment } = {
     name: "Bronze Belt",
     description: "A bronze belt.",
     icon: Tangent,
+    iconStyle: {fill: mineralsTable.copperOre.iconStyle.fill},
     type: ItemType.EQUIPEMENT,
     value: 10,
     slots: [Slot.CHEST],
@@ -47,6 +51,7 @@ export const armorTable: { [armorId: string]: Equipment } = {
     name: "Bronze Plateleggings",
     description: "Bronze plateleggings.",
     icon: ToyBrick,
+    iconStyle: {fill: mineralsTable.copperOre.iconStyle.fill},
     type: ItemType.EQUIPEMENT,
     value: 10,
     slots: [Slot.LEG],
@@ -60,6 +65,7 @@ export const armorTable: { [armorId: string]: Equipment } = {
     name: "Bronze Gauntlets",
     description: "A pair of bronze gauntlets.",
     icon: Hand,
+    iconStyle: {fill: mineralsTable.copperOre.iconStyle.fill},
     type: ItemType.EQUIPEMENT,
     value: 10,
     slots: [Slot.GLOVE],

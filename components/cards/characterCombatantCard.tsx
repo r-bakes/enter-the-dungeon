@@ -5,6 +5,7 @@ import { CharacterCombatant } from "@/data/combatants/combatants";
 import { itemTable } from "@/data/items/items";
 import { Heart, Shield, Sword } from "lucide-react";
 import StatBlock from "./combatantCard/statBlock";
+import { renderIcon } from "@/data/gameObject";
 
 export default function CharacterCombatantCard({
   combatant,
@@ -35,12 +36,24 @@ export default function CharacterCombatantCard({
           variant="ghost"
         >
           <CardHeader className="items-center justify-center p-0 h-3/5">
-            <combatant.icon size={80}></combatant.icon>
+            {renderIcon(combatant.icon, {
+              ...combatant.iconStyle,
+              size: 80,
+              strokeWidth: 0.5,
+              strokeOpacity: 0.5,
+              fillOpacity: 0.5,
+            })}
           </CardHeader>
           {leftHand ? (
             <Card className="absolute shadow-md right-36">
               <CardHeader className="p-2">
-                <leftHand.icon size={60} strokeWidth={1}></leftHand.icon>
+                {renderIcon(leftHand.icon, {
+                  ...leftHand.iconStyle,
+                  size: 80,
+                  strokeWidth: 0.5,
+                  strokeOpacity: 0.5,
+                  fillOpacity: 0.5,
+                })}
               </CardHeader>
             </Card>
           ) : (
@@ -49,7 +62,13 @@ export default function CharacterCombatantCard({
           {rightHand ? (
             <Card className="absolute shadow-md left-36">
               <CardHeader className="p-2">
-                <rightHand.icon size={60} strokeWidth={1}></rightHand.icon>
+                {renderIcon(rightHand.icon, {
+                  ...rightHand.iconStyle,
+                  size: 80,
+                  strokeWidth: 0.5,
+                  strokeOpacity: 0.5,
+                  fillOpacity: 0.5,
+                })}
               </CardHeader>
             </Card>
           ) : (

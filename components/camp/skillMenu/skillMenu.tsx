@@ -15,8 +15,7 @@ import { useState } from "react";
 import { useCampEngineContext } from "@/engine/campEngineContext";
 import { ScrollArea, ScrollBar } from "@/components/ui/scroll-area";
 import { getAllTasks } from "@/data/gameObject";
-import { Skill } from "@/data/skills/skills";
-import { Task } from "@/data/skills/skills";
+import { Skill, Task } from "@/data/skills/skills";
 import TaskInfo from "./taskInfo";
 import TaskContainer from "./taskContainer";
 import { useCharacterEngineContext } from "@/engine/characterEngineContext";
@@ -42,7 +41,7 @@ export default function SkillMenu({ skill }: { skill: Skill }) {
         <div className="w-full">
           <CardHeader className="flex flex-row">
             <div className="w-[56px] h-[56px]">
-              <skill.icon size={56} strokeWidth={1.5}></skill.icon>
+              <skill.icon size={56} strokeWidth={1}></skill.icon>
             </div>
             <div className="flex pl-6 flex-col w-[400px]">
               <CardTitle>{skill.name}</CardTitle>
@@ -83,7 +82,10 @@ export default function SkillMenu({ skill }: { skill: Skill }) {
                 key={category}
               >
                 <Label className="text-xl text-muted-foreground font-extralight">
-                  {category.split(" ").map((word) => word.charAt(0).toUpperCase() + word.slice(1)).join(" ")}
+                  {category
+                    .split(" ")
+                    .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+                    .join(" ")}
                 </Label>
                 <TaskContainer
                   skillLevel={character.skills[skill.id].level}

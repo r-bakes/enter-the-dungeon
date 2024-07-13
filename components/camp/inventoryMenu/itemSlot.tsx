@@ -9,6 +9,7 @@ import { Backpack } from "lucide-react";
 import ItemSlotEquipment from "./itemSlotEquipment";
 import { Item } from "@/data/items/types";
 import { Equipment, ItemType } from "@/data/items/types";
+import { renderIcon } from "@/data/gameObject";
 
 export default function ItemSlot({
   item,
@@ -25,7 +26,13 @@ export default function ItemSlot({
             className="flex flex-col w-16 h-16 border rounded-md p-2"
             variant="ghost"
           >
-            <item.icon size={48} strokeWidth={1}></item.icon>
+            {renderIcon(item.icon, {
+              ...item.iconStyle,
+              size: 48,
+              strokeWidth: 0.5,
+              strokeOpacity: 0.5,
+              fillOpacity: 0.5,
+            })}
           </Button>
           <Label className="text-sm">{quantity}</Label>
         </div>
@@ -34,7 +41,13 @@ export default function ItemSlot({
         <div className="flex flex-col items-start p-2 h-min text-center space-y-1 w-max bg-white">
           <div className="flex w-full space-x-2">
             <div className="flex h-full">
-              <item.icon size={35} strokeWidth={1}></item.icon>
+              {renderIcon(item.icon, {
+                ...item.iconStyle,
+                size: 35,
+                strokeWidth: 0.5,
+                strokeOpacity: 0.5,
+                fillOpacity: 0.5,
+              })}
             </div>
             <div className="flex flex-col items-start text-left">
               <Label className="text-sm font-bold">{item.name}</Label>

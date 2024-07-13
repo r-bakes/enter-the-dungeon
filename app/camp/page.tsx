@@ -22,6 +22,7 @@ import { enchanting } from "@/data/skills/enchanting";
 export default function Page({}) {
   const [selectedMenu, setSelectedMenu] = React.useState<GameObject>(martial);
   let menus: { [menuId: string]: JSX.Element } = {};
+
   const skillMenus: GameObject[] = [
     prospecting,
     smithing,
@@ -42,14 +43,18 @@ export default function Page({}) {
   menus[inventory.id] = <InventoryMenu></InventoryMenu>;
 
   return (
-    <div className="flex w-full h-full py-10 min-w-max min-h-max">
+    <div className="flex w-full h-full  min-w-max min-h-max">
       <CharacterEngineProvider>
         <CampEngineProvider>
-          <MenuSelect
-            selectedMenu={selectedMenu}
-            setSelectedMenu={setSelectedMenu}
-          ></MenuSelect>
-          {menus[selectedMenu.id]}
+          <div className="flex h-full py-10 bg-red-700/80">
+            <MenuSelect
+              selectedMenu={selectedMenu}
+              setSelectedMenu={setSelectedMenu}
+            ></MenuSelect>
+          </div>
+          <div className="flex h-full w-full py-10">
+            {menus[selectedMenu.id]}
+          </div>
         </CampEngineProvider>
       </CharacterEngineProvider>
     </div>

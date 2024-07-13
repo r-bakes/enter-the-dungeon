@@ -6,6 +6,7 @@ export const goblinRunt: CombatantTemplate = {
   name: "Goblin Runt",
   description: "A puny goblin.",
   icon: User,
+  iconStyle: {fill: "#81A263"},
   lootTable: {
     gems: {
       sapphire: { weight: 20, minQuantity: 1, maxQuantity: 1 },

@@ -8,6 +8,7 @@ import {
 import { Equipment } from "@/data/items/types";
 import { Slot } from "@/data/character/character";
 import { useCharacterEngineContext } from "@/engine/characterEngineContext";
+import { renderIcon } from "@/data/gameObject";
 
 export default function EquipmentSlotContent({
   item,
@@ -33,7 +34,13 @@ export default function EquipmentSlotContent({
             }
             variant="ghost"
           >
-            <item.icon size={56} strokeWidth={1} className="p-1"></item.icon>
+            {renderIcon(item.icon, {
+              ...item.iconStyle,
+              size: 56,
+              strokeWidth: 0.5,
+              strokeOpacity: 0.5,
+              fillOpacity: 0.5,
+            })}
           </Button>
         </div>
       </PopoverTrigger>
@@ -41,7 +48,13 @@ export default function EquipmentSlotContent({
         <div className="flex flex-col items-start p-2 h-min text-center rounded-md space-y-1 w-max bg-white">
           <div className="flex w-full space-x-2">
             <div className="flex h-full">
-              <item.icon size={35} strokeWidth={1}></item.icon>
+              {renderIcon(item.icon, {
+                ...item.iconStyle,
+                size: 35,
+                strokeWidth: 0.5,
+                strokeOpacity: 0.5,
+                fillOpacity: 0.5,
+              })}
             </div>
             <div className="flex flex-col items-start text-left">
               <Label className="text-sm font-bold">{item.name}</Label>

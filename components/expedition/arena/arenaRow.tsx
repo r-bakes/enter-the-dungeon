@@ -42,7 +42,6 @@ export default function ArenaRow({
   return (
     <Card className={"flex w-full min-w-full " + height}>
       <CardContent className="flex items-center p-3 space-x-6 justify-center w-full h-full">
-        <AnimatePresence>
           {combatants.map((combatant) =>
             combatant === characterCombatant ? (
               <CharacterCombatantCard
@@ -60,7 +59,6 @@ export default function ArenaRow({
               ></CombatantCard>
             )
           )}
-        </AnimatePresence>
       </CardContent>
     </Card>
   );

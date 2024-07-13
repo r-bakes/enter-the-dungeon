@@ -8,6 +8,7 @@ import {
 import { Button } from "@/components/ui/button";
 import { Label } from "@/components/ui/label";
 import { Task } from "@/data/skills/skills";
+import { renderIcon } from "@/data/gameObject";
 
 export default function TaskButton({
   task,
@@ -26,7 +27,13 @@ export default function TaskButton({
         <CardHeader className="flex flex-col p-0">
           <div className="flex flex-row w-full h-full space-x-3">
             <div className="w-[30px] h-[30px]">
-              <task.icon size={30} strokeWidth={1.4}></task.icon>
+              {renderIcon(task.icon, {
+                ...task.iconStyle,
+                size: 30,
+                strokeWidth: 0.5,
+                strokeOpacity: 0.5,
+                fillOpacity: 0.5,
+              })}
             </div>
             <div className="flex flex-col text-left">
               <CardTitle className="text-xl">{task.name}</CardTitle>

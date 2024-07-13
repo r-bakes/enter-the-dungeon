@@ -3,6 +3,8 @@ import { Mountain } from "lucide-react";
 import { Gem } from "lucide-react";
 import { Item, ItemType } from "./types";
 
+// const borderColor = "hsl(214.3 31.8% 91.4%)";
+
 export const mineralsTable: { [mineralId: string]: Item } = {
   ironOre: {
     id: "ironOre",
@@ -10,6 +12,7 @@ export const mineralsTable: { [mineralId: string]: Item } = {
     description: "a lump of iron ore.",
     value: 1,
     icon: Mountain,
+    iconStyle: { fill: "#B3C8CF" },
     type: ItemType.MATERIALS,
   },
   coal: {
@@ -18,6 +21,7 @@ export const mineralsTable: { [mineralId: string]: Item } = {
     description: "a lump of coal.",
     value: 1,
     icon: Circle,
+    iconStyle: { fill: "black" },
     type: ItemType.MATERIALS,
   },
   copperOre: {
@@ -26,6 +30,7 @@ export const mineralsTable: { [mineralId: string]: Item } = {
     description: "a lump of copper ore.",
     value: 1,
     icon: Mountain,
+    iconStyle: { fill: "#E76F51" },
     type: ItemType.MATERIALS,
   },
   geode: {
@@ -34,6 +39,7 @@ export const mineralsTable: { [mineralId: string]: Item } = {
     description: "an unknown gem geode.",
     value: 1,
     icon: Circle,
+    iconStyle: { fill: "#A25B5B" },
     type: ItemType.MATERIALS,
   },
   sapphire: {
@@ -42,6 +48,7 @@ export const mineralsTable: { [mineralId: string]: Item } = {
     description: "a sapphire.",
     value: 1,
     icon: Gem,
+    iconStyle: { fill: "#1679AB" },
     type: ItemType.MATERIALS,
   },
   emerald: {
@@ -50,6 +57,16 @@ export const mineralsTable: { [mineralId: string]: Item } = {
     description: "an emerald.",
     value: 1,
     icon: Gem,
+    iconStyle: { fill: "#36BA98" },
+    type: ItemType.MATERIALS,
+  },
+  diamond: {
+    id: "diamond",
+    name: "Diamond",
+    description: "a diamond.",
+    value: 1,
+    icon: Gem,
+    iconStyle: { fill: "#E0F4FF" },
     type: ItemType.MATERIALS,
   },
   silverOre: {
@@ -58,6 +75,7 @@ export const mineralsTable: { [mineralId: string]: Item } = {
     description: "a lump of silver ore.",
     value: 1,
     icon: Mountain,
+    iconStyle: { fill: "#BED7DC" },
     type: ItemType.MATERIALS,
   },
   tinOre: {
@@ -66,6 +84,7 @@ export const mineralsTable: { [mineralId: string]: Item } = {
     description: "a lump of tin ore.",
     value: 1,
     icon: Mountain,
+    iconStyle: { fill: "#D7E9F7" },
     type: ItemType.MATERIALS,
   },
   goldOre: {
@@ -74,6 +93,7 @@ export const mineralsTable: { [mineralId: string]: Item } = {
     description: "a lump of gold ore.",
     value: 1,
     icon: Mountain,
+    iconStyle: { fill: "#F3CA52" },
     type: ItemType.MATERIALS,
   },
   mithrilOre: {
@@ -82,6 +102,7 @@ export const mineralsTable: { [mineralId: string]: Item } = {
     description: "a lump of mithril ore.",
     value: 1,
     icon: Mountain,
+    iconStyle: { fill: "#5C88C4" },
     type: ItemType.MATERIALS,
   },
   adamantiteOre: {
@@ -90,6 +111,7 @@ export const mineralsTable: { [mineralId: string]: Item } = {
     description: "a lump of adamantite ore.",
     value: 1,
     icon: Mountain,
+    iconStyle: { fill: "#365E32" },
     type: ItemType.MATERIALS,
   },
 };

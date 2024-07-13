@@ -12,17 +12,15 @@ import {
 } from "lucide-react";
 import { Skill } from "./skills";
 import { Task } from "./skills";
-import {
-  bronzeChestplate,
-  bronzeHelmet,
-  bronzePlateleggings,
-} from "../items/armor";
+import { mineralsTable } from "../items/minerals";
+import { barsTable } from "../items/bars";
 
 const smithBronzeDagger: Task = {
   id: "smithBronzeDagger",
   name: "Bronze Dagger",
   description: "Smith a dagger.",
   icon: Slice,
+  iconStyle: { fill: mineralsTable.copperOre.iconStyle.fill },
   durationSec: 10,
   experience: 1,
   requiredLevel: 5,
@@ -36,6 +34,7 @@ const smithBronzeSword: Task = {
   name: "Bronze Sword",
   description: "Smith a sword.",
   icon: Sword,
+  iconStyle: { fill: mineralsTable.copperOre.iconStyle.fill },
   durationSec: 10,
   experience: 1,
   requiredLevel: 5,
@@ -49,6 +48,7 @@ const smithBronzeShield: Task = {
   name: "Bronze Shield",
   description: "Smith a shield.",
   icon: Shield,
+  iconStyle: { fill: mineralsTable.copperOre.iconStyle.fill },
   durationSec: 10,
   experience: 1,
   requiredLevel: 5,
@@ -62,6 +62,7 @@ const smithBronzeGreatSword: Task = {
   name: "Bronze Great Sword",
   description: "Smith a great sword.",
   icon: Sword,
+  iconStyle: { fill: mineralsTable.copperOre.iconStyle.fill },
   durationSec: 10,
   experience: 1,
   requiredLevel: 5,
@@ -75,6 +76,7 @@ const smithBronzeHelmet: Task = {
   name: "Bronze Helmet",
   description: "Smith a helmet.",
   icon: HardHat,
+  iconStyle: { fill: mineralsTable.copperOre.iconStyle.fill },
   durationSec: 10,
   experience: 1,
   requiredLevel: 5,
@@ -88,6 +90,7 @@ const smithBronzeChestplate: Task = {
   name: "Bronze Chestplate",
   description: "Smith a chestplate.",
   icon: Shirt,
+  iconStyle: { fill: mineralsTable.copperOre.iconStyle.fill },
   durationSec: 10,
   experience: 1,
   requiredLevel: 5,
@@ -101,6 +104,7 @@ const smithBronzeBelt: Task = {
   name: "Bronze Belt",
   description: "Smith a belt.",
   icon: Tangent,
+  iconStyle: { fill: mineralsTable.copperOre.iconStyle.fill },
   durationSec: 10,
   experience: 1,
   requiredLevel: 5,
@@ -114,6 +118,7 @@ const smithBronzePlateleggings: Task = {
   name: "Bronze Plate Leggings",
   description: "Smith plateleggings.",
   icon: ToyBrick,
+  iconStyle: { fill: mineralsTable.copperOre.iconStyle.fill },
   durationSec: 10,
   experience: 1,
   requiredLevel: 5,
@@ -122,19 +127,20 @@ const smithBronzePlateleggings: Task = {
       bronzePlateleggings: { weight: 1, minQuantity: 1, maxQuantity: 1 },
     },
   },
-  requires: { bronzeBar: 2 },
+  requires: { bronzeBar: 4 },
 };
 const smithBronzeGauntlets: Task = {
   id: "smithBronzeGauntlets",
   name: "Bronze Gauntlets",
   description: "Smith gauntlets.",
   icon: Hand,
+  iconStyle: { fill: mineralsTable.copperOre.iconStyle.fill },
   durationSec: 10,
   experience: 1,
   requiredLevel: 5,
   lootTable: {
     smith: {
-      bronzePlateleggings: { weight: 1, minQuantity: 1, maxQuantity: 1 },
+      bronzeGauntlets: { weight: 1, minQuantity: 1, maxQuantity: 1 },
     },
   },
   requires: { bronzeBar: 2 },
@@ -144,6 +150,7 @@ const smithIronSword: Task = {
   name: "Iron Sword",
   description: "Smith a sword.",
   icon: Sword,
+  iconStyle: { fill: mineralsTable.ironOre.iconStyle.fill },
   durationSec: 10,
   experience: 10,
   requiredLevel: 10,
@@ -157,6 +164,7 @@ const smithIronShield: Task = {
   name: "Iron Shield",
   description: "Smith a shield.",
   icon: Shield,
+  iconStyle: { fill: mineralsTable.ironOre.iconStyle.fill },
   durationSec: 10,
   experience: 20,
   requiredLevel: 10,
@@ -170,6 +178,7 @@ const smithIronGreatSword: Task = {
   name: "Iron Great Sword",
   description: "Smith a great sword.",
   icon: Sword,
+  iconStyle: { fill: mineralsTable.ironOre.iconStyle.fill },
   durationSec: 10,
   experience: 20,
   requiredLevel: 10,
@@ -183,6 +192,7 @@ const smithSteelSword: Task = {
   name: "Steel Sword",
   description: "Smith a sword.",
   icon: Sword,
+  iconStyle: { fill: barsTable.steelBar.iconStyle.fill },
   durationSec: 10,
   experience: 20,
   requiredLevel: 20,
@@ -196,6 +206,7 @@ const smithMithrilSword: Task = {
   name: "Mithril Sword",
   description: "Smith a sword.",
   icon: Sword,
+  iconStyle: { fill: mineralsTable.mithrilOre.iconStyle.fill },
   durationSec: 10,
   experience: 90,
   requiredLevel: 50,
@@ -209,6 +220,7 @@ const smithAdamantSword: Task = {
   name: "Adamant Sword",
   description: "Smith a sword.",
   icon: Sword,
+  iconStyle: { fill: mineralsTable.adamantiteOre.iconStyle.fill },
   durationSec: 10,
   experience: 100,
   requiredLevel: 60,
@@ -222,6 +234,7 @@ const smeltBronzeBar: Task = {
   name: "Bronze Bar",
   description: "Smelt a bronze bar.",
   icon: RectangleVertical,
+  iconStyle: { fill: mineralsTable.copperOre.iconStyle.fill },
   durationSec: 2,
   experience: 1,
   requiredLevel: 1,
@@ -231,9 +244,10 @@ const smeltBronzeBar: Task = {
   requires: { copperOre: 1, tinOre: 1, coal: 1 },
 };
 const smeltIronBar: Task = {
-  id: "smelt-iron-bar",
+  id: "smeltIronBar",
   name: "Iron Bar",
   description: "Smelt a iron bar.",
+  iconStyle: { fill: mineralsTable.ironOre.iconStyle.fill },
   icon: RectangleVertical,
   durationSec: 2,
   experience: 10,
@@ -241,78 +255,84 @@ const smeltIronBar: Task = {
   lootTable: {
     bar: { ironBar: { weight: 1, minQuantity: 1, maxQuantity: 1 } },
   },
-  requires: { ironOre: 1, coal: 2 },
+  requires: { ironOre: 2, coal: 2 },
 };
 const smeltSteelBar: Task = {
   id: "smeltSteelBar",
   name: "Steel Bar",
   description: "Smelt a steel bar.",
   icon: RectangleVertical,
+  iconStyle: { fill: barsTable.steelBar.iconStyle.fill },
   durationSec: 2,
   experience: 20,
   requiredLevel: 20,
   lootTable: {
     bar: { steelBar: { weight: 1, minQuantity: 1, maxQuantity: 1 } },
   },
-  requires: { ironOre: 3, coal: 3 },
+  requires: { ironOre: 5, coal: 5 },
 };
 const smeltSilverBar: Task = {
   id: "smeltSilverBar",
   name: "Silver Bar",
   description: "Smelt a silver bar.",
   icon: RectangleVertical,
+  iconStyle: { fill: mineralsTable.silverOre.iconStyle.fill },
   durationSec: 2,
   experience: 20,
   requiredLevel: 20,
   lootTable: {
     bar: { silverBar: { weight: 1, minQuantity: 1, maxQuantity: 1 } },
   },
-  requires: { silverOre: 5, coal: 1 },
+  requires: { silverOre: 5, coal: 5 },
 };
 const smeltGoldBar: Task = {
   id: "smeltGoldBar",
   name: "Gold Bar",
   description: "Smelt a gold bar.",
   icon: RectangleVertical,
+  iconStyle: { fill: mineralsTable.goldOre.iconStyle.fill },
   durationSec: 2,
   experience: 30,
   requiredLevel: 30,
   lootTable: {
     bar: { goldBar: { weight: 1, minQuantity: 1, maxQuantity: 1 } },
   },
-  requires: { goldOre: 5, coal: 1 },
+  requires: { goldOre: 5, coal: 10 },
 };
 const smeltMithrilBar: Task = {
   id: "smeltMithrilBar",
   name: "Mithril Bar",
   description: "Smelt a mithril bar.",
   icon: RectangleVertical,
+  iconStyle: { fill: mineralsTable.mithrilOre.iconStyle.fill },
   durationSec: 2,
   experience: 90,
   requiredLevel: 50,
   lootTable: {
     bar: { mithrilBar: { weight: 1, minQuantity: 1, maxQuantity: 1 } },
   },
-  requires: { mithrilOre: 5, coal: 1 },
+  requires: { mithrilOre: 5, coal: 10 },
 };
 const smeltAdamantBar: Task = {
   id: "smeltAdamantBar",
   name: "Adamant Bar",
   description: "Smelt an adamant bar.",
   icon: RectangleVertical,
+  iconStyle: { fill: mineralsTable.adamantiteOre.iconStyle.fill },
   durationSec: 2,
   experience: 100,
   requiredLevel: 30,
   lootTable: {
     bar: { adamantBar: { weight: 1, minQuantity: 1, maxQuantity: 1 } },
   },
-  requires: { adamantiteOre: 5, coal: 1 },
+  requires: { adamantiteOre: 5, coal: 15 },
 };
 export const smithing: Skill = {
   id: "smithing",
   name: "Smithing",
   description: "The ability to forge arms, armor, and trade goods.",
   icon: Gavel,
+  iconStyle: {},
   tasks: {
     smelting: [
       smeltBronzeBar,

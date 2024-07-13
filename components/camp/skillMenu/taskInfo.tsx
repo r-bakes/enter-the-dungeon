@@ -17,6 +17,7 @@ import { Skill } from "@/data/skills/skills";
 import { Task } from "@/data/skills/skills";
 import { itemTable } from "@/data/items/items";
 import { useCharacterEngineContext } from "@/engine/characterEngineContext";
+import { renderIcon } from "@/data/gameObject";
 
 export default function TaskInfo({
   skill,
@@ -25,8 +26,12 @@ export default function TaskInfo({
   skill: Skill | null;
   task: Task | null;
 }) {
-  const { setWorkingSkill, setWorkingTask, taskProgress: progress, workingTask } =
-    useCampEngineContext();
+  const {
+    setWorkingSkill,
+    setWorkingTask,
+    taskProgress: progress,
+    workingTask,
+  } = useCampEngineContext();
   const { character } = useCharacterEngineContext();
 
   let content = null;
@@ -71,7 +76,13 @@ export default function TaskInfo({
       <div className="flex flex-col w-full h-full ">
         <CardHeader className="flex flex-row">
           <div className="w-[56px] h-[56px]">
-            <task.icon size={56} strokeWidth={1.5}></task.icon>
+            {renderIcon(task.icon, {
+              ...task.iconStyle,
+              size: 56,
+              strokeWidth: 0.5,
+              strokeOpacity: 0.5,
+              fillOpacity: 0.5,
+            })}
           </div>
           <div className="flex pl-6 flex-col">
             <CardTitle>{task.name}</CardTitle>
@@ -129,10 +140,13 @@ export default function TaskInfo({
                       key={data.item.id}
                     >
                       <div className="w-[42px] h-[42px]">
-                        <data.item.icon
-                          size={42}
-                          strokeWidth={1}
-                        ></data.item.icon>
+                        {renderIcon(data.item.icon, {
+                          ...data.item.iconStyle,
+                          size: 42,
+                          strokeWidth: 0.5,
+                          strokeOpacity: 0.5,
+                          fillOpacity: 0.5,
+                        })}
                       </div>
                       <Label className="text-xs text-muted-foreground">
                         {data.item.name}
@@ -160,10 +174,13 @@ export default function TaskInfo({
                     key={item.item.id}
                   >
                     <div className="w-[42px] h-[42px]">
-                      <item.item.icon
-                        size={42}
-                        strokeWidth={1}
-                      ></item.item.icon>
+                      {renderIcon(item.item.icon, {
+                        ...item.item.iconStyle,
+                        size: 42,
+                        strokeWidth: 0.5,
+                        strokeOpacity: 0.5,
+                        fillOpacity: 0.5,
+                      })}
                     </div>
                     <Label className="text-xs text-muted-foreground">
                       {item.item.name}

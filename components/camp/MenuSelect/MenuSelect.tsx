@@ -12,6 +12,7 @@ import { expeditions } from "@/data/menus/expeditions";
 import { agility } from "@/data/skills/agility";
 import { enchanting } from "@/data/skills/enchanting";
 import { crafting } from "@/data/skills/crafting";
+import { home } from "@/data/menus/home";
 
 export default function MenuSelect({
   selectedMenu,
@@ -20,14 +21,14 @@ export default function MenuSelect({
   selectedMenu: GameObject;
   setSelectedMenu: React.Dispatch<React.SetStateAction<GameObject>>;
 }) {
-  let miscMenus = [bazaar, expeditions, inventory];
-  let combatMenus = [martial, magic];
+  let miscMenus = [home, inventory, bazaar];
+  let combatMenus = [expeditions, martial, magic];
   let skillMenus = [prospecting, smithing, agility, crafting, enchanting];
 
   return (
     <div className="flex flex-col w-64 h-full min-w-max">
       <Logo></Logo>
-      <Label className="text-xs text-muted-foreground pl-10 pt-4 pb-2 ">
+      <Label className="text-xs text-muted-foreground pl-8 pt-4 pb-2 text-white">
         Character
       </Label>
       <MenuContainer
@@ -35,7 +36,7 @@ export default function MenuSelect({
         selectedMenu={selectedMenu}
         setSelectedMenu={setSelectedMenu}
       ></MenuContainer>
-      <Label className="text-xs text-muted-foreground pl-10 pt-4 pb-2 ">
+      <Label className="text-xs text-muted-foreground pl-8 pt-4 pb-2 text-white">
         Combat
       </Label>
       <MenuContainer
@@ -43,7 +44,7 @@ export default function MenuSelect({
         selectedMenu={selectedMenu}
         setSelectedMenu={setSelectedMenu}
       ></MenuContainer>
-      <Label className="text-xs text-muted-foreground pl-10 pt-4 pb-2 ">
+      <Label className="text-xs text-muted-foreground pl-8 pt-4 pb-2 text-white">
         Skills
       </Label>
       <MenuContainer

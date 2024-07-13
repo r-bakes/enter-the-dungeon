@@ -1,6 +1,7 @@
 import { RectangleVertical } from "lucide-react";
 import { Item } from "./types";
 import { ItemType } from "./types";
+import { mineralsTable } from "./minerals";
 
 export const barsTable: { [barId: string]: Item } = {
   bronzeBar: {
@@ -9,6 +10,7 @@ export const barsTable: { [barId: string]: Item } = {
     value: 1,
     description: "a bronze bar.",
     icon: RectangleVertical,
+    iconStyle: { fill: mineralsTable.copperOre.iconStyle.fill },
     type: ItemType.TRADEGOODS,
   },
   ironBar: {
@@ -17,6 +19,7 @@ export const barsTable: { [barId: string]: Item } = {
     value: 1,
     description: "an iron bar.",
     icon: RectangleVertical,
+    iconStyle: { fill: mineralsTable.ironOre.iconStyle.fill },
     type: ItemType.TRADEGOODS,
   },
   steelBar: {
@@ -25,6 +28,7 @@ export const barsTable: { [barId: string]: Item } = {
     description: "a steel bar.",
     value: 1,
     icon: RectangleVertical,
+    iconStyle: { fill: "#7C9D96" },
     type: ItemType.TRADEGOODS,
   },
   silverBar: {
@@ -33,6 +37,7 @@ export const barsTable: { [barId: string]: Item } = {
     description: "a silver bar.",
     value: 1,
     icon: RectangleVertical,
+    iconStyle: { fill: mineralsTable.silverOre.iconStyle.fill },
     type: ItemType.TRADEGOODS,
   },
   goldBar: {
@@ -41,6 +46,7 @@ export const barsTable: { [barId: string]: Item } = {
     description: "a gold bar.",
     value: 1,
     icon: RectangleVertical,
+    iconStyle: { fill: mineralsTable.goldOre.iconStyle.fill },
     type: ItemType.TRADEGOODS,
   },
   mithrilBar: {
@@ -49,6 +55,7 @@ export const barsTable: { [barId: string]: Item } = {
     description: "a Mithril bar.",
     value: 1,
     icon: RectangleVertical,
+    iconStyle: { fill: mineralsTable.mithrilOre.iconStyle.fill },
     type: ItemType.TRADEGOODS,
   },
   adamantBar: {
@@ -57,6 +64,7 @@ export const barsTable: { [barId: string]: Item } = {
     description: "an adamant bar.",
     value: 1,
     icon: RectangleVertical,
+    iconStyle: { fill: mineralsTable.adamantiteOre.iconStyle.fill },
     type: ItemType.TRADEGOODS,
   },
 };

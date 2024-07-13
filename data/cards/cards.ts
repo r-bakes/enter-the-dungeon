@@ -1,5 +1,6 @@
 import { Shield, Sword, Swords } from "lucide-react";
 import { GameObject } from "../gameObject";
+import { barsTable } from "../items/bars";
 
 export enum Target {
   ENEMIES = 0,
@@ -51,6 +52,7 @@ export const cardTable: { [cardId: string]: CombatCardTemplate } = {
     name: "Slice",
     target: Target.ENEMIES,
     icon: Sword,
+    iconStyle: { fill: barsTable.ironBar.iconStyle.fill },
     description: createOffensiveCombatCardDescription(1, 1, 1),
     strikes: 1,
     targets: 1,
@@ -62,6 +64,7 @@ export const cardTable: { [cardId: string]: CombatCardTemplate } = {
     name: "Stab",
     target: Target.ENEMIES,
     icon: Swords,
+    iconStyle: { fill: barsTable.ironBar.iconStyle.fill },
     description: createOffensiveCombatCardDescription(2, 1, 0.5),
     strikes: 2,
     targets: 1,
@@ -73,6 +76,7 @@ export const cardTable: { [cardId: string]: CombatCardTemplate } = {
     name: "Defend",
     target: Target.ALLIES,
     icon: Shield,
+    iconStyle: { fill: barsTable.ironBar.iconStyle.fill },
     description: createDefensiveCombatCardDescription(1, 1),
     strikes: 0,
     targets: 1,
