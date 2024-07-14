@@ -2,7 +2,7 @@ import { Label } from "@/components/ui/label";
 
 export default function Logo({}: {}) {
   return (
-    <div className="flex flex-col h-32 px-8 w-64">
+    <div className="flex flex-col h-32 px-5 w-full">
       <Label className="font-extrabold text-white text-4xl">
         Enter
       </Label>

@@ -71,9 +71,7 @@ export default function SkillMenu({ skill }: { skill: Skill }) {
         </div>
       </Card>
       <div className="flex w-full pt-6 space-x-6 h-full overflow-hidden">
-        <div className="flex flex-shrink-0 w-[450px] h-full min-w-[400px]">
-          <TaskInfo task={task} skill={skill}></TaskInfo>
-        </div>
+        <TaskInfo task={task} skill={skill}></TaskInfo>
         <ScrollArea className="flex h-full w-full overflow-hidden pr-4">
           <div className="flex flex-col space-y-4 w-full h-full">
             {Object.entries(skill.tasks).map(([category, tasks]) => (

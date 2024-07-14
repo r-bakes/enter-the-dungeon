@@ -24,14 +24,15 @@ export const renderIcon = (
 ): React.ReactElement => {
   let Icon = icon;
 
-  let color = iconStyle.color ? iconStyle.color : "black"
-  let fill = iconStyle.fill ? iconStyle.fill : "none"
-  let fillOpacity = iconStyle.fillOpacity ? iconStyle.fillOpacity : 1
-  let strokeWidth = iconStyle.strokeWidth ? iconStyle.strokeWidth : 1
-  let strokeOpacity = iconStyle.strokeOpacity ? iconStyle.strokeOpacity : 1
-  
+  let color = iconStyle.color ? iconStyle.color : "black";
+  let fill = iconStyle.fill ? iconStyle.fill : "none";
+  let fillOpacity = iconStyle.fillOpacity ? iconStyle.fillOpacity : 1;
+  let strokeWidth = iconStyle.strokeWidth ? iconStyle.strokeWidth : 1;
+  let strokeOpacity = iconStyle.strokeOpacity ? iconStyle.strokeOpacity : 1;
+
   return (
     <Icon
+      className="shrink-0"
       fill={fill}
       fillOpacity={fillOpacity}
       color={color}

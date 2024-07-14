@@ -14,7 +14,7 @@ export default function generateLoot(lootTable: LootTable): Loot {
       currentWeight += data.weight;
       if (roll < currentWeight) {
         if (!(itemId in itemTable)) {
-          break
+          break;
         }
         loot[itemId] = Math.floor(
           Math.random() * (data.maxQuantity - data.minQuantity + 1) +
@@ -27,9 +27,12 @@ export default function generateLoot(lootTable: LootTable): Loot {
   return loot;
 }
 
-export function generateDropRates(
-  lootTable: LootTable
-): { item: Item; chance: number }[][] {
+export function generateDropRates(lootTable: LootTable): {
+  item: Item;
+  chance: number;
+  minQuantity: number;
+  maxQuantity: number;
+}[][] {
   let dropRates = [];
 
   for (const lootTableGroup in lootTable) {
@@ -38,13 +41,15 @@ export function generateDropRates(
 
     for (const itemId in lootTable[lootTableGroup]) {
       if (!(itemId in itemTable)) {
-        continue
+        continue;
       }
 
       let data = lootTable[lootTableGroup][itemId];
-     
+
       dropGroup.push({
         item: itemTable[itemId],
+        minQuantity: data.minQuantity,
+        maxQuantity: data.maxQuantity,
         chance: Math.floor((data.weight / totalWeight) * 100),
       });
     }

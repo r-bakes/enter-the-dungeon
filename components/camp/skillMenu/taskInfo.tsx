@@ -18,6 +18,10 @@ import { Task } from "@/data/skills/skills";
 import { itemTable } from "@/data/items/items";
 import { useCharacterEngineContext } from "@/engine/characterEngineContext";
 import { renderIcon } from "@/data/gameObject";
+import TaskDataEntry from "./taskDataEntry";
+import { Separator } from "@/components/ui/separator";
+import TaskProducesEntry from "./taskProducesEntry";
+import { TaskRequiresEntry } from "./taskRequiresEntry";
 
 export default function TaskInfo({
   skill,
@@ -33,15 +37,13 @@ export default function TaskInfo({
     workingTask,
   } = useCampEngineContext();
   const { character } = useCharacterEngineContext();
-
-  let content = null;
   if (!task) {
-    content = (
-      <div className="flex w-full h-full justify-center items-center">
+    return (
+      <Card className="flex flex-col h-full w-72 shrink-0 justify-center items-center">
         <Label className="flex text-2xl text-muted-foreground font-extralight h-10">
           Select a task
         </Label>
-      </div>
+      </Card>
     );
   } else {
     let taskProduction = generateDropRates(task.lootTable);
@@ -72,146 +74,48 @@ export default function TaskInfo({
       }
     }
 
-    content = (
-      <div className="flex flex-col w-full h-full ">
-        <CardHeader className="flex flex-row">
-          <div className="w-[56px] h-[56px]">
-            {renderIcon(task.icon, {
-              ...task.iconStyle,
-              size: 56,
-              strokeWidth: 0.5,
-              strokeOpacity: 0.5,
-              fillOpacity: 0.5,
-            })}
-          </div>
-          <div className="flex pl-6 flex-col">
+    return (
+      <Card className="flex flex-col h-full w-72 shrink-0">
+        <CardHeader className="flex h-32 flex-row">
+          {renderIcon(task.icon, {
+            ...task.iconStyle,
+            size: 56,
+            strokeWidth: 0.5,
+            strokeOpacity: 0.5,
+            fillOpacity: 0.5,
+          })}
+          <div className="flex flex-col pl-4">
             <CardTitle>{task.name}</CardTitle>
             <CardDescription>{task.description}</CardDescription>
           </div>
         </CardHeader>
-        <CardContent>
-          <div className="flex flex-col w-full">
-            {task == workingTask ? (
-              <Progress
-                className="w-full h-4 rounded-sm"
-                value={(progress / task.durationSec) * 100}
-              ></Progress>
-            ) : (
-              <Progress className="w-full h-4 rounded-sm"></Progress>
-            )}
-            <CardDescription className="mt-2">Task Progress</CardDescription>
+        <CardContent className="flex flex-col gap-4">
+          <Progress
+            className="w-full h-4 rounded-sm"
+            value={
+              task === workingTask ? (progress / task.durationSec) * 100 : 0
+            }
+          ></Progress>
+          <Separator></Separator>
+          <div className="flex w-full items-center gap-4 justify-between">
+            <TaskDataEntry
+              data={task.durationSec}
+              label={"seconds"}
+            ></TaskDataEntry>
+            <div className="bg-black rounded-full w-1 h-1"></div>
+            <TaskDataEntry
+              data={task.experience}
+              label={"experience"}
+            ></TaskDataEntry>
           </div>
-          <div className="w-full mt-6 mb-2 border rounded-sm border-gray-700 border-b-[2px]"></div>
-          <div className="flex w-full py-2">
-            <div className="w-1/4 text-left">
-              <Label className="pointer-events-none">{task.durationSec}</Label>
-            </div>
-            <div className="w-full border-gray-800 mt-4 mb-2 border-dotted h-1 border-b-[2px]"></div>
-            <div className="w-3/4 text-right">
-              <Label className="font-light text-muted-foreground pointer-events-none">
-                seconds
-              </Label>
-            </div>
-          </div>
-          <div className="flex w-full py-2">
-            <div className="w-1/4 text-left">
-              <Label className="pointer-events-none">{task.experience} </Label>
-            </div>
-            <div className="w-full border-gray-800 mt-4 mb-2 border-dotted h-1 border-b-[2px]"></div>
-            <div className="w-3/4 text-right">
-              <Label className="font-light text-muted-foreground pointer-events-none">
-                experience
-              </Label>
-            </div>
-          </div>
-          <div className="flex w-full py-2">
-            <div className="flex w-full text-left space-x-1">
-              {taskProduction.map((lootGroup) => (
-                <div
-                  className={
-                    "flex " +
-                    (lootGroup.length > 1 ? "border rounded-sm px-1" : "")
-                  }
-                  key={lootGroup[0].item.id}
-                >
-                  {lootGroup.map((data) => (
-                    <div
-                      className="flex flex-col w-max min-w-[80px] text-center w-20 border rounded-sm items-center p-2"
-                      key={data.item.id}
-                    >
-                      <div className="w-[42px] h-[42px]">
-                        {renderIcon(data.item.icon, {
-                          ...data.item.iconStyle,
-                          size: 42,
-                          strokeWidth: 0.5,
-                          strokeOpacity: 0.5,
-                          fillOpacity: 0.5,
-                        })}
-                      </div>
-                      <Label className="text-xs text-muted-foreground">
-                        {data.item.name}
-                      </Label>
-                      <Label className="text-xs text-muted-foreground">
-                        {data.chance}%
-                      </Label>
-                    </div>
-                  ))}
-                </div>
-              ))}
-            </div>
-            <div className="w-3/4 text-right">
-              <Label className="font-light text-muted-foreground pointer-events-none">
-                produces
-              </Label>
-            </div>
-          </div>
-          {taskRequires ? (
-            <div className="flex w-full py-2">
-              <div className="flex w-full text-left">
-                {taskRequires.map((item) => (
-                  <div
-                    className="flex flex-col text-center w-max min-w-[80px] border rounded-sm items-center p-2 mr-2"
-                    key={item.item.id}
-                  >
-                    <div className="w-[42px] h-[42px]">
-                      {renderIcon(item.item.icon, {
-                        ...item.item.iconStyle,
-                        size: 42,
-                        strokeWidth: 0.5,
-                        strokeOpacity: 0.5,
-                        fillOpacity: 0.5,
-                      })}
-                    </div>
-                    <Label className="text-xs text-muted-foreground">
-                      {item.item.name}
-                    </Label>
-                    <div className="flex flex-col">
-                      <Label className="text-xs text-muted-foreground">
-                        {item.quantity}
-                      </Label>
-                      <div className="flex items-center justify-end w-full space-x-1">
-                        <Label className="text-xs text-muted-foreground">
-                          (
-                          {item.item.id in character.inventory
-                            ? character.inventory[item.item.id]
-                            : 0}
-                          )
-                        </Label>
-                        <Backpack size={15} strokeWidth={1}></Backpack>
-                      </div>
-                    </div>
-                  </div>
-                ))}
-              </div>
-              <div className="w-3/4 text-right">
-                <Label className="font-light text-muted-foreground pointer-events-none">
-                  requires
-                </Label>
-              </div>
-            </div>
-          ) : (
-            <></>
-          )}
+          <TaskProducesEntry
+            label={"produces"}
+            data={taskProduction}
+          ></TaskProducesEntry>
+          <TaskRequiresEntry
+            data={taskRequires}
+            label={"requires"}
+          ></TaskRequiresEntry>
         </CardContent>
         <CardFooter className="flex w-full grow items-end">
           <Button
@@ -245,8 +149,7 @@ export default function TaskInfo({
             </Button>
           )}
         </CardFooter>
-      </div>
+      </Card>
     );
   }
-  return <Card className="flex flex-col w-full h-full p-6">{content}</Card>;
 }
