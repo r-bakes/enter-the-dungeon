@@ -19,6 +19,7 @@ const mineCopperOre: Task = {
       geode: { weight: 5, minQuantity: 1, maxQuantity: 1 },
     },
   },
+  requires: {},
 };
 const mineTinOre: Task = {
   id: "mineTinOre",
@@ -36,6 +37,7 @@ const mineTinOre: Task = {
       geode: { weight: 5, minQuantity: 1, maxQuantity: 1 },
     },
   },
+  requires: {},
 };
 const mineCoal: Task = {
   id: "mineCoal",
@@ -49,6 +51,7 @@ const mineCoal: Task = {
   lootTable: {
     ore: { coal: { weight: 1, minQuantity: 1, maxQuantity: 1 } },
   },
+  requires: {},
 };
 const mineIronOre: Task = {
   id: "mineIronOre",
@@ -66,6 +69,7 @@ const mineIronOre: Task = {
       geode: { weight: 5, minQuantity: 1, maxQuantity: 1 },
     },
   },
+  requires: {},
 };
 const mineSilverOre: Task = {
   id: "mineSilverOre",
@@ -83,6 +87,7 @@ const mineSilverOre: Task = {
       geode: { weight: 5, minQuantity: 1, maxQuantity: 1 },
     },
   },
+  requires: {},
 };
 const mineGoldOre: Task = {
   id: "mineGoldOre",
@@ -100,6 +105,7 @@ const mineGoldOre: Task = {
       geode: { weight: 5, minQuantity: 1, maxQuantity: 1 },
     },
   },
+  requires: {},
 };
 const cutGeode: Task = {
   id: "cutGeode",

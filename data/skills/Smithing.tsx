@@ -17,7 +17,7 @@ import { barsTable } from "../items/bars";
 
 const smithBronzeDagger: Task = {
   id: "smithBronzeDagger",
-  name: "Bronze Dagger",
+  name: "Dagger",
   description: "Smith a dagger.",
   icon: Slice,
   iconStyle: { fill: mineralsTable.copperOre.iconStyle.fill },
@@ -31,7 +31,7 @@ const smithBronzeDagger: Task = {
 };
 const smithBronzeSword: Task = {
   id: "smithBronzeSword",
-  name: "Bronze Sword",
+  name: "Sword",
   description: "Smith a sword.",
   icon: Sword,
   iconStyle: { fill: mineralsTable.copperOre.iconStyle.fill },
@@ -45,7 +45,7 @@ const smithBronzeSword: Task = {
 };
 const smithBronzeShield: Task = {
   id: "smithBronzeShield",
-  name: "Bronze Shield",
+  name: "Shield",
   description: "Smith a shield.",
   icon: Shield,
   iconStyle: { fill: mineralsTable.copperOre.iconStyle.fill },
@@ -59,7 +59,7 @@ const smithBronzeShield: Task = {
 };
 const smithBronzeGreatSword: Task = {
   id: "smithBronzeGreatSword",
-  name: "Bronze Great Sword",
+  name: "Great Sword",
   description: "Smith a great sword.",
   icon: Sword,
   iconStyle: { fill: mineralsTable.copperOre.iconStyle.fill },
@@ -73,7 +73,7 @@ const smithBronzeGreatSword: Task = {
 };
 const smithBronzeHelmet: Task = {
   id: "smithBronzeHelmet",
-  name: "Bronze Helmet",
+  name: "Helmet",
   description: "Smith a helmet.",
   icon: HardHat,
   iconStyle: { fill: mineralsTable.copperOre.iconStyle.fill },
@@ -87,7 +87,7 @@ const smithBronzeHelmet: Task = {
 };
 const smithBronzeChestplate: Task = {
   id: "smithBronzeChestplate",
-  name: "Bronze Chestplate",
+  name: "Chestplate",
   description: "Smith a chestplate.",
   icon: Shirt,
   iconStyle: { fill: mineralsTable.copperOre.iconStyle.fill },
@@ -101,7 +101,7 @@ const smithBronzeChestplate: Task = {
 };
 const smithBronzeBelt: Task = {
   id: "smithBronzeBelt",
-  name: "Bronze Belt",
+  name: "Belt",
   description: "Smith a belt.",
   icon: Tangent,
   iconStyle: { fill: mineralsTable.copperOre.iconStyle.fill },
@@ -115,8 +115,8 @@ const smithBronzeBelt: Task = {
 };
 const smithBronzePlateleggings: Task = {
   id: "smithBronzePlatelegs",
-  name: "Bronze Plate Leggings",
-  description: "Smith plateleggings.",
+  name: "Plate Leggings",
+  description: "Smith plate leggings.",
   icon: ToyBrick,
   iconStyle: { fill: mineralsTable.copperOre.iconStyle.fill },
   durationSec: 10,
@@ -131,7 +131,7 @@ const smithBronzePlateleggings: Task = {
 };
 const smithBronzeGauntlets: Task = {
   id: "smithBronzeGauntlets",
-  name: "Bronze Gauntlets",
+  name: "Gauntlets",
   description: "Smith gauntlets.",
   icon: Hand,
   iconStyle: { fill: mineralsTable.copperOre.iconStyle.fill },
@@ -147,7 +147,7 @@ const smithBronzeGauntlets: Task = {
 };
 const smithIronSword: Task = {
   id: "smithIronSword",
-  name: "Iron Sword",
+  name: "Sword",
   description: "Smith a sword.",
   icon: Sword,
   iconStyle: { fill: mineralsTable.ironOre.iconStyle.fill },
@@ -161,7 +161,7 @@ const smithIronSword: Task = {
 };
 const smithIronShield: Task = {
   id: "smithIronShield",
-  name: "Iron Shield",
+  name: "Shield",
   description: "Smith a shield.",
   icon: Shield,
   iconStyle: { fill: mineralsTable.ironOre.iconStyle.fill },
@@ -175,7 +175,7 @@ const smithIronShield: Task = {
 };
 const smithIronGreatSword: Task = {
   id: "smithIronGreatsword",
-  name: "Iron Great Sword",
+  name: "Great Sword",
   description: "Smith a great sword.",
   icon: Sword,
   iconStyle: { fill: mineralsTable.ironOre.iconStyle.fill },
@@ -189,7 +189,7 @@ const smithIronGreatSword: Task = {
 };
 const smithSteelSword: Task = {
   id: "smithSteelSword",
-  name: "Steel Sword",
+  name: "Sword",
   description: "Smith a sword.",
   icon: Sword,
   iconStyle: { fill: barsTable.steelBar.iconStyle.fill },
@@ -203,7 +203,7 @@ const smithSteelSword: Task = {
 };
 const smithMithrilSword: Task = {
   id: "smithMithrilSword",
-  name: "Mithril Sword",
+  name: "Sword",
   description: "Smith a sword.",
   icon: Sword,
   iconStyle: { fill: mineralsTable.mithrilOre.iconStyle.fill },
@@ -217,7 +217,7 @@ const smithMithrilSword: Task = {
 };
 const smithAdamantSword: Task = {
   id: "smithAdamantSword",
-  name: "Adamant Sword",
+  name: "Sword",
   description: "Smith a sword.",
   icon: Sword,
   iconStyle: { fill: mineralsTable.adamantiteOre.iconStyle.fill },

@@ -43,18 +43,14 @@ export default function Page({}) {
   menus[inventory.id] = <InventoryMenu></InventoryMenu>;
 
   return (
-    <div className="flex w-full h-full min-w-max min-h-max">
-      <CharacterEngineProvider>
-        <CampEngineProvider>
-          <MenuSelect
-            selectedMenu={selectedMenu}
-            setSelectedMenu={setSelectedMenu}
-          ></MenuSelect>
-          <div className="flex h-full w-full py-10">
-            {menus[selectedMenu.id]}
-          </div>
-        </CampEngineProvider>
-      </CharacterEngineProvider>
-    </div>
+    <CharacterEngineProvider>
+      <CampEngineProvider>
+        <MenuSelect
+          selectedMenu={selectedMenu}
+          setSelectedMenu={setSelectedMenu}
+        ></MenuSelect>
+        <div className="flex h-full w-full py-10">{menus[selectedMenu.id]}</div>
+      </CampEngineProvider>
+    </CharacterEngineProvider>
   );
 }

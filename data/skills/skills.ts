@@ -8,8 +8,8 @@ export type Task = {
   durationSec: number;
   experience: number;
   requiredLevel: number;
-  lootTable?: LootTable;
-  requires?: { [itemId: string]: number };
+  lootTable: LootTable;
+  requires: { [itemId: string]: number };
 } & GameObject;
 
 export type Skill = {

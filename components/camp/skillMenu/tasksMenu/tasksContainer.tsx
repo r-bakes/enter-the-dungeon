@@ -1,20 +1,20 @@
-import { ScrollArea, ScrollBar } from "@/components/ui/scroll-area";
 import TaskButton from "./taskButton";
 import LockedTaskButton from "./lockedTaskButton";
 import { Task } from "@/data/skills/skills";
+import { ScrollArea, ScrollBar } from "@/components/ui/scroll-area";
 
-export default function TaskContainer({
+export default function TasksContainer({
   skillLevel,
   tasks,
   setTask,
-}: {
+}: Readonly<{
   skillLevel: number;
   tasks: Task[];
   setTask: React.Dispatch<React.SetStateAction<Task | null>>;
-}) {
+}>) {
   return (
-    <ScrollArea className="flex h-full w-80 min-w-full">
-      <div className="flex w-full mb-4 space-x-4">
+    <ScrollArea className="flex w-full h-full">
+      <div className="grid grid-cols-4 gap-2 w-full">
         {tasks.map((task) =>
           skillLevel >= task.requiredLevel ? (
             <TaskButton
@@ -27,7 +27,7 @@ export default function TaskContainer({
           )
         )}
       </div>
-      <ScrollBar orientation="horizontal" />
+      <ScrollBar orientation="vertical" />
     </ScrollArea>
   );
 }

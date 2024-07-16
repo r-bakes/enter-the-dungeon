@@ -7,24 +7,22 @@ import { Backpack } from "lucide-react";
 export function TaskRequiresEntry({
   data,
   label,
-}: {
-  data:
-    | {
-        item: Item;
-        quantity: number;
-        haveEnough: boolean;
-      }[]
-    | null;
+}: Readonly<{
+  data: {
+    item: Item;
+    quantity: number;
+    haveEnough: boolean;
+  }[];
   label: string;
-}) {
+}>) {
   const { character } = useCharacterEngineContext();
-  if (!data) {
+  if (data.length === 0) {
     return <></>;
   }
 
   return (
     <div className="flex flex-col gap-1">
-      <Label className="font-light text-muted-foreground mb-1">requires</Label>
+      <Label className="font-light text-muted-foreground mb-1">{label}</Label>
       {data.map((item) => (
         <div
           className="flex w-full border rounded-sm justify-between p-2"
@@ -38,7 +36,7 @@ export function TaskRequiresEntry({
               strokeOpacity: 0.5,
               fillOpacity: 0.5,
             })}
-            <Label className="text-xs text-muted-foreground">
+            <Label className="text-xs">
               {item.quantity}
             </Label>
             <Label className="text-xs font-extralight w-max text-muted-foreground">

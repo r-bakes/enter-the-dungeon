@@ -9,7 +9,7 @@ export default function TaskDataEntry({
 }>) {
   return (
     <div className="flex py-2 gap-2">
-      <Label className="">{data}</Label>
+      <Label>{data}</Label>
       <Label className="font-light text-muted-foreground ">{label}</Label>
     </div>
   );

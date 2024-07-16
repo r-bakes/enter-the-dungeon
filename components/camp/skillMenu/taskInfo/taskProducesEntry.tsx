@@ -39,7 +39,7 @@ export default function TaskProducesEntry({
                     strokeOpacity: 0.5,
                     fillOpacity: 0.5,
                   })}
-                  <Label className="text-xs text-muted-foreground">
+                  <Label className="text-xs">
                     {data.minQuantity === data.maxQuantity
                       ? data.minQuantity
                       : data.minQuantity + "-" + data.maxQuantity}
@@ -48,7 +48,7 @@ export default function TaskProducesEntry({
                     {data.item.name}
                   </Label>
                 </div>
-                <Label className="text-xs text-muted-foreground">
+                <Label className="text-xs w-max text-muted-foreground">
                   {data.chance}%
                 </Label>
               </div>
