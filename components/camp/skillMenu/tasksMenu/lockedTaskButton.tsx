@@ -9,15 +9,15 @@ import { Task } from "@/data/skills/skills";
 
 export default function LockedTaskButton({ task }: { task: Task }) {
   return (
-    <Card className="flex w-[240px] h-[120px]">
+    <Card className="flex w-full min-w-max">
       <Button
-        className="flex flex-col  w-full h-full justify-center items-center p-4"
+        className="flex h-full w-full flex-col items-center justify-center p-4"
         disabled={true}
         variant="ghost"
       >
         <CardHeader className="flex flex-col p-0">
           <CardTitle className="text-xl">Locked</CardTitle>
-          <CardDescription className="text-xs text-left">
+          <CardDescription className="text-left text-xs">
             Requires level {task.requiredLevel}
           </CardDescription>
         </CardHeader>

@@ -47,7 +47,7 @@ const mineCoal: Task = {
   iconStyle: { fill: mineralsTable.coal.iconStyle.fill },
   durationSec: 2,
   experience: 5,
-  requiredLevel: 5,
+  requiredLevel: 1,
   lootTable: {
     ore: { coal: { weight: 1, minQuantity: 1, maxQuantity: 1 } },
   },
@@ -97,9 +97,63 @@ const mineGoldOre: Task = {
   iconStyle: { fill: mineralsTable.goldOre.iconStyle.fill },
   durationSec: 2,
   experience: 20,
-  requiredLevel: 20,
+  requiredLevel: 30,
   lootTable: {
-    ore: { silverOre: { weight: 1, minQuantity: 1, maxQuantity: 1 } },
+    ore: { goldOre: { weight: 1, minQuantity: 1, maxQuantity: 1 } },
+    geode: {
+      _: { weight: 95, minQuantity: 0, maxQuantity: 0 },
+      geode: { weight: 5, minQuantity: 1, maxQuantity: 1 },
+    },
+  },
+  requires: {},
+};
+const mineMithrilOre: Task = {
+  id: "mineMithrilOre",
+  name: "Mine Mithril",
+  description: "Mine mithril ore.",
+  icon: Mountain,
+  iconStyle: { fill: mineralsTable.mithrilOre.iconStyle.fill },
+  durationSec: 2,
+  experience: 20,
+  requiredLevel: 30,
+  lootTable: {
+    ore: { mithrilOre: { weight: 1, minQuantity: 1, maxQuantity: 1 } },
+    geode: {
+      _: { weight: 95, minQuantity: 0, maxQuantity: 0 },
+      geode: { weight: 5, minQuantity: 1, maxQuantity: 1 },
+    },
+  },
+  requires: {},
+};
+const minePlatinumOre: Task = {
+  id: "minePlatinumOre",
+  name: "Mine Platinum",
+  description: "Mine platinum ore.",
+  icon: Mountain,
+  iconStyle: { fill: mineralsTable.mithrilOre.iconStyle.fill },
+  durationSec: 2,
+  experience: 20,
+  requiredLevel: 50,
+  lootTable: {
+    ore: { platinumOre: { weight: 1, minQuantity: 1, maxQuantity: 1 } },
+    geode: {
+      _: { weight: 95, minQuantity: 0, maxQuantity: 0 },
+      geode: { weight: 5, minQuantity: 1, maxQuantity: 1 },
+    },
+  },
+  requires: {},
+};
+const mineAdamantiteOre: Task = {
+  id: "mineAdamantiteOre",
+  name: "Mine Adamantite",
+  description: "Mine adamantite ore.",
+  icon: Mountain,
+  iconStyle: { fill: mineralsTable.adamantiteOre.iconStyle.fill },
+  durationSec: 2,
+  experience: 20,
+  requiredLevel: 50,
+  lootTable: {
+    ore: { platinumOre: { weight: 1, minQuantity: 1, maxQuantity: 1 } },
     geode: {
       _: { weight: 95, minQuantity: 0, maxQuantity: 0 },
       geode: { weight: 5, minQuantity: 1, maxQuantity: 1 },
@@ -140,6 +194,9 @@ export const prospecting: Skill = {
       mineIronOre,
       mineSilverOre,
       mineGoldOre,
+      mineMithrilOre,
+      minePlatinumOre,
+      mineAdamantiteOre,
     ],
     crafting: [cutGeode],
   },

@@ -26,9 +26,9 @@ export default function MenuSelect({
   let skillMenus = [prospecting, smithing, agility, crafting, enchanting];
 
   return (
-    <div className={"flex flex-col w-60 h-full min-h-max py-10 bg-red-700/80"}>
+    <div className={"flex h-full w-60 shrink-0 flex-col bg-red-700/80 py-10"}>
       <Logo></Logo>
-      <Label className="text-xs text-muted-foreground px-5 pt-4 pb-2 text-white">
+      <Label className="px-5 pb-2 pt-4 text-xs text-muted-foreground text-white">
         Character
       </Label>
       <MenuContainer
@@ -36,7 +36,7 @@ export default function MenuSelect({
         selectedMenu={selectedMenu}
         setSelectedMenu={setSelectedMenu}
       ></MenuContainer>
-      <Label className="text-xs text-muted-foreground px-5 pt-4 pb-2 text-white">
+      <Label className="px-5 pb-2 pt-4 text-xs text-muted-foreground text-white">
         Combat
       </Label>
       <MenuContainer
@@ -44,7 +44,7 @@ export default function MenuSelect({
         selectedMenu={selectedMenu}
         setSelectedMenu={setSelectedMenu}
       ></MenuContainer>
-      <Label className="text-xs text-muted-foreground px-5 pt-4 pb-2 text-white">
+      <Label className="px-5 pb-2 pt-4 text-xs text-muted-foreground text-white">
         Skills
       </Label>
       <MenuContainer

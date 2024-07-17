@@ -15,17 +15,17 @@ export default function SkillMenu({ skill }: Readonly<{ skill: Skill }>) {
   const [task, setTask] = useState<Task | null>(
     workingTask != null && getAllTasks(skill.tasks).includes(workingTask)
       ? workingTask
-      : null
+      : null,
   );
 
   return (
-    <div className="flex flex-col px-8 h-full w-full">
+    <div className="flex h-full w-full flex-col overflow-y-scroll px-8">
       <SkillHeader
         skill={skill}
         skillLevel={character.skills[skill.id].level}
         skillExperience={character.skills[skill.id].experience}
       ></SkillHeader>
-      <div className="flex w-full pt-6 gap-6 h-full">
+      <div className="flex h-[calc(100%-160px)] w-full grow gap-6 pt-6">
         <TaskInfo task={task} skill={skill}></TaskInfo>
         <TasksMenu
           tasks={skill.tasks}

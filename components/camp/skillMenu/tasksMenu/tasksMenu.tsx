@@ -1,6 +1,14 @@
+import {
+  Select,
+  SelectContent,
+  SelectGroup,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
 import { SkillTasks, Task } from "@/data/skills/skills";
+import React from "react";
 import TasksContainer from "./tasksContainer";
-import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
 
 const formatCapitalCase = (data: string): string => {
   return data
@@ -18,33 +26,36 @@ export default function TasksMenu({
   skillLevel: number;
   setTask: React.Dispatch<React.SetStateAction<Task | null>>;
 }>) {
+  const [selectedTasksGroup, setSelectedTasks] = React.useState(
+    Object.values(tasks)[0],
+  );
+
   return (
-    <Tabs
-      className="flex flex-col h-full w-full"
-      defaultValue={Object.keys(tasks)[0]}
-    >
-      <TabsList
-        className={"grid w-full grid-cols-" + Object.keys(tasks).length}
+    <div className="flex h-full w-full flex-col gap-2">
+      <Select
+        onValueChange={(value) => {
+          setSelectedTasks(tasks[value]);
+        }}
+        defaultValue={Object.keys(tasks)[0]}
       >
-        {Object.keys(tasks).map((category) => (
-          <TabsTrigger className="w-full" key={category + "-trigger"} value={category}>
-            {formatCapitalCase(category)}
-          </TabsTrigger>
-        ))}
-      </TabsList>
-      {Object.entries(tasks).map(([category, tasks]) => (
-        <TabsContent
-          className="w-full pt-2"
-          key={category + "-content"}
-          value={category}
-        >
-          <TasksContainer
-            skillLevel={skillLevel}
-            tasks={tasks}
-            setTask={setTask}
-          ></TasksContainer>
-        </TabsContent>
-      ))}
-    </Tabs>
+        <SelectTrigger className="w-full">
+          <SelectValue></SelectValue>
+        </SelectTrigger>
+        <SelectContent>
+          <SelectGroup>
+            {Object.keys(tasks).map((category) => (
+              <SelectItem key={category + "-select-item"} value={category}>
+                {formatCapitalCase(category)}
+              </SelectItem>
+            ))}
+          </SelectGroup>
+        </SelectContent>
+      </Select>
+      <TasksContainer
+        skillLevel={skillLevel}
+        tasks={selectedTasksGroup}
+        setTask={setTask}
+      ></TasksContainer>
+    </div>
   );
 }

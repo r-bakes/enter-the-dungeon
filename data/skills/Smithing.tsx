@@ -307,11 +307,25 @@ const smeltMithrilBar: Task = {
   iconStyle: { fill: mineralsTable.mithrilOre.iconStyle.fill },
   durationSec: 2,
   experience: 90,
-  requiredLevel: 50,
+  requiredLevel: 30,
   lootTable: {
     bar: { mithrilBar: { weight: 1, minQuantity: 1, maxQuantity: 1 } },
   },
   requires: { mithrilOre: 5, coal: 10 },
+};
+const smeltPlatinumBar: Task = {
+  id: "smeltPlatinumBar",
+  name: "Platinum Bar",
+  description: "Smelt a platinum bar.",
+  icon: RectangleVertical,
+  iconStyle: { fill: mineralsTable.platinumOre.iconStyle.fill },
+  durationSec: 2,
+  experience: 100,
+  requiredLevel: 40,
+  lootTable: {
+    bar: { platinumBar: { weight: 1, minQuantity: 1, maxQuantity: 1 } },
+  },
+  requires: { platinumOre: 5, coal: 15 },
 };
 const smeltAdamantBar: Task = {
   id: "smeltAdamantBar",
@@ -321,7 +335,7 @@ const smeltAdamantBar: Task = {
   iconStyle: { fill: mineralsTable.adamantiteOre.iconStyle.fill },
   durationSec: 2,
   experience: 100,
-  requiredLevel: 30,
+  requiredLevel: 40,
   lootTable: {
     bar: { adamantBar: { weight: 1, minQuantity: 1, maxQuantity: 1 } },
   },
@@ -341,6 +355,7 @@ export const smithing: Skill = {
       smeltSilverBar,
       smeltGoldBar,
       smeltMithrilBar,
+      smeltPlatinumBar,
       smeltAdamantBar,
     ],
     "bronze smithing": [

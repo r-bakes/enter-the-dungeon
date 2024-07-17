@@ -18,14 +18,14 @@ export default function TaskButton({
   onClick: React.Dispatch<React.SetStateAction<any>>;
 }>) {
   return (
-    <Card className="flex w-[240px] h-[120px]">
+    <Card className="flex w-full min-w-max">
       <Button
-        className="flex flex-col  w-full h-full items-start justify-start py-4"
+        className="flex h-full w-full flex-col items-start justify-start py-4"
         onClick={onClick}
         variant="ghost"
       >
-        <CardHeader className="flex w-full flex-col p-0">
-          <div className="flex flex-row w-full h-full space-x-3">
+        <CardHeader className="flex w-full flex-row items-center justify-between gap-6 p-0">
+          <div className="flex h-full flex-row gap-4">
             {renderIcon(task.icon, {
               ...task.iconStyle,
               size: 40,
@@ -33,28 +33,28 @@ export default function TaskButton({
               strokeOpacity: 0.5,
               fillOpacity: 0.5,
             })}
-            <div className="flex flex-col text-left">
+            <div className="flex h-full flex-col text-left">
               <CardTitle className="text-base">{task.name}</CardTitle>
-              <CardDescription className="text-xs text-left p-0">
+              <CardDescription className="p-0 text-left text-xs">
                 {task.description}
               </CardDescription>
             </div>
           </div>
+          <div className="flex h-full flex-col">
+            <div className="flex w-full gap-1">
+              <Label className="text-xs">{task.durationSec}</Label>
+              <Label className="text-xs font-extralight text-muted-foreground">
+                seconds
+              </Label>
+            </div>
+            <div className="flex w-full gap-1">
+              <Label className="text-xs">{task.experience} </Label>
+              <Label className="text-xs font-extralight text-muted-foreground">
+                experience
+              </Label>
+            </div>
+          </div>
         </CardHeader>
-        <CardContent className="flex flex-col gap-1 p-0 pt-2 w-full">
-          <div className="flex gap-1 w-full">
-            <Label className="text-xs">{task.durationSec}</Label>
-            <Label className="text-xs font-extralight text-muted-foreground">
-              seconds
-            </Label>
-          </div>
-          <div className="flex gap-1 w-full">
-            <Label className="text-xs">{task.experience} </Label>
-            <Label className="text-xs font-extralight text-muted-foreground">
-              experience
-            </Label>
-          </div>
-        </CardContent>
       </Button>
     </Card>
   );

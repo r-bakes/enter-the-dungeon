@@ -13,8 +13,8 @@ export default function TasksContainer({
   setTask: React.Dispatch<React.SetStateAction<Task | null>>;
 }>) {
   return (
-    <ScrollArea className="flex w-full h-full">
-      <div className="grid grid-cols-4 gap-2 w-full">
+    <ScrollArea>
+      <div className="flex flex-col w-full gap-2">
         {tasks.map((task) =>
           skillLevel >= task.requiredLevel ? (
             <TaskButton
@@ -24,7 +24,7 @@ export default function TasksContainer({
             ></TaskButton>
           ) : (
             <LockedTaskButton task={task} key={task.name}></LockedTaskButton>
-          )
+          ),
         )}
       </div>
       <ScrollBar orientation="vertical" />

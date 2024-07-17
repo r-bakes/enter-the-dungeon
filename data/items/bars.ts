@@ -52,10 +52,19 @@ export const barsTable: { [barId: string]: Item } = {
   mithrilBar: {
     id: "mithrilBar",
     name: "Mithril Bar",
-    description: "a Mithril bar.",
+    description: "a mithril bar.",
     value: 1,
     icon: RectangleVertical,
     iconStyle: { fill: mineralsTable.mithrilOre.iconStyle.fill },
+    type: ItemType.TRADEGOODS,
+  },
+  platinumBar: {
+    id: "platinumBar",
+    name: "Platinum Bar",
+    description: "a platinum bar.",
+    value: 1,
+    icon: RectangleVertical,
+    iconStyle: { fill: mineralsTable.platinumOre.iconStyle.fill },
     type: ItemType.TRADEGOODS,
   },
   adamantBar: {

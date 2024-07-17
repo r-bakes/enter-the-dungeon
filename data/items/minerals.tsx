@@ -3,7 +3,6 @@ import { Mountain } from "lucide-react";
 import { Gem } from "lucide-react";
 import { Item, ItemType } from "./types";
 
-// const borderColor = "hsl(214.3 31.8% 91.4%)";
 
 export const mineralsTable: { [mineralId: string]: Item } = {
   ironOre: {
@@ -103,6 +102,15 @@ export const mineralsTable: { [mineralId: string]: Item } = {
     value: 1,
     icon: Mountain,
     iconStyle: { fill: "#5C88C4" },
+    type: ItemType.MATERIALS,
+  },
+  platinumOre: {
+    id: "platinumOre",
+    name: "Platinum Ore",
+    description: "a lump of platinum ore.",
+    value: 1,
+    icon: Mountain,
+    iconStyle: { fill: "#CAF4FF" },
     type: ItemType.MATERIALS,
   },
   adamantiteOre: {

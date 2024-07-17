@@ -24,7 +24,7 @@ import TaskProducesEntry from "./taskProducesEntry";
 import { TaskRequiresEntry } from "./taskRequiresEntry";
 
 const rootCardFormat =
-  "flex flex-col h-full w-72 shrink-0 justify-center items-center min-h-min min-w-min";
+  "flex flex-col h-full w-72 min-w-72 max-w-72 items-center";
 
 export default function TaskInfo({
   skill,
@@ -44,9 +44,11 @@ export default function TaskInfo({
   if (!task) {
     return (
       <Card className={rootCardFormat}>
-        <Label className="flex text-2xl text-muted-foreground font-extralight h-10">
-          Select a task
-        </Label>
+        <div className="flex h-full w-full items-center justify-center">
+          <Label className="h-10 text-2xl font-extralight text-muted-foreground">
+            Select a task
+          </Label>
+        </div>
       </Card>
     );
   }
@@ -78,7 +80,7 @@ export default function TaskInfo({
 
   return (
     <Card className={rootCardFormat}>
-      <CardHeader className="flex w-full h-32 flex-row">
+      <CardHeader className="flex h-32 w-full flex-row">
         {renderIcon(task.icon, {
           ...task.iconStyle,
           size: 56,
@@ -93,16 +95,16 @@ export default function TaskInfo({
       </CardHeader>
       <CardContent className="flex w-full flex-col gap-4">
         <Progress
-          className="w-full h-4 rounded-sm"
+          className="h-4 w-full rounded-sm"
           value={task === workingTask ? (progress / task.durationSec) * 100 : 0}
         ></Progress>
         <Separator></Separator>
-        <div className="flex w-full items-center gap-4 justify-between">
+        <div className="flex w-full items-center justify-between gap-4">
           <TaskDataEntry
             data={task.durationSec}
             label={"seconds"}
           ></TaskDataEntry>
-          <div className="bg-black rounded-full w-1 h-1"></div>
+          <div className="h-1 w-1 rounded-full bg-black"></div>
           <TaskDataEntry
             data={task.experience}
             label={"experience"}
@@ -119,7 +121,7 @@ export default function TaskInfo({
       </CardContent>
       <CardFooter className="flex w-full grow items-end">
         <Button
-          className="rounded-l-md rounded-r-none w-1/2 text-center"
+          className="w-1/2 rounded-l-md rounded-r-none text-center"
           disabled={!requirementsMet}
           onClick={() => {
             setWorkingSkill(skill);
@@ -130,7 +132,7 @@ export default function TaskInfo({
         </Button>
         {task == workingTask ? (
           <Button
-            className="rounded-r-md rounded-l-none w-1/2 text-center"
+            className="w-1/2 rounded-l-none rounded-r-md text-center"
             variant="destructive"
             onClick={() => {
               setWorkingSkill(null);
@@ -141,7 +143,7 @@ export default function TaskInfo({
           </Button>
         ) : (
           <Button
-            className="rounded-r-md rounded-l-none w-1/2 text-center"
+            className="w-1/2 rounded-l-none rounded-r-md text-center"
             variant="secondary"
             disabled={true}
           >
