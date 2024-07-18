@@ -49,12 +49,8 @@ export default function CombatDeckCard({
         variant="ghost"
       >
         <CardHeader className="w-full items-center">
-          {renderIcon(card.icon, {
+          {renderIcon(card.icon, 32, {
               ...card.iconStyle,
-              size: 32,
-              strokeWidth: 0.5,
-              strokeOpacity: 0.5,
-              fillOpacity: 0.5,
             })}
           <CardTitle className="text-lg">{card.name}</CardTitle>
           <CardDescription className="text-sm font-light">

@@ -19,23 +19,15 @@ export default function TaskComplete({
   const itemCard = (item: Item, amount: number) => {
     return (
       <div
-        className="flex items-center w-max h-min border rounded-md p-2 space-x-2"
+        className="flex h-min w-max items-center gap-2 rounded-md border p-2"
         key={item.id}
       >
-        <div className="flex w-min h-min">
-          {renderIcon(item.icon, {
-            ...item.iconStyle,
-            size: 24,
-            strokeWidth: 0.5,
-            strokeOpacity: 0.5,
-            fillOpacity: 0.5,
-          })}
-        </div>
+        {renderIcon(item.icon, 24, {
+          ...item.iconStyle,
+        })}
         <div className="flex flex-col">
-          <Label className="text-sm text-muted-foreground shrink-1">
-            {item.name}
-          </Label>
-          <div className="flex items-center space-x-1">
+          <Label className="text-sm text-muted-foreground">{item.name}</Label>
+          <div className="flex items-center gap-1">
             <Label className="text-sm text-muted-foreground">
               + {amount} ({character.inventory[item.id]})
             </Label>
@@ -47,15 +39,11 @@ export default function TaskComplete({
   };
 
   return (
-    <div className="flex w-full h-full flex-col space-y-3">
-      <div className="flex space-x-2 items-end">
+    <div className="flex h-full w-full flex-col space-y-3">
+      <div className="flex items-end space-x-2">
         <div className="h-[24px] w-[24px]">
-          {renderIcon(task.icon, {
+          {renderIcon(task.icon, 24, {
             ...task.iconStyle,
-            size: 24,
-            strokeWidth: 0.5,
-            strokeOpacity: 0.5,
-            fillOpacity: 0.5,
           })}
         </div>
         <Label className="text-sm font-semibold">{task.name}</Label>
@@ -66,7 +54,7 @@ export default function TaskComplete({
       </div>
       <div className="flex space-x-2">
         {Object.entries(loot).map(([itemId, number]) =>
-          itemCard(itemTable[itemId], number)
+          itemCard(itemTable[itemId], number),
         )}
       </div>
     </div>

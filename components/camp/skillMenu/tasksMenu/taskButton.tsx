@@ -26,12 +26,8 @@ export default function TaskButton({
       >
         <CardHeader className="flex w-full flex-row items-center justify-between gap-6 p-0">
           <div className="flex h-full flex-row gap-4">
-            {renderIcon(task.icon, {
+            {renderIcon(task.icon, 40, {
               ...task.iconStyle,
-              size: 40,
-              strokeWidth: 0.5,
-              strokeOpacity: 0.5,
-              fillOpacity: 0.5,
             })}
             <div className="flex h-full flex-col text-left">
               <CardTitle className="text-base">{task.name}</CardTitle>

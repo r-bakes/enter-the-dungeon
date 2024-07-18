@@ -14,7 +14,7 @@ export default function ExpeditionsMenu() {
   let icon = <DoorClosed id={"test"} size={512} strokeWidth={1.2}></DoorClosed>;
 
   return (
-    <div className="flex flex-col px-8 h-full w-full min-w-[800px]">
+    <div className="flex flex-col px-8 h-full w-full">
       <div className="flex flex-col w-full h-full justify-center items-center">
         {icon}
         <Button

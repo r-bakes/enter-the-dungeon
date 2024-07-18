@@ -18,6 +18,8 @@ import CharacterEngineProvider from "@/engine/characterEngineContext";
 import { agility } from "@/data/skills/agility";
 import { crafting } from "@/data/skills/crafting";
 import { enchanting } from "@/data/skills/enchanting";
+import { home } from "@/data/menus/home";
+import HomeMenu from "@/components/camp/homeMenu/homeMenu";
 
 export default function Page({}) {
   const [selectedMenu, setSelectedMenu] = React.useState<GameObject>(martial);
@@ -35,12 +37,13 @@ export default function Page({}) {
     (menu) =>
       (menus[menu.id] = (
         <SkillMenu key={menu.id} skill={selectedMenu as Skill}></SkillMenu>
-      ))
+      )),
   );
   menus[martial.id] = <DeckMenu></DeckMenu>;
   menus[magic.id] = <DeckMenu></DeckMenu>;
   menus[expeditions.id] = <ExpeditionsMenu></ExpeditionsMenu>;
   menus[inventory.id] = <InventoryMenu></InventoryMenu>;
+  menus[home.id] = <HomeMenu></HomeMenu>;
 
   return (
     <CharacterEngineProvider>
@@ -49,7 +52,7 @@ export default function Page({}) {
           selectedMenu={selectedMenu}
           setSelectedMenu={setSelectedMenu}
         ></MenuSelect>
-        <div className="flex h-full w-full py-10">{menus[selectedMenu.id]}</div>
+        <div className="flex h-full bg-slate-50 w-full py-10">{menus[selectedMenu.id]}</div>
       </CampEngineProvider>
     </CharacterEngineProvider>
   );

@@ -7,7 +7,7 @@ import {
   Character,
   Inventory,
   Loadout,
-  SkillLevel,
+  CharacterSkill,
   Skills,
 } from "../../data/character/character";
 import { itemTable } from "../../data/items/items";

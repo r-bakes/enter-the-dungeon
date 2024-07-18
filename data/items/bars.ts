@@ -2,6 +2,7 @@ import { RectangleVertical } from "lucide-react";
 import { Item } from "./types";
 import { ItemType } from "./types";
 import { mineralsTable } from "./minerals";
+import { TASK_AND_ITEM_ICON_STYLE } from "../configurations";
 
 export const barsTable: { [barId: string]: Item } = {
   bronzeBar: {
@@ -10,7 +11,10 @@ export const barsTable: { [barId: string]: Item } = {
     value: 1,
     description: "a bronze bar.",
     icon: RectangleVertical,
-    iconStyle: { fill: mineralsTable.copperOre.iconStyle.fill },
+    iconStyle: {
+      fill: mineralsTable.copperOre.iconStyle.fill,
+      ...TASK_AND_ITEM_ICON_STYLE,
+    },
     type: ItemType.TRADEGOODS,
   },
   ironBar: {
@@ -19,7 +23,10 @@ export const barsTable: { [barId: string]: Item } = {
     value: 1,
     description: "an iron bar.",
     icon: RectangleVertical,
-    iconStyle: { fill: mineralsTable.ironOre.iconStyle.fill },
+    iconStyle: {
+      fill: mineralsTable.ironOre.iconStyle.fill,
+      ...TASK_AND_ITEM_ICON_STYLE,
+    },
     type: ItemType.TRADEGOODS,
   },
   steelBar: {
@@ -28,7 +35,7 @@ export const barsTable: { [barId: string]: Item } = {
     description: "a steel bar.",
     value: 1,
     icon: RectangleVertical,
-    iconStyle: { fill: "#7C9D96" },
+    iconStyle: { fill: "#7C9D96", ...TASK_AND_ITEM_ICON_STYLE },
     type: ItemType.TRADEGOODS,
   },
   silverBar: {
@@ -37,7 +44,10 @@ export const barsTable: { [barId: string]: Item } = {
     description: "a silver bar.",
     value: 1,
     icon: RectangleVertical,
-    iconStyle: { fill: mineralsTable.silverOre.iconStyle.fill },
+    iconStyle: {
+      fill: mineralsTable.silverOre.iconStyle.fill,
+      ...TASK_AND_ITEM_ICON_STYLE,
+    },
     type: ItemType.TRADEGOODS,
   },
   goldBar: {
@@ -46,7 +56,10 @@ export const barsTable: { [barId: string]: Item } = {
     description: "a gold bar.",
     value: 1,
     icon: RectangleVertical,
-    iconStyle: { fill: mineralsTable.goldOre.iconStyle.fill },
+    iconStyle: {
+      fill: mineralsTable.goldOre.iconStyle.fill,
+      ...TASK_AND_ITEM_ICON_STYLE,
+    },
     type: ItemType.TRADEGOODS,
   },
   mithrilBar: {
@@ -55,7 +68,10 @@ export const barsTable: { [barId: string]: Item } = {
     description: "a mithril bar.",
     value: 1,
     icon: RectangleVertical,
-    iconStyle: { fill: mineralsTable.mithrilOre.iconStyle.fill },
+    iconStyle: {
+      fill: mineralsTable.mithrilOre.iconStyle.fill,
+      ...TASK_AND_ITEM_ICON_STYLE,
+    },
     type: ItemType.TRADEGOODS,
   },
   platinumBar: {
@@ -64,7 +80,10 @@ export const barsTable: { [barId: string]: Item } = {
     description: "a platinum bar.",
     value: 1,
     icon: RectangleVertical,
-    iconStyle: { fill: mineralsTable.platinumOre.iconStyle.fill },
+    iconStyle: {
+      fill: mineralsTable.platinumOre.iconStyle.fill,
+      ...TASK_AND_ITEM_ICON_STYLE,
+    },
     type: ItemType.TRADEGOODS,
   },
   adamantBar: {
@@ -73,7 +92,10 @@ export const barsTable: { [barId: string]: Item } = {
     description: "an adamant bar.",
     value: 1,
     icon: RectangleVertical,
-    iconStyle: { fill: mineralsTable.adamantiteOre.iconStyle.fill },
+    iconStyle: {
+      fill: mineralsTable.adamantiteOre.iconStyle.fill,
+      ...TASK_AND_ITEM_ICON_STYLE,
+    },
     type: ItemType.TRADEGOODS,
   },
 };

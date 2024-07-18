@@ -20,12 +20,12 @@ export default function InventoryMenu({}: {}) {
     }));
 
   return (
-    <div className="flex px-8 h-full grow min-w-[800px] space-x-2">
-      <Card className="flex flex-col w-80 space-y-1">
+    <div className="flex h-full grow gap-2 px-8">
+      <Card className="flex w-80 flex-col space-y-1">
         <CardHeader className="flex flex-col">
-          <div className="flex rows space-x-2 items-center">
+          <div className="rows flex items-center gap-2">
             <CircleDollarSign size={24} strokeWidth={1.5}></CircleDollarSign>
-            <Label className="text-xl h-full font-light">
+            <Label className="h-full text-xl font-light">
               {character.inventory.gold}
             </Label>
           </div>
@@ -37,7 +37,7 @@ export default function InventoryMenu({}: {}) {
       </Card>
       <Tabs
         defaultValue="equipment"
-        className="flex flex-col grow h-full space-y-2 "
+        className="flex h-full grow flex-col space-y-2"
       >
         <TabsList className="grid grow grid-cols-4">
           <TabsTrigger value="equipment">Equipment</TabsTrigger>
@@ -48,28 +48,28 @@ export default function InventoryMenu({}: {}) {
         <TabsContent className="h-full" value="equipment">
           <InventorySlots
             inventory={inventory.filter(
-              (data) => data.item.type == ItemType.EQUIPEMENT
+              (data) => data.item.type == ItemType.EQUIPEMENT,
             )}
           ></InventorySlots>
         </TabsContent>
         <TabsContent className="h-full" value="supplies">
           <InventorySlots
             inventory={inventory.filter(
-              (data) => data.item.type == ItemType.SUPPLIES
+              (data) => data.item.type == ItemType.SUPPLIES,
             )}
           ></InventorySlots>
         </TabsContent>
         <TabsContent className="h-full" value="trade-goods">
           <InventorySlots
             inventory={inventory.filter(
-              (data) => data.item.type == ItemType.TRADEGOODS
+              (data) => data.item.type == ItemType.TRADEGOODS,
             )}
           ></InventorySlots>
         </TabsContent>
         <TabsContent className="h-full" value="materials">
           <InventorySlots
             inventory={inventory.filter(
-              (data) => data.item.type == ItemType.MATERIALS
+              (data) => data.item.type == ItemType.MATERIALS,
             )}
           ></InventorySlots>
         </TabsContent>

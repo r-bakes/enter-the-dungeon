@@ -9,13 +9,7 @@ import {
 import { SkillTasks, Task } from "@/data/skills/skills";
 import React from "react";
 import TasksContainer from "./tasksContainer";
-
-const formatCapitalCase = (data: string): string => {
-  return data
-    .split(" ")
-    .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
-    .join(" ");
-};
+import { formatCapitalCase } from "@/engine/utils/formattingUtilities";
 
 export default function TasksMenu({
   tasks,
@@ -38,13 +32,17 @@ export default function TasksMenu({
         }}
         defaultValue={Object.keys(tasks)[0]}
       >
-        <SelectTrigger className="w-full">
+        <SelectTrigger className="w-full font-light text-muted-foreground">
           <SelectValue></SelectValue>
         </SelectTrigger>
         <SelectContent>
           <SelectGroup>
             {Object.keys(tasks).map((category) => (
-              <SelectItem key={category + "-select-item"} value={category}>
+              <SelectItem
+                className="font-light text-muted-foreground"
+                key={category + "-select-item"}
+                value={category}
+              >
                 {formatCapitalCase(category)}
               </SelectItem>
             ))}

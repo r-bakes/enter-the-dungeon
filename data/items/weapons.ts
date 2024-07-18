@@ -4,6 +4,7 @@ import { Shield, Slice, Sword } from "lucide-react";
 import { Slot } from "../character/character";
 import { mineralsTable } from "./minerals";
 import { barsTable } from "./bars";
+import { TASK_AND_ITEM_ICON_STYLE } from "../configurations";
 
 export const weaponTable: { [weaponId: string]: Equipment } = {
   bronzeDagger: {
@@ -11,7 +12,10 @@ export const weaponTable: { [weaponId: string]: Equipment } = {
     name: "Bronze Dagger",
     description: "A bronze dagger.",
     icon: Slice,
-    iconStyle: { fill: mineralsTable.copperOre.iconStyle.fill },
+    iconStyle: {
+      fill: mineralsTable.copperOre.iconStyle.fill,
+      ...TASK_AND_ITEM_ICON_STYLE,
+    },
     type: ItemType.EQUIPEMENT,
     value: 10,
     slots: [Slot.LEFTHAND, Slot.RIGHTHAND],
@@ -25,7 +29,10 @@ export const weaponTable: { [weaponId: string]: Equipment } = {
     name: "Bronze Sword",
     description: "A bronze sword.",
     icon: Sword,
-    iconStyle: { fill: mineralsTable.copperOre.iconStyle.fill },
+    iconStyle: {
+      fill: mineralsTable.copperOre.iconStyle.fill,
+      ...TASK_AND_ITEM_ICON_STYLE,
+    },
     type: ItemType.EQUIPEMENT,
     value: 10,
     slots: [Slot.LEFTHAND, Slot.RIGHTHAND],
@@ -39,7 +46,10 @@ export const weaponTable: { [weaponId: string]: Equipment } = {
     name: "Bronze Shield",
     description: "A bronze shield.",
     icon: Shield,
-    iconStyle: { fill: mineralsTable.copperOre.iconStyle.fill },
+    iconStyle: {
+      fill: mineralsTable.copperOre.iconStyle.fill,
+      ...TASK_AND_ITEM_ICON_STYLE,
+    },
     type: ItemType.EQUIPEMENT,
     value: 10,
     slots: [Slot.LEFTHAND, Slot.RIGHTHAND],
@@ -53,7 +63,10 @@ export const weaponTable: { [weaponId: string]: Equipment } = {
     name: "Bronze Great Sword",
     description: "A bronze great sword.",
     icon: Sword,
-    iconStyle: { fill: mineralsTable.copperOre.iconStyle.fill },
+    iconStyle: {
+      fill: mineralsTable.copperOre.iconStyle.fill,
+      ...TASK_AND_ITEM_ICON_STYLE,
+    },
     type: ItemType.EQUIPEMENT,
     value: 10,
     isTwoHanded: true,
@@ -68,7 +81,10 @@ export const weaponTable: { [weaponId: string]: Equipment } = {
     name: "Iron Sword",
     description: "An iron sword.",
     icon: Sword,
-    iconStyle: { fill: mineralsTable.ironOre.iconStyle.fill },
+    iconStyle: {
+      fill: mineralsTable.ironOre.iconStyle.fill,
+      ...TASK_AND_ITEM_ICON_STYLE,
+    },
     type: ItemType.EQUIPEMENT,
     value: 10,
     slots: [Slot.LEFTHAND, Slot.RIGHTHAND],
@@ -82,7 +98,10 @@ export const weaponTable: { [weaponId: string]: Equipment } = {
     name: "Iron Shield",
     description: "An iron shield.",
     icon: Shield,
-    iconStyle: { fill: mineralsTable.ironOre.iconStyle.fill },
+    iconStyle: {
+      fill: mineralsTable.ironOre.iconStyle.fill,
+      ...TASK_AND_ITEM_ICON_STYLE,
+    },
     type: ItemType.EQUIPEMENT,
     value: 10,
     slots: [Slot.LEFTHAND, Slot.RIGHTHAND],
@@ -96,7 +115,10 @@ export const weaponTable: { [weaponId: string]: Equipment } = {
     name: "Iron Great Sword",
     description: "An iron great sword.",
     icon: Sword,
-    iconStyle: { fill: mineralsTable.ironOre.iconStyle.fill },
+    iconStyle: {
+      fill: mineralsTable.ironOre.iconStyle.fill,
+      ...TASK_AND_ITEM_ICON_STYLE,
+    },
     type: ItemType.EQUIPEMENT,
     value: 10,
     isTwoHanded: true,
@@ -111,7 +133,10 @@ export const weaponTable: { [weaponId: string]: Equipment } = {
     name: "Steel Sword",
     description: "A steel sword.",
     icon: Sword,
-    iconStyle: { fill: barsTable.steelBar.iconStyle.fill },
+    iconStyle: {
+      fill: barsTable.steelBar.iconStyle.fill,
+      ...TASK_AND_ITEM_ICON_STYLE,
+    },
     type: ItemType.EQUIPEMENT,
     value: 10,
     slots: [Slot.LEFTHAND, Slot.RIGHTHAND],
@@ -125,7 +150,10 @@ export const weaponTable: { [weaponId: string]: Equipment } = {
     name: "Mithril Sword",
     description: "A mithril sword.",
     icon: Sword,
-    iconStyle: { fill: mineralsTable.mithrilOre.iconStyle.fill },
+    iconStyle: {
+      fill: mineralsTable.mithrilOre.iconStyle.fill,
+      ...TASK_AND_ITEM_ICON_STYLE,
+    },
     type: ItemType.EQUIPEMENT,
     value: 10,
     slots: [Slot.LEFTHAND, Slot.RIGHTHAND],
@@ -139,7 +167,10 @@ export const weaponTable: { [weaponId: string]: Equipment } = {
     name: "Adamant Sword",
     description: "An adamant sword.",
     icon: Sword,
-    iconStyle: { fill: mineralsTable.adamantiteOre.iconStyle.fill },
+    iconStyle: {
+      fill: mineralsTable.adamantiteOre.iconStyle.fill,
+      ...TASK_AND_ITEM_ICON_STYLE,
+    },
     type: ItemType.EQUIPEMENT,
     value: 10,
     slots: [Slot.LEFTHAND, Slot.RIGHTHAND],

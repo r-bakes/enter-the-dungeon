@@ -21,49 +21,41 @@ export default function ItemSlot({
   return (
     <Popover>
       <PopoverTrigger asChild>
-        <div className="w-16 h-[50px] text-center">
+        <div className="h-[50px] w-16 text-center">
           <Button
-            className="flex flex-col w-16 h-16 border rounded-md p-2"
+            className="flex h-16 w-16 flex-col rounded-md border p-2"
             variant="ghost"
           >
-            {renderIcon(item.icon, {
+            {renderIcon(item.icon, 48, {
               ...item.iconStyle,
-              size: 48,
-              strokeWidth: 0.5,
-              strokeOpacity: 0.5,
-              fillOpacity: 0.5,
             })}
           </Button>
           <Label className="text-sm">{quantity}</Label>
         </div>
       </PopoverTrigger>
-      <PopoverContent className="mt-1 flex flex-col h-min w-min">
-        <div className="flex flex-col items-start p-2 h-min text-center space-y-1 w-max bg-white">
+      <PopoverContent className="mt-1 flex h-min w-min flex-col">
+        <div className="flex h-min w-max flex-col items-start space-y-1 bg-white p-2 text-center">
           <div className="flex w-full space-x-2">
             <div className="flex h-full">
-              {renderIcon(item.icon, {
+              {renderIcon(item.icon, 35, {
                 ...item.iconStyle,
-                size: 35,
-                strokeWidth: 0.5,
-                strokeOpacity: 0.5,
-                fillOpacity: 0.5,
               })}
             </div>
             <div className="flex flex-col items-start text-left">
               <Label className="text-sm font-bold">{item.name}</Label>
-              <Label className="text-xs text-muted-foreground font-light">
+              <Label className="text-xs font-light text-muted-foreground">
                 {item.description}
               </Label>
             </div>
           </div>
-          <div className="flex py-2 w-full h-full">
+          <div className="flex h-full w-full py-2">
             {item.type == ItemType.EQUIPEMENT ? (
               <ItemSlotEquipment item={item as Equipment}></ItemSlotEquipment>
             ) : (
               <></>
             )}
           </div>
-          <div className="flex items-center justify-end mt-3 w-full space-x-1">
+          <div className="mt-3 flex w-full items-center justify-end space-x-1">
             <Label className="text-xs">{quantity}</Label>
             <Backpack size={20} strokeWidth={1}></Backpack>
           </div>

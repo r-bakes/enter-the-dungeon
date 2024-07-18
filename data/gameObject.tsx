@@ -10,35 +10,36 @@ export type GameObject = {
 };
 
 export type IconStyle = {
-  fill?: string;
-  fillOpacity?: number;
-  color?: string;
-  strokeWidth?: number;
-  strokeOpacity?: number;
-  size?: number;
+  fill: string;
+  fillOpacity: number;
+  strokeWidth: number;
+  strokeOpacity: number;
+  color: string;
+};
+
+export type IconStylePrimitive = {
+  fillOpacity: number;
+  strokeWidth: number;
+  strokeOpacity: number;
+  color: string;
 };
 
 export const renderIcon = (
   icon: LucideIcon,
-  iconStyle: IconStyle
+  size: number,
+  iconStyle: IconStyle,
 ): React.ReactElement => {
   let Icon = icon;
-
-  let color = iconStyle.color ? iconStyle.color : "black";
-  let fill = iconStyle.fill ? iconStyle.fill : "none";
-  let fillOpacity = iconStyle.fillOpacity ? iconStyle.fillOpacity : 1;
-  let strokeWidth = iconStyle.strokeWidth ? iconStyle.strokeWidth : 1;
-  let strokeOpacity = iconStyle.strokeOpacity ? iconStyle.strokeOpacity : 1;
 
   return (
     <Icon
       className="shrink-0"
-      fill={fill}
-      fillOpacity={fillOpacity}
-      color={color}
-      strokeWidth={strokeWidth}
-      strokeOpacity={strokeOpacity}
-      size={iconStyle.size}
+      fill={iconStyle.fill}
+      fillOpacity={iconStyle.fillOpacity}
+      color={iconStyle.color}
+      strokeWidth={iconStyle.strokeWidth}
+      strokeOpacity={iconStyle.strokeOpacity}
+      size={size}
     ></Icon>
   );
 };

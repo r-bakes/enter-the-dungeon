@@ -11,13 +11,12 @@ export type Equipment = {
   cards: CombatCardTemplate[];
   slots: Slot[];
 } & Item;
-
 export enum ItemType {
   EQUIPEMENT = "EQUIPMENT",
   SUPPLIES = "SUPPLIES",
   TRADEGOODS = "TRADEGOODS",
   MATERIALS = "MATERIALS",
-  HIDDEN = "HIDDEN"
+  HIDDEN = "HIDDEN",
 }
 export type Item = {
   type: ItemType;

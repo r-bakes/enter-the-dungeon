@@ -27,44 +27,36 @@ export default function EquipmentSlotContent({
   return (
     <Popover>
       <PopoverTrigger asChild>
-        <div className="w-14 h-14">
+        <div className="h-14 w-14">
           <Button
             className={
-              "flex flex-col w-full h-full p-2 rounded-none " + rounded
+              "flex h-full w-full flex-col rounded-none p-2 " + rounded
             }
             variant="ghost"
           >
-            {renderIcon(item.icon, {
+            {renderIcon(item.icon, 48, {
               ...item.iconStyle,
-              size: 56,
-              strokeWidth: 0.5,
-              strokeOpacity: 0.5,
-              fillOpacity: 0.5,
             })}
           </Button>
         </div>
       </PopoverTrigger>
-      <PopoverContent className="mt-1 flex flex-col h-min w-min">
-        <div className="flex flex-col items-start p-2 h-min text-center rounded-md space-y-1 w-max bg-white">
+      <PopoverContent className="mt-1 flex h-min w-min flex-col">
+        <div className="flex h-min w-max flex-col items-start space-y-1 rounded-md bg-white p-2 text-center">
           <div className="flex w-full space-x-2">
             <div className="flex h-full">
-              {renderIcon(item.icon, {
+              {renderIcon(item.icon, 35, {
                 ...item.iconStyle,
-                size: 35,
-                strokeWidth: 0.5,
-                strokeOpacity: 0.5,
-                fillOpacity: 0.5,
               })}
             </div>
             <div className="flex flex-col items-start text-left">
               <Label className="text-sm font-bold">{item.name}</Label>
-              <Label className="text-xs text-muted-foreground font-light">
+              <Label className="text-xs font-light text-muted-foreground">
                 {item.description}
               </Label>
             </div>
           </div>
-          <div className="flex py-2 w-full h-full">
-            <div className="flex flex-col w-full h-full">
+          <div className="flex h-full w-full py-2">
+            <div className="flex h-full w-full flex-col">
               {item.attackBonus > 0 ? (
                 <div className="flex justify-between">
                   <Label className="text-xs">{item.attackBonus}</Label>
@@ -97,7 +89,7 @@ export default function EquipmentSlotContent({
               )}
               <Button
                 onClick={() => unequip(slot)}
-                className="text-xs rounded-l-sm rounded-r-none mt-4 h-6"
+                className="mt-4 h-6 rounded-l-sm rounded-r-none text-xs"
               >
                 Unequip
               </Button>

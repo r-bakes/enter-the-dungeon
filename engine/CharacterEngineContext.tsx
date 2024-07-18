@@ -11,8 +11,6 @@ import {
   removeCardsByItem,
   removeItem,
 } from "./utils/charaterStateUtilities";
-import { itemTable } from "@/data/items/items";
-import { Equipment } from "@/data/items/types";
 
 type CharacterEngineContextContents = {
   character: Character;
@@ -21,11 +19,11 @@ type CharacterEngineContextContents = {
   unequipCard: (cardId: string) => void;
   equipItem: (itemId: string, slot: Slot) => void;
   unequip: (slot: Slot) => void;
-  getModifiers: () => { hp: number; atk: number; def: number, stamina: number };
+  getModifiers: () => { hp: number; atk: number; def: number; stamina: number };
 };
 
 const CharacterEngineContext = React.createContext(
-  {} as CharacterEngineContextContents
+  {} as CharacterEngineContextContents,
 );
 export const useCharacterEngineContext = () =>
   React.useContext(CharacterEngineContext);
@@ -50,9 +48,9 @@ export default function CharacterEngineProvider({
 
       character.deck.unequippedMartial.splice(
         character.deck.unequippedMartial.findIndex(
-          (unequippedCardId) => unequippedCardId === cardId
+          (unequippedCardId) => unequippedCardId === cardId,
         ),
-        1
+        1,
       );
       character.deck.equppedMartial.push(cardId);
       character.deck.equppedMartial.sort();
@@ -68,9 +66,9 @@ export default function CharacterEngineProvider({
 
       character.deck.unequippedMagic.splice(
         character.deck.unequippedMagic.findIndex(
-          (unequippedCardId) => unequippedCardId === cardId
+          (unequippedCardId) => unequippedCardId === cardId,
         ),
-        1
+        1,
       );
       character.deck.equippedMagic.push(cardId);
       character.deck.equippedMagic.sort();
@@ -96,7 +94,7 @@ export default function CharacterEngineProvider({
       removeCardsByItem(
         itemId,
         character.deck.equppedMartial,
-        character.deck.unequippedMartial
+        character.deck.unequippedMartial,
       );
       setCharacter({ ...character });
     }
@@ -106,18 +104,18 @@ export default function CharacterEngineProvider({
     if (character.deck.equppedMartial.includes(cardId)) {
       character.deck.equppedMartial.splice(
         character.deck.equppedMartial.findIndex(
-          (equippedCardId) => equippedCardId === cardId
+          (equippedCardId) => equippedCardId === cardId,
         ),
-        1
+        1,
       );
       character.deck.unequippedMartial.push(cardId);
       character.deck.unequippedMartial.sort();
     } else {
       character.deck.equippedMagic.splice(
         character.deck.equippedMagic.findIndex(
-          (equippedCardId) => equippedCardId === cardId
+          (equippedCardId) => equippedCardId === cardId,
         ),
-        1
+        1,
       );
       character.deck.unequippedMagic.push(cardId);
       character.deck.unequippedMagic.sort();

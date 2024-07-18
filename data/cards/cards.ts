@@ -1,6 +1,7 @@
 import { Shield, Sword, Swords } from "lucide-react";
 import { GameObject } from "../gameObject";
 import { barsTable } from "../items/bars";
+import { TASK_AND_ITEM_ICON_STYLE } from "../configurations";
 
 export enum Target {
   ENEMIES = 0,
@@ -21,7 +22,7 @@ export type CombatCardTemplate = {
 let createOffensiveCombatCardDescription = (
   strikes: number,
   targets: number,
-  modifier: number
+  modifier: number,
 ) => {
   let formattedModifier = modifier.toString();
   if (modifier === 0.5) {
@@ -29,20 +30,20 @@ let createOffensiveCombatCardDescription = (
   }
 
   return `Deals ${formattedModifier}xATK ${strikes} time(s) to `.concat(
-    targets != -1 ? `${targets} target(s)` : `all enemies`
+    targets != -1 ? `${targets} target(s)` : `all enemies`,
   );
 };
 
 let createDefensiveCombatCardDescription = (
   targets: number,
-  modifier: number
+  modifier: number,
 ) => {
   let formattedModifier = modifier.toString();
   if (modifier === 0.5) {
     formattedModifier = "1/2";
   }
   return `Adds ${formattedModifier}xDEF to `.concat(
-    targets != -1 ? `${targets} allies(s)` : `all allies`
+    targets != -1 ? `${targets} allies(s)` : `all allies`,
   );
 };
 
@@ -52,7 +53,10 @@ export const cardTable: { [cardId: string]: CombatCardTemplate } = {
     name: "Slice",
     target: Target.ENEMIES,
     icon: Sword,
-    iconStyle: { fill: barsTable.ironBar.iconStyle.fill },
+    iconStyle: {
+      fill: barsTable.ironBar.iconStyle.fill,
+      ...TASK_AND_ITEM_ICON_STYLE,
+    },
     description: createOffensiveCombatCardDescription(1, 1, 1),
     strikes: 1,
     targets: 1,
@@ -64,7 +68,10 @@ export const cardTable: { [cardId: string]: CombatCardTemplate } = {
     name: "Stab",
     target: Target.ENEMIES,
     icon: Swords,
-    iconStyle: { fill: barsTable.ironBar.iconStyle.fill },
+    iconStyle: {
+      fill: barsTable.ironBar.iconStyle.fill,
+      ...TASK_AND_ITEM_ICON_STYLE,
+    },
     description: createOffensiveCombatCardDescription(2, 1, 0.5),
     strikes: 2,
     targets: 1,
@@ -76,7 +83,10 @@ export const cardTable: { [cardId: string]: CombatCardTemplate } = {
     name: "Defend",
     target: Target.ALLIES,
     icon: Shield,
-    iconStyle: { fill: barsTable.ironBar.iconStyle.fill },
+    iconStyle: {
+      fill: barsTable.ironBar.iconStyle.fill,
+      ...TASK_AND_ITEM_ICON_STYLE,
+    },
     description: createDefensiveCombatCardDescription(1, 1),
     strikes: 0,
     targets: 1,
@@ -87,7 +97,7 @@ export const cardTable: { [cardId: string]: CombatCardTemplate } = {
 
 export const createCombatCard = (
   cardId: string,
-  deckId: number
+  deckId: number,
 ): CombatCard => {
   return {
     deckId: deckId,

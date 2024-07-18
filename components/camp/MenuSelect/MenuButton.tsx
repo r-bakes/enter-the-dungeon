@@ -20,20 +20,15 @@ export default function MenuButton({
   return (
     <Button
       className={
-        "flex text-center gap-2 px-5 w-full h-10 hover:bg-red-700/30 " +
+        "flex h-10 w-full gap-2 px-5 text-center hover:bg-red-700/30 " +
         extraFormat
       }
       onClick={onClick}
       variant="ghost"
     >
-      {renderIcon(menu.icon, {
-        ...menu.iconStyle,
-        size: 24,
-        strokeWidth: 1,
-        color: "white",
-      })}
+      {renderIcon(menu.icon, 24, { ...menu.iconStyle, color: "white" })}
       <Label className="text-xs text-white">{menu.name}</Label>
-      <div className="flex grow justify-end ">
+      <div className="flex grow justify-end">
         {level ? (
           <Label className="text-xs text-muted-foreground text-white">
             ({level} / 60)

@@ -22,34 +22,28 @@ export function TaskRequiresEntry({
 
   return (
     <div className="flex flex-col gap-1">
-      <Label className="font-light text-muted-foreground mb-1">{label}</Label>
+      <Label className="mb-1 text-xs font-extralight text-muted-foreground">
+        {label}
+      </Label>
       {data.map((item) => (
         <div
-          className="flex w-full border rounded-sm justify-between p-2"
+          className="flex w-full justify-between rounded-sm border p-2"
           key={item.item.id}
         >
-          <div className="flex h-full gap-1 items-center">
-            {renderIcon(item.item.icon, {
+          <div className="flex h-full items-center gap-1">
+            {renderIcon(item.item.icon, 24, {
               ...item.item.iconStyle,
-              size: 24,
-              strokeWidth: 0.5,
-              strokeOpacity: 0.5,
-              fillOpacity: 0.5,
             })}
-            <Label className="text-xs">
-              {item.quantity}
-            </Label>
-            <Label className="text-xs font-extralight w-max text-muted-foreground">
+            <Label className="text-xs">{item.quantity}</Label>
+            <Label className="w-max text-xs font-light text-muted-foreground">
               {item.item.name}
             </Label>
           </div>
-          <div className="flex h-full gap-1 items-center">
-            <Label className="text-xs text-muted-foreground">
-              (
+          <div className="flex h-full items-center gap-1">
+            <Label className="text-xs font-light text-muted-foreground">
               {item.item.id in character.inventory
                 ? character.inventory[item.item.id]
                 : 0}
-              )
             </Label>
             <Backpack size={15} strokeWidth={1}></Backpack>
           </div>

@@ -1,3 +1,4 @@
+import { upgradeTable } from "../upgrades/upgrade";
 // TODO add persistent storage on GCP.
 export type Character = {
   name: string;
@@ -5,28 +6,24 @@ export type Character = {
   inventory: Inventory;
   skills: Skills;
   progress: Progress;
+  upgrades: Upgrades;
   deck: Deck;
 };
-
 export type Inventory = {
   [itemId: string]: number;
 };
-
 export type Loadout = {
   [slotId in Slot]: string | null;
 };
-
+export type Upgrades = string[];
 export type Skills = {
-  [skillId: string]: SkillLevel;
+  [skillId: string]: CharacterSkill;
 };
-
-export type SkillLevel = {
+export type CharacterSkill = {
   level: number;
   experience: number;
 };
-
-export type Progress = {};
-
+export type Progress = string[];
 export type Deck = {
   equppedMartial: string[];
   unequippedMartial: string[];
@@ -84,6 +81,7 @@ export const testCharacter: Character = {
     tinOre: 10,
     coal: 10,
   },
+  upgrades: ["bronzePickaxe1", "bronzeHammer"],
   skills: {
     martial: {
       level: 5,
@@ -114,7 +112,7 @@ export const testCharacter: Character = {
       experience: 0,
     },
   },
-  progress: {},
+  progress: [],
   deck: {
     equppedMartial: ["slice", "slice", "slice", "defend", "defend", "defend"],
     unequippedMartial: [],

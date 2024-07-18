@@ -2,14 +2,21 @@ import { Circle, Gem, Mountain, SearchSlash } from "lucide-react";
 import { Skill } from "./skills";
 import { Task } from "./skills";
 import { mineralsTable } from "../items/minerals";
+import {
+  SKILL_AND_MENU_ICON_STYLE,
+  TASK_AND_ITEM_ICON_STYLE,
+} from "../configurations";
 
 const mineCopperOre: Task = {
   id: "mineCopperOre",
   name: "Mine Copper",
   description: "Mine copper ore.",
   icon: Mountain,
-  iconStyle: { fill: mineralsTable.copperOre.iconStyle.fill },
-  durationSec: 2,
+  iconStyle: {
+    fill: mineralsTable.copperOre.iconStyle.fill,
+    ...TASK_AND_ITEM_ICON_STYLE,
+  },
+  durationSec: 5,
   experience: 1,
   requiredLevel: 1,
   lootTable: {
@@ -26,8 +33,11 @@ const mineTinOre: Task = {
   name: "Mine Tin",
   description: "Mine tin ore.",
   icon: Mountain,
-  iconStyle: { fill: mineralsTable.tinOre.iconStyle.fill },
-  durationSec: 2,
+  iconStyle: {
+    fill: mineralsTable.tinOre.iconStyle.fill,
+    ...TASK_AND_ITEM_ICON_STYLE,
+  },
+  durationSec: 5,
   experience: 1,
   requiredLevel: 1,
   lootTable: {
@@ -44,8 +54,11 @@ const mineCoal: Task = {
   name: "Mine Coal",
   description: "Mine coal.",
   icon: Circle,
-  iconStyle: { fill: mineralsTable.coal.iconStyle.fill },
-  durationSec: 2,
+  iconStyle: {
+    fill: mineralsTable.coal.iconStyle.fill,
+    ...TASK_AND_ITEM_ICON_STYLE,
+  },
+  durationSec: 5,
   experience: 5,
   requiredLevel: 1,
   lootTable: {
@@ -58,8 +71,11 @@ const mineIronOre: Task = {
   name: "Mine Iron",
   description: "Mine iron ore.",
   icon: Mountain,
-  iconStyle: { fill: mineralsTable.ironOre.iconStyle.fill },
-  durationSec: 2,
+  iconStyle: {
+    fill: mineralsTable.ironOre.iconStyle.fill,
+    ...TASK_AND_ITEM_ICON_STYLE,
+  },
+  durationSec: 5,
   experience: 10,
   requiredLevel: 10,
   lootTable: {
@@ -76,8 +92,11 @@ const mineSilverOre: Task = {
   name: "Mine Silver",
   description: "Mine silver ore.",
   icon: Mountain,
-  iconStyle: { fill: mineralsTable.silverOre.iconStyle.fill },
-  durationSec: 2,
+  iconStyle: {
+    fill: mineralsTable.silverOre.iconStyle.fill,
+    ...TASK_AND_ITEM_ICON_STYLE,
+  },
+  durationSec: 5,
   experience: 20,
   requiredLevel: 20,
   lootTable: {
@@ -94,8 +113,11 @@ const mineGoldOre: Task = {
   name: "Mine Gold",
   description: "Mine gold ore.",
   icon: Mountain,
-  iconStyle: { fill: mineralsTable.goldOre.iconStyle.fill },
-  durationSec: 2,
+  iconStyle: {
+    fill: mineralsTable.goldOre.iconStyle.fill,
+    ...TASK_AND_ITEM_ICON_STYLE,
+  },
+  durationSec: 5,
   experience: 20,
   requiredLevel: 30,
   lootTable: {
@@ -112,8 +134,11 @@ const mineMithrilOre: Task = {
   name: "Mine Mithril",
   description: "Mine mithril ore.",
   icon: Mountain,
-  iconStyle: { fill: mineralsTable.mithrilOre.iconStyle.fill },
-  durationSec: 2,
+  iconStyle: {
+    fill: mineralsTable.mithrilOre.iconStyle.fill,
+    ...TASK_AND_ITEM_ICON_STYLE,
+  },
+  durationSec: 5,
   experience: 20,
   requiredLevel: 30,
   lootTable: {
@@ -130,8 +155,11 @@ const minePlatinumOre: Task = {
   name: "Mine Platinum",
   description: "Mine platinum ore.",
   icon: Mountain,
-  iconStyle: { fill: mineralsTable.mithrilOre.iconStyle.fill },
-  durationSec: 2,
+  iconStyle: {
+    fill: mineralsTable.mithrilOre.iconStyle.fill,
+    ...TASK_AND_ITEM_ICON_STYLE,
+  },
+  durationSec: 5,
   experience: 20,
   requiredLevel: 50,
   lootTable: {
@@ -148,8 +176,11 @@ const mineAdamantiteOre: Task = {
   name: "Mine Adamantite",
   description: "Mine adamantite ore.",
   icon: Mountain,
-  iconStyle: { fill: mineralsTable.adamantiteOre.iconStyle.fill },
-  durationSec: 2,
+  iconStyle: {
+    fill: mineralsTable.adamantiteOre.iconStyle.fill,
+    ...TASK_AND_ITEM_ICON_STYLE,
+  },
+  durationSec: 5,
   experience: 20,
   requiredLevel: 50,
   lootTable: {
@@ -166,7 +197,7 @@ const cutGeode: Task = {
   name: "Cut Geode",
   description: "Cut a geode into a gem.",
   icon: Gem,
-  iconStyle: { fill: "#FF70AB" },
+  iconStyle: { fill: "#FF70AB", ...TASK_AND_ITEM_ICON_STYLE },
   durationSec: 8,
   experience: 100,
   requiredLevel: 10,
@@ -185,7 +216,7 @@ export const prospecting: Skill = {
   name: "Prospecting",
   description: "The ability to search for and excavate mineral deposits.",
   icon: SearchSlash,
-  iconStyle: {},
+  iconStyle: { fill: "none", ...SKILL_AND_MENU_ICON_STYLE },
   tasks: {
     gathering: [
       mineCopperOre,

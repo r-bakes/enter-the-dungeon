@@ -81,13 +81,7 @@ export default function TaskInfo({
   return (
     <Card className={rootCardFormat}>
       <CardHeader className="flex h-32 w-full flex-row">
-        {renderIcon(task.icon, {
-          ...task.iconStyle,
-          size: 56,
-          strokeWidth: 0.5,
-          strokeOpacity: 0.5,
-          fillOpacity: 0.5,
-        })}
+        {renderIcon(task.icon, 56, task.iconStyle)}
         <div className="flex flex-col pl-4">
           <CardTitle>{task.name}</CardTitle>
           <CardDescription>{task.description}</CardDescription>
