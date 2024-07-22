@@ -9,4 +9,5 @@ export const magic: Skill = {
   icon: Wand2,
   iconStyle: { fill: "none", ...SKILL_AND_MENU_ICON_STYLE },
   tasks: {},
+  taskCategories: {},
 };

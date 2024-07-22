@@ -9,10 +9,10 @@ import { magic } from "@/data/skills/magic";
 import { prospecting } from "@/data/skills/prospecting";
 import { smithing } from "@/data/skills/smithing";
 import { expeditions } from "@/data/menus/expeditions";
-import { agility } from "@/data/skills/agility";
 import { enchanting } from "@/data/skills/enchanting";
 import { crafting } from "@/data/skills/crafting";
 import { home } from "@/data/menus/home";
+import { athletics } from "@/data/skills/athletics";
 
 export default function MenuSelect({
   selectedMenu,
@@ -23,12 +23,12 @@ export default function MenuSelect({
 }>) {
   let miscMenus = [home, inventory, bazaar];
   let combatMenus = [expeditions, martial, magic];
-  let skillMenus = [prospecting, smithing, agility, crafting, enchanting];
+  let skillMenus = [prospecting, smithing, athletics, crafting, enchanting];
 
   return (
     <div
       className={
-        "flex h-full w-60 shrink-0 flex-col border-r-4 saturate-[60%] bg-red-600 py-10 shadow-sm"
+        "flex h-full w-60 shrink-0 flex-col border-r-4 bg-red-600 py-10 shadow-sm saturate-[60%]"
       }
     >
       <Logo></Logo>

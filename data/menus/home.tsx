@@ -16,4 +16,5 @@ export enum HomeRooms {
   KITCHEN = "Kitchen",
   WORKSHOP = "Workshop",
   BEDROOM = "Bedroom",
+  MENAGERIE = "Menagerie",
 }

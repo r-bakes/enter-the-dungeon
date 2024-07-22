@@ -9,4 +9,5 @@ export const martial: Skill = {
   icon: Swords,
   iconStyle: { fill: "none", ...SKILL_AND_MENU_ICON_STYLE },
   tasks: {},
+  taskCategories: {},
 };

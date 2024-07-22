@@ -1,14 +1,15 @@
 import { Copy, Gauge, LucideIcon, Sparkle, SquareStack } from "lucide-react";
 import { IconStyle } from "../gameObject";
 import { TASK_AND_ITEM_ICON_STYLE } from "../configurations";
+import { SkillId, TaskId } from "../skills/skills";
 
 export type SkillModifies = {
-  targets: { [skillId: string]: string[] };
+  targets: { [skillId: string]: TaskId[] };
   values: { [type in SkillModifierType]?: number };
 };
 export type SkillModifierTable = {
-  [skillId: string]: {
-    [taskId: string]: SkillModifier;
+  [skillId: SkillId]: {
+    [taskId: TaskId]: SkillModifier;
   };
 };
 export type SkillModifier = {

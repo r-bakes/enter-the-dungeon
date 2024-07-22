@@ -7,21 +7,26 @@ import { martial } from "./martial";
 import { enchanting } from "./enchanting";
 import { magic } from "./magic";
 import { crafting } from "./crafting";
-import { agility } from "./agility";
+import { athletics } from "./athletics";
 import { SkillModifierType } from "../modifiers/skillModifiers";
 
-export type SkillTasks = { [taskCategory: string]: Task[] };
+export type Tasks = { [taskId: string]: Task };
 export type Task = {
   durationSec: number;
   experience: number;
   requiredLevel: number;
   lootTable: LootTable;
+  category: TaskCategory;
   requires: { [itemId: string]: number };
   applicableModifiers: Set<SkillModifierType>;
 } & GameObject;
 export type Skill = {
-  tasks: SkillTasks;
+  tasks: Tasks;
+  taskCategories: { [taskCategory: TaskCategory]: string };
 } & GameObject;
+export type TaskCategory = string;
+export type TaskId = string;
+export type SkillId = string;
 
 export const skillTable: { [skillId: string]: Skill } = {
   [prospecting.id]: prospecting,
@@ -30,13 +35,5 @@ export const skillTable: { [skillId: string]: Skill } = {
   [magic.id]: magic,
   [enchanting.id]: enchanting,
   [crafting.id]: crafting,
-  [agility.id]: agility,
-};
-
-export const getAllTasks = (tasks: SkillTasks) => {
-  let allTasks: Task[] = [];
-  Object.keys(tasks).forEach((key) => {
-    allTasks.push(...tasks[key]);
-  });
-  return allTasks;
+  [athletics.id]: athletics,
 };

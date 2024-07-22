@@ -1,12 +1,12 @@
-import { Gavel, Pickaxe } from "lucide-react";
+import { Anvil, Bird, Gavel, Heater, Pickaxe } from "lucide-react";
 import { TASK_AND_ITEM_ICON_STYLE } from "../configurations";
 import { HomeRooms } from "../menus/home";
 import { SkillModifies, SkillModifierType } from "./skillModifiers";
 import { GameObject } from "../gameObject";
 import { mineralsTable } from "../items/minerals";
-import { prospecting } from "../skills/prospecting";
+import { prospecting, ProspectingTaskCategories } from "../skills/prospecting";
 import { smithing } from "../skills/smithing";
-import { getAllTasks } from "../skills/skills";
+import { barsTable } from "../items/bars";
 
 export type Upgrade = {
   next: string | null;
@@ -18,6 +18,31 @@ export type Upgrade = {
 } & GameObject;
 
 export const upgradeTable: { [upgradeId: string]: Upgrade } = {
+  basicPickaxe: {
+    id: "basicPickaxe",
+    name: "Basic Pickaxe",
+    description: "Your trusty pickaxe!",
+    icon: Pickaxe,
+    iconStyle: {
+      fill: "none",
+      ...TASK_AND_ITEM_ICON_STYLE,
+    },
+    next: "bronzePickaxe",
+    modifier: {
+      targets: {
+        [prospecting.id]: Object.entries(prospecting.tasks)
+          .filter(([taskId, task]) => {
+            task.category === ProspectingTaskCategories.MINE;
+          })
+          .map(([taskId, task]) => taskId),
+      },
+      values: {
+        [SkillModifierType.SPEED]: 0,
+      },
+    },
+    requires: { bronzeBar: 0 },
+    homeRoom: HomeRooms.TOOL_SHED,
+  },
   bronzePickaxe: {
     id: "bronzePickaxe",
     name: "Bronze Pickaxe",
@@ -30,10 +55,14 @@ export const upgradeTable: { [upgradeId: string]: Upgrade } = {
     next: "bronzePickaxe1",
     modifier: {
       targets: {
-        [prospecting.id]: prospecting.tasks.mining.map((task) => task.id),
+        [prospecting.id]: Object.entries(prospecting.tasks)
+          .filter(([taskId, task]) => {
+            task.category === ProspectingTaskCategories.MINE;
+          })
+          .map(([taskId, task]) => taskId),
       },
       values: {
-        [SkillModifierType.SPEED]: 0,
+        [SkillModifierType.SPEED]: 1,
       },
     },
     requires: { bronzeBar: 0 },
@@ -51,10 +80,14 @@ export const upgradeTable: { [upgradeId: string]: Upgrade } = {
     next: "bronzePickaxe2",
     modifier: {
       targets: {
-        [prospecting.id]: prospecting.tasks.mining.map((task) => task.id),
+        [prospecting.id]: Object.entries(prospecting.tasks)
+          .filter(([taskId, task]) => {
+            task.category === ProspectingTaskCategories.MINE;
+          })
+          .map(([taskId, task]) => taskId),
       },
       values: {
-        [SkillModifierType.SPEED]: 1,
+        [SkillModifierType.SPEED]: 2,
       },
     },
     requires: { bronzeBar: 10 },
@@ -72,10 +105,14 @@ export const upgradeTable: { [upgradeId: string]: Upgrade } = {
     next: "bronzePickaxe3",
     modifier: {
       targets: {
-        [prospecting.id]: prospecting.tasks.mining.map((task) => task.id),
+        [prospecting.id]: Object.entries(prospecting.tasks)
+          .filter(([taskId, task]) => {
+            task.category === ProspectingTaskCategories.MINE;
+          })
+          .map(([taskId, task]) => taskId),
       },
       values: {
-        [SkillModifierType.SPEED]: 2,
+        [SkillModifierType.SPEED]: 3,
       },
     },
     requires: { bronzeBar: 100 },
@@ -93,10 +130,14 @@ export const upgradeTable: { [upgradeId: string]: Upgrade } = {
     next: "bronzePickaxe4",
     modifier: {
       targets: {
-        [prospecting.id]: prospecting.tasks.mining.map((task) => task.id),
+        [prospecting.id]: Object.entries(prospecting.tasks)
+          .filter(([taskId, task]) => {
+            task.category === ProspectingTaskCategories.MINE;
+          })
+          .map(([taskId, task]) => taskId),
       },
       values: {
-        [SkillModifierType.SPEED]: 3,
+        [SkillModifierType.SPEED]: 4,
       },
     },
     requires: { bronzeBar: 1000 },
@@ -114,10 +155,14 @@ export const upgradeTable: { [upgradeId: string]: Upgrade } = {
     next: "ironPickaxe",
     modifier: {
       targets: {
-        [prospecting.id]: prospecting.tasks.mining.map((task) => task.id),
+        [prospecting.id]: Object.entries(prospecting.tasks)
+          .filter(([taskId, task]) => {
+            task.category === ProspectingTaskCategories.MINE;
+          })
+          .map(([taskId, task]) => taskId),
       },
       values: {
-        [SkillModifierType.SPEED]: 4,
+        [SkillModifierType.SPEED]: 5,
       },
     },
     requires: { bronzeBar: 10000 },
@@ -135,10 +180,14 @@ export const upgradeTable: { [upgradeId: string]: Upgrade } = {
     next: "ironPickaxe1",
     modifier: {
       targets: {
-        [prospecting.id]: prospecting.tasks.mining.map((task) => task.id),
+        [prospecting.id]: Object.entries(prospecting.tasks)
+          .filter(([taskId, task]) => {
+            task.category === ProspectingTaskCategories.MINE;
+          })
+          .map(([taskId, task]) => taskId),
       },
       values: {
-        [SkillModifierType.SPEED]: 5,
+        [SkillModifierType.SPEED]: 6,
       },
     },
     requires: { ironBar: 100 },
@@ -156,7 +205,11 @@ export const upgradeTable: { [upgradeId: string]: Upgrade } = {
     next: null,
     modifier: {
       targets: {
-        [prospecting.id]: prospecting.tasks.mining.map((task) => task.id),
+        [prospecting.id]: Object.entries(prospecting.tasks)
+          .filter(([taskId, task]) => {
+            task.category === ProspectingTaskCategories.MINE;
+          })
+          .map(([taskId, task]) => taskId),
       },
       values: {
         [SkillModifierType.SPEED]: 6,
@@ -165,10 +218,31 @@ export const upgradeTable: { [upgradeId: string]: Upgrade } = {
     requires: { ironBar: 1000 },
     homeRoom: HomeRooms.TOOL_SHED,
   },
+  basicHammer: {
+    id: "basicHammer",
+    name: "Basic Hammer",
+    description: "Your trusty hammer!",
+    icon: Gavel,
+    iconStyle: {
+      fill: "none",
+      ...TASK_AND_ITEM_ICON_STYLE,
+    },
+    modifier: {
+      targets: {
+        [smithing.id]: Object.keys(smithing.tasks),
+      },
+      values: {
+        [SkillModifierType.SPEED]: 0,
+      },
+    },
+    next: "bronzeHammer",
+    requires: { gold: 0 },
+    homeRoom: HomeRooms.TOOL_SHED,
+  },
   bronzeHammer: {
     id: "bronzeHammer",
     name: "Bronze Hammer",
-    description: "Your trusty hammer!",
+    description: "A bronze hammer!",
     icon: Gavel,
     iconStyle: {
       fill: mineralsTable.copperOre.iconStyle.fill,
@@ -176,7 +250,7 @@ export const upgradeTable: { [upgradeId: string]: Upgrade } = {
     },
     modifier: {
       targets: {
-        [smithing.id]: getAllTasks(smithing.tasks).map((task) => task.id),
+        [smithing.id]: Object.keys(smithing.tasks),
       },
       values: {
         [SkillModifierType.SPEED]: 0,
@@ -198,7 +272,7 @@ export const upgradeTable: { [upgradeId: string]: Upgrade } = {
     next: null,
     modifier: {
       targets: {
-        [smithing.id]: getAllTasks(smithing.tasks).map((task) => task.id),
+        [smithing.id]: Object.keys(smithing.tasks),
       },
       values: {
         [SkillModifierType.SPEED]: 1,
@@ -206,5 +280,77 @@ export const upgradeTable: { [upgradeId: string]: Upgrade } = {
     },
     requires: { bronzeBar: 10 },
     homeRoom: HomeRooms.TOOL_SHED,
+  },
+  basicForge: {
+    id: "basicForge",
+    name: "Basic Forge",
+    description: "Your trusty Forge!",
+    icon: Heater,
+    iconStyle: {
+      fill: mineralsTable.copperOre.iconStyle.fill,
+      ...TASK_AND_ITEM_ICON_STYLE,
+    },
+    next: null,
+    modifier: {
+      targets: {
+        [smithing.id]: Object.keys(smithing.tasks),
+      },
+      values: {
+        [SkillModifierType.SPEED]: 0,
+        [SkillModifierType.DOUBLE_CHANCE]: 0,
+        [SkillModifierType.PRODUCTION_MULTIPLIER]: 0,
+        [SkillModifierType.EXPERIENCE]: 0,
+      },
+    },
+    requires: { steelBar: 0 },
+    homeRoom: HomeRooms.WORKSHOP,
+  },
+  basicAnvil: {
+    id: "basicAnvil",
+    name: "Basic Anvil",
+    description: "Your trusty Anvil!",
+    icon: Anvil,
+    iconStyle: {
+      fill: barsTable.steelBar.iconStyle.fill,
+      ...TASK_AND_ITEM_ICON_STYLE,
+    },
+    next: null,
+    modifier: {
+      targets: {
+        [smithing.id]: Object.keys(smithing.tasks),
+      },
+      values: {
+        [SkillModifierType.SPEED]: 0,
+        [SkillModifierType.DOUBLE_CHANCE]: 0,
+      },
+    },
+    requires: { steelBar: 0 },
+    homeRoom: HomeRooms.WORKSHOP,
+  },
+  coalMineCanery: {
+    id: "coalMineCanery",
+    name: "Coal Mine Canery",
+    description: "Now were cooking!",
+    icon: Bird,
+    iconStyle: {
+      fill: "none",
+      ...TASK_AND_ITEM_ICON_STYLE,
+    },
+    next: null,
+    modifier: {
+      targets: {
+        [prospecting.id]: Object.entries(prospecting.tasks)
+          .filter(([taskId, task]) => {
+            task.id === prospecting.tasks.mineCoal.id;
+          })
+          .map(([taskId, task]) => taskId),
+      },
+      values: {
+        [SkillModifierType.SPEED]: 10,
+        [SkillModifierType.PRODUCTION_MULTIPLIER]: 1,
+      },
+    },
+    requires: { gold: 1000000 },
+    homeRoom: HomeRooms.MENAGERIE,
   },
 };

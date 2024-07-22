@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { useCampEngineContext } from "@/engine/campEngineContext";
-import { getAllTasks, Skill, Task } from "@/data/skills/skills";
+import { Skill, Task } from "@/data/skills/skills";
 import TaskInfo from "./taskInfo/taskInfo";
 import { useCharacterEngineContext } from "@/engine/characterEngineContext";
 import { SkillHeader } from "./skillHeader/skillHeader";
@@ -12,7 +12,7 @@ export default function SkillMenu({ skill }: Readonly<{ skill: Skill }>) {
   const { character } = useCharacterEngineContext();
   const { workingTask } = useCampEngineContext();
   const [task, setTask] = useState<Task | null>(
-    workingTask != null && getAllTasks(skill.tasks).includes(workingTask)
+    workingTask != null && Object.values(skill.tasks).includes(workingTask)
       ? workingTask
       : null,
   );

@@ -15,7 +15,7 @@ import {
   SkillModifierType,
 } from "@/data/modifiers/skillModifiers";
 import { upgradeTable } from "@/data/modifiers/upgrades";
-import { getAllTasks, skillTable } from "@/data/skills/skills";
+import { skillTable } from "@/data/skills/skills";
 
 export function addExp(skills: Skills, skillId: string, exp: number): Skills {
   while (
@@ -122,7 +122,7 @@ export const initializeCharacterModifierTable = (
   Object.entries(skillTable).forEach(([skillId, skill]) => {
     modifierTable[skillId] = {};
 
-    getAllTasks(skill.tasks).forEach((task) => {
+    Object.values(skill.tasks).forEach((task) => {
       modifierTable[skillId][task.id] = {};
 
       task.applicableModifiers.forEach((type) => {
@@ -141,10 +141,7 @@ export const initializeCharacterModifierTable = (
       Object.entries(modifier.targets).forEach(([skillId, tasks]) => {
         tasks.forEach((taskId) => {
           Object.entries(modifier.values).forEach(([type, value]) => {
-            if (type in modifierTable[skillId][taskId]) {
-              modifierTable[skillId][taskId][type as SkillModifierType] +=
-                value;
-            }
+            modifierTable[skillId][taskId][type as SkillModifierType] += value;
           });
         });
       }),

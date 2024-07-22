@@ -10,7 +10,7 @@ import {
   Tangent,
   ToyBrick,
 } from "lucide-react";
-import { Skill } from "./skills";
+import { Skill, TaskId } from "./skills";
 import { Task } from "./skills";
 import { mineralsTable } from "../items/minerals";
 import { barsTable } from "../items/bars";
@@ -27,423 +27,461 @@ const smithingCommonModifiers = new Set([
   SkillModifierType.PRODUCTION_MULTIPLIER,
 ]);
 
-const smithBronzeDagger: Task = {
-  id: "smithBronzeDagger",
-  name: "Dagger",
-  description: "Smith a dagger.",
-  icon: Slice,
-  iconStyle: {
-    fill: mineralsTable.copperOre.iconStyle.fill,
-    ...TASK_AND_ITEM_ICON_STYLE,
-  },
-  durationSec: 10,
-  experience: 1,
-  requiredLevel: 5,
-  lootTable: {
-    dagger: { bronzeDagger: { weight: 1, minQuantity: 1, maxQuantity: 1 } },
-  },
-  requires: { bronzeBar: 1 },
-  applicableModifiers: smithingCommonModifiers,
-};
-const smithBronzeSword: Task = {
-  id: "smithBronzeSword",
-  name: "Sword",
-  description: "Smith a sword.",
-  icon: Sword,
-  iconStyle: {
-    fill: mineralsTable.copperOre.iconStyle.fill,
-    ...TASK_AND_ITEM_ICON_STYLE,
-  },
-  durationSec: 10,
-  experience: 1,
-  requiredLevel: 5,
-  lootTable: {
-    sword: { bronzeSword: { weight: 1, minQuantity: 1, maxQuantity: 1 } },
-  },
-  requires: { bronzeBar: 2 },
-  applicableModifiers: smithingCommonModifiers,
-};
-const smithBronzeShield: Task = {
-  id: "smithBronzeShield",
-  name: "Shield",
-  description: "Smith a shield.",
-  icon: Shield,
-  iconStyle: {
-    fill: mineralsTable.copperOre.iconStyle.fill,
-    ...TASK_AND_ITEM_ICON_STYLE,
-  },
-  durationSec: 10,
-  experience: 1,
-  requiredLevel: 5,
-  lootTable: {
-    smith: { bronzeShield: { weight: 1, minQuantity: 1, maxQuantity: 1 } },
-  },
-  requires: { bronzeBar: 2 },
-  applicableModifiers: smithingCommonModifiers,
-};
-const smithBronzeGreatSword: Task = {
-  id: "smithBronzeGreatSword",
-  name: "Great Sword",
-  description: "Smith a great sword.",
-  icon: Sword,
-  iconStyle: {
-    fill: mineralsTable.copperOre.iconStyle.fill,
-    ...TASK_AND_ITEM_ICON_STYLE,
-  },
-  durationSec: 10,
-  experience: 1,
-  requiredLevel: 5,
-  lootTable: {
-    smith: { bronzeGreatSword: { weight: 1, minQuantity: 1, maxQuantity: 1 } },
-  },
-  requires: { bronzeBar: 4 },
-  applicableModifiers: smithingCommonModifiers,
-};
-const smithBronzeHelmet: Task = {
-  id: "smithBronzeHelmet",
-  name: "Helmet",
-  description: "Smith a helmet.",
-  icon: HardHat,
-  iconStyle: {
-    fill: mineralsTable.copperOre.iconStyle.fill,
-    ...TASK_AND_ITEM_ICON_STYLE,
-  },
-  durationSec: 10,
-  experience: 1,
-  requiredLevel: 5,
-  lootTable: {
-    smith: { bronzeHelmet: { weight: 1, minQuantity: 1, maxQuantity: 1 } },
-  },
-  requires: { bronzeBar: 2 },
-  applicableModifiers: smithingCommonModifiers,
-};
-const smithBronzeChestplate: Task = {
-  id: "smithBronzeChestplate",
-  name: "Chestplate",
-  description: "Smith a chestplate.",
-  icon: Shirt,
-  iconStyle: {
-    fill: mineralsTable.copperOre.iconStyle.fill,
-    ...TASK_AND_ITEM_ICON_STYLE,
-  },
-  durationSec: 10,
-  experience: 1,
-  requiredLevel: 5,
-  lootTable: {
-    smith: { bronzeChestplate: { weight: 1, minQuantity: 1, maxQuantity: 1 } },
-  },
-  requires: { bronzeBar: 4 },
-  applicableModifiers: smithingCommonModifiers,
-};
-const smithBronzeBelt: Task = {
-  id: "smithBronzeBelt",
-  name: "Belt",
-  description: "Smith a belt.",
-  icon: Tangent,
-  iconStyle: {
-    fill: mineralsTable.copperOre.iconStyle.fill,
-    ...TASK_AND_ITEM_ICON_STYLE,
-  },
-  durationSec: 10,
-  experience: 1,
-  requiredLevel: 5,
-  lootTable: {
-    smith: { bronzeBelt: { weight: 1, minQuantity: 1, maxQuantity: 1 } },
-  },
-  requires: { bronzeBar: 2 },
-  applicableModifiers: smithingCommonModifiers,
-};
-const smithBronzePlateleggings: Task = {
-  id: "smithBronzePlatelegs",
-  name: "Plate Leggings",
-  description: "Smith plate leggings.",
-  icon: ToyBrick,
-  iconStyle: {
-    fill: mineralsTable.copperOre.iconStyle.fill,
-    ...TASK_AND_ITEM_ICON_STYLE,
-  },
-  durationSec: 10,
-  experience: 1,
-  requiredLevel: 5,
-  lootTable: {
-    smith: {
-      bronzePlateleggings: { weight: 1, minQuantity: 1, maxQuantity: 1 },
+export enum SmithingTaskCategories {
+  SMELTING = "smelting",
+  BRONZE_SMITHING = "bronze smithing",
+  IRON_SMITHING = "iron smithing",
+  STEEL_SMITHING = "steel smithing",
+  MITHRIL_SMITHING = "mithril smithing",
+  ADAMANT_SMITHING = "adamant smithing",
+}
+
+const SmithingTasks: { [taskId: TaskId]: Task } = {
+  smithBronzeDagger: {
+    id: "smithBronzeDagger",
+    name: "Dagger",
+    description: "Smith a dagger.",
+    icon: Slice,
+    iconStyle: {
+      fill: mineralsTable.copperOre.iconStyle.fill,
+      ...TASK_AND_ITEM_ICON_STYLE,
     },
-  },
-  requires: { bronzeBar: 4 },
-  applicableModifiers: smithingCommonModifiers,
-};
-const smithBronzeGauntlets: Task = {
-  id: "smithBronzeGauntlets",
-  name: "Gauntlets",
-  description: "Smith gauntlets.",
-  icon: Hand,
-  iconStyle: {
-    fill: mineralsTable.copperOre.iconStyle.fill,
-    ...TASK_AND_ITEM_ICON_STYLE,
-  },
-  durationSec: 10,
-  experience: 1,
-  requiredLevel: 5,
-  lootTable: {
-    smith: {
-      bronzeGauntlets: { weight: 1, minQuantity: 1, maxQuantity: 1 },
+    durationSec: 10,
+    experience: 1,
+    requiredLevel: 5,
+    lootTable: {
+      dagger: { bronzeDagger: { weight: 1, minQuantity: 1, maxQuantity: 1 } },
     },
+    requires: { bronzeBar: 1 },
+    category: SmithingTaskCategories.BRONZE_SMITHING,
+    applicableModifiers: smithingCommonModifiers,
   },
-  requires: { bronzeBar: 2 },
-  applicableModifiers: smithingCommonModifiers,
-};
-const smithIronSword: Task = {
-  id: "smithIronSword",
-  name: "Sword",
-  description: "Smith a sword.",
-  icon: Sword,
-  iconStyle: {
-    fill: mineralsTable.ironOre.iconStyle.fill,
-    ...TASK_AND_ITEM_ICON_STYLE,
+  smithBronzeSword: {
+    id: "smithBronzeSword",
+    name: "Sword",
+    description: "Smith a sword.",
+    icon: Sword,
+    iconStyle: {
+      fill: mineralsTable.copperOre.iconStyle.fill,
+      ...TASK_AND_ITEM_ICON_STYLE,
+    },
+    durationSec: 10,
+    experience: 1,
+    requiredLevel: 5,
+    lootTable: {
+      sword: { bronzeSword: { weight: 1, minQuantity: 1, maxQuantity: 1 } },
+    },
+    requires: { bronzeBar: 2 },
+    category: SmithingTaskCategories.BRONZE_SMITHING,
+    applicableModifiers: smithingCommonModifiers,
   },
-  durationSec: 10,
-  experience: 10,
-  requiredLevel: 10,
-  lootTable: {
-    smith: { ironSword: { weight: 1, minQuantity: 1, maxQuantity: 1 } },
+  smithBronzeShield: {
+    id: "smithBronzeShield",
+    name: "Shield",
+    description: "Smith a shield.",
+    icon: Shield,
+    iconStyle: {
+      fill: mineralsTable.copperOre.iconStyle.fill,
+      ...TASK_AND_ITEM_ICON_STYLE,
+    },
+    durationSec: 10,
+    experience: 1,
+    requiredLevel: 5,
+    lootTable: {
+      smith: { bronzeShield: { weight: 1, minQuantity: 1, maxQuantity: 1 } },
+    },
+    requires: { bronzeBar: 2 },
+    category: SmithingTaskCategories.BRONZE_SMITHING,
+    applicableModifiers: smithingCommonModifiers,
   },
-  requires: { ironBar: 1 },
-  applicableModifiers: smithingCommonModifiers,
-};
-const smithIronShield: Task = {
-  id: "smithIronShield",
-  name: "Shield",
-  description: "Smith a shield.",
-  icon: Shield,
-  iconStyle: {
-    fill: mineralsTable.ironOre.iconStyle.fill,
-    ...TASK_AND_ITEM_ICON_STYLE,
+  smithBronzeGreatsword: {
+    id: "smithBronzeGreatsword",
+    name: "Great Sword",
+    description: "Smith a great sword.",
+    icon: Sword,
+    iconStyle: {
+      fill: mineralsTable.copperOre.iconStyle.fill,
+      ...TASK_AND_ITEM_ICON_STYLE,
+    },
+    durationSec: 10,
+    experience: 1,
+    requiredLevel: 5,
+    lootTable: {
+      smith: {
+        bronzeGreatSword: { weight: 1, minQuantity: 1, maxQuantity: 1 },
+      },
+    },
+    requires: { bronzeBar: 4 },
+    category: SmithingTaskCategories.BRONZE_SMITHING,
+    applicableModifiers: smithingCommonModifiers,
   },
-  durationSec: 10,
-  experience: 20,
-  requiredLevel: 10,
-  lootTable: {
-    sword: { ironShield: { weight: 1, minQuantity: 1, maxQuantity: 1 } },
+  smithBronzeHelmet: {
+    id: "smithBronzeHelmet",
+    name: "Helmet",
+    description: "Smith a helmet.",
+    icon: HardHat,
+    iconStyle: {
+      fill: mineralsTable.copperOre.iconStyle.fill,
+      ...TASK_AND_ITEM_ICON_STYLE,
+    },
+    durationSec: 10,
+    experience: 1,
+    requiredLevel: 5,
+    lootTable: {
+      smith: { bronzeHelmet: { weight: 1, minQuantity: 1, maxQuantity: 1 } },
+    },
+    requires: { bronzeBar: 2 },
+    category: SmithingTaskCategories.BRONZE_SMITHING,
+    applicableModifiers: smithingCommonModifiers,
   },
-  requires: { ironBar: 2 },
-  applicableModifiers: smithingCommonModifiers,
-};
-const smithIronGreatSword: Task = {
-  id: "smithIronGreatsword",
-  name: "Great Sword",
-  description: "Smith a great sword.",
-  icon: Sword,
-  iconStyle: {
-    fill: mineralsTable.ironOre.iconStyle.fill,
-    ...TASK_AND_ITEM_ICON_STYLE,
+  smithBronzeChestplate: {
+    id: "smithBronzeChestplate",
+    name: "Chestplate",
+    description: "Smith a chestplate.",
+    icon: Shirt,
+    iconStyle: {
+      fill: mineralsTable.copperOre.iconStyle.fill,
+      ...TASK_AND_ITEM_ICON_STYLE,
+    },
+    durationSec: 10,
+    experience: 1,
+    requiredLevel: 5,
+    lootTable: {
+      smith: {
+        bronzeChestplate: { weight: 1, minQuantity: 1, maxQuantity: 1 },
+      },
+    },
+    requires: { bronzeBar: 4 },
+    category: SmithingTaskCategories.BRONZE_SMITHING,
+    applicableModifiers: smithingCommonModifiers,
   },
-  durationSec: 10,
-  experience: 20,
-  requiredLevel: 10,
-  lootTable: {
-    sword: { ironGreatSword: { weight: 1, minQuantity: 1, maxQuantity: 1 } },
+  smithBronzeBelt: {
+    id: "smithBronzeBelt",
+    name: "Belt",
+    description: "Smith a belt.",
+    icon: Tangent,
+    iconStyle: {
+      fill: mineralsTable.copperOre.iconStyle.fill,
+      ...TASK_AND_ITEM_ICON_STYLE,
+    },
+    durationSec: 10,
+    experience: 1,
+    requiredLevel: 5,
+    lootTable: {
+      smith: { bronzeBelt: { weight: 1, minQuantity: 1, maxQuantity: 1 } },
+    },
+    requires: { bronzeBar: 2 },
+    category: SmithingTaskCategories.BRONZE_SMITHING,
+    applicableModifiers: smithingCommonModifiers,
   },
-  requires: { ironBar: 2 },
-  applicableModifiers: smithingCommonModifiers,
-};
-const smithSteelSword: Task = {
-  id: "smithSteelSword",
-  name: "Sword",
-  description: "Smith a sword.",
-  icon: Sword,
-  iconStyle: {
-    fill: barsTable.steelBar.iconStyle.fill,
-    ...TASK_AND_ITEM_ICON_STYLE,
+  smithBronzePlateleggings: {
+    id: "smithBronzePlateleggings",
+    name: "Plate Leggings",
+    description: "Smith plate leggings.",
+    icon: ToyBrick,
+    iconStyle: {
+      fill: mineralsTable.copperOre.iconStyle.fill,
+      ...TASK_AND_ITEM_ICON_STYLE,
+    },
+    durationSec: 10,
+    experience: 1,
+    requiredLevel: 5,
+    lootTable: {
+      smith: {
+        bronzePlateleggings: { weight: 1, minQuantity: 1, maxQuantity: 1 },
+      },
+    },
+    requires: { bronzeBar: 4 },
+    category: SmithingTaskCategories.BRONZE_SMITHING,
+    applicableModifiers: smithingCommonModifiers,
   },
-  durationSec: 10,
-  experience: 20,
-  requiredLevel: 20,
-  lootTable: {
-    sword: { steelSword: { weight: 1, minQuantity: 1, maxQuantity: 1 } },
+  smithBronzeGauntlets: {
+    id: "smithBronzeGauntlets",
+    name: "Gauntlets",
+    description: "Smith gauntlets.",
+    icon: Hand,
+    iconStyle: {
+      fill: mineralsTable.copperOre.iconStyle.fill,
+      ...TASK_AND_ITEM_ICON_STYLE,
+    },
+    durationSec: 10,
+    experience: 1,
+    requiredLevel: 5,
+    lootTable: {
+      smith: {
+        bronzeGauntlets: { weight: 1, minQuantity: 1, maxQuantity: 1 },
+      },
+    },
+    requires: { bronzeBar: 2 },
+    category: SmithingTaskCategories.BRONZE_SMITHING,
+    applicableModifiers: smithingCommonModifiers,
   },
-  requires: { steelBar: 1 },
-  applicableModifiers: smithingCommonModifiers,
-};
-const smithMithrilSword: Task = {
-  id: "smithMithrilSword",
-  name: "Sword",
-  description: "Smith a sword.",
-  icon: Sword,
-  iconStyle: {
-    fill: mineralsTable.mithrilOre.iconStyle.fill,
-    ...TASK_AND_ITEM_ICON_STYLE,
+  smithIronSword: {
+    id: "smithIronSword",
+    name: "Sword",
+    description: "Smith a sword.",
+    icon: Sword,
+    iconStyle: {
+      fill: mineralsTable.ironOre.iconStyle.fill,
+      ...TASK_AND_ITEM_ICON_STYLE,
+    },
+    durationSec: 10,
+    experience: 10,
+    requiredLevel: 10,
+    lootTable: {
+      smith: { ironSword: { weight: 1, minQuantity: 1, maxQuantity: 1 } },
+    },
+    requires: { ironBar: 1 },
+    category: SmithingTaskCategories.IRON_SMITHING,
+    applicableModifiers: smithingCommonModifiers,
   },
-  durationSec: 10,
-  experience: 90,
-  requiredLevel: 50,
-  lootTable: {
-    sword: { mithrilSword: { weight: 1, minQuantity: 1, maxQuantity: 1 } },
+  smithIronShield: {
+    id: "smithIronShield",
+    name: "Shield",
+    description: "Smith a shield.",
+    icon: Shield,
+    iconStyle: {
+      fill: mineralsTable.ironOre.iconStyle.fill,
+      ...TASK_AND_ITEM_ICON_STYLE,
+    },
+    durationSec: 10,
+    experience: 20,
+    requiredLevel: 10,
+    lootTable: {
+      sword: { ironShield: { weight: 1, minQuantity: 1, maxQuantity: 1 } },
+    },
+    requires: { ironBar: 2 },
+    category: SmithingTaskCategories.IRON_SMITHING,
+    applicableModifiers: smithingCommonModifiers,
   },
-  requires: { mithrilBar: 1 },
-  applicableModifiers: smithingCommonModifiers,
-};
-const smithAdamantSword: Task = {
-  id: "smithAdamantSword",
-  name: "Sword",
-  description: "Smith a sword.",
-  icon: Sword,
-  iconStyle: {
-    fill: mineralsTable.adamantiteOre.iconStyle.fill,
-    ...TASK_AND_ITEM_ICON_STYLE,
+  smithIronGreatsword: {
+    id: "smithIronGreatsword",
+    name: "Great Sword",
+    description: "Smith a great sword.",
+    icon: Sword,
+    iconStyle: {
+      fill: mineralsTable.ironOre.iconStyle.fill,
+      ...TASK_AND_ITEM_ICON_STYLE,
+    },
+    durationSec: 10,
+    experience: 20,
+    requiredLevel: 10,
+    lootTable: {
+      sword: { ironGreatSword: { weight: 1, minQuantity: 1, maxQuantity: 1 } },
+    },
+    requires: { ironBar: 2 },
+    category: SmithingTaskCategories.IRON_SMITHING,
+    applicableModifiers: smithingCommonModifiers,
   },
-  durationSec: 10,
-  experience: 100,
-  requiredLevel: 60,
-  lootTable: {
-    sword: { adamantSword: { weight: 1, minQuantity: 1, maxQuantity: 1 } },
+  smithSteelSword: {
+    id: "smithSteelSword",
+    name: "Sword",
+    description: "Smith a sword.",
+    icon: Sword,
+    iconStyle: {
+      fill: barsTable.steelBar.iconStyle.fill,
+      ...TASK_AND_ITEM_ICON_STYLE,
+    },
+    durationSec: 10,
+    experience: 20,
+    requiredLevel: 20,
+    lootTable: {
+      sword: { steelSword: { weight: 1, minQuantity: 1, maxQuantity: 1 } },
+    },
+    requires: { steelBar: 1 },
+    category: SmithingTaskCategories.STEEL_SMITHING,
+    applicableModifiers: smithingCommonModifiers,
   },
-  requires: { adamantBar: 1 },
-  applicableModifiers: smithingCommonModifiers,
-};
-const smeltBronzeBar: Task = {
-  id: "smeltBronzeBar",
-  name: "Bronze Bar",
-  description: "Smelt a bronze bar.",
-  icon: RectangleVertical,
-  iconStyle: {
-    fill: mineralsTable.copperOre.iconStyle.fill,
-    ...TASK_AND_ITEM_ICON_STYLE,
+  smithMithrilSword: {
+    id: "smithMithrilSword",
+    name: "Sword",
+    description: "Smith a sword.",
+    icon: Sword,
+    iconStyle: {
+      fill: mineralsTable.mithrilOre.iconStyle.fill,
+      ...TASK_AND_ITEM_ICON_STYLE,
+    },
+    durationSec: 10,
+    experience: 90,
+    requiredLevel: 50,
+    lootTable: {
+      sword: { mithrilSword: { weight: 1, minQuantity: 1, maxQuantity: 1 } },
+    },
+    requires: { mithrilBar: 1 },
+    category: SmithingTaskCategories.MITHRIL_SMITHING,
+    applicableModifiers: smithingCommonModifiers,
   },
-  durationSec: 2,
-  experience: 1,
-  requiredLevel: 1,
-  lootTable: {
-    bar: { bronzeBar: { weight: 1, minQuantity: 1, maxQuantity: 1 } },
+  smithAdamantSword: {
+    id: "smithAdamantSword",
+    name: "Sword",
+    description: "Smith a sword.",
+    icon: Sword,
+    iconStyle: {
+      fill: mineralsTable.adamantiteOre.iconStyle.fill,
+      ...TASK_AND_ITEM_ICON_STYLE,
+    },
+    durationSec: 10,
+    experience: 100,
+    requiredLevel: 60,
+    lootTable: {
+      sword: { adamantSword: { weight: 1, minQuantity: 1, maxQuantity: 1 } },
+    },
+    requires: { adamantBar: 1 },
+    category: SmithingTaskCategories.ADAMANT_SMITHING,
+    applicableModifiers: smithingCommonModifiers,
   },
-  requires: { copperOre: 1, tinOre: 1, coal: 1 },
-  applicableModifiers: smithingCommonModifiers,
-};
-const smeltIronBar: Task = {
-  id: "smeltIronBar",
-  name: "Iron Bar",
-  description: "Smelt a iron bar.",
-  iconStyle: {
-    fill: mineralsTable.ironOre.iconStyle.fill,
-    ...TASK_AND_ITEM_ICON_STYLE,
+  smeltBronzeBar: {
+    id: "smeltBronzeBar",
+    name: "Bronze Bar",
+    description: "Smelt a bronze bar.",
+    icon: RectangleVertical,
+    iconStyle: {
+      fill: mineralsTable.copperOre.iconStyle.fill,
+      ...TASK_AND_ITEM_ICON_STYLE,
+    },
+    durationSec: 2,
+    experience: 1,
+    requiredLevel: 1,
+    lootTable: {
+      bar: { bronzeBar: { weight: 1, minQuantity: 1, maxQuantity: 1 } },
+    },
+    requires: { copperOre: 1, tinOre: 1, coal: 1 },
+    category: SmithingTaskCategories.SMELTING,
+    applicableModifiers: smithingCommonModifiers,
   },
-  icon: RectangleVertical,
-  durationSec: 2,
-  experience: 10,
-  requiredLevel: 10,
-  lootTable: {
-    bar: { ironBar: { weight: 1, minQuantity: 1, maxQuantity: 1 } },
+  smeltIronBar: {
+    id: "smeltIronBar",
+    name: "Iron Bar",
+    description: "Smelt a iron bar.",
+    iconStyle: {
+      fill: mineralsTable.ironOre.iconStyle.fill,
+      ...TASK_AND_ITEM_ICON_STYLE,
+    },
+    icon: RectangleVertical,
+    durationSec: 2,
+    experience: 10,
+    requiredLevel: 10,
+    lootTable: {
+      bar: { ironBar: { weight: 1, minQuantity: 1, maxQuantity: 1 } },
+    },
+    requires: { ironOre: 2, coal: 2 },
+    category: SmithingTaskCategories.SMELTING,
+    applicableModifiers: smithingCommonModifiers,
   },
-  requires: { ironOre: 2, coal: 2 },
-  applicableModifiers: smithingCommonModifiers,
-};
-const smeltSteelBar: Task = {
-  id: "smeltSteelBar",
-  name: "Steel Bar",
-  description: "Smelt a steel bar.",
-  icon: RectangleVertical,
-  iconStyle: {
-    fill: barsTable.steelBar.iconStyle.fill,
-    ...TASK_AND_ITEM_ICON_STYLE,
+  smeltSteelBar: {
+    id: "smeltSteelBar",
+    name: "Steel Bar",
+    description: "Smelt a steel bar.",
+    icon: RectangleVertical,
+    iconStyle: {
+      fill: barsTable.steelBar.iconStyle.fill,
+      ...TASK_AND_ITEM_ICON_STYLE,
+    },
+    durationSec: 2,
+    experience: 20,
+    requiredLevel: 20,
+    lootTable: {
+      bar: { steelBar: { weight: 1, minQuantity: 1, maxQuantity: 1 } },
+    },
+    requires: { ironOre: 5, coal: 5 },
+    category: SmithingTaskCategories.SMELTING,
+    applicableModifiers: smithingCommonModifiers,
   },
-  durationSec: 2,
-  experience: 20,
-  requiredLevel: 20,
-  lootTable: {
-    bar: { steelBar: { weight: 1, minQuantity: 1, maxQuantity: 1 } },
+  smeltSilverBar: {
+    id: "smeltSilverBar",
+    name: "Silver Bar",
+    description: "Smelt a silver bar.",
+    icon: RectangleVertical,
+    iconStyle: {
+      fill: mineralsTable.silverOre.iconStyle.fill,
+      ...TASK_AND_ITEM_ICON_STYLE,
+    },
+    durationSec: 2,
+    experience: 20,
+    requiredLevel: 20,
+    lootTable: {
+      bar: { silverBar: { weight: 1, minQuantity: 1, maxQuantity: 1 } },
+    },
+    requires: { silverOre: 5, coal: 5 },
+    category: SmithingTaskCategories.SMELTING,
+    applicableModifiers: smithingCommonModifiers,
   },
-  requires: { ironOre: 5, coal: 5 },
-  applicableModifiers: smithingCommonModifiers,
-};
-const smeltSilverBar: Task = {
-  id: "smeltSilverBar",
-  name: "Silver Bar",
-  description: "Smelt a silver bar.",
-  icon: RectangleVertical,
-  iconStyle: {
-    fill: mineralsTable.silverOre.iconStyle.fill,
-    ...TASK_AND_ITEM_ICON_STYLE,
+  smeltGoldBar: {
+    id: "smeltGoldBar",
+    name: "Gold Bar",
+    description: "Smelt a gold bar.",
+    icon: RectangleVertical,
+    iconStyle: {
+      fill: mineralsTable.goldOre.iconStyle.fill,
+      ...TASK_AND_ITEM_ICON_STYLE,
+    },
+    durationSec: 2,
+    experience: 30,
+    requiredLevel: 30,
+    lootTable: {
+      bar: { goldBar: { weight: 1, minQuantity: 1, maxQuantity: 1 } },
+    },
+    requires: { goldOre: 5, coal: 10 },
+    category: SmithingTaskCategories.SMELTING,
+    applicableModifiers: smithingCommonModifiers,
   },
-  durationSec: 2,
-  experience: 20,
-  requiredLevel: 20,
-  lootTable: {
-    bar: { silverBar: { weight: 1, minQuantity: 1, maxQuantity: 1 } },
+  smeltMithrilBar: {
+    id: "smeltMithrilBar",
+    name: "Mithril Bar",
+    description: "Smelt a mithril bar.",
+    icon: RectangleVertical,
+    iconStyle: {
+      fill: mineralsTable.mithrilOre.iconStyle.fill,
+      ...TASK_AND_ITEM_ICON_STYLE,
+    },
+    durationSec: 2,
+    experience: 90,
+    requiredLevel: 30,
+    lootTable: {
+      bar: { mithrilBar: { weight: 1, minQuantity: 1, maxQuantity: 1 } },
+    },
+    requires: { mithrilOre: 5, coal: 10 },
+    category: SmithingTaskCategories.SMELTING,
+    applicableModifiers: smithingCommonModifiers,
   },
-  requires: { silverOre: 5, coal: 5 },
-  applicableModifiers: smithingCommonModifiers,
-};
-const smeltGoldBar: Task = {
-  id: "smeltGoldBar",
-  name: "Gold Bar",
-  description: "Smelt a gold bar.",
-  icon: RectangleVertical,
-  iconStyle: {
-    fill: mineralsTable.goldOre.iconStyle.fill,
-    ...TASK_AND_ITEM_ICON_STYLE,
+  smeltPlatinumBar: {
+    id: "smeltPlatinumBar",
+    name: "Platinum Bar",
+    description: "Smelt a platinum bar.",
+    icon: RectangleVertical,
+    iconStyle: {
+      fill: mineralsTable.platinumOre.iconStyle.fill,
+      ...TASK_AND_ITEM_ICON_STYLE,
+    },
+    durationSec: 2,
+    experience: 100,
+    requiredLevel: 40,
+    lootTable: {
+      bar: { platinumBar: { weight: 1, minQuantity: 1, maxQuantity: 1 } },
+    },
+    requires: { platinumOre: 5, coal: 15 },
+    category: SmithingTaskCategories.SMELTING,
+    applicableModifiers: smithingCommonModifiers,
   },
-  durationSec: 2,
-  experience: 30,
-  requiredLevel: 30,
-  lootTable: {
-    bar: { goldBar: { weight: 1, minQuantity: 1, maxQuantity: 1 } },
+  smeltAdamantBar: {
+    id: "smeltAdamantBar",
+    name: "Adamant Bar",
+    description: "Smelt an adamant bar.",
+    icon: RectangleVertical,
+    iconStyle: {
+      fill: mineralsTable.adamantiteOre.iconStyle.fill,
+      ...TASK_AND_ITEM_ICON_STYLE,
+    },
+    durationSec: 2,
+    experience: 100,
+    requiredLevel: 40,
+    lootTable: {
+      bar: { adamantBar: { weight: 1, minQuantity: 1, maxQuantity: 1 } },
+    },
+    requires: { adamantiteOre: 5, coal: 15 },
+    category: SmithingTaskCategories.SMELTING,
+    applicableModifiers: smithingCommonModifiers,
   },
-  requires: { goldOre: 5, coal: 10 },
-  applicableModifiers: smithingCommonModifiers,
-};
-const smeltMithrilBar: Task = {
-  id: "smeltMithrilBar",
-  name: "Mithril Bar",
-  description: "Smelt a mithril bar.",
-  icon: RectangleVertical,
-  iconStyle: {
-    fill: mineralsTable.mithrilOre.iconStyle.fill,
-    ...TASK_AND_ITEM_ICON_STYLE,
-  },
-  durationSec: 2,
-  experience: 90,
-  requiredLevel: 30,
-  lootTable: {
-    bar: { mithrilBar: { weight: 1, minQuantity: 1, maxQuantity: 1 } },
-  },
-  requires: { mithrilOre: 5, coal: 10 },
-  applicableModifiers: smithingCommonModifiers,
-};
-const smeltPlatinumBar: Task = {
-  id: "smeltPlatinumBar",
-  name: "Platinum Bar",
-  description: "Smelt a platinum bar.",
-  icon: RectangleVertical,
-  iconStyle: {
-    fill: mineralsTable.platinumOre.iconStyle.fill,
-    ...TASK_AND_ITEM_ICON_STYLE,
-  },
-  durationSec: 2,
-  experience: 100,
-  requiredLevel: 40,
-  lootTable: {
-    bar: { platinumBar: { weight: 1, minQuantity: 1, maxQuantity: 1 } },
-  },
-  requires: { platinumOre: 5, coal: 15 },
-  applicableModifiers: smithingCommonModifiers,
-};
-const smeltAdamantBar: Task = {
-  id: "smeltAdamantBar",
-  name: "Adamant Bar",
-  description: "Smelt an adamant bar.",
-  icon: RectangleVertical,
-  iconStyle: {
-    fill: mineralsTable.adamantiteOre.iconStyle.fill,
-    ...TASK_AND_ITEM_ICON_STYLE,
-  },
-  durationSec: 2,
-  experience: 100,
-  requiredLevel: 40,
-  lootTable: {
-    bar: { adamantBar: { weight: 1, minQuantity: 1, maxQuantity: 1 } },
-  },
-  requires: { adamantiteOre: 5, coal: 15 },
-  applicableModifiers: smithingCommonModifiers,
 };
 export const smithing: Skill = {
   id: "smithing",
@@ -451,31 +489,6 @@ export const smithing: Skill = {
   description: "The ability to forge arms, armor, and trade goods.",
   icon: Gavel,
   iconStyle: { fill: "none", ...SKILL_AND_MENU_ICON_STYLE },
-  tasks: {
-    smelting: [
-      smeltBronzeBar,
-      smeltIronBar,
-      smeltSteelBar,
-      smeltSilverBar,
-      smeltGoldBar,
-      smeltMithrilBar,
-      smeltPlatinumBar,
-      smeltAdamantBar,
-    ],
-    "bronze smithing": [
-      smithBronzeDagger,
-      smithBronzeSword,
-      smithBronzeShield,
-      smithBronzeGreatSword,
-      smithBronzeHelmet,
-      smithBronzeChestplate,
-      smithBronzeBelt,
-      smithBronzePlateleggings,
-      smithBronzeGauntlets,
-    ],
-    "iron smithing": [smithIronSword, smithIronShield, smithIronGreatSword],
-    "steel smithing": [smithSteelSword],
-    "mithril smithing": [smithMithrilSword],
-    "adamant smithing": [smithAdamantSword],
-  },
+  tasks: SmithingTasks,
+  taskCategories: SmithingTaskCategories,
 };

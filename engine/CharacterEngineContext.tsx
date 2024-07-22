@@ -126,7 +126,7 @@ export default function CharacterEngineProvider({
   const getModifiers = () => {
     return {
       ...getCombatModifiers(character),
-      ...getAgilityModifiers(character.skills.agility.level),
+      ...getAgilityModifiers(character.skills.athletics.level),
     };
   };
 

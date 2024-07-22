@@ -80,7 +80,13 @@ export const testCharacter: Character = {
     tinOre: 10,
     coal: 10,
   },
-  upgrades: ["bronzePickaxe1", "bronzeHammer"],
+  upgrades: [
+    "bronzePickaxe",
+    "basicHammer",
+    "basicAnvil",
+    "basicForge",
+    "coalMineCanery",
+  ],
   skills: {
     martial: {
       level: 5,
@@ -98,7 +104,7 @@ export const testCharacter: Character = {
       level: 60,
       experience: 10737418239,
     },
-    agility: {
+    athletics: {
       level: 15,
       experience: 0,
     },

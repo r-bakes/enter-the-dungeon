@@ -1,12 +1,10 @@
 import CombatDeckCard from "@/components/cards/combatDeckCard";
 import { Card } from "@/components/ui/card";
 import { Label } from "@/components/ui/label";
-import { ScrollArea, ScrollBar } from "@/components/ui/scroll-area";
 import { MAGIC_DECK_LIMIT, MARTIAL_DECK_LIMIT } from "@/data/configurations";
 import { cardTable } from "@/data/cards/cards";
-import { useCampEngineContext } from "@/engine/campEngineContext";
 import { useCharacterEngineContext } from "@/engine/characterEngineContext";
-import { ArrowDownUp, ArrowRightLeft } from "lucide-react";
+import { ArrowDownUp } from "lucide-react";
 import { Separator } from "@/components/ui/separator";
 
 export default function DeckMenu({}: {}) {

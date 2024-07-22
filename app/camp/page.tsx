@@ -15,11 +15,12 @@ import { magic } from "@/data/skills/magic";
 import { expeditions } from "@/data/menus/expeditions";
 import ExpeditionsMenu from "@/components/camp/expeditionsMenu/expeditionsMenu";
 import CharacterEngineProvider from "@/engine/characterEngineContext";
-import { agility } from "@/data/skills/agility";
 import { crafting } from "@/data/skills/crafting";
 import { enchanting } from "@/data/skills/enchanting";
 import { home } from "@/data/menus/home";
 import HomeMenu from "@/components/camp/homeMenu/homeMenu";
+import { AnimatePresence } from "framer-motion";
+import { athletics } from "@/data/skills/athletics";
 
 export default function Page({}) {
   const [selectedMenu, setSelectedMenu] = React.useState<GameObject>(martial);
@@ -28,7 +29,7 @@ export default function Page({}) {
   const skillMenus: GameObject[] = [
     prospecting,
     smithing,
-    agility,
+    athletics,
     crafting,
     enchanting,
   ];
@@ -48,13 +49,15 @@ export default function Page({}) {
   return (
     <CharacterEngineProvider>
       <CampEngineProvider>
-        <MenuSelect
-          selectedMenu={selectedMenu}
-          setSelectedMenu={setSelectedMenu}
-        ></MenuSelect>
-        <div className="flex h-full w-full bg-slate-50 py-10">
-          {menus[selectedMenu.id]}
-        </div>
+        <AnimatePresence>
+          <MenuSelect
+            selectedMenu={selectedMenu}
+            setSelectedMenu={setSelectedMenu}
+          ></MenuSelect>
+          <div className="flex h-full w-full bg-slate-50 py-10">
+            {menus[selectedMenu.id]}
+          </div>
+        </AnimatePresence>
       </CampEngineProvider>
     </CharacterEngineProvider>
   );
