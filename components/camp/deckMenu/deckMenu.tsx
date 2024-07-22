@@ -55,7 +55,7 @@ export default function DeckMenu({}: {}) {
             <Label className="text-lg font-medium text-muted-foreground">
               Available
             </Label>
-            <Card className="flex h-48 w-full flex-row px-6">
+            <Card className="flex h-[200px] w-full flex-row px-6">
               <div className="flex h-full w-full flex-row items-center gap-3">
                 {martialUnequipped}
               </div>
@@ -66,7 +66,7 @@ export default function DeckMenu({}: {}) {
               </Label>
               <ArrowDownUp size={45} strokeWidth={1} />
             </div>
-            <Card className="flex h-48 w-full flex-row items-center px-6">
+            <Card className="flex h-[200px] w-full flex-row items-center px-6">
               <div className="flex h-full w-full flex-row items-center gap-3">
                 {martialEquipped}
               </div>
@@ -83,7 +83,7 @@ export default function DeckMenu({}: {}) {
             <Label className="text-lg font-medium text-muted-foreground">
               Available
             </Label>
-            <Card className="flex h-48 w-full flex-row px-6">
+            <Card className="flex h-[200px] w-full flex-row px-6">
               <div className="flex h-full w-full flex-row items-center gap-3">
                 {magicUnequipped}
               </div>
@@ -94,7 +94,7 @@ export default function DeckMenu({}: {}) {
               </Label>
               <ArrowDownUp size={45} strokeWidth={1} />
             </div>
-            <Card className="flex h-48 w-full flex-row items-center px-6">
+            <Card className="flex h-[200px] w-full flex-row items-center px-6">
               <div className="flex h-full w-full flex-row items-center gap-3">
                 {magicEquipped}
               </div>
