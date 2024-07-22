@@ -1,23 +1,26 @@
 import TaskButton from "./taskButton";
 import LockedTaskButton from "./lockedTaskButton";
-import { Task } from "@/data/skills/skills";
+import { Skill, Task } from "@/data/skills/skills";
 import { ScrollArea, ScrollBar } from "@/components/ui/scroll-area";
 
 export default function TasksContainer({
-  skillLevel,
+  skill,
   tasks,
+  skillLevel,
   setTask,
 }: Readonly<{
-  skillLevel: number;
+  skill: Skill;
   tasks: Task[];
+  skillLevel: number;
   setTask: React.Dispatch<React.SetStateAction<Task | null>>;
 }>) {
   return (
     <ScrollArea>
-      <div className="flex flex-col w-full gap-2">
+      <div className="flex w-full flex-col gap-2">
         {tasks.map((task) =>
           skillLevel >= task.requiredLevel ? (
             <TaskButton
+              skill={skill}
               task={task}
               key={task.name}
               onClick={() => setTask(task)}

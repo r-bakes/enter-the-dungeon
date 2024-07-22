@@ -6,6 +6,7 @@ import { Loot } from "@/engine/utils/lootUtilities";
 import { Label } from "@radix-ui/react-label";
 import { Backpack } from "lucide-react";
 import { renderIcon } from "@/data/gameObject";
+import { Card } from "@/components/ui/card";
 
 export default function TaskComplete({
   task,
@@ -18,10 +19,7 @@ export default function TaskComplete({
 }) {
   const itemCard = (item: Item, amount: number) => {
     return (
-      <div
-        className="flex h-min w-max items-center gap-2 rounded-md border p-2"
-        key={item.id}
-      >
+      <Card key={item.id} className="flex h-min w-max items-center gap-2 p-2">
         {renderIcon(item.icon, 24, {
           ...item.iconStyle,
         })}
@@ -34,18 +32,16 @@ export default function TaskComplete({
             <Backpack size={15} strokeWidth={1}></Backpack>
           </div>
         </div>
-      </div>
+      </Card>
     );
   };
 
   return (
     <div className="flex h-full w-full flex-col space-y-3">
       <div className="flex items-end space-x-2">
-        <div className="h-[24px] w-[24px]">
-          {renderIcon(task.icon, 24, {
-            ...task.iconStyle,
-          })}
-        </div>
+        {renderIcon(task.icon, 24, {
+          ...task.iconStyle,
+        })}
         <Label className="text-sm font-semibold">{task.name}</Label>
         <Label className="text-sm text-muted-foreground">
           {" "}

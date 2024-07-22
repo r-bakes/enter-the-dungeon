@@ -52,7 +52,9 @@ export default function Page({}) {
           selectedMenu={selectedMenu}
           setSelectedMenu={setSelectedMenu}
         ></MenuSelect>
-        <div className="flex h-full bg-slate-50 w-full py-10">{menus[selectedMenu.id]}</div>
+        <div className="flex h-full w-full bg-slate-50 py-10">
+          {menus[selectedMenu.id]}
+        </div>
       </CampEngineProvider>
     </CharacterEngineProvider>
   );

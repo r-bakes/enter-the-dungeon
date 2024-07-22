@@ -2,16 +2,10 @@ import { Label } from "@/components/ui/label";
 
 export default function Logo({}: {}) {
   return (
-    <div className="flex flex-col h-32 px-5 w-full">
-      <Label className="font-extrabold text-white text-4xl">
-        Enter
-      </Label>
-      <Label className="font-bold text-white text-xl">
-        the
-      </Label>
-      <Label className="font-extrabold text-white text-4xl">
-        Dungeon
-      </Label>
+    <div className="flex h-32 w-full flex-col px-5">
+      <Label className="text-4xl font-extrabold text-white">Enter</Label>
+      <Label className="text-xl font-bold text-white">the</Label>
+      <Label className="text-4xl font-extrabold text-white">Dungeon</Label>
     </div>
   );
 }

@@ -1,3 +1,4 @@
+import { Card } from "@/components/ui/card";
 import { Label } from "@/components/ui/label";
 import { renderIcon } from "@/data/gameObject";
 import { Item } from "@/data/items/types";
@@ -14,24 +15,30 @@ export default function TaskProducesEntry({
   }[][];
   label: string;
 }>) {
+  if (data.length === 0) {
+    return <></>;
+  }
+
   return (
     <div className="flex flex-col gap-1">
-      <Label className="mb-1 text-xs font-extralight text-muted-foreground">
+      <Label className="mb-1 text-xs font-light text-muted-foreground">
         {label}
       </Label>
       {data.map((lootGroup) => (
-        <div
-          className={
-            "flex w-full flex-col " +
-            (lootGroup.length > 1 ? "rounded-sm border px-1" : "")
-          }
+        <Card
           key={lootGroup[0].item.id}
+          className={
+            "flex w-full flex-col " + (lootGroup.length > 1 ? "px-1" : "")
+          }
         >
           <div className="h-full flex-col items-center gap-1">
             {lootGroup.map((data) => (
-              <div
-                className="flex w-full items-center justify-between rounded-sm border p-2"
+              <Card
                 key={data.item.id}
+                className={
+                  "flex w-full items-center justify-between p-2 " +
+                  (lootGroup.length == 1 ? "border-0 shadow-none" : "")
+                }
               >
                 <div className="flex h-full items-center gap-1">
                   {renderIcon(data.item.icon, 24, {
@@ -42,17 +49,17 @@ export default function TaskProducesEntry({
                       ? data.minQuantity
                       : data.minQuantity + " - " + data.maxQuantity}
                   </Label>
-                  <Label className="w-max text-xs font-light text-muted-foreground">
+                  <Label className="w-max text-xs font-normal text-muted-foreground">
                     {data.item.name}
                   </Label>
                 </div>
-                <Label className="w-max text-xs font-light text-muted-foreground">
+                <Label className="font-nornmal w-max text-xs text-muted-foreground">
                   {data.chance}%
                 </Label>
-              </div>
+              </Card>
             ))}
           </div>
-        </div>
+        </Card>
       ))}
     </div>
   );

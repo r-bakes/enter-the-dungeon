@@ -5,7 +5,6 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import { Label } from "@/components/ui/label";
 import { Progress } from "@/components/ui/progress";
 import { LEVEL_CAP } from "@/data/configurations";
 import { Skill } from "@/data/skills/skills";
@@ -26,26 +25,28 @@ export function SkillHeader({
     requiredExpForLevelUp(skillLevel) - requiredExpForLevelUp(skillLevel - 1);
 
   return (
-    <Card className="flex h-40 w-full flex-col min-h-40">
+    <Card className="flex h-40 min-h-40 w-full flex-col">
       <CardHeader className="flex min-w-max flex-row items-center gap-4">
         <skill.icon size={44} strokeWidth={1}></skill.icon>
-        <div className="mr-6 flex min-w-max flex-col">
+        <div className="mr-6 flex min-w-max flex-col gap-1">
           <CardTitle>{skill.name}</CardTitle>
-          <CardDescription>{skill.description}</CardDescription>
+          <CardDescription className="font-normal">
+            {skill.description}
+          </CardDescription>
         </div>
         <div className="flex min-w-max flex-col">
           <CardTitle>
             {skillLevel} / {LEVEL_CAP}
           </CardTitle>
-          <CardDescription>Level</CardDescription>
+          <CardDescription className="font-normal">Level</CardDescription>
         </div>
       </CardHeader>
-      <CardContent>
+      <CardContent className="flex flex-col gap-2 pb-0">
         <Progress
           className="h-3 w-full rounded-sm"
           value={(expGainedAtLevel / expRemainingForLevelUp) * 100}
         ></Progress>
-        <CardDescription>
+        <CardDescription className="font-normal">
           {skillExperience + " / " + requiredExpForLevelUp(skillLevel)}
         </CardDescription>
       </CardContent>

@@ -5,7 +5,9 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import { renderIcon } from "@/data/gameObject";
-import { Upgrade } from "@/data/upgrades/upgrade";
+import { Upgrade } from "@/data/modifiers/upgrades";
+import { skillTable } from "@/data/skills/skills";
+import { formatCapitalCase } from "@/engine/utils/formattingUtilities";
 
 export default function UpgradeCard({ upgrade }: { upgrade: Upgrade }) {
   return (
@@ -23,7 +25,8 @@ export default function UpgradeCard({ upgrade }: { upgrade: Upgrade }) {
           </div>
           <div className="mt-0 flex h-full w-56 flex-col">
             <CardTitle className="text-base">
-              {[...upgrade.modifier.skill]
+              {Object.keys(upgrade.modifier.targets)
+                .map((skillId) => skillTable[skillId])
                 .map((skill) => skill.name)
                 .join("| ")}
             </CardTitle>
@@ -32,14 +35,14 @@ export default function UpgradeCard({ upgrade }: { upgrade: Upgrade }) {
             </CardDescription>
           </div>
         </div>
-        <div className="flex h-full flex-col">
-          <CardTitle className="text-base">
-            +{upgrade.modifier.value}%
-          </CardTitle>
-          <CardDescription className="p-0 text-left text-xs">
-            {upgrade.modifier.type.valueOf()}
-          </CardDescription>
-        </div>
+        {Object.entries(upgrade.modifier.values).map(([type, value]) => (
+          <div key={type} className="flex h-full flex-col">
+            <CardTitle className="text-base">+{value}%</CardTitle>
+            <CardDescription className="p-0 text-left text-xs">
+              {formatCapitalCase(type)}
+            </CardDescription>
+          </div>
+        ))}
       </CardHeader>
     </Card>
   );

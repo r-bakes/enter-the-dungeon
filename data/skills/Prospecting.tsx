@@ -1,11 +1,18 @@
 import { Circle, Gem, Mountain, SearchSlash } from "lucide-react";
-import { Skill } from "./skills";
-import { Task } from "./skills";
+import { Skill, Task } from "./skills";
 import { mineralsTable } from "../items/minerals";
 import {
   SKILL_AND_MENU_ICON_STYLE,
   TASK_AND_ITEM_ICON_STYLE,
 } from "../configurations";
+import { SkillModifierType } from "../modifiers/skillModifiers";
+
+const prospectingCommonModifiers = new Set([
+  SkillModifierType.SPEED,
+  SkillModifierType.EXPERIENCE,
+  SkillModifierType.DOUBLE_CHANCE,
+  SkillModifierType.PRODUCTION_MULTIPLIER,
+]);
 
 const mineCopperOre: Task = {
   id: "mineCopperOre",
@@ -27,6 +34,7 @@ const mineCopperOre: Task = {
     },
   },
   requires: {},
+  applicableModifiers: prospectingCommonModifiers,
 };
 const mineTinOre: Task = {
   id: "mineTinOre",
@@ -48,6 +56,7 @@ const mineTinOre: Task = {
     },
   },
   requires: {},
+  applicableModifiers: prospectingCommonModifiers,
 };
 const mineCoal: Task = {
   id: "mineCoal",
@@ -65,6 +74,7 @@ const mineCoal: Task = {
     ore: { coal: { weight: 1, minQuantity: 1, maxQuantity: 1 } },
   },
   requires: {},
+  applicableModifiers: prospectingCommonModifiers,
 };
 const mineIronOre: Task = {
   id: "mineIronOre",
@@ -86,6 +96,7 @@ const mineIronOre: Task = {
     },
   },
   requires: {},
+  applicableModifiers: prospectingCommonModifiers,
 };
 const mineSilverOre: Task = {
   id: "mineSilverOre",
@@ -107,6 +118,7 @@ const mineSilverOre: Task = {
     },
   },
   requires: {},
+  applicableModifiers: prospectingCommonModifiers,
 };
 const mineGoldOre: Task = {
   id: "mineGoldOre",
@@ -128,6 +140,7 @@ const mineGoldOre: Task = {
     },
   },
   requires: {},
+  applicableModifiers: prospectingCommonModifiers,
 };
 const mineMithrilOre: Task = {
   id: "mineMithrilOre",
@@ -149,6 +162,7 @@ const mineMithrilOre: Task = {
     },
   },
   requires: {},
+  applicableModifiers: prospectingCommonModifiers,
 };
 const minePlatinumOre: Task = {
   id: "minePlatinumOre",
@@ -170,6 +184,7 @@ const minePlatinumOre: Task = {
     },
   },
   requires: {},
+  applicableModifiers: prospectingCommonModifiers,
 };
 const mineAdamantiteOre: Task = {
   id: "mineAdamantiteOre",
@@ -191,6 +206,7 @@ const mineAdamantiteOre: Task = {
     },
   },
   requires: {},
+  applicableModifiers: prospectingCommonModifiers,
 };
 const cutGeode: Task = {
   id: "cutGeode",
@@ -209,6 +225,7 @@ const cutGeode: Task = {
     },
   },
   requires: { geode: 1 },
+  applicableModifiers: prospectingCommonModifiers,
 };
 
 export const prospecting: Skill = {
@@ -218,7 +235,7 @@ export const prospecting: Skill = {
   icon: SearchSlash,
   iconStyle: { fill: "none", ...SKILL_AND_MENU_ICON_STYLE },
   tasks: {
-    gathering: [
+    mining: [
       mineCopperOre,
       mineTinOre,
       mineCoal,

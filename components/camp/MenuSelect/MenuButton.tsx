@@ -14,13 +14,13 @@ export default function MenuButton({
   onClick: React.Dispatch<React.SetStateAction<any>>;
 }) {
   let extraFormat = isSelected
-    ? "font-normal bg-red-700/30 border-l-2 border-white rounded-none"
-    : "font-light";
+    ? "font-medium bg-red-700 border-l-2 border-white rounded-none"
+    : "font-normal";
 
   return (
     <Button
       className={
-        "flex h-10 w-full gap-2 px-5 text-center hover:bg-red-700/30 " +
+        "flex h-10 w-full gap-2 rounded-none px-5 text-center hover:rounded-none hover:bg-red-700" +
         extraFormat
       }
       onClick={onClick}

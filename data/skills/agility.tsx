@@ -4,6 +4,12 @@ import {
   SKILL_AND_MENU_ICON_STYLE,
   TASK_AND_ITEM_ICON_STYLE,
 } from "../configurations";
+import { SkillModifierType } from "../modifiers/skillModifiers";
+
+const agilityCommonModifiers = new Set([
+  SkillModifierType.SPEED,
+  SkillModifierType.EXPERIENCE,
+]);
 
 const jumpingJacks: Task = {
   id: "jumpingJacks",
@@ -17,6 +23,9 @@ const jumpingJacks: Task = {
   durationSec: 10,
   experience: 1,
   requiredLevel: 1,
+  lootTable: {},
+  requires: {},
+  applicableModifiers: agilityCommonModifiers,
 };
 
 export const agility: Skill = {

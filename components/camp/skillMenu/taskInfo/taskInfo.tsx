@@ -9,12 +9,11 @@ import {
 } from "@/components/ui/card";
 import { Progress } from "@/components/ui/progress";
 import { Label } from "@radix-ui/react-label";
-import { Play, X, Backpack } from "lucide-react";
+import { Play, X } from "lucide-react";
 import { useCampEngineContext } from "@/engine/campEngineContext";
 import { generateDropRates } from "@/engine/utils/lootUtilities";
 import { Item } from "@/data/items/types";
-import { Skill } from "@/data/skills/skills";
-import { Task } from "@/data/skills/skills";
+import { Skill, Task } from "@/data/skills/skills";
 import { itemTable } from "@/data/items/items";
 import { useCharacterEngineContext } from "@/engine/characterEngineContext";
 import { renderIcon } from "@/data/gameObject";
@@ -22,22 +21,29 @@ import TaskDataEntry from "./taskDataEntry";
 import { Separator } from "@/components/ui/separator";
 import TaskProducesEntry from "./taskProducesEntry";
 import { TaskRequiresEntry } from "./taskRequiresEntry";
+import {
+  applySpeedModifier,
+  getModifiers,
+  SkillModifierType,
+} from "@/data/modifiers/skillModifiers";
+import TaskModifiers from "./taskModifiers";
 
 const rootCardFormat =
-  "flex flex-col h-full w-72 min-w-72 max-w-72 items-center";
+  "flex flex-col h-full grow-0 w-72 min-w-72 max-w-72 items-center overflow-y-scroll";
 
 export default function TaskInfo({
   skill,
   task,
 }: Readonly<{
-  skill: Skill | null;
+  skill: Skill;
   task: Task | null;
 }>) {
   const {
     setWorkingSkill,
     setWorkingTask,
-    taskProgress: progress,
+    taskProgress,
     workingTask,
+    modifierTable,
   } = useCampEngineContext();
   const { character } = useCharacterEngineContext();
 
@@ -57,6 +63,7 @@ export default function TaskInfo({
   let taskRequires: { item: Item; quantity: number; haveEnough: boolean }[] =
     [];
   let requirementsMet: boolean = true;
+  let modifiers = getModifiers(modifierTable, skill.id, task.id);
 
   if (task.requires) {
     taskRequires = Object.entries(task.requires).map(([itemId, quantity]) => ({
@@ -80,22 +87,36 @@ export default function TaskInfo({
 
   return (
     <Card className={rootCardFormat}>
-      <CardHeader className="flex h-32 w-full flex-row">
+      <CardHeader className="flex h-32 w-full flex-row gap-4">
         {renderIcon(task.icon, 56, task.iconStyle)}
-        <div className="flex flex-col pl-4">
+        <div className="flex flex-col gap-1">
           <CardTitle>{task.name}</CardTitle>
-          <CardDescription>{task.description}</CardDescription>
+          <CardDescription className="font-normal">
+            {task.description}
+          </CardDescription>
         </div>
       </CardHeader>
-      <CardContent className="flex w-full flex-col gap-4">
+      <CardContent className="flex w-full grow flex-col gap-4">
         <Progress
           className="h-4 w-full rounded-sm"
-          value={task === workingTask ? (progress / task.durationSec) * 100 : 0}
+          value={
+            task === workingTask
+              ? (taskProgress /
+                  applySpeedModifier(
+                    task.durationSec,
+                    modifiers[SkillModifierType.SPEED],
+                  )) *
+                100
+              : 0
+          }
         ></Progress>
         <Separator></Separator>
         <div className="flex w-full items-center justify-between gap-4">
           <TaskDataEntry
-            data={task.durationSec}
+            data={applySpeedModifier(
+              task.durationSec,
+              modifiers[SkillModifierType.SPEED],
+            )}
             label={"seconds"}
           ></TaskDataEntry>
           <div className="h-1 w-1 rounded-full bg-black"></div>
@@ -104,16 +125,19 @@ export default function TaskInfo({
             label={"experience"}
           ></TaskDataEntry>
         </div>
-        <TaskProducesEntry
-          label={"produces"}
-          data={taskProduction}
-        ></TaskProducesEntry>
-        <TaskRequiresEntry
-          data={taskRequires}
-          label={"requires"}
-        ></TaskRequiresEntry>
+        <div className="flex grow flex-col gap-4 overflow-y-scroll">
+          <TaskProducesEntry
+            label={"produces"}
+            data={taskProduction}
+          ></TaskProducesEntry>
+          <TaskRequiresEntry
+            data={taskRequires}
+            label={"requires"}
+          ></TaskRequiresEntry>
+          <TaskModifiers data={modifiers}></TaskModifiers>
+        </div>
       </CardContent>
-      <CardFooter className="flex w-full grow items-end">
+      <CardFooter className="flex h-24 w-full items-end">
         <Button
           className="w-1/2 rounded-l-md rounded-r-none text-center"
           disabled={!requirementsMet}

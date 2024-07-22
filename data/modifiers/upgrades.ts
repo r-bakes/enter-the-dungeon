@@ -1,29 +1,19 @@
-import { GameObject, getAllTasks } from "../gameObject";
 import { Gavel, Pickaxe } from "lucide-react";
-import { mineralsTable } from "../items/minerals";
 import { TASK_AND_ITEM_ICON_STYLE } from "../configurations";
-import { prospecting } from "../skills/prospecting";
-import { Skill, Task } from "../skills/skills";
 import { HomeRooms } from "../menus/home";
+import { SkillModifies, SkillModifierType } from "./skillModifiers";
+import { GameObject } from "../gameObject";
+import { mineralsTable } from "../items/minerals";
+import { prospecting } from "../skills/prospecting";
 import { smithing } from "../skills/smithing";
-
-export enum UpgradeModifierType {
-  SPEED = "speed",
-  DOUBLE_CHANCE = "double chance",
-  EXPERIENCE = "experience",
-}
-
-export type UpgradeModifier = {
-  type: UpgradeModifierType;
-  skill: Set<Skill>;
-  tasks: Set<Task>;
-  value: number;
-};
+import { getAllTasks } from "../skills/skills";
 
 export type Upgrade = {
   next: string | null;
-  modifier: UpgradeModifier;
-  requires: { [itemId: string]: number };
+  modifier: SkillModifies;
+  requires: {
+    [itemId: string]: number;
+  };
   homeRoom: HomeRooms;
 } & GameObject;
 
@@ -39,10 +29,12 @@ export const upgradeTable: { [upgradeId: string]: Upgrade } = {
     },
     next: "bronzePickaxe1",
     modifier: {
-      type: UpgradeModifierType.SPEED,
-      value: 0,
-      skill: new Set([prospecting]),
-      tasks: new Set([...prospecting.tasks.gathering]),
+      targets: {
+        [prospecting.id]: prospecting.tasks.mining.map((task) => task.id),
+      },
+      values: {
+        [SkillModifierType.SPEED]: 0,
+      },
     },
     requires: { bronzeBar: 0 },
     homeRoom: HomeRooms.TOOL_SHED,
@@ -58,10 +50,12 @@ export const upgradeTable: { [upgradeId: string]: Upgrade } = {
     },
     next: "bronzePickaxe2",
     modifier: {
-      type: UpgradeModifierType.SPEED,
-      value: 1,
-      skill: new Set([prospecting]),
-      tasks: new Set([...prospecting.tasks.gathering]),
+      targets: {
+        [prospecting.id]: prospecting.tasks.mining.map((task) => task.id),
+      },
+      values: {
+        [SkillModifierType.SPEED]: 1,
+      },
     },
     requires: { bronzeBar: 10 },
     homeRoom: HomeRooms.TOOL_SHED,
@@ -77,10 +71,12 @@ export const upgradeTable: { [upgradeId: string]: Upgrade } = {
     },
     next: "bronzePickaxe3",
     modifier: {
-      type: UpgradeModifierType.SPEED,
-      value: 2,
-      skill: new Set([prospecting]),
-      tasks: new Set([...prospecting.tasks.gathering]),
+      targets: {
+        [prospecting.id]: prospecting.tasks.mining.map((task) => task.id),
+      },
+      values: {
+        [SkillModifierType.SPEED]: 2,
+      },
     },
     requires: { bronzeBar: 100 },
     homeRoom: HomeRooms.TOOL_SHED,
@@ -96,10 +92,12 @@ export const upgradeTable: { [upgradeId: string]: Upgrade } = {
     },
     next: "bronzePickaxe4",
     modifier: {
-      type: UpgradeModifierType.SPEED,
-      value: 3,
-      skill: new Set([prospecting]),
-      tasks: new Set([...prospecting.tasks.gathering]),
+      targets: {
+        [prospecting.id]: prospecting.tasks.mining.map((task) => task.id),
+      },
+      values: {
+        [SkillModifierType.SPEED]: 3,
+      },
     },
     requires: { bronzeBar: 1000 },
     homeRoom: HomeRooms.TOOL_SHED,
@@ -115,10 +113,12 @@ export const upgradeTable: { [upgradeId: string]: Upgrade } = {
     },
     next: "ironPickaxe",
     modifier: {
-      type: UpgradeModifierType.SPEED,
-      value: 4,
-      skill: new Set([prospecting]),
-      tasks: new Set([...prospecting.tasks.gathering]),
+      targets: {
+        [prospecting.id]: prospecting.tasks.mining.map((task) => task.id),
+      },
+      values: {
+        [SkillModifierType.SPEED]: 4,
+      },
     },
     requires: { bronzeBar: 10000 },
     homeRoom: HomeRooms.TOOL_SHED,
@@ -134,10 +134,12 @@ export const upgradeTable: { [upgradeId: string]: Upgrade } = {
     },
     next: "ironPickaxe1",
     modifier: {
-      type: UpgradeModifierType.SPEED,
-      value: 5,
-      skill: new Set([prospecting]),
-      tasks: new Set([...prospecting.tasks.gathering]),
+      targets: {
+        [prospecting.id]: prospecting.tasks.mining.map((task) => task.id),
+      },
+      values: {
+        [SkillModifierType.SPEED]: 5,
+      },
     },
     requires: { ironBar: 100 },
     homeRoom: HomeRooms.TOOL_SHED,
@@ -153,10 +155,12 @@ export const upgradeTable: { [upgradeId: string]: Upgrade } = {
     },
     next: null,
     modifier: {
-      type: UpgradeModifierType.SPEED,
-      value: 5,
-      skill: new Set([prospecting]),
-      tasks: new Set([...prospecting.tasks.gathering]),
+      targets: {
+        [prospecting.id]: prospecting.tasks.mining.map((task) => task.id),
+      },
+      values: {
+        [SkillModifierType.SPEED]: 6,
+      },
     },
     requires: { ironBar: 1000 },
     homeRoom: HomeRooms.TOOL_SHED,
@@ -170,13 +174,15 @@ export const upgradeTable: { [upgradeId: string]: Upgrade } = {
       fill: mineralsTable.copperOre.iconStyle.fill,
       ...TASK_AND_ITEM_ICON_STYLE,
     },
-    next: "bronzeHammer1",
     modifier: {
-      type: UpgradeModifierType.SPEED,
-      value: 0,
-      skill: new Set([prospecting]),
-      tasks: new Set([...prospecting.tasks.gathering]),
+      targets: {
+        [smithing.id]: getAllTasks(smithing.tasks).map((task) => task.id),
+      },
+      values: {
+        [SkillModifierType.SPEED]: 0,
+      },
     },
+    next: "bronzeHammer1",
     requires: { bronzeBar: 0 },
     homeRoom: HomeRooms.TOOL_SHED,
   },
@@ -191,10 +197,12 @@ export const upgradeTable: { [upgradeId: string]: Upgrade } = {
     },
     next: null,
     modifier: {
-      type: UpgradeModifierType.SPEED,
-      value: 1,
-      skill: new Set([smithing]),
-      tasks: new Set([...getAllTasks(smithing.tasks)]),
+      targets: {
+        [smithing.id]: getAllTasks(smithing.tasks).map((task) => task.id),
+      },
+      values: {
+        [SkillModifierType.SPEED]: 1,
+      },
     },
     requires: { bronzeBar: 10 },
     homeRoom: HomeRooms.TOOL_SHED,

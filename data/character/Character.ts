@@ -1,4 +1,3 @@
-import { upgradeTable } from "../upgrades/upgrade";
 // TODO add persistent storage on GCP.
 export type Character = {
   name: string;

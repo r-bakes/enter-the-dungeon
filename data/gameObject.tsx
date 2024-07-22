@@ -1,5 +1,4 @@
 import { LucideIcon } from "lucide-react";
-import { SkillTasks, Task } from "./skills/skills";
 
 export type GameObject = {
   id: string;
@@ -42,12 +41,4 @@ export const renderIcon = (
       size={size}
     ></Icon>
   );
-};
-
-export const getAllTasks = (tasks: SkillTasks) => {
-  let allTasks: Task[] = [];
-  Object.keys(tasks).forEach((key) => {
-    allTasks.push(...tasks[key]);
-  });
-  return allTasks;
 };

@@ -2,32 +2,47 @@ import { TICK_RATE_MS } from "../data/configurations";
 import { toast } from "sonner";
 import generateLoot, { Loot } from "./utils/lootUtilities";
 import { Character, Inventory } from "../data/character/character";
-import { Skill } from "@/data/skills/skills";
-import { Task } from "@/data/skills/skills";
-import { addExp, addItem, removeItem } from "./utils/charaterStateUtilities";
+import { Skill, Task } from "@/data/skills/skills";
+import {
+  addExp,
+  addItem,
+  initializeCharacterModifierTable,
+  removeItem,
+} from "./utils/charaterStateUtilities";
 import { useCharacterEngineContext } from "./characterEngineContext";
 import React from "react";
 import TaskComplete from "@/components/camp/toast/taskComplete";
+import {
+  applySpeedModifier,
+  getModifiers,
+  SkillModifierTable,
+  SkillModifierType,
+} from "@/data/modifiers/skillModifiers";
 
 type CampEngineContextContents = {
   taskProgress: number;
   workingTask: Task | null;
   workingSkill: Skill | null;
+  modifierTable: SkillModifierTable;
   setWorkingSkill: React.Dispatch<React.SetStateAction<Skill | null>>;
   setWorkingTask: React.Dispatch<React.SetStateAction<Task | null>>;
+  setModifierTable: React.Dispatch<React.SetStateAction<SkillModifierTable>>;
 };
 const CampEngineContext = React.createContext({} as CampEngineContextContents);
 export const useCampEngineContext = () => React.useContext(CampEngineContext);
 
 export default function CampEngineProvider({
   children,
-}: {
+}: Readonly<{
   children: React.ReactNode;
-}) {
+}>) {
   const { character, setCharacter } = useCharacterEngineContext();
   const [workingSkill, setWorkingSkill] = React.useState<Skill | null>(null);
   const [workingTask, setWorkingTask] = React.useState<Task | null>(null);
   const [taskProgress, setTaskProgress] = React.useState(0);
+  const [modifierTable, setModifierTable] = React.useState(
+    initializeCharacterModifierTable(character.upgrades),
+  );
 
   React.useEffect(() => {
     setTaskProgress(0);
@@ -55,7 +70,16 @@ export default function CampEngineProvider({
 
   useInterval(() => {
     if (workingSkill != null && workingTask != null) {
-      if (taskProgress + TICK_RATE_MS / 1000 >= workingTask.durationSec) {
+      let speedModifer = getModifiers(
+        modifierTable,
+        workingSkill.id,
+        workingTask.id,
+      )[SkillModifierType.SPEED];
+
+      if (
+        taskProgress + TICK_RATE_MS / 1000 >=
+        applySpeedModifier(workingTask.durationSec, speedModifer)
+      ) {
         setTaskProgress(0);
         updateCharacterTaskComplete(character, workingSkill, workingTask);
         canContinueTask(character.inventory, workingTask);
@@ -85,7 +109,7 @@ export default function CampEngineProvider({
   const updateCharacterTaskComplete = (
     character: Character,
     skill: Skill,
-    task: Task
+    task: Task,
   ) => {
     let loot = {};
     if (task.lootTable) {
@@ -100,7 +124,7 @@ export default function CampEngineProvider({
         character={character}
         loot={loot}
       ></TaskComplete>,
-      { duration: 10000 }
+      { duration: 10000 },
     );
     setCharacter({ ...character });
   };
@@ -108,7 +132,7 @@ export default function CampEngineProvider({
   const updateInventory = (
     inventory: Inventory,
     loot: Loot,
-    taskConsumed?: { [itemid: string]: number }
+    taskConsumed?: { [itemid: string]: number },
   ) => {
     if (taskConsumed) {
       Object.entries(taskConsumed).forEach(([itemdId, amount]) => {
@@ -123,11 +147,13 @@ export default function CampEngineProvider({
   return (
     <CampEngineContext.Provider
       value={{
-        setWorkingSkill,
-        setWorkingTask,
         taskProgress,
         workingTask,
         workingSkill,
+        modifierTable,
+        setWorkingSkill,
+        setWorkingTask,
+        setModifierTable,
       }}
     >
       {children}

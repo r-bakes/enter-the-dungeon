@@ -18,6 +18,14 @@ import {
   SKILL_AND_MENU_ICON_STYLE,
   TASK_AND_ITEM_ICON_STYLE,
 } from "../configurations";
+import { SkillModifierType } from "../modifiers/skillModifiers";
+
+const smithingCommonModifiers = new Set([
+  SkillModifierType.SPEED,
+  SkillModifierType.EXPERIENCE,
+  SkillModifierType.DOUBLE_CHANCE,
+  SkillModifierType.PRODUCTION_MULTIPLIER,
+]);
 
 const smithBronzeDagger: Task = {
   id: "smithBronzeDagger",
@@ -35,6 +43,7 @@ const smithBronzeDagger: Task = {
     dagger: { bronzeDagger: { weight: 1, minQuantity: 1, maxQuantity: 1 } },
   },
   requires: { bronzeBar: 1 },
+  applicableModifiers: smithingCommonModifiers,
 };
 const smithBronzeSword: Task = {
   id: "smithBronzeSword",
@@ -52,6 +61,7 @@ const smithBronzeSword: Task = {
     sword: { bronzeSword: { weight: 1, minQuantity: 1, maxQuantity: 1 } },
   },
   requires: { bronzeBar: 2 },
+  applicableModifiers: smithingCommonModifiers,
 };
 const smithBronzeShield: Task = {
   id: "smithBronzeShield",
@@ -69,6 +79,7 @@ const smithBronzeShield: Task = {
     smith: { bronzeShield: { weight: 1, minQuantity: 1, maxQuantity: 1 } },
   },
   requires: { bronzeBar: 2 },
+  applicableModifiers: smithingCommonModifiers,
 };
 const smithBronzeGreatSword: Task = {
   id: "smithBronzeGreatSword",
@@ -86,6 +97,7 @@ const smithBronzeGreatSword: Task = {
     smith: { bronzeGreatSword: { weight: 1, minQuantity: 1, maxQuantity: 1 } },
   },
   requires: { bronzeBar: 4 },
+  applicableModifiers: smithingCommonModifiers,
 };
 const smithBronzeHelmet: Task = {
   id: "smithBronzeHelmet",
@@ -103,6 +115,7 @@ const smithBronzeHelmet: Task = {
     smith: { bronzeHelmet: { weight: 1, minQuantity: 1, maxQuantity: 1 } },
   },
   requires: { bronzeBar: 2 },
+  applicableModifiers: smithingCommonModifiers,
 };
 const smithBronzeChestplate: Task = {
   id: "smithBronzeChestplate",
@@ -120,6 +133,7 @@ const smithBronzeChestplate: Task = {
     smith: { bronzeChestplate: { weight: 1, minQuantity: 1, maxQuantity: 1 } },
   },
   requires: { bronzeBar: 4 },
+  applicableModifiers: smithingCommonModifiers,
 };
 const smithBronzeBelt: Task = {
   id: "smithBronzeBelt",
@@ -137,6 +151,7 @@ const smithBronzeBelt: Task = {
     smith: { bronzeBelt: { weight: 1, minQuantity: 1, maxQuantity: 1 } },
   },
   requires: { bronzeBar: 2 },
+  applicableModifiers: smithingCommonModifiers,
 };
 const smithBronzePlateleggings: Task = {
   id: "smithBronzePlatelegs",
@@ -156,6 +171,7 @@ const smithBronzePlateleggings: Task = {
     },
   },
   requires: { bronzeBar: 4 },
+  applicableModifiers: smithingCommonModifiers,
 };
 const smithBronzeGauntlets: Task = {
   id: "smithBronzeGauntlets",
@@ -175,6 +191,7 @@ const smithBronzeGauntlets: Task = {
     },
   },
   requires: { bronzeBar: 2 },
+  applicableModifiers: smithingCommonModifiers,
 };
 const smithIronSword: Task = {
   id: "smithIronSword",
@@ -192,6 +209,7 @@ const smithIronSword: Task = {
     smith: { ironSword: { weight: 1, minQuantity: 1, maxQuantity: 1 } },
   },
   requires: { ironBar: 1 },
+  applicableModifiers: smithingCommonModifiers,
 };
 const smithIronShield: Task = {
   id: "smithIronShield",
@@ -209,6 +227,7 @@ const smithIronShield: Task = {
     sword: { ironShield: { weight: 1, minQuantity: 1, maxQuantity: 1 } },
   },
   requires: { ironBar: 2 },
+  applicableModifiers: smithingCommonModifiers,
 };
 const smithIronGreatSword: Task = {
   id: "smithIronGreatsword",
@@ -226,6 +245,7 @@ const smithIronGreatSword: Task = {
     sword: { ironGreatSword: { weight: 1, minQuantity: 1, maxQuantity: 1 } },
   },
   requires: { ironBar: 2 },
+  applicableModifiers: smithingCommonModifiers,
 };
 const smithSteelSword: Task = {
   id: "smithSteelSword",
@@ -243,6 +263,7 @@ const smithSteelSword: Task = {
     sword: { steelSword: { weight: 1, minQuantity: 1, maxQuantity: 1 } },
   },
   requires: { steelBar: 1 },
+  applicableModifiers: smithingCommonModifiers,
 };
 const smithMithrilSword: Task = {
   id: "smithMithrilSword",
@@ -260,6 +281,7 @@ const smithMithrilSword: Task = {
     sword: { mithrilSword: { weight: 1, minQuantity: 1, maxQuantity: 1 } },
   },
   requires: { mithrilBar: 1 },
+  applicableModifiers: smithingCommonModifiers,
 };
 const smithAdamantSword: Task = {
   id: "smithAdamantSword",
@@ -277,6 +299,7 @@ const smithAdamantSword: Task = {
     sword: { adamantSword: { weight: 1, minQuantity: 1, maxQuantity: 1 } },
   },
   requires: { adamantBar: 1 },
+  applicableModifiers: smithingCommonModifiers,
 };
 const smeltBronzeBar: Task = {
   id: "smeltBronzeBar",
@@ -294,6 +317,7 @@ const smeltBronzeBar: Task = {
     bar: { bronzeBar: { weight: 1, minQuantity: 1, maxQuantity: 1 } },
   },
   requires: { copperOre: 1, tinOre: 1, coal: 1 },
+  applicableModifiers: smithingCommonModifiers,
 };
 const smeltIronBar: Task = {
   id: "smeltIronBar",
@@ -311,6 +335,7 @@ const smeltIronBar: Task = {
     bar: { ironBar: { weight: 1, minQuantity: 1, maxQuantity: 1 } },
   },
   requires: { ironOre: 2, coal: 2 },
+  applicableModifiers: smithingCommonModifiers,
 };
 const smeltSteelBar: Task = {
   id: "smeltSteelBar",
@@ -328,6 +353,7 @@ const smeltSteelBar: Task = {
     bar: { steelBar: { weight: 1, minQuantity: 1, maxQuantity: 1 } },
   },
   requires: { ironOre: 5, coal: 5 },
+  applicableModifiers: smithingCommonModifiers,
 };
 const smeltSilverBar: Task = {
   id: "smeltSilverBar",
@@ -345,6 +371,7 @@ const smeltSilverBar: Task = {
     bar: { silverBar: { weight: 1, minQuantity: 1, maxQuantity: 1 } },
   },
   requires: { silverOre: 5, coal: 5 },
+  applicableModifiers: smithingCommonModifiers,
 };
 const smeltGoldBar: Task = {
   id: "smeltGoldBar",
@@ -362,6 +389,7 @@ const smeltGoldBar: Task = {
     bar: { goldBar: { weight: 1, minQuantity: 1, maxQuantity: 1 } },
   },
   requires: { goldOre: 5, coal: 10 },
+  applicableModifiers: smithingCommonModifiers,
 };
 const smeltMithrilBar: Task = {
   id: "smeltMithrilBar",
@@ -379,6 +407,7 @@ const smeltMithrilBar: Task = {
     bar: { mithrilBar: { weight: 1, minQuantity: 1, maxQuantity: 1 } },
   },
   requires: { mithrilOre: 5, coal: 10 },
+  applicableModifiers: smithingCommonModifiers,
 };
 const smeltPlatinumBar: Task = {
   id: "smeltPlatinumBar",
@@ -396,6 +425,7 @@ const smeltPlatinumBar: Task = {
     bar: { platinumBar: { weight: 1, minQuantity: 1, maxQuantity: 1 } },
   },
   requires: { platinumOre: 5, coal: 15 },
+  applicableModifiers: smithingCommonModifiers,
 };
 const smeltAdamantBar: Task = {
   id: "smeltAdamantBar",
@@ -413,6 +443,7 @@ const smeltAdamantBar: Task = {
     bar: { adamantBar: { weight: 1, minQuantity: 1, maxQuantity: 1 } },
   },
   requires: { adamantiteOre: 5, coal: 15 },
+  applicableModifiers: smithingCommonModifiers,
 };
 export const smithing: Skill = {
   id: "smithing",

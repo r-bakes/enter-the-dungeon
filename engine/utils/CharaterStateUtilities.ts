@@ -6,11 +6,16 @@ import { Equipment } from "@/data/items/types";
 import {
   Character,
   Inventory,
-  Loadout,
-  CharacterSkill,
   Skills,
+  Upgrades,
 } from "../../data/character/character";
 import { itemTable } from "../../data/items/items";
+import {
+  SkillModifierTable,
+  SkillModifierType,
+} from "@/data/modifiers/skillModifiers";
+import { upgradeTable } from "@/data/modifiers/upgrades";
+import { getAllTasks, skillTable } from "@/data/skills/skills";
 
 export function addExp(skills: Skills, skillId: string, exp: number): Skills {
   while (
@@ -23,7 +28,7 @@ export function addExp(skills: Skills, skillId: string, exp: number): Skills {
   skills[skillId].experience += exp;
   skills[skillId].experience = Math.min(
     requiredExpForLevelUp(LEVEL_CAP),
-    skills[skillId].experience
+    skills[skillId].experience,
   );
 
   return skills;
@@ -38,7 +43,7 @@ export function addCardsByItemId(itemId: string, unequipped: String[]) {
 export function removeCardsByItem(
   itemId: string,
   equipped: string[],
-  unequipped: string[]
+  unequipped: string[],
 ) {
   let item = itemTable[itemId] as Equipment;
 
@@ -46,12 +51,12 @@ export function removeCardsByItem(
     if (unequipped.includes(card.id)) {
       unequipped.splice(
         unequipped.findIndex((unequippedCard) => unequippedCard === card.id),
-        1
+        1,
       );
     } else {
       equipped.splice(
         equipped.findIndex((equippedCard) => equippedCard === card.id),
-        1
+        1,
       );
     }
   });
@@ -60,7 +65,7 @@ export function removeCardsByItem(
 export function addItem(
   inventory: Inventory,
   itemId: string,
-  amount: number = 1
+  amount: number = 1,
 ): Inventory {
   if (Object.keys(inventory).includes(itemId)) {
     inventory[itemId] += amount;
@@ -73,7 +78,7 @@ export function addItem(
 export function removeItem(
   inventory: Inventory,
   itemId: string,
-  amount: number = 1
+  amount: number = 1,
 ): Inventory {
   inventory[itemId] = inventory[itemId] - amount;
   return inventory;
@@ -108,3 +113,42 @@ export function getAgilityModifiers(agilityLevel: number) {
 
   return { stamina };
 }
+
+export const initializeCharacterModifierTable = (
+  upgrades: Upgrades,
+): SkillModifierTable => {
+  let modifierTable: SkillModifierTable = {};
+
+  Object.entries(skillTable).forEach(([skillId, skill]) => {
+    modifierTable[skillId] = {};
+
+    getAllTasks(skill.tasks).forEach((task) => {
+      modifierTable[skillId][task.id] = {};
+
+      task.applicableModifiers.forEach((type) => {
+        if (type === SkillModifierType.PRODUCTION_MULTIPLIER) {
+          modifierTable[skillId][task.id][type] = 1;
+        } else {
+          modifierTable[skillId][task.id][type] = 0;
+        }
+      });
+    });
+  });
+
+  upgrades
+    .map((upgradeId) => upgradeTable[upgradeId].modifier)
+    .forEach((modifier) =>
+      Object.entries(modifier.targets).forEach(([skillId, tasks]) => {
+        tasks.forEach((taskId) => {
+          Object.entries(modifier.values).forEach(([type, value]) => {
+            if (type in modifierTable[skillId][taskId]) {
+              modifierTable[skillId][taskId][type as SkillModifierType] +=
+                value;
+            }
+          });
+        });
+      }),
+    );
+
+  return modifierTable;
+};

@@ -14,23 +14,23 @@ export default function CombatDeckCard({
   hoverTranslateDirection?: "u" | "d" | "l" | "r";
   onClick: React.Dispatch<React.SetStateAction<any>>;
 }) {
-  let selectedStyle = isSelected ? "-translate-y-4 bg-accent" : "";
+  let selectedStyle = isSelected ? "-translate-y-6 bg-accent" : "";
   let formattedHoverTranslateDirection = "";
   switch (hoverTranslateDirection) {
     case "u": {
-      formattedHoverTranslateDirection = "hover:-translate-y-4 ";
+      formattedHoverTranslateDirection = "hover:-translate-y-6 ";
       break;
     }
     case "d": {
-      formattedHoverTranslateDirection = "hover:translate-y-4 ";
+      formattedHoverTranslateDirection = "hover:translate-y-6 ";
       break;
     }
     case "l": {
-      formattedHoverTranslateDirection = "hover:-translate-x-4 ";
+      formattedHoverTranslateDirection = "hover:-translate-x-6 ";
       break;
     }
     case "r": {
-      formattedHoverTranslateDirection = "hover:translate-x-4 ";
+      formattedHoverTranslateDirection = "hover:translate-x-6 ";
       break;
     }
   }
@@ -38,20 +38,20 @@ export default function CombatDeckCard({
   return (
     <Card
       className={
-        "flex w-36 h-44 shrink-0 transition ease-in-out duration-300 " +
+        "flex h-44 w-36 shrink-0 transition duration-300 ease-in-out " +
         formattedHoverTranslateDirection +
         selectedStyle
       }
     >
       <Button
         onClick={onClick}
-        className={"flex w-full h-full items-start justify-start p-0"}
+        className={"flex h-full w-full items-start justify-start p-0"}
         variant="ghost"
       >
         <CardHeader className="w-full items-center">
           {renderIcon(card.icon, 32, {
-              ...card.iconStyle,
-            })}
+            ...card.iconStyle,
+          })}
           <CardTitle className="text-lg">{card.name}</CardTitle>
           <CardDescription className="text-sm font-light">
             {card.description}

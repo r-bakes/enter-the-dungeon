@@ -26,7 +26,11 @@ export default function MenuSelect({
   let skillMenus = [prospecting, smithing, agility, crafting, enchanting];
 
   return (
-    <div className={"flex h-full w-60 shrink-0 flex-col bg-red-700/80 py-10"}>
+    <div
+      className={
+        "flex h-full w-60 shrink-0 flex-col border-r saturate-[60%] bg-red-600 py-10 shadow-sm"
+      }
+    >
       <Logo></Logo>
       <Label className="px-5 pb-2 pt-4 text-xs text-muted-foreground text-white">
         Character
