@@ -40,6 +40,8 @@ export default function HomeMenu() {
         </CardHeader>
       </Card>
       <div className="flex h-full w-full flex-row gap-6">
+        <div className="w-0 border-4 shadow-sm"></div>
+
         <div className="flex h-full grow flex-col">
           <Select
             defaultValue={defaultRoom}
@@ -81,7 +83,6 @@ export default function HomeMenu() {
             <ScrollBar orientation="vertical"></ScrollBar>
           </ScrollArea>
         </div>
-        <div className="w-0 border-4 shadow-sm"></div>
       </div>
     </div>
   );

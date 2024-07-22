@@ -25,34 +25,26 @@ export default function CharacterCombatantCard({
     : undefined;
 
   return (
-    <div className="flex flex-col text-center gap-1">
-      <Label className="text-muted-foreground font-extralight">
+    <div className="flex flex-col gap-1 text-center">
+      <Label className="font-extralight text-muted-foreground">
         {combatant.name}
       </Label>
-      <Card className={"flex w-44 h-52 justify-center" + selectedStyle}>
+      <Card className={"flex h-52 w-44 justify-center" + selectedStyle}>
         <Button
           onClick={onClick}
-          className="relative flex-col h-full w-full p-0"
+          className="relative h-full w-full flex-col p-0"
           variant="ghost"
         >
-          <CardHeader className="items-center justify-center p-0 h-3/5">
-            {renderIcon(combatant.icon, {
+          <CardHeader className="h-3/5 items-center justify-center p-0">
+            {renderIcon(combatant.icon, 80, {
               ...combatant.iconStyle,
-              size: 80,
-              strokeWidth: 0.5,
-              strokeOpacity: 0.5,
-              fillOpacity: 0.5,
             })}
           </CardHeader>
           {leftHand ? (
-            <Card className="absolute shadow-md right-36">
+            <Card className="absolute right-36 shadow-md">
               <CardHeader className="p-2">
-                {renderIcon(leftHand.icon, {
+                {renderIcon(leftHand.icon, 80, {
                   ...leftHand.iconStyle,
-                  size: 80,
-                  strokeWidth: 0.5,
-                  strokeOpacity: 0.5,
-                  fillOpacity: 0.5,
                 })}
               </CardHeader>
             </Card>
@@ -60,21 +52,17 @@ export default function CharacterCombatantCard({
             <></>
           )}
           {rightHand ? (
-            <Card className="absolute shadow-md left-36">
+            <Card className="absolute left-36 shadow-md">
               <CardHeader className="p-2">
-                {renderIcon(rightHand.icon, {
+                {renderIcon(rightHand.icon, 80, {
                   ...rightHand.iconStyle,
-                  size: 80,
-                  strokeWidth: 0.5,
-                  strokeOpacity: 0.5,
-                  fillOpacity: 0.5,
                 })}
               </CardHeader>
             </Card>
           ) : (
             <></>
           )}
-          <CardContent className="flex items-start justify-center gap-3 py-0 h-2/5">
+          <CardContent className="flex h-2/5 items-start justify-center gap-3 py-0">
             <StatBlock
               icon={Sword}
               baseValue={combatant.baseAtk}

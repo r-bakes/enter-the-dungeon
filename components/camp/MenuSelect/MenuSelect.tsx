@@ -28,7 +28,7 @@ export default function MenuSelect({
   return (
     <div
       className={
-        "flex h-full w-60 shrink-0 flex-col border-r saturate-[60%] bg-red-600 py-10 shadow-sm"
+        "flex h-full w-60 shrink-0 flex-col border-r-4 saturate-[60%] bg-red-600 py-10 shadow-sm"
       }
     >
       <Logo></Logo>
