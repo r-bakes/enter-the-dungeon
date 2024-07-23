@@ -116,17 +116,17 @@ export const initializeCharacterModifierTable = (
 ): SkillModifierTable => {
   let modifierTable: SkillModifierTable = {};
 
-  Object.entries(skillTable).forEach(([skillId, skill]) => {
-    modifierTable[skillId] = {};
+  Object.values(skillTable).forEach((skill) => {
+    modifierTable[skill.id] = {};
 
     Object.values(skill.tasks).forEach((task) => {
-      modifierTable[skillId][task.id] = {};
+      modifierTable[skill.id][task.id] = {};
 
       task.applicableModifiers.forEach((type) => {
         if (type === SkillModifierType.PRODUCTION_MULTIPLIER) {
-          modifierTable[skillId][task.id][type] = 1;
+          modifierTable[skill.id][task.id][type] = 1;
         } else {
-          modifierTable[skillId][task.id][type] = 0;
+          modifierTable[skill.id][task.id][type] = 0;
         }
       });
     });

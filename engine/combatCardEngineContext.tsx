@@ -1,8 +1,8 @@
 import React from "react";
 import { useEncounterContext } from "./encounterEngineContext";
 import { Combatant } from "@/data/combatants/combatants";
-import { CombatCard, Target } from "@/data/cards/cards";
 import { useExpeditionContext } from "./expeditionEngineContext";
+import { CombatCard, Target } from "@/data/cards/types";
 
 type CombatCardEngineContextContents = {
   selectedCard: CombatCard | null;
@@ -14,7 +14,7 @@ type CombatCardEngineContextContents = {
 };
 
 const CombatCardEngineContext = React.createContext(
-  {} as CombatCardEngineContextContents
+  {} as CombatCardEngineContextContents,
 );
 
 export const useCombatCardEngineContext = () =>
@@ -39,7 +39,7 @@ export default function CombatCardEngineProvider({
     setStamina,
   } = useEncounterContext();
   const [selectedCard, setSelectedCard] = React.useState<CombatCard | null>(
-    null
+    null,
   );
   const [selectedEnemyCombatants, setSelectedEnemyCombatants] = React.useState<
     Combatant[]
@@ -78,7 +78,7 @@ export default function CombatCardEngineProvider({
         setSelectedEnemyCombatants([
           ...selectedEnemyCombatants.filter(
             (selectedCombatant) =>
-              selectedCombatant.combatantId != combatant.combatantId
+              selectedCombatant.combatantId != combatant.combatantId,
           ),
         ]);
         break;
@@ -87,7 +87,7 @@ export default function CombatCardEngineProvider({
         setSelectedAlliedCombatants([
           ...selectedAlliedCombatants.filter(
             (selectedCombatant) =>
-              selectedCombatant.combatantId != combatant.combatantId
+              selectedCombatant.combatantId != combatant.combatantId,
           ),
         ]);
         break;
@@ -140,14 +140,14 @@ export default function CombatCardEngineProvider({
     for (var combatant of selectedAlliedCombatants) {
       combatant.def += characterCombatant.baseDef * selectedCard.modifier;
       alliedCombatants.filter(
-        (ally) => ally.combatantId != combatant.combatantId
+        (ally) => ally.combatantId != combatant.combatantId,
       );
     }
 
     setAlliedCombatants([
       ...alliedCombatants,
       ...selectedAlliedCombatants.filter(
-        (combatant) => combatant.combatantId != characterCombatant.combatantId
+        (combatant) => combatant.combatantId != characterCombatant.combatantId,
       ),
     ]);
     setCharacterCombatant({ ...characterCombatant });

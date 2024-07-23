@@ -116,6 +116,10 @@ export const testCharacter: Character = {
       level: 1,
       experience: 0,
     },
+    stealth: {
+      level: 15,
+      experience: 0,
+    },
   },
   progress: [],
   deck: {

@@ -21,41 +21,80 @@ import { home } from "@/data/menus/home";
 import HomeMenu from "@/components/camp/homeMenu/homeMenu";
 import { AnimatePresence } from "framer-motion";
 import { athletics } from "@/data/skills/athletics";
+import { stealth } from "@/data/skills/stealth";
 
 export default function Page({}) {
-  const [selectedMenu, setSelectedMenu] = React.useState<GameObject>(martial);
-  let menus: { [menuId: string]: JSX.Element } = {};
+  const [selectedMenu, setSelectedMenu] = React.useState<GameObject>(home);
 
-  const skillMenus: GameObject[] = [
-    prospecting,
-    smithing,
-    athletics,
-    crafting,
-    enchanting,
-  ];
-
-  skillMenus.forEach(
-    (menu) =>
-      (menus[menu.id] = (
-        <SkillMenu key={menu.id} skill={selectedMenu as Skill}></SkillMenu>
-      )),
-  );
-  menus[martial.id] = <DeckMenu></DeckMenu>;
-  menus[magic.id] = <DeckMenu></DeckMenu>;
-  menus[expeditions.id] = <ExpeditionsMenu></ExpeditionsMenu>;
-  menus[inventory.id] = <InventoryMenu></InventoryMenu>;
-  menus[home.id] = <HomeMenu></HomeMenu>;
+  const skillMenus = {
+    [prospecting.id]: {
+      data: prospecting,
+      menu: <SkillMenu key={prospecting.id} skill={prospecting}></SkillMenu>,
+    },
+    [smithing.id]: {
+      data: smithing,
+      menu: <SkillMenu key={smithing.id} skill={smithing}></SkillMenu>,
+    },
+    [athletics.id]: {
+      data: athletics,
+      menu: <SkillMenu key={athletics.id} skill={athletics}></SkillMenu>,
+    },
+    [crafting.id]: {
+      data: crafting,
+      menu: <SkillMenu key={crafting.id} skill={crafting}></SkillMenu>,
+    },
+    [enchanting.id]: {
+      data: enchanting,
+      menu: <SkillMenu key={enchanting.id} skill={enchanting}></SkillMenu>,
+    },
+    [stealth.id]: {
+      data: stealth,
+      menu: <SkillMenu key={stealth.id} skill={stealth}></SkillMenu>,
+    },
+  };
+  const miscMenus = {
+    [inventory.id]: {
+      data: inventory,
+      menu: <InventoryMenu></InventoryMenu>,
+    },
+    [home.id]: {
+      data: home,
+      menu: <HomeMenu></HomeMenu>,
+    },
+  };
+  const combatMenus = {
+    [expeditions.id]: {
+      data: expeditions,
+      menu: <ExpeditionsMenu></ExpeditionsMenu>,
+    },
+    [martial.id]: {
+      data: martial,
+      menu: <DeckMenu></DeckMenu>,
+    },
+    [magic.id]: {
+      data: magic,
+      menu: <DeckMenu></DeckMenu>,
+    },
+  };
+  const menus = {
+    ...skillMenus,
+    ...miscMenus,
+    ...combatMenus,
+  };
 
   return (
     <CharacterEngineProvider>
       <CampEngineProvider>
         <AnimatePresence>
           <MenuSelect
+            miscMenus={Object.values(miscMenus).map((menu) => menu.data)}
+            combatMenus={Object.values(combatMenus).map((menu) => menu.data)}
+            skillMenus={Object.values(skillMenus).map((menu) => menu.data)}
             selectedMenu={selectedMenu}
             setSelectedMenu={setSelectedMenu}
           ></MenuSelect>
           <div className="flex h-full w-full bg-slate-50 py-10">
-            {menus[selectedMenu.id]}
+            {menus[selectedMenu.id].menu}
           </div>
         </AnimatePresence>
       </CampEngineProvider>

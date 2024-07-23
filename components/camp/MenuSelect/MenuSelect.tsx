@@ -15,16 +15,18 @@ import { home } from "@/data/menus/home";
 import { athletics } from "@/data/skills/athletics";
 
 export default function MenuSelect({
+  miscMenus,
+  combatMenus,
+  skillMenus,
   selectedMenu,
   setSelectedMenu,
 }: Readonly<{
+  miscMenus: GameObject[];
+  combatMenus: GameObject[];
+  skillMenus: GameObject[];
   selectedMenu: GameObject;
   setSelectedMenu: React.Dispatch<React.SetStateAction<GameObject>>;
 }>) {
-  let miscMenus = [home, inventory, bazaar];
-  let combatMenus = [expeditions, martial, magic];
-  let skillMenus = [prospecting, smithing, athletics, crafting, enchanting];
-
   return (
     <div
       className={

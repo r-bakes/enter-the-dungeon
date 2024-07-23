@@ -139,7 +139,7 @@ export default function TaskInfo({
       </CardContent>
       <CardFooter className="flex h-24 w-full items-end">
         <Button
-          className="w-1/2 rounded-l-md rounded-r-none text-center"
+          className="w-1/2 text-center"
           disabled={!requirementsMet}
           onClick={() => {
             setWorkingSkill(skill);
@@ -150,7 +150,7 @@ export default function TaskInfo({
         </Button>
         {task == workingTask ? (
           <Button
-            className="w-1/2 rounded-l-none rounded-r-md text-center"
+            className="w-1/2 text-center"
             variant="destructive"
             onClick={() => {
               setWorkingSkill(null);
@@ -161,7 +161,7 @@ export default function TaskInfo({
           </Button>
         ) : (
           <Button
-            className="w-1/2 rounded-l-none rounded-r-md text-center"
+            className="w-1/2 text-center"
             variant="secondary"
             disabled={true}
           >

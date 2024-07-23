@@ -111,6 +111,27 @@ const formatCardContent = (card: CombatCardTemplate) => {
         <span></span>
       </div>
     );
+  } else {
+    content = (
+      <div className="flex flex-col gap-1">
+        <span className="flex justify-center gap-1">
+          <Label className="text-xs font-normal text-muted-foreground">
+            Adds
+          </Label>
+          <Label className="text-xs font-medium">{card.modifier} x DEF</Label>
+        </span>
+        <span className="flex justify-center gap-1">
+          <Label className="text-xs font-normal text-muted-foreground">
+            to
+          </Label>
+          <Label className="text-xs font-medium">{card.targets}</Label>
+          <Label className="text-xs font-normal text-muted-foreground">
+            {card.targets > 1 ? "allies" : "ally"}
+          </Label>
+        </span>
+        <span></span>
+      </div>
+    );
   }
   return (
     <CardContent className="flex w-full flex-col p-2">{content}</CardContent>

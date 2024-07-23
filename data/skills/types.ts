@@ -36,3 +36,6 @@ export enum CraftingTaskCategories {
   NECKLACES = "necklaces",
 }
 export enum EnchantingTaskCategories {}
+export enum StealthTaskCategories {
+  THIEVING = "thieving",
+}

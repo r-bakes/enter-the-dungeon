@@ -1,4 +1,5 @@
 import {
+  Anvil,
   Gavel,
   Hand,
   HardHat,
@@ -26,7 +27,7 @@ const smithingCommonModifiers = new Set([
   SkillModifierType.PRODUCTION_MULTIPLIER,
 ]);
 
-const SmithingTasks: { [taskId: string]: Task } = {
+const smithingTasks: { [taskId: string]: Task } = {
   smithBronzeDagger: {
     id: "smithBronzeDagger",
     name: "Dagger",
@@ -477,8 +478,8 @@ export const smithing: Skill = {
   id: "smithing",
   name: "Smithing",
   description: "The ability to forge arms, armor, and trade goods.",
-  icon: Gavel,
+  icon: Anvil,
   iconStyle: { fill: "none", ...SKILL_AND_MENU_ICON_STYLE },
-  tasks: SmithingTasks,
+  tasks: smithingTasks,
   taskCategories: SmithingTaskCategories,
 };
