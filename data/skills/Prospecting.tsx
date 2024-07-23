@@ -1,11 +1,11 @@
 import { Circle, Gem, Mountain, SearchSlash } from "lucide-react";
-import { Skill, Task, TaskId } from "./skills";
 import { mineralsTable } from "../items/minerals";
 import {
   SKILL_AND_MENU_ICON_STYLE,
   TASK_AND_ITEM_ICON_STYLE,
 } from "../configurations";
-import { SkillModifierType } from "../modifiers/skillModifiers";
+import { SkillModifierType } from "../modifiers/types";
+import { ProspectingTaskCategories, Skill, Task } from "./types";
 
 const prospectingCommonModifiers = new Set([
   SkillModifierType.SPEED,
@@ -13,11 +13,8 @@ const prospectingCommonModifiers = new Set([
   SkillModifierType.DOUBLE_CHANCE,
   SkillModifierType.PRODUCTION_MULTIPLIER,
 ]);
-export enum ProspectingTaskCategories {
-  MINE = "mine",
-  CRAFTING = "crafting",
-}
-const ProspectingTasks: { [taskId: TaskId]: Task } = {
+
+const ProspectingTasks: { [taskId: string]: Task } = {
   mineCopperOre: {
     id: "mineCopperOre",
     name: "Mine Copper",

@@ -1,21 +1,12 @@
 import { Anvil, Bird, Gavel, Heater, Pickaxe } from "lucide-react";
 import { TASK_AND_ITEM_ICON_STYLE } from "../configurations";
-import { HomeRooms } from "../menus/home";
-import { SkillModifies, SkillModifierType } from "./skillModifiers";
-import { GameObject } from "../gameObject";
 import { mineralsTable } from "../items/minerals";
-import { prospecting, ProspectingTaskCategories } from "../skills/prospecting";
+import { prospecting } from "../skills/prospecting";
 import { smithing } from "../skills/smithing";
 import { barsTable } from "../items/bars";
-
-export type Upgrade = {
-  next: string | null;
-  modifier: SkillModifies;
-  requires: {
-    [itemId: string]: number;
-  };
-  homeRoom: HomeRooms;
-} & GameObject;
+import { SkillModifierType, Upgrade } from "./types";
+import { ProspectingTaskCategories } from "../skills/types";
+import { HomeRooms } from "../menus/types";
 
 export const upgradeTable: { [upgradeId: string]: Upgrade } = {
   basicPickaxe: {
@@ -31,9 +22,10 @@ export const upgradeTable: { [upgradeId: string]: Upgrade } = {
     modifier: {
       targets: {
         [prospecting.id]: Object.entries(prospecting.tasks)
-          .filter(([taskId, task]) => {
-            task.category === ProspectingTaskCategories.MINE;
-          })
+          .filter(
+            ([taskId, task]) =>
+              task.category === ProspectingTaskCategories.MINE,
+          )
           .map(([taskId, task]) => taskId),
       },
       values: {
@@ -56,9 +48,10 @@ export const upgradeTable: { [upgradeId: string]: Upgrade } = {
     modifier: {
       targets: {
         [prospecting.id]: Object.entries(prospecting.tasks)
-          .filter(([taskId, task]) => {
-            task.category === ProspectingTaskCategories.MINE;
-          })
+          .filter(
+            ([taskId, task]) =>
+              task.category === ProspectingTaskCategories.MINE,
+          )
           .map(([taskId, task]) => taskId),
       },
       values: {
@@ -81,9 +74,10 @@ export const upgradeTable: { [upgradeId: string]: Upgrade } = {
     modifier: {
       targets: {
         [prospecting.id]: Object.entries(prospecting.tasks)
-          .filter(([taskId, task]) => {
-            task.category === ProspectingTaskCategories.MINE;
-          })
+          .filter(
+            ([taskId, task]) =>
+              task.category === ProspectingTaskCategories.MINE,
+          )
           .map(([taskId, task]) => taskId),
       },
       values: {
@@ -106,9 +100,10 @@ export const upgradeTable: { [upgradeId: string]: Upgrade } = {
     modifier: {
       targets: {
         [prospecting.id]: Object.entries(prospecting.tasks)
-          .filter(([taskId, task]) => {
-            task.category === ProspectingTaskCategories.MINE;
-          })
+          .filter(
+            ([taskId, task]) =>
+              task.category === ProspectingTaskCategories.MINE,
+          )
           .map(([taskId, task]) => taskId),
       },
       values: {
@@ -131,9 +126,10 @@ export const upgradeTable: { [upgradeId: string]: Upgrade } = {
     modifier: {
       targets: {
         [prospecting.id]: Object.entries(prospecting.tasks)
-          .filter(([taskId, task]) => {
-            task.category === ProspectingTaskCategories.MINE;
-          })
+          .filter(
+            ([taskId, task]) =>
+              task.category === ProspectingTaskCategories.MINE,
+          )
           .map(([taskId, task]) => taskId),
       },
       values: {
@@ -156,9 +152,10 @@ export const upgradeTable: { [upgradeId: string]: Upgrade } = {
     modifier: {
       targets: {
         [prospecting.id]: Object.entries(prospecting.tasks)
-          .filter(([taskId, task]) => {
-            task.category === ProspectingTaskCategories.MINE;
-          })
+          .filter(
+            ([taskId, task]) =>
+              task.category === ProspectingTaskCategories.MINE,
+          )
           .map(([taskId, task]) => taskId),
       },
       values: {
@@ -181,9 +178,10 @@ export const upgradeTable: { [upgradeId: string]: Upgrade } = {
     modifier: {
       targets: {
         [prospecting.id]: Object.entries(prospecting.tasks)
-          .filter(([taskId, task]) => {
-            task.category === ProspectingTaskCategories.MINE;
-          })
+          .filter(
+            ([taskId, task]) =>
+              task.category === ProspectingTaskCategories.MINE,
+          )
           .map(([taskId, task]) => taskId),
       },
       values: {
@@ -206,9 +204,10 @@ export const upgradeTable: { [upgradeId: string]: Upgrade } = {
     modifier: {
       targets: {
         [prospecting.id]: Object.entries(prospecting.tasks)
-          .filter(([taskId, task]) => {
-            task.category === ProspectingTaskCategories.MINE;
-          })
+          .filter(
+            ([taskId, task]) =>
+              task.category === ProspectingTaskCategories.MINE,
+          )
           .map(([taskId, task]) => taskId),
       },
       values: {
@@ -340,9 +339,7 @@ export const upgradeTable: { [upgradeId: string]: Upgrade } = {
     modifier: {
       targets: {
         [prospecting.id]: Object.entries(prospecting.tasks)
-          .filter(([taskId, task]) => {
-            task.id === prospecting.tasks.mineCoal.id;
-          })
+          .filter(([taskId, task]) => task.id === prospecting.tasks.mineCoal.id)
           .map(([taskId, task]) => taskId),
       },
       values: {

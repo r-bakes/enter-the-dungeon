@@ -1,32 +1,14 @@
-import { Copy, Gauge, LucideIcon, Sparkle, SquareStack } from "lucide-react";
-import { IconStyle } from "../gameObject";
+import { Copy, Gauge, Sparkle, SquareStack } from "lucide-react";
 import { TASK_AND_ITEM_ICON_STYLE } from "../configurations";
-import { SkillId, TaskId } from "../skills/skills";
+import { Loot } from "@/engine/utils/lootUtilities";
+import {
+  SkillModifierType,
+  SkillModifierIconsType,
+  SkillModifierTable,
+  SkillModifier,
+} from "./types";
 
-export type SkillModifies = {
-  targets: { [skillId: string]: TaskId[] };
-  values: { [type in SkillModifierType]?: number };
-};
-export type SkillModifierTable = {
-  [skillId: SkillId]: {
-    [taskId: TaskId]: SkillModifier;
-  };
-};
-export type SkillModifier = {
-  [type in SkillModifierType]?: number;
-};
-export type SkillModifierIcons = {
-  [type in SkillModifierType]: { icon: LucideIcon; iconStyle: IconStyle };
-};
-
-export enum SkillModifierType {
-  SPEED = "speed",
-  DOUBLE_CHANCE = "double chance",
-  PRODUCTION_MULTIPLIER = "production multiplier",
-  EXPERIENCE = "experience",
-}
-
-export const SkillModifierIcons: SkillModifierIcons = {
+export const SkillModifierIcons: SkillModifierIconsType = {
   [SkillModifierType.SPEED]: {
     icon: Gauge,
     iconStyle: { fill: "none", ...TASK_AND_ITEM_ICON_STYLE },
@@ -67,6 +49,19 @@ export const applyExperienceModifier = (
   return roundModifiedValue(amount + (amount * modifier) / 100);
 };
 
+export const applyProductionModifier = (
+  loot: Loot,
+  modifier: number | undefined,
+): Loot => {
+  if (!modifier) {
+    return loot;
+  }
+  Object.entries(loot).forEach(
+    ([itemId, amount]) => (loot[itemId] = amount * modifier),
+  );
+  return loot;
+};
+
 export const getModifiers = (
   modifierTable: SkillModifierTable,
   skillId: string,
@@ -78,3 +73,14 @@ export const getModifiers = (
 const roundModifiedValue = (value: number): number => {
   return Math.round(value * 100) / 100;
 };
+
+export const formatModifiers = (
+  value: number,
+  modifierType: string,
+): string => {
+  if (modifierType === SkillModifierType.PRODUCTION_MULTIPLIER) {
+    return "+" + value;
+  }
+  return "+" + value + "%";
+};
+export { SkillModifierType };

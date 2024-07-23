@@ -14,12 +14,13 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { renderIcon } from "@/data/gameObject";
-import { home, HomeRooms } from "@/data/menus/home";
 import { useCharacterEngineContext } from "@/engine/characterEngineContext";
 import { formatCapitalCase } from "@/engine/utils/formattingUtilities";
 import React from "react";
 import UpgradeCard from "./upgradeCard";
 import { upgradeTable } from "@/data/modifiers/upgrades";
+import { HomeRooms } from "@/data/menus/types";
+import { home } from "@/data/menus/home";
 
 export default function HomeMenu() {
   const defaultRoom = HomeRooms.TOOL_SHED;

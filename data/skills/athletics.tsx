@@ -1,19 +1,15 @@
 import { PersonStanding } from "lucide-react";
-import { Skill, Task } from "./skills";
 import {
   SKILL_AND_MENU_ICON_STYLE,
   TASK_AND_ITEM_ICON_STYLE,
 } from "../configurations";
-import { SkillModifierType } from "../modifiers/skillModifiers";
+import { SkillModifierType } from "../modifiers/types";
+import { AthleticsTaskCategories, Skill } from "./types";
 
 const agilityCommonModifiers = new Set([
   SkillModifierType.SPEED,
   SkillModifierType.EXPERIENCE,
 ]);
-
-export enum AthleticsTaskCategories {
-  CALISTHETICS = "calisthetics",
-}
 
 const AthleticsTasks = {
   jumpingJacks: {

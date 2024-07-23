@@ -6,10 +6,10 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import { Skill, Tasks, Task } from "@/data/skills/skills";
 import React from "react";
 import TasksContainer from "./tasksContainer";
 import { formatCapitalCase } from "@/engine/utils/formattingUtilities";
+import { Skill, Task, Tasks } from "@/data/skills/types";
 
 export default function TasksMenu({
   skill,

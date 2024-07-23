@@ -2,7 +2,6 @@ import { TICK_RATE_MS } from "../data/configurations";
 import { toast } from "sonner";
 import generateLoot, { Loot } from "./utils/lootUtilities";
 import { Character, Inventory } from "../data/character/character";
-import { Skill, Task } from "@/data/skills/skills";
 import {
   addExp,
   addItem,
@@ -13,11 +12,14 @@ import { useCharacterEngineContext } from "./characterEngineContext";
 import React from "react";
 import TaskComplete from "@/components/camp/toast/taskComplete";
 import {
+  applyExperienceModifier,
+  applyProductionModifier,
   applySpeedModifier,
   getModifiers,
-  SkillModifierTable,
   SkillModifierType,
 } from "@/data/modifiers/skillModifiers";
+import { SkillModifierTable } from "@/data/modifiers/types";
+import { Skill, Task } from "@/data/skills/types";
 
 type CampEngineContextContents = {
   taskProgress: number;
@@ -112,11 +114,27 @@ export default function CampEngineProvider({
     task: Task,
   ) => {
     let loot = {};
+    let modifiers = getModifiers(modifierTable, skill.id, task.id);
+
     if (task.lootTable) {
       loot = generateLoot(task.lootTable);
-      updateInventory(character.inventory, loot, task.requires);
+      updateInventory(
+        character.inventory,
+        applyProductionModifier(
+          loot,
+          modifiers[SkillModifierType.PRODUCTION_MULTIPLIER],
+        ),
+        task.requires,
+      );
     }
-    addExp(character.skills, skill.id, task.experience);
+    addExp(
+      character.skills,
+      skill.id,
+      applyExperienceModifier(
+        task.experience,
+        modifiers[SkillModifierType.EXPERIENCE],
+      ),
+    );
 
     toast(
       <TaskComplete

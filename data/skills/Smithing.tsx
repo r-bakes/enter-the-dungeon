@@ -10,15 +10,14 @@ import {
   Tangent,
   ToyBrick,
 } from "lucide-react";
-import { Skill, TaskId } from "./skills";
-import { Task } from "./skills";
 import { mineralsTable } from "../items/minerals";
 import { barsTable } from "../items/bars";
 import {
   SKILL_AND_MENU_ICON_STYLE,
   TASK_AND_ITEM_ICON_STYLE,
 } from "../configurations";
-import { SkillModifierType } from "../modifiers/skillModifiers";
+import { SkillModifierType } from "../modifiers/types";
+import { Skill, SmithingTaskCategories, Task } from "./types";
 
 const smithingCommonModifiers = new Set([
   SkillModifierType.SPEED,
@@ -27,16 +26,7 @@ const smithingCommonModifiers = new Set([
   SkillModifierType.PRODUCTION_MULTIPLIER,
 ]);
 
-export enum SmithingTaskCategories {
-  SMELTING = "smelting",
-  BRONZE_SMITHING = "bronze smithing",
-  IRON_SMITHING = "iron smithing",
-  STEEL_SMITHING = "steel smithing",
-  MITHRIL_SMITHING = "mithril smithing",
-  ADAMANT_SMITHING = "adamant smithing",
-}
-
-const SmithingTasks: { [taskId: TaskId]: Task } = {
+const SmithingTasks: { [taskId: string]: Task } = {
   smithBronzeDagger: {
     id: "smithBronzeDagger",
     name: "Dagger",

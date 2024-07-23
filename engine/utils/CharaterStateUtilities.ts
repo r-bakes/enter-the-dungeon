@@ -10,12 +10,9 @@ import {
   Upgrades,
 } from "../../data/character/character";
 import { itemTable } from "../../data/items/items";
-import {
-  SkillModifierTable,
-  SkillModifierType,
-} from "@/data/modifiers/skillModifiers";
 import { upgradeTable } from "@/data/modifiers/upgrades";
 import { skillTable } from "@/data/skills/skills";
+import { SkillModifierTable, SkillModifierType } from "@/data/modifiers/types";
 
 export function addExp(skills: Skills, skillId: string, exp: number): Skills {
   while (

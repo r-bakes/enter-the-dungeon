@@ -18,7 +18,7 @@ export default function generateLoot(lootTable: LootTable): Loot {
         }
         loot[itemId] = Math.floor(
           Math.random() * (data.maxQuantity - data.minQuantity + 1) +
-            data.minQuantity
+            data.minQuantity,
         );
         break;
       }
@@ -61,7 +61,7 @@ export function generateDropRates(lootTable: LootTable): {
 function getTotalWeight(lootTableGroup: LootTableGroup) {
   let totalWeight = 0;
   Object.entries(lootTableGroup).forEach(
-    ([_, lootDetails]) => (totalWeight += lootDetails.weight)
+    ([_, lootDetails]) => (totalWeight += lootDetails.weight),
   );
   return totalWeight;
 }

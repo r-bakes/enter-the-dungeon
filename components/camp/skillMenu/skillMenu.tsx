@@ -2,11 +2,11 @@
 
 import { useState } from "react";
 import { useCampEngineContext } from "@/engine/campEngineContext";
-import { Skill, Task } from "@/data/skills/skills";
 import TaskInfo from "./taskInfo/taskInfo";
 import { useCharacterEngineContext } from "@/engine/characterEngineContext";
 import { SkillHeader } from "./skillHeader/skillHeader";
 import TasksMenu from "./tasksMenu/tasksMenu";
+import { Skill, Task } from "@/data/skills/types";
 
 export default function SkillMenu({ skill }: Readonly<{ skill: Skill }>) {
   const { character } = useCharacterEngineContext();
