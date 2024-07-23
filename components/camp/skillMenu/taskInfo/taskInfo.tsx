@@ -13,8 +13,6 @@ import { Play, X } from "lucide-react";
 import { useCampEngineContext } from "@/engine/campEngineContext";
 import { generateDropRates } from "@/engine/utils/lootUtilities";
 import { Item } from "@/data/items/types";
-import { Skill, Task } from "@/data/skills/skills";
-import { itemTable } from "@/data/items/items";
 import { useCharacterEngineContext } from "@/engine/characterEngineContext";
 import { renderIcon } from "@/data/gameObject";
 import TaskDataEntry from "./taskDataEntry";
@@ -27,6 +25,8 @@ import {
   SkillModifierType,
 } from "@/data/modifiers/skillModifiers";
 import TaskModifiers from "./taskModifiers";
+import { Skill, Task } from "@/data/skills/types";
+import { itemTable } from "@/data/items/items";
 
 const rootCardFormat =
   "flex flex-col h-full grow-0 w-72 min-w-72 max-w-72 items-center overflow-y-scroll";

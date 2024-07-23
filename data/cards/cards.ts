@@ -1,23 +1,7 @@
 import { Shield, Sword, Swords } from "lucide-react";
-import { GameObject } from "../gameObject";
 import { barsTable } from "../items/bars";
 import { TASK_AND_ITEM_ICON_STYLE } from "../configurations";
-
-export enum Target {
-  ENEMIES = 0,
-  ALLIES,
-}
-export type CombatCard = {
-  deckId: number;
-} & CombatCardTemplate;
-
-export type CombatCardTemplate = {
-  modifier: number;
-  strikes: number;
-  targets: number;
-  target: Target;
-  cost: number;
-} & GameObject;
+import { CombatCard, CombatCardTemplate, Target } from "./types";
 
 let createOffensiveCombatCardDescription = (
   strikes: number,
@@ -57,7 +41,7 @@ export const cardTable: { [cardId: string]: CombatCardTemplate } = {
       fill: barsTable.ironBar.iconStyle.fill,
       ...TASK_AND_ITEM_ICON_STYLE,
     },
-    description: createOffensiveCombatCardDescription(1, 1, 1),
+    description: "They won't see it coming.",
     strikes: 1,
     targets: 1,
     modifier: 1,
@@ -72,7 +56,7 @@ export const cardTable: { [cardId: string]: CombatCardTemplate } = {
       fill: barsTable.ironBar.iconStyle.fill,
       ...TASK_AND_ITEM_ICON_STYLE,
     },
-    description: createOffensiveCombatCardDescription(2, 1, 0.5),
+    description: "They won't see it coming.",
     strikes: 2,
     targets: 1,
     modifier: 0.5,
@@ -87,7 +71,7 @@ export const cardTable: { [cardId: string]: CombatCardTemplate } = {
       fill: barsTable.ironBar.iconStyle.fill,
       ...TASK_AND_ITEM_ICON_STYLE,
     },
-    description: createDefensiveCombatCardDescription(1, 1),
+    description: "They won't see it coming.",
     strikes: 0,
     targets: 1,
     modifier: 1,
