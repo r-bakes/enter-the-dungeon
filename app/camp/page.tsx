@@ -1,9 +1,7 @@
 "use client";
-import MenuSelect from "@/components/camp/menuSelect/menuSelect";
 import InventoryMenu from "@/components/camp/inventoryMenu/inventoryMenu";
 import SkillMenu from "@/components/camp/skillMenu/skillMenu";
 import { GameObject } from "@/data/gameObject";
-import { Skill } from "@/data/skills/skills";
 import { inventory } from "@/data/menus/inventory";
 import { martial } from "@/data/skills/martial";
 import CampEngineProvider from "@/engine/campEngineContext";
@@ -22,6 +20,11 @@ import HomeMenu from "@/components/camp/homeMenu/homeMenu";
 import { AnimatePresence } from "framer-motion";
 import { athletics } from "@/data/skills/athletics";
 import { stealth } from "@/data/skills/stealth";
+import { alchemy } from "@/data/skills/alchemy";
+import { agriculture } from "@/data/skills/agriculture";
+import { bazaar } from "@/data/menus/bazaar";
+import BazaarMenu from "@/components/camp/bazaarMenu/bazaarMenu";
+import MenuSelect from "@/components/camp/MenuSelect/MenuSelect";
 
 export default function Page({}) {
   const [selectedMenu, setSelectedMenu] = React.useState<GameObject>(home);
@@ -43,6 +46,14 @@ export default function Page({}) {
       data: crafting,
       menu: <SkillMenu key={crafting.id} skill={crafting}></SkillMenu>,
     },
+    [agriculture.id]: {
+      data: agriculture,
+      menu: <SkillMenu key={agriculture.id} skill={agriculture}></SkillMenu>,
+    },
+    [alchemy.id]: {
+      data: alchemy,
+      menu: <SkillMenu key={alchemy.id} skill={alchemy}></SkillMenu>,
+    },
     [enchanting.id]: {
       data: enchanting,
       menu: <SkillMenu key={enchanting.id} skill={enchanting}></SkillMenu>,
@@ -53,13 +64,17 @@ export default function Page({}) {
     },
   };
   const miscMenus = {
+    [home.id]: {
+      data: home,
+      menu: <HomeMenu></HomeMenu>,
+    },
     [inventory.id]: {
       data: inventory,
       menu: <InventoryMenu></InventoryMenu>,
     },
-    [home.id]: {
-      data: home,
-      menu: <HomeMenu></HomeMenu>,
+    [bazaar.id]: {
+      data: bazaar,
+      menu: <BazaarMenu></BazaarMenu>,
     },
   };
   const combatMenus = {

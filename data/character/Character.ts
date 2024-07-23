@@ -1,3 +1,5 @@
+import { agriculture } from "../skills/agriculture";
+
 // TODO add persistent storage on GCP.
 export type Character = {
   name: string;
@@ -109,6 +111,14 @@ export const testCharacter: Character = {
       experience: 0,
     },
     crafting: {
+      level: 1,
+      experience: 0,
+    },
+    agriculture: {
+      level: 1,
+      experience: 0,
+    },
+    alchemy: {
       level: 1,
       experience: 0,
     },

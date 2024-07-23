@@ -60,11 +60,11 @@ export default function CombatDeckCard({
         <Button
           onClick={onClick}
           className={
-            "flex h-full w-full flex-col items-start justify-start p-0"
+            "flex h-full w-full flex-col items-start justify-start px-2 py-3"
           }
           variant="ghost"
         >
-          <CardHeader className="w-full items-center p-2">
+          <CardHeader className="mb-1 w-full items-center p-0">
             {renderIcon(card.icon, 32, {
               ...card.iconStyle,
             })}
@@ -133,7 +133,5 @@ const formatCardContent = (card: CombatCardTemplate) => {
       </div>
     );
   }
-  return (
-    <CardContent className="flex w-full flex-col p-2">{content}</CardContent>
-  );
+  return <CardContent className="flex w-full flex-col p-0">{content}</CardContent>;
 };

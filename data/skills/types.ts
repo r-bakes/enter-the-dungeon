@@ -36,6 +36,17 @@ export enum CraftingTaskCategories {
   NECKLACES = "necklaces",
 }
 export enum EnchantingTaskCategories {}
+export enum AlchemyTaskCategories {
+  REAGENTS = "reagents",
+  POTIONS = "potions",
+  FLASKS = "flasks",
+}
 export enum StealthTaskCategories {
   THIEVING = "thieving",
+  HEISTS = "heists",
+}
+
+export enum AgricultureTaskCategories {
+  HORTICULTURE = "horticulture",
+  RANCHING = "ranching",
 }

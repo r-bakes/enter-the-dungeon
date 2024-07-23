@@ -7,6 +7,8 @@ import { crafting } from "./crafting";
 import { athletics } from "./athletics";
 import { Skill } from "./types";
 import { stealth } from "./stealth";
+import { alchemy } from "./alchemy";
+import { agriculture } from "./agriculture";
 
 export const skillTable: { [skillId: string]: Skill } = {
   [prospecting.id]: prospecting,
@@ -16,5 +18,7 @@ export const skillTable: { [skillId: string]: Skill } = {
   [enchanting.id]: enchanting,
   [crafting.id]: crafting,
   [athletics.id]: athletics,
-  [stealth.id]: stealth
+  [stealth.id]: stealth,
+  [alchemy.id]: alchemy,
+  [agriculture.id]: agriculture,
 };
