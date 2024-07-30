@@ -14,7 +14,7 @@ export const SKILL_AND_MENU_ICON_STYLE: IconStylePrimitive = {
 };
 
 export const TASK_AND_ITEM_ICON_STYLE: IconStylePrimitive = {
-  strokeWidth: 0.2,
+  strokeWidth: 0.5,
   strokeOpacity: 1,
   fillOpacity: 1,
 };

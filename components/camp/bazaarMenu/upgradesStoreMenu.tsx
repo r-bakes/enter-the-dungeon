@@ -19,6 +19,7 @@ import {
   formatCapitalCase,
   formatQuantity,
 } from "@/engines/utils/formattingUtilities";
+import { SkillImpactedPopup } from "../common/skillImpactedPopup";
 
 export default function UpgradesStoreMenu({
   upgrades,
@@ -64,7 +65,7 @@ export default function UpgradesStoreMenu({
           <div className="flex h-full min-w-max items-center gap-2">
             <div className="flex h-full w-60 items-center gap-4">
               {renderIcon(upgrade.icon, 40, { ...upgrade.iconStyle })}
-              <div className="flex h-full flex-col justify-center">
+              <div className="flex h-full flex-col justify-center text-left">
                 <CardTitle className="text-base">{upgrade.name}</CardTitle>
                 <CardDescription className="p-0 text-left text-xs">
                   {upgrade.description}
@@ -72,82 +73,13 @@ export default function UpgradesStoreMenu({
               </div>
             </div>
             {Object.entries(upgrade.modifier.targets).map(
-              ([skillId, taskIds]) => {
-                let skill = skillTable[skillId];
-
-                return (
-                  <Popover>
-                    <PopoverTrigger asChild>
-                      <Card className="flex h-full p-0">
-                        <Button
-                          variant="ghost"
-                          className="flex h-full flex-row gap-2 px-4 py-2"
-                        >
-                          {renderIcon(skill.icon, 32, { ...skill.iconStyle })}
-                          <div className="flex h-full flex-col text-left">
-                            <CardDescription className="text-xs font-black">
-                              {skill.name}
-                            </CardDescription>
-                            <CardDescription className="text-xs">
-                              impacted
-                            </CardDescription>
-                          </div>
-                        </Button>
-                      </Card>
-                    </PopoverTrigger>
-                    <PopoverContent>
-                      <div className="flex h-full w-full flex-col gap-4">
-                        <div className="flex h-full w-full flex-col gap-2">
-                          <Label className="text-xs font-normal text-muted-foreground">
-                            Production Modifiers
-                          </Label>
-                          <div className="flex flex-col">
-                            {Object.entries(upgrade.modifier.values).map(
-                              ([type, value]) => {
-                                return (
-                                  <Card className="flex flex-row items-center justify-center gap-1 p-2">
-                                    <Label className="text-xs font-medium">
-                                      {formatModifiers(value, type)}
-                                    </Label>
-                                    <Label className="text-xs font-normal text-muted-foreground">
-                                      {formatCapitalCase(type)}
-                                    </Label>
-                                  </Card>
-                                );
-                              },
-                            )}
-                          </div>
-                        </div>
-                        <div className="flex h-full w-full flex-col gap-2">
-                          <Label className="text-xs font-normal text-muted-foreground">
-                            Tasks Impacted
-                          </Label>
-                          <div className="flex flex-col gap-1 overflow-y-scroll">
-                            {taskIds.length <
-                            Object.keys(skill.tasks).length ? (
-                              taskIds.map((taskId) => {
-                                let task = skill.tasks[taskId];
-                                return (
-                                  <Card className="flex flex-row items-center gap-2 p-2">
-                                    {renderIcon(task.icon, 24, task.iconStyle)}
-                                    <Label className="text-xs font-normal text-muted-foreground">
-                                      {formatCapitalCase(task.name)}
-                                    </Label>
-                                  </Card>
-                                );
-                              })
-                            ) : (
-                              <div className="w-full justify-center text-center">
-                                <Label>All tasks impacted</Label>
-                              </div>
-                            )}
-                          </div>
-                        </div>
-                      </div>
-                    </PopoverContent>
-                  </Popover>
-                );
-              },
+              ([skillId, taskIds]) => (
+                <SkillImpactedPopup
+                  skill={skillTable[skillId]}
+                  taskIds={taskIds}
+                  upgrade={upgrade}
+                ></SkillImpactedPopup>
+              ),
             )}
           </div>
           <div className="flex h-full flex-row items-center gap-12">
@@ -156,10 +88,10 @@ export default function UpgradesStoreMenu({
                 ([itemId, quantity]) => {
                   let item = itemTable[itemId];
                   return (
-                    <Card className="flex h-full flex-row justify-center gap-1 px-4 py-2">
+                    <Card className="flex h-full flex-row justify-center gap-2 px-4 py-2">
                       {renderIcon(item.icon, 32, { ...item.iconStyle })}
                       <div className="flex flex-col">
-                        <CardDescription className="text-xs font-black">
+                        <CardDescription className="text-xs font-black text-foreground">
                           {formatQuantity(quantity)}
                         </CardDescription>
                         <CardDescription className="text-xs">

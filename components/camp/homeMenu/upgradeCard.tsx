@@ -9,31 +9,32 @@ import { formatModifiers } from "@/data/modifiers/skillModifiers";
 import { Upgrade } from "@/data/modifiers/types";
 import { skillTable } from "@/data/skills/skills";
 import { formatCapitalCase } from "@/engines/utils/formattingUtilities";
+import { SkillImpactedPopup } from "../common/skillImpactedPopup";
 
 export default function UpgradeCard({ upgrade }: { upgrade: Upgrade }) {
   return (
     <Card className="flex w-full min-w-max items-center p-4">
-      <CardHeader className="flex w-full flex-row items-center justify-between p-0">
+      <CardHeader className="flex h-full w-full flex-row items-center justify-between p-0">
         <div className="flex h-full">
-          <div className="flex h-full w-60 gap-4">
+          <div className="flex h-full w-60 items-center gap-4">
             {renderIcon(upgrade.icon, 40, { ...upgrade.iconStyle })}
-            <div className="flex h-full flex-col">
+            <div className="flex h-full flex-col justify-center">
               <CardTitle className="text-base">{upgrade.name}</CardTitle>
               <CardDescription className="p-0 text-left text-xs">
                 {upgrade.description}
               </CardDescription>
             </div>
           </div>
-          <div className="mt-0 flex h-full w-56 flex-col">
-            <CardTitle className="text-base">
-              {Object.keys(upgrade.modifier.targets)
-                .map((skillId) => skillTable[skillId])
-                .map((skill) => skill.name)
-                .join("| ")}
-            </CardTitle>
-            <CardDescription className="p-0 text-left text-xs">
-              impacted
-            </CardDescription>
+          <div className="mt-0 flex h-full flex-col justify-center">
+            {Object.entries(upgrade.modifier.targets).map(
+              ([skillId, taskIds]) => (
+                <SkillImpactedPopup
+                  skill={skillTable[skillId]}
+                  taskIds={taskIds}
+                  upgrade={upgrade}
+                ></SkillImpactedPopup>
+              ),
+            )}
           </div>
         </div>
         <div className="flex h-full gap-4">

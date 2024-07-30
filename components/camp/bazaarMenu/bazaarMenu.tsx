@@ -4,7 +4,6 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import { ScrollArea, ScrollBar } from "@/components/ui/scroll-area";
 import {
   Select,
   SelectGroup,
@@ -61,7 +60,7 @@ export default function BazaarMenu() {
               setSelectedStore(value);
             }}
           >
-            <SelectTrigger className="mb-2 w-full font-light text-muted-foreground">
+            <SelectTrigger className="mb-2 w-full font-normal text-muted-foreground">
               <SelectValue></SelectValue>
             </SelectTrigger>
             <SelectContent>

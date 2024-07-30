@@ -21,7 +21,7 @@ import UpgradeCard from "./upgradeCard";
 import { upgradeTable } from "@/data/modifiers/upgrades";
 import { HomeRooms } from "@/data/menus/types";
 import { home } from "@/data/menus/home";
-import { Ellipsis, Lock } from "lucide-react";
+import { Lock } from "lucide-react";
 import { TASK_AND_ITEM_ICON_STYLE } from "@/data/configurations";
 import { Label } from "@/components/ui/label";
 
@@ -63,7 +63,7 @@ export default function HomeMenu() {
               setSelectedRoom(value);
             }}
           >
-            <SelectTrigger className="mb-2 w-full font-light text-muted-foreground">
+            <SelectTrigger className="mb-2 w-full font-normal text-muted-foreground">
               <SelectValue></SelectValue>
             </SelectTrigger>
             <SelectContent>
