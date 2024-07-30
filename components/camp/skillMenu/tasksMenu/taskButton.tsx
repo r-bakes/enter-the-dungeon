@@ -8,7 +8,7 @@ import { Button } from "@/components/ui/button";
 import { Label } from "@/components/ui/label";
 import { Skill, Task } from "@/data/skills/skills";
 import { renderIcon } from "@/data/gameObject";
-import { useCampEngineContext } from "@/engine/campEngineContext";
+import { useCampEngineContext } from "@/engines/campEngineContext";
 import {
   applyExperienceModifier,
   applySpeedModifier,

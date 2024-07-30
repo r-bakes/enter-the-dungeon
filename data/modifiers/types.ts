@@ -2,7 +2,7 @@ import { LucideIcon } from "lucide-react";
 import { HomeRooms } from "../menus/types";
 import { GameObject, IconStyle } from "../gameObject";
 
-export type SkillModifies = {
+export type Modifier = {
   targets: { [skillId: string]: string[] };
   values: { [type in SkillModifierType]?: number };
 };
@@ -26,10 +26,13 @@ export enum SkillModifierType {
 }
 
 export type Upgrade = {
+  previous: string | null;
   next: string | null;
-  modifier: SkillModifies;
-  requires: {
+  modifier: Modifier;
+  requiresItems: {
     [itemId: string]: number;
   };
+  requiresMilestones: Set<string>;
+  requiresUpgrades: Set<string>;
   homeRoom: HomeRooms;
 } & GameObject;

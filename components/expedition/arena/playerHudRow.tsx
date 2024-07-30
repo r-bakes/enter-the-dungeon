@@ -1,7 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Label } from "@/components/ui/label";
-import { useEncounterContext } from "@/engine/encounterEngineContext";
+import { useEncounterContext } from "@/engines/encounterEngineContext";
 import { motion } from "framer-motion";
 import { Backpack, Zap } from "lucide-react";
 

@@ -1,9 +1,9 @@
+import CharacterCombatantCard from "@/components/common/cards/characterCombatantCard";
+import CombatantCard from "@/components/common/cards/combatantCard/combatantCard";
 import { Card, CardContent } from "@/components/ui/card";
 import { CharacterCombatant, Combatant } from "@/data/combatants/combatants";
-import CombatantCard from "../../cards/combatantCard/combatantCard";
-import { useCombatCardEngineContext } from "@/engine/combatCardEngineContext";
-import { useExpeditionContext } from "@/engine/expeditionEngineContext";
-import CharacterCombatantCard from "@/components/cards/characterCombatantCard";
+import { useCombatCardEngineContext } from "@/engines/combatCardEngineContext";
+import { useExpeditionContext } from "@/engines/expeditionEngineContext";
 import { AnimatePresence } from "framer-motion";
 
 export default function ArenaRow({
@@ -41,24 +41,24 @@ export default function ArenaRow({
 
   return (
     <Card className={"flex w-full min-w-full " + height}>
-      <CardContent className="flex items-center p-3 space-x-6 justify-center w-full h-full">
-          {combatants.map((combatant) =>
-            combatant === characterCombatant ? (
-              <CharacterCombatantCard
-                key={combatant.combatantId}
-                combatant={combatant as CharacterCombatant}
-                isSelected={isSelected(combatant)}
-                onClick={() => onClick(combatant)}
-              ></CharacterCombatantCard>
-            ) : (
-              <CombatantCard
-                key={combatant.combatantId}
-                combatant={combatant}
-                onClick={() => onClick(combatant)}
-                isSelected={isSelected(combatant)}
-              ></CombatantCard>
-            )
-          )}
+      <CardContent className="flex h-full w-full items-center justify-center space-x-6 p-3">
+        {combatants.map((combatant) =>
+          combatant === characterCombatant ? (
+            <CharacterCombatantCard
+              key={combatant.combatantId}
+              combatant={combatant as CharacterCombatant}
+              isSelected={isSelected(combatant)}
+              onClick={() => onClick(combatant)}
+            ></CharacterCombatantCard>
+          ) : (
+            <CombatantCard
+              key={combatant.combatantId}
+              combatant={combatant}
+              onClick={() => onClick(combatant)}
+              isSelected={isSelected(combatant)}
+            ></CombatantCard>
+          ),
+        )}
       </CardContent>
     </Card>
   );

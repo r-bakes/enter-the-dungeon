@@ -7,7 +7,7 @@ import {
 } from "@/components/ui/popover";
 import { Equipment } from "@/data/items/types";
 import { Slot } from "@/data/character/character";
-import { useCharacterEngineContext } from "@/engine/characterEngineContext";
+import { useCharacterEngineContext } from "@/engines/characterEngineContext";
 import { renderIcon } from "@/data/gameObject";
 
 export default function EquipmentSlotContent({

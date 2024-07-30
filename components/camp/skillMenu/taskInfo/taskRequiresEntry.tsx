@@ -2,7 +2,8 @@ import { Card } from "@/components/ui/card";
 import { Label } from "@/components/ui/label";
 import { renderIcon } from "@/data/gameObject";
 import { Item } from "@/data/items/types";
-import { useCharacterEngineContext } from "@/engine/characterEngineContext";
+import { useCharacterEngineContext } from "@/engines/characterEngineContext";
+import { formatQuantity } from "@/engines/utils/formattingUtilities";
 import { Backpack } from "lucide-react";
 
 export function TaskRequiresEntry({
@@ -40,7 +41,7 @@ export function TaskRequiresEntry({
           <div className="flex h-full items-center gap-1">
             <Label className="text-xs font-normal text-muted-foreground">
               {item.item.id in character.inventory
-                ? character.inventory[item.item.id]
+                ? formatQuantity(character.inventory[item.item.id])
                 : 0}
             </Label>
             <Backpack size={15} strokeWidth={1}></Backpack>

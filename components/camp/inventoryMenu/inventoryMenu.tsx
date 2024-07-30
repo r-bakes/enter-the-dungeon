@@ -1,6 +1,6 @@
 import { Card, CardHeader } from "@/components/ui/card";
 import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { useCampEngineContext } from "@/engine/campEngineContext";
+import { useCampEngineContext } from "@/engines/campEngineContext";
 import { Label } from "@radix-ui/react-label";
 import { CircleDollarSign } from "lucide-react";
 import { TabsContent } from "@radix-ui/react-tabs";
@@ -8,7 +8,7 @@ import { itemTable } from "@/data/items/items";
 import { ItemType } from "@/data/items/types";
 import EquipmentSlots from "./equipmentSlots";
 import InventorySlots from "./inventorySlots";
-import { useCharacterEngineContext } from "@/engine/characterEngineContext";
+import { useCharacterEngineContext } from "@/engines/characterEngineContext";
 
 export default function InventoryMenu({}: {}) {
   const { character } = useCharacterEngineContext();
@@ -20,7 +20,7 @@ export default function InventoryMenu({}: {}) {
     }));
 
   return (
-    <div className="flex h-full grow gap-2 px-8">
+    <div className="flex h-full grow gap-6 px-8">
       <Card className="flex w-80 flex-col space-y-1">
         <CardHeader className="flex flex-col">
           <div className="rows flex items-center gap-2">
@@ -35,10 +35,7 @@ export default function InventoryMenu({}: {}) {
           <EquipmentSlots></EquipmentSlots>
         </CardHeader>
       </Card>
-      <Tabs
-        defaultValue="equipment"
-        className="flex h-full grow flex-col space-y-2"
-      >
+      <Tabs defaultValue="equipment" className="flex h-full grow flex-col">
         <TabsList className="grid grow grid-cols-4">
           <TabsTrigger value="equipment">Equipment</TabsTrigger>
           <TabsTrigger value="supplies">Supplies</TabsTrigger>
@@ -74,6 +71,7 @@ export default function InventoryMenu({}: {}) {
           ></InventorySlots>
         </TabsContent>
       </Tabs>
+      <div className="w-0 border-4 shadow-sm"></div>
     </div>
   );
 }

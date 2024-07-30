@@ -10,10 +10,9 @@ import {
 import { Progress } from "@/components/ui/progress";
 import { Label } from "@radix-ui/react-label";
 import { Play, X } from "lucide-react";
-import { useCampEngineContext } from "@/engine/campEngineContext";
-import { generateDropRates } from "@/engine/utils/lootUtilities";
+import { useCampEngineContext } from "@/engines/campEngineContext";
 import { Item } from "@/data/items/types";
-import { useCharacterEngineContext } from "@/engine/characterEngineContext";
+import { useCharacterEngineContext } from "@/engines/characterEngineContext";
 import { renderIcon } from "@/data/gameObject";
 import TaskDataEntry from "./taskDataEntry";
 import { Separator } from "@/components/ui/separator";
@@ -27,6 +26,7 @@ import {
 import TaskModifiers from "./taskModifiers";
 import { Skill, Task } from "@/data/skills/types";
 import { itemTable } from "@/data/items/items";
+import { generateDropRates } from "@/engines/utils/lootUtilities";
 
 const rootCardFormat =
   "flex flex-col h-full grow-0 w-72 min-w-72 max-w-72 items-center overflow-y-scroll";

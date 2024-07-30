@@ -1,9 +1,9 @@
-import CardBack from "@/components/cards/cardBack";
-import CombatDeckCard from "@/components/cards/combatDeckCard";
+import CardBack from "@/components/common/cards/cardBack";
+import CombatDeckCard from "@/components/common/cards/combatDeckCard";
 import { Card, CardContent } from "@/components/ui/card";
 import { Label } from "@/components/ui/label";
-import { useCombatCardEngineContext } from "@/engine/combatCardEngineContext";
-import { useEncounterContext } from "@/engine/encounterEngineContext";
+import { useCombatCardEngineContext } from "@/engines/combatCardEngineContext";
+import { useEncounterContext } from "@/engines/encounterEngineContext";
 import { motion } from "framer-motion";
 
 export default function DeckRow() {
@@ -11,10 +11,10 @@ export default function DeckRow() {
   const { selectCard, selectedCard } = useCombatCardEngineContext();
 
   return (
-    <Card className="flex w-full min-w-max h-56">
-      <CardContent className="flex w-full h-full px-4 py-2 space-x-4">
-        <div className="flex flex-col h-full text-left space-y-2 min-w-[160px]">
-          <Label className="text-muted-foreground font-extralight">
+    <Card className="flex h-56 w-full min-w-max">
+      <CardContent className="flex h-full w-full space-x-4 px-4 py-2">
+        <div className="flex h-full min-w-[160px] flex-col space-y-2 text-left">
+          <Label className="font-extralight text-muted-foreground">
             Deck ({drawPile.length})
           </Label>
           {drawPile.length > 0 ? (
@@ -23,8 +23,8 @@ export default function DeckRow() {
             <div></div>
           )}
         </div>
-        <div className="border-r h-5/6 "></div>
-        <div className="flex grow h-full text-left space-x-2 justify-center items-center">
+        <div className="h-5/6 border-r"></div>
+        <div className="flex h-full grow items-center justify-center space-x-2 text-left">
           {hand.map((card) => (
             <motion.div
               key={card.deckId + round * 20}
@@ -52,10 +52,10 @@ export default function DeckRow() {
             </motion.div>
           ))}
         </div>
-        <div className="border-r h-5/6 "></div>
+        <div className="h-5/6 border-r"></div>
 
-        <div className="flex flex-col h-full text-right space-y-2 min-w-[160px]">
-          <Label className="text-muted-foreground font-extralight">
+        <div className="flex h-full min-w-[160px] flex-col space-y-2 text-right">
+          <Label className="font-extralight text-muted-foreground">
             Discard ({discardPile.length})
           </Label>
           {discardPile.length > 0 ? (

@@ -23,7 +23,7 @@ export default function ItemSlot({
       <PopoverTrigger asChild>
         <div className="h-[50px] w-16 text-center">
           <Button
-            className="flex h-16 w-16 flex-col rounded-md border p-2"
+            className="flex h-16 w-16 flex-col border p-2"
             variant="ghost"
           >
             {renderIcon(item.icon, 48, {
@@ -34,7 +34,7 @@ export default function ItemSlot({
         </div>
       </PopoverTrigger>
       <PopoverContent className="mt-1 flex h-min w-min flex-col">
-        <div className="flex h-min w-max flex-col items-start space-y-1 bg-white p-2 text-center">
+        <div className="flex h-min w-max flex-col items-start space-y-1 p-2 text-center">
           <div className="flex w-full space-x-2">
             <div className="flex h-full">
               {renderIcon(item.icon, 35, {

@@ -2,7 +2,7 @@ import React from "react";
 import { useEncounterContext } from "./encounterEngineContext";
 import { Combatant } from "@/data/combatants/combatants";
 import { useExpeditionContext } from "./expeditionEngineContext";
-import { CombatCard, Target } from "@/data/cards/types";
+import { CombatCard, Target } from "@/data/combatCards/types";
 
 type CombatCardEngineContextContents = {
   selectedCard: CombatCard | null;

@@ -1,4 +1,4 @@
-import { CombatCardTemplate } from "../cards/cards";
+import { CombatCardTemplate } from "../combatCards/combatCards";
 import { Slot } from "../character/character";
 import { GameObject } from "../gameObject";
 

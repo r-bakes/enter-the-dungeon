@@ -8,7 +8,7 @@ import {
 } from "@/components/ui/select";
 import React from "react";
 import TasksContainer from "./tasksContainer";
-import { formatCapitalCase } from "@/engine/utils/formattingUtilities";
+import { formatCapitalCase } from "@/engines/utils/formattingUtilities";
 import { Skill, Task, Tasks } from "@/data/skills/types";
 
 export default function TasksMenu({

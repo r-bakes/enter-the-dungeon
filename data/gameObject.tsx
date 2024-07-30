@@ -9,18 +9,17 @@ export type GameObject = {
 };
 
 export type IconStyle = {
-  fill: string;
-  fillOpacity: number;
-  strokeWidth: number;
-  strokeOpacity: number;
-  color: string;
+  fill?: string;
+  fillOpacity?: number;
+  strokeWidth?: number;
+  strokeOpacity?: number;
+  color?: string;
 };
 
 export type IconStylePrimitive = {
   fillOpacity: number;
   strokeWidth: number;
   strokeOpacity: number;
-  color: string;
 };
 
 export const renderIcon = (

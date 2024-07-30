@@ -1,11 +1,11 @@
-import CombatDeckCard from "@/components/cards/combatDeckCard";
 import { Card } from "@/components/ui/card";
 import { Label } from "@/components/ui/label";
 import { MAGIC_DECK_LIMIT, MARTIAL_DECK_LIMIT } from "@/data/configurations";
-import { cardTable } from "@/data/cards/cards";
-import { useCharacterEngineContext } from "@/engine/characterEngineContext";
+import { useCharacterEngineContext } from "@/engines/characterEngineContext";
 import { ArrowDownUp } from "lucide-react";
 import { Separator } from "@/components/ui/separator";
+import { combatCardTable } from "@/data/combatCards/combatCards";
+import CombatDeckCard from "@/components/common/cards/combatDeckCard";
 
 export default function DeckMenu({}: {}) {
   const { character, equipCard, unequipCard } = useCharacterEngineContext();
@@ -13,7 +13,7 @@ export default function DeckMenu({}: {}) {
     <CombatDeckCard
       key={id + "equipped"}
       onClick={() => unequipCard(cardId)}
-      card={cardTable[cardId]}
+      card={combatCardTable[cardId]}
       hoverTranslateDirection="u"
     ></CombatDeckCard>
   ));
@@ -21,7 +21,7 @@ export default function DeckMenu({}: {}) {
     <CombatDeckCard
       key={id + "unequipped"}
       onClick={() => equipCard(cardId)}
-      card={cardTable[cardId]}
+      card={combatCardTable[cardId]}
       hoverTranslateDirection="d"
     ></CombatDeckCard>
   ));
@@ -30,7 +30,7 @@ export default function DeckMenu({}: {}) {
     <CombatDeckCard
       key={id + "equipped"}
       onClick={() => unequipCard(cardId)}
-      card={cardTable[cardId]}
+      card={combatCardTable[cardId]}
       hoverTranslateDirection="l"
     ></CombatDeckCard>
   ));
@@ -38,7 +38,7 @@ export default function DeckMenu({}: {}) {
     <CombatDeckCard
       key={id + "unequipped"}
       onClick={() => equipCard(cardId)}
-      card={cardTable[cardId]}
+      card={combatCardTable[cardId]}
       hoverTranslateDirection="r"
     ></CombatDeckCard>
   ));

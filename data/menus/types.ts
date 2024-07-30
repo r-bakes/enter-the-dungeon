@@ -6,3 +6,6 @@ export enum HomeRooms {
   BEDROOM = "Bedroom",
   MENAGERIE = "Menagerie",
 }
+export enum BazaarStores {
+  UPGRADES = "upgrades",
+}

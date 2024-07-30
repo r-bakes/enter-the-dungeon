@@ -1,10 +1,9 @@
 import { ScrollArea } from "@radix-ui/react-scroll-area";
-import MenuButton from "./menuButton";
-import { useCampEngineContext } from "@/engine/campEngineContext";
 import { GameObject } from "@/data/gameObject";
-import { useCharacterEngineContext } from "@/engine/characterEngineContext";
+import { useCharacterEngineContext } from "@/engines/characterEngineContext";
 import { martial } from "@/data/skills/martial";
 import { magic } from "@/data/skills/magic";
+import MenuButton from "./menuButton";
 
 export default function MenuContainer({
   menuItems,
@@ -17,7 +16,7 @@ export default function MenuContainer({
 }) {
   const { character } = useCharacterEngineContext();
   return (
-    <ScrollArea className="flex flex-col w-full">
+    <ScrollArea className="flex w-full flex-col">
       {menuItems.map((item) => {
         let level =
           item.id in character.skills

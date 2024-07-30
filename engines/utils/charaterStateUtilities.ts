@@ -12,7 +12,11 @@ import {
 import { itemTable } from "../../data/items/items";
 import { upgradeTable } from "@/data/modifiers/upgrades";
 import { skillTable } from "@/data/skills/skills";
-import { SkillModifierTable, SkillModifierType } from "@/data/modifiers/types";
+import {
+  SkillModifierTable,
+  SkillModifierType,
+  Upgrade,
+} from "@/data/modifiers/types";
 
 export function addExp(skills: Skills, skillId: string, exp: number): Skills {
   while (
@@ -111,6 +115,38 @@ export function getAgilityModifiers(agilityLevel: number) {
   return { stamina };
 }
 
+export function addUpgrade(
+  upgrade: Upgrade,
+  modifierTable: SkillModifierTable,
+  character: Character,
+) {
+  if (upgrade.previous) {
+    let previousUpgrade = upgradeTable[upgrade.previous];
+
+    for (const [skillId, tasks] of Object.entries(
+      previousUpgrade.modifier.targets,
+    )) {
+      for (const taskId of tasks) {
+        for (const [type, value] of Object.entries(
+          previousUpgrade.modifier.values,
+        )) {
+          modifierTable[skillId][taskId][type] -= value;
+        }
+      }
+    }
+  }
+
+  for (const [skillId, tasks] of Object.entries(upgrade.modifier.targets)) {
+    for (const taskId of tasks) {
+      for (const [type, value] of Object.entries(upgrade.modifier.values)) {
+        modifierTable[skillId][taskId][type] += value;
+      }
+    }
+  }
+
+  character.upgrades.add(upgrade.id);
+}
+
 export const initializeCharacterModifierTable = (
   upgrades: Upgrades,
 ): SkillModifierTable => {
@@ -132,17 +168,24 @@ export const initializeCharacterModifierTable = (
     });
   });
 
-  upgrades
-    .map((upgradeId) => upgradeTable[upgradeId].modifier)
-    .forEach((modifier) =>
-      Object.entries(modifier.targets).forEach(([skillId, tasks]) => {
-        tasks.forEach((taskId) => {
-          Object.entries(modifier.values).forEach(([type, value]) => {
-            modifierTable[skillId][taskId][type as SkillModifierType] += value;
-          });
-        });
-      }),
-    );
+  for (const upgradeId of upgrades) {
+    let upgrade = upgradeTable[upgradeId];
+
+    for (const [skillId, tasks] of Object.entries(upgrade.modifier.targets)) {
+      for (const taskId of tasks) {
+        for (const [type, value] of Object.entries(upgrade.modifier.values)) {
+          if (
+            !(
+              upgradeTable[upgradeId].next &&
+              upgrades.has(upgradeTable[upgradeId].next)
+            )
+          ) {
+            modifierTable[skillId][taskId][type] += value;
+          }
+        }
+      }
+    }
+  }
 
   return modifierTable;
 };

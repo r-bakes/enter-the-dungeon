@@ -20,7 +20,7 @@ export const mineralsTable: { [mineralId: string]: Item } = {
     description: "a lump of coal.",
     value: 1,
     icon: Circle,
-    iconStyle: { fill: "black", ...TASK_AND_ITEM_ICON_STYLE },
+    iconStyle: { fill: "#31363F", ...TASK_AND_ITEM_ICON_STYLE },
     type: ItemType.MATERIALS,
   },
   copperOre: {
@@ -29,7 +29,7 @@ export const mineralsTable: { [mineralId: string]: Item } = {
     description: "a lump of copper ore.",
     value: 1,
     icon: Mountain,
-    iconStyle: { fill: "#E76F51", ...TASK_AND_ITEM_ICON_STYLE },
+    iconStyle: { fill: "#F2613F", ...TASK_AND_ITEM_ICON_STYLE },
     type: ItemType.MATERIALS,
   },
   geode: {

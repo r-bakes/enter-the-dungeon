@@ -6,7 +6,7 @@ export type Character = {
   loadout: Loadout;
   inventory: Inventory;
   skills: Skills;
-  progress: Progress;
+  milestones: Milestones;
   upgrades: Upgrades;
   deck: Deck;
 };
@@ -16,7 +16,7 @@ export type Inventory = {
 export type Loadout = {
   [slotId in Slot]: string | null;
 };
-export type Upgrades = string[];
+export type Upgrades = Set<string>;
 export type Skills = {
   [skillId: string]: CharacterSkill;
 };
@@ -24,7 +24,7 @@ export type CharacterSkill = {
   level: number;
   experience: number;
 };
-export type Progress = string[];
+export type Milestones = Set<string>;
 export type Deck = {
   equppedMartial: string[];
   unequippedMartial: string[];
@@ -81,14 +81,16 @@ export const testCharacter: Character = {
     geode: 1,
     tinOre: 10,
     coal: 10,
+    bronzeBar: 100,
   },
-  upgrades: [
+  upgrades: new Set([
+    "basicPickaxe",
     "bronzePickaxe",
     "basicHammer",
     "basicAnvil",
     "basicForge",
     "coalMineCanery",
-  ],
+  ]),
   skills: {
     martial: {
       level: 5,
@@ -131,7 +133,7 @@ export const testCharacter: Character = {
       experience: 0,
     },
   },
-  progress: [],
+  milestones: new Set([]),
   deck: {
     equppedMartial: ["slice", "slice", "slice", "defend", "defend", "defend"],
     unequippedMartial: [],

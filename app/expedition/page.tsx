@@ -1,10 +1,10 @@
 "use client";
 
 import Arena from "@/components/expedition/arena/arena";
-import CharacterEngineProvider from "@/engine/characterEngineContext";
-import CombatCardEngineProvider from "@/engine/combatCardEngineContext";
-import EncounterEngineProvider from "@/engine/encounterEngineContext";
-import ExpeditionEngineProvider from "@/engine/expeditionEngineContext";
+import CharacterEngineProvider from "@/engines/characterEngineContext";
+import CombatCardEngineProvider from "@/engines/combatCardEngineContext";
+import EncounterEngineProvider from "@/engines/encounterEngineContext";
+import ExpeditionEngineProvider from "@/engines/expeditionEngineContext";
 import { AnimatePresence } from "framer-motion";
 
 export default function Page({}) {

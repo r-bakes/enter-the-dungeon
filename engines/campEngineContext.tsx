@@ -10,7 +10,6 @@ import {
 } from "./utils/charaterStateUtilities";
 import { useCharacterEngineContext } from "./characterEngineContext";
 import React from "react";
-import TaskComplete from "@/components/camp/toast/taskComplete";
 import {
   applyExperienceModifier,
   applyProductionModifier,
@@ -20,6 +19,7 @@ import {
 } from "@/data/modifiers/skillModifiers";
 import { SkillModifierTable } from "@/data/modifiers/types";
 import { Skill, Task } from "@/data/skills/types";
+import TaskComplete from "@/components/camp/toast/TaskComplete";
 
 type CampEngineContextContents = {
   taskProgress: number;

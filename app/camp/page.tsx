@@ -4,7 +4,7 @@ import SkillMenu from "@/components/camp/skillMenu/skillMenu";
 import { GameObject } from "@/data/gameObject";
 import { inventory } from "@/data/menus/inventory";
 import { martial } from "@/data/skills/martial";
-import CampEngineProvider from "@/engine/campEngineContext";
+import CampEngineProvider from "@/engines/campEngineContext";
 import React from "react";
 import { prospecting } from "@/data/skills/prospecting";
 import { smithing } from "@/data/skills/smithing";
@@ -12,7 +12,7 @@ import DeckMenu from "@/components/camp/deckMenu/deckMenu";
 import { magic } from "@/data/skills/magic";
 import { expeditions } from "@/data/menus/expeditions";
 import ExpeditionsMenu from "@/components/camp/expeditionsMenu/expeditionsMenu";
-import CharacterEngineProvider from "@/engine/characterEngineContext";
+import CharacterEngineProvider from "@/engines/characterEngineContext";
 import { crafting } from "@/data/skills/crafting";
 import { enchanting } from "@/data/skills/enchanting";
 import { home } from "@/data/menus/home";
@@ -24,7 +24,7 @@ import { alchemy } from "@/data/skills/alchemy";
 import { agriculture } from "@/data/skills/agriculture";
 import { bazaar } from "@/data/menus/bazaar";
 import BazaarMenu from "@/components/camp/bazaarMenu/bazaarMenu";
-import MenuSelect from "@/components/camp/MenuSelect/MenuSelect";
+import MenuSelect from "@/components/camp/menuSelect/menuSelect";
 
 export default function Page({}) {
   const [selectedMenu, setSelectedMenu] = React.useState<GameObject>(home);
@@ -108,7 +108,7 @@ export default function Page({}) {
             selectedMenu={selectedMenu}
             setSelectedMenu={setSelectedMenu}
           ></MenuSelect>
-          <div className="flex h-full w-full bg-slate-50 py-10">
+          <div className="flex h-full w-full bg-secondaryBackground py-10">
             {menus[selectedMenu.id].menu}
           </div>
         </AnimatePresence>

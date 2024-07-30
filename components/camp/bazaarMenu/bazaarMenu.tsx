@@ -14,17 +14,30 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { renderIcon } from "@/data/gameObject";
-import { useCharacterEngineContext } from "@/engine/characterEngineContext";
-import { formatCapitalCase } from "@/engine/utils/formattingUtilities";
+import { useCharacterEngineContext } from "@/engines/characterEngineContext";
+import { formatCapitalCase } from "@/engines/utils/formattingUtilities";
 import React from "react";
-import { upgradeTable } from "@/data/modifiers/upgrades";
-import { HomeRooms } from "@/data/menus/types";
+import { BazaarStores } from "@/data/menus/types";
 import { bazaar } from "@/data/menus/bazaar";
+import UpgradesStoreMenu from "./upgradesStoreMenu";
+import { generateUpgradeOptions } from "@/engines/utils/bazaarStateUtilities";
 
 export default function BazaarMenu() {
-  const defaultRoom = HomeRooms.TOOL_SHED;
+  const defaultCategory = BazaarStores.UPGRADES;
   const { character } = useCharacterEngineContext();
-  const [selectedRoom, setSelectedRoom] = React.useState(defaultRoom);
+  const [selectedStore, setSelectedStore] =
+    React.useState<BazaarStores>(defaultCategory);
+
+  let upgradeStoreContent = generateUpgradeOptions(
+    character.upgrades,
+    character.milestones,
+  );
+
+  const storeMenu = {
+    [BazaarStores.UPGRADES]: (
+      <UpgradesStoreMenu upgrades={upgradeStoreContent}></UpgradesStoreMenu>
+    ),
+  };
 
   return (
     <div className="flex h-full w-full flex-col gap-6 px-8">
@@ -41,12 +54,11 @@ export default function BazaarMenu() {
       </Card>
       <div className="flex h-full w-full flex-row gap-6">
         <div className="w-0 border-4 shadow-sm"></div>
-
         <div className="flex h-full grow flex-col">
           <Select
-            defaultValue={defaultRoom}
-            onValueChange={(value) => {
-              setSelectedRoom(value);
+            defaultValue={defaultCategory}
+            onValueChange={(value: BazaarStores) => {
+              setSelectedStore(value);
             }}
           >
             <SelectTrigger className="mb-2 w-full font-light text-muted-foreground">
@@ -54,34 +66,21 @@ export default function BazaarMenu() {
             </SelectTrigger>
             <SelectContent>
               <SelectGroup>
-                {Object.entries(HomeRooms).map(([roomId, room]) => (
+                {Object.entries(BazaarStores).map(([categoryId, category]) => (
                   <SelectItem
                     className="font-light text-muted-foreground"
-                    key={roomId}
-                    value={room}
+                    key={categoryId}
+                    value={category}
                   >
-                    {formatCapitalCase(room)}
+                    {formatCapitalCase(category)}
                   </SelectItem>
                 ))}
               </SelectGroup>
             </SelectContent>
           </Select>
-          <ScrollArea>
-            <div className="flex w-full flex-col gap-2">
-              {character.upgrades
-                .filter(
-                  (upgradeId) =>
-                    upgradeTable[upgradeId].homeRoom === selectedRoom,
-                )
-                .map((upgradeId) => (
-                  <UpgradeCard
-                    key={upgradeId}
-                    upgrade={upgradeTable[upgradeId]}
-                  ></UpgradeCard>
-                ))}
-            </div>
-            <ScrollBar orientation="vertical"></ScrollBar>
-          </ScrollArea>
+          <div className="flex w-full flex-col gap-2 overflow-y-scroll">
+            {storeMenu[selectedStore]}
+          </div>
         </div>
       </div>
     </div>

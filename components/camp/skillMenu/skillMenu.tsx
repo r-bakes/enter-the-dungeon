@@ -1,9 +1,9 @@
 "use client";
 
 import { useState } from "react";
-import { useCampEngineContext } from "@/engine/campEngineContext";
+import { useCampEngineContext } from "@/engines/campEngineContext";
 import TaskInfo from "./taskInfo/taskInfo";
-import { useCharacterEngineContext } from "@/engine/characterEngineContext";
+import { useCharacterEngineContext } from "@/engines/characterEngineContext";
 import { SkillHeader } from "./skillHeader/skillHeader";
 import TasksMenu from "./tasksMenu/tasksMenu";
 import { Skill, Task } from "@/data/skills/types";

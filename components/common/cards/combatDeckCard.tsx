@@ -1,15 +1,9 @@
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardHeader,
-  CardTitle,
-} from "../ui/card";
-import { Button } from "../ui/button";
+import { Button } from "@/components/ui/button";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Label } from "@/components/ui/label";
+import { CombatCardTemplate, Target } from "@/data/combatCards/types";
 import { renderIcon } from "@/data/gameObject";
 import { motion } from "framer-motion";
-import { Label } from "../ui/label";
-import { CombatCard, CombatCardTemplate, Target } from "@/data/cards/types";
 import { Zap } from "lucide-react";
 
 export default function CombatDeckCard({
@@ -133,5 +127,7 @@ const formatCardContent = (card: CombatCardTemplate) => {
       </div>
     );
   }
-  return <CardContent className="flex w-full flex-col p-0">{content}</CardContent>;
+  return (
+    <CardContent className="flex w-full flex-col p-0">{content}</CardContent>
+  );
 };

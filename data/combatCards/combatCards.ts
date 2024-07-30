@@ -3,35 +3,7 @@ import { barsTable } from "../items/bars";
 import { TASK_AND_ITEM_ICON_STYLE } from "../configurations";
 import { CombatCard, CombatCardTemplate, Target } from "./types";
 
-let createOffensiveCombatCardDescription = (
-  strikes: number,
-  targets: number,
-  modifier: number,
-) => {
-  let formattedModifier = modifier.toString();
-  if (modifier === 0.5) {
-    formattedModifier = "1/2";
-  }
-
-  return `Deals ${formattedModifier}xATK ${strikes} time(s) to `.concat(
-    targets != -1 ? `${targets} target(s)` : `all enemies`,
-  );
-};
-
-let createDefensiveCombatCardDescription = (
-  targets: number,
-  modifier: number,
-) => {
-  let formattedModifier = modifier.toString();
-  if (modifier === 0.5) {
-    formattedModifier = "1/2";
-  }
-  return `Adds ${formattedModifier}xDEF to `.concat(
-    targets != -1 ? `${targets} allies(s)` : `all allies`,
-  );
-};
-
-export const cardTable: { [cardId: string]: CombatCardTemplate } = {
+export const combatCardTable: { [cardId: string]: CombatCardTemplate } = {
   slice: {
     id: "slice",
     name: "Slice",
@@ -85,6 +57,6 @@ export const createCombatCard = (
 ): CombatCard => {
   return {
     deckId: deckId,
-    ...cardTable[cardId],
+    ...combatCardTable[cardId],
   };
 };

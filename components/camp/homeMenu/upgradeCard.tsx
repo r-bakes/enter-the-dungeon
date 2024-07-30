@@ -8,7 +8,7 @@ import { renderIcon } from "@/data/gameObject";
 import { formatModifiers } from "@/data/modifiers/skillModifiers";
 import { Upgrade } from "@/data/modifiers/types";
 import { skillTable } from "@/data/skills/skills";
-import { formatCapitalCase } from "@/engine/utils/formattingUtilities";
+import { formatCapitalCase } from "@/engines/utils/formattingUtilities";
 
 export default function UpgradeCard({ upgrade }: { upgrade: Upgrade }) {
   return (

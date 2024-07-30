@@ -1,4 +1,4 @@
-import { Anvil, Bird, Gavel, Heater, Pickaxe } from "lucide-react";
+import { Anvil, Bird, Gavel, Hammer, Heater, Pickaxe } from "lucide-react";
 import { TASK_AND_ITEM_ICON_STYLE } from "../configurations";
 import { mineralsTable } from "../items/minerals";
 import { prospecting } from "../skills/prospecting";
@@ -19,6 +19,7 @@ export const upgradeTable: { [upgradeId: string]: Upgrade } = {
       ...TASK_AND_ITEM_ICON_STYLE,
     },
     next: "bronzePickaxe",
+    previous: null,
     modifier: {
       targets: {
         [prospecting.id]: Object.entries(prospecting.tasks)
@@ -32,7 +33,9 @@ export const upgradeTable: { [upgradeId: string]: Upgrade } = {
         [SkillModifierType.SPEED]: 0,
       },
     },
-    requires: { bronzeBar: 0 },
+    requiresItems: { bronzeBar: 0 },
+    requiresUpgrades: new Set([]),
+    requiresMilestones: new Set([]),
     homeRoom: HomeRooms.TOOL_SHED,
   },
   bronzePickaxe: {
@@ -45,6 +48,7 @@ export const upgradeTable: { [upgradeId: string]: Upgrade } = {
       ...TASK_AND_ITEM_ICON_STYLE,
     },
     next: "bronzePickaxe1",
+    previous: "basicPickaxe",
     modifier: {
       targets: {
         [prospecting.id]: Object.entries(prospecting.tasks)
@@ -58,7 +62,9 @@ export const upgradeTable: { [upgradeId: string]: Upgrade } = {
         [SkillModifierType.SPEED]: 1,
       },
     },
-    requires: { bronzeBar: 0 },
+    requiresItems: { gold: 100, bronzeBar: 100 },
+    requiresUpgrades: new Set(["basicPickaxe"]),
+    requiresMilestones: new Set([]),
     homeRoom: HomeRooms.TOOL_SHED,
   },
   bronzePickaxe1: {
@@ -71,6 +77,7 @@ export const upgradeTable: { [upgradeId: string]: Upgrade } = {
       ...TASK_AND_ITEM_ICON_STYLE,
     },
     next: "bronzePickaxe2",
+    previous: "basicPickaxe",
     modifier: {
       targets: {
         [prospecting.id]: Object.entries(prospecting.tasks)
@@ -84,7 +91,9 @@ export const upgradeTable: { [upgradeId: string]: Upgrade } = {
         [SkillModifierType.SPEED]: 2,
       },
     },
-    requires: { bronzeBar: 10 },
+    requiresItems: { gold: 1000, bronzeBar: 1000 },
+    requiresUpgrades: new Set(["bronzePickaxe"]),
+    requiresMilestones: new Set([]),
     homeRoom: HomeRooms.TOOL_SHED,
   },
   bronzePickaxe2: {
@@ -97,6 +106,7 @@ export const upgradeTable: { [upgradeId: string]: Upgrade } = {
       ...TASK_AND_ITEM_ICON_STYLE,
     },
     next: "bronzePickaxe3",
+    previous: "basicPickaxe1",
     modifier: {
       targets: {
         [prospecting.id]: Object.entries(prospecting.tasks)
@@ -110,7 +120,9 @@ export const upgradeTable: { [upgradeId: string]: Upgrade } = {
         [SkillModifierType.SPEED]: 3,
       },
     },
-    requires: { bronzeBar: 100 },
+    requiresItems: { gold: 10000, bronzeBar: 10000 },
+    requiresUpgrades: new Set(["bronzePickaxe1"]),
+    requiresMilestones: new Set([]),
     homeRoom: HomeRooms.TOOL_SHED,
   },
   bronzePickaxe3: {
@@ -123,6 +135,7 @@ export const upgradeTable: { [upgradeId: string]: Upgrade } = {
       ...TASK_AND_ITEM_ICON_STYLE,
     },
     next: "bronzePickaxe4",
+    previous: "basicPickaxe2",
     modifier: {
       targets: {
         [prospecting.id]: Object.entries(prospecting.tasks)
@@ -136,7 +149,9 @@ export const upgradeTable: { [upgradeId: string]: Upgrade } = {
         [SkillModifierType.SPEED]: 4,
       },
     },
-    requires: { bronzeBar: 1000 },
+    requiresItems: { gold: 10000, bronzeBar: 10000 },
+    requiresUpgrades: new Set(["bronzePickaxe2"]),
+    requiresMilestones: new Set([]),
     homeRoom: HomeRooms.TOOL_SHED,
   },
   bronzePickaxe4: {
@@ -149,6 +164,7 @@ export const upgradeTable: { [upgradeId: string]: Upgrade } = {
       ...TASK_AND_ITEM_ICON_STYLE,
     },
     next: "ironPickaxe",
+    previous: "basicPickaxe3",
     modifier: {
       targets: {
         [prospecting.id]: Object.entries(prospecting.tasks)
@@ -162,7 +178,9 @@ export const upgradeTable: { [upgradeId: string]: Upgrade } = {
         [SkillModifierType.SPEED]: 5,
       },
     },
-    requires: { bronzeBar: 10000 },
+    requiresItems: { gold: 100000, bronzeBar: 100000 },
+    requiresUpgrades: new Set(["bronzePickaxe3"]),
+    requiresMilestones: new Set([]),
     homeRoom: HomeRooms.TOOL_SHED,
   },
   ironPickaxe: {
@@ -175,6 +193,7 @@ export const upgradeTable: { [upgradeId: string]: Upgrade } = {
       ...TASK_AND_ITEM_ICON_STYLE,
     },
     next: "ironPickaxe1",
+    previous: "basicPickaxe4",
     modifier: {
       targets: {
         [prospecting.id]: Object.entries(prospecting.tasks)
@@ -188,11 +207,13 @@ export const upgradeTable: { [upgradeId: string]: Upgrade } = {
         [SkillModifierType.SPEED]: 6,
       },
     },
-    requires: { ironBar: 100 },
+    requiresItems: { gold: 100, ironBar: 100 },
+    requiresUpgrades: new Set(["bronzePickaxe4"]),
+    requiresMilestones: new Set([]),
     homeRoom: HomeRooms.TOOL_SHED,
   },
   ironPickaxe1: {
-    id: "ironPickaxe",
+    id: "ironPickaxe1",
     name: "Iron Pickaxe +1",
     description: "An iron pickaxe",
     icon: Pickaxe,
@@ -201,6 +222,7 @@ export const upgradeTable: { [upgradeId: string]: Upgrade } = {
       ...TASK_AND_ITEM_ICON_STYLE,
     },
     next: null,
+    previous: "ironPickaxe",
     modifier: {
       targets: {
         [prospecting.id]: Object.entries(prospecting.tasks)
@@ -211,17 +233,19 @@ export const upgradeTable: { [upgradeId: string]: Upgrade } = {
           .map(([taskId, task]) => taskId),
       },
       values: {
-        [SkillModifierType.SPEED]: 6,
+        [SkillModifierType.SPEED]: 7,
       },
     },
-    requires: { ironBar: 1000 },
+    requiresItems: { gold: 1000, ironBar: 1000 },
+    requiresUpgrades: new Set(["ironPickaxes"]),
+    requiresMilestones: new Set([]),
     homeRoom: HomeRooms.TOOL_SHED,
   },
   basicHammer: {
     id: "basicHammer",
     name: "Basic Hammer",
     description: "Your trusty hammer!",
-    icon: Gavel,
+    icon: Hammer,
     iconStyle: {
       fill: "none",
       ...TASK_AND_ITEM_ICON_STYLE,
@@ -235,40 +259,21 @@ export const upgradeTable: { [upgradeId: string]: Upgrade } = {
       },
     },
     next: "bronzeHammer",
-    requires: { gold: 0 },
+    previous: null,
+    requiresItems: {},
+    requiresUpgrades: new Set([]),
+    requiresMilestones: new Set([]),
     homeRoom: HomeRooms.TOOL_SHED,
   },
   bronzeHammer: {
     id: "bronzeHammer",
     name: "Bronze Hammer",
     description: "A bronze hammer!",
-    icon: Gavel,
+    icon: Hammer,
     iconStyle: {
       fill: mineralsTable.copperOre.iconStyle.fill,
       ...TASK_AND_ITEM_ICON_STYLE,
     },
-    modifier: {
-      targets: {
-        [smithing.id]: Object.keys(smithing.tasks),
-      },
-      values: {
-        [SkillModifierType.SPEED]: 0,
-      },
-    },
-    next: "bronzeHammer1",
-    requires: { bronzeBar: 0 },
-    homeRoom: HomeRooms.TOOL_SHED,
-  },
-  bronzeHammer1: {
-    id: "bronzeHammer1",
-    name: "Bronze Hammer +1",
-    description: "A bronze hammer!",
-    icon: Gavel,
-    iconStyle: {
-      fill: mineralsTable.copperOre.iconStyle.fill,
-      ...TASK_AND_ITEM_ICON_STYLE,
-    },
-    next: null,
     modifier: {
       targets: {
         [smithing.id]: Object.keys(smithing.tasks),
@@ -277,7 +282,35 @@ export const upgradeTable: { [upgradeId: string]: Upgrade } = {
         [SkillModifierType.SPEED]: 1,
       },
     },
-    requires: { bronzeBar: 10 },
+    next: "bronzeHammer1",
+    previous: "basicHammer",
+    requiresItems: { gold: 100, bronzeBar: 100 },
+    requiresUpgrades: new Set(["basicHammer"]),
+    requiresMilestones: new Set([]),
+    homeRoom: HomeRooms.TOOL_SHED,
+  },
+  bronzeHammer1: {
+    id: "bronzeHammer1",
+    name: "Bronze Hammer +1",
+    description: "A bronze hammer!",
+    icon: Hammer,
+    iconStyle: {
+      fill: mineralsTable.copperOre.iconStyle.fill,
+      ...TASK_AND_ITEM_ICON_STYLE,
+    },
+    next: "bronzeHammer2",
+    previous: "bronzeHammer",
+    modifier: {
+      targets: {
+        [smithing.id]: Object.keys(smithing.tasks),
+      },
+      values: {
+        [SkillModifierType.SPEED]: 2,
+      },
+    },
+    requiresItems: { gold: 1000, bronzeBar: 1000 },
+    requiresUpgrades: new Set(["bronzeHammer"]),
+    requiresMilestones: new Set([]),
     homeRoom: HomeRooms.TOOL_SHED,
   },
   basicForge: {
@@ -290,6 +323,7 @@ export const upgradeTable: { [upgradeId: string]: Upgrade } = {
       ...TASK_AND_ITEM_ICON_STYLE,
     },
     next: null,
+    previous: null,
     modifier: {
       targets: {
         [smithing.id]: Object.keys(smithing.tasks),
@@ -301,7 +335,9 @@ export const upgradeTable: { [upgradeId: string]: Upgrade } = {
         [SkillModifierType.EXPERIENCE]: 0,
       },
     },
-    requires: { steelBar: 0 },
+    requiresItems: { steelBar: 0 },
+    requiresUpgrades: new Set([]),
+    requiresMilestones: new Set([]),
     homeRoom: HomeRooms.WORKSHOP,
   },
   basicAnvil: {
@@ -314,6 +350,7 @@ export const upgradeTable: { [upgradeId: string]: Upgrade } = {
       ...TASK_AND_ITEM_ICON_STYLE,
     },
     next: null,
+    previous: null,
     modifier: {
       targets: {
         [smithing.id]: Object.keys(smithing.tasks),
@@ -323,7 +360,9 @@ export const upgradeTable: { [upgradeId: string]: Upgrade } = {
         [SkillModifierType.DOUBLE_CHANCE]: 0,
       },
     },
-    requires: { steelBar: 0 },
+    requiresItems: { steelBar: 0 },
+    requiresUpgrades: new Set([]),
+    requiresMilestones: new Set([]),
     homeRoom: HomeRooms.WORKSHOP,
   },
   coalMineCanery: {
@@ -336,6 +375,7 @@ export const upgradeTable: { [upgradeId: string]: Upgrade } = {
       ...TASK_AND_ITEM_ICON_STYLE,
     },
     next: null,
+    previous: null,
     modifier: {
       targets: {
         [prospecting.id]: Object.entries(prospecting.tasks)
@@ -347,7 +387,9 @@ export const upgradeTable: { [upgradeId: string]: Upgrade } = {
         [SkillModifierType.PRODUCTION_MULTIPLIER]: 1,
       },
     },
-    requires: { gold: 1000000 },
+    requiresItems: { gold: 1000000 },
+    requiresUpgrades: new Set([]),
+    requiresMilestones: new Set([]),
     homeRoom: HomeRooms.MENAGERIE,
   },
 };

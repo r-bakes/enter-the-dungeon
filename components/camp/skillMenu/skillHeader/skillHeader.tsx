@@ -8,7 +8,7 @@ import {
 import { Progress } from "@/components/ui/progress";
 import { LEVEL_CAP } from "@/data/configurations";
 import { Skill } from "@/data/skills/skills";
-import { requiredExpForLevelUp } from "@/engine/utils/charaterStateUtilities";
+import { requiredExpForLevelUp } from "@/engines/utils/charaterStateUtilities";
 
 export function SkillHeader({
   skill,

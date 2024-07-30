@@ -3,7 +3,8 @@ import { useCharacterEngineContext } from "./characterEngineContext";
 import { Loot } from "./utils/lootUtilities";
 import { CharacterCombatant, Combatant } from "@/data/combatants/combatants";
 import { User } from "lucide-react";
-import { CombatCard, createCombatCard } from "@/data/cards/cards";
+import { CombatCard } from "@/data/combatCards/types";
+import { createCombatCard } from "@/data/combatCards/combatCards";
 
 type ExpeditionEngineContextContents = {
   characterCombatant: CharacterCombatant;
@@ -16,7 +17,7 @@ type ExpeditionEngineContextContents = {
 };
 
 const ExpeditionEngineContext = React.createContext(
-  {} as ExpeditionEngineContextContents
+  {} as ExpeditionEngineContextContents,
 );
 
 export const useExpeditionContext = () =>
@@ -47,7 +48,7 @@ export default function ExpeditionEngineProvider({
     };
   };
   const [characterCombatant, setCharacterCombatant] = React.useState(
-    initializeCharacterExcursionState()
+    initializeCharacterExcursionState(),
   );
   let initializedDeck: CombatCard[] = [
     ...character.deck.equippedMagic,

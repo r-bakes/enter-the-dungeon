@@ -13,6 +13,7 @@ import { enchanting } from "@/data/skills/enchanting";
 import { crafting } from "@/data/skills/crafting";
 import { home } from "@/data/menus/home";
 import { athletics } from "@/data/skills/athletics";
+import { ThemeToggle } from "@/components/common/themeToggle/themeToggle";
 
 export default function MenuSelect({
   miscMenus,
@@ -30,7 +31,7 @@ export default function MenuSelect({
   return (
     <div
       className={
-        "flex h-full w-60 shrink-0 flex-col border-r-4 bg-red-600 py-10 shadow-sm saturate-[60%]"
+        "flex h-full w-60 shrink-0 flex-col border-r-4 bg-slate-800 pb-2 pt-10 shadow-sm"
       }
     >
       <Logo></Logo>
@@ -58,6 +59,9 @@ export default function MenuSelect({
         selectedMenu={selectedMenu}
         setSelectedMenu={setSelectedMenu}
       ></MenuContainer>
+      <div className="flex grow flex-col justify-end px-2">
+        <ThemeToggle></ThemeToggle>
+      </div>
     </div>
   );
 }

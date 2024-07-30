@@ -11,12 +11,10 @@ export const SKILL_AND_MENU_ICON_STYLE: IconStylePrimitive = {
   strokeWidth: 1,
   strokeOpacity: 1,
   fillOpacity: 1,
-  color: "black",
 };
 
 export const TASK_AND_ITEM_ICON_STYLE: IconStylePrimitive = {
-  strokeWidth: 0.5,
-  strokeOpacity: 0.5,
-  fillOpacity: 0.5,
-  color: "black",
+  strokeWidth: 0.2,
+  strokeOpacity: 1,
+  fillOpacity: 1,
 };
