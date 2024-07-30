@@ -45,7 +45,7 @@ export function SkillImpactedPopup({
             <Label className="text-xs font-normal text-muted-foreground">
               Production Modifiers
             </Label>
-            <div className="flex flex-col">
+            <div className="flex flex-col gap-1">
               {Object.entries(upgrade.modifier.values).map(([type, value]) => {
                 return (
                   <Card className="flex flex-row items-center justify-center gap-1 p-2">
