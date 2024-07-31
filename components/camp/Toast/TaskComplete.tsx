@@ -7,6 +7,7 @@ import { renderIcon } from "@/data/gameObject";
 import { Card } from "@/components/ui/card";
 import { Task } from "@/data/skills/types";
 import { Loot } from "@/engines/utils/lootUtilities";
+import { formatQuantity } from "@/engines/utils/formattingUtilities";
 
 export default function TaskComplete({
   task,
@@ -25,13 +26,18 @@ export default function TaskComplete({
         {renderIcon(item.icon, 24, {
           ...item.iconStyle,
         })}
-        <div className="flex flex-col">
-          <Label className="text-sm text-muted-foreground">{item.name}</Label>
+        <div className="flex flex-col gap-1">
           <div className="flex items-center gap-1">
-            <Label className="text-sm text-muted-foreground">
-              + {amount} ({character.inventory[item.id]})
+            <Label className="text-xs">+{amount}</Label>
+            <Label className="text-xs font-normal text-muted-foreground">
+              {item.name}
             </Label>
-            <Backpack size={15} strokeWidth={1}></Backpack>
+          </div>
+          <div className="flex w-full items-center justify-end">
+            <Label className="mr-1 text-xs text-muted-foreground">
+              ({formatQuantity(character.inventory[item.id])})
+            </Label>
+            <Backpack size={14} strokeWidth={1}></Backpack>
           </div>
         </div>
       </Card>
@@ -40,14 +46,15 @@ export default function TaskComplete({
 
   return (
     <div className="flex h-full w-full flex-col gap-3">
-      <div className="flex items-end gap-2">
-        {renderIcon(task.icon, 24, {
-          ...task.iconStyle,
-        })}
-        <Label className="text-sm font-semibold">{task.name}</Label>
+      <div className="flex items-center justify-between gap-2">
+        <div className="flex items-center gap-1">
+          {renderIcon(task.icon, 24, {
+            ...task.iconStyle,
+          })}
+          <Label className="mr-1 text-sm font-semibold">{task.name}</Label>
+        </div>
         <Label className="text-sm text-muted-foreground">
-          {" "}
-          + {experience} xp
+          +{formatQuantity(experience)} xp
         </Label>
       </div>
       {Object.keys(loot).length > 0 ? (
