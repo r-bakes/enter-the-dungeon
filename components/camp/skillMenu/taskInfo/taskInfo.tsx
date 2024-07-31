@@ -19,6 +19,7 @@ import { Separator } from "@/components/ui/separator";
 import TaskProducesEntry from "./taskProducesEntry";
 import { TaskRequiresEntry } from "./taskRequiresEntry";
 import {
+  applyExperienceModifier,
   applySpeedModifier,
   getModifiers,
   SkillModifierType,
@@ -70,8 +71,7 @@ export default function TaskInfo({
       item: itemTable[itemId],
       quantity: quantity,
       haveEnough:
-        !(itemId in character.inventory) ||
-        quantity > character.inventory[itemId],
+        itemId in character.inventory && quantity <= character.inventory[itemId],
     }));
 
     for (const element of taskRequires) {
@@ -121,7 +121,10 @@ export default function TaskInfo({
           ></TaskDataEntry>
           <div className="h-1 w-1 rounded-full bg-black"></div>
           <TaskDataEntry
-            data={task.experience}
+            data={applyExperienceModifier(
+              task.experience,
+              modifiers[SkillModifierType.EXPERIENCE],
+            )}
             label={"experience"}
           ></TaskDataEntry>
         </div>
@@ -129,6 +132,7 @@ export default function TaskInfo({
           <TaskProducesEntry
             label={"produces"}
             data={taskProduction}
+            multiplier={modifiers[SkillModifierType.PRODUCTION_MULTIPLIER]}
           ></TaskProducesEntry>
           <TaskRequiresEntry
             data={taskRequires}

@@ -5,7 +5,16 @@ export const formatCapitalCase = (words: string): string => {
     .join(" ");
 };
 
-export const formatQuantity = (quantity: number): string => {
+export const formatQuantity = (
+  quantity: number | string | undefined,
+): string => {
+  if (!quantity) {
+    return "0";
+  }
+  if (typeof quantity === "string") {
+    quantity = Number.parseInt(quantity);
+  }
+
   if (quantity < 1000000 && quantity >= 1000) {
     let amount = quantity / 1000;
     return amount.toString() + "K";

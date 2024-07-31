@@ -1,22 +1,24 @@
 import { Item } from "@/data/items/types";
-import { Task } from "@/data/skills/skills";
 import { Character } from "@/data/character/character";
 import { itemTable } from "@/data/items/items";
-import { Loot } from "@/engine/utils/lootUtilities";
 import { Label } from "@radix-ui/react-label";
 import { Backpack } from "lucide-react";
 import { renderIcon } from "@/data/gameObject";
 import { Card } from "@/components/ui/card";
+import { Task } from "@/data/skills/types";
+import { Loot } from "@/engines/utils/lootUtilities";
 
 export default function TaskComplete({
   task,
   loot,
+  experience,
   character,
-}: {
+}: Readonly<{
   task: Task;
   loot: Loot;
+  experience: number;
   character: Character;
-}) {
+}>) {
   const itemCard = (item: Item, amount: number) => {
     return (
       <Card key={item.id} className="flex h-min w-max items-center gap-2 p-2">
@@ -37,22 +39,26 @@ export default function TaskComplete({
   };
 
   return (
-    <div className="flex h-full w-full flex-col space-y-3">
-      <div className="flex items-end space-x-2">
+    <div className="flex h-full w-full flex-col gap-3">
+      <div className="flex items-end gap-2">
         {renderIcon(task.icon, 24, {
           ...task.iconStyle,
         })}
         <Label className="text-sm font-semibold">{task.name}</Label>
         <Label className="text-sm text-muted-foreground">
           {" "}
-          + {task.experience} xp
+          + {experience} xp
         </Label>
       </div>
-      <div className="flex space-x-2">
-        {Object.entries(loot).map(([itemId, number]) =>
-          itemCard(itemTable[itemId], number),
-        )}
-      </div>
+      {Object.keys(loot).length > 0 ? (
+        <div className="flex gap-2">
+          {Object.entries(loot).map(([itemId, number]) =>
+            itemCard(itemTable[itemId], number),
+          )}
+        </div>
+      ) : (
+        <></>
+      )}
     </div>
   );
 }

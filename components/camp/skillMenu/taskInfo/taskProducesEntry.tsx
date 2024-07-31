@@ -6,6 +6,7 @@ import { Item } from "@/data/items/types";
 export default function TaskProducesEntry({
   data,
   label,
+  multiplier,
 }: Readonly<{
   data: {
     item: Item;
@@ -14,9 +15,13 @@ export default function TaskProducesEntry({
     chance: number;
   }[][];
   label: string;
+  multiplier: number | undefined;
 }>) {
   if (data.length === 0) {
     return <></>;
+  }
+  if (!multiplier) {
+    multiplier = 1;
   }
 
   return (
@@ -46,8 +51,8 @@ export default function TaskProducesEntry({
                   })}
                   <Label className="text-xs">
                     {data.minQuantity === data.maxQuantity
-                      ? data.minQuantity
-                      : data.minQuantity + " - " + data.maxQuantity}
+                      ? data.minQuantity * multiplier
+                      : data.minQuantity * multiplier + " - " + data.maxQuantity * multiplier}
                   </Label>
                   <Label className="w-max text-xs font-normal text-muted-foreground">
                     {data.item.name}

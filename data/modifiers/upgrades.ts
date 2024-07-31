@@ -1,4 +1,4 @@
-import { Anvil, Bird, Gavel, Hammer, Heater, Pickaxe } from "lucide-react";
+import { Anvil, Bed, Bird, Hammer, Heater, Pickaxe } from "lucide-react";
 import { TASK_AND_ITEM_ICON_STYLE } from "../configurations";
 import { mineralsTable } from "../items/minerals";
 import { prospecting } from "../skills/prospecting";
@@ -7,6 +7,22 @@ import { barsTable } from "../items/bars";
 import { SkillModifierType, Upgrade } from "./types";
 import { ProspectingTaskCategories } from "../skills/types";
 import { HomeRooms } from "../menus/types";
+import { skillTable } from "../skills/skills";
+
+const getGlobalModifier = (): { [skillId: string]: string[] } => {
+  let targetsEverything: { [skillId: string]: string[] } = {};
+
+  for (const [skillId, skill] of Object.entries(skillTable)) {
+    targetsEverything[skillId] = [];
+
+    Object.keys(skill.tasks).forEach((taskId) =>
+      targetsEverything[skillId].push(taskId),
+    );
+  }
+
+  return targetsEverything;
+};
+const GLOBAL_MODIFIER = getGlobalModifier();
 
 export const upgradeTable: { [upgradeId: string]: Upgrade } = {
   basicPickaxe: {
@@ -391,5 +407,49 @@ export const upgradeTable: { [upgradeId: string]: Upgrade } = {
     requiresUpgrades: new Set([]),
     requiresMilestones: new Set([]),
     homeRoom: HomeRooms.MENAGERIE,
+  },
+  basicBed: {
+    id: "basicBed",
+    name: "Basic Bed",
+    description: "Really uncomfortable",
+    icon: Bed,
+    iconStyle: {
+      fill: "white",
+      ...TASK_AND_ITEM_ICON_STYLE,
+    },
+    next: "strawBed",
+    previous: null,
+    modifier: {
+      targets: GLOBAL_MODIFIER,
+      values: {
+        [SkillModifierType.EXPERIENCE]: 0,
+      },
+    },
+    requiresItems: { gold: 0 },
+    requiresUpgrades: new Set([]),
+    requiresMilestones: new Set([]),
+    homeRoom: HomeRooms.BEDROOM,
+  },
+  strawBed: {
+    id: "strawBed",
+    name: "Straw Bed",
+    description: "I feel itchy...",
+    icon: Bed,
+    iconStyle: {
+      fill: "white",
+      ...TASK_AND_ITEM_ICON_STYLE,
+    },
+    next: null,
+    previous: "basicBed",
+    modifier: {
+      targets: GLOBAL_MODIFIER,
+      values: {
+        [SkillModifierType.EXPERIENCE]: 1,
+      },
+    },
+    requiresItems: { gold: 10000 },
+    requiresUpgrades: new Set([]),
+    requiresMilestones: new Set([]),
+    homeRoom: HomeRooms.BEDROOM,
   },
 };

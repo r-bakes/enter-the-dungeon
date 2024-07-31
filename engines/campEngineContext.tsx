@@ -141,6 +141,10 @@ export default function CampEngineProvider({
         task={task}
         character={character}
         loot={loot}
+        experience={applyExperienceModifier(
+          task.experience,
+          modifiers[SkillModifierType.EXPERIENCE],
+        )}
       ></TaskComplete>,
       { duration: 10000 },
     );

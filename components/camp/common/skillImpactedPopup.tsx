@@ -16,11 +16,11 @@ export function SkillImpactedPopup({
   skill,
   taskIds,
   upgrade,
-}: {
+}: Readonly<{
   skill: Skill;
   taskIds: string[];
   upgrade: Upgrade;
-}) {
+}>) {
   return (
     <Popover>
       <PopoverTrigger asChild>
@@ -30,7 +30,7 @@ export function SkillImpactedPopup({
             className="flex h-full flex-row gap-2 px-4 py-2"
           >
             {renderIcon(skill.icon, 32, { ...skill.iconStyle })}
-            <div className="flex h-full flex-col text-left">
+            <div className="flex h-full flex-col text-left justify-center">
               <CardDescription className="text-xs font-black text-foreground">
                 {skill.name}
               </CardDescription>
@@ -48,7 +48,10 @@ export function SkillImpactedPopup({
             <div className="flex flex-col gap-1">
               {Object.entries(upgrade.modifier.values).map(([type, value]) => {
                 return (
-                  <Card className="flex flex-row items-center justify-center gap-1 p-2">
+                  <Card
+                    key={type}
+                    className="flex flex-row items-center justify-center gap-1 p-2"
+                  >
                     <Label className="text-xs font-medium">
                       {formatModifiers(value, type)}
                     </Label>
@@ -69,7 +72,10 @@ export function SkillImpactedPopup({
                 taskIds.map((taskId) => {
                   let task = skill.tasks[taskId];
                   return (
-                    <Card className="flex flex-row items-center gap-2 p-2">
+                    <Card
+                      key={taskId}
+                      className="flex flex-row items-center gap-2 p-2"
+                    >
                       {renderIcon(task.icon, 24, task.iconStyle)}
                       <Label className="text-xs font-normal text-muted-foreground">
                         {formatCapitalCase(task.name)}

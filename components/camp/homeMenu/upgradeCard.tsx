@@ -11,9 +11,11 @@ import { skillTable } from "@/data/skills/skills";
 import { formatCapitalCase } from "@/engines/utils/formattingUtilities";
 import { SkillImpactedPopup } from "../common/skillImpactedPopup";
 
-export default function UpgradeCard({ upgrade }: { upgrade: Upgrade }) {
+export default function UpgradeCard({
+  upgrade,
+}: Readonly<{ upgrade: Upgrade }>) {
   return (
-    <Card className="flex w-full min-w-max items-center p-4">
+    <Card className="flex w-full min-w-max items-center px-4 py-2">
       <CardHeader className="flex h-full w-full flex-row items-center justify-between p-0">
         <div className="flex h-full">
           <div className="flex h-full w-60 items-center gap-4">
@@ -25,10 +27,11 @@ export default function UpgradeCard({ upgrade }: { upgrade: Upgrade }) {
               </CardDescription>
             </div>
           </div>
-          <div className="mt-0 flex h-full flex-col justify-center">
+          <div className="mx-6 flex h-full max-w-[500px] gap-2 overflow-x-scroll py-2">
             {Object.entries(upgrade.modifier.targets).map(
               ([skillId, taskIds]) => (
                 <SkillImpactedPopup
+                  key={skillId}
                   skill={skillTable[skillId]}
                   taskIds={taskIds}
                   upgrade={upgrade}
@@ -39,7 +42,10 @@ export default function UpgradeCard({ upgrade }: { upgrade: Upgrade }) {
         </div>
         <div className="flex h-full gap-4">
           {Object.entries(upgrade.modifier.values).map(([type, value]) => (
-            <div key={type} className="flex h-full flex-col items-center">
+            <div
+              key={type}
+              className="flex h-full flex-col items-center justify-center"
+            >
               <CardTitle className="text-base">
                 {formatModifiers(value, type)}
               </CardTitle>

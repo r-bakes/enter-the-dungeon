@@ -89,6 +89,7 @@ export const testCharacter: Character = {
     "basicHammer",
     "basicAnvil",
     "basicForge",
+    "basicBed",
     "coalMineCanery",
   ]),
   skills: {
