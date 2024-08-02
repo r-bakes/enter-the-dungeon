@@ -1,5 +1,5 @@
-import { CombatCardTemplate } from "../combatCards/combatCards";
 import { Slot } from "../character/character";
+import { CombatCardTemplate } from "../combatCards/types";
 import { GameObject } from "../gameObject";
 
 export type Equipment = {

@@ -16,13 +16,13 @@ export const formatQuantity = (
   }
 
   if (quantity < 1000000 && quantity >= 1000) {
-    let amount = quantity / 1000;
+    let amount = Math.floor(quantity / 1000);
     return amount.toString() + "K";
   } else if (quantity < 10000000 && quantity >= 1000000) {
-    let amount = quantity / 1000000;
+    let amount = Math.floor(quantity / 1000000);
     return amount.toString() + "M";
   } else if (quantity >= 10000000) {
-    let amount = quantity / 10000000;
+    let amount = Math.floor(quantity / 10000000);
     return amount.toString() + "B";
   }
   return quantity.toString();

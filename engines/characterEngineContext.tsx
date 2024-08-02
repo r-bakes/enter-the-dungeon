@@ -20,6 +20,7 @@ type CharacterEngineContextContents = {
   equipItem: (itemId: string, slot: Slot) => void;
   unequip: (slot: Slot) => void;
   getModifiers: () => { hp: number; atk: number; def: number; stamina: number };
+  save: () => void;
 };
 
 const CharacterEngineContext = React.createContext(
@@ -130,6 +131,8 @@ export default function CharacterEngineProvider({
     };
   };
 
+  const save = () => {};
+
   return (
     <CharacterEngineContext.Provider
       value={{
@@ -140,6 +143,7 @@ export default function CharacterEngineProvider({
         equipItem,
         unequip: unequipItem,
         getModifiers,
+        save,
       }}
     >
       {children}
