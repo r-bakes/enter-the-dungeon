@@ -1,3 +1,4 @@
+import { Card } from "@/components/ui/card";
 import {
   Table,
   TableBody,
@@ -8,7 +9,7 @@ import {
 } from "@/components/ui/table";
 import { renderIcon } from "@/data/gameObject";
 import { itemTable } from "@/data/items/items";
-import { Item } from "@/data/items/types";
+import { Item, ItemType } from "@/data/items/types";
 import { useCharacterEngineContext } from "@/engines/characterEngineContext";
 import {
   formatCapitalCase,
@@ -18,6 +19,8 @@ import {
   createColumnHelper,
   flexRender,
   getCoreRowModel,
+  getFilteredRowModel,
+  getSortedRowModel,
   useReactTable,
 } from "@tanstack/react-table";
 import React from "react";
@@ -29,9 +32,11 @@ type TableData = {
 export default function InventoryTable({}: {}) {
   const { character } = useCharacterEngineContext();
   const [data, _setData] = React.useState<TableData[]>(() => [
-    ...Object.entries(character.inventory).map(([itemId, quantity]) => {
-      return { ...itemTable[itemId], quantity: quantity };
-    }),
+    ...Object.entries(character.inventory)
+      .filter(([itemId, _]) => itemTable[itemId].type != ItemType.HIDDEN)
+      .map(([itemId, quantity]) => {
+        return { ...itemTable[itemId], quantity: quantity };
+      }),
   ]);
 
   const columnHelper = createColumnHelper<TableData>();
@@ -39,7 +44,8 @@ export default function InventoryTable({}: {}) {
   const columns = [
     columnHelper.display({
       id: "icon",
-      cell: (props) => renderIcon(props.row.icon, 16, props.row.iconStyle),
+      cell: (props) =>
+        renderIcon(props.row.original.icon, 32, props.row.original.iconStyle),
     }),
     columnHelper.accessor("name", {
       header: "Item",
@@ -47,11 +53,14 @@ export default function InventoryTable({}: {}) {
     }),
     columnHelper.accessor("quantity", {
       header: "Quantity",
-      cell: (props) => formatQuantity(props.row.quantity),
+      cell: (props) => formatQuantity(props.getValue()),
     }),
     columnHelper.accessor("type", {
       header: "Type",
       cell: (props) => formatCapitalCase(props.getValue()),
+      meta: {
+        filterVariant: "select",
+      },
     }),
   ];
 
@@ -59,10 +68,12 @@ export default function InventoryTable({}: {}) {
     data,
     columns,
     getCoreRowModel: getCoreRowModel(),
+    getFilteredRowModel: getFilteredRowModel(),
+    getSortedRowModel: getSortedRowModel(),
   });
 
   return (
-    <div className="flex h-full">
+    <Card className="flex h-full grow">
       <Table>
         <TableHeader>
           {table.getHeaderGroups().map((headerGroup) => (
@@ -92,6 +103,6 @@ export default function InventoryTable({}: {}) {
           ))}
         </TableBody>
       </Table>
-    </div>
+    </Card>
   );
 }

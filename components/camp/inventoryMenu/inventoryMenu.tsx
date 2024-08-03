@@ -9,6 +9,7 @@ import { ItemType } from "@/data/items/types";
 import EquipmentSlots from "./equipmentSlots";
 import InventorySlots from "./inventorySlots";
 import { useCharacterEngineContext } from "@/engines/characterEngineContext";
+import InventoryTable from "./inventoryTable";
 
 export default function InventoryMenu({}: {}) {
   const { character } = useCharacterEngineContext();
@@ -35,42 +36,7 @@ export default function InventoryMenu({}: {}) {
           <EquipmentSlots></EquipmentSlots>
         </CardHeader>
       </Card>
-      <Tabs defaultValue="equipment" className="flex h-full grow flex-col">
-        <TabsList className="grid grow grid-cols-4">
-          <TabsTrigger value="equipment">Equipment</TabsTrigger>
-          <TabsTrigger value="supplies">Supplies</TabsTrigger>
-          <TabsTrigger value="trade-goods">Trade Goods</TabsTrigger>
-          <TabsTrigger value="materials">Materials</TabsTrigger>
-        </TabsList>
-        <TabsContent className="h-full" value="equipment">
-          <InventorySlots
-            inventory={inventory.filter(
-              (data) => data.item.type == ItemType.EQUIPEMENT,
-            )}
-          ></InventorySlots>
-        </TabsContent>
-        <TabsContent className="h-full" value="supplies">
-          <InventorySlots
-            inventory={inventory.filter(
-              (data) => data.item.type == ItemType.SUPPLIES,
-            )}
-          ></InventorySlots>
-        </TabsContent>
-        <TabsContent className="h-full" value="trade-goods">
-          <InventorySlots
-            inventory={inventory.filter(
-              (data) => data.item.type == ItemType.TRADEGOODS,
-            )}
-          ></InventorySlots>
-        </TabsContent>
-        <TabsContent className="h-full" value="materials">
-          <InventorySlots
-            inventory={inventory.filter(
-              (data) => data.item.type == ItemType.MATERIALS,
-            )}
-          ></InventorySlots>
-        </TabsContent>
-      </Tabs>
+      <InventoryTable></InventoryTable>
       <div className="w-0 border-4 shadow-sm"></div>
     </div>
   );
