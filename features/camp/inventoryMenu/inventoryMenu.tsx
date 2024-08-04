@@ -47,7 +47,7 @@ export default function InventoryMenu() {
             <EquipmentSlots></EquipmentSlots>
           </CardHeader>
         </Card>
-        <InventoryTable inventory={character.inventory}></InventoryTable>
+        <InventoryTable></InventoryTable>
         <div className="w-0 border-4 shadow-sm"></div>
       </div>
     </div>

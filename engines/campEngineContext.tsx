@@ -43,7 +43,7 @@ export default function CampEngineProvider({
   const [workingSkill, setWorkingSkill] = React.useState<Skill | null>(null);
   const [workingTask, setWorkingTask] = React.useState<Task | null>(null);
   const [taskProgress, setTaskProgress] = React.useState(0);
-  const [modifierTable, setModifierTable] = React.useState(
+  const [modifierTable, setModifierTable] = React.useState(() =>
     initializeCharacterModifierTable(character.upgrades),
   );
 
