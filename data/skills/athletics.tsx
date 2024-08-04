@@ -1,10 +1,11 @@
-import { PersonStanding } from "lucide-react";
 import {
   SKILL_AND_MENU_ICON_STYLE,
   TASK_AND_ITEM_ICON_STYLE,
-} from "../configurations";
-import { SkillModifierType } from "../modifiers/types";
-import { AthleticsTaskCategories, Skill } from "./types";
+} from "@/configurations/configurations";
+import { SkillModifierType } from "@/data/modifiers/enums";
+import { AthleticsTaskCategories } from "@/data/skills/enums";
+import { Skill } from "@/types/skills";
+import { PersonStanding } from "lucide-react";
 
 const agilityCommonModifiers = new Set([
   SkillModifierType.SPEED,

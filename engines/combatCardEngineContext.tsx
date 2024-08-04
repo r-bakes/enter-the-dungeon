@@ -1,8 +1,9 @@
 import React from "react";
-import { useEncounterContext } from "./encounterEngineContext";
-import { Combatant } from "@/data/combatants/combatants";
-import { useExpeditionContext } from "./expeditionEngineContext";
-import { CombatCard, Target } from "@/data/combatCards/types";
+import { useEncounterContext } from "@/engines/encounterEngineContext";
+import { Combatant } from "@/types/combatants";
+import { CombatCard } from "@/types/combatCards";
+import { useExpeditionContext } from "@/engines/expeditionEngineContext";
+import { Target } from "@/data/combatCards/enums";
 
 type CombatCardEngineContextContents = {
   selectedCard: CombatCard | null;
@@ -22,9 +23,9 @@ export const useCombatCardEngineContext = () =>
 
 export default function CombatCardEngineProvider({
   children,
-}: {
+}: Readonly<{
   children: React.ReactNode;
-}) {
+}>) {
   const { characterCombatant, setCharacterCombatant } = useExpeditionContext();
   const {
     alliedCombatants,

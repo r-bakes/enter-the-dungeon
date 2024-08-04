@@ -1,6 +1,6 @@
+import { SKILL_AND_MENU_ICON_STYLE } from "@/configurations/configurations";
+import { Skill } from "@/types/skills";
 import { Wand2 } from "lucide-react";
-import { SKILL_AND_MENU_ICON_STYLE } from "../configurations";
-import { Skill } from "./types";
 
 export const magic: Skill = {
   id: "magic",

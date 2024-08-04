@@ -1,8 +1,9 @@
+import { TASK_AND_ITEM_ICON_STYLE } from "@/configurations/configurations";
+import { Slot } from "@/data/character/character";
+import { ItemType } from "@/data/items/enums";
+import { mineralsTable } from "@/data/items/minerals";
+import { Equipment } from "@/types/items";
 import { Hand, HardHat, Shirt, Tangent, ToyBrick } from "lucide-react";
-import { Equipment, ItemType } from "./types";
-import { Slot } from "../character/character";
-import { mineralsTable } from "./minerals";
-import { TASK_AND_ITEM_ICON_STYLE } from "../configurations";
 
 export const armorTable: { [armorId: string]: Equipment } = {
   bronzeHelmet: {

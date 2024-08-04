@@ -1,12 +1,8 @@
-import { Droplet, Sprout } from "lucide-react";
-import { SKILL_AND_MENU_ICON_STYLE } from "../configurations";
-import {
-  AgricultureTaskCategories,
-  AlchemyTaskCategories,
-  Skill,
-  Task,
-} from "./types";
-import { SkillModifierType } from "../modifiers/types";
+import { SKILL_AND_MENU_ICON_STYLE } from "@/configurations/configurations";
+import { SkillModifierType } from "@/data/modifiers/enums";
+import { AgricultureTaskCategories } from "@/data/skills/enums";
+import { Skill, Task } from "@/types/skills";
+import { Sprout } from "lucide-react";
 
 const agricultureCommonModifiers = new Set([
   SkillModifierType.SPEED,

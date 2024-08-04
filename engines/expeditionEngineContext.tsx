@@ -1,16 +1,16 @@
 import React from "react";
-import { useCharacterEngineContext } from "./characterEngineContext";
-import { Loot } from "./utils/lootUtilities";
-import { CharacterCombatant, Combatant } from "@/data/combatants/combatants";
+import { useCharacterEngineContext } from "@/engines/characterEngineContext";
 import { User } from "lucide-react";
-import { CombatCard } from "@/data/combatCards/types";
 import { createCombatCard } from "@/data/combatCards/combatCards";
+import { CharacterCombatant } from "@/types/combatants";
+import { CombatCard } from "@/types/combatCards";
+import { Loot } from "@/types/loot";
 
 type ExpeditionEngineContextContents = {
   characterCombatant: CharacterCombatant;
   deck: CombatCard[];
   loot: Loot;
-  artifacts: String[];
+  artifacts: string[];
   setCharacterCombatant: React.Dispatch<
     React.SetStateAction<CharacterCombatant>
   >;
@@ -25,9 +25,9 @@ export const useExpeditionContext = () =>
 
 export default function ExpeditionEngineProvider({
   children,
-}: {
+}: Readonly<{
   children: React.ReactNode;
-}) {
+}>) {
   const { character, getModifiers } = useCharacterEngineContext();
   let initializeCharacterExcursionState = (): CharacterCombatant => {
     let characterModifiers = getModifiers();

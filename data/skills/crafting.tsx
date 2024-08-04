@@ -1,6 +1,7 @@
+import { SKILL_AND_MENU_ICON_STYLE } from "@/configurations/configurations";
+import { CraftingTaskCategories } from "@/data/skills/enums";
+import { Skill } from "@/types/skills";
 import { PencilRuler } from "lucide-react";
-import { SKILL_AND_MENU_ICON_STYLE } from "../configurations";
-import { CraftingTaskCategories, Skill } from "./types";
 
 export const crafting: Skill = {
   id: "crafting",

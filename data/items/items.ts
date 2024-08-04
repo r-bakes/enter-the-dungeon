@@ -1,9 +1,9 @@
-import { Item } from "./types";
-import { armorTable } from "./armor";
-import { barsTable } from "./bars";
-import { mineralsTable } from "./minerals";
-import { miscTable } from "./misc";
-import { weaponTable } from "./weapons";
+import { armorTable } from "@/data/items/armor";
+import { barsTable } from "@/data/items/bars";
+import { mineralsTable } from "@/data/items/minerals";
+import { miscTable } from "@/data/items/misc";
+import { weaponTable } from "@/data/items/weapons";
+import { Item } from "@/types/items";
 
 export const itemTable: { [itemId: string]: Item } = {
   ...armorTable,

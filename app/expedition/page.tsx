@@ -1,6 +1,6 @@
 "use client";
 
-import Arena from "@/components/expedition/arena/arena";
+import Arena from "@/features/expedition/arena/arena";
 import CharacterEngineProvider from "@/engines/characterEngineContext";
 import CombatCardEngineProvider from "@/engines/combatCardEngineContext";
 import EncounterEngineProvider from "@/engines/encounterEngineContext";

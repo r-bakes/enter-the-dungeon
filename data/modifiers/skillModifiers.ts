@@ -1,12 +1,12 @@
 import { Copy, Gauge, Sparkle, SquareStack } from "lucide-react";
-import { TASK_AND_ITEM_ICON_STYLE } from "../configurations";
+import { SkillModifierType } from "./enums";
 import {
-  SkillModifierType,
+  SkillModifier,
   SkillModifierIconsType,
   SkillModifierTable,
-  SkillModifier,
-} from "./types";
-import { Loot } from "@/engines/utils/lootUtilities";
+} from "@/types/modifiers";
+import { TASK_AND_ITEM_ICON_STYLE } from "@/configurations/configurations";
+import { Loot } from "@/types/loot";
 
 export const SkillModifierIcons: SkillModifierIconsType = {
   [SkillModifierType.SPEED]: {
@@ -83,4 +83,3 @@ export const formatModifiers = (
   }
   return "+" + value + "%";
 };
-export { SkillModifierType };

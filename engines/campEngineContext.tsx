@@ -1,25 +1,26 @@
-import { TICK_RATE_MS } from "../data/configurations";
 import { toast } from "sonner";
-import generateLoot, { Loot } from "./utils/lootUtilities";
-import { Character, Inventory } from "../data/character/character";
+import { Character, Inventory } from "@/types/character";
 import {
   addExp,
   addItem,
   initializeCharacterModifierTable,
   removeItem,
-} from "./utils/charaterStateUtilities";
-import { useCharacterEngineContext } from "./characterEngineContext";
+} from "@/utils/charaterStateUtilities";
+import { useCharacterEngineContext } from "@/engines/characterEngineContext";
 import React from "react";
 import {
   applyExperienceModifier,
   applyProductionModifier,
   applySpeedModifier,
   getModifiers,
-  SkillModifierType,
 } from "@/data/modifiers/skillModifiers";
-import { SkillModifierTable } from "@/data/modifiers/types";
-import { Skill, Task } from "@/data/skills/types";
-import TaskComplete from "@/components/camp/toast/TaskComplete";
+import TaskComplete from "@/features/camp/toast/TaskComplete";
+import { Skill, Task } from "@/types/skills";
+import { SkillModifierTable } from "@/types/modifiers";
+import { TICK_RATE_MS } from "@/configurations/configurations";
+import generateLoot from "@/utils/lootUtilities";
+import { Loot } from "@/types/loot";
+import { SkillModifierType } from "@/data/modifiers/enums";
 
 type CampEngineContextContents = {
   taskProgress: number;
@@ -50,7 +51,7 @@ export default function CampEngineProvider({
     setTaskProgress(0);
   }, [workingTask]);
 
-  const useInterval = (callback, delay: number) => {
+  const useInterval = (callback: () => void, delay: number) => {
     const savedCallback = React.useRef();
 
     // Remember the latest callback.

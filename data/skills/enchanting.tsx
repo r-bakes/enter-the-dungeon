@@ -1,6 +1,7 @@
+import { SKILL_AND_MENU_ICON_STYLE } from "@/configurations/configurations";
+import { EnchantingTaskCategories } from "@/data/skills/enums";
+import { Skill } from "@/types/skills";
 import { Sparkles } from "lucide-react";
-import { SKILL_AND_MENU_ICON_STYLE } from "../configurations";
-import { EnchantingTaskCategories, Skill } from "./types";
 
 export const enchanting: Skill = {
   id: "enchanting",

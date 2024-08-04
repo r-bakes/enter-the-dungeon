@@ -1,7 +1,8 @@
 import { Shield, Sword, Swords } from "lucide-react";
-import { barsTable } from "../items/bars";
-import { TASK_AND_ITEM_ICON_STYLE } from "../configurations";
-import { CombatCard, CombatCardTemplate, Target } from "./types";
+import { CombatCard, CombatCardTemplate } from "@/types/combatCards";
+import { TASK_AND_ITEM_ICON_STYLE } from "@/configurations/configurations";
+import { barsTable } from "@/data/items/bars";
+import { Target } from "@/data/combatCards/enums";
 
 export const combatCardTable: { [cardId: string]: CombatCardTemplate } = {
   slice: {

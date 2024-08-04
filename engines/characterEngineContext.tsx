@@ -1,8 +1,7 @@
-import { Character, Slot, testCharacter } from "@/data/character/character";
+import { Slot, testCharacter } from "@/data/character/character";
 import { toast } from "sonner";
 
 import React from "react";
-import { MAGIC_DECK_LIMIT, MARTIAL_DECK_LIMIT } from "@/data/configurations";
 import {
   addCardsByItemId,
   addItem,
@@ -10,7 +9,12 @@ import {
   getCombatModifiers,
   removeCardsByItem,
   removeItem,
-} from "./utils/charaterStateUtilities";
+} from "@/utils/charaterStateUtilities";
+import { Character } from "@/types/character";
+import {
+  MAGIC_DECK_LIMIT,
+  MARTIAL_DECK_LIMIT,
+} from "@/configurations/configurations";
 
 type CharacterEngineContextContents = {
   character: Character;
@@ -31,9 +35,9 @@ export const useCharacterEngineContext = () =>
 
 export default function CharacterEngineProvider({
   children,
-}: {
+}: Readonly<{
   children: React.ReactNode;
-}) {
+}>) {
   const [character, setCharacter] = React.useState<Character>(testCharacter);
 
   const equipCard = (cardId: string) => {
@@ -54,7 +58,7 @@ export default function CharacterEngineProvider({
         1,
       );
       character.deck.equppedMartial.push(cardId);
-      character.deck.equppedMartial.sort();
+      character.deck.equppedMartial.sort((a, b) => a.localeCompare(b));
     } else {
       if (character.deck.equippedMagic.length == MAGIC_DECK_LIMIT) {
         toast.error("Deck limit reached!", {

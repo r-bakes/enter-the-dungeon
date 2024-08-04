@@ -1,30 +1,29 @@
 "use client";
-import InventoryMenu from "@/components/camp/inventoryMenu/inventoryMenu";
-import SkillMenu from "@/components/camp/skillMenu/skillMenu";
-import { GameObject } from "@/data/gameObject";
+import SkillMenu from "@/features/camp/skillMenu/skillMenu";
 import { inventory } from "@/data/menus/inventory";
 import { martial } from "@/data/skills/martial";
 import CampEngineProvider from "@/engines/campEngineContext";
 import React from "react";
 import { prospecting } from "@/data/skills/prospecting";
 import { smithing } from "@/data/skills/smithing";
-import DeckMenu from "@/components/camp/deckMenu/deckMenu";
+import DeckMenu from "@/features/camp/deckMenu/deckMenu";
 import { magic } from "@/data/skills/magic";
 import { expeditions } from "@/data/menus/expeditions";
-import ExpeditionsMenu from "@/components/camp/expeditionsMenu/expeditionsMenu";
+import ExpeditionsMenu from "@/features/camp/expeditionsMenu/expeditionsMenu";
 import CharacterEngineProvider from "@/engines/characterEngineContext";
 import { crafting } from "@/data/skills/crafting";
 import { enchanting } from "@/data/skills/enchanting";
 import { home } from "@/data/menus/home";
-import HomeMenu from "@/components/camp/homeMenu/homeMenu";
-import { AnimatePresence } from "framer-motion";
+import HomeMenu from "@/features/camp/homeMenu/homeMenu";
 import { athletics } from "@/data/skills/athletics";
 import { stealth } from "@/data/skills/stealth";
 import { alchemy } from "@/data/skills/alchemy";
 import { agriculture } from "@/data/skills/agriculture";
 import { bazaar } from "@/data/menus/bazaar";
-import BazaarMenu from "@/components/camp/bazaarMenu/bazaarMenu";
-import MenuSelect from "@/components/camp/menuSelect/menuSelect";
+import BazaarMenu from "@/features/camp/bazaarMenu/bazaarMenu";
+import MenuSelect from "@/features/camp/menuSelect/menuSelect";
+import InventoryMenu from "@/features/camp/inventoryMenu/inventoryMenu";
+import { GameObject } from "@/types/gameObjects";
 
 export default function Page({}) {
   const [selectedMenu, setSelectedMenu] = React.useState<GameObject>(home);
@@ -100,18 +99,16 @@ export default function Page({}) {
   return (
     <CharacterEngineProvider>
       <CampEngineProvider>
-        <AnimatePresence>
-          <MenuSelect
-            miscMenus={Object.values(miscMenus).map((menu) => menu.data)}
-            combatMenus={Object.values(combatMenus).map((menu) => menu.data)}
-            skillMenus={Object.values(skillMenus).map((menu) => menu.data)}
-            selectedMenu={selectedMenu}
-            setSelectedMenu={setSelectedMenu}
-          ></MenuSelect>
-          <div className="flex h-full w-full bg-secondaryBackground py-10">
-            {menus[selectedMenu.id].menu}
-          </div>
-        </AnimatePresence>
+        <MenuSelect
+          miscMenus={Object.values(miscMenus).map((menu) => menu.data)}
+          combatMenus={Object.values(combatMenus).map((menu) => menu.data)}
+          skillMenus={Object.values(skillMenus).map((menu) => menu.data)}
+          selectedMenu={selectedMenu}
+          setSelectedMenu={setSelectedMenu}
+        ></MenuSelect>
+        <div className="flex h-full w-full bg-secondaryBackground py-10">
+          {menus[selectedMenu.id].menu}
+        </div>
       </CampEngineProvider>
     </CharacterEngineProvider>
   );

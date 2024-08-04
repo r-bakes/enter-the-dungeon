@@ -1,14 +1,14 @@
-import { prospecting } from "./prospecting";
-import { smithing } from "./smithing";
-import { martial } from "./martial";
-import { enchanting } from "./enchanting";
-import { magic } from "./magic";
-import { crafting } from "./crafting";
-import { athletics } from "./athletics";
-import { Skill } from "./types";
-import { stealth } from "./stealth";
-import { alchemy } from "./alchemy";
-import { agriculture } from "./agriculture";
+import { agriculture } from "@/data/skills/agriculture";
+import { alchemy } from "@/data/skills/alchemy";
+import { athletics } from "@/data/skills/athletics";
+import { crafting } from "@/data/skills/crafting";
+import { enchanting } from "@/data/skills/enchanting";
+import { magic } from "@/data/skills/magic";
+import { martial } from "@/data/skills/martial";
+import { prospecting } from "@/data/skills/prospecting";
+import { smithing } from "@/data/skills/smithing";
+import { stealth } from "@/data/skills/stealth";
+import { Skill } from "@/types/skills";
 
 export const skillTable: { [skillId: string]: Skill } = {
   [prospecting.id]: prospecting,

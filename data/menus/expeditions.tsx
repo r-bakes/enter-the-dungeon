@@ -1,6 +1,6 @@
+import { SKILL_AND_MENU_ICON_STYLE } from "@/configurations/configurations";
+import { GameObject } from "@/types/gameObjects";
 import { Map } from "lucide-react";
-import { GameObject } from "../gameObject";
-import { SKILL_AND_MENU_ICON_STYLE } from "../configurations";
 
 export const expeditions: GameObject = {
   id: "expeditions",

@@ -1,8 +1,8 @@
+import { TASK_AND_ITEM_ICON_STYLE } from "@/configurations/configurations";
+import { ItemType } from "@/data/items/enums";
+import { mineralsTable } from "@/data/items/minerals";
+import { Item } from "@/types/items";
 import { RectangleVertical } from "lucide-react";
-import { Item } from "./types";
-import { ItemType } from "./types";
-import { mineralsTable } from "./minerals";
-import { TASK_AND_ITEM_ICON_STYLE } from "../configurations";
 
 export const barsTable: { [barId: string]: Item } = {
   bronzeBar: {

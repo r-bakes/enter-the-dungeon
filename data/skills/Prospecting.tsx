@@ -1,11 +1,13 @@
 import { Circle, Gem, Mountain, SearchSlash } from "lucide-react";
-import { mineralsTable } from "../items/minerals";
+
 import {
   SKILL_AND_MENU_ICON_STYLE,
   TASK_AND_ITEM_ICON_STYLE,
-} from "../configurations";
-import { SkillModifierType } from "../modifiers/types";
-import { ProspectingTaskCategories, Skill, Task } from "./types";
+} from "@/configurations/configurations";
+import { Skill, Task } from "@/types/skills";
+import { SkillModifierType } from "@/data/modifiers/enums";
+import { mineralsTable } from "@/data/items/minerals";
+import { ProspectingTaskCategories } from "@/data/skills/enums";
 
 const prospectingCommonModifiers = new Set([
   SkillModifierType.SPEED,

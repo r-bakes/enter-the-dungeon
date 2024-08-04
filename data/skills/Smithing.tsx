@@ -1,6 +1,5 @@
 import {
   Anvil,
-  Gavel,
   Hand,
   HardHat,
   RectangleVertical,
@@ -11,14 +10,16 @@ import {
   Tangent,
   ToyBrick,
 } from "lucide-react";
-import { mineralsTable } from "../items/minerals";
-import { barsTable } from "../items/bars";
+
+import { Skill, Task } from "@/types/skills";
 import {
   SKILL_AND_MENU_ICON_STYLE,
   TASK_AND_ITEM_ICON_STYLE,
-} from "../configurations";
-import { SkillModifierType } from "../modifiers/types";
-import { Skill, SmithingTaskCategories, Task } from "./types";
+} from "@/configurations/configurations";
+import { SkillModifierType } from "@/data/modifiers/enums";
+import { mineralsTable } from "@/data/items/minerals";
+import { SmithingTaskCategories } from "@/data/skills/enums";
+import { barsTable } from "@/data/items/bars";
 
 const smithingCommonModifiers = new Set([
   SkillModifierType.SPEED,

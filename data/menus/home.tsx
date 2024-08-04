@@ -1,6 +1,6 @@
 import { Home } from "lucide-react";
-import { GameObject } from "../gameObject";
-import { SKILL_AND_MENU_ICON_STYLE } from "../configurations";
+import { SKILL_AND_MENU_ICON_STYLE } from "@/configurations/configurations";
+import { GameObject } from "@/types/gameObjects";
 
 export const home: GameObject = {
   id: "home",
@@ -9,5 +9,3 @@ export const home: GameObject = {
   icon: Home,
   iconStyle: { fill: "none", ...SKILL_AND_MENU_ICON_STYLE },
 };
-
-

@@ -24,7 +24,7 @@ type EncounterContextContents = {
 };
 
 const EncounterEngineContext = React.createContext(
-  {} as EncounterContextContents
+  {} as EncounterContextContents,
 );
 
 export const useEncounterContext = () =>
@@ -32,9 +32,9 @@ export const useEncounterContext = () =>
 
 export default function EncounterEngineProvider({
   children,
-}: {
+}: Readonly<{
   children: React.ReactNode;
-}) {
+}>) {
   const { characterCombatant, setCharacterCombatant, deck } =
     useExpeditionContext();
 
@@ -45,7 +45,7 @@ export default function EncounterEngineProvider({
     ...encounter.combatants,
   ]);
   const [alliedCombatants, setAlliedCombatants] = React.useState<Combatant[]>(
-    []
+    [],
   );
   const shuffle = (cards: CombatCard[]): CombatCard[] => {
     for (var i = cards.length - 1; i > 0; i--) {

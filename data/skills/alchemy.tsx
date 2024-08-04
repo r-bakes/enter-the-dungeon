@@ -1,7 +1,8 @@
+import { SKILL_AND_MENU_ICON_STYLE } from "@/configurations/configurations";
+import { SkillModifierType } from "@/data/modifiers/enums";
+import { AlchemyTaskCategories } from "@/data/skills/enums";
+import { Skill, Task } from "@/types/skills";
 import { Droplet } from "lucide-react";
-import { SKILL_AND_MENU_ICON_STYLE } from "../configurations";
-import { AlchemyTaskCategories, Skill, Task } from "./types";
-import { SkillModifierType } from "../modifiers/types";
 
 const alchemyCommonModifiers = new Set([
   SkillModifierType.SPEED,

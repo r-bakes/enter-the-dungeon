@@ -1,5 +1,5 @@
 import { User } from "lucide-react";
-import { CombatantTemplate } from "./combatants";
+import { CombatantTemplate } from "@/types/combatants";
 
 export const goblinRunt: CombatantTemplate = {
   id: "goblinRunt",
