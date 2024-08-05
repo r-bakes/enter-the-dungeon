@@ -10,6 +10,7 @@ import {
 import { itemTable } from "@/data/items/items";
 
 import {
+  Column,
   ColumnFiltersState,
   createColumnHelper,
   flexRender,
@@ -26,14 +27,16 @@ import {
   renderIcon,
 } from "@/utils/formattingUtilities";
 import { ItemType } from "@/data/items/enums";
-import { Inventory } from "@/types/character";
 import { useCharacterEngineContext } from "@/engines/characterEngineContext";
 import {
   Select,
   SelectContent,
   SelectItem,
   SelectTrigger,
+  SelectValue,
 } from "@/components/ui/select";
+import { ChevronDown, ChevronUp } from "lucide-react";
+import { Input } from "@/components/ui/input";
 
 type TableData = {
   quantity: number;
@@ -67,6 +70,16 @@ export default function InventoryTable() {
     columnHelper.accessor("quantity", {
       header: "Quantity",
       cell: (props) => formatQuantity(props.getValue()),
+      meta: {
+        filterVariant: "range",
+      },
+    }),
+    columnHelper.accessor("value", {
+      header: "Value",
+      cell: (props) => formatQuantity(props.getValue()),
+      meta: {
+        filterVariant: "range",
+      },
     }),
     columnHelper.accessor("type", {
       header: "Type",
@@ -97,13 +110,17 @@ export default function InventoryTable() {
           {table.getHeaderGroups().map((headerGroup) => (
             <TableRow key={headerGroup.id}>
               {headerGroup.headers.map((header) => (
-                <TableHead key={header.id} colSpan={header.colSpan}>
+                <TableHead
+                  key={header.id}
+                  colSpan={header.colSpan}
+                  className="p-0 pr-14"
+                >
                   {header.isPlaceholder ? null : (
-                    <>
+                    <div className="flex h-full w-full flex-col justify-between pt-4">
                       <div
                         {...{
                           className: header.column.getCanSort()
-                            ? "cursor-pointer select-none"
+                            ? "flex flex-row gap-1 cursor-pointer items-center select-none"
                             : "",
                           onClick: header.column.getToggleSortingHandler(),
                         }}
@@ -113,8 +130,8 @@ export default function InventoryTable() {
                           header.getContext(),
                         )}
                         {{
-                          asc: " 🔼",
-                          desc: " 🔽",
+                          asc: <ChevronUp size={16} />,
+                          desc: <ChevronDown size={16} />,
                         }[header.column.getIsSorted() as string] ?? null}
                       </div>
                       {header.column.getCanFilter() ? (
@@ -122,7 +139,7 @@ export default function InventoryTable() {
                           <Filter column={header.column} />
                         </div>
                       ) : null}
-                    </>
+                    </div>
                   )}
                 </TableHead>
               ))}
@@ -133,7 +150,7 @@ export default function InventoryTable() {
           {table.getRowModel().rows.map((row) => (
             <TableRow key={row.id}>
               {row.getVisibleCells().map((cell) => (
-                <TableCell key={cell.id}>
+                <TableCell key={cell.id} className="p-2 text-sm">
                   {flexRender(cell.column.columnDef.cell, cell.getContext())}
                 </TableCell>
               ))}
@@ -149,58 +166,70 @@ function Filter({ column }: { column: Column<any, unknown> }) {
   const columnFilterValue = column.getFilterValue();
   const { filterVariant } = column.columnDef.meta ?? {};
 
-  return filterVariant === "range" ? (
-    <div>
-      <div className="flex space-x-2">
-        {/* See faceted column filters example for min max values functionality */}
-        <DebouncedInput
-          type="number"
-          value={(columnFilterValue as [number, number])?.[0] ?? ""}
-          onChange={(value) =>
-            column.setFilterValue((old: [number, number]) => [value, old?.[1]])
-          }
-          placeholder={`Min`}
-          className="w-24 rounded border shadow"
-        />
-        <DebouncedInput
-          type="number"
-          value={(columnFilterValue as [number, number])?.[1] ?? ""}
-          onChange={(value) =>
-            column.setFilterValue((old: [number, number]) => [old?.[0], value])
-          }
-          placeholder={`Max`}
-          className="w-24 rounded border shadow"
-        />
+  if (filterVariant === "range") {
+    return (
+      <div>
+        <div className="flex">
+          {/* See faceted column filters example for min max values functionality */}
+          <DebouncedInput
+            type="number"
+            value={(columnFilterValue as [number, number])?.[0] ?? ""}
+            onChange={(value) =>
+              column.setFilterValue((old: [number, number]) => [
+                value,
+                old?.[1],
+              ])
+            }
+            placeholder={`Min`}
+            className="w-24 rounded border shadow"
+          />
+          <DebouncedInput
+            type="number"
+            value={(columnFilterValue as [number, number])?.[1] ?? ""}
+            onChange={(value) =>
+              column.setFilterValue((old: [number, number]) => [
+                old?.[0],
+                value,
+              ])
+            }
+            placeholder={`Max`}
+            className="w-24 rounded border shadow"
+          />
+        </div>
       </div>
-      <div className="h-1" />
-    </div>
-  ) : filterVariant === "select" ? (
-    <Select
-      onValueChange={(value) => column.setFilterValue(value)}
-      defaultValue={columnFilterValue?.toString()}
-    >
-      <SelectTrigger className="h-8"></SelectTrigger>
-      <SelectContent>
-        <SelectItem value="All">All</SelectItem>
-        {Object.entries(ItemType)
-          .filter(([typeId, type]) => type !== ItemType.HIDDEN)
-          .map(([typeId, type]) => (
-            <SelectItem key={typeId} value={type}>
-              {formatCapitalCase(type)}
-            </SelectItem>
-          ))}
-      </SelectContent>
-    </Select>
-  ) : (
-    <DebouncedInput
-      className="w-36 rounded border shadow"
-      onChange={(value) => column.setFilterValue(value)}
-      placeholder={`Search...`}
-      type="text"
-      value={(columnFilterValue ?? "") as string}
-    />
-    // See faceted column filters example for datalist search suggestions
-  );
+    );
+  } else if (filterVariant === "select") {
+    return (
+      <Select
+        onValueChange={(value) => column.setFilterValue(value)}
+        defaultValue={columnFilterValue?.toString()}
+      >
+        <SelectTrigger className="h-6">
+          <SelectValue></SelectValue>
+        </SelectTrigger>
+        <SelectContent>
+          <SelectItem>All</SelectItem>
+          {Object.entries(ItemType)
+            .filter(([typeId, type]) => type !== ItemType.HIDDEN)
+            .map(([typeId, type]) => (
+              <SelectItem key={typeId} value={type}>
+                {formatCapitalCase(type)}
+              </SelectItem>
+            ))}
+        </SelectContent>
+      </Select>
+    );
+  } else {
+    return (
+      <DebouncedInput
+        className="w-36 rounded border shadow"
+        onChange={(value) => column.setFilterValue(value)}
+        placeholder={`Search`}
+        type="text"
+        value={(columnFilterValue ?? "") as string}
+      />
+    );
+  }
 }
 
 // A typical debounced input react component
@@ -229,10 +258,11 @@ function DebouncedInput({
   }, [value]);
 
   return (
-    <input
+    <Input
       {...props}
+      className="h-6 text-xs font-normal"
       value={value}
-      onChange={(e) => setValue(e.target.value)}
-    />
+      onInput={(e) => setValue(e.target.value)}
+    ></Input>
   );
 }
