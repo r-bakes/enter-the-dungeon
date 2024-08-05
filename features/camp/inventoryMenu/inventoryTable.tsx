@@ -150,7 +150,7 @@ export default function InventoryTable() {
           {table.getRowModel().rows.map((row) => (
             <TableRow key={row.id}>
               {row.getVisibleCells().map((cell) => (
-                <TableCell key={cell.id} className="p-2 text-sm">
+                <TableCell key={cell.id} className="py-2 text-sm">
                   {flexRender(cell.column.columnDef.cell, cell.getContext())}
                 </TableCell>
               ))}
@@ -183,6 +183,7 @@ function Filter({ column }: { column: Column<any, unknown> }) {
             placeholder={`Min`}
             className="w-24 rounded border shadow"
           />
+          <>-</>
           <DebouncedInput
             type="number"
             value={(columnFilterValue as [number, number])?.[1] ?? ""}
