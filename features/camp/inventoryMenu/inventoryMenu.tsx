@@ -50,7 +50,7 @@ export default function InventoryMenu() {
               </Label>
             </Card>
             <Card className="flex items-center gap-1 p-2">
-              {renderIcon(Ghost, 24, { strokeWidth: 1 })}
+              {renderIcon(Ghost, 24, { strokeWidth: 1, fill: "none" })}
               <Label className="font-normal text-green-500">0</Label>
               <Label className="text-xs font-normal text-muted-foreground">
                 souls
