@@ -22,7 +22,7 @@ const AthleticsTasks = {
       fill: "none",
       ...TASK_AND_ITEM_ICON_STYLE,
     },
-    durationSec: 10,
+    durationSec: 3,
     experience: 1,
     requiredLevel: 1,
     lootTable: {},

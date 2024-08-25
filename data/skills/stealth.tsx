@@ -25,7 +25,7 @@ const stealthTasks: { [taskId: string]: Task } = {
       fill: "none",
       ...TASK_AND_ITEM_ICON_STYLE,
     },
-    durationSec: 5,
+    durationSec: 3,
     experience: 1,
     requiredLevel: 1,
     lootTable: {

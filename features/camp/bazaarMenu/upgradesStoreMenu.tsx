@@ -7,7 +7,7 @@ import { useCharacterEngineContext } from "@/engines/characterEngineContext";
 import { addUpgrade, removeItem } from "@/utils/charaterStateUtilities";
 import {
   formatCapitalCase,
-  formatQuantity,
+  formatLargeQuantity,
   renderIcon,
 } from "@/utils/formattingUtilities";
 import { SkillImpactedPopup } from "../components/skillImpactedPopup";
@@ -122,7 +122,7 @@ export default function UpgradesStoreMenu({
                       <div className="flex flex-col gap-1">
                         <div className="flex flex-row gap-1">
                           <CardDescription className="text-xs font-black text-foreground">
-                            {formatQuantity(quantity)}
+                            {formatLargeQuantity(quantity)}
                           </CardDescription>
                           <CardDescription className="text-xs">
                             {item.name}
@@ -130,7 +130,7 @@ export default function UpgradesStoreMenu({
                         </div>
                         <div className="flex w-full items-center justify-end">
                           <Label className="mr-1 text-xs font-normal text-muted-foreground">
-                            ({formatQuantity(character.inventory[itemId])})
+                            ({formatLargeQuantity(character.inventory[itemId])})
                           </Label>
                           <Backpack size={14} strokeWidth={1}></Backpack>
                         </div>

@@ -4,7 +4,7 @@ import { Slot } from "@/data/character/character";
 import { useCharacterEngineContext } from "@/engines/characterEngineContext";
 import { Equipment } from "@/types/items";
 
-export default function ItemSlotEquipment({
+export default function TableEntryPopoverEquipment({
   item,
 }: Readonly<{ item: Equipment }>) {
   const { equipItem: equip } = useCharacterEngineContext();

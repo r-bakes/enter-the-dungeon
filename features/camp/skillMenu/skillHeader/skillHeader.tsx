@@ -9,6 +9,7 @@ import { Progress } from "@/components/ui/progress";
 import { LEVEL_CAP } from "@/configurations/configurations";
 import { Skill } from "@/types/skills";
 import { requiredExpForLevelUp } from "@/utils/charaterStateUtilities";
+import { formatRoundedQuantity } from "@/utils/formattingUtilities";
 
 export function SkillHeader({
   skill,
@@ -47,7 +48,9 @@ export function SkillHeader({
           value={(expGainedAtLevel / expRemainingForLevelUp) * 100}
         ></Progress>
         <CardDescription className="font-normal">
-          {skillExperience + " / " + requiredExpForLevelUp(skillLevel)}
+          {formatRoundedQuantity(skillExperience) +
+            " / " +
+            requiredExpForLevelUp(skillLevel)}
         </CardDescription>
       </CardContent>
     </Card>

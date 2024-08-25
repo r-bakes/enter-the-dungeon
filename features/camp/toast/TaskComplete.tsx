@@ -5,7 +5,7 @@ import { Card } from "@/components/ui/card";
 import { Character } from "@/types/character";
 import { Task } from "@/types/skills";
 import { Loot } from "@/types/loot";
-import { formatQuantity, renderIcon } from "@/utils/formattingUtilities";
+import { formatLargeQuantity, renderIcon } from "@/utils/formattingUtilities";
 import { Item } from "@/types/items";
 
 export default function TaskComplete({
@@ -34,7 +34,7 @@ export default function TaskComplete({
           </div>
           <div className="flex w-full items-center justify-end">
             <Label className="mr-1 text-xs text-muted-foreground">
-              ({formatQuantity(character.inventory[item.id])})
+              ({formatLargeQuantity(character.inventory[item.id])})
             </Label>
             <Backpack size={14} strokeWidth={1}></Backpack>
           </div>
@@ -53,7 +53,7 @@ export default function TaskComplete({
           <Label className="mr-1 text-sm font-semibold">{task.name}</Label>
         </div>
         <Label className="text-sm text-muted-foreground">
-          +{formatQuantity(experience)} xp
+          +{formatLargeQuantity(experience)} xp
         </Label>
       </div>
       {Object.keys(loot).length > 0 ? (

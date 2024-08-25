@@ -331,7 +331,7 @@ const smithingTasks: { [taskId: string]: Task } = {
       fill: mineralsTable.copperOre.iconStyle.fill,
       ...TASK_AND_ITEM_ICON_STYLE,
     },
-    durationSec: 2,
+    durationSec: 3,
     experience: 1,
     requiredLevel: 1,
     lootTable: {
@@ -350,7 +350,7 @@ const smithingTasks: { [taskId: string]: Task } = {
       ...TASK_AND_ITEM_ICON_STYLE,
     },
     icon: RectangleVertical,
-    durationSec: 2,
+    durationSec: 3,
     experience: 10,
     requiredLevel: 10,
     lootTable: {
@@ -369,7 +369,7 @@ const smithingTasks: { [taskId: string]: Task } = {
       fill: barsTable.steelBar.iconStyle.fill,
       ...TASK_AND_ITEM_ICON_STYLE,
     },
-    durationSec: 2,
+    durationSec: 3,
     experience: 20,
     requiredLevel: 20,
     lootTable: {
@@ -388,7 +388,7 @@ const smithingTasks: { [taskId: string]: Task } = {
       fill: mineralsTable.silverOre.iconStyle.fill,
       ...TASK_AND_ITEM_ICON_STYLE,
     },
-    durationSec: 2,
+    durationSec: 3,
     experience: 20,
     requiredLevel: 20,
     lootTable: {
@@ -407,7 +407,7 @@ const smithingTasks: { [taskId: string]: Task } = {
       fill: mineralsTable.goldOre.iconStyle.fill,
       ...TASK_AND_ITEM_ICON_STYLE,
     },
-    durationSec: 2,
+    durationSec: 3,
     experience: 30,
     requiredLevel: 30,
     lootTable: {
@@ -426,7 +426,7 @@ const smithingTasks: { [taskId: string]: Task } = {
       fill: mineralsTable.mithrilOre.iconStyle.fill,
       ...TASK_AND_ITEM_ICON_STYLE,
     },
-    durationSec: 2,
+    durationSec: 3,
     experience: 90,
     requiredLevel: 30,
     lootTable: {
@@ -445,7 +445,7 @@ const smithingTasks: { [taskId: string]: Task } = {
       fill: mineralsTable.platinumOre.iconStyle.fill,
       ...TASK_AND_ITEM_ICON_STYLE,
     },
-    durationSec: 2,
+    durationSec: 3,
     experience: 100,
     requiredLevel: 40,
     lootTable: {
@@ -464,7 +464,7 @@ const smithingTasks: { [taskId: string]: Task } = {
       fill: mineralsTable.adamantiteOre.iconStyle.fill,
       ...TASK_AND_ITEM_ICON_STYLE,
     },
-    durationSec: 2,
+    durationSec: 3,
     experience: 100,
     requiredLevel: 40,
     lootTable: {

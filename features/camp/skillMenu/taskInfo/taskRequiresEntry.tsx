@@ -3,7 +3,7 @@ import { Label } from "@/components/ui/label";
 import { useCharacterEngineContext } from "@/engines/characterEngineContext";
 import { Backpack } from "lucide-react";
 import { Item } from "@/types/items";
-import { formatQuantity, renderIcon } from "@/utils/formattingUtilities";
+import { formatLargeQuantity, renderIcon } from "@/utils/formattingUtilities";
 
 export function TaskRequiresEntry({
   data,
@@ -46,7 +46,7 @@ export function TaskRequiresEntry({
             <div className="flex h-full items-center gap-1">
               <Label className="text-xs font-normal text-muted-foreground">
                 {item.item.id in character.inventory
-                  ? formatQuantity(character.inventory[item.item.id])
+                  ? formatLargeQuantity(character.inventory[item.item.id])
                   : 0}
               </Label>
               <Backpack size={15} strokeWidth={1}></Backpack>

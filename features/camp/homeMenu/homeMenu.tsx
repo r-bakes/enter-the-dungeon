@@ -41,11 +41,9 @@ export default function HomeMenu() {
   return (
     <div className="flex h-full w-full flex-col gap-6 px-8">
       <Card className="w-full items-center">
-        <CardHeader className="flex w-full flex-row items-center">
-          {renderIcon(home.icon, 44, {
-            ...home.iconStyle,
-          })}
-          <div className="flex flex-col pl-4">
+        <CardHeader className="flex flex-row items-center">
+          {renderIcon(home.icon, 44, home.iconStyle)}
+          <div className="flex flex-col pl-4 m-0">
             <CardTitle>{home.name}</CardTitle>
             <CardDescription>{home.description}</CardDescription>
           </div>
@@ -68,7 +66,7 @@ export default function HomeMenu() {
               <SelectGroup>
                 {Object.entries(HomeRooms).map(([roomId, room]) => (
                   <SelectItem
-                    className="font-light text-muted-foreground"
+                    className="font-normal text-muted-foreground"
                     key={roomId}
                     value={room}
                   >

@@ -1,11 +1,11 @@
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import { Label } from "@/components/ui/label";
-import { CharacterCombatant } from "@/data/combatants/combatants";
 import { itemTable } from "@/data/items/items";
 import { Heart, Shield, Sword } from "lucide-react";
 import StatBlock from "./combatantCard/statBlock";
-import { renderIcon } from "@/data/gameObject";
+import { CharacterCombatant } from "@/types/combatants";
+import { renderIcon } from "@/utils/formattingUtilities";
 
 export default function CharacterCombatantCard({
   combatant,

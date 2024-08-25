@@ -26,7 +26,7 @@ const ProspectingTasks: { [taskId: string]: Task } = {
       fill: mineralsTable.copperOre.iconStyle.fill,
       ...TASK_AND_ITEM_ICON_STYLE,
     },
-    durationSec: 5,
+    durationSec: 3,
     experience: 1,
     requiredLevel: 1,
     lootTable: {
@@ -49,7 +49,7 @@ const ProspectingTasks: { [taskId: string]: Task } = {
       fill: mineralsTable.tinOre.iconStyle.fill,
       ...TASK_AND_ITEM_ICON_STYLE,
     },
-    durationSec: 5,
+    durationSec: 3,
     experience: 1,
     requiredLevel: 1,
     lootTable: {
@@ -72,7 +72,7 @@ const ProspectingTasks: { [taskId: string]: Task } = {
       fill: mineralsTable.coal.iconStyle.fill,
       ...TASK_AND_ITEM_ICON_STYLE,
     },
-    durationSec: 5,
+    durationSec: 3,
     experience: 5,
     requiredLevel: 1,
     lootTable: {
@@ -91,7 +91,7 @@ const ProspectingTasks: { [taskId: string]: Task } = {
       fill: mineralsTable.ironOre.iconStyle.fill,
       ...TASK_AND_ITEM_ICON_STYLE,
     },
-    durationSec: 5,
+    durationSec: 3,
     experience: 10,
     requiredLevel: 10,
     lootTable: {
@@ -114,7 +114,7 @@ const ProspectingTasks: { [taskId: string]: Task } = {
       fill: mineralsTable.silverOre.iconStyle.fill,
       ...TASK_AND_ITEM_ICON_STYLE,
     },
-    durationSec: 5,
+    durationSec: 3,
     experience: 20,
     requiredLevel: 20,
     lootTable: {
@@ -137,7 +137,7 @@ const ProspectingTasks: { [taskId: string]: Task } = {
       fill: mineralsTable.goldOre.iconStyle.fill,
       ...TASK_AND_ITEM_ICON_STYLE,
     },
-    durationSec: 5,
+    durationSec: 3,
     experience: 20,
     requiredLevel: 30,
     lootTable: {
@@ -160,7 +160,7 @@ const ProspectingTasks: { [taskId: string]: Task } = {
       fill: mineralsTable.mithrilOre.iconStyle.fill,
       ...TASK_AND_ITEM_ICON_STYLE,
     },
-    durationSec: 5,
+    durationSec: 3,
     experience: 20,
     requiredLevel: 30,
     lootTable: {
@@ -183,7 +183,7 @@ const ProspectingTasks: { [taskId: string]: Task } = {
       fill: mineralsTable.mithrilOre.iconStyle.fill,
       ...TASK_AND_ITEM_ICON_STYLE,
     },
-    durationSec: 5,
+    durationSec: 3,
     experience: 20,
     requiredLevel: 50,
     lootTable: {
@@ -206,7 +206,7 @@ const ProspectingTasks: { [taskId: string]: Task } = {
       fill: mineralsTable.adamantiteOre.iconStyle.fill,
       ...TASK_AND_ITEM_ICON_STYLE,
     },
-    durationSec: 5,
+    durationSec: 3,
     experience: 20,
     requiredLevel: 50,
     lootTable: {

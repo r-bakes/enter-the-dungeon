@@ -23,7 +23,7 @@ import React from "react";
 import { Item } from "@/types/items";
 import {
   formatCapitalCase,
-  formatQuantity,
+  formatLargeQuantity,
   renderIcon,
 } from "@/utils/formattingUtilities";
 import { ItemType } from "@/data/items/enums";
@@ -62,22 +62,30 @@ export default function InventoryTable() {
       id: "icon",
       cell: (props) =>
         renderIcon(props.row.original.icon, 32, props.row.original.iconStyle),
+      meta: {
+        width: 32,
+      },
     }),
     columnHelper.accessor("name", {
       header: "Item",
       cell: (props) => props.getValue(),
+      meta: {
+        width: 100,
+      },
     }),
     columnHelper.accessor("quantity", {
       header: "Quantity",
-      cell: (props) => formatQuantity(props.getValue()),
+      cell: (props) => formatLargeQuantity(props.getValue()),
       meta: {
+        width: 30,
         filterVariant: "range",
       },
     }),
     columnHelper.accessor("value", {
       header: "Value",
-      cell: (props) => formatQuantity(props.getValue()),
+      cell: (props) => formatLargeQuantity(props.getValue()),
       meta: {
+        width: 30,
         filterVariant: "range",
       },
     }),
@@ -85,6 +93,7 @@ export default function InventoryTable() {
       header: "Type",
       cell: (props) => formatCapitalCase(props.getValue()),
       meta: {
+        width: 20,
         filterVariant: "select",
       },
     }),
@@ -110,13 +119,16 @@ export default function InventoryTable() {
           {table.getHeaderGroups().map((headerGroup) => (
             <TableRow key={headerGroup.id}>
               {headerGroup.headers.map((header) => (
-                <TableHead
-                  key={header.id}
-                  colSpan={header.colSpan}
-                  className="p-0 pr-14"
-                >
+                <TableHead key={header.id} colSpan={header.colSpan}>
                   {header.isPlaceholder ? null : (
-                    <div className="flex h-full w-full flex-col justify-between pt-4">
+                    <div
+                      className={
+                        "flex h-full flex-row items-center gap-2 text-xs " +
+                        (header.column.columnDef.meta?.size !== undefined
+                          ? `w-[${header.column.columnDef.meta.size}px] `
+                          : "")
+                      }
+                    >
                       <div
                         {...{
                           className: header.column.getCanSort()
@@ -150,7 +162,7 @@ export default function InventoryTable() {
           {table.getRowModel().rows.map((row) => (
             <TableRow key={row.id}>
               {row.getVisibleCells().map((cell) => (
-                <TableCell key={cell.id} className="py-2 text-sm">
+                <TableCell key={cell.id} className="py-2 text-xs">
                   {flexRender(cell.column.columnDef.cell, cell.getContext())}
                 </TableCell>
               ))}
@@ -167,53 +179,28 @@ function Filter({ column }: { column: Column<any, unknown> }) {
   const { filterVariant } = column.columnDef.meta ?? {};
 
   if (filterVariant === "range") {
-    return (
-      <div>
-        <div className="flex">
-          {/* See faceted column filters example for min max values functionality */}
-          <DebouncedInput
-            type="number"
-            value={(columnFilterValue as [number, number])?.[0] ?? ""}
-            onChange={(value) =>
-              column.setFilterValue((old: [number, number]) => [
-                value,
-                old?.[1],
-              ])
-            }
-            placeholder={`Min`}
-            className="w-24 rounded border shadow"
-          />
-          <>-</>
-          <DebouncedInput
-            type="number"
-            value={(columnFilterValue as [number, number])?.[1] ?? ""}
-            onChange={(value) =>
-              column.setFilterValue((old: [number, number]) => [
-                old?.[0],
-                value,
-              ])
-            }
-            placeholder={`Max`}
-            className="w-24 rounded border shadow"
-          />
-        </div>
-      </div>
-    );
+    return <div></div>;
   } else if (filterVariant === "select") {
     return (
       <Select
         onValueChange={(value) => column.setFilterValue(value)}
         defaultValue={columnFilterValue?.toString()}
       >
-        <SelectTrigger className="h-6">
+        <SelectTrigger className="h-6 w-32 text-xs font-normal text-muted-foreground">
           <SelectValue></SelectValue>
         </SelectTrigger>
         <SelectContent>
-          <SelectItem>All</SelectItem>
+          <SelectItem className="text-xs font-normal text-muted-foreground">
+            All
+          </SelectItem>
           {Object.entries(ItemType)
             .filter(([typeId, type]) => type !== ItemType.HIDDEN)
             .map(([typeId, type]) => (
-              <SelectItem key={typeId} value={type}>
+              <SelectItem
+                key={typeId}
+                value={type}
+                className="text-xs font-normal text-muted-foreground"
+              >
                 {formatCapitalCase(type)}
               </SelectItem>
             ))}
@@ -237,7 +224,7 @@ function Filter({ column }: { column: Column<any, unknown> }) {
 function DebouncedInput({
   value: initialValue,
   onChange,
-  debounce = 500,
+  debounce = 200,
   ...props
 }: {
   value: string | number;

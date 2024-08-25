@@ -1,10 +1,10 @@
-import React from "react";
-import { Encounter } from "@/data/encounters/encounters";
+import { DRAW_LIMIT } from "@/configurations/configurations";
 import { floor1a } from "@/data/encounters/floor1a";
-import { CombatCard } from "@/data/cards/cards";
-import { useExpeditionContext } from "./expeditionEngineContext";
-import { Combatant } from "@/data/combatants/combatants";
-import { DRAW_LIMIT } from "@/data/configurations";
+import { useExpeditionContext } from "@/engines/expeditionEngineContext";
+import { Combatant } from "@/types/combatants";
+import { CombatCard } from "@/types/combatCards";
+import { Encounter } from "@/types/encounters";
+import React from "react";
 
 type EncounterContextContents = {
   encounter: Encounter;

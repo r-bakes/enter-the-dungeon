@@ -1,9 +1,9 @@
-import CharacterCombatantCard from "components/cards/characterCombatantCard";
-import CombatantCard from "components/cards/combatantCard/combatantCard";
-import { Card, CardContent } from "components/ui/card";
-import { CharacterCombatant, Combatant } from "data/combatants/combatants";
-import { useCombatCardEngineContext } from "engines/combatCardEngineContext";
-import { useExpeditionContext } from "engines/expeditionEngineContext";
+import CharacterCombatantCard from "@/components/cards/characterCombatantCard";
+import CombatantCard from "@/components/cards/combatantCard/combatantCard";
+import { Card, CardContent } from "@/components/ui/card";
+import { useCombatCardEngineContext } from "@/engines/combatCardEngineContext";
+import { useExpeditionContext } from "@/engines/expeditionEngineContext";
+import { CharacterCombatant, Combatant } from "@/types/combatants";
 import { AnimatePresence } from "framer-motion";
 
 export default function ArenaRow({

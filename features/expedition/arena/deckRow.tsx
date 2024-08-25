@@ -1,9 +1,9 @@
-import CardBack from "components/cards/cardBack";
-import CombatDeckCard from "components/cards/combatDeckCard";
-import { Card, CardContent } from "components/ui/card";
-import { Label } from "components/ui/label";
-import { useCombatCardEngineContext } from "engines/combatCardEngineContext";
-import { useEncounterContext } from "engines/encounterEngineContext";
+import CardBack from "@/components/cards/cardBack";
+import CombatDeckCard from "@/components/cards/combatDeckCard";
+import { Card, CardContent } from "@/components/ui/card";
+import { Label } from "@/components/ui/label";
+import { useCombatCardEngineContext } from "@/engines/combatCardEngineContext";
+import { useEncounterContext } from "@/engines/encounterEngineContext";
 import { motion } from "framer-motion";
 
 export default function DeckRow() {

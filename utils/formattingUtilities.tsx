@@ -8,7 +8,7 @@ export const formatCapitalCase = (words: string): string => {
     .join(" ");
 };
 
-export const formatQuantity = (
+export const formatLargeQuantity = (
   quantity: number | string | undefined,
 ): string => {
   if (!quantity) {
@@ -30,6 +30,23 @@ export const formatQuantity = (
     return (Math.round(amount * 1000) / 1000).toString() + "B";
   }
   return quantity.toString();
+};
+
+export const formatRoundedQuantity = (
+  quantity: number | string | undefined,
+): string => {
+  if (!quantity) {
+    return "0";
+  }
+  if (typeof quantity === "string") {
+    quantity = Number.parseInt(quantity);
+  }
+
+  if (quantity % 1 == 0) {
+    return quantity.toString();
+  } else {
+    return quantity.toFixed(2).toString();
+  }
 };
 
 export const renderIcon = (
