@@ -147,7 +147,7 @@ export default function CampEngineProvider({
           modifiers[SkillModifierType.EXPERIENCE],
         )}
       ></TaskComplete>,
-      { duration: 10000, position: "bottom-left" },
+      { duration: 10000 },
     );
     setCharacter({ ...character });
   };

@@ -23,7 +23,7 @@ export default function RootLayout({
           disableTransitionOnChange
         >
           <main className="flex h-full w-full">{children}</main>
-          <Toaster position="bottom-right" />
+          <Toaster position="bottom-left" />
         </ThemeProvider>
       </body>
     </html>

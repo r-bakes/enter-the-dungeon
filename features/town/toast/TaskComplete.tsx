@@ -7,6 +7,7 @@ import { Task } from "@/types/skills";
 import { Loot } from "@/types/loot";
 import { formatLargeQuantity, renderIcon } from "@/utils/formattingUtilities";
 import { Item } from "@/types/items";
+import { Separator } from "@/components/ui/separator";
 
 export default function TaskComplete({
   task,
@@ -21,18 +22,18 @@ export default function TaskComplete({
 }>) {
   const itemCard = (item: Item, amount: number) => {
     return (
-      <Card key={item.id} className="flex h-min w-max items-center gap-2 p-2">
-        {renderIcon(item.icon, 24, {
+      <Card key={item.id} className="flex w-full items-center gap-2 p-1">
+        {renderIcon(item.icon, 16, {
           ...item.iconStyle,
         })}
-        <div className="flex flex-col gap-1">
-          <div className="flex items-center gap-1">
+        <div className="flex w-full justify-between">
+          <div className="flex flex-row items-center gap-1">
             <Label className="text-xs">+{amount}</Label>
             <Label className="text-xs font-normal text-muted-foreground">
               {item.name}
             </Label>
           </div>
-          <div className="flex w-full items-center justify-end">
+          <div className="flex items-center justify-end">
             <Label className="mr-1 text-xs text-muted-foreground">
               ({formatLargeQuantity(character.inventory[item.id])})
             </Label>
@@ -44,20 +45,21 @@ export default function TaskComplete({
   };
 
   return (
-    <div className="flex h-full w-full flex-col gap-3">
+    <div className="flex h-full w-full flex-col">
       <div className="flex items-center justify-between gap-2">
         <div className="flex items-center gap-1">
           {renderIcon(task.icon, 24, {
             ...task.iconStyle,
           })}
-          <Label className="mr-1 text-sm font-semibold">{task.name}</Label>
+          <Label>{task.name}</Label>
         </div>
-        <Label className="text-sm text-muted-foreground">
+        <Label className="min-w-max text-xs font-normal text-muted-foreground">
           +{formatLargeQuantity(experience)} xp
         </Label>
       </div>
+      <Separator className="mb-4 mt-2"></Separator>
       {Object.keys(loot).length > 0 ? (
-        <div className="flex gap-2">
+        <div className="flex flex-col gap-1">
           {Object.entries(loot).map(([itemId, number]) =>
             itemCard(itemTable[itemId], number),
           )}

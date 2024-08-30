@@ -32,14 +32,14 @@ export default function TableEntryDialogHeader({
         </Label>
         <div className="mx-4 h-1 w-1 rounded-full bg-black"></div>
         <span className="flex items-center gap-1">
-          <Label>{item.value}</Label>
+          <Label className="font-normal">{item.value}</Label>
           {renderIcon(CircleDollarSign, 16, {
             ...itemTable["gold"].iconStyle,
           })}
         </span>
         <div className="mx-4 h-1 w-1 rounded-full bg-black"></div>
         <span className="flex items-center gap-1">
-          <Label>{itemAmount}</Label>
+          <Label className="font-normal">{itemAmount}</Label>
           <Backpack size={16} strokeWidth={1}></Backpack>
         </span>
       </div>
