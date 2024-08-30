@@ -10,7 +10,7 @@ import {
 import { Progress } from "@/components/ui/progress";
 import { Label } from "@radix-ui/react-label";
 import { Play, X } from "lucide-react";
-import { useCampEngineContext } from "@/engines/campEngineContext";
+import { useTownEngineContext } from "@/engines/townEngineContext";
 import { useCharacterEngineContext } from "@/engines/characterEngineContext";
 import TaskDataEntry from "./taskDataEntry";
 import { Separator } from "@/components/ui/separator";
@@ -25,9 +25,9 @@ import { generateDropRates } from "@/utils/lootUtilities";
 import { Item } from "@/types/items";
 import { renderIcon } from "@/utils/formattingUtilities";
 import { SkillModifierType } from "@/data/modifiers/enums";
-import TaskProducesEntry from "@/features/camp/skillMenu/taskInfo/taskProducesEntry";
-import { TaskRequiresEntry } from "@/features/camp/skillMenu/taskInfo/taskRequiresEntry";
-import TaskModifiers from "@/features/camp/skillMenu/taskInfo/taskModifiers";
+import TaskProducesEntry from "@/features/town/skillMenu/taskInfo/taskProducesEntry";
+import { TaskRequiresEntry } from "@/features/town/skillMenu/taskInfo/taskRequiresEntry";
+import TaskModifiers from "@/features/town/skillMenu/taskInfo/taskModifiers";
 
 const rootCardFormat =
   "flex flex-col h-full grow-0 w-72 min-w-72 max-w-72 items-center overflow-y-scroll";
@@ -45,7 +45,7 @@ export default function TaskInfo({
     taskProgress,
     workingTask,
     modifierTable,
-  } = useCampEngineContext();
+  } = useTownEngineContext();
   const { character } = useCharacterEngineContext();
 
   if (!task) {

@@ -2,7 +2,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardDescription, CardTitle } from "@/components/ui/card";
 import { itemTable } from "@/data/items/items";
 import { skillTable } from "@/data/skills/skills";
-import { useCampEngineContext } from "@/engines/campEngineContext";
+import { useTownEngineContext } from "@/engines/townEngineContext";
 import { useCharacterEngineContext } from "@/engines/characterEngineContext";
 import { addUpgrade, removeItem } from "@/utils/charaterStateUtilities";
 import {
@@ -24,7 +24,7 @@ export default function UpgradesStoreMenu({
   upgrades: Upgrade[];
 }>) {
   const { character, setCharacter } = useCharacterEngineContext();
-  const { modifierTable, setModifierTable } = useCampEngineContext();
+  const { modifierTable, setModifierTable } = useTownEngineContext();
 
   const buy = (
     upgrade: Upgrade,

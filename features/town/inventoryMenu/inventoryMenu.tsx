@@ -12,8 +12,8 @@ import React from "react";
 import { itemTable } from "@/data/items/items";
 import { formatLargeQuantity, renderIcon } from "@/utils/formattingUtilities";
 import { Label } from "@/components/ui/label";
-import EquipmentSlots from "@/features/camp/inventoryMenu/equipmentSlots";
-import InventoryTable from "@/features/camp/inventoryMenu/inventoryTable";
+import EquipmentSlots from "@/features/town/inventoryMenu/equipmentSlots";
+import InventoryTable from "@/features/town/inventoryMenu/inventoryTable";
 
 export default function InventoryMenu() {
   const { character } = useCharacterEngineContext();

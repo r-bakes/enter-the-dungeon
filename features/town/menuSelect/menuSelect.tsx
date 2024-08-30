@@ -1,8 +1,8 @@
 import { GameObject } from "@/types/gameObjects";
 import { Label } from "@radix-ui/react-label";
 import { ThemeToggle } from "@/components/themeToggle/themeToggle";
-import Logo from "@/features/camp/menuSelect/logo";
-import MenuContainer from "@/features/camp/menuSelect/menuContainer";
+import Logo from "@/features/town/menuSelect/logo";
+import MenuContainer from "@/features/town/menuSelect/menuContainer";
 
 export default function MenuSelect({
   miscMenus,

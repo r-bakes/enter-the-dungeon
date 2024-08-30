@@ -1,28 +1,28 @@
 "use client";
-import SkillMenu from "@/features/camp/skillMenu/skillMenu";
+import SkillMenu from "@/features/town/skillMenu/skillMenu";
 import { inventory } from "@/data/menus/inventory";
 import { martial } from "@/data/skills/martial";
-import CampEngineProvider from "@/engines/campEngineContext";
+import TownEngineProvider from "@/engines/townEngineContext";
 import React from "react";
 import { prospecting } from "@/data/skills/prospecting";
 import { smithing } from "@/data/skills/smithing";
-import DeckMenu from "@/features/camp/deckMenu/deckMenu";
+import DeckMenu from "@/features/town/deckMenu/deckMenu";
 import { magic } from "@/data/skills/magic";
 import { expeditions } from "@/data/menus/expeditions";
-import ExpeditionsMenu from "@/features/camp/expeditionsMenu/expeditionsMenu";
+import ExpeditionsMenu from "@/features/town/expeditionsMenu/expeditionsMenu";
 import CharacterEngineProvider from "@/engines/characterEngineContext";
 import { crafting } from "@/data/skills/crafting";
 import { enchanting } from "@/data/skills/enchanting";
 import { home } from "@/data/menus/home";
-import HomeMenu from "@/features/camp/homeMenu/homeMenu";
+import HomeMenu from "@/features/town/homeMenu/homeMenu";
 import { athletics } from "@/data/skills/athletics";
 import { stealth } from "@/data/skills/stealth";
 import { alchemy } from "@/data/skills/alchemy";
 import { agriculture } from "@/data/skills/agriculture";
 import { bazaar } from "@/data/menus/bazaar";
-import BazaarMenu from "@/features/camp/bazaarMenu/bazaarMenu";
-import MenuSelect from "@/features/camp/menuSelect/menuSelect";
-import InventoryMenu from "@/features/camp/inventoryMenu/inventoryMenu";
+import BazaarMenu from "@/features/town/bazaarMenu/bazaarMenu";
+import MenuSelect from "@/features/town/menuSelect/menuSelect";
+import InventoryMenu from "@/features/town/inventoryMenu/inventoryMenu";
 import { GameObject } from "@/types/gameObjects";
 
 export default function Page({}) {
@@ -98,7 +98,7 @@ export default function Page({}) {
 
   return (
     <CharacterEngineProvider>
-      <CampEngineProvider>
+      <TownEngineProvider>
         <MenuSelect
           miscMenus={Object.values(miscMenus).map((menu) => menu.data)}
           combatMenus={Object.values(combatMenus).map((menu) => menu.data)}
@@ -109,7 +109,7 @@ export default function Page({}) {
         <div className="flex h-full w-full bg-secondaryBackground py-10">
           {menus[selectedMenu.id].menu}
         </div>
-      </CampEngineProvider>
+      </TownEngineProvider>
     </CharacterEngineProvider>
   );
 }

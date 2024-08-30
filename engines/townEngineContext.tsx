@@ -1,4 +1,3 @@
-import { toast } from "sonner";
 import { Character, Inventory } from "@/types/character";
 import {
   addExp,
@@ -14,15 +13,16 @@ import {
   applySpeedModifier,
   getModifiers,
 } from "@/data/modifiers/skillModifiers";
-import TaskComplete from "@/features/camp/toast/TaskComplete";
+import TaskComplete from "@/features/town/toast/TaskComplete";
 import { Skill, Task } from "@/types/skills";
 import { SkillModifierTable } from "@/types/modifiers";
 import { TICK_RATE_MS } from "@/configurations/configurations";
 import generateLoot from "@/utils/lootUtilities";
 import { Loot } from "@/types/loot";
 import { SkillModifierType } from "@/data/modifiers/enums";
+import { toast } from "sonner";
 
-type CampEngineContextContents = {
+type TownEngineContextContents = {
   taskProgress: number;
   workingTask: Task | null;
   workingSkill: Skill | null;
@@ -31,8 +31,8 @@ type CampEngineContextContents = {
   setWorkingTask: React.Dispatch<React.SetStateAction<Task | null>>;
   setModifierTable: React.Dispatch<React.SetStateAction<SkillModifierTable>>;
 };
-const CampEngineContext = React.createContext({} as CampEngineContextContents);
-export const useCampEngineContext = () => React.useContext(CampEngineContext);
+const TownEngineContext = React.createContext({} as TownEngineContextContents);
+export const useTownEngineContext = () => React.useContext(TownEngineContext);
 
 export default function CampEngineProvider({
   children,
@@ -147,7 +147,7 @@ export default function CampEngineProvider({
           modifiers[SkillModifierType.EXPERIENCE],
         )}
       ></TaskComplete>,
-      { duration: 10000 },
+      { duration: 10000, position: "bottom-left" },
     );
     setCharacter({ ...character });
   };
@@ -168,7 +168,7 @@ export default function CampEngineProvider({
   };
 
   return (
-    <CampEngineContext.Provider
+    <TownEngineContext.Provider
       value={{
         taskProgress,
         workingTask,
@@ -180,6 +180,6 @@ export default function CampEngineProvider({
       }}
     >
       {children}
-    </CampEngineContext.Provider>
+    </TownEngineContext.Provider>
   );
 }

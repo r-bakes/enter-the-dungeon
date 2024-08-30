@@ -13,11 +13,11 @@ export default function TableEntryDialogSellEntry({
   item,
   amountInInventory,
   setOpen,
-}: {
+}: Readonly<{
   item: Item;
   amountInInventory: number;
   setOpen: React.Dispatch<React.SetStateAction<boolean>>;
-}) {
+}>) {
   const [amountSelected, setAmountSelected] = React.useState(1);
   const { sellItem } = useCharacterEngineContext();
 
@@ -36,9 +36,9 @@ export default function TableEntryDialogSellEntry({
             </Label>
             <Label className="items-center text-lg">{amountSelected}</Label>
           </span>
-          <div className="flex flex-row">
-            <Minus size={18}></Minus>
-            {renderIcon(item.icon, 18, item.iconStyle)}
+          <div className="flex flex-row gap-1">
+            <Minus size={22} strokeWidth={1}></Minus>
+            {renderIcon(item.icon, 22, item.iconStyle)}
           </div>
         </CardHeader>
       </Card>
@@ -52,9 +52,9 @@ export default function TableEntryDialogSellEntry({
               {amountSelected * item.value}
             </Label>
           </span>
-          <div className="flex flex-row">
-            <Plus size={18}></Plus>
-            {renderIcon(CircleDollarSign, 18, {
+          <div className="flex flex-row gap-1">
+            <Plus size={22} strokeWidth={1}></Plus>
+            {renderIcon(CircleDollarSign, 22, {
               ...itemTable["gold"].iconStyle,
             })}
           </div>

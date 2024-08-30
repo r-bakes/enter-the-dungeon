@@ -51,7 +51,7 @@ export const armorTable: { [armorId: string]: Equipment } = {
     },
     type: ItemType.EQUIPEMENT,
     value: 10,
-    slots: [Slot.CHEST],
+    slots: [Slot.WAIST],
     cards: [],
     attackBonus: 0,
     defenseBonus: 1,

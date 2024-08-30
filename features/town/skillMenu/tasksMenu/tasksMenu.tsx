@@ -9,7 +9,7 @@ import {
 import React from "react";
 import { Skill, Task, Tasks } from "@/types/skills";
 import { formatCapitalCase } from "@/utils/formattingUtilities";
-import TasksContainer from "@/features/camp/skillMenu/tasksMenu/tasksContainer";
+import TasksContainer from "@/features/town/skillMenu/tasksMenu/tasksContainer";
 
 export default function TasksMenu({
   skill,
