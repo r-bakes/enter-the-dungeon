@@ -15,6 +15,7 @@ import {
   MAGIC_DECK_LIMIT,
   MARTIAL_DECK_LIMIT,
 } from "@/configurations/configurations";
+import { itemTable } from "@/data/items/items";
 
 type CharacterEngineContextContents = {
   character: Character;
@@ -24,6 +25,7 @@ type CharacterEngineContextContents = {
   equipItem: (itemId: string, slot: Slot) => void;
   unequip: (slot: Slot) => void;
   getModifiers: () => { hp: number; atk: number; def: number; stamina: number };
+  sellItem: (itemId: string, amount: number) => void;
   save: () => void;
 };
 
@@ -105,6 +107,12 @@ export default function CharacterEngineProvider({
     }
   };
 
+  const sellItem = (itemId: string, amount: number) => {
+    removeItem(character.inventory, itemId, amount);
+    addItem(character.inventory, "gold", itemTable[itemId].value * amount);
+    setCharacter({ ...character });
+  };
+
   const unequipCard = (cardId: string) => {
     if (character.deck.equppedMartial.includes(cardId)) {
       character.deck.equppedMartial.splice(
@@ -147,6 +155,7 @@ export default function CharacterEngineProvider({
         equipItem,
         unequip: unequipItem,
         getModifiers,
+        sellItem,
         save,
       }}
     >

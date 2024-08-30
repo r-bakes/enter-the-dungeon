@@ -37,6 +37,7 @@ import {
 } from "@/components/ui/select";
 import { ChevronDown, ChevronUp } from "lucide-react";
 import { Input } from "@/components/ui/input";
+import TableEntryDialog from "@/features/camp/inventoryMenu/tableEntryDialog";
 
 type TableData = {
   quantity: number;
@@ -44,6 +45,8 @@ type TableData = {
 
 export default function InventoryTable() {
   const { character } = useCharacterEngineContext();
+  const [open, setOpen] = React.useState(false);
+  const [selectedItemId, setSelectedItemId] = React.useState(null);
   const data: TableData[] = React.useMemo(() => {
     return Object.entries(character.inventory)
       .filter(([itemId, _]) => itemTable[itemId].type != ItemType.HIDDEN)
@@ -160,7 +163,13 @@ export default function InventoryTable() {
         </TableHeader>
         <TableBody>
           {table.getRowModel().rows.map((row) => (
-            <TableRow key={row.id}>
+            <TableRow
+              key={row.id}
+              onClick={() => {
+                setSelectedItemId(row.original.id);
+                setOpen(true);
+              }}
+            >
               {row.getVisibleCells().map((cell) => (
                 <TableCell key={cell.id} className="py-2 text-xs">
                   {flexRender(cell.column.columnDef.cell, cell.getContext())}
@@ -170,6 +179,11 @@ export default function InventoryTable() {
           ))}
         </TableBody>
       </Table>
+      <TableEntryDialog
+        open={open}
+        setOpen={setOpen}
+        itemId={selectedItemId}
+      ></TableEntryDialog>
     </Card>
   );
 }

@@ -75,6 +75,9 @@ export function removeItem(
   amount: number = 1,
 ): Inventory {
   inventory[itemId] = inventory[itemId] - amount;
+  if (inventory[itemId] == 0 && itemId !== "gold") {
+    delete inventory[itemId];
+  }
   return inventory;
 }
 
