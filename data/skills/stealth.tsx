@@ -1,4 +1,4 @@
-import { PersonStanding, VenetianMask } from "lucide-react";
+import { PersonStanding, Store, VenetianMask } from "lucide-react";
 
 import { Skill, Task } from "@/types/skills";
 import {
@@ -29,7 +29,31 @@ const stealthTasks: { [taskId: string]: Task } = {
     experience: 1,
     requiredLevel: 1,
     lootTable: {
-      gola: { gold: { weight: 1, minQuantity: 5, maxQuantity: 10 } },
+      gold: { gold: { weight: 1, minQuantity: 5, maxQuantity: 10 } },
+    },
+    requires: {},
+    category: StealthTaskCategories.THIEVING,
+    applicableModifiers: stealthCommonModifiers,
+  },
+  stealFromBazaarStall: {
+    id: "stealFromBazaarStall",
+    name: "Steal from Bazaar Stall",
+    description: "Steal from a stall in the grand marketplace.",
+    icon: Store,
+    iconStyle: {
+      fill: "none",
+      ...TASK_AND_ITEM_ICON_STYLE,
+    },
+    durationSec: 3,
+    experience: 20,
+    requiredLevel: 15,
+    lootTable: {
+      misc: {
+        gold: { weight: 84, minQuantity: 50, maxQuantity: 100 },
+        sapphire: { weight: 10, minQuantity: 1, maxQuantity: 1 },
+        emerald: { weight: 5, minQuantity: 1, maxQuantity: 1 },
+        diamond: { weight: 1, minQuantity: 1, maxQuantity: 1 },
+      },
     },
     requires: {},
     category: StealthTaskCategories.THIEVING,

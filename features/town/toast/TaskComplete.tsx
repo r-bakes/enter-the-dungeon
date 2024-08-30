@@ -57,9 +57,9 @@ export default function TaskComplete({
           +{formatLargeQuantity(experience)} xp
         </Label>
       </div>
-      <Separator className="mb-4 mt-2"></Separator>
       {Object.keys(loot).length > 0 ? (
         <div className="flex flex-col gap-1">
+          <Separator className="mb-3 mt-2"></Separator>
           {Object.entries(loot).map(([itemId, number]) =>
             itemCard(itemTable[itemId], number),
           )}
