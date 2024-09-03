@@ -3,6 +3,7 @@ import { Label } from "@radix-ui/react-label";
 import { ThemeToggle } from "@/components/themeToggle/themeToggle";
 import Logo from "@/features/town/menuSelect/logo";
 import MenuContainer from "@/features/town/menuSelect/menuContainer";
+import { Separator } from "@/components/ui/separator";
 
 export default function MenuSelect({
   miscMenus,
@@ -24,33 +25,39 @@ export default function MenuSelect({
       }
     >
       <Logo></Logo>
-      <Label className="px-5 pb-2 pt-4 text-xs text-muted-foreground text-white">
-        Character
-      </Label>
-      <MenuContainer
-        menuItems={miscMenus}
-        selectedMenu={selectedMenu}
-        setSelectedMenu={setSelectedMenu}
-      ></MenuContainer>
-      <Label className="px-5 pb-2 pt-4 text-xs text-muted-foreground text-white">
-        Combat
-      </Label>
-      <MenuContainer
-        menuItems={combatMenus}
-        selectedMenu={selectedMenu}
-        setSelectedMenu={setSelectedMenu}
-      ></MenuContainer>
-      <Label className="px-5 pb-2 pt-4 text-xs text-muted-foreground text-white">
-        Skills
-      </Label>
-      <MenuContainer
-        menuItems={skillMenus}
-        selectedMenu={selectedMenu}
-        setSelectedMenu={setSelectedMenu}
-      ></MenuContainer>
-      <div className="flex grow flex-col justify-end px-2">
+      <div className="flex-row px-2">
         <ThemeToggle></ThemeToggle>
       </div>
+      <div className="flex flex-col overflow-y-scroll">
+        <Label className="px-5 pb-2 pt-4 text-xs text-muted-foreground text-white">
+          Character
+        </Label>
+        <MenuContainer
+          menuItems={miscMenus}
+          selectedMenu={selectedMenu}
+          setSelectedMenu={setSelectedMenu}
+        ></MenuContainer>
+        <Label className="px-5 pb-2 pt-4 text-xs text-muted-foreground text-white">
+          Combat
+        </Label>
+        <MenuContainer
+          menuItems={combatMenus}
+          selectedMenu={selectedMenu}
+          setSelectedMenu={setSelectedMenu}
+        ></MenuContainer>
+        <Label className="px-5 pb-2 pt-4 text-xs text-muted-foreground text-white">
+          Skills
+        </Label>
+        <MenuContainer
+          menuItems={skillMenus}
+          selectedMenu={selectedMenu}
+          setSelectedMenu={setSelectedMenu}
+        ></MenuContainer>
+      </div>
+      <div className="px-5">
+        <Separator className="my-4"></Separator>
+      </div>
+      <div className="h-[160px] shrink-0"></div>
     </div>
   );
 }

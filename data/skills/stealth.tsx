@@ -35,10 +35,10 @@ const stealthTasks: { [taskId: string]: Task } = {
     category: StealthTaskCategories.THIEVING,
     applicableModifiers: stealthCommonModifiers,
   },
-  stealFromBazaarStall: {
-    id: "stealFromBazaarStall",
-    name: "Steal from Bazaar Stall",
-    description: "Steal from a stall in the grand marketplace.",
+  stealFromBazaar: {
+    id: "stealFromBazaar",
+    name: "Steal from Bazaar",
+    description: "Steal from stalls in the grand marketplace.",
     icon: Store,
     iconStyle: {
       fill: "none",
