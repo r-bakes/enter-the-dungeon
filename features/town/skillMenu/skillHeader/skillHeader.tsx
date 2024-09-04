@@ -1,3 +1,4 @@
+import { Button } from "@/components/ui/button";
 import {
   Card,
   CardContent,
@@ -10,6 +11,7 @@ import { LEVEL_CAP } from "@/configurations/configurations";
 import { Skill } from "@/types/skills";
 import { requiredExpForLevelUp } from "@/utils/charaterStateUtilities";
 import { formatRoundedQuantity } from "@/utils/formattingUtilities";
+import { FlaskRound } from "lucide-react";
 
 export function SkillHeader({
   skill,
@@ -27,19 +29,26 @@ export function SkillHeader({
 
   return (
     <Card className="flex h-40 min-h-40 w-full flex-col">
-      <CardHeader className="flex min-w-max flex-row items-center gap-4">
-        <skill.icon size={44} strokeWidth={1}></skill.icon>
-        <div className="mr-6 flex min-w-max flex-col gap-1">
-          <CardTitle>{skill.name}</CardTitle>
-          <CardDescription className="font-normal">
-            {skill.description}
-          </CardDescription>
+      <CardHeader className="flex min-w-max flex-row items-center justify-between gap-4">
+        <div className="flex gap-4">
+          <skill.icon size={44} strokeWidth={1}></skill.icon>
+          <div className="mr-6 flex min-w-max flex-col">
+            <CardTitle>{skill.name}</CardTitle>
+            <CardDescription className="font-normal">
+              {skill.description}
+            </CardDescription>
+          </div>
+          <div className="mr-6 flex min-w-max flex-col">
+            <CardTitle>
+              {skillLevel} / {LEVEL_CAP}
+            </CardTitle>
+            <CardDescription className="font-normal">Level</CardDescription>
+          </div>
         </div>
         <div className="flex min-w-max flex-col">
-          <CardTitle>
-            {skillLevel} / {LEVEL_CAP}
-          </CardTitle>
-          <CardDescription className="font-normal">Level</CardDescription>
+          <Button className="h-11 w-11 p-0" variant="outline">
+            <FlaskRound strokeWidth={1.5}></FlaskRound>
+          </Button>
         </div>
       </CardHeader>
       <CardContent className="flex flex-col gap-2 pb-0">

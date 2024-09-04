@@ -23,40 +23,42 @@ export default function TableEntryDialogEquipment({
 
   return (
     <div className="flex h-full w-full flex-col gap-1">
-      <Card className="flex h-[190px] gap-6 p-4">
+      <Card className="flex h-[195px] shrink-0 gap-6 p-4">
         <div className="flex flex-col gap-2">
           <Label className="mb-2 font-light text-muted-foreground">
             Attributes
           </Label>
-          <div className="flex items-center gap-2">
-            <Sword size={28} strokeWidth={1}></Sword>
-            <Label className="text-xl">{item.attackBonus}</Label>
-          </div>
-          {/* <div className="mx-4 h-1 w-1 rounded-full bg-black"></div> */}
-          <div className="flex items-center gap-2">
-            <Shield size={28} strokeWidth={1}></Shield>
-            <Label className="text-xl">{item.defenseBonus}</Label>
-          </div>
-          {/* <div className="mx-4 h-1 w-1 rounded-full bg-black"></div> */}
-          <div className="flex items-center gap-2">
-            <Heart size={28} strokeWidth={1}></Heart>
-            <Label className="text-xl">{item.healthBonus}</Label>
+          <div className="flex flex-col gap-5">
+            <div className="flex items-center gap-2">
+              <Sword size={28} strokeWidth={1}></Sword>
+              <Label className="text-xl">{item.attackBonus}</Label>
+            </div>
+            <div className="flex items-center gap-2">
+              <Shield size={28} strokeWidth={1}></Shield>
+              <Label className="text-xl">{item.defenseBonus}</Label>
+            </div>
+            <div className="flex items-center gap-2">
+              <Heart size={28} strokeWidth={1}></Heart>
+              <Label className="text-xl">{item.healthBonus}</Label>
+            </div>
           </div>
         </div>
         <div className="flex flex-col gap-2">
           <Label className="mb-2 font-light text-muted-foreground">Slot</Label>
           <div className="flex flex-col gap-2">
             {item.slots.map((slot) => (
-              <Label className="font-normal">{formatCapitalCase(slot)}</Label>
+              <Label key={slot} className="font-normal">
+                {formatCapitalCase(slot)}
+              </Label>
             ))}
           </div>
         </div>
-        <div className="flex grow flex-col gap-1">
+        <div className="flex grow flex-col gap-2">
           <Label className="mb-2 font-light text-muted-foreground">Cards</Label>
-          <div className="flex flex-col gap-1 overflow-y-scroll pr-4">
+          <div className="flex flex-col gap-1 overflow-y-scroll">
             {item.cards.length > 0 ? (
               item.cards.map((card) => (
-                <Card className="flex justify-between p-2">
+                <Card className="flex grow justify-between p-2" key={card.id}>
                   <div className="flex items-center gap-2">
                     {renderIcon(card.icon, 22, card.iconStyle)}
                     <Label className="font-normal">{card.name}</Label>

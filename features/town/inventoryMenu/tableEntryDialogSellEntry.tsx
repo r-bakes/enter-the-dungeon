@@ -1,6 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { Card, CardHeader } from "@/components/ui/card";
 import { Label } from "@/components/ui/label";
+import { Separator } from "@/components/ui/separator";
 import { Slider } from "@/components/ui/slider";
 import { itemTable } from "@/data/items/items";
 import { useCharacterEngineContext } from "@/engines/characterEngineContext";
@@ -28,6 +29,7 @@ export default function TableEntryDialogSellEntry({
 
   return (
     <div className="flex flex-col gap-1">
+      <Separator className="my-6"></Separator>
       <Card>
         <CardHeader className="flex h-full flex-row items-center justify-between p-2">
           <span className="flex h-full items-center gap-1">

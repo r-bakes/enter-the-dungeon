@@ -4,6 +4,8 @@ import { ThemeToggle } from "@/components/themeToggle/themeToggle";
 import Logo from "@/features/town/menuSelect/logo";
 import MenuContainer from "@/features/town/menuSelect/menuContainer";
 import { Separator } from "@/components/ui/separator";
+import { Exit } from "@/components/exit/exit";
+import { SettingsButton } from "@/components/settingsButton/settingsButton";
 
 export default function MenuSelect({
   miscMenus,
@@ -25,11 +27,11 @@ export default function MenuSelect({
       }
     >
       <Logo></Logo>
-      <div className="flex-row px-2">
-        <ThemeToggle></ThemeToggle>
+      <div className="px-5">
+        <Separator className="my-4"></Separator>
       </div>
       <div className="flex flex-col overflow-y-scroll">
-        <Label className="px-5 pb-2 pt-4 text-xs text-muted-foreground text-white">
+        <Label className="px-5 pb-2 text-xs text-muted-foreground text-white">
           Character
         </Label>
         <MenuContainer
@@ -57,7 +59,12 @@ export default function MenuSelect({
       <div className="px-5">
         <Separator className="my-4"></Separator>
       </div>
-      <div className="h-[160px] shrink-0"></div>
+      <div className="flex w-full px-2">
+        <SettingsButton></SettingsButton>
+        <Exit></Exit>
+        <ThemeToggle></ThemeToggle>
+      </div>
+      <div className="h-[180px] shrink-0"></div>
     </div>
   );
 }
