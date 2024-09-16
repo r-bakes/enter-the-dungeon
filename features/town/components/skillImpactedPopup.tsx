@@ -1,11 +1,15 @@
 import { Button } from "@/components/ui/button";
 import { Card, CardDescription } from "@/components/ui/card";
 import { Label } from "@/components/ui/label";
-import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
-import { formatModifiers } from "@/data/modifiers/skillModifiers";
+import {
+  Popover,
+  PopoverContent,
+  PopoverTrigger,
+} from "@/components/ui/popover";
 import { Skill } from "@/types/skills";
 import { Upgrade } from "@/types/upgrades";
 import { formatCapitalCase, renderIcon } from "@/utils/formattingUtilities";
+import { formatModifiers } from "@/utils/modifierUtilities";
 
 export function SkillImpactedPopup({
   skill,

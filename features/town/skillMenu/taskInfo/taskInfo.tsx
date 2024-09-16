@@ -14,11 +14,7 @@ import { useTownEngineContext } from "@/engines/townEngineContext";
 import { useCharacterEngineContext } from "@/engines/characterEngineContext";
 import TaskDataEntry from "./taskDataEntry";
 import { Separator } from "@/components/ui/separator";
-import {
-  applyExperienceModifier,
-  applySpeedModifier,
-  getModifiers,
-} from "@/data/modifiers/skillModifiers";
+
 import { itemTable } from "@/data/items/items";
 import { Skill, Task } from "@/types/skills";
 import { generateDropRates } from "@/utils/lootUtilities";
@@ -28,6 +24,11 @@ import { SkillModifierType } from "@/data/modifiers/enums";
 import TaskProducesEntry from "@/features/town/skillMenu/taskInfo/taskProducesEntry";
 import { TaskRequiresEntry } from "@/features/town/skillMenu/taskInfo/taskRequiresEntry";
 import TaskModifiers from "@/features/town/skillMenu/taskInfo/taskModifiers";
+import {
+  applyExperienceModifier,
+  applySpeedModifier,
+  getModifiers,
+} from "@/utils/modifierUtilities";
 
 const rootCardFormat =
   "flex flex-col h-full grow-0 w-72 min-w-72 max-w-72 items-center overflow-y-scroll";

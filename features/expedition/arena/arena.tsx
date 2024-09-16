@@ -4,7 +4,7 @@ import DeckRow from "./deckRow";
 import PlayerHudRow from "./playerHudRow";
 import { useExpeditionContext } from "@/engines/expeditionEngineContext";
 
-export default function Arena({}) {
+export default function Arena() {
   const { alliedCombatants, enemyCombatants } = useEncounterContext();
   const { characterCombatant } = useExpeditionContext();
 

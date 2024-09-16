@@ -7,12 +7,6 @@ import {
 } from "@/utils/charaterStateUtilities";
 import { useCharacterEngineContext } from "@/engines/characterEngineContext";
 import React from "react";
-import {
-  applyExperienceModifier,
-  applyProductionModifier,
-  applySpeedModifier,
-  getModifiers,
-} from "@/data/modifiers/skillModifiers";
 import TaskComplete from "@/features/town/toast/TaskComplete";
 import { Skill, Task } from "@/types/skills";
 import { SkillModifierTable } from "@/types/modifiers";
@@ -21,6 +15,12 @@ import generateLoot from "@/utils/lootUtilities";
 import { Loot } from "@/types/loot";
 import { SkillModifierType } from "@/data/modifiers/enums";
 import { toast } from "sonner";
+import {
+  applyExperienceModifier,
+  applyProductionModifier,
+  applySpeedModifier,
+  getModifiers,
+} from "@/utils/modifierUtilities";
 
 type TownEngineContextContents = {
   taskProgress: number;

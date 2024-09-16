@@ -11,12 +11,12 @@ import {
   renderIcon,
 } from "@/utils/formattingUtilities";
 import { SkillImpactedPopup } from "../components/skillImpactedPopup";
-import { formatModifiers } from "@/data/modifiers/skillModifiers";
 import { Backpack } from "lucide-react";
 import { Label } from "@/components/ui/label";
 import { Upgrade } from "@/types/upgrades";
 import { Character } from "@/types/character";
 import { SkillModifierTable } from "@/types/modifiers";
+import { formatModifiers } from "@/utils/modifierUtilities";
 
 export default function UpgradesStoreMenu({
   upgrades,

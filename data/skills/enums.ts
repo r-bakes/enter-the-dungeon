@@ -29,6 +29,6 @@ export enum StealthTaskCategories {
 }
 
 export enum AgricultureTaskCategories {
-  HORTICULTURE = "horticulture",
+  BOTANY = "botany",
   RANCHING = "ranching",
 }

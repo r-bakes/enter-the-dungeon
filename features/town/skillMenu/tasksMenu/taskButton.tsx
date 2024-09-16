@@ -7,14 +7,15 @@ import {
 import { Button } from "@/components/ui/button";
 import { Label } from "@/components/ui/label";
 import { useTownEngineContext } from "@/engines/townEngineContext";
+
+import { renderIcon } from "@/utils/formattingUtilities";
+import { Skill, Task } from "@/types/skills";
+import { SkillModifierType } from "@/data/modifiers/enums";
 import {
   applyExperienceModifier,
   applySpeedModifier,
   getModifiers,
-} from "@/data/modifiers/skillModifiers";
-import { renderIcon } from "@/utils/formattingUtilities";
-import { Skill, Task } from "@/types/skills";
-import { SkillModifierType } from "@/data/modifiers/enums";
+} from "@/utils/modifierUtilities";
 
 export default function TaskButton({
   skill,

@@ -4,11 +4,11 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import { formatModifiers } from "@/data/modifiers/skillModifiers";
 import { skillTable } from "@/data/skills/skills";
 import { SkillImpactedPopup } from "@/features/town/components/skillImpactedPopup";
 import { Upgrade } from "@/types/upgrades";
 import { formatCapitalCase, renderIcon } from "@/utils/formattingUtilities";
+import { formatModifiers } from "@/utils/modifierUtilities";
 
 export default function UpgradeCard({
   upgrade,

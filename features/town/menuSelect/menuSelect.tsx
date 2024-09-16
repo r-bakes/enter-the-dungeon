@@ -27,6 +27,11 @@ export default function MenuSelect({
       }
     >
       <Logo></Logo>
+      <div className="mt-4 flex w-full px-2">
+        <SettingsButton></SettingsButton>
+        <ThemeToggle></ThemeToggle>
+        <Exit></Exit>
+      </div>
       <div className="px-5">
         <Separator className="my-4"></Separator>
       </div>
@@ -59,11 +64,7 @@ export default function MenuSelect({
       <div className="px-5">
         <Separator className="my-4"></Separator>
       </div>
-      <div className="flex w-full px-2">
-        <SettingsButton></SettingsButton>
-        <Exit></Exit>
-        <ThemeToggle></ThemeToggle>
-      </div>
+
       <div className="h-[180px] shrink-0"></div>
     </div>
   );
