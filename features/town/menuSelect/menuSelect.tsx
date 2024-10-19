@@ -60,12 +60,8 @@ export default function MenuSelect({
           selectedMenu={selectedMenu}
           setSelectedMenu={setSelectedMenu}
         ></MenuContainer>
+        <div className="h-[220px] shrink-0"></div>
       </div>
-      <div className="px-5">
-        <Separator className="my-4"></Separator>
-      </div>
-
-      <div className="h-[180px] shrink-0"></div>
     </div>
   );
 }
