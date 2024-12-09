@@ -90,8 +90,8 @@ export default function TaskInfo({
   return (
     <Card className={rootCardFormat}>
       <CardHeader className="flex h-32 w-full flex-row gap-4">
-        {renderIcon(task.icon, 56, task.iconStyle)}
-        <div className="flex flex-col gap-1">
+        {renderIcon(task.icon, 48, task.iconStyle)}
+        <div className="flex h-min flex-col gap-1">
           <CardTitle>{task.name}</CardTitle>
           <CardDescription className="font-normal">
             {task.description}

@@ -25,7 +25,7 @@ export default function TableEntryDialogEquipment({
     <div className="flex h-full w-full flex-col gap-1">
       <Card className="flex h-[195px] shrink-0 gap-6 p-4">
         <div className="flex flex-col gap-2">
-          <Label className="mb-2 font-light text-muted-foreground">
+          <Label className="mb-2 font-normal text-muted-foreground">
             Attributes
           </Label>
           <div className="flex flex-col gap-5">
@@ -44,7 +44,7 @@ export default function TableEntryDialogEquipment({
           </div>
         </div>
         <div className="flex flex-col gap-2">
-          <Label className="mb-2 font-light text-muted-foreground">Slot</Label>
+          <Label className="mb-2 font-normal text-muted-foreground">Slot</Label>
           <div className="flex flex-col gap-2">
             {item.slots.map((slot) => (
               <Label key={slot} className="font-normal">
@@ -54,7 +54,9 @@ export default function TableEntryDialogEquipment({
           </div>
         </div>
         <div className="flex grow flex-col gap-2">
-          <Label className="mb-2 font-light text-muted-foreground">Cards</Label>
+          <Label className="mb-2 font-normal text-muted-foreground">
+            Cards
+          </Label>
           <div className="flex flex-col gap-1 overflow-y-scroll">
             {item.cards.length > 0 ? (
               item.cards.map((card) => (
