@@ -1,3 +1,5 @@
+// src/data/tasks/smithingTasks.ts
+
 import {
   Hand,
   HardHat,
@@ -13,25 +15,27 @@ import { Task } from "@/types/skills";
 import { TASK_AND_ITEM_ICON_STYLE } from "@/configurations/configurations";
 import { SkillModifierType } from "@/data/modifiers/enums";
 import { mineralsTable } from "@/data/items/minerals";
-import { SmithingTaskCategories } from "@/data/skills/enums";
 import { barsTable } from "@/data/items/bars";
+import { SmithingTaskCategories } from "@/data/skills/enums";
+import { SmithingCategoryTaskId } from "./enum";
+import { BarId, MineralId } from "@/data/items/enums";
 
-const smithingCommonModifiers = new Set([
+const smithingCommonModifiers = new Set<SkillModifierType>([
   SkillModifierType.SPEED,
   SkillModifierType.EXPERIENCE,
   SkillModifierType.DOUBLE_CHANCE,
   SkillModifierType.PRODUCTION_MULTIPLIER,
 ]);
 
-export const smithingTasks: { [taskId: string]: Task } = {
+export const smithingTasks: { [id in SmithingCategoryTaskId]: Task } = {
   // Bronze Tasks
-  smithBronzeDagger: {
-    id: "smithBronzeDagger",
+  [SmithingCategoryTaskId.SMITH_BRONZE_DAGGER]: {
+    id: SmithingCategoryTaskId.SMITH_BRONZE_DAGGER,
     name: "Dagger",
-    description: "Smith a dagger.",
+    description: "Smith a bronze dagger.",
     icon: Slice,
     iconStyle: {
-      fill: mineralsTable.copperOre.iconStyle.fill,
+      fill: mineralsTable[MineralId.COPPER_ORE].iconStyle.fill,
       ...TASK_AND_ITEM_ICON_STYLE,
     },
     durationSec: 10,
@@ -44,13 +48,13 @@ export const smithingTasks: { [taskId: string]: Task } = {
     category: SmithingTaskCategories.BRONZE_SMITHING,
     applicableModifiers: smithingCommonModifiers,
   },
-  smithBronzeSword: {
-    id: "smithBronzeSword",
+  [SmithingCategoryTaskId.SMITH_BRONZE_SWORD]: {
+    id: SmithingCategoryTaskId.SMITH_BRONZE_SWORD,
     name: "Sword",
-    description: "Smith a sword.",
+    description: "Smith a bronze sword.",
     icon: Sword,
     iconStyle: {
-      fill: mineralsTable.copperOre.iconStyle.fill,
+      fill: mineralsTable[MineralId.COPPER_ORE].iconStyle.fill,
       ...TASK_AND_ITEM_ICON_STYLE,
     },
     durationSec: 10,
@@ -63,13 +67,13 @@ export const smithingTasks: { [taskId: string]: Task } = {
     category: SmithingTaskCategories.BRONZE_SMITHING,
     applicableModifiers: smithingCommonModifiers,
   },
-  smithBronzeShield: {
-    id: "smithBronzeShield",
+  [SmithingCategoryTaskId.SMITH_BRONZE_SHIELD]: {
+    id: SmithingCategoryTaskId.SMITH_BRONZE_SHIELD,
     name: "Shield",
-    description: "Smith a shield.",
+    description: "Smith a bronze shield.",
     icon: Shield,
     iconStyle: {
-      fill: mineralsTable.copperOre.iconStyle.fill,
+      fill: mineralsTable[MineralId.COPPER_ORE].iconStyle.fill,
       ...TASK_AND_ITEM_ICON_STYLE,
     },
     durationSec: 10,
@@ -82,13 +86,13 @@ export const smithingTasks: { [taskId: string]: Task } = {
     category: SmithingTaskCategories.BRONZE_SMITHING,
     applicableModifiers: smithingCommonModifiers,
   },
-  smithBronzeGreatsword: {
-    id: "smithBronzeGreatsword",
+  [SmithingCategoryTaskId.SMITH_BRONZE_GREATSWORD]: {
+    id: SmithingCategoryTaskId.SMITH_BRONZE_GREATSWORD,
     name: "Great Sword",
-    description: "Smith a great sword.",
+    description: "Smith a bronze great sword.",
     icon: Sword,
     iconStyle: {
-      fill: mineralsTable.copperOre.iconStyle.fill,
+      fill: mineralsTable[MineralId.COPPER_ORE].iconStyle.fill,
       ...TASK_AND_ITEM_ICON_STYLE,
     },
     durationSec: 10,
@@ -103,13 +107,13 @@ export const smithingTasks: { [taskId: string]: Task } = {
     category: SmithingTaskCategories.BRONZE_SMITHING,
     applicableModifiers: smithingCommonModifiers,
   },
-  smithBronzeHelmet: {
-    id: "smithBronzeHelmet",
+  [SmithingCategoryTaskId.SMITH_BRONZE_HELMET]: {
+    id: SmithingCategoryTaskId.SMITH_BRONZE_HELMET,
     name: "Helmet",
-    description: "Smith a helmet.",
+    description: "Smith a bronze helmet.",
     icon: HardHat,
     iconStyle: {
-      fill: mineralsTable.copperOre.iconStyle.fill,
+      fill: mineralsTable[MineralId.COPPER_ORE].iconStyle.fill,
       ...TASK_AND_ITEM_ICON_STYLE,
     },
     durationSec: 10,
@@ -122,13 +126,13 @@ export const smithingTasks: { [taskId: string]: Task } = {
     category: SmithingTaskCategories.BRONZE_SMITHING,
     applicableModifiers: smithingCommonModifiers,
   },
-  smithBronzeChestplate: {
-    id: "smithBronzeChestplate",
+  [SmithingCategoryTaskId.SMITH_BRONZE_CHESTPLATE]: {
+    id: SmithingCategoryTaskId.SMITH_BRONZE_CHESTPLATE,
     name: "Chestplate",
-    description: "Smith a chestplate.",
+    description: "Smith a bronze chestplate.",
     icon: Shirt,
     iconStyle: {
-      fill: mineralsTable.copperOre.iconStyle.fill,
+      fill: mineralsTable[MineralId.COPPER_ORE].iconStyle.fill,
       ...TASK_AND_ITEM_ICON_STYLE,
     },
     durationSec: 10,
@@ -143,13 +147,13 @@ export const smithingTasks: { [taskId: string]: Task } = {
     category: SmithingTaskCategories.BRONZE_SMITHING,
     applicableModifiers: smithingCommonModifiers,
   },
-  smithBronzeBelt: {
-    id: "smithBronzeBelt",
+  [SmithingCategoryTaskId.SMITH_BRONZE_BELT]: {
+    id: SmithingCategoryTaskId.SMITH_BRONZE_BELT,
     name: "Belt",
-    description: "Smith a belt.",
+    description: "Smith a bronze belt.",
     icon: Tangent,
     iconStyle: {
-      fill: mineralsTable.copperOre.iconStyle.fill,
+      fill: mineralsTable[MineralId.COPPER_ORE].iconStyle.fill,
       ...TASK_AND_ITEM_ICON_STYLE,
     },
     durationSec: 10,
@@ -162,13 +166,13 @@ export const smithingTasks: { [taskId: string]: Task } = {
     category: SmithingTaskCategories.BRONZE_SMITHING,
     applicableModifiers: smithingCommonModifiers,
   },
-  smithBronzePlateleggings: {
-    id: "smithBronzePlateleggings",
+  [SmithingCategoryTaskId.SMITH_BRONZE_PLATELEGGINGS]: {
+    id: SmithingCategoryTaskId.SMITH_BRONZE_PLATELEGGINGS,
     name: "Plate Leggings",
-    description: "Smith plate leggings.",
+    description: "Smith bronze plate leggings.",
     icon: ToyBrick,
     iconStyle: {
-      fill: mineralsTable.copperOre.iconStyle.fill,
+      fill: mineralsTable[MineralId.COPPER_ORE].iconStyle.fill,
       ...TASK_AND_ITEM_ICON_STYLE,
     },
     durationSec: 10,
@@ -183,13 +187,13 @@ export const smithingTasks: { [taskId: string]: Task } = {
     category: SmithingTaskCategories.BRONZE_SMITHING,
     applicableModifiers: smithingCommonModifiers,
   },
-  smithBronzeGauntlets: {
-    id: "smithBronzeGauntlets",
+  [SmithingCategoryTaskId.SMITH_BRONZE_GAUNTLETS]: {
+    id: SmithingCategoryTaskId.SMITH_BRONZE_GAUNTLETS,
     name: "Gauntlets",
-    description: "Smith gauntlets.",
+    description: "Smith bronze gauntlets.",
     icon: Hand,
     iconStyle: {
-      fill: mineralsTable.copperOre.iconStyle.fill,
+      fill: mineralsTable[MineralId.COPPER_ORE].iconStyle.fill,
       ...TASK_AND_ITEM_ICON_STYLE,
     },
     durationSec: 10,
@@ -206,13 +210,13 @@ export const smithingTasks: { [taskId: string]: Task } = {
   },
 
   // Iron Tasks
-  smithIronDagger: {
-    id: "smithIronDagger",
+  [SmithingCategoryTaskId.SMITH_IRON_DAGGER]: {
+    id: SmithingCategoryTaskId.SMITH_IRON_DAGGER,
     name: "Dagger",
     description: "Smith an iron dagger.",
     icon: Slice,
     iconStyle: {
-      fill: mineralsTable.ironOre.iconStyle.fill,
+      fill: mineralsTable[MineralId.IRON_ORE].iconStyle.fill,
       ...TASK_AND_ITEM_ICON_STYLE,
     },
     durationSec: 12,
@@ -225,13 +229,13 @@ export const smithingTasks: { [taskId: string]: Task } = {
     category: SmithingTaskCategories.IRON_SMITHING,
     applicableModifiers: smithingCommonModifiers,
   },
-  smithIronSword: {
-    id: "smithIronSword",
+  [SmithingCategoryTaskId.SMITH_IRON_SWORD]: {
+    id: SmithingCategoryTaskId.SMITH_IRON_SWORD,
     name: "Sword",
     description: "Smith an iron sword.",
     icon: Sword,
     iconStyle: {
-      fill: mineralsTable.ironOre.iconStyle.fill,
+      fill: mineralsTable[MineralId.IRON_ORE].iconStyle.fill,
       ...TASK_AND_ITEM_ICON_STYLE,
     },
     durationSec: 15,
@@ -244,13 +248,13 @@ export const smithingTasks: { [taskId: string]: Task } = {
     category: SmithingTaskCategories.IRON_SMITHING,
     applicableModifiers: smithingCommonModifiers,
   },
-  smithIronShield: {
-    id: "smithIronShield",
+  [SmithingCategoryTaskId.SMITH_IRON_SHIELD]: {
+    id: SmithingCategoryTaskId.SMITH_IRON_SHIELD,
     name: "Shield",
     description: "Smith an iron shield.",
     icon: Shield,
     iconStyle: {
-      fill: mineralsTable.ironOre.iconStyle.fill,
+      fill: mineralsTable[MineralId.IRON_ORE].iconStyle.fill,
       ...TASK_AND_ITEM_ICON_STYLE,
     },
     durationSec: 15,
@@ -263,13 +267,13 @@ export const smithingTasks: { [taskId: string]: Task } = {
     category: SmithingTaskCategories.IRON_SMITHING,
     applicableModifiers: smithingCommonModifiers,
   },
-  smithIronGreatsword: {
-    id: "smithIronGreatsword",
+  [SmithingCategoryTaskId.SMITH_IRON_GREATSWORD]: {
+    id: SmithingCategoryTaskId.SMITH_IRON_GREATSWORD,
     name: "Great Sword",
     description: "Smith an iron great sword.",
     icon: Sword,
     iconStyle: {
-      fill: mineralsTable.ironOre.iconStyle.fill,
+      fill: mineralsTable[MineralId.IRON_ORE].iconStyle.fill,
       ...TASK_AND_ITEM_ICON_STYLE,
     },
     durationSec: 20,
@@ -284,13 +288,13 @@ export const smithingTasks: { [taskId: string]: Task } = {
     category: SmithingTaskCategories.IRON_SMITHING,
     applicableModifiers: smithingCommonModifiers,
   },
-  smithIronHelmet: {
-    id: "smithIronHelmet",
+  [SmithingCategoryTaskId.SMITH_IRON_HELMET]: {
+    id: SmithingCategoryTaskId.SMITH_IRON_HELMET,
     name: "Helmet",
     description: "Smith an iron helmet.",
     icon: HardHat,
     iconStyle: {
-      fill: mineralsTable.ironOre.iconStyle.fill,
+      fill: mineralsTable[MineralId.IRON_ORE].iconStyle.fill,
       ...TASK_AND_ITEM_ICON_STYLE,
     },
     durationSec: 12,
@@ -303,13 +307,13 @@ export const smithingTasks: { [taskId: string]: Task } = {
     category: SmithingTaskCategories.IRON_SMITHING,
     applicableModifiers: smithingCommonModifiers,
   },
-  smithIronChestplate: {
-    id: "smithIronChestplate",
+  [SmithingCategoryTaskId.SMITH_IRON_CHESTPLATE]: {
+    id: SmithingCategoryTaskId.SMITH_IRON_CHESTPLATE,
     name: "Chestplate",
     description: "Smith an iron chestplate.",
     icon: Shirt,
     iconStyle: {
-      fill: mineralsTable.ironOre.iconStyle.fill,
+      fill: mineralsTable[MineralId.IRON_ORE].iconStyle.fill,
       ...TASK_AND_ITEM_ICON_STYLE,
     },
     durationSec: 18,
@@ -324,13 +328,13 @@ export const smithingTasks: { [taskId: string]: Task } = {
     category: SmithingTaskCategories.IRON_SMITHING,
     applicableModifiers: smithingCommonModifiers,
   },
-  smithIronBelt: {
-    id: "smithIronBelt",
+  [SmithingCategoryTaskId.SMITH_IRON_BELT]: {
+    id: SmithingCategoryTaskId.SMITH_IRON_BELT,
     name: "Belt",
     description: "Smith an iron belt.",
     icon: Tangent,
     iconStyle: {
-      fill: mineralsTable.ironOre.iconStyle.fill,
+      fill: mineralsTable[MineralId.IRON_ORE].iconStyle.fill,
       ...TASK_AND_ITEM_ICON_STYLE,
     },
     durationSec: 12,
@@ -343,13 +347,13 @@ export const smithingTasks: { [taskId: string]: Task } = {
     category: SmithingTaskCategories.IRON_SMITHING,
     applicableModifiers: smithingCommonModifiers,
   },
-  smithIronPlateleggings: {
-    id: "smithIronPlateleggings",
+  [SmithingCategoryTaskId.SMITH_IRON_PLATELEGGINGS]: {
+    id: SmithingCategoryTaskId.SMITH_IRON_PLATELEGGINGS,
     name: "Plate Leggings",
     description: "Smith iron plate leggings.",
     icon: ToyBrick,
     iconStyle: {
-      fill: mineralsTable.ironOre.iconStyle.fill,
+      fill: mineralsTable[MineralId.IRON_ORE].iconStyle.fill,
       ...TASK_AND_ITEM_ICON_STYLE,
     },
     durationSec: 18,
@@ -364,13 +368,13 @@ export const smithingTasks: { [taskId: string]: Task } = {
     category: SmithingTaskCategories.IRON_SMITHING,
     applicableModifiers: smithingCommonModifiers,
   },
-  smithIronGauntlets: {
-    id: "smithIronGauntlets",
+  [SmithingCategoryTaskId.SMITH_IRON_GAUNTLETS]: {
+    id: SmithingCategoryTaskId.SMITH_IRON_GAUNTLETS,
     name: "Gauntlets",
     description: "Smith iron gauntlets.",
     icon: Hand,
     iconStyle: {
-      fill: mineralsTable.ironOre.iconStyle.fill,
+      fill: mineralsTable[MineralId.IRON_ORE].iconStyle.fill,
       ...TASK_AND_ITEM_ICON_STYLE,
     },
     durationSec: 12,
@@ -387,13 +391,13 @@ export const smithingTasks: { [taskId: string]: Task } = {
   },
 
   // Steel Tasks
-  smithSteelDagger: {
-    id: "smithSteelDagger",
+  [SmithingCategoryTaskId.SMITH_STEEL_DAGGER]: {
+    id: SmithingCategoryTaskId.SMITH_STEEL_DAGGER,
     name: "Dagger",
     description: "Smith a steel dagger.",
     icon: Slice,
     iconStyle: {
-      fill: barsTable.steelBar.iconStyle.fill,
+      fill: barsTable[BarId.STEEL_BAR].iconStyle.fill,
       ...TASK_AND_ITEM_ICON_STYLE,
     },
     durationSec: 14,
@@ -406,13 +410,13 @@ export const smithingTasks: { [taskId: string]: Task } = {
     category: SmithingTaskCategories.STEEL_SMITHING,
     applicableModifiers: smithingCommonModifiers,
   },
-  smithSteelSword: {
-    id: "smithSteelSword",
+  [SmithingCategoryTaskId.SMITH_STEEL_SWORD]: {
+    id: SmithingCategoryTaskId.SMITH_STEEL_SWORD,
     name: "Sword",
     description: "Smith a steel sword.",
     icon: Sword,
     iconStyle: {
-      fill: barsTable.steelBar.iconStyle.fill,
+      fill: barsTable[BarId.STEEL_BAR].iconStyle.fill,
       ...TASK_AND_ITEM_ICON_STYLE,
     },
     durationSec: 16,
@@ -425,13 +429,13 @@ export const smithingTasks: { [taskId: string]: Task } = {
     category: SmithingTaskCategories.STEEL_SMITHING,
     applicableModifiers: smithingCommonModifiers,
   },
-  smithSteelShield: {
-    id: "smithSteelShield",
+  [SmithingCategoryTaskId.SMITH_STEEL_SHIELD]: {
+    id: SmithingCategoryTaskId.SMITH_STEEL_SHIELD,
     name: "Shield",
     description: "Smith a steel shield.",
     icon: Shield,
     iconStyle: {
-      fill: barsTable.steelBar.iconStyle.fill,
+      fill: barsTable[BarId.STEEL_BAR].iconStyle.fill,
       ...TASK_AND_ITEM_ICON_STYLE,
     },
     durationSec: 16,
@@ -444,13 +448,13 @@ export const smithingTasks: { [taskId: string]: Task } = {
     category: SmithingTaskCategories.STEEL_SMITHING,
     applicableModifiers: smithingCommonModifiers,
   },
-  smithSteelGreatsword: {
-    id: "smithSteelGreatsword",
+  [SmithingCategoryTaskId.SMITH_STEEL_GREATSWORD]: {
+    id: SmithingCategoryTaskId.SMITH_STEEL_GREATSWORD,
     name: "Great Sword",
     description: "Smith a steel great sword.",
     icon: Sword,
     iconStyle: {
-      fill: barsTable.steelBar.iconStyle.fill,
+      fill: barsTable[BarId.STEEL_BAR].iconStyle.fill,
       ...TASK_AND_ITEM_ICON_STYLE,
     },
     durationSec: 22,
@@ -465,13 +469,13 @@ export const smithingTasks: { [taskId: string]: Task } = {
     category: SmithingTaskCategories.STEEL_SMITHING,
     applicableModifiers: smithingCommonModifiers,
   },
-  smithSteelHelmet: {
-    id: "smithSteelHelmet",
+  [SmithingCategoryTaskId.SMITH_STEEL_HELMET]: {
+    id: SmithingCategoryTaskId.SMITH_STEEL_HELMET,
     name: "Helmet",
     description: "Smith a steel helmet.",
     icon: HardHat,
     iconStyle: {
-      fill: barsTable.steelBar.iconStyle.fill,
+      fill: barsTable[BarId.STEEL_BAR].iconStyle.fill,
       ...TASK_AND_ITEM_ICON_STYLE,
     },
     durationSec: 14,
@@ -484,13 +488,13 @@ export const smithingTasks: { [taskId: string]: Task } = {
     category: SmithingTaskCategories.STEEL_SMITHING,
     applicableModifiers: smithingCommonModifiers,
   },
-  smithSteelChestplate: {
-    id: "smithSteelChestplate",
+  [SmithingCategoryTaskId.SMITH_STEEL_CHESTPLATE]: {
+    id: SmithingCategoryTaskId.SMITH_STEEL_CHESTPLATE,
     name: "Chestplate",
     description: "Smith a steel chestplate.",
     icon: Shirt,
     iconStyle: {
-      fill: barsTable.steelBar.iconStyle.fill,
+      fill: barsTable[BarId.STEEL_BAR].iconStyle.fill,
       ...TASK_AND_ITEM_ICON_STYLE,
     },
     durationSec: 20,
@@ -505,13 +509,13 @@ export const smithingTasks: { [taskId: string]: Task } = {
     category: SmithingTaskCategories.STEEL_SMITHING,
     applicableModifiers: smithingCommonModifiers,
   },
-  smithSteelBelt: {
-    id: "smithSteelBelt",
+  [SmithingCategoryTaskId.SMITH_STEEL_BELT]: {
+    id: SmithingCategoryTaskId.SMITH_STEEL_BELT,
     name: "Belt",
     description: "Smith a steel belt.",
     icon: Tangent,
     iconStyle: {
-      fill: barsTable.steelBar.iconStyle.fill,
+      fill: barsTable[BarId.STEEL_BAR].iconStyle.fill,
       ...TASK_AND_ITEM_ICON_STYLE,
     },
     durationSec: 14,
@@ -524,13 +528,13 @@ export const smithingTasks: { [taskId: string]: Task } = {
     category: SmithingTaskCategories.STEEL_SMITHING,
     applicableModifiers: smithingCommonModifiers,
   },
-  smithSteelPlateleggings: {
-    id: "smithSteelPlateleggings",
+  [SmithingCategoryTaskId.SMITH_STEEL_PLATELEGGINGS]: {
+    id: SmithingCategoryTaskId.SMITH_STEEL_PLATELEGGINGS,
     name: "Plate Leggings",
     description: "Smith steel plate leggings.",
     icon: ToyBrick,
     iconStyle: {
-      fill: barsTable.steelBar.iconStyle.fill,
+      fill: barsTable[BarId.STEEL_BAR].iconStyle.fill,
       ...TASK_AND_ITEM_ICON_STYLE,
     },
     durationSec: 20,
@@ -545,13 +549,13 @@ export const smithingTasks: { [taskId: string]: Task } = {
     category: SmithingTaskCategories.STEEL_SMITHING,
     applicableModifiers: smithingCommonModifiers,
   },
-  smithSteelGauntlets: {
-    id: "smithSteelGauntlets",
+  [SmithingCategoryTaskId.SMITH_STEEL_GAUNTLETS]: {
+    id: SmithingCategoryTaskId.SMITH_STEEL_GAUNTLETS,
     name: "Gauntlets",
     description: "Smith steel gauntlets.",
     icon: Hand,
     iconStyle: {
-      fill: barsTable.steelBar.iconStyle.fill,
+      fill: barsTable[BarId.STEEL_BAR].iconStyle.fill,
       ...TASK_AND_ITEM_ICON_STYLE,
     },
     durationSec: 14,
@@ -568,13 +572,13 @@ export const smithingTasks: { [taskId: string]: Task } = {
   },
 
   // Mithril Tasks
-  smithMithrilDagger: {
-    id: "smithMithrilDagger",
+  [SmithingCategoryTaskId.SMITH_MITHRIL_DAGGER]: {
+    id: SmithingCategoryTaskId.SMITH_MITHRIL_DAGGER,
     name: "Dagger",
     description: "Smith a mithril dagger.",
     icon: Slice,
     iconStyle: {
-      fill: mineralsTable.mithrilOre.iconStyle.fill,
+      fill: mineralsTable[MineralId.MITHRIL_ORE].iconStyle.fill,
       ...TASK_AND_ITEM_ICON_STYLE,
     },
     durationSec: 18,
@@ -587,13 +591,13 @@ export const smithingTasks: { [taskId: string]: Task } = {
     category: SmithingTaskCategories.MITHRIL_SMITHING,
     applicableModifiers: smithingCommonModifiers,
   },
-  smithMithrilSword: {
-    id: "smithMithrilSword",
+  [SmithingCategoryTaskId.SMITH_MITHRIL_SWORD]: {
+    id: SmithingCategoryTaskId.SMITH_MITHRIL_SWORD,
     name: "Sword",
     description: "Smith a mithril sword.",
     icon: Sword,
     iconStyle: {
-      fill: mineralsTable.mithrilOre.iconStyle.fill,
+      fill: mineralsTable[MineralId.MITHRIL_ORE].iconStyle.fill,
       ...TASK_AND_ITEM_ICON_STYLE,
     },
     durationSec: 20,
@@ -606,13 +610,13 @@ export const smithingTasks: { [taskId: string]: Task } = {
     category: SmithingTaskCategories.MITHRIL_SMITHING,
     applicableModifiers: smithingCommonModifiers,
   },
-  smithMithrilShield: {
-    id: "smithMithrilShield",
+  [SmithingCategoryTaskId.SMITH_MITHRIL_SHIELD]: {
+    id: SmithingCategoryTaskId.SMITH_MITHRIL_SHIELD,
     name: "Shield",
     description: "Smith a mithril shield.",
     icon: Shield,
     iconStyle: {
-      fill: mineralsTable.mithrilOre.iconStyle.fill,
+      fill: mineralsTable[MineralId.MITHRIL_ORE].iconStyle.fill,
       ...TASK_AND_ITEM_ICON_STYLE,
     },
     durationSec: 20,
@@ -625,13 +629,13 @@ export const smithingTasks: { [taskId: string]: Task } = {
     category: SmithingTaskCategories.MITHRIL_SMITHING,
     applicableModifiers: smithingCommonModifiers,
   },
-  smithMithrilGreatsword: {
-    id: "smithMithrilGreatsword",
+  [SmithingCategoryTaskId.SMITH_MITHRIL_GREATSWORD]: {
+    id: SmithingCategoryTaskId.SMITH_MITHRIL_GREATSWORD,
     name: "Great Sword",
     description: "Smith a mithril great sword.",
     icon: Sword,
     iconStyle: {
-      fill: mineralsTable.mithrilOre.iconStyle.fill,
+      fill: mineralsTable[MineralId.MITHRIL_ORE].iconStyle.fill,
       ...TASK_AND_ITEM_ICON_STYLE,
     },
     durationSec: 25,
@@ -646,13 +650,13 @@ export const smithingTasks: { [taskId: string]: Task } = {
     category: SmithingTaskCategories.MITHRIL_SMITHING,
     applicableModifiers: smithingCommonModifiers,
   },
-  smithMithrilHelmet: {
-    id: "smithMithrilHelmet",
+  [SmithingCategoryTaskId.SMITH_MITHRIL_HELMET]: {
+    id: SmithingCategoryTaskId.SMITH_MITHRIL_HELMET,
     name: "Helmet",
     description: "Smith a mithril helmet.",
     icon: HardHat,
     iconStyle: {
-      fill: mineralsTable.mithrilOre.iconStyle.fill,
+      fill: mineralsTable[MineralId.MITHRIL_ORE].iconStyle.fill,
       ...TASK_AND_ITEM_ICON_STYLE,
     },
     durationSec: 18,
@@ -665,13 +669,13 @@ export const smithingTasks: { [taskId: string]: Task } = {
     category: SmithingTaskCategories.MITHRIL_SMITHING,
     applicableModifiers: smithingCommonModifiers,
   },
-  smithMithrilChestplate: {
-    id: "smithMithrilChestplate",
+  [SmithingCategoryTaskId.SMITH_MITHRIL_CHESTPLATE]: {
+    id: SmithingCategoryTaskId.SMITH_MITHRIL_CHESTPLATE,
     name: "Chestplate",
     description: "Smith a mithril chestplate.",
     icon: Shirt,
     iconStyle: {
-      fill: mineralsTable.mithrilOre.iconStyle.fill,
+      fill: mineralsTable[MineralId.MITHRIL_ORE].iconStyle.fill,
       ...TASK_AND_ITEM_ICON_STYLE,
     },
     durationSec: 24,
@@ -686,13 +690,13 @@ export const smithingTasks: { [taskId: string]: Task } = {
     category: SmithingTaskCategories.MITHRIL_SMITHING,
     applicableModifiers: smithingCommonModifiers,
   },
-  smithMithrilBelt: {
-    id: "smithMithrilBelt",
+  [SmithingCategoryTaskId.SMITH_MITHRIL_BELT]: {
+    id: SmithingCategoryTaskId.SMITH_MITHRIL_BELT,
     name: "Belt",
     description: "Smith a mithril belt.",
     icon: Tangent,
     iconStyle: {
-      fill: mineralsTable.mithrilOre.iconStyle.fill,
+      fill: mineralsTable[MineralId.MITHRIL_ORE].iconStyle.fill,
       ...TASK_AND_ITEM_ICON_STYLE,
     },
     durationSec: 18,
@@ -705,13 +709,13 @@ export const smithingTasks: { [taskId: string]: Task } = {
     category: SmithingTaskCategories.MITHRIL_SMITHING,
     applicableModifiers: smithingCommonModifiers,
   },
-  smithMithrilPlateleggings: {
-    id: "smithMithrilPlateleggings",
+  [SmithingCategoryTaskId.SMITH_MITHRIL_PLATELEGGINGS]: {
+    id: SmithingCategoryTaskId.SMITH_MITHRIL_PLATELEGGINGS,
     name: "Plate Leggings",
     description: "Smith mithril plate leggings.",
     icon: ToyBrick,
     iconStyle: {
-      fill: mineralsTable.mithrilOre.iconStyle.fill,
+      fill: mineralsTable[MineralId.MITHRIL_ORE].iconStyle.fill,
       ...TASK_AND_ITEM_ICON_STYLE,
     },
     durationSec: 24,
@@ -726,13 +730,13 @@ export const smithingTasks: { [taskId: string]: Task } = {
     category: SmithingTaskCategories.MITHRIL_SMITHING,
     applicableModifiers: smithingCommonModifiers,
   },
-  smithMithrilGauntlets: {
-    id: "smithMithrilGauntlets",
+  [SmithingCategoryTaskId.SMITH_MITHRIL_GAUNTLETS]: {
+    id: SmithingCategoryTaskId.SMITH_MITHRIL_GAUNTLETS,
     name: "Gauntlets",
     description: "Smith mithril gauntlets.",
     icon: Hand,
     iconStyle: {
-      fill: mineralsTable.mithrilOre.iconStyle.fill,
+      fill: mineralsTable[MineralId.MITHRIL_ORE].iconStyle.fill,
       ...TASK_AND_ITEM_ICON_STYLE,
     },
     durationSec: 18,
@@ -749,13 +753,13 @@ export const smithingTasks: { [taskId: string]: Task } = {
   },
 
   // Adamant Tasks
-  smithAdamantDagger: {
-    id: "smithAdamantDagger",
+  [SmithingCategoryTaskId.SMITH_ADAMANT_DAGGER]: {
+    id: SmithingCategoryTaskId.SMITH_ADAMANT_DAGGER,
     name: "Dagger",
     description: "Smith an adamant dagger.",
     icon: Slice,
     iconStyle: {
-      fill: mineralsTable.adamantiteOre.iconStyle.fill,
+      fill: mineralsTable[MineralId.ADAMANTITE_ORE].iconStyle.fill,
       ...TASK_AND_ITEM_ICON_STYLE,
     },
     durationSec: 20,
@@ -768,13 +772,13 @@ export const smithingTasks: { [taskId: string]: Task } = {
     category: SmithingTaskCategories.ADAMANT_SMITHING,
     applicableModifiers: smithingCommonModifiers,
   },
-  smithAdamantSword: {
-    id: "smithAdamantSword",
+  [SmithingCategoryTaskId.SMITH_ADAMANT_SWORD]: {
+    id: SmithingCategoryTaskId.SMITH_ADAMANT_SWORD,
     name: "Sword",
     description: "Smith an adamant sword.",
     icon: Sword,
     iconStyle: {
-      fill: mineralsTable.adamantiteOre.iconStyle.fill,
+      fill: mineralsTable[MineralId.ADAMANTITE_ORE].iconStyle.fill,
       ...TASK_AND_ITEM_ICON_STYLE,
     },
     durationSec: 22,
@@ -787,13 +791,13 @@ export const smithingTasks: { [taskId: string]: Task } = {
     category: SmithingTaskCategories.ADAMANT_SMITHING,
     applicableModifiers: smithingCommonModifiers,
   },
-  smithAdamantShield: {
-    id: "smithAdamantShield",
+  [SmithingCategoryTaskId.SMITH_ADAMANT_SHIELD]: {
+    id: SmithingCategoryTaskId.SMITH_ADAMANT_SHIELD,
     name: "Shield",
     description: "Smith an adamant shield.",
     icon: Shield,
     iconStyle: {
-      fill: mineralsTable.adamantiteOre.iconStyle.fill,
+      fill: mineralsTable[MineralId.ADAMANTITE_ORE].iconStyle.fill,
       ...TASK_AND_ITEM_ICON_STYLE,
     },
     durationSec: 22,
@@ -806,13 +810,13 @@ export const smithingTasks: { [taskId: string]: Task } = {
     category: SmithingTaskCategories.ADAMANT_SMITHING,
     applicableModifiers: smithingCommonModifiers,
   },
-  smithAdamantGreatsword: {
-    id: "smithAdamantGreatsword",
+  [SmithingCategoryTaskId.SMITH_ADAMANT_GREATSWORD]: {
+    id: SmithingCategoryTaskId.SMITH_ADAMANT_GREATSWORD,
     name: "Great Sword",
     description: "Smith an adamant great sword.",
     icon: Sword,
     iconStyle: {
-      fill: mineralsTable.adamantiteOre.iconStyle.fill,
+      fill: mineralsTable[MineralId.ADAMANTITE_ORE].iconStyle.fill,
       ...TASK_AND_ITEM_ICON_STYLE,
     },
     durationSec: 28,
@@ -827,13 +831,13 @@ export const smithingTasks: { [taskId: string]: Task } = {
     category: SmithingTaskCategories.ADAMANT_SMITHING,
     applicableModifiers: smithingCommonModifiers,
   },
-  smithAdamantHelmet: {
-    id: "smithAdamantHelmet",
+  [SmithingCategoryTaskId.SMITH_ADAMANT_HELMET]: {
+    id: SmithingCategoryTaskId.SMITH_ADAMANT_HELMET,
     name: "Helmet",
     description: "Smith an adamant helmet.",
     icon: HardHat,
     iconStyle: {
-      fill: mineralsTable.adamantiteOre.iconStyle.fill,
+      fill: mineralsTable[MineralId.ADAMANTITE_ORE].iconStyle.fill,
       ...TASK_AND_ITEM_ICON_STYLE,
     },
     durationSec: 20,
@@ -846,13 +850,13 @@ export const smithingTasks: { [taskId: string]: Task } = {
     category: SmithingTaskCategories.ADAMANT_SMITHING,
     applicableModifiers: smithingCommonModifiers,
   },
-  smithAdamantChestplate: {
-    id: "smithAdamantChestplate",
+  [SmithingCategoryTaskId.SMITH_ADAMANT_CHESTPLATE]: {
+    id: SmithingCategoryTaskId.SMITH_ADAMANT_CHESTPLATE,
     name: "Chestplate",
     description: "Smith an adamant chestplate.",
     icon: Shirt,
     iconStyle: {
-      fill: mineralsTable.adamantiteOre.iconStyle.fill,
+      fill: mineralsTable[MineralId.ADAMANTITE_ORE].iconStyle.fill,
       ...TASK_AND_ITEM_ICON_STYLE,
     },
     durationSec: 28,
@@ -867,13 +871,13 @@ export const smithingTasks: { [taskId: string]: Task } = {
     category: SmithingTaskCategories.ADAMANT_SMITHING,
     applicableModifiers: smithingCommonModifiers,
   },
-  smithAdamantBelt: {
-    id: "smithAdamantBelt",
+  [SmithingCategoryTaskId.SMITH_ADAMANT_BELT]: {
+    id: SmithingCategoryTaskId.SMITH_ADAMANT_BELT,
     name: "Belt",
     description: "Smith an adamant belt.",
     icon: Tangent,
     iconStyle: {
-      fill: mineralsTable.adamantiteOre.iconStyle.fill,
+      fill: mineralsTable[MineralId.ADAMANTITE_ORE].iconStyle.fill,
       ...TASK_AND_ITEM_ICON_STYLE,
     },
     durationSec: 20,
@@ -886,13 +890,13 @@ export const smithingTasks: { [taskId: string]: Task } = {
     category: SmithingTaskCategories.ADAMANT_SMITHING,
     applicableModifiers: smithingCommonModifiers,
   },
-  smithAdamantPlateleggings: {
-    id: "smithAdamantPlateleggings",
+  [SmithingCategoryTaskId.SMITH_ADAMANT_PLATELEGGINGS]: {
+    id: SmithingCategoryTaskId.SMITH_ADAMANT_PLATELEGGINGS,
     name: "Plate Leggings",
     description: "Smith adamant plate leggings.",
     icon: ToyBrick,
     iconStyle: {
-      fill: mineralsTable.adamantiteOre.iconStyle.fill,
+      fill: mineralsTable[MineralId.ADAMANTITE_ORE].iconStyle.fill,
       ...TASK_AND_ITEM_ICON_STYLE,
     },
     durationSec: 28,
@@ -907,13 +911,13 @@ export const smithingTasks: { [taskId: string]: Task } = {
     category: SmithingTaskCategories.ADAMANT_SMITHING,
     applicableModifiers: smithingCommonModifiers,
   },
-  smithAdamantGauntlets: {
-    id: "smithAdamantGauntlets",
+  [SmithingCategoryTaskId.SMITH_ADAMANT_GAUNTLETS]: {
+    id: SmithingCategoryTaskId.SMITH_ADAMANT_GAUNTLETS,
     name: "Gauntlets",
     description: "Smith adamant gauntlets.",
     icon: Hand,
     iconStyle: {
-      fill: mineralsTable.adamantiteOre.iconStyle.fill,
+      fill: mineralsTable[MineralId.ADAMANTITE_ORE].iconStyle.fill,
       ...TASK_AND_ITEM_ICON_STYLE,
     },
     durationSec: 20,
