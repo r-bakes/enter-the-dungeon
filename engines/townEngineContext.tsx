@@ -52,7 +52,7 @@ export default function CampEngineProvider({
   }, [workingTask]);
 
   const useInterval = (callback: () => void, delay: number) => {
-    const savedCallback = React.useRef();
+    const savedCallback = React.useRef<() => void>();
 
     // Remember the latest callback.
     React.useEffect(() => {
@@ -62,7 +62,7 @@ export default function CampEngineProvider({
     // Set up the interval.
     React.useEffect(() => {
       function tick() {
-        savedCallback.current();
+        savedCallback.current?.();
       }
       if (delay !== null) {
         let id = setInterval(tick, delay);
@@ -79,11 +79,13 @@ export default function CampEngineProvider({
         workingTask.id,
       )[SkillModifierType.SPEED];
 
-      if (
-        taskProgress + TICK_RATE_MS / 1000 >=
-        applySpeedModifier(workingTask.durationSec, speedModifer)
-      ) {
-        setTaskProgress(0);
+      let currentProgress = taskProgress + TICK_RATE_MS / 1000;
+      let taskDuration = applySpeedModifier(
+        workingTask.durationSec,
+        speedModifer,
+      );
+      if (currentProgress >= taskDuration) {
+        setTaskProgress(currentProgress - taskDuration);
         updateCharacterTaskComplete(character, workingSkill, workingTask);
         canContinueTask(character.inventory, workingTask);
       } else {

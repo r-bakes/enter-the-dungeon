@@ -31,7 +31,7 @@ import {
 } from "@/utils/modifierUtilities";
 
 const rootCardFormat =
-  "flex flex-col h-full grow-0 w-72 min-w-72 max-w-72 items-center overflow-y-scroll";
+  "flex flex-col h-full grow-0 w-80 min-w-80 max-w-80 items-center overflow-y-scroll";
 
 export default function TaskInfo({
   skill,
