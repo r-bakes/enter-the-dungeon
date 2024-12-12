@@ -2,9 +2,9 @@ import { Sheet, SheetContent, SheetFooter } from "@/components/ui/sheet";
 import { ItemType } from "@/data/items/enums";
 import { itemTable } from "@/data/items/items";
 import { useCharacterEngineContext } from "@/engines/characterEngineContext";
-import TableEntryDialogEquipment from "@/features/town/inventoryMenu/tableEntryDialogEquipment";
-import TableEntryDialogHeader from "@/features/town/inventoryMenu/tableEntryDialogHeader";
-import TableEntryDialogSellEntry from "@/features/town/inventoryMenu/tableEntryDialogSellEntry";
+import TableEntryDialogEquipment from "@/features/town/inventoryMenu/components/tableEntryDialog/tableEntryDialogEquipment";
+import TableEntryDialogHeader from "@/features/town/inventoryMenu/components/tableEntryDialog/tableEntryDialogHeader";
+import TableEntryDialogSellEntry from "@/features/town/inventoryMenu/components/tableEntryDialog/tableEntryDialogSellEntry";
 import { Equipment } from "@/types/items";
 import React from "react";
 

@@ -1,29 +1,30 @@
-import { Circle, Gem, Mountain, SearchSlash } from "lucide-react";
+// src/data/tasks/miningTasks.ts
 
-import {
-  SKILL_AND_MENU_ICON_STYLE,
-  TASK_AND_ITEM_ICON_STYLE,
-} from "@/configurations/configurations";
+import { Circle, Mountain } from "lucide-react";
+
+import { TASK_AND_ITEM_ICON_STYLE } from "@/configurations/configurations";
 import { Task } from "@/types/skills";
 import { SkillModifierType } from "@/data/modifiers/enums";
 import { mineralsTable } from "@/data/items/minerals";
 import { ProspectingTaskCategories } from "@/data/skills/enums";
+import { MineralId } from "@/data/items/enums";
+import { MiningCategoryTaskId } from "./enum";
 
-const prospectingCommonModifiers = new Set([
+const prospectingCommonModifiers = new Set<SkillModifierType>([
   SkillModifierType.SPEED,
   SkillModifierType.EXPERIENCE,
   SkillModifierType.DOUBLE_CHANCE,
   SkillModifierType.PRODUCTION_MULTIPLIER,
 ]);
 
-export const miningTasks: { [taskId: string]: Task } = {
-  mineCopperOre: {
-    id: "mineCopperOre",
+export const miningTasks: { [id in MiningCategoryTaskId]: Task } = {
+  [MiningCategoryTaskId.MINE_COPPER_ORE]: {
+    id: MiningCategoryTaskId.MINE_COPPER_ORE,
     name: "Mine Copper",
     description: "Mine copper ore.",
     icon: Mountain,
     iconStyle: {
-      fill: mineralsTable.copperOre.iconStyle.fill,
+      fill: mineralsTable[MineralId.COPPER_ORE].iconStyle.fill,
       ...TASK_AND_ITEM_ICON_STYLE,
     },
     durationSec: 3,
@@ -40,13 +41,13 @@ export const miningTasks: { [taskId: string]: Task } = {
     category: ProspectingTaskCategories.MINE,
     applicableModifiers: prospectingCommonModifiers,
   },
-  mineTinOre: {
-    id: "mineTinOre",
+  [MiningCategoryTaskId.MINE_TIN_ORE]: {
+    id: MiningCategoryTaskId.MINE_TIN_ORE,
     name: "Mine Tin",
     description: "Mine tin ore.",
     icon: Mountain,
     iconStyle: {
-      fill: mineralsTable.tinOre.iconStyle.fill,
+      fill: mineralsTable[MineralId.TIN_ORE].iconStyle.fill,
       ...TASK_AND_ITEM_ICON_STYLE,
     },
     durationSec: 3,
@@ -63,13 +64,13 @@ export const miningTasks: { [taskId: string]: Task } = {
     category: ProspectingTaskCategories.MINE,
     applicableModifiers: prospectingCommonModifiers,
   },
-  mineCoal: {
-    id: "mineCoal",
+  [MiningCategoryTaskId.MINE_COAL]: {
+    id: MiningCategoryTaskId.MINE_COAL,
     name: "Mine Coal",
     description: "Mine coal.",
     icon: Circle,
     iconStyle: {
-      fill: mineralsTable.coal.iconStyle.fill,
+      fill: mineralsTable[MineralId.COAL].iconStyle.fill,
       ...TASK_AND_ITEM_ICON_STYLE,
     },
     durationSec: 3,
@@ -82,13 +83,13 @@ export const miningTasks: { [taskId: string]: Task } = {
     category: ProspectingTaskCategories.MINE,
     applicableModifiers: prospectingCommonModifiers,
   },
-  mineIronOre: {
-    id: "mineIronOre",
+  [MiningCategoryTaskId.MINE_IRON_ORE]: {
+    id: MiningCategoryTaskId.MINE_IRON_ORE,
     name: "Mine Iron",
     description: "Mine iron ore.",
     icon: Mountain,
     iconStyle: {
-      fill: mineralsTable.ironOre.iconStyle.fill,
+      fill: mineralsTable[MineralId.IRON_ORE].iconStyle.fill,
       ...TASK_AND_ITEM_ICON_STYLE,
     },
     durationSec: 3,
@@ -105,13 +106,13 @@ export const miningTasks: { [taskId: string]: Task } = {
     category: ProspectingTaskCategories.MINE,
     applicableModifiers: prospectingCommonModifiers,
   },
-  mineSilverOre: {
-    id: "mineSilverOre",
+  [MiningCategoryTaskId.MINE_SILVER_ORE]: {
+    id: MiningCategoryTaskId.MINE_SILVER_ORE,
     name: "Mine Silver",
     description: "Mine silver ore.",
     icon: Mountain,
     iconStyle: {
-      fill: mineralsTable.silverOre.iconStyle.fill,
+      fill: mineralsTable[MineralId.SILVER_ORE].iconStyle.fill,
       ...TASK_AND_ITEM_ICON_STYLE,
     },
     durationSec: 3,
@@ -128,13 +129,13 @@ export const miningTasks: { [taskId: string]: Task } = {
     category: ProspectingTaskCategories.MINE,
     applicableModifiers: prospectingCommonModifiers,
   },
-  mineGoldOre: {
-    id: "mineGoldOre",
+  [MiningCategoryTaskId.MINE_GOLD_ORE]: {
+    id: MiningCategoryTaskId.MINE_GOLD_ORE,
     name: "Mine Gold",
     description: "Mine gold ore.",
     icon: Mountain,
     iconStyle: {
-      fill: mineralsTable.goldOre.iconStyle.fill,
+      fill: mineralsTable[MineralId.GOLD_ORE].iconStyle.fill,
       ...TASK_AND_ITEM_ICON_STYLE,
     },
     durationSec: 3,
@@ -151,13 +152,13 @@ export const miningTasks: { [taskId: string]: Task } = {
     category: ProspectingTaskCategories.MINE,
     applicableModifiers: prospectingCommonModifiers,
   },
-  mineMithrilOre: {
-    id: "mineMithrilOre",
+  [MiningCategoryTaskId.MINE_MITHRIL_ORE]: {
+    id: MiningCategoryTaskId.MINE_MITHRIL_ORE,
     name: "Mine Mithril",
     description: "Mine mithril ore.",
     icon: Mountain,
     iconStyle: {
-      fill: mineralsTable.mithrilOre.iconStyle.fill,
+      fill: mineralsTable[MineralId.MITHRIL_ORE].iconStyle.fill,
       ...TASK_AND_ITEM_ICON_STYLE,
     },
     durationSec: 3,
@@ -174,13 +175,13 @@ export const miningTasks: { [taskId: string]: Task } = {
     category: ProspectingTaskCategories.MINE,
     applicableModifiers: prospectingCommonModifiers,
   },
-  minePlatinumOre: {
-    id: "minePlatinumOre",
+  [MiningCategoryTaskId.MINE_PLATINUM_ORE]: {
+    id: MiningCategoryTaskId.MINE_PLATINUM_ORE,
     name: "Mine Platinum",
     description: "Mine platinum ore.",
     icon: Mountain,
     iconStyle: {
-      fill: mineralsTable.mithrilOre.iconStyle.fill,
+      fill: mineralsTable[MineralId.PLATINUM_ORE].iconStyle.fill,
       ...TASK_AND_ITEM_ICON_STYLE,
     },
     durationSec: 3,
@@ -197,20 +198,20 @@ export const miningTasks: { [taskId: string]: Task } = {
     category: ProspectingTaskCategories.MINE,
     applicableModifiers: prospectingCommonModifiers,
   },
-  mineAdamantiteOre: {
-    id: "mineAdamantiteOre",
+  [MiningCategoryTaskId.MINE_ADAMANTITE_ORE]: {
+    id: MiningCategoryTaskId.MINE_ADAMANTITE_ORE,
     name: "Mine Adamantite",
     description: "Mine adamantite ore.",
     icon: Mountain,
     iconStyle: {
-      fill: mineralsTable.adamantiteOre.iconStyle.fill,
+      fill: mineralsTable[MineralId.ADAMANTITE_ORE].iconStyle.fill,
       ...TASK_AND_ITEM_ICON_STYLE,
     },
     durationSec: 3,
     experience: 20,
     requiredLevel: 50,
     lootTable: {
-      ore: { platinumOre: { weight: 1, minQuantity: 1, maxQuantity: 1 } },
+      ore: { adamantiteOre: { weight: 1, minQuantity: 1, maxQuantity: 1 } }, // Corrected from platinumOre to adamantiteOre
       geode: {
         _: { weight: 95, minQuantity: 0, maxQuantity: 0 },
         geode: { weight: 5, minQuantity: 1, maxQuantity: 1 },

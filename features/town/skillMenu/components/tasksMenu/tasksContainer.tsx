@@ -1,6 +1,6 @@
 import { ScrollArea, ScrollBar } from "@/components/ui/scroll-area";
-import LockedTaskButton from "@/features/town/skillMenu/tasksMenu/lockedTaskButton";
-import TaskButton from "@/features/town/skillMenu/tasksMenu/taskButton";
+import LockedTaskButton from "@/features/town/skillMenu/components/tasksMenu/lockedTaskButton";
+import TaskButton from "@/features/town/skillMenu/components/tasksMenu/taskButton";
 import { Skill, Task } from "@/types/skills";
 
 export default function TasksContainer({

@@ -7,6 +7,7 @@ import {
 import { Task } from "@/types/skills";
 import { SkillModifierType } from "@/data/modifiers/enums";
 import { ProspectingTaskCategories } from "@/data/skills/enums";
+import { MiningCraftingTaskId } from "./enum";
 
 const prospectingCommonModifiers = new Set([
   SkillModifierType.SPEED,
@@ -15,9 +16,9 @@ const prospectingCommonModifiers = new Set([
   SkillModifierType.PRODUCTION_MULTIPLIER,
 ]);
 
-export const craftingTasks: { [taskId: string]: Task } = {
-  cutGeode: {
-    id: "cutGeode",
+export const craftingTasks: { [id in MiningCraftingTaskId]: Task } = {
+  [MiningCraftingTaskId.CUT_GEODE]: {
+    id: MiningCraftingTaskId.CUT_GEODE,
     name: "Cut Geode",
     description: "Cut a geode into a gem.",
     icon: Gem,

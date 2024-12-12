@@ -21,9 +21,9 @@ import { generateDropRates } from "@/utils/lootUtilities";
 import { Item } from "@/types/items";
 import { renderIcon } from "@/utils/formattingUtilities";
 import { SkillModifierType } from "@/data/modifiers/enums";
-import TaskProducesEntry from "@/features/town/skillMenu/taskInfo/taskProducesEntry";
-import { TaskRequiresEntry } from "@/features/town/skillMenu/taskInfo/taskRequiresEntry";
-import TaskModifiers from "@/features/town/skillMenu/taskInfo/taskModifiers";
+import TaskProducesEntry from "@/features/town/skillMenu/components/taskInfo/taskProducesEntry";
+import { TaskRequiresEntry } from "@/features/town/skillMenu/components/taskInfo/taskRequiresEntry";
+import TaskModifiers from "@/features/town/skillMenu/components/taskInfo/taskModifiers";
 import {
   applyExperienceModifier,
   applySpeedModifier,

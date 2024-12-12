@@ -1,8 +1,8 @@
 import { GameObject } from "@/types/gameObjects";
 import { Label } from "@radix-ui/react-label";
 import { ThemeToggle } from "@/components/themeToggle/themeToggle";
-import Logo from "@/features/town/menuSelect/logo";
-import MenuContainer from "@/features/town/menuSelect/menuContainer";
+import Logo from "@/features/town/menuSelect/components/logo";
+import MenuContainer from "@/features/town/menuSelect/components/menuContainer";
 import { Separator } from "@/components/ui/separator";
 import { Exit } from "@/components/exit/exit";
 import { SettingsButton } from "@/components/settingsButton/settingsButton";

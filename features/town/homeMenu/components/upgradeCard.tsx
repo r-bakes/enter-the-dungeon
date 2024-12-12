@@ -5,7 +5,7 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import { skillTable } from "@/data/skills/skills";
-import { SkillImpactedPopup } from "@/features/town/components/skillImpactedPopup";
+import { SkillImpactedPopup } from "@/features/town/common/components/skillImpactedPopup";
 import { Upgrade } from "@/types/upgrades";
 import { formatCapitalCase, renderIcon } from "@/utils/formattingUtilities";
 import { formatModifiers } from "@/utils/modifierUtilities";

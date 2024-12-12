@@ -2,16 +2,17 @@ import { Shield, Sword, Swords } from "lucide-react";
 import { CombatCard, CombatCardTemplate } from "@/types/combatCards";
 import { TASK_AND_ITEM_ICON_STYLE } from "@/configurations/configurations";
 import { barsTable } from "@/data/items/bars";
-import { Target } from "@/data/combatCards/enums";
+import { CombatCardId, Target } from "@/data/combatCards/enums";
+import { BarId } from "../items/enums";
 
-export const combatCardTable: { [cardId: string]: CombatCardTemplate } = {
-  slice: {
-    id: "slice",
+export const combatCardTable: { [id in CombatCardId]: CombatCardTemplate } = {
+  [CombatCardId.SLICE]: {
+    id: CombatCardId.SLICE,
     name: "Slice",
     target: Target.ENEMIES,
     icon: Sword,
     iconStyle: {
-      fill: barsTable.ironBar.iconStyle.fill,
+      fill: barsTable[BarId.STEEL_BAR].iconStyle.fill,
       ...TASK_AND_ITEM_ICON_STYLE,
     },
     description: "They won't see it coming.",
@@ -20,13 +21,13 @@ export const combatCardTable: { [cardId: string]: CombatCardTemplate } = {
     modifier: 1,
     cost: 1,
   },
-  stab: {
-    id: "stab",
+  [CombatCardId.STAB]: {
+    id: CombatCardId.STAB,
     name: "Stab",
     target: Target.ENEMIES,
     icon: Swords,
     iconStyle: {
-      fill: barsTable.ironBar.iconStyle.fill,
+      fill: barsTable[BarId.STEEL_BAR].iconStyle.fill,
       ...TASK_AND_ITEM_ICON_STYLE,
     },
     description: "They won't see it coming.",
@@ -35,13 +36,13 @@ export const combatCardTable: { [cardId: string]: CombatCardTemplate } = {
     modifier: 0.5,
     cost: 1,
   },
-  defend: {
-    id: "defend",
+  [CombatCardId.DEFEND]: {
+    id: CombatCardId.DEFEND,
     name: "Defend",
     target: Target.ALLIES,
     icon: Shield,
     iconStyle: {
-      fill: barsTable.ironBar.iconStyle.fill,
+      fill: barsTable[BarId.STEEL_BAR].iconStyle.fill,
       ...TASK_AND_ITEM_ICON_STYLE,
     },
     description: "They won't see it coming.",
@@ -53,7 +54,7 @@ export const combatCardTable: { [cardId: string]: CombatCardTemplate } = {
 };
 
 export const createCombatCard = (
-  cardId: string,
+  cardId: CombatCardId,
   deckId: number,
 ): CombatCard => {
   return {

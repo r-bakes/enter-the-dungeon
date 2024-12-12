@@ -2,9 +2,10 @@
 
 import { useCharacterEngineContext } from "@/engines/characterEngineContext";
 import { useTownEngineContext } from "@/engines/townEngineContext";
-import { SkillHeader } from "../skillMenu/skillHeader/skillHeader";
+import { SkillHeader } from "../../skillMenu/components/skillHeader/skillHeader";
 import { agriculture } from "@/data/skills/agriculture";
-import PlotsMenu from "./plotsMenu/plotsMenu";
+import VerticalAccent from "../../common/components/verticalAccent";
+import TasksMenu from "./tasksMenu";
 
 export default function AgricultureMenu({}) {
   const { character } = useCharacterEngineContext();
@@ -18,7 +19,8 @@ export default function AgricultureMenu({}) {
         skillExperience={character.skills[agriculture.id].experience}
       ></SkillHeader>
       <div className="flex h-[calc(100%-184px)] w-full gap-6">
-        <PlotsMenu></PlotsMenu>
+        <TasksMenu></TasksMenu>
+        <VerticalAccent></VerticalAccent>
       </div>
     </div>
   );

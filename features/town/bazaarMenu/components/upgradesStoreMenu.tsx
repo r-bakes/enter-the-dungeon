@@ -10,7 +10,7 @@ import {
   formatLargeQuantity,
   renderIcon,
 } from "@/utils/formattingUtilities";
-import { SkillImpactedPopup } from "../components/skillImpactedPopup";
+import { SkillImpactedPopup } from "../../common/components/skillImpactedPopup";
 import { Backpack } from "lucide-react";
 import { Label } from "@/components/ui/label";
 import { Upgrade } from "@/types/upgrades";

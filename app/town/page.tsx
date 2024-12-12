@@ -1,29 +1,30 @@
 "use client";
-import SkillMenu from "@/features/town/skillMenu/skillMenu";
+import SkillMenu from "@/features/town/skillMenu/components/skillMenu";
 import { inventory } from "@/data/menus/inventory";
 import { martial } from "@/data/skills/martial";
 import TownEngineProvider from "@/engines/townEngineContext";
 import React from "react";
 import { prospecting } from "@/data/skills/prospecting";
 import { smithing } from "@/data/skills/smithing";
-import DeckMenu from "@/features/town/deckMenu/deckMenu";
+import DeckMenu from "@/features/town/deckMenu/components/deckMenu";
 import { magic } from "@/data/skills/magic";
 import { expeditions } from "@/data/menus/expeditions";
-import ExpeditionsMenu from "@/features/town/expeditionsMenu/expeditionsMenu";
+import ExpeditionsMenu from "@/features/town/expeditionsMenu/components/expeditionsMenu";
 import CharacterEngineProvider from "@/engines/characterEngineContext";
 import { crafting } from "@/data/skills/crafting";
 import { enchanting } from "@/data/skills/enchanting";
 import { home } from "@/data/menus/home";
-import HomeMenu from "@/features/town/homeMenu/homeMenu";
+import HomeMenu from "@/features/town/homeMenu/components/homeMenu";
 import { athletics } from "@/data/skills/athletics";
 import { stealth } from "@/data/skills/stealth";
 import { alchemy } from "@/data/skills/alchemy";
 import { agriculture } from "@/data/skills/agriculture";
 import { bazaar } from "@/data/menus/bazaar";
-import BazaarMenu from "@/features/town/bazaarMenu/bazaarMenu";
-import MenuSelect from "@/features/town/menuSelect/menuSelect";
-import InventoryMenu from "@/features/town/inventoryMenu/inventoryMenu";
+import BazaarMenu from "@/features/town/bazaarMenu/components/bazaarMenu";
+import MenuSelect from "@/features/town/menuSelect/components/menuSelect";
+import InventoryMenu from "@/features/town/inventoryMenu/components/inventoryMenu";
 import { GameObject } from "@/types/gameObjects";
+import AgricultureMenu from "@/features/town/agricultureMenu/components/agricultureMenu";
 
 export default function Page({}) {
   const [selectedMenu, setSelectedMenu] = React.useState<GameObject>(home);
@@ -47,7 +48,7 @@ export default function Page({}) {
     },
     [agriculture.id]: {
       data: agriculture,
-      menu: <SkillMenu key={agriculture.id} skill={agriculture}></SkillMenu>,
+      menu: <AgricultureMenu></AgricultureMenu>,
     },
     [alchemy.id]: {
       data: alchemy,

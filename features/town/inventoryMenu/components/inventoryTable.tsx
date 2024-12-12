@@ -37,7 +37,7 @@ import {
 } from "@/components/ui/select";
 import { ChevronDown, ChevronUp } from "lucide-react";
 import { Input } from "@/components/ui/input";
-import TableEntryDialog from "@/features/town/inventoryMenu/tableEntryDialog";
+import TableEntryDialog from "@/features/town/inventoryMenu/components/tableEntryDialog/tableEntryDialog";
 
 type TableData = {
   quantity: number;

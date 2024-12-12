@@ -1,7 +1,7 @@
 import { Slot } from "@/data/character/character";
 import { Card } from "@/components/ui/card";
-import EquipmentSlot from "@/features/town/inventoryMenu/equipmentSlot";
-import EquipmentAttributes from "@/features/town/inventoryMenu/equipmentAttributes";
+import EquipmentSlot from "@/features/town/inventoryMenu/components/equipmentSlot";
+import EquipmentAttributes from "@/features/town/inventoryMenu/components/equipmentAttributes";
 
 export default function EquipmentSlots() {
   return (

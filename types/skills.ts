@@ -1,8 +1,9 @@
 import { LootTable } from "./loot";
 import { GameObject } from "./gameObjects";
 import { SkillModifierType } from "@/data/modifiers/enums";
+import { TaskId } from "./tasks";
 
-export type Tasks = { [taskId: string]: Task };
+export type Tasks = { [id in TaskId]: Task };
 export type Task = {
   durationSec: number;
   experience: number;

@@ -1,41 +1,29 @@
-import {
-  Anvil,
-  Hand,
-  HardHat,
-  RectangleVertical,
-  Shield,
-  Shirt,
-  Slice,
-  Sword,
-  Tangent,
-  ToyBrick,
-} from "lucide-react";
+import { RectangleVertical } from "lucide-react";
 
-import { Skill, Task } from "@/types/skills";
-import {
-  SKILL_AND_MENU_ICON_STYLE,
-  TASK_AND_ITEM_ICON_STYLE,
-} from "@/configurations/configurations";
+import { Task } from "@/types/skills";
+import { TASK_AND_ITEM_ICON_STYLE } from "@/configurations/configurations";
 import { SkillModifierType } from "@/data/modifiers/enums";
 import { mineralsTable } from "@/data/items/minerals";
-import { SmithingTaskCategories } from "@/data/skills/enums";
 import { barsTable } from "@/data/items/bars";
+import { SmithingTaskCategories } from "@/data/skills/enums";
+import { SmeltingCategoryTaskId } from "./enum";
+import { BarId, MineralId } from "@/data/items/enums";
 
-const smithingCommonModifiers = new Set([
+const smithingCommonModifiers = new Set<SkillModifierType>([
   SkillModifierType.SPEED,
   SkillModifierType.EXPERIENCE,
   SkillModifierType.DOUBLE_CHANCE,
   SkillModifierType.PRODUCTION_MULTIPLIER,
 ]);
 
-export const smeltingTasks: { [taskId: string]: Task } = {
-  smeltBronzeBar: {
-    id: "smeltBronzeBar",
+export const smeltingTasks: { [id in SmeltingCategoryTaskId]: Task } = {
+  [SmeltingCategoryTaskId.SMELT_BRONZE_BAR]: {
+    id: SmeltingCategoryTaskId.SMELT_BRONZE_BAR,
     name: "Bronze Bar",
     description: "Smelt a bronze bar.",
     icon: RectangleVertical,
     iconStyle: {
-      fill: mineralsTable.copperOre.iconStyle.fill,
+      fill: mineralsTable[MineralId.COPPER_ORE].iconStyle.fill,
       ...TASK_AND_ITEM_ICON_STYLE,
     },
     durationSec: 3,
@@ -48,15 +36,15 @@ export const smeltingTasks: { [taskId: string]: Task } = {
     category: SmithingTaskCategories.SMELTING,
     applicableModifiers: smithingCommonModifiers,
   },
-  smeltIronBar: {
-    id: "smeltIronBar",
+  [SmeltingCategoryTaskId.SMELT_IRON_BAR]: {
+    id: SmeltingCategoryTaskId.SMELT_IRON_BAR,
     name: "Iron Bar",
-    description: "Smelt a iron bar.",
+    description: "Smelt an iron bar.",
+    icon: RectangleVertical,
     iconStyle: {
-      fill: mineralsTable.ironOre.iconStyle.fill,
+      fill: mineralsTable[MineralId.IRON_ORE].iconStyle.fill,
       ...TASK_AND_ITEM_ICON_STYLE,
     },
-    icon: RectangleVertical,
     durationSec: 3,
     experience: 10,
     requiredLevel: 10,
@@ -67,13 +55,13 @@ export const smeltingTasks: { [taskId: string]: Task } = {
     category: SmithingTaskCategories.SMELTING,
     applicableModifiers: smithingCommonModifiers,
   },
-  smeltSteelBar: {
-    id: "smeltSteelBar",
+  [SmeltingCategoryTaskId.SMELT_STEEL_BAR]: {
+    id: SmeltingCategoryTaskId.SMELT_STEEL_BAR,
     name: "Steel Bar",
     description: "Smelt a steel bar.",
     icon: RectangleVertical,
     iconStyle: {
-      fill: barsTable.steelBar.iconStyle.fill,
+      fill: barsTable[BarId.STEEL_BAR].iconStyle.fill,
       ...TASK_AND_ITEM_ICON_STYLE,
     },
     durationSec: 3,
@@ -86,13 +74,13 @@ export const smeltingTasks: { [taskId: string]: Task } = {
     category: SmithingTaskCategories.SMELTING,
     applicableModifiers: smithingCommonModifiers,
   },
-  smeltSilverBar: {
-    id: "smeltSilverBar",
+  [SmeltingCategoryTaskId.SMELT_SILVER_BAR]: {
+    id: SmeltingCategoryTaskId.SMELT_SILVER_BAR,
     name: "Silver Bar",
     description: "Smelt a silver bar.",
     icon: RectangleVertical,
     iconStyle: {
-      fill: mineralsTable.silverOre.iconStyle.fill,
+      fill: mineralsTable[MineralId.SILVER_ORE].iconStyle.fill,
       ...TASK_AND_ITEM_ICON_STYLE,
     },
     durationSec: 3,
@@ -105,13 +93,13 @@ export const smeltingTasks: { [taskId: string]: Task } = {
     category: SmithingTaskCategories.SMELTING,
     applicableModifiers: smithingCommonModifiers,
   },
-  smeltGoldBar: {
-    id: "smeltGoldBar",
+  [SmeltingCategoryTaskId.SMELT_GOLD_BAR]: {
+    id: SmeltingCategoryTaskId.SMELT_GOLD_BAR,
     name: "Gold Bar",
     description: "Smelt a gold bar.",
     icon: RectangleVertical,
     iconStyle: {
-      fill: mineralsTable.goldOre.iconStyle.fill,
+      fill: mineralsTable[MineralId.GOLD_ORE].iconStyle.fill,
       ...TASK_AND_ITEM_ICON_STYLE,
     },
     durationSec: 3,
@@ -124,13 +112,13 @@ export const smeltingTasks: { [taskId: string]: Task } = {
     category: SmithingTaskCategories.SMELTING,
     applicableModifiers: smithingCommonModifiers,
   },
-  smeltMithrilBar: {
-    id: "smeltMithrilBar",
+  [SmeltingCategoryTaskId.SMELT_MITHRIL_BAR]: {
+    id: SmeltingCategoryTaskId.SMELT_MITHRIL_BAR,
     name: "Mithril Bar",
     description: "Smelt a mithril bar.",
     icon: RectangleVertical,
     iconStyle: {
-      fill: mineralsTable.mithrilOre.iconStyle.fill,
+      fill: mineralsTable[MineralId.MITHRIL_ORE].iconStyle.fill,
       ...TASK_AND_ITEM_ICON_STYLE,
     },
     durationSec: 3,
@@ -143,13 +131,13 @@ export const smeltingTasks: { [taskId: string]: Task } = {
     category: SmithingTaskCategories.SMELTING,
     applicableModifiers: smithingCommonModifiers,
   },
-  smeltPlatinumBar: {
-    id: "smeltPlatinumBar",
+  [SmeltingCategoryTaskId.SMELT_PLATINUM_BAR]: {
+    id: SmeltingCategoryTaskId.SMELT_PLATINUM_BAR,
     name: "Platinum Bar",
     description: "Smelt a platinum bar.",
     icon: RectangleVertical,
     iconStyle: {
-      fill: mineralsTable.platinumOre.iconStyle.fill,
+      fill: mineralsTable[MineralId.PLATINUM_ORE].iconStyle.fill,
       ...TASK_AND_ITEM_ICON_STYLE,
     },
     durationSec: 3,
@@ -162,13 +150,13 @@ export const smeltingTasks: { [taskId: string]: Task } = {
     category: SmithingTaskCategories.SMELTING,
     applicableModifiers: smithingCommonModifiers,
   },
-  smeltAdamantBar: {
-    id: "smeltAdamantBar",
+  [SmeltingCategoryTaskId.SMELT_ADAMANT_BAR]: {
+    id: SmeltingCategoryTaskId.SMELT_ADAMANT_BAR,
     name: "Adamant Bar",
     description: "Smelt an adamant bar.",
     icon: RectangleVertical,
     iconStyle: {
-      fill: mineralsTable.adamantiteOre.iconStyle.fill,
+      fill: mineralsTable[MineralId.ADAMANTITE_ORE].iconStyle.fill,
       ...TASK_AND_ITEM_ICON_STYLE,
     },
     durationSec: 3,

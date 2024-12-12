@@ -3,7 +3,7 @@ import { useCharacterEngineContext } from "@/engines/characterEngineContext";
 import { martial } from "@/data/skills/martial";
 import { magic } from "@/data/skills/magic";
 import { GameObject } from "@/types/gameObjects";
-import MenuButton from "@/features/town/menuSelect/menuButton";
+import MenuButton from "@/features/town/menuSelect/components/menuButton";
 
 export default function MenuContainer({
   menuItems,

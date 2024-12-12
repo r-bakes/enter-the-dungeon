@@ -6,40 +6,29 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import React from "react";
-import { Skill, Task, Tasks } from "@/types/skills";
+import { agriculture } from "@/data/skills/agriculture";
 import { formatCapitalCase } from "@/utils/formattingUtilities";
-import TasksContainer from "@/features/town/skillMenu/tasksMenu/tasksContainer";
+import React from "react";
+import PasturesMenu from "./pasturesMenu/pasturesMenu";
+import PlotsMenu from "./plotsMenu/plotsMenu";
 
-export default function TasksMenu({
-  skill,
-  tasks,
-  skillLevel,
-  setTask,
-}: Readonly<{
-  skill: Skill;
-  tasks: Tasks;
-  skillLevel: number;
-  setTask: React.Dispatch<React.SetStateAction<Task | null>>;
-}>) {
+export default function TasksMenu() {
   const [selectedTasksCategory, setSelectedTasksCategory] = React.useState(
-    Object.values(skill.taskCategories)[0],
+    Object.values(agriculture.taskCategories)[0],
   );
 
   return (
     <div className="flex h-full w-full flex-col gap-2">
       <Select
-        onValueChange={(value) => {
-          setSelectedTasksCategory(value);
-        }}
-        defaultValue={Object.values(skill.taskCategories)[0]}
+        onValueChange={(value) => setSelectedTasksCategory(value)}
+        defaultValue={Object.values(agriculture.taskCategories)[0]}
       >
         <SelectTrigger className="w-full font-normal text-muted-foreground">
           <SelectValue></SelectValue>
         </SelectTrigger>
         <SelectContent>
           <SelectGroup>
-            {Object.entries(skill.taskCategories).map(
+            {Object.entries(agriculture.taskCategories).map(
               ([categoryId, category]) => (
                 <SelectItem
                   className="font-normal text-muted-foreground"
@@ -53,14 +42,11 @@ export default function TasksMenu({
           </SelectGroup>
         </SelectContent>
       </Select>
-      <TasksContainer
-        skill={skill}
-        skillLevel={skillLevel}
-        tasks={Object.values(tasks).filter(
-          (task) => task.category === selectedTasksCategory,
-        )}
-        setTask={setTask}
-      ></TasksContainer>
+      {selectedTasksCategory == agriculture.taskCategories.BOTANY ? (
+        <PlotsMenu></PlotsMenu>
+      ) : (
+        <PasturesMenu></PasturesMenu>
+      )}
     </div>
   );
 }
