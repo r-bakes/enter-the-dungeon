@@ -31,7 +31,7 @@ export default function TableEntryDialog({
           item={item}
           itemAmount={character.inventory[itemId]}
         ></TableEntryDialogHeader>
-        {item.type === ItemType.EQUIPEMENT ? (
+        {item.type === ItemType.EQUIPMENT ? (
           <TableEntryDialogEquipment
             item={item as Equipment}
             setOpen={setOpen}
