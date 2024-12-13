@@ -1,4 +1,3 @@
-
 export enum ProspectingTaskCategories {
   MINE = "mine",
   CRAFTING = "crafting",
@@ -31,4 +30,17 @@ export enum StealthTaskCategories {
 export enum AgricultureTaskCategories {
   BOTANY = "botany",
   RANCHING = "ranching",
+}
+
+export enum SkillId {
+  AGRICULTURE = "AGRICULTURE",
+  ALCHEMY = "ALCHEMY",
+  ATHLETICS = "ATHLETICS",
+  CRAFTING = "CRAFTING",
+  ENCHANTING = "ENCHANTING",
+  MAGIC = "MAGIC",
+  MARTIAL = "MARTIAL",
+  PROSPECTING = "PROSPECTING",
+  SMITHING = "SMITHING",
+  STEALTH = "STEALTH",
 }

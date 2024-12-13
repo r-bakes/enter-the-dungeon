@@ -4,10 +4,10 @@ import {
   SKILL_AND_MENU_ICON_STYLE,
   TASK_AND_ITEM_ICON_STYLE,
 } from "@/configurations/configurations";
-import { Task } from "@/types/skills";
 import { SkillModifierType } from "@/data/modifiers/enums";
 import { ProspectingTaskCategories } from "@/data/skills/enums";
-import { MiningCraftingTaskId } from "./enum";
+import { ProspectingCraftingTaskId } from "./enum";
+import { Task } from "@/types/tasks";
 
 const prospectingCommonModifiers = new Set([
   SkillModifierType.SPEED,
@@ -16,9 +16,9 @@ const prospectingCommonModifiers = new Set([
   SkillModifierType.PRODUCTION_MULTIPLIER,
 ]);
 
-export const craftingTasks: { [id in MiningCraftingTaskId]: Task } = {
-  [MiningCraftingTaskId.CUT_GEODE]: {
-    id: MiningCraftingTaskId.CUT_GEODE,
+export const craftingTasks: { [id in ProspectingCraftingTaskId]: Task } = {
+  [ProspectingCraftingTaskId.CUT_GEODE]: {
+    id: ProspectingCraftingTaskId.CUT_GEODE,
     name: "Cut Geode",
     description: "Cut a geode into a gem.",
     icon: Gem,

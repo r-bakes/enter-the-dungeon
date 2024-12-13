@@ -1,7 +1,8 @@
+import { smithingTasks } from "@/data/tasks/smithing/smithing";
 import { GameObject } from "./gameObjects";
-import { Task, TaskId } from "./tasks";
+import { Task } from "./tasks";
 
-export type Skill = {
-  tasks: { [id in TaskId]: Task };
-  taskCategories: { [taskCategory: string]: string };
+export type Skill<T extends string> = {
+  tasks: Record<T, Task>;
+  taskCategories: Record<string, string>;
 } & GameObject;

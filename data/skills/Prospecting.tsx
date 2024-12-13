@@ -3,8 +3,8 @@ import { Circle, Gem, Mountain, SearchSlash } from "lucide-react";
 import { SKILL_AND_MENU_ICON_STYLE } from "@/configurations/configurations";
 import { Skill, Task } from "@/types/skills";
 import { ProspectingTaskCategories } from "@/data/skills/enums";
-import { craftingTasks } from "../tasks/mining/crafting";
-import { miningTasks } from "../tasks/mining/mining";
+import { craftingTasks } from "../tasks/prospecting/crafting";
+import { miningTasks } from "../tasks/prospecting/mining";
 
 let tasks = { ...craftingTasks, ...miningTasks };
 

@@ -1,4 +1,4 @@
-export enum MiningCategoryTaskId {
+export enum ProspectingCategoryTaskId {
   MINE_COPPER_ORE = "MINE_COPPER_ORE",
   MINE_TIN_ORE = "MINE_TIN_ORE",
   MINE_COAL = "MINE_COAL",
@@ -10,6 +10,6 @@ export enum MiningCategoryTaskId {
   MINE_ADAMANTITE_ORE = "MINE_ADAMANTITE_ORE",
 }
 
-export enum MiningCraftingTaskId {
+export enum ProspectingCraftingTaskId {
   CUT_GEODE = "CUT_GEODE",
 }

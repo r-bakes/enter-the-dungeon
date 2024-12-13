@@ -1,7 +1,8 @@
 import { LucideIcon } from "lucide-react";
 import { ItemId } from "./items";
 import { CombatCardId } from "@/data/combatCards/enums";
-import { TaskId } from "./skills";
+import { SkillId } from "@/data/skills/enums";
+import { TaskId } from "./tasks";
 
 export type GameObject = {
   id: GameObjectId;
@@ -25,4 +26,4 @@ export type IconStylePrimitive = {
   strokeOpacity: number;
 };
 
-export type GameObjectId = ItemId | CombatCardId | TaskId;
+export type GameObjectId = ItemId | CombatCardId | TaskId | SkillId;
