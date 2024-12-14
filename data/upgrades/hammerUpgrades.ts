@@ -1,13 +1,18 @@
+// src/data/upgrades/hammerUpgrades.ts
+
 import { TASK_AND_ITEM_ICON_STYLE } from "@/configurations/configurations";
 import { mineralsTable } from "@/data/items/minerals";
 import { HomeRooms } from "@/data/menus/enums";
 import { SkillModifierType } from "@/data/modifiers/enums";
 import { smithing } from "@/data/skills/smithing";
 import { Hammer } from "lucide-react";
+import { Upgrade } from "@/types/upgrades";
+import { HammerUpgradeId } from "./enums";
+import { MineralId } from "../items/enums";
 
-export const hammerUpgrades = {
-  basicHammer: {
-    id: "basicHammer",
+export const hammerUpgrades: { [id in HammerUpgradeId]: Upgrade } = {
+  [HammerUpgradeId.BASIC_HAMMER]: {
+    id: HammerUpgradeId.BASIC_HAMMER,
     name: "Basic Hammer",
     description: "Your trusty hammer!",
     icon: Hammer,
@@ -15,7 +20,7 @@ export const hammerUpgrades = {
       fill: "none",
       ...TASK_AND_ITEM_ICON_STYLE,
     },
-    next: "bronzeHammer",
+    next: HammerUpgradeId.BRONZE_HAMMER,
     previous: null,
     modifier: {
       targets: { [smithing.id]: Object.keys(smithing.tasks) },
@@ -24,21 +29,21 @@ export const hammerUpgrades = {
       },
     },
     requiresItems: { gold: 0 },
-    requiresUpgrades: new Set([]),
-    requiresMilestones: new Set([]),
+    requiresUpgrades: new Set<HammerUpgradeId>([]),
+    requiresMilestones: new Set<string>([]),
     homeRoom: HomeRooms.TOOL_SHED,
   },
-  bronzeHammer: {
-    id: "bronzeHammer",
+  [HammerUpgradeId.BRONZE_HAMMER]: {
+    id: HammerUpgradeId.BRONZE_HAMMER,
     name: "Bronze Hammer",
     description: "Your trusty hammer!",
     icon: Hammer,
     iconStyle: {
-      fill: mineralsTable.copperOre.iconStyle.fill,
+      fill: mineralsTable[MineralId.COPPER_ORE].iconStyle.fill,
       ...TASK_AND_ITEM_ICON_STYLE,
     },
-    next: "bronzeHammer1",
-    previous: "basicHammer",
+    next: HammerUpgradeId.BRONZE_HAMMER1,
+    previous: HammerUpgradeId.BASIC_HAMMER,
     modifier: {
       targets: { [smithing.id]: Object.keys(smithing.tasks) },
       values: {
@@ -46,21 +51,21 @@ export const hammerUpgrades = {
       },
     },
     requiresItems: { gold: 10 },
-    requiresUpgrades: new Set(["basicHammer"]),
-    requiresMilestones: new Set([]),
+    requiresUpgrades: new Set<HammerUpgradeId>([HammerUpgradeId.BASIC_HAMMER]),
+    requiresMilestones: new Set<string>([]),
     homeRoom: HomeRooms.TOOL_SHED,
   },
-  bronzeHammer1: {
-    id: "bronzeHammer1",
+  [HammerUpgradeId.BRONZE_HAMMER1]: {
+    id: HammerUpgradeId.BRONZE_HAMMER1,
     name: "Bronze Hammer +1",
     description: "An improved bronze hammer",
     icon: Hammer,
     iconStyle: {
-      fill: mineralsTable.copperOre.iconStyle.fill,
+      fill: mineralsTable[MineralId.COPPER_ORE].iconStyle.fill,
       ...TASK_AND_ITEM_ICON_STYLE,
     },
-    next: "bronzeHammer2",
-    previous: "bronzeHammer",
+    next: HammerUpgradeId.BRONZE_HAMMER2,
+    previous: HammerUpgradeId.BRONZE_HAMMER,
     modifier: {
       targets: { [smithing.id]: Object.keys(smithing.tasks) },
       values: {
@@ -68,21 +73,21 @@ export const hammerUpgrades = {
       },
     },
     requiresItems: { gold: 20 },
-    requiresUpgrades: new Set(["bronzeHammer"]),
-    requiresMilestones: new Set([]),
+    requiresUpgrades: new Set<HammerUpgradeId>([HammerUpgradeId.BRONZE_HAMMER]),
+    requiresMilestones: new Set<string>([]),
     homeRoom: HomeRooms.TOOL_SHED,
   },
-  bronzeHammer2: {
-    id: "bronzeHammer2",
+  [HammerUpgradeId.BRONZE_HAMMER2]: {
+    id: HammerUpgradeId.BRONZE_HAMMER2,
     name: "Bronze Hammer +2",
     description: "A further improved bronze hammer",
     icon: Hammer,
     iconStyle: {
-      fill: mineralsTable.copperOre.iconStyle.fill,
+      fill: mineralsTable[MineralId.COPPER_ORE].iconStyle.fill,
       ...TASK_AND_ITEM_ICON_STYLE,
     },
-    next: "bronzeHammer3",
-    previous: "bronzeHammer1",
+    next: HammerUpgradeId.BRONZE_HAMMER3,
+    previous: HammerUpgradeId.BRONZE_HAMMER1,
     modifier: {
       targets: { [smithing.id]: Object.keys(smithing.tasks) },
       values: {
@@ -90,21 +95,23 @@ export const hammerUpgrades = {
       },
     },
     requiresItems: { gold: 30 },
-    requiresUpgrades: new Set(["bronzeHammer1"]),
-    requiresMilestones: new Set([]),
+    requiresUpgrades: new Set<HammerUpgradeId>([
+      HammerUpgradeId.BRONZE_HAMMER1,
+    ]),
+    requiresMilestones: new Set<string>([]),
     homeRoom: HomeRooms.TOOL_SHED,
   },
-  bronzeHammer3: {
-    id: "bronzeHammer3",
+  [HammerUpgradeId.BRONZE_HAMMER3]: {
+    id: HammerUpgradeId.BRONZE_HAMMER3,
     name: "Bronze Hammer +3",
     description: "An even further improved bronze hammer",
     icon: Hammer,
     iconStyle: {
-      fill: mineralsTable.copperOre.iconStyle.fill,
+      fill: mineralsTable[MineralId.COPPER_ORE].iconStyle.fill,
       ...TASK_AND_ITEM_ICON_STYLE,
     },
-    next: "bronzeHammer4",
-    previous: "bronzeHammer2",
+    next: HammerUpgradeId.BRONZE_HAMMER4,
+    previous: HammerUpgradeId.BRONZE_HAMMER2,
     modifier: {
       targets: { [smithing.id]: Object.keys(smithing.tasks) },
       values: {
@@ -112,21 +119,23 @@ export const hammerUpgrades = {
       },
     },
     requiresItems: { gold: 40 },
-    requiresUpgrades: new Set(["bronzeHammer2"]),
-    requiresMilestones: new Set([]),
+    requiresUpgrades: new Set<HammerUpgradeId>([
+      HammerUpgradeId.BRONZE_HAMMER2,
+    ]),
+    requiresMilestones: new Set<string>([]),
     homeRoom: HomeRooms.TOOL_SHED,
   },
-  bronzeHammer4: {
-    id: "bronzeHammer4",
+  [HammerUpgradeId.BRONZE_HAMMER4]: {
+    id: HammerUpgradeId.BRONZE_HAMMER4,
     name: "Bronze Hammer +4",
     description: "The ultimate bronze hammer",
     icon: Hammer,
     iconStyle: {
-      fill: mineralsTable.copperOre.iconStyle.fill,
+      fill: mineralsTable[MineralId.COPPER_ORE].iconStyle.fill,
       ...TASK_AND_ITEM_ICON_STYLE,
     },
-    next: "ironHammer",
-    previous: "bronzeHammer3",
+    next: HammerUpgradeId.IRON_HAMMER,
+    previous: HammerUpgradeId.BRONZE_HAMMER3,
     modifier: {
       targets: { [smithing.id]: Object.keys(smithing.tasks) },
       values: {
@@ -134,21 +143,23 @@ export const hammerUpgrades = {
       },
     },
     requiresItems: { gold: 50 },
-    requiresUpgrades: new Set(["bronzeHammer3"]),
-    requiresMilestones: new Set([]),
+    requiresUpgrades: new Set<HammerUpgradeId>([
+      HammerUpgradeId.BRONZE_HAMMER3,
+    ]),
+    requiresMilestones: new Set<string>([]),
     homeRoom: HomeRooms.TOOL_SHED,
   },
-  ironHammer: {
-    id: "ironHammer",
+  [HammerUpgradeId.IRON_HAMMER]: {
+    id: HammerUpgradeId.IRON_HAMMER,
     name: "Iron Hammer",
     description: "An iron hammer",
     icon: Hammer,
     iconStyle: {
-      fill: mineralsTable.ironOre.iconStyle.fill,
+      fill: mineralsTable[MineralId.IRON_ORE].iconStyle.fill,
       ...TASK_AND_ITEM_ICON_STYLE,
     },
-    next: "ironHammer1",
-    previous: "bronzeHammer4",
+    next: HammerUpgradeId.IRON_HAMMER1,
+    previous: HammerUpgradeId.BRONZE_HAMMER4,
     modifier: {
       targets: { [smithing.id]: Object.keys(smithing.tasks) },
       values: {
@@ -156,21 +167,23 @@ export const hammerUpgrades = {
       },
     },
     requiresItems: { gold: 100 },
-    requiresUpgrades: new Set(["bronzeHammer4"]),
-    requiresMilestones: new Set([]),
+    requiresUpgrades: new Set<HammerUpgradeId>([
+      HammerUpgradeId.BRONZE_HAMMER4,
+    ]),
+    requiresMilestones: new Set<string>([]),
     homeRoom: HomeRooms.TOOL_SHED,
   },
-  ironHammer1: {
-    id: "ironHammer1",
+  [HammerUpgradeId.IRON_HAMMER1]: {
+    id: HammerUpgradeId.IRON_HAMMER1,
     name: "Iron Hammer +1",
     description: "An improved iron hammer",
     icon: Hammer,
     iconStyle: {
-      fill: mineralsTable.ironOre.iconStyle.fill,
+      fill: mineralsTable[MineralId.IRON_ORE].iconStyle.fill,
       ...TASK_AND_ITEM_ICON_STYLE,
     },
-    next: "ironHammer2",
-    previous: "ironHammer",
+    next: HammerUpgradeId.IRON_HAMMER2,
+    previous: HammerUpgradeId.IRON_HAMMER,
     modifier: {
       targets: { [smithing.id]: Object.keys(smithing.tasks) },
       values: {
@@ -178,21 +191,21 @@ export const hammerUpgrades = {
       },
     },
     requiresItems: { gold: 200 },
-    requiresUpgrades: new Set(["ironHammer"]),
-    requiresMilestones: new Set([]),
+    requiresUpgrades: new Set<HammerUpgradeId>([HammerUpgradeId.IRON_HAMMER]),
+    requiresMilestones: new Set<string>([]),
     homeRoom: HomeRooms.TOOL_SHED,
   },
-  ironHammer2: {
-    id: "ironHammer2",
+  [HammerUpgradeId.IRON_HAMMER2]: {
+    id: HammerUpgradeId.IRON_HAMMER2,
     name: "Iron Hammer +2",
     description: "A further improved iron hammer",
     icon: Hammer,
     iconStyle: {
-      fill: mineralsTable.ironOre.iconStyle.fill,
+      fill: mineralsTable[MineralId.IRON_ORE].iconStyle.fill,
       ...TASK_AND_ITEM_ICON_STYLE,
     },
-    next: "ironHammer3",
-    previous: "ironHammer1",
+    next: HammerUpgradeId.IRON_HAMMER3,
+    previous: HammerUpgradeId.IRON_HAMMER1,
     modifier: {
       targets: { [smithing.id]: Object.keys(smithing.tasks) },
       values: {
@@ -200,21 +213,21 @@ export const hammerUpgrades = {
       },
     },
     requiresItems: { gold: 300 },
-    requiresUpgrades: new Set(["ironHammer1"]),
-    requiresMilestones: new Set([]),
+    requiresUpgrades: new Set<HammerUpgradeId>([HammerUpgradeId.IRON_HAMMER1]),
+    requiresMilestones: new Set<string>([]),
     homeRoom: HomeRooms.TOOL_SHED,
   },
-  ironHammer3: {
-    id: "ironHammer3",
+  [HammerUpgradeId.IRON_HAMMER3]: {
+    id: HammerUpgradeId.IRON_HAMMER3,
     name: "Iron Hammer +3",
     description: "An even further improved iron hammer",
     icon: Hammer,
     iconStyle: {
-      fill: mineralsTable.ironOre.iconStyle.fill,
+      fill: mineralsTable[MineralId.IRON_ORE].iconStyle.fill,
       ...TASK_AND_ITEM_ICON_STYLE,
     },
-    next: "ironHammer4",
-    previous: "ironHammer2",
+    next: HammerUpgradeId.IRON_HAMMER4,
+    previous: HammerUpgradeId.IRON_HAMMER2,
     modifier: {
       targets: { [smithing.id]: Object.keys(smithing.tasks) },
       values: {
@@ -222,21 +235,21 @@ export const hammerUpgrades = {
       },
     },
     requiresItems: { gold: 400 },
-    requiresUpgrades: new Set(["ironHammer2"]),
-    requiresMilestones: new Set([]),
+    requiresUpgrades: new Set<HammerUpgradeId>([HammerUpgradeId.IRON_HAMMER2]),
+    requiresMilestones: new Set<string>([]),
     homeRoom: HomeRooms.TOOL_SHED,
   },
-  ironHammer4: {
-    id: "ironHammer4",
+  [HammerUpgradeId.IRON_HAMMER4]: {
+    id: HammerUpgradeId.IRON_HAMMER4,
     name: "Iron Hammer +4",
     description: "The ultimate iron hammer",
     icon: Hammer,
     iconStyle: {
-      fill: mineralsTable.ironOre.iconStyle.fill,
+      fill: mineralsTable[MineralId.IRON_ORE].iconStyle.fill,
       ...TASK_AND_ITEM_ICON_STYLE,
     },
-    next: "steelHammer",
-    previous: "ironHammer3",
+    next: HammerUpgradeId.STEEL_HAMMER,
+    previous: HammerUpgradeId.IRON_HAMMER3,
     modifier: {
       targets: { [smithing.id]: Object.keys(smithing.tasks) },
       values: {
@@ -244,21 +257,21 @@ export const hammerUpgrades = {
       },
     },
     requiresItems: { gold: 500 },
-    requiresUpgrades: new Set(["ironHammer3"]),
-    requiresMilestones: new Set([]),
+    requiresUpgrades: new Set<HammerUpgradeId>([HammerUpgradeId.IRON_HAMMER3]),
+    requiresMilestones: new Set<string>([]),
     homeRoom: HomeRooms.TOOL_SHED,
   },
-  steelHammer: {
-    id: "steelHammer",
+  [HammerUpgradeId.STEEL_HAMMER]: {
+    id: HammerUpgradeId.STEEL_HAMMER,
     name: "Steel Hammer",
     description: "A steel hammer",
     icon: Hammer,
     iconStyle: {
-      fill: mineralsTable.ironOre.iconStyle.fill,
+      fill: mineralsTable[MineralId.IRON_ORE].iconStyle.fill,
       ...TASK_AND_ITEM_ICON_STYLE,
     },
-    next: "steelHammer1",
-    previous: "ironHammer4",
+    next: HammerUpgradeId.STEEL_HAMMER1,
+    previous: HammerUpgradeId.IRON_HAMMER4,
     modifier: {
       targets: {
         [smithing.id]: Object.keys(smithing.tasks),
@@ -268,21 +281,21 @@ export const hammerUpgrades = {
       },
     },
     requiresItems: { gold: 1000 },
-    requiresUpgrades: new Set(["ironHammer4"]),
-    requiresMilestones: new Set([]),
+    requiresUpgrades: new Set<HammerUpgradeId>([HammerUpgradeId.IRON_HAMMER4]),
+    requiresMilestones: new Set<string>([]),
     homeRoom: HomeRooms.TOOL_SHED,
   },
-  steelHammer1: {
-    id: "steelHammer1",
+  [HammerUpgradeId.STEEL_HAMMER1]: {
+    id: HammerUpgradeId.STEEL_HAMMER1,
     name: "Steel Hammer +1",
     description: "An improved steel hammer",
     icon: Hammer,
     iconStyle: {
-      fill: mineralsTable.ironOre.iconStyle.fill,
+      fill: mineralsTable[MineralId.IRON_ORE].iconStyle.fill,
       ...TASK_AND_ITEM_ICON_STYLE,
     },
-    next: "steelHammer2",
-    previous: "steelHammer",
+    next: HammerUpgradeId.STEEL_HAMMER2,
+    previous: HammerUpgradeId.STEEL_HAMMER,
     modifier: {
       targets: {
         [smithing.id]: Object.keys(smithing.tasks),
@@ -292,21 +305,21 @@ export const hammerUpgrades = {
       },
     },
     requiresItems: { gold: 2000 },
-    requiresUpgrades: new Set(["steelHammer"]),
-    requiresMilestones: new Set([]),
+    requiresUpgrades: new Set<HammerUpgradeId>([HammerUpgradeId.STEEL_HAMMER]),
+    requiresMilestones: new Set<string>([]),
     homeRoom: HomeRooms.TOOL_SHED,
   },
-  steelHammer2: {
-    id: "steelHammer2",
+  [HammerUpgradeId.STEEL_HAMMER2]: {
+    id: HammerUpgradeId.STEEL_HAMMER2,
     name: "Steel Hammer +2",
     description: "A further improved steel hammer",
     icon: Hammer,
     iconStyle: {
-      fill: mineralsTable.ironOre.iconStyle.fill,
+      fill: mineralsTable[MineralId.IRON_ORE].iconStyle.fill,
       ...TASK_AND_ITEM_ICON_STYLE,
     },
-    next: "steelHammer3",
-    previous: "steelHammer1",
+    next: HammerUpgradeId.STEEL_HAMMER3,
+    previous: HammerUpgradeId.STEEL_HAMMER1,
     modifier: {
       targets: {
         [smithing.id]: Object.keys(smithing.tasks),
@@ -316,21 +329,21 @@ export const hammerUpgrades = {
       },
     },
     requiresItems: { gold: 3000 },
-    requiresUpgrades: new Set(["steelHammer1"]),
-    requiresMilestones: new Set([]),
+    requiresUpgrades: new Set<HammerUpgradeId>([HammerUpgradeId.STEEL_HAMMER1]),
+    requiresMilestones: new Set<string>([]),
     homeRoom: HomeRooms.TOOL_SHED,
   },
-  steelHammer3: {
-    id: "steelHammer3",
+  [HammerUpgradeId.STEEL_HAMMER3]: {
+    id: HammerUpgradeId.STEEL_HAMMER3,
     name: "Steel Hammer +3",
     description: "An even further improved steel hammer",
     icon: Hammer,
     iconStyle: {
-      fill: mineralsTable.ironOre.iconStyle.fill,
+      fill: mineralsTable[MineralId.IRON_ORE].iconStyle.fill,
       ...TASK_AND_ITEM_ICON_STYLE,
     },
-    next: "steelHammer4",
-    previous: "steelHammer2",
+    next: HammerUpgradeId.STEEL_HAMMER4,
+    previous: HammerUpgradeId.STEEL_HAMMER2,
     modifier: {
       targets: {
         [smithing.id]: Object.keys(smithing.tasks),
@@ -340,21 +353,21 @@ export const hammerUpgrades = {
       },
     },
     requiresItems: { gold: 4000 },
-    requiresUpgrades: new Set(["steelHammer2"]),
-    requiresMilestones: new Set([]),
+    requiresUpgrades: new Set<HammerUpgradeId>([HammerUpgradeId.STEEL_HAMMER2]),
+    requiresMilestones: new Set<string>([]),
     homeRoom: HomeRooms.TOOL_SHED,
   },
-  steelHammer4: {
-    id: "steelHammer4",
+  [HammerUpgradeId.STEEL_HAMMER4]: {
+    id: HammerUpgradeId.STEEL_HAMMER4,
     name: "Steel Hammer +4",
     description: "The ultimate steel hammer",
     icon: Hammer,
     iconStyle: {
-      fill: mineralsTable.ironOre.iconStyle.fill,
+      fill: mineralsTable[MineralId.IRON_ORE].iconStyle.fill,
       ...TASK_AND_ITEM_ICON_STYLE,
     },
-    next: "mithrilHammer",
-    previous: "steelHammer3",
+    next: HammerUpgradeId.MITHRIL_HAMMER,
+    previous: HammerUpgradeId.STEEL_HAMMER3,
     modifier: {
       targets: { [smithing.id]: Object.keys(smithing.tasks) },
       values: {
@@ -362,21 +375,21 @@ export const hammerUpgrades = {
       },
     },
     requiresItems: { gold: 5000 },
-    requiresUpgrades: new Set(["steelHammer3"]),
-    requiresMilestones: new Set([]),
+    requiresUpgrades: new Set<HammerUpgradeId>([HammerUpgradeId.STEEL_HAMMER3]),
+    requiresMilestones: new Set<string>([]),
     homeRoom: HomeRooms.TOOL_SHED,
   },
-  mithrilHammer: {
-    id: "mithrilHammer",
+  [HammerUpgradeId.MITHRIL_HAMMER]: {
+    id: HammerUpgradeId.MITHRIL_HAMMER,
     name: "Mithril Hammer",
     description: "A mithril hammer",
     icon: Hammer,
     iconStyle: {
-      fill: mineralsTable.mithrilOre.iconStyle.fill,
+      fill: mineralsTable[MineralId.MITHRIL_ORE].iconStyle.fill,
       ...TASK_AND_ITEM_ICON_STYLE,
     },
-    next: "mithrilHammer1",
-    previous: "steelHammer4",
+    next: HammerUpgradeId.MITHRIL_HAMMER1,
+    previous: HammerUpgradeId.STEEL_HAMMER4,
     modifier: {
       targets: {
         [smithing.id]: Object.keys(smithing.tasks),
@@ -386,21 +399,21 @@ export const hammerUpgrades = {
       },
     },
     requiresItems: { gold: 10000 },
-    requiresUpgrades: new Set(["steelHammer4"]),
-    requiresMilestones: new Set([]),
+    requiresUpgrades: new Set<HammerUpgradeId>([HammerUpgradeId.STEEL_HAMMER4]),
+    requiresMilestones: new Set<string>([]),
     homeRoom: HomeRooms.TOOL_SHED,
   },
-  mithrilHammer1: {
-    id: "mithrilHammer1",
+  [HammerUpgradeId.MITHRIL_HAMMER1]: {
+    id: HammerUpgradeId.MITHRIL_HAMMER1,
     name: "Mithril Hammer +1",
     description: "A mithril hammer with improved efficiency",
     icon: Hammer,
     iconStyle: {
-      fill: mineralsTable.mithrilOre.iconStyle.fill,
+      fill: mineralsTable[MineralId.MITHRIL_ORE].iconStyle.fill,
       ...TASK_AND_ITEM_ICON_STYLE,
     },
-    next: "mithrilHammer2",
-    previous: "mithrilHammer",
+    next: HammerUpgradeId.MITHRIL_HAMMER2,
+    previous: HammerUpgradeId.MITHRIL_HAMMER,
     modifier: {
       targets: {
         [smithing.id]: Object.keys(smithing.tasks),
@@ -410,21 +423,23 @@ export const hammerUpgrades = {
       },
     },
     requiresItems: { gold: 20000 },
-    requiresUpgrades: new Set(["mithrilHammer"]),
-    requiresMilestones: new Set([]),
+    requiresUpgrades: new Set<HammerUpgradeId>([
+      HammerUpgradeId.MITHRIL_HAMMER,
+    ]),
+    requiresMilestones: new Set<string>([]),
     homeRoom: HomeRooms.TOOL_SHED,
   },
-  mithrilHammer2: {
-    id: "mithrilHammer2",
+  [HammerUpgradeId.MITHRIL_HAMMER2]: {
+    id: HammerUpgradeId.MITHRIL_HAMMER2,
     name: "Mithril Hammer +2",
     description: "A mithril hammer with superior efficiency",
     icon: Hammer,
     iconStyle: {
-      fill: mineralsTable.mithrilOre.iconStyle.fill,
+      fill: mineralsTable[MineralId.MITHRIL_ORE].iconStyle.fill,
       ...TASK_AND_ITEM_ICON_STYLE,
     },
-    next: "mithrilHammer3",
-    previous: "mithrilHammer1",
+    next: HammerUpgradeId.MITHRIL_HAMMER3,
+    previous: HammerUpgradeId.MITHRIL_HAMMER1,
     modifier: {
       targets: {
         [smithing.id]: Object.keys(smithing.tasks),
@@ -434,21 +449,23 @@ export const hammerUpgrades = {
       },
     },
     requiresItems: { gold: 30000 },
-    requiresUpgrades: new Set(["mithrilHammer1"]),
-    requiresMilestones: new Set([]),
+    requiresUpgrades: new Set<HammerUpgradeId>([
+      HammerUpgradeId.MITHRIL_HAMMER1,
+    ]),
+    requiresMilestones: new Set<string>([]),
     homeRoom: HomeRooms.TOOL_SHED,
   },
-  mithrilHammer3: {
-    id: "mithrilHammer3",
+  [HammerUpgradeId.MITHRIL_HAMMER3]: {
+    id: HammerUpgradeId.MITHRIL_HAMMER3,
     name: "Mithril Hammer +3",
     description: "A mithril hammer with unmatched efficiency",
     icon: Hammer,
     iconStyle: {
-      fill: mineralsTable.mithrilOre.iconStyle.fill,
+      fill: mineralsTable[MineralId.MITHRIL_ORE].iconStyle.fill,
       ...TASK_AND_ITEM_ICON_STYLE,
     },
-    next: "mithrilHammer4",
-    previous: "mithrilHammer2",
+    next: HammerUpgradeId.MITHRIL_HAMMER4,
+    previous: HammerUpgradeId.MITHRIL_HAMMER2,
     modifier: {
       targets: {
         [smithing.id]: Object.keys(smithing.tasks),
@@ -458,21 +475,23 @@ export const hammerUpgrades = {
       },
     },
     requiresItems: { gold: 40000 },
-    requiresUpgrades: new Set(["mithrilHammer2"]),
-    requiresMilestones: new Set([]),
+    requiresUpgrades: new Set<HammerUpgradeId>([
+      HammerUpgradeId.MITHRIL_HAMMER2,
+    ]),
+    requiresMilestones: new Set<string>([]),
     homeRoom: HomeRooms.TOOL_SHED,
   },
-  mithrilHammer4: {
-    id: "mithrilHammer4",
+  [HammerUpgradeId.MITHRIL_HAMMER4]: {
+    id: HammerUpgradeId.MITHRIL_HAMMER4,
     name: "Mithril Hammer +4",
     description: "A mithril hammer with ultimate efficiency",
     icon: Hammer,
     iconStyle: {
-      fill: mineralsTable.mithrilOre.iconStyle.fill,
+      fill: mineralsTable[MineralId.MITHRIL_ORE].iconStyle.fill,
       ...TASK_AND_ITEM_ICON_STYLE,
     },
-    next: "adamantHammer",
-    previous: "mithrilHammer3",
+    next: HammerUpgradeId.ADAMANT_HAMMER,
+    previous: HammerUpgradeId.MITHRIL_HAMMER3,
     modifier: {
       targets: {
         [smithing.id]: Object.keys(smithing.tasks),
@@ -482,21 +501,23 @@ export const hammerUpgrades = {
       },
     },
     requiresItems: { gold: 50000 },
-    requiresUpgrades: new Set(["mithrilHammer3"]),
-    requiresMilestones: new Set([]),
+    requiresUpgrades: new Set<HammerUpgradeId>([
+      HammerUpgradeId.MITHRIL_HAMMER3,
+    ]),
+    requiresMilestones: new Set<string>([]),
     homeRoom: HomeRooms.TOOL_SHED,
   },
-  adamantHammer: {
-    id: "adamantHammer",
+  [HammerUpgradeId.ADAMANT_HAMMER]: {
+    id: HammerUpgradeId.ADAMANT_HAMMER,
     name: "Adamant Hammer",
     description: "An adamant hammer",
     icon: Hammer,
     iconStyle: {
-      fill: mineralsTable.adamantiteOre.iconStyle.fill,
+      fill: mineralsTable[MineralId.ADAMANTITE_ORE].iconStyle.fill,
       ...TASK_AND_ITEM_ICON_STYLE,
     },
-    next: "adamantHammer1",
-    previous: "mithrilHammer4",
+    next: HammerUpgradeId.ADAMANT_HAMMER1,
+    previous: HammerUpgradeId.MITHRIL_HAMMER4,
     modifier: {
       targets: {
         [smithing.id]: Object.keys(smithing.tasks),
@@ -506,21 +527,23 @@ export const hammerUpgrades = {
       },
     },
     requiresItems: { gold: 100000 },
-    requiresUpgrades: new Set(["mithrilHammer4"]),
-    requiresMilestones: new Set([]),
+    requiresUpgrades: new Set<HammerUpgradeId>([
+      HammerUpgradeId.MITHRIL_HAMMER4,
+    ]),
+    requiresMilestones: new Set<string>([]),
     homeRoom: HomeRooms.TOOL_SHED,
   },
-  adamantHammer1: {
-    id: "adamantHammer1",
-    name: "Adamant Hammer 1",
+  [HammerUpgradeId.ADAMANT_HAMMER1]: {
+    id: HammerUpgradeId.ADAMANT_HAMMER1,
+    name: "Adamant Hammer +1",
     description: "An adamant hammer with improved efficiency",
     icon: Hammer,
     iconStyle: {
-      fill: mineralsTable.adamantiteOre.iconStyle.fill,
+      fill: mineralsTable[MineralId.ADAMANTITE_ORE].iconStyle.fill,
       ...TASK_AND_ITEM_ICON_STYLE,
     },
-    next: "adamantHammer2",
-    previous: "adamantHammer",
+    next: HammerUpgradeId.ADAMANT_HAMMER2,
+    previous: HammerUpgradeId.ADAMANT_HAMMER,
     modifier: {
       targets: {
         [smithing.id]: Object.keys(smithing.tasks),
@@ -530,21 +553,23 @@ export const hammerUpgrades = {
       },
     },
     requiresItems: { gold: 200000 },
-    requiresUpgrades: new Set(["adamantHammer"]),
-    requiresMilestones: new Set([]),
+    requiresUpgrades: new Set<HammerUpgradeId>([
+      HammerUpgradeId.ADAMANT_HAMMER,
+    ]),
+    requiresMilestones: new Set<string>([]),
     homeRoom: HomeRooms.TOOL_SHED,
   },
-  adamantHammer2: {
-    id: "adamantHammer2",
+  [HammerUpgradeId.ADAMANT_HAMMER2]: {
+    id: HammerUpgradeId.ADAMANT_HAMMER2,
     name: "Adamant Hammer +2",
     description: "An adamant hammer with superior efficiency",
     icon: Hammer,
     iconStyle: {
-      fill: mineralsTable.adamantiteOre.iconStyle.fill,
+      fill: mineralsTable[MineralId.ADAMANTITE_ORE].iconStyle.fill,
       ...TASK_AND_ITEM_ICON_STYLE,
     },
-    next: "adamantHammer3",
-    previous: "adamantHammer1",
+    next: HammerUpgradeId.ADAMANT_HAMMER3,
+    previous: HammerUpgradeId.ADAMANT_HAMMER1,
     modifier: {
       targets: {
         [smithing.id]: Object.keys(smithing.tasks),
@@ -554,21 +579,23 @@ export const hammerUpgrades = {
       },
     },
     requiresItems: { gold: 300000 },
-    requiresUpgrades: new Set(["adamantHammer1"]),
-    requiresMilestones: new Set([]),
+    requiresUpgrades: new Set<HammerUpgradeId>([
+      HammerUpgradeId.ADAMANT_HAMMER1,
+    ]),
+    requiresMilestones: new Set<string>([]),
     homeRoom: HomeRooms.TOOL_SHED,
   },
-  adamantHammer3: {
-    id: "adamantHammer3",
+  [HammerUpgradeId.ADAMANT_HAMMER3]: {
+    id: HammerUpgradeId.ADAMANT_HAMMER3,
     name: "Adamant Hammer +3",
     description: "An adamant hammer with unmatched efficiency",
     icon: Hammer,
     iconStyle: {
-      fill: mineralsTable.adamantiteOre.iconStyle.fill,
+      fill: mineralsTable[MineralId.ADAMANTITE_ORE].iconStyle.fill,
       ...TASK_AND_ITEM_ICON_STYLE,
     },
-    next: "adamantHammer4",
-    previous: "adamantHammer2",
+    next: HammerUpgradeId.ADAMANT_HAMMER4,
+    previous: HammerUpgradeId.ADAMANT_HAMMER2,
     modifier: {
       targets: {
         [smithing.id]: Object.keys(smithing.tasks),
@@ -578,21 +605,23 @@ export const hammerUpgrades = {
       },
     },
     requiresItems: { gold: 400000 },
-    requiresUpgrades: new Set(["adamantHammer2"]),
-    requiresMilestones: new Set([]),
+    requiresUpgrades: new Set<HammerUpgradeId>([
+      HammerUpgradeId.ADAMANT_HAMMER2,
+    ]),
+    requiresMilestones: new Set<string>([]),
     homeRoom: HomeRooms.TOOL_SHED,
   },
-  adamantHammer4: {
-    id: "adamantHammer4",
+  [HammerUpgradeId.ADAMANT_HAMMER4]: {
+    id: HammerUpgradeId.ADAMANT_HAMMER4,
     name: "Adamant Hammer +4",
     description: "An adamant hammer with ultimate efficiency",
     icon: Hammer,
     iconStyle: {
-      fill: mineralsTable.adamantiteOre.iconStyle.fill,
+      fill: mineralsTable[MineralId.ADAMANTITE_ORE].iconStyle.fill,
       ...TASK_AND_ITEM_ICON_STYLE,
     },
     next: null,
-    previous: "adamantHammer3",
+    previous: HammerUpgradeId.ADAMANT_HAMMER3,
     modifier: {
       targets: {
         [smithing.id]: Object.keys(smithing.tasks),
@@ -602,8 +631,10 @@ export const hammerUpgrades = {
       },
     },
     requiresItems: { gold: 500000 },
-    requiresUpgrades: new Set(["adamantHammer3"]),
-    requiresMilestones: new Set([]),
+    requiresUpgrades: new Set<HammerUpgradeId>([
+      HammerUpgradeId.ADAMANT_HAMMER3,
+    ]),
+    requiresMilestones: new Set<string>([]),
     homeRoom: HomeRooms.TOOL_SHED,
   },
 };

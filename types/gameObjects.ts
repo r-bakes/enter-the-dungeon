@@ -3,6 +3,7 @@ import { ItemId } from "./items";
 import { CombatCardId } from "@/data/combatCards/enums";
 import { SkillId } from "@/data/skills/enums";
 import { TaskId } from "./tasks";
+import { UpgradeId } from "./upgrades";
 
 export type GameObject = {
   id: GameObjectId;
@@ -26,4 +27,4 @@ export type IconStylePrimitive = {
   strokeOpacity: number;
 };
 
-export type GameObjectId = ItemId | CombatCardId | TaskId | SkillId;
+export type GameObjectId = ItemId | CombatCardId | TaskId | SkillId | UpgradeId;

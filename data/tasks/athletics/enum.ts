@@ -1,1 +1,9 @@
-export 
+export enum CalistheticCategoryTaskId {
+  JUMPING_JACKS = "JUMPING_JACKS",
+  SPRINTING = "SPRINTING",
+  LONG_JUMP = "LONG_JUMP",
+  PUSH_UPS = "PUSH_UPS",
+  PULL_UPS = "PULL_UPS",
+  BURPEES = "BURPESS",
+  MOUNTAIN_CLIMBERS = "MOUNTAIN_CLIMBERS",
+}

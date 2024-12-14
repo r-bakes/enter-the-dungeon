@@ -6,16 +6,18 @@ import { LootTable } from "./loot";
 import { GameObject } from "./gameObjects";
 import { SkillModifierType } from "@/data/modifiers/enums";
 import {
-  ProspectingCategoryTaskId,
   ProspectingCraftingTaskId,
+  ProspectingMiningTaskId,
 } from "@/data/tasks/prospecting/enum";
+import { CalistheticCategoryTaskId } from "@/data/tasks/athletics/enum";
 
 export type ProspectingTaskId =
   | ProspectingCraftingTaskId
-  | ProspectingCategoryTaskId;
+  | ProspectingMiningTaskId;
 export type SmithingTaskId = SmithingCategoryTaskId | SmeltingCategoryTaskId;
+export type AthleticsTaskId = CalistheticCategoryTaskId;
 
-export type TaskId = ProspectingTaskId | SmithingTaskId;
+export type TaskId = ProspectingTaskId | SmithingTaskId | AthleticsTaskId;
 
 export type Task = {
   durationSec: number;

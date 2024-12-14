@@ -1,3 +1,5 @@
+// src/data/upgrades/pickaxeUpgrades.ts
+
 import { TASK_AND_ITEM_ICON_STYLE } from "@/configurations/configurations";
 import { mineralsTable } from "@/data/items/minerals";
 import { HomeRooms } from "@/data/menus/enums";
@@ -5,10 +7,12 @@ import { SkillModifierType } from "@/data/modifiers/enums";
 import { ProspectingTaskCategories } from "@/data/skills/enums";
 import { prospecting } from "@/data/skills/prospecting";
 import { Pickaxe } from "lucide-react";
+import { Upgrade } from "@/types/upgrades";
+import { PickaxeUpgradeId } from "./pickaxeUpgradeIds";
 
-export const pickaxeUpgrades = {
-  basicPickaxe: {
-    id: "basicPickaxe",
+export const pickaxeUpgrades: { [id in PickaxeUpgradeId]: Upgrade } = {
+  [PickaxeUpgradeId.BASIC_PICKAXE]: {
+    id: PickaxeUpgradeId.BASIC_PICKAXE,
     name: "Basic Pickaxe",
     description: "Your trusty pickaxe!",
     icon: Pickaxe,
@@ -16,7 +20,7 @@ export const pickaxeUpgrades = {
       fill: "none",
       ...TASK_AND_ITEM_ICON_STYLE,
     },
-    next: "bronzePickaxe",
+    next: PickaxeUpgradeId.BRONZE_PICKAXE,
     previous: null,
     modifier: {
       targets: {
@@ -32,12 +36,13 @@ export const pickaxeUpgrades = {
       },
     },
     requiresItems: { gold: 0 },
-    requiresUpgrades: new Set([]),
-    requiresMilestones: new Set([]),
+    requiresUpgrades: new Set<PickaxeUpgradeId>([]),
+    requiresMilestones: new Set<string>([]),
     homeRoom: HomeRooms.TOOL_SHED,
   },
-  bronzePickaxe: {
-    id: "bronzePickaxe",
+
+  [PickaxeUpgradeId.BRONZE_PICKAXE]: {
+    id: PickaxeUpgradeId.BRONZE_PICKAXE,
     name: "Bronze Pickaxe",
     description: "Your trusty pickaxe!",
     icon: Pickaxe,
@@ -45,8 +50,8 @@ export const pickaxeUpgrades = {
       fill: mineralsTable.copperOre.iconStyle.fill,
       ...TASK_AND_ITEM_ICON_STYLE,
     },
-    next: "bronzePickaxe1",
-    previous: "basicPickaxe",
+    next: PickaxeUpgradeId.BRONZE_PICKAXE1,
+    previous: PickaxeUpgradeId.BASIC_PICKAXE,
     modifier: {
       targets: {
         [prospecting.id]: Object.entries(prospecting.tasks)
@@ -61,12 +66,15 @@ export const pickaxeUpgrades = {
       },
     },
     requiresItems: { gold: 10 },
-    requiresUpgrades: new Set(["basicPickaxe"]),
-    requiresMilestones: new Set([]),
+    requiresUpgrades: new Set<PickaxeUpgradeId>([
+      PickaxeUpgradeId.BASIC_PICKAXE,
+    ]),
+    requiresMilestones: new Set<string>([]),
     homeRoom: HomeRooms.TOOL_SHED,
   },
-  bronzePickaxe1: {
-    id: "bronzePickaxe1",
+
+  [PickaxeUpgradeId.BRONZE_PICKAXE1]: {
+    id: PickaxeUpgradeId.BRONZE_PICKAXE1,
     name: "Bronze Pickaxe +1",
     description: "An improved bronze pickaxe",
     icon: Pickaxe,
@@ -74,8 +82,8 @@ export const pickaxeUpgrades = {
       fill: mineralsTable.copperOre.iconStyle.fill,
       ...TASK_AND_ITEM_ICON_STYLE,
     },
-    next: "bronzePickaxe2",
-    previous: "bronzePickaxe",
+    next: PickaxeUpgradeId.BRONZE_PICKAXE2,
+    previous: PickaxeUpgradeId.BRONZE_PICKAXE,
     modifier: {
       targets: {
         [prospecting.id]: Object.entries(prospecting.tasks)
@@ -90,12 +98,15 @@ export const pickaxeUpgrades = {
       },
     },
     requiresItems: { gold: 20 },
-    requiresUpgrades: new Set(["bronzePickaxe"]),
-    requiresMilestones: new Set([]),
+    requiresUpgrades: new Set<PickaxeUpgradeId>([
+      PickaxeUpgradeId.BRONZE_PICKAXE,
+    ]),
+    requiresMilestones: new Set<string>([]),
     homeRoom: HomeRooms.TOOL_SHED,
   },
-  bronzePickaxe2: {
-    id: "bronzePickaxe2",
+
+  [PickaxeUpgradeId.BRONZE_PICKAXE2]: {
+    id: PickaxeUpgradeId.BRONZE_PICKAXE2,
     name: "Bronze Pickaxe +2",
     description: "A further improved bronze pickaxe",
     icon: Pickaxe,
@@ -103,8 +114,8 @@ export const pickaxeUpgrades = {
       fill: mineralsTable.copperOre.iconStyle.fill,
       ...TASK_AND_ITEM_ICON_STYLE,
     },
-    next: "bronzePickaxe3",
-    previous: "bronzePickaxe1",
+    next: PickaxeUpgradeId.BRONZE_PICKAXE3,
+    previous: PickaxeUpgradeId.BRONZE_PICKAXE1,
     modifier: {
       targets: {
         [prospecting.id]: Object.entries(prospecting.tasks)
@@ -119,12 +130,15 @@ export const pickaxeUpgrades = {
       },
     },
     requiresItems: { gold: 30 },
-    requiresUpgrades: new Set(["bronzePickaxe1"]),
-    requiresMilestones: new Set([]),
+    requiresUpgrades: new Set<PickaxeUpgradeId>([
+      PickaxeUpgradeId.BRONZE_PICKAXE1,
+    ]),
+    requiresMilestones: new Set<string>([]),
     homeRoom: HomeRooms.TOOL_SHED,
   },
-  bronzePickaxe3: {
-    id: "bronzePickaxe3",
+
+  [PickaxeUpgradeId.BRONZE_PICKAXE3]: {
+    id: PickaxeUpgradeId.BRONZE_PICKAXE3,
     name: "Bronze Pickaxe +3",
     description: "An even further improved bronze pickaxe",
     icon: Pickaxe,
@@ -132,8 +146,8 @@ export const pickaxeUpgrades = {
       fill: mineralsTable.copperOre.iconStyle.fill,
       ...TASK_AND_ITEM_ICON_STYLE,
     },
-    next: "bronzePickaxe4",
-    previous: "bronzePickaxe2",
+    next: PickaxeUpgradeId.BRONZE_PICKAXE4,
+    previous: PickaxeUpgradeId.BRONZE_PICKAXE2,
     modifier: {
       targets: {
         [prospecting.id]: Object.entries(prospecting.tasks)
@@ -148,12 +162,15 @@ export const pickaxeUpgrades = {
       },
     },
     requiresItems: { gold: 40 },
-    requiresUpgrades: new Set(["bronzePickaxe2"]),
-    requiresMilestones: new Set([]),
+    requiresUpgrades: new Set<PickaxeUpgradeId>([
+      PickaxeUpgradeId.BRONZE_PICKAXE2,
+    ]),
+    requiresMilestones: new Set<string>([]),
     homeRoom: HomeRooms.TOOL_SHED,
   },
-  bronzePickaxe4: {
-    id: "bronzePickaxe4",
+
+  [PickaxeUpgradeId.BRONZE_PICKAXE4]: {
+    id: PickaxeUpgradeId.BRONZE_PICKAXE4,
     name: "Bronze Pickaxe +4",
     description: "The ultimate bronze pickaxe",
     icon: Pickaxe,
@@ -161,8 +178,8 @@ export const pickaxeUpgrades = {
       fill: mineralsTable.copperOre.iconStyle.fill,
       ...TASK_AND_ITEM_ICON_STYLE,
     },
-    next: "ironPickaxe",
-    previous: "bronzePickaxe3",
+    next: PickaxeUpgradeId.IRON_PICKAXE,
+    previous: PickaxeUpgradeId.BRONZE_PICKAXE3,
     modifier: {
       targets: {
         [prospecting.id]: Object.entries(prospecting.tasks)
@@ -177,12 +194,15 @@ export const pickaxeUpgrades = {
       },
     },
     requiresItems: { gold: 50 },
-    requiresUpgrades: new Set(["bronzePickaxe3"]),
-    requiresMilestones: new Set([]),
+    requiresUpgrades: new Set<PickaxeUpgradeId>([
+      PickaxeUpgradeId.BRONZE_PICKAXE3,
+    ]),
+    requiresMilestones: new Set<string>([]),
     homeRoom: HomeRooms.TOOL_SHED,
   },
-  ironPickaxe: {
-    id: "ironPickaxe",
+
+  [PickaxeUpgradeId.IRON_PICKAXE]: {
+    id: PickaxeUpgradeId.IRON_PICKAXE,
     name: "Iron Pickaxe",
     description: "An iron pickaxe",
     icon: Pickaxe,
@@ -190,8 +210,8 @@ export const pickaxeUpgrades = {
       fill: mineralsTable.ironOre.iconStyle.fill,
       ...TASK_AND_ITEM_ICON_STYLE,
     },
-    next: "ironPickaxe1",
-    previous: "bronzePickaxe4",
+    next: PickaxeUpgradeId.IRON_PICKAXE1,
+    previous: PickaxeUpgradeId.BRONZE_PICKAXE4,
     modifier: {
       targets: {
         [prospecting.id]: Object.entries(prospecting.tasks)
@@ -206,12 +226,15 @@ export const pickaxeUpgrades = {
       },
     },
     requiresItems: { gold: 100 },
-    requiresUpgrades: new Set(["bronzePickaxe4"]),
-    requiresMilestones: new Set([]),
+    requiresUpgrades: new Set<PickaxeUpgradeId>([
+      PickaxeUpgradeId.BRONZE_PICKAXE4,
+    ]),
+    requiresMilestones: new Set<string>([]),
     homeRoom: HomeRooms.TOOL_SHED,
   },
-  ironPickaxe1: {
-    id: "ironPickaxe1",
+
+  [PickaxeUpgradeId.IRON_PICKAXE1]: {
+    id: PickaxeUpgradeId.IRON_PICKAXE1,
     name: "Iron Pickaxe +1",
     description: "An improved iron pickaxe",
     icon: Pickaxe,
@@ -219,8 +242,8 @@ export const pickaxeUpgrades = {
       fill: mineralsTable.ironOre.iconStyle.fill,
       ...TASK_AND_ITEM_ICON_STYLE,
     },
-    next: "ironPickaxe2",
-    previous: "ironPickaxe",
+    next: PickaxeUpgradeId.IRON_PICKAXE2,
+    previous: PickaxeUpgradeId.IRON_PICKAXE,
     modifier: {
       targets: {
         [prospecting.id]: Object.entries(prospecting.tasks)
@@ -235,12 +258,15 @@ export const pickaxeUpgrades = {
       },
     },
     requiresItems: { gold: 200 },
-    requiresUpgrades: new Set(["ironPickaxe"]),
-    requiresMilestones: new Set([]),
+    requiresUpgrades: new Set<PickaxeUpgradeId>([
+      PickaxeUpgradeId.IRON_PICKAXE,
+    ]),
+    requiresMilestones: new Set<string>([]),
     homeRoom: HomeRooms.TOOL_SHED,
   },
-  ironPickaxe2: {
-    id: "ironPickaxe2",
+
+  [PickaxeUpgradeId.IRON_PICKAXE2]: {
+    id: PickaxeUpgradeId.IRON_PICKAXE2,
     name: "Iron Pickaxe +2",
     description: "A further improved iron pickaxe",
     icon: Pickaxe,
@@ -248,8 +274,8 @@ export const pickaxeUpgrades = {
       fill: mineralsTable.ironOre.iconStyle.fill,
       ...TASK_AND_ITEM_ICON_STYLE,
     },
-    next: "ironPickaxe3",
-    previous: "ironPickaxe1",
+    next: PickaxeUpgradeId.IRON_PICKAXE3,
+    previous: PickaxeUpgradeId.IRON_PICKAXE1,
     modifier: {
       targets: {
         [prospecting.id]: Object.entries(prospecting.tasks)
@@ -264,12 +290,15 @@ export const pickaxeUpgrades = {
       },
     },
     requiresItems: { gold: 300 },
-    requiresUpgrades: new Set(["ironPickaxe1"]),
-    requiresMilestones: new Set([]),
+    requiresUpgrades: new Set<PickaxeUpgradeId>([
+      PickaxeUpgradeId.IRON_PICKAXE1,
+    ]),
+    requiresMilestones: new Set<string>([]),
     homeRoom: HomeRooms.TOOL_SHED,
   },
-  ironPickaxe3: {
-    id: "ironPickaxe3",
+
+  [PickaxeUpgradeId.IRON_PICKAXE3]: {
+    id: PickaxeUpgradeId.IRON_PICKAXE3,
     name: "Iron Pickaxe +3",
     description: "An even further improved iron pickaxe",
     icon: Pickaxe,
@@ -277,8 +306,8 @@ export const pickaxeUpgrades = {
       fill: mineralsTable.ironOre.iconStyle.fill,
       ...TASK_AND_ITEM_ICON_STYLE,
     },
-    next: "ironPickaxe4",
-    previous: "ironPickaxe2",
+    next: PickaxeUpgradeId.IRON_PICKAXE4,
+    previous: PickaxeUpgradeId.IRON_PICKAXE2,
     modifier: {
       targets: {
         [prospecting.id]: Object.entries(prospecting.tasks)
@@ -293,12 +322,15 @@ export const pickaxeUpgrades = {
       },
     },
     requiresItems: { gold: 400 },
-    requiresUpgrades: new Set(["ironPickaxe2"]),
-    requiresMilestones: new Set([]),
+    requiresUpgrades: new Set<PickaxeUpgradeId>([
+      PickaxeUpgradeId.IRON_PICKAXE2,
+    ]),
+    requiresMilestones: new Set<string>([]),
     homeRoom: HomeRooms.TOOL_SHED,
   },
-  ironPickaxe4: {
-    id: "ironPickaxe4",
+
+  [PickaxeUpgradeId.IRON_PICKAXE4]: {
+    id: PickaxeUpgradeId.IRON_PICKAXE4,
     name: "Iron Pickaxe +4",
     description: "The ultimate iron pickaxe",
     icon: Pickaxe,
@@ -306,8 +338,8 @@ export const pickaxeUpgrades = {
       fill: mineralsTable.ironOre.iconStyle.fill,
       ...TASK_AND_ITEM_ICON_STYLE,
     },
-    next: "steelPickaxe",
-    previous: "ironPickaxe3",
+    next: PickaxeUpgradeId.STEEL_PICKAXE,
+    previous: PickaxeUpgradeId.IRON_PICKAXE3,
     modifier: {
       targets: {
         [prospecting.id]: Object.entries(prospecting.tasks)
@@ -322,12 +354,15 @@ export const pickaxeUpgrades = {
       },
     },
     requiresItems: { gold: 500 },
-    requiresUpgrades: new Set(["ironPickaxe3"]),
-    requiresMilestones: new Set([]),
+    requiresUpgrades: new Set<PickaxeUpgradeId>([
+      PickaxeUpgradeId.IRON_PICKAXE3,
+    ]),
+    requiresMilestones: new Set<string>([]),
     homeRoom: HomeRooms.TOOL_SHED,
   },
-  steelPickaxe: {
-    id: "steelPickaxe",
+
+  [PickaxeUpgradeId.STEEL_PICKAXE]: {
+    id: PickaxeUpgradeId.STEEL_PICKAXE,
     name: "Steel Pickaxe",
     description: "A steel pickaxe",
     icon: Pickaxe,
@@ -335,8 +370,8 @@ export const pickaxeUpgrades = {
       fill: mineralsTable.ironOre.iconStyle.fill,
       ...TASK_AND_ITEM_ICON_STYLE,
     },
-    next: "steelPickaxe1",
-    previous: "ironPickaxe4",
+    next: PickaxeUpgradeId.STEEL_PICKAXE1,
+    previous: PickaxeUpgradeId.IRON_PICKAXE4,
     modifier: {
       targets: {
         [prospecting.id]: Object.entries(prospecting.tasks)
@@ -351,12 +386,15 @@ export const pickaxeUpgrades = {
       },
     },
     requiresItems: { gold: 1000 },
-    requiresUpgrades: new Set(["ironPickaxe4"]),
-    requiresMilestones: new Set([]),
+    requiresUpgrades: new Set<PickaxeUpgradeId>([
+      PickaxeUpgradeId.IRON_PICKAXE4,
+    ]),
+    requiresMilestones: new Set<string>([]),
     homeRoom: HomeRooms.TOOL_SHED,
   },
-  steelPickaxe1: {
-    id: "steelPickaxe1",
+
+  [PickaxeUpgradeId.STEEL_PICKAXE1]: {
+    id: PickaxeUpgradeId.STEEL_PICKAXE1,
     name: "Steel Pickaxe +1",
     description: "An improved steel pickaxe",
     icon: Pickaxe,
@@ -364,8 +402,8 @@ export const pickaxeUpgrades = {
       fill: mineralsTable.ironOre.iconStyle.fill,
       ...TASK_AND_ITEM_ICON_STYLE,
     },
-    next: "steelPickaxe2",
-    previous: "steelPickaxe",
+    next: PickaxeUpgradeId.STEEL_PICKAXE2,
+    previous: PickaxeUpgradeId.STEEL_PICKAXE,
     modifier: {
       targets: {
         [prospecting.id]: Object.entries(prospecting.tasks)
@@ -380,12 +418,15 @@ export const pickaxeUpgrades = {
       },
     },
     requiresItems: { gold: 2000 },
-    requiresUpgrades: new Set(["steelPickaxe"]),
-    requiresMilestones: new Set([]),
+    requiresUpgrades: new Set<PickaxeUpgradeId>([
+      PickaxeUpgradeId.STEEL_PICKAXE,
+    ]),
+    requiresMilestones: new Set<string>([]),
     homeRoom: HomeRooms.TOOL_SHED,
   },
-  steelPickaxe2: {
-    id: "steelPickaxe2",
+
+  [PickaxeUpgradeId.STEEL_PICKAXE2]: {
+    id: PickaxeUpgradeId.STEEL_PICKAXE2,
     name: "Steel Pickaxe +2",
     description: "A further improved steel pickaxe",
     icon: Pickaxe,
@@ -393,8 +434,8 @@ export const pickaxeUpgrades = {
       fill: mineralsTable.ironOre.iconStyle.fill,
       ...TASK_AND_ITEM_ICON_STYLE,
     },
-    next: "steelPickaxe3",
-    previous: "steelPickaxe1",
+    next: PickaxeUpgradeId.STEEL_PICKAXE3,
+    previous: PickaxeUpgradeId.STEEL_PICKAXE1,
     modifier: {
       targets: {
         [prospecting.id]: Object.entries(prospecting.tasks)
@@ -409,12 +450,15 @@ export const pickaxeUpgrades = {
       },
     },
     requiresItems: { gold: 3000 },
-    requiresUpgrades: new Set(["steelPickaxe1"]),
-    requiresMilestones: new Set([]),
+    requiresUpgrades: new Set<PickaxeUpgradeId>([
+      PickaxeUpgradeId.STEEL_PICKAXE1,
+    ]),
+    requiresMilestones: new Set<string>([]),
     homeRoom: HomeRooms.TOOL_SHED,
   },
-  steelPickaxe3: {
-    id: "steelPickaxe3",
+
+  [PickaxeUpgradeId.STEEL_PICKAXE3]: {
+    id: PickaxeUpgradeId.STEEL_PICKAXE3,
     name: "Steel Pickaxe +3",
     description: "An even further improved steel pickaxe",
     icon: Pickaxe,
@@ -422,8 +466,8 @@ export const pickaxeUpgrades = {
       fill: mineralsTable.ironOre.iconStyle.fill,
       ...TASK_AND_ITEM_ICON_STYLE,
     },
-    next: "steelPickaxe4",
-    previous: "steelPickaxe2",
+    next: PickaxeUpgradeId.STEEL_PICKAXE4,
+    previous: PickaxeUpgradeId.STEEL_PICKAXE2,
     modifier: {
       targets: {
         [prospecting.id]: Object.entries(prospecting.tasks)
@@ -438,12 +482,15 @@ export const pickaxeUpgrades = {
       },
     },
     requiresItems: { gold: 4000 },
-    requiresUpgrades: new Set(["steelPickaxe2"]),
-    requiresMilestones: new Set([]),
+    requiresUpgrades: new Set<PickaxeUpgradeId>([
+      PickaxeUpgradeId.STEEL_PICKAXE2,
+    ]),
+    requiresMilestones: new Set<string>([]),
     homeRoom: HomeRooms.TOOL_SHED,
   },
-  steelPickaxe4: {
-    id: "steelPickaxe4",
+
+  [PickaxeUpgradeId.STEEL_PICKAXE4]: {
+    id: PickaxeUpgradeId.STEEL_PICKAXE4,
     name: "Steel Pickaxe +4",
     description: "The ultimate steel pickaxe",
     icon: Pickaxe,
@@ -451,8 +498,8 @@ export const pickaxeUpgrades = {
       fill: mineralsTable.ironOre.iconStyle.fill,
       ...TASK_AND_ITEM_ICON_STYLE,
     },
-    next: "mithrilPickaxe",
-    previous: "steelPickaxe3",
+    next: PickaxeUpgradeId.MITHRIL_PICKAXE,
+    previous: PickaxeUpgradeId.STEEL_PICKAXE3,
     modifier: {
       targets: {
         [prospecting.id]: Object.entries(prospecting.tasks)
@@ -467,12 +514,15 @@ export const pickaxeUpgrades = {
       },
     },
     requiresItems: { gold: 5000 },
-    requiresUpgrades: new Set(["steelPickaxe3"]),
-    requiresMilestones: new Set([]),
+    requiresUpgrades: new Set<PickaxeUpgradeId>([
+      PickaxeUpgradeId.STEEL_PICKAXE3,
+    ]),
+    requiresMilestones: new Set<string>([]),
     homeRoom: HomeRooms.TOOL_SHED,
   },
-  mithrilPickaxe: {
-    id: "mithrilPickaxe",
+
+  [PickaxeUpgradeId.MITHRIL_PICKAXE]: {
+    id: PickaxeUpgradeId.MITHRIL_PICKAXE,
     name: "Mithril Pickaxe",
     description: "A mithril pickaxe",
     icon: Pickaxe,
@@ -480,12 +530,15 @@ export const pickaxeUpgrades = {
       fill: mineralsTable.mithrilOre.iconStyle.fill,
       ...TASK_AND_ITEM_ICON_STYLE,
     },
-    next: "mithrilPickaxe1",
-    previous: "steelPickaxe4",
+    next: PickaxeUpgradeId.MITHRIL_PICKAXE1,
+    previous: PickaxeUpgradeId.STEEL_PICKAXE4,
     modifier: {
       targets: {
         [prospecting.id]: Object.entries(prospecting.tasks)
-          .filter(([taskId, task]) => task.category === ProspectingTaskCategories.MINE)
+          .filter(
+            ([taskId, task]) =>
+              task.category === ProspectingTaskCategories.MINE,
+          )
           .map(([taskId, task]) => taskId),
       },
       values: {
@@ -493,12 +546,15 @@ export const pickaxeUpgrades = {
       },
     },
     requiresItems: { gold: 10000 },
-    requiresUpgrades: new Set(["steelPickaxe4"]),
-    requiresMilestones: new Set([]),
+    requiresUpgrades: new Set<PickaxeUpgradeId>([
+      PickaxeUpgradeId.STEEL_PICKAXE4,
+    ]),
+    requiresMilestones: new Set<string>([]),
     homeRoom: HomeRooms.TOOL_SHED,
   },
-  mithrilPickaxe1: {
-    id: "mithrilPickaxe1",
+
+  [PickaxeUpgradeId.MITHRIL_PICKAXE1]: {
+    id: PickaxeUpgradeId.MITHRIL_PICKAXE1,
     name: "Mithril Pickaxe +1",
     description: "A mithril pickaxe with improved efficiency",
     icon: Pickaxe,
@@ -506,12 +562,15 @@ export const pickaxeUpgrades = {
       fill: mineralsTable.mithrilOre.iconStyle.fill,
       ...TASK_AND_ITEM_ICON_STYLE,
     },
-    next: "mithrilPickaxe2",
-    previous: "mithrilPickaxe",
+    next: PickaxeUpgradeId.MITHRIL_PICKAXE2,
+    previous: PickaxeUpgradeId.MITHRIL_PICKAXE,
     modifier: {
       targets: {
         [prospecting.id]: Object.entries(prospecting.tasks)
-          .filter(([taskId, task]) => task.category === ProspectingTaskCategories.MINE)
+          .filter(
+            ([taskId, task]) =>
+              task.category === ProspectingTaskCategories.MINE,
+          )
           .map(([taskId, task]) => taskId),
       },
       values: {
@@ -519,12 +578,15 @@ export const pickaxeUpgrades = {
       },
     },
     requiresItems: { gold: 20000 },
-    requiresUpgrades: new Set(["mithrilPickaxe"]),
-    requiresMilestones: new Set([]),
+    requiresUpgrades: new Set<PickaxeUpgradeId>([
+      PickaxeUpgradeId.MITHRIL_PICKAXE,
+    ]),
+    requiresMilestones: new Set<string>([]),
     homeRoom: HomeRooms.TOOL_SHED,
   },
-  mithrilPickaxe2: {
-    id: "mithrilPickaxe2",
+
+  [PickaxeUpgradeId.MITHRIL_PICKAXE2]: {
+    id: PickaxeUpgradeId.MITHRIL_PICKAXE2,
     name: "Mithril Pickaxe +2",
     description: "A mithril pickaxe with superior efficiency",
     icon: Pickaxe,
@@ -532,12 +594,15 @@ export const pickaxeUpgrades = {
       fill: mineralsTable.mithrilOre.iconStyle.fill,
       ...TASK_AND_ITEM_ICON_STYLE,
     },
-    next: "mithrilPickaxe3",
-    previous: "mithrilPickaxe1",
+    next: PickaxeUpgradeId.MITHRIL_PICKAXE3,
+    previous: PickaxeUpgradeId.MITHRIL_PICKAXE1,
     modifier: {
       targets: {
         [prospecting.id]: Object.entries(prospecting.tasks)
-          .filter(([taskId, task]) => task.category === ProspectingTaskCategories.MINE)
+          .filter(
+            ([taskId, task]) =>
+              task.category === ProspectingTaskCategories.MINE,
+          )
           .map(([taskId, task]) => taskId),
       },
       values: {
@@ -545,12 +610,15 @@ export const pickaxeUpgrades = {
       },
     },
     requiresItems: { gold: 30000 },
-    requiresUpgrades: new Set(["mithrilPickaxe1"]),
-    requiresMilestones: new Set([]),
+    requiresUpgrades: new Set<PickaxeUpgradeId>([
+      PickaxeUpgradeId.MITHRIL_PICKAXE1,
+    ]),
+    requiresMilestones: new Set<string>([]),
     homeRoom: HomeRooms.TOOL_SHED,
   },
-  mithrilPickaxe3: {
-    id: "mithrilPickaxe3",
+
+  [PickaxeUpgradeId.MITHRIL_PICKAXE3]: {
+    id: PickaxeUpgradeId.MITHRIL_PICKAXE3,
     name: "Mithril Pickaxe +3",
     description: "A mithril pickaxe with unmatched efficiency",
     icon: Pickaxe,
@@ -558,12 +626,15 @@ export const pickaxeUpgrades = {
       fill: mineralsTable.mithrilOre.iconStyle.fill,
       ...TASK_AND_ITEM_ICON_STYLE,
     },
-    next: "mithrilPickaxe4",
-    previous: "mithrilPickaxe2",
+    next: PickaxeUpgradeId.MITHRIL_PICKAXE4,
+    previous: PickaxeUpgradeId.MITHRIL_PICKAXE2,
     modifier: {
       targets: {
         [prospecting.id]: Object.entries(prospecting.tasks)
-          .filter(([taskId, task]) => task.category === ProspectingTaskCategories.MINE)
+          .filter(
+            ([taskId, task]) =>
+              task.category === ProspectingTaskCategories.MINE,
+          )
           .map(([taskId, task]) => taskId),
       },
       values: {
@@ -571,12 +642,15 @@ export const pickaxeUpgrades = {
       },
     },
     requiresItems: { gold: 40000 },
-    requiresUpgrades: new Set(["mithrilPickaxe2"]),
-    requiresMilestones: new Set([]),
+    requiresUpgrades: new Set<PickaxeUpgradeId>([
+      PickaxeUpgradeId.MITHRIL_PICKAXE2,
+    ]),
+    requiresMilestones: new Set<string>([]),
     homeRoom: HomeRooms.TOOL_SHED,
   },
-  mithrilPickaxe4: {
-    id: "mithrilPickaxe4",
+
+  [PickaxeUpgradeId.MITHRIL_PICKAXE4]: {
+    id: PickaxeUpgradeId.MITHRIL_PICKAXE4,
     name: "Mithril Pickaxe +4",
     description: "A mithril pickaxe with ultimate efficiency",
     icon: Pickaxe,
@@ -584,12 +658,15 @@ export const pickaxeUpgrades = {
       fill: mineralsTable.mithrilOre.iconStyle.fill,
       ...TASK_AND_ITEM_ICON_STYLE,
     },
-    next: "adamantPickaxe",
-    previous: "mithrilPickaxe3",
+    next: PickaxeUpgradeId.ADAMANT_PICKAXE,
+    previous: PickaxeUpgradeId.MITHRIL_PICKAXE3,
     modifier: {
       targets: {
         [prospecting.id]: Object.entries(prospecting.tasks)
-          .filter(([taskId, task]) => task.category === ProspectingTaskCategories.MINE)
+          .filter(
+            ([taskId, task]) =>
+              task.category === ProspectingTaskCategories.MINE,
+          )
           .map(([taskId, task]) => taskId),
       },
       values: {
@@ -597,12 +674,15 @@ export const pickaxeUpgrades = {
       },
     },
     requiresItems: { gold: 50000 },
-    requiresUpgrades: new Set(["mithrilPickaxe3"]),
-    requiresMilestones: new Set([]),
+    requiresUpgrades: new Set<PickaxeUpgradeId>([
+      PickaxeUpgradeId.MITHRIL_PICKAXE3,
+    ]),
+    requiresMilestones: new Set<string>([]),
     homeRoom: HomeRooms.TOOL_SHED,
   },
-  adamantPickaxe: {
-    id: "adamantPickaxe",
+
+  [PickaxeUpgradeId.ADAMANT_PICKAXE]: {
+    id: PickaxeUpgradeId.ADAMANT_PICKAXE,
     name: "Adamant Pickaxe",
     description: "An adamant pickaxe",
     icon: Pickaxe,
@@ -610,12 +690,15 @@ export const pickaxeUpgrades = {
       fill: mineralsTable.adamantiteOre.iconStyle.fill,
       ...TASK_AND_ITEM_ICON_STYLE,
     },
-    next: "adamantPickaxe1",
-    previous: "mithrilPickaxe4",
+    next: PickaxeUpgradeId.ADAMANT_PICKAXE1,
+    previous: PickaxeUpgradeId.MITHRIL_PICKAXE4,
     modifier: {
       targets: {
         [prospecting.id]: Object.entries(prospecting.tasks)
-          .filter(([taskId, task]) => task.category === ProspectingTaskCategories.MINE)
+          .filter(
+            ([taskId, task]) =>
+              task.category === ProspectingTaskCategories.MINE,
+          )
           .map(([taskId, task]) => taskId),
       },
       values: {
@@ -623,25 +706,31 @@ export const pickaxeUpgrades = {
       },
     },
     requiresItems: { gold: 100000 },
-    requiresUpgrades: new Set(["mithrilPickaxe4"]),
-    requiresMilestones: new Set([]),
+    requiresUpgrades: new Set<PickaxeUpgradeId>([
+      PickaxeUpgradeId.MITHRIL_PICKAXE4,
+    ]),
+    requiresMilestones: new Set<string>([]),
     homeRoom: HomeRooms.TOOL_SHED,
   },
-  adamantPickaxe1: {
-    id: "adamantPickaxe1",
-    name: "Adamant Pickaxe 1",
+
+  [PickaxeUpgradeId.ADAMANT_PICKAXE1]: {
+    id: PickaxeUpgradeId.ADAMANT_PICKAXE1,
+    name: "Adamant Pickaxe +1",
     description: "An adamant pickaxe with improved efficiency",
     icon: Pickaxe,
     iconStyle: {
       fill: mineralsTable.adamantiteOre.iconStyle.fill,
       ...TASK_AND_ITEM_ICON_STYLE,
     },
-    next: "adamantPickaxe2",
-    previous: "adamantPickaxe",
+    next: PickaxeUpgradeId.ADAMANT_PICKAXE2,
+    previous: PickaxeUpgradeId.ADAMANT_PICKAXE,
     modifier: {
       targets: {
         [prospecting.id]: Object.entries(prospecting.tasks)
-          .filter(([taskId, task]) => task.category === ProspectingTaskCategories.MINE)
+          .filter(
+            ([taskId, task]) =>
+              task.category === ProspectingTaskCategories.MINE,
+          )
           .map(([taskId, task]) => taskId),
       },
       values: {
@@ -649,12 +738,15 @@ export const pickaxeUpgrades = {
       },
     },
     requiresItems: { gold: 200000 },
-    requiresUpgrades: new Set(["adamantPickaxe"]),
-    requiresMilestones: new Set([]),
+    requiresUpgrades: new Set<PickaxeUpgradeId>([
+      PickaxeUpgradeId.ADAMANT_PICKAXE,
+    ]),
+    requiresMilestones: new Set<string>([]),
     homeRoom: HomeRooms.TOOL_SHED,
   },
-  adamantPickaxe2: {
-    id: "adamantPickaxe2",
+
+  [PickaxeUpgradeId.ADAMANT_PICKAXE2]: {
+    id: PickaxeUpgradeId.ADAMANT_PICKAXE2,
     name: "Adamant Pickaxe +2",
     description: "An adamant pickaxe with superior efficiency",
     icon: Pickaxe,
@@ -662,12 +754,15 @@ export const pickaxeUpgrades = {
       fill: mineralsTable.adamantiteOre.iconStyle.fill,
       ...TASK_AND_ITEM_ICON_STYLE,
     },
-    next: "adamantPickaxe3",
-    previous: "adamantPickaxe1",
+    next: PickaxeUpgradeId.ADAMANT_PICKAXE3,
+    previous: PickaxeUpgradeId.ADAMANT_PICKAXE1,
     modifier: {
       targets: {
         [prospecting.id]: Object.entries(prospecting.tasks)
-          .filter(([taskId, task]) => task.category === ProspectingTaskCategories.MINE)
+          .filter(
+            ([taskId, task]) =>
+              task.category === ProspectingTaskCategories.MINE,
+          )
           .map(([taskId, task]) => taskId),
       },
       values: {
@@ -675,12 +770,15 @@ export const pickaxeUpgrades = {
       },
     },
     requiresItems: { gold: 300000 },
-    requiresUpgrades: new Set(["adamantPickaxe1"]),
-    requiresMilestones: new Set([]),
+    requiresUpgrades: new Set<PickaxeUpgradeId>([
+      PickaxeUpgradeId.ADAMANT_PICKAXE1,
+    ]),
+    requiresMilestones: new Set<string>([]),
     homeRoom: HomeRooms.TOOL_SHED,
   },
-  adamantPickaxe3: {
-    id: "adamantPickaxe3",
+
+  [PickaxeUpgradeId.ADAMANT_PICKAXE3]: {
+    id: PickaxeUpgradeId.ADAMANT_PICKAXE3,
     name: "Adamant Pickaxe +3",
     description: "An adamant pickaxe with unmatched efficiency",
     icon: Pickaxe,
@@ -688,12 +786,15 @@ export const pickaxeUpgrades = {
       fill: mineralsTable.adamantiteOre.iconStyle.fill,
       ...TASK_AND_ITEM_ICON_STYLE,
     },
-    next: "adamantPickaxe4",
-    previous: "adamantPickaxe2",
+    next: PickaxeUpgradeId.ADAMANT_PICKAXE4,
+    previous: PickaxeUpgradeId.ADAMANT_PICKAXE2,
     modifier: {
       targets: {
         [prospecting.id]: Object.entries(prospecting.tasks)
-          .filter(([taskId, task]) => task.category === ProspectingTaskCategories.MINE)
+          .filter(
+            ([taskId, task]) =>
+              task.category === ProspectingTaskCategories.MINE,
+          )
           .map(([taskId, task]) => taskId),
       },
       values: {
@@ -701,12 +802,15 @@ export const pickaxeUpgrades = {
       },
     },
     requiresItems: { gold: 400000 },
-    requiresUpgrades: new Set(["adamantPickaxe2"]),
-    requiresMilestones: new Set([]),
+    requiresUpgrades: new Set<PickaxeUpgradeId>([
+      PickaxeUpgradeId.ADAMANT_PICKAXE2,
+    ]),
+    requiresMilestones: new Set<string>([]),
     homeRoom: HomeRooms.TOOL_SHED,
   },
-  adamantPickaxe4: {
-    id: "adamantPickaxe4",
+
+  [PickaxeUpgradeId.ADAMANT_PICKAXE4]: {
+    id: PickaxeUpgradeId.ADAMANT_PICKAXE4,
     name: "Adamant Pickaxe +4",
     description: "An adamant pickaxe with ultimate efficiency",
     icon: Pickaxe,
@@ -715,11 +819,14 @@ export const pickaxeUpgrades = {
       ...TASK_AND_ITEM_ICON_STYLE,
     },
     next: null,
-    previous: "adamantPickaxe3",
+    previous: PickaxeUpgradeId.ADAMANT_PICKAXE3,
     modifier: {
       targets: {
         [prospecting.id]: Object.entries(prospecting.tasks)
-          .filter(([taskId, task]) => task.category === ProspectingTaskCategories.MINE)
+          .filter(
+            ([taskId, task]) =>
+              task.category === ProspectingTaskCategories.MINE,
+          )
           .map(([taskId, task]) => taskId),
       },
       values: {
@@ -727,8 +834,11 @@ export const pickaxeUpgrades = {
       },
     },
     requiresItems: { gold: 500000 },
-    requiresUpgrades: new Set(["adamantPickaxe3"]),
-    requiresMilestones: new Set([]),
+    requiresUpgrades: new Set<PickaxeUpgradeId>([
+      PickaxeUpgradeId.ADAMANT_PICKAXE3,
+    ]),
+    requiresMilestones: new Set<string>([]),
     homeRoom: HomeRooms.TOOL_SHED,
-  }
-}
+  },
+};
+

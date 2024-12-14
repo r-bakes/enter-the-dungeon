@@ -3,6 +3,6 @@ import { GameObject } from "./gameObjects";
 import { Task } from "./tasks";
 
 export type Skill<T extends string> = {
-  tasks: Record<T, Task>;
-  taskCategories: Record<string, string>;
+  tasks: {<T>: Task};
+  taskCategories: { string: string };
 } & GameObject;
