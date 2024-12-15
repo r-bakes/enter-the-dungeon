@@ -2,12 +2,13 @@ import {
   AGILITY_LEVELS_FOR_STAMINA_BONUS,
   LEVEL_CAP,
 } from "@/configurations/configurations";
+import { ArmorId, WeaponId } from "@/data/items/enums";
 import { itemTable } from "@/data/items/items";
 import { SkillModifierType } from "@/data/modifiers/enums";
 import { skillTable } from "@/data/skills/skills";
 import { upgradeTable } from "@/data/upgrades/upgrades";
 import { Character, Inventory, Skills, Upgrades } from "@/types/character";
-import { Equipment } from "@/types/items";
+import { Equipment, ItemId } from "@/types/items";
 import { SkillModifierTable } from "@/types/modifiers";
 import { Upgrade } from "@/types/upgrades";
 
@@ -28,14 +29,14 @@ export function addExp(skills: Skills, skillId: string, exp: number): Skills {
   return skills;
 }
 
-export function addCardsByItemId(itemId: string, unequipped: string[]) {
+export function addCardsByItemId(itemId: ItemId, unequipped: string[]) {
   let item = itemTable[itemId] as Equipment;
 
   item.cards.forEach((card) => unequipped.push(card.id));
 }
 
 export function removeCardsByItem(
-  itemId: string,
+  itemId: WeaponId | ArmorId,
   equipped: string[],
   unequipped: string[],
 ) {

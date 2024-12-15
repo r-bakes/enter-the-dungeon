@@ -10,14 +10,25 @@ import {
   ProspectingMiningTaskId,
 } from "@/data/tasks/prospecting/enum";
 import { CalistheticCategoryTaskId } from "@/data/tasks/athletics/enum";
+import {
+  AgricultureBotanyTaskId,
+  AgricultureRanchingTaskId,
+} from "@/data/tasks/agriculture/enum";
 
+export type AgricultureTaskId =
+  | AgricultureBotanyTaskId
+  | AgricultureRanchingTaskId;
 export type ProspectingTaskId =
   | ProspectingCraftingTaskId
   | ProspectingMiningTaskId;
 export type SmithingTaskId = SmithingCategoryTaskId | SmeltingCategoryTaskId;
 export type AthleticsTaskId = CalistheticCategoryTaskId;
 
-export type TaskId = ProspectingTaskId | SmithingTaskId | AthleticsTaskId;
+export type TaskId =
+  | ProspectingTaskId
+  | SmithingTaskId
+  | AthleticsTaskId
+  | AgricultureTaskId;
 
 export type Task = {
   durationSec: number;

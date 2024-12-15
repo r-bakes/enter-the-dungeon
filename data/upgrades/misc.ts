@@ -9,6 +9,9 @@ import { prospecting } from "../skills/prospecting";
 import { BarId, MineralId, MiscId } from "../items/enums";
 import { MiscUpgradeId } from "./enums";
 import { Upgrade } from "@/types/upgrades";
+import { TaskId } from "@/types/tasks";
+import { tasksTable } from "../tasks/tasks";
+import { ProspectingMiningTaskId } from "../tasks/prospecting/enum";
 
 export const miscUpgrades: { [id in MiscUpgradeId]: Upgrade } = {
   [MiscUpgradeId.BASIC_FORGE]: {
@@ -76,9 +79,7 @@ export const miscUpgrades: { [id in MiscUpgradeId]: Upgrade } = {
     previous: null,
     modifier: {
       targets: {
-        [prospecting.id]: Object.entries(prospecting.tasks)
-          .filter(([taskId, task]) => task.id === prospecting.tasks.mineCoal.id)
-          .map(([taskId, task]) => taskId),
+        [prospecting.id]: [tasksTable.MINE_COAL.id],
       },
       values: {
         [SkillModifierType.SPEED]: 10,

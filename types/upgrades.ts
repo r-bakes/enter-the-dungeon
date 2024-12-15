@@ -4,6 +4,7 @@ import { HomeRooms } from "@/data/menus/enums";
 import {
   BedUpgradeId,
   HammerUpgradeId,
+  MiscUpgradeId,
   PickaxeUpgradeId,
 } from "@/data/upgrades/enums";
 
@@ -19,4 +20,8 @@ export type Upgrade = {
   homeRoom: HomeRooms;
 } & GameObject;
 
-export type UpgradeId = BedUpgradeId | HammerUpgradeId | PickaxeUpgradeId;
+export type UpgradeId =
+  | BedUpgradeId
+  | HammerUpgradeId
+  | PickaxeUpgradeId
+  | MiscUpgradeId;

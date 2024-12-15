@@ -8,11 +8,9 @@ import { martial } from "@/data/skills/martial";
 import { prospecting } from "@/data/skills/prospecting";
 import { smithing } from "@/data/skills/smithing";
 import { stealth } from "@/data/skills/stealth";
-import { Skill } from "@/types/skills";
-import { SmithingTaskId } from "@/types/tasks";
-import { smithingTasks } from "../tasks/smithing/smithing";
+import { SkillMap } from "@/types/skills";
 
-export const skillTable: { [skillId: string]: Skill } = {
+export const skillTable: SkillMap = {
   [prospecting.id]: prospecting,
   [smithing.id]: smithing,
   [martial.id]: martial,

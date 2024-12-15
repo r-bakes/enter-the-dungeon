@@ -5,10 +5,11 @@ import { mineralsTable } from "@/data/items/minerals";
 import { HomeRooms } from "@/data/menus/enums";
 import { SkillModifierType } from "@/data/modifiers/enums";
 import { ProspectingTaskCategories } from "@/data/skills/enums";
-import { prospecting } from "@/data/skills/prospecting";
 import { Pickaxe } from "lucide-react";
 import { Upgrade } from "@/types/upgrades";
-import { PickaxeUpgradeId } from "./pickaxeUpgradeIds";
+import { PickaxeUpgradeId } from "./enums";
+import { prospecting } from "../skills/prospecting";
+import { MineralId } from "../items/enums";
 
 export const pickaxeUpgrades: { [id in PickaxeUpgradeId]: Upgrade } = {
   [PickaxeUpgradeId.BASIC_PICKAXE]: {
@@ -47,7 +48,7 @@ export const pickaxeUpgrades: { [id in PickaxeUpgradeId]: Upgrade } = {
     description: "Your trusty pickaxe!",
     icon: Pickaxe,
     iconStyle: {
-      fill: mineralsTable.copperOre.iconStyle.fill,
+      fill: mineralsTable[MineralId.COPPER_ORE].iconStyle.fill,
       ...TASK_AND_ITEM_ICON_STYLE,
     },
     next: PickaxeUpgradeId.BRONZE_PICKAXE1,
@@ -79,7 +80,7 @@ export const pickaxeUpgrades: { [id in PickaxeUpgradeId]: Upgrade } = {
     description: "An improved bronze pickaxe",
     icon: Pickaxe,
     iconStyle: {
-      fill: mineralsTable.copperOre.iconStyle.fill,
+      fill: mineralsTable[MineralId.COPPER_ORE].iconStyle.fill,
       ...TASK_AND_ITEM_ICON_STYLE,
     },
     next: PickaxeUpgradeId.BRONZE_PICKAXE2,
@@ -111,7 +112,7 @@ export const pickaxeUpgrades: { [id in PickaxeUpgradeId]: Upgrade } = {
     description: "A further improved bronze pickaxe",
     icon: Pickaxe,
     iconStyle: {
-      fill: mineralsTable.copperOre.iconStyle.fill,
+      fill: mineralsTable[MineralId.COPPER_ORE].iconStyle.fill,
       ...TASK_AND_ITEM_ICON_STYLE,
     },
     next: PickaxeUpgradeId.BRONZE_PICKAXE3,
@@ -143,7 +144,7 @@ export const pickaxeUpgrades: { [id in PickaxeUpgradeId]: Upgrade } = {
     description: "An even further improved bronze pickaxe",
     icon: Pickaxe,
     iconStyle: {
-      fill: mineralsTable.copperOre.iconStyle.fill,
+      fill: mineralsTable[MineralId.COPPER_ORE].iconStyle.fill,
       ...TASK_AND_ITEM_ICON_STYLE,
     },
     next: PickaxeUpgradeId.BRONZE_PICKAXE4,
@@ -175,7 +176,7 @@ export const pickaxeUpgrades: { [id in PickaxeUpgradeId]: Upgrade } = {
     description: "The ultimate bronze pickaxe",
     icon: Pickaxe,
     iconStyle: {
-      fill: mineralsTable.copperOre.iconStyle.fill,
+      fill: mineralsTable[MineralId.COPPER_ORE].iconStyle.fill,
       ...TASK_AND_ITEM_ICON_STYLE,
     },
     next: PickaxeUpgradeId.IRON_PICKAXE,
@@ -207,7 +208,7 @@ export const pickaxeUpgrades: { [id in PickaxeUpgradeId]: Upgrade } = {
     description: "An iron pickaxe",
     icon: Pickaxe,
     iconStyle: {
-      fill: mineralsTable.ironOre.iconStyle.fill,
+      fill: mineralsTable[MineralId.IRON_ORE].iconStyle.fill,
       ...TASK_AND_ITEM_ICON_STYLE,
     },
     next: PickaxeUpgradeId.IRON_PICKAXE1,
@@ -239,7 +240,7 @@ export const pickaxeUpgrades: { [id in PickaxeUpgradeId]: Upgrade } = {
     description: "An improved iron pickaxe",
     icon: Pickaxe,
     iconStyle: {
-      fill: mineralsTable.ironOre.iconStyle.fill,
+      fill: mineralsTable[MineralId.IRON_ORE].iconStyle.fill,
       ...TASK_AND_ITEM_ICON_STYLE,
     },
     next: PickaxeUpgradeId.IRON_PICKAXE2,
@@ -271,7 +272,7 @@ export const pickaxeUpgrades: { [id in PickaxeUpgradeId]: Upgrade } = {
     description: "A further improved iron pickaxe",
     icon: Pickaxe,
     iconStyle: {
-      fill: mineralsTable.ironOre.iconStyle.fill,
+      fill: mineralsTable[MineralId.IRON_ORE].iconStyle.fill,
       ...TASK_AND_ITEM_ICON_STYLE,
     },
     next: PickaxeUpgradeId.IRON_PICKAXE3,
@@ -303,7 +304,7 @@ export const pickaxeUpgrades: { [id in PickaxeUpgradeId]: Upgrade } = {
     description: "An even further improved iron pickaxe",
     icon: Pickaxe,
     iconStyle: {
-      fill: mineralsTable.ironOre.iconStyle.fill,
+      fill: mineralsTable[MineralId.IRON_ORE].iconStyle.fill,
       ...TASK_AND_ITEM_ICON_STYLE,
     },
     next: PickaxeUpgradeId.IRON_PICKAXE4,
@@ -335,7 +336,7 @@ export const pickaxeUpgrades: { [id in PickaxeUpgradeId]: Upgrade } = {
     description: "The ultimate iron pickaxe",
     icon: Pickaxe,
     iconStyle: {
-      fill: mineralsTable.ironOre.iconStyle.fill,
+      fill: mineralsTable[MineralId.IRON_ORE].iconStyle.fill,
       ...TASK_AND_ITEM_ICON_STYLE,
     },
     next: PickaxeUpgradeId.STEEL_PICKAXE,
@@ -367,7 +368,7 @@ export const pickaxeUpgrades: { [id in PickaxeUpgradeId]: Upgrade } = {
     description: "A steel pickaxe",
     icon: Pickaxe,
     iconStyle: {
-      fill: mineralsTable.ironOre.iconStyle.fill,
+      fill: mineralsTable[MineralId.IRON_ORE].iconStyle.fill,
       ...TASK_AND_ITEM_ICON_STYLE,
     },
     next: PickaxeUpgradeId.STEEL_PICKAXE1,
@@ -399,7 +400,7 @@ export const pickaxeUpgrades: { [id in PickaxeUpgradeId]: Upgrade } = {
     description: "An improved steel pickaxe",
     icon: Pickaxe,
     iconStyle: {
-      fill: mineralsTable.ironOre.iconStyle.fill,
+      fill: mineralsTable[MineralId.IRON_ORE].iconStyle.fill,
       ...TASK_AND_ITEM_ICON_STYLE,
     },
     next: PickaxeUpgradeId.STEEL_PICKAXE2,
@@ -431,7 +432,7 @@ export const pickaxeUpgrades: { [id in PickaxeUpgradeId]: Upgrade } = {
     description: "A further improved steel pickaxe",
     icon: Pickaxe,
     iconStyle: {
-      fill: mineralsTable.ironOre.iconStyle.fill,
+      fill: mineralsTable[MineralId.IRON_ORE].iconStyle.fill,
       ...TASK_AND_ITEM_ICON_STYLE,
     },
     next: PickaxeUpgradeId.STEEL_PICKAXE3,
@@ -463,7 +464,7 @@ export const pickaxeUpgrades: { [id in PickaxeUpgradeId]: Upgrade } = {
     description: "An even further improved steel pickaxe",
     icon: Pickaxe,
     iconStyle: {
-      fill: mineralsTable.ironOre.iconStyle.fill,
+      fill: mineralsTable[MineralId.IRON_ORE].iconStyle.fill,
       ...TASK_AND_ITEM_ICON_STYLE,
     },
     next: PickaxeUpgradeId.STEEL_PICKAXE4,
@@ -495,7 +496,7 @@ export const pickaxeUpgrades: { [id in PickaxeUpgradeId]: Upgrade } = {
     description: "The ultimate steel pickaxe",
     icon: Pickaxe,
     iconStyle: {
-      fill: mineralsTable.ironOre.iconStyle.fill,
+      fill: mineralsTable[MineralId.IRON_ORE].iconStyle.fill,
       ...TASK_AND_ITEM_ICON_STYLE,
     },
     next: PickaxeUpgradeId.MITHRIL_PICKAXE,
@@ -527,7 +528,7 @@ export const pickaxeUpgrades: { [id in PickaxeUpgradeId]: Upgrade } = {
     description: "A mithril pickaxe",
     icon: Pickaxe,
     iconStyle: {
-      fill: mineralsTable.mithrilOre.iconStyle.fill,
+      fill: mineralsTable[MineralId.MITHRIL_ORE].iconStyle.fill,
       ...TASK_AND_ITEM_ICON_STYLE,
     },
     next: PickaxeUpgradeId.MITHRIL_PICKAXE1,
@@ -559,7 +560,7 @@ export const pickaxeUpgrades: { [id in PickaxeUpgradeId]: Upgrade } = {
     description: "A mithril pickaxe with improved efficiency",
     icon: Pickaxe,
     iconStyle: {
-      fill: mineralsTable.mithrilOre.iconStyle.fill,
+      fill: mineralsTable[MineralId.MITHRIL_ORE].iconStyle.fill,
       ...TASK_AND_ITEM_ICON_STYLE,
     },
     next: PickaxeUpgradeId.MITHRIL_PICKAXE2,
@@ -591,7 +592,7 @@ export const pickaxeUpgrades: { [id in PickaxeUpgradeId]: Upgrade } = {
     description: "A mithril pickaxe with superior efficiency",
     icon: Pickaxe,
     iconStyle: {
-      fill: mineralsTable.mithrilOre.iconStyle.fill,
+      fill: mineralsTable[MineralId.MITHRIL_ORE].iconStyle.fill,
       ...TASK_AND_ITEM_ICON_STYLE,
     },
     next: PickaxeUpgradeId.MITHRIL_PICKAXE3,
@@ -623,7 +624,7 @@ export const pickaxeUpgrades: { [id in PickaxeUpgradeId]: Upgrade } = {
     description: "A mithril pickaxe with unmatched efficiency",
     icon: Pickaxe,
     iconStyle: {
-      fill: mineralsTable.mithrilOre.iconStyle.fill,
+      fill: mineralsTable[MineralId.MITHRIL_ORE].iconStyle.fill,
       ...TASK_AND_ITEM_ICON_STYLE,
     },
     next: PickaxeUpgradeId.MITHRIL_PICKAXE4,
@@ -655,7 +656,7 @@ export const pickaxeUpgrades: { [id in PickaxeUpgradeId]: Upgrade } = {
     description: "A mithril pickaxe with ultimate efficiency",
     icon: Pickaxe,
     iconStyle: {
-      fill: mineralsTable.mithrilOre.iconStyle.fill,
+      fill: mineralsTable[MineralId.MITHRIL_ORE].iconStyle.fill,
       ...TASK_AND_ITEM_ICON_STYLE,
     },
     next: PickaxeUpgradeId.ADAMANT_PICKAXE,
@@ -687,7 +688,7 @@ export const pickaxeUpgrades: { [id in PickaxeUpgradeId]: Upgrade } = {
     description: "An adamant pickaxe",
     icon: Pickaxe,
     iconStyle: {
-      fill: mineralsTable.adamantiteOre.iconStyle.fill,
+      fill: mineralsTable[MineralId.ADAMANTITE_ORE].iconStyle.fill,
       ...TASK_AND_ITEM_ICON_STYLE,
     },
     next: PickaxeUpgradeId.ADAMANT_PICKAXE1,
@@ -719,7 +720,7 @@ export const pickaxeUpgrades: { [id in PickaxeUpgradeId]: Upgrade } = {
     description: "An adamant pickaxe with improved efficiency",
     icon: Pickaxe,
     iconStyle: {
-      fill: mineralsTable.adamantiteOre.iconStyle.fill,
+      fill: mineralsTable[MineralId.ADAMANTITE_ORE].iconStyle.fill,
       ...TASK_AND_ITEM_ICON_STYLE,
     },
     next: PickaxeUpgradeId.ADAMANT_PICKAXE2,
@@ -751,7 +752,7 @@ export const pickaxeUpgrades: { [id in PickaxeUpgradeId]: Upgrade } = {
     description: "An adamant pickaxe with superior efficiency",
     icon: Pickaxe,
     iconStyle: {
-      fill: mineralsTable.adamantiteOre.iconStyle.fill,
+      fill: mineralsTable[MineralId.ADAMANTITE_ORE].iconStyle.fill,
       ...TASK_AND_ITEM_ICON_STYLE,
     },
     next: PickaxeUpgradeId.ADAMANT_PICKAXE3,
@@ -783,7 +784,7 @@ export const pickaxeUpgrades: { [id in PickaxeUpgradeId]: Upgrade } = {
     description: "An adamant pickaxe with unmatched efficiency",
     icon: Pickaxe,
     iconStyle: {
-      fill: mineralsTable.adamantiteOre.iconStyle.fill,
+      fill: mineralsTable[MineralId.ADAMANTITE_ORE].iconStyle.fill,
       ...TASK_AND_ITEM_ICON_STYLE,
     },
     next: PickaxeUpgradeId.ADAMANT_PICKAXE4,
@@ -815,7 +816,7 @@ export const pickaxeUpgrades: { [id in PickaxeUpgradeId]: Upgrade } = {
     description: "An adamant pickaxe with ultimate efficiency",
     icon: Pickaxe,
     iconStyle: {
-      fill: mineralsTable.adamantiteOre.iconStyle.fill,
+      fill: mineralsTable[MineralId.ADAMANTITE_ORE].iconStyle.fill,
       ...TASK_AND_ITEM_ICON_STYLE,
     },
     next: null,
@@ -841,4 +842,3 @@ export const pickaxeUpgrades: { [id in PickaxeUpgradeId]: Upgrade } = {
     homeRoom: HomeRooms.TOOL_SHED,
   },
 };
-

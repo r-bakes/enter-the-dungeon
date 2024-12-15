@@ -1,4 +1,5 @@
 import { Slot } from "@/data/character/character";
+import { ArmorId, WeaponId } from "@/data/items/enums";
 
 export type Character = {
   name: string;
@@ -14,7 +15,7 @@ export type Inventory = {
   [itemId: string]: number;
 };
 export type Loadout = {
-  [slotId in Slot]: string | null;
+  [slotId in Slot]: WeaponId | ArmorId | null;
 };
 export type Upgrades = Set<string>;
 export type Skills = {

@@ -1,14 +1,16 @@
 import { LucideIcon } from "lucide-react";
 import { SkillModifierType } from "@/data/modifiers/enums";
 import { IconStyle } from "@/types/gameObjects";
+import { SkillId } from "@/data/skills/enums";
+import { TaskId } from "./tasks";
 
 export type Modifier = {
-  targets: { [skillId: string]: string[] };
+  targets: { [id in SkillId]: string[] };
   values: { [type in SkillModifierType]?: number };
 };
 export type SkillModifierTable = {
-  [skillId: string]: {
-    [taskId: string]: SkillModifier;
+  [id in SkillId]?: {
+    [id in TaskId]?: SkillModifier;
   };
 };
 export type SkillModifier = {
