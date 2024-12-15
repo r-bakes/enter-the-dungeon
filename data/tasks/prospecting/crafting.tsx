@@ -1,9 +1,6 @@
-import { Circle, Gem, Mountain, SearchSlash } from "lucide-react";
+import { Gem } from "lucide-react";
 
-import {
-  SKILL_AND_MENU_ICON_STYLE,
-  TASK_AND_ITEM_ICON_STYLE,
-} from "@/configurations/configurations";
+import { TASK_AND_ITEM_ICON_STYLE } from "@/configurations/configurations";
 import { SkillModifierType } from "@/data/modifiers/enums";
 import { ProspectingTaskCategories } from "@/data/skills/enums";
 import { ProspectingCraftingTaskId } from "./enum";

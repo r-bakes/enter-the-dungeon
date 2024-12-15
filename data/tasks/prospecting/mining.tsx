@@ -8,6 +8,7 @@ import { mineralsTable } from "@/data/items/minerals";
 import { ProspectingTaskCategories } from "@/data/skills/enums";
 import { MineralId } from "@/data/items/enums";
 import { Task } from "@/types/tasks";
+import { ProspectingMiningTaskId } from "./enum";
 
 const prospectingCommonModifiers = new Set<SkillModifierType>([
   SkillModifierType.SPEED,
@@ -16,9 +17,9 @@ const prospectingCommonModifiers = new Set<SkillModifierType>([
   SkillModifierType.PRODUCTION_MULTIPLIER,
 ]);
 
-export const miningTasks: { [id in ProspectingMiningCategoryTaskId]: Task } = {
-  [ProspectingMiningCategoryTaskId.MINE_COPPER_ORE]: {
-    id: ProspectingMiningCategoryTaskId.MINE_COPPER_ORE,
+export const miningTasks: { [id in ProspectingMiningTaskId]: Task } = {
+  [ProspectingMiningTaskId.MINE_COPPER_ORE]: {
+    id: ProspectingMiningTaskId.MINE_COPPER_ORE,
     name: "Mine Copper",
     description: "Mine copper ore.",
     icon: Mountain,
@@ -40,8 +41,8 @@ export const miningTasks: { [id in ProspectingMiningCategoryTaskId]: Task } = {
     category: ProspectingTaskCategories.MINE,
     applicableModifiers: prospectingCommonModifiers,
   },
-  [ProspectingMiningCategoryTaskId.MINE_TIN_ORE]: {
-    id: ProspectingMiningCategoryTaskId.MINE_TIN_ORE,
+  [ProspectingMiningTaskId.MINE_TIN_ORE]: {
+    id: ProspectingMiningTaskId.MINE_TIN_ORE,
     name: "Mine Tin",
     description: "Mine tin ore.",
     icon: Mountain,
@@ -63,8 +64,8 @@ export const miningTasks: { [id in ProspectingMiningCategoryTaskId]: Task } = {
     category: ProspectingTaskCategories.MINE,
     applicableModifiers: prospectingCommonModifiers,
   },
-  [ProspectingMiningCategoryTaskId.MINE_COAL]: {
-    id: ProspectingMiningCategoryTaskId.MINE_COAL,
+  [ProspectingMiningTaskId.MINE_COAL]: {
+    id: ProspectingMiningTaskId.MINE_COAL,
     name: "Mine Coal",
     description: "Mine coal.",
     icon: Circle,
@@ -82,8 +83,8 @@ export const miningTasks: { [id in ProspectingMiningCategoryTaskId]: Task } = {
     category: ProspectingTaskCategories.MINE,
     applicableModifiers: prospectingCommonModifiers,
   },
-  [ProspectingMiningCategoryTaskId.MINE_IRON_ORE]: {
-    id: ProspectingMiningCategoryTaskId.MINE_IRON_ORE,
+  [ProspectingMiningTaskId.MINE_IRON_ORE]: {
+    id: ProspectingMiningTaskId.MINE_IRON_ORE,
     name: "Mine Iron",
     description: "Mine iron ore.",
     icon: Mountain,
@@ -105,8 +106,8 @@ export const miningTasks: { [id in ProspectingMiningCategoryTaskId]: Task } = {
     category: ProspectingTaskCategories.MINE,
     applicableModifiers: prospectingCommonModifiers,
   },
-  [ProspectingMiningCategoryTaskId.MINE_SILVER_ORE]: {
-    id: ProspectingMiningCategoryTaskId.MINE_SILVER_ORE,
+  [ProspectingMiningTaskId.MINE_SILVER_ORE]: {
+    id: ProspectingMiningTaskId.MINE_SILVER_ORE,
     name: "Mine Silver",
     description: "Mine silver ore.",
     icon: Mountain,
@@ -128,8 +129,8 @@ export const miningTasks: { [id in ProspectingMiningCategoryTaskId]: Task } = {
     category: ProspectingTaskCategories.MINE,
     applicableModifiers: prospectingCommonModifiers,
   },
-  [ProspectingMiningCategoryTaskId.MINE_GOLD_ORE]: {
-    id: ProspectingMiningCategoryTaskId.MINE_GOLD_ORE,
+  [ProspectingMiningTaskId.MINE_GOLD_ORE]: {
+    id: ProspectingMiningTaskId.MINE_GOLD_ORE,
     name: "Mine Gold",
     description: "Mine gold ore.",
     icon: Mountain,
@@ -151,8 +152,8 @@ export const miningTasks: { [id in ProspectingMiningCategoryTaskId]: Task } = {
     category: ProspectingTaskCategories.MINE,
     applicableModifiers: prospectingCommonModifiers,
   },
-  [ProspectingMiningCategoryTaskId.MINE_MITHRIL_ORE]: {
-    id: ProspectingMiningCategoryTaskId.MINE_MITHRIL_ORE,
+  [ProspectingMiningTaskId.MINE_MITHRIL_ORE]: {
+    id: ProspectingMiningTaskId.MINE_MITHRIL_ORE,
     name: "Mine Mithril",
     description: "Mine mithril ore.",
     icon: Mountain,
@@ -174,8 +175,8 @@ export const miningTasks: { [id in ProspectingMiningCategoryTaskId]: Task } = {
     category: ProspectingTaskCategories.MINE,
     applicableModifiers: prospectingCommonModifiers,
   },
-  [ProspectingMiningCategoryTaskId.MINE_PLATINUM_ORE]: {
-    id: ProspectingMiningCategoryTaskId.MINE_PLATINUM_ORE,
+  [ProspectingMiningTaskId.MINE_PLATINUM_ORE]: {
+    id: ProspectingMiningTaskId.MINE_PLATINUM_ORE,
     name: "Mine Platinum",
     description: "Mine platinum ore.",
     icon: Mountain,
@@ -197,8 +198,8 @@ export const miningTasks: { [id in ProspectingMiningCategoryTaskId]: Task } = {
     category: ProspectingTaskCategories.MINE,
     applicableModifiers: prospectingCommonModifiers,
   },
-  [ProspectingMiningCategoryTaskId.MINE_ADAMANTITE_ORE]: {
-    id: ProspectingMiningCategoryTaskId.MINE_ADAMANTITE_ORE,
+  [ProspectingMiningTaskId.MINE_ADAMANTITE_ORE]: {
+    id: ProspectingMiningTaskId.MINE_ADAMANTITE_ORE,
     name: "Mine Adamantite",
     description: "Mine adamantite ore.",
     icon: Mountain,
