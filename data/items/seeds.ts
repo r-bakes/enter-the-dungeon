@@ -1,11 +1,11 @@
 import { TASK_AND_ITEM_ICON_STYLE } from "@/configurations/configurations";
 import { Item } from "@/types/items";
 import { Bean } from "lucide-react";
-import { ItemType, SeedId } from "./enums";
+import { ItemId, ItemType } from "./enums";
 
-export const seedsTable: { [id in SeedId]: Item } = {
-  [SeedId.GINSENG_SEED]: {
-    id: SeedId.GINSENG_SEED,
+export const seedsTable: { [id in ItemId]?: Item } = {
+  [ItemId.GINSENG_SEED]: {
+    id: ItemId.GINSENG_SEED,
     name: "Ginseng Seed",
     description: "a ginseng seed.",
     value: 1,

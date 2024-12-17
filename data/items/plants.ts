@@ -1,11 +1,11 @@
 import { TASK_AND_ITEM_ICON_STYLE } from "@/configurations/configurations";
 import { Item } from "@/types/items";
 import { Leaf } from "lucide-react";
-import { ItemType, PlantId } from "./enums";
+import { ItemType, ItemId } from "./enums";
 
-export const plantsTable: { [id in PlantId]: Item } = {
-  [PlantId.GINSENG]: {
-    id: PlantId.GINSENG,
+export const plantsTable: { [id in ItemId]?: Item } = {
+  [ItemId.GINSENG]: {
+    id: ItemId.GINSENG,
     name: "Ginseng",
     description: "some ginseng.",
     value: 1,

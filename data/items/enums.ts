@@ -6,7 +6,7 @@ export enum ItemType {
   HIDDEN = "HIDDEN",
 }
 
-export enum ArmorId {
+export enum ItemId {
   BRONZE_HELMET = "BRONZE_HELMET",
   BRONZE_CHESTPLATE = "BRONZE_CHESTPLATE",
   BRONZE_BELT = "BRONZE_BELT",
@@ -36,9 +36,7 @@ export enum ArmorId {
   ADAMANT_BELT = "ADAMANT_BELT",
   ADAMANT_PLATELEGGINGS = "ADAMANT_PLATELEGGINGS",
   ADAMANT_GAUNTLETS = "ADAMANT_GAUNTLETS",
-}
 
-export enum WeaponId {
   BRONZE_DAGGER = "BRONZE_DAGGER",
   BRONZE_SWORD = "BRONZE_SWORD",
   BRONZE_SHIELD = "BRONZE_SHIELD",
@@ -59,9 +57,7 @@ export enum WeaponId {
   ADAMANT_SWORD = "ADAMANT_SWORD",
   ADAMANT_SHIELD = "ADAMANT_SHIELD",
   ADAMANT_GREAT_SWORD = "ADAMANT_GREAT_SWORD",
-}
 
-export enum MineralId {
   IRON_ORE = "IRON_ORE",
   COAL = "COAL",
   COPPER_ORE = "COPPER_ORE",
@@ -75,9 +71,7 @@ export enum MineralId {
   MITHRIL_ORE = "MITHRIL_ORE",
   PLATINUM_ORE = "PLATINUM_ORE",
   ADAMANTITE_ORE = "ADAMANTITE_ORE",
-}
 
-export enum BarId {
   BRONZE_BAR = "BRONZE_BAR",
   IRON_BAR = "IRON_BAR",
   STEEL_BAR = "STEEL_BAR",
@@ -86,16 +80,10 @@ export enum BarId {
   MITHRIL_BAR = "MITHRIL_BAR",
   PLATINUM_BAR = "PLATINUM_BAR",
   ADAMANT_BAR = "ADAMANT_BAR",
-}
 
-export enum MiscId {
   GOLD = "GOLD",
-}
 
-export enum PlantId {
   GINSENG = "GINSENG",
-}
 
-export enum SeedId {
   GINSENG_SEED = "GINSENG_SEED",
 }

@@ -3,9 +3,9 @@ import { Gem, Sprout } from "lucide-react";
 import { TASK_AND_ITEM_ICON_STYLE } from "@/configurations/configurations";
 import { SkillModifierType } from "@/data/modifiers/enums";
 import { ProspectingTaskCategories } from "@/data/skills/enums";
+import { TaskId } from "../enum";
 import { Task } from "@/types/tasks";
-import { AgricultureBotanyTaskId } from "./enum";
-import { PlantId, SeedId } from "@/data/items/enums";
+import { ItemId } from "@/data/items/enums";
 
 const prospectingCommonModifiers = new Set([
   SkillModifierType.SPEED,
@@ -14,9 +14,9 @@ const prospectingCommonModifiers = new Set([
   SkillModifierType.PRODUCTION_MULTIPLIER,
 ]);
 
-export const BotanyTasks: { [id in AgricultureBotanyTaskId]: Task } = {
-  [AgricultureBotanyTaskId.GROW_GINSENG]: {
-    id: AgricultureBotanyTaskId.GROW_GINSENG,
+export const BotanyTasks: { [id in TaskId]?: Task } = {
+  [TaskId.GROW_GINSENG]: {
+    id: TaskId.GROW_GINSENG,
     name: "Grow Ginseng",
     description: "Sow some ginseng seeds.",
     icon: Sprout,
@@ -26,10 +26,10 @@ export const BotanyTasks: { [id in AgricultureBotanyTaskId]: Task } = {
     requiredLevel: 0,
     lootTable: {
       plants: {
-        [PlantId.GINSENG]: { weight: 100, minQuantity: 1, maxQuantity: 5 },
+        [ItemId.GINSENG]: { weight: 100, minQuantity: 1, maxQuantity: 5 },
       },
       seeds: {
-        [SeedId.GINSENG_SEED]: { weight: 100, minQuantity: 1, maxQuantity: 5 },
+        [ItemId.GINSENG_SEED]: { weight: 100, minQuantity: 1, maxQuantity: 5 },
       },
     },
     requires: { geode: 1 },

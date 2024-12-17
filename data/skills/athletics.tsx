@@ -1,8 +1,8 @@
 import { SKILL_AND_MENU_ICON_STYLE } from "@/configurations/configurations";
 import { AthleticsTaskCategories } from "@/data/skills/enums";
-import { Skill } from "@/types/skills";
 import { PersonStanding } from "lucide-react";
 import { calistheticsTasks } from "../tasks/athletics/calisthetics";
+import { Skill } from "@/types/skills";
 
 const tasks = { ...calistheticsTasks };
 

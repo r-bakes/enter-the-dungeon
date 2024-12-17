@@ -1,26 +1,23 @@
 import { TASK_AND_ITEM_ICON_STYLE } from "@/configurations/configurations";
 import { Anvil, Bird, Heater } from "lucide-react";
 import { smithing } from "../skills/smithing";
-import { mineralsTable } from "../items/minerals";
 import { SkillModifierType } from "../modifiers/enums";
 import { HomeRooms } from "../menus/enums";
-import { barsTable } from "../items/bars";
 import { prospecting } from "../skills/prospecting";
-import { BarId, MineralId, MiscId } from "../items/enums";
-import { MiscUpgradeId } from "./enums";
 import { Upgrade } from "@/types/upgrades";
-import { TaskId } from "@/types/tasks";
 import { tasksTable } from "../tasks/tasks";
-import { ProspectingMiningTaskId } from "../tasks/prospecting/enum";
+import { UpgradeId } from "./enums";
+import { ItemId } from "../items/enums";
+import { itemTable } from "../items/items";
 
-export const miscUpgrades: { [id in MiscUpgradeId]: Upgrade } = {
-  [MiscUpgradeId.BASIC_FORGE]: {
-    id: MiscUpgradeId.BASIC_FORGE,
+export const miscUpgrades: { [id in UpgradeId]?: Upgrade } = {
+  [UpgradeId.BASIC_FORGE]: {
+    id: UpgradeId.BASIC_FORGE,
     name: "Basic Forge",
     description: "Your trusty Forge!",
     icon: Heater,
     iconStyle: {
-      fill: mineralsTable[MineralId.COPPER_ORE].iconStyle.fill,
+      fill: itemTable[ItemId.COPPER_ORE].iconStyle.fill,
       ...TASK_AND_ITEM_ICON_STYLE,
     },
     next: null,
@@ -41,13 +38,13 @@ export const miscUpgrades: { [id in MiscUpgradeId]: Upgrade } = {
     requiresMilestones: new Set([]),
     homeRoom: HomeRooms.WORKSHOP,
   },
-  [MiscUpgradeId.BASIC_ANVIL]: {
-    id: MiscUpgradeId.BASIC_ANVIL,
+  [UpgradeId.BASIC_ANVIL]: {
+    id: UpgradeId.BASIC_ANVIL,
     name: "Basic Anvil",
     description: "Your trusty Anvil!",
     icon: Anvil,
     iconStyle: {
-      fill: barsTable[BarId.STEEL_BAR].iconStyle.fill,
+      fill: itemTable[ItemId.STEEL_BAR].iconStyle.fill,
       ...TASK_AND_ITEM_ICON_STYLE,
     },
     next: null,
@@ -66,8 +63,8 @@ export const miscUpgrades: { [id in MiscUpgradeId]: Upgrade } = {
     requiresMilestones: new Set([]),
     homeRoom: HomeRooms.WORKSHOP,
   },
-  [MiscUpgradeId.COAL_MINE_CANERY]: {
-    id: MiscUpgradeId.COAL_MINE_CANERY,
+  [UpgradeId.COAL_MINE_CANERY]: {
+    id: UpgradeId.COAL_MINE_CANERY,
     name: "Coal Mine Canery",
     description: "Now were cooking!",
     icon: Bird,

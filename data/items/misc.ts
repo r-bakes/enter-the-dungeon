@@ -1,11 +1,11 @@
 import { TASK_AND_ITEM_ICON_STYLE } from "@/configurations/configurations";
-import { MiscId, ItemType } from "@/data/items/enums";
 import { Item } from "@/types/items";
 import { CircleDollarSign } from "lucide-react";
+import { ItemId, ItemType } from "./enums";
 
-export const miscTable: { [id in MiscId]: Item } = {
-  [MiscId.GOLD]: {
-    id: MiscId.GOLD,
+export const miscTable: { [id in ItemId]?: Item } = {
+  [ItemId.GOLD]: {
+    id: ItemId.GOLD,
     name: "Gold",
     description: "Currency of the realm.",
     value: 1,

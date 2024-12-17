@@ -1,12 +1,11 @@
 import { SKILL_AND_MENU_ICON_STYLE } from "@/configurations/configurations";
 import { AgricultureTaskCategories, SkillId } from "@/data/skills/enums";
 import { Skill } from "@/types/skills";
-import { AgricultureTaskId, Task } from "@/types/tasks";
 import { Sprout } from "lucide-react";
 
 const agricultureTasks = {};
 
-export const agriculture: Skill<AgricultureTaskId> = {
+export const agriculture: Skill = {
   id: SkillId.AGRICULTURE,
   name: "Agriculture",
   description: "The ability to take care of plants and animals.",

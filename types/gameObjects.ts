@@ -1,9 +1,9 @@
 import { LucideIcon } from "lucide-react";
-import { ItemId } from "./items";
 import { CombatCardId } from "@/data/combatCards/enums";
 import { SkillId } from "@/data/skills/enums";
-import { TaskId } from "./tasks";
-import { UpgradeId } from "./upgrades";
+import { UpgradeId } from "@/data/upgrades/enums";
+import { ItemId } from "@/data/items/enums";
+import { TaskId } from "@/data/tasks/enum";
 
 export type GameObject = {
   id: GameObjectId;

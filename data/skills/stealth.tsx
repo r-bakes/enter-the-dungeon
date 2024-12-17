@@ -1,6 +1,7 @@
 import { PersonStanding, Store, VenetianMask } from "lucide-react";
 
-import { Skill, Task } from "@/types/skills";
+import { Task } from "@/types/skills";
+import { Skill } from "@/types/Skill";
 import {
   SKILL_AND_MENU_ICON_STYLE,
   TASK_AND_ITEM_ICON_STYLE,

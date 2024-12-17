@@ -1,6 +1,6 @@
 import { Anvil } from "lucide-react";
 
-import { Skill } from "@/types/skills";
+import { Skill } from "@/types/Skill";
 import { SKILL_AND_MENU_ICON_STYLE } from "@/configurations/configurations";
 import { SmithingTaskCategories } from "@/data/skills/enums";
 import { smeltingTasks } from "../tasks/smithing/smelting";

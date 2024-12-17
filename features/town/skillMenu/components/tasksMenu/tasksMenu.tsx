@@ -7,7 +7,8 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import React from "react";
-import { Skill, Task, Tasks } from "@/types/skills";
+import { Task, Tasks } from "@/types/skills";
+import { Skill } from "@/types/Skill";
 import { formatCapitalCase } from "@/utils/formattingUtilities";
 import TasksContainer from "@/features/town/skillMenu/components/tasksMenu/tasksContainer";
 

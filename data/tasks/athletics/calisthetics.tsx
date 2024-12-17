@@ -10,17 +10,17 @@ import {
   Footprints,
   UploadIcon,
 } from "lucide-react";
-import { CalistheticCategoryTaskId } from "./enum";
 import { Task } from "@/types/tasks";
+import { TaskId } from "../enum";
 
 const agilityCommonModifiers = new Set([
   SkillModifierType.SPEED,
   SkillModifierType.EXPERIENCE,
 ]);
 
-export const calistheticsTasks: { [id in CalistheticCategoryTaskId]: Task } = {
-  [CalistheticCategoryTaskId.JUMPING_JACKS]: {
-    id: CalistheticCategoryTaskId.JUMPING_JACKS,
+export const calistheticsTasks: { [id in TaskId]?: Task } = {
+  [TaskId.JUMPING_JACKS]: {
+    id: TaskId.JUMPING_JACKS,
     name: "Jumping Jacks",
     description: "Do jumping jacks.",
     icon: PersonStanding,
@@ -37,8 +37,8 @@ export const calistheticsTasks: { [id in CalistheticCategoryTaskId]: Task } = {
     applicableModifiers: agilityCommonModifiers,
   },
 
-  [CalistheticCategoryTaskId.SPRINTING]: {
-    id: CalistheticCategoryTaskId.SPRINTING,
+  [TaskId.SPRINTING]: {
+    id: TaskId.SPRINTING,
     name: "Sprinting",
     description: "Run at full speed for a short distance.",
     icon: Footprints,
@@ -55,8 +55,8 @@ export const calistheticsTasks: { [id in CalistheticCategoryTaskId]: Task } = {
     applicableModifiers: agilityCommonModifiers,
   },
 
-  [CalistheticCategoryTaskId.LONG_JUMP]: {
-    id: CalistheticCategoryTaskId.LONG_JUMP,
+  [TaskId.LONG_JUMP]: {
+    id: TaskId.LONG_JUMP,
     name: "Long Jump",
     description: "Perform a long jump.",
     icon: Redo,
@@ -73,8 +73,8 @@ export const calistheticsTasks: { [id in CalistheticCategoryTaskId]: Task } = {
     applicableModifiers: agilityCommonModifiers,
   },
 
-  [CalistheticCategoryTaskId.PUSH_UPS]: {
-    id: CalistheticCategoryTaskId.PUSH_UPS,
+  [TaskId.PUSH_UPS]: {
+    id: TaskId.PUSH_UPS,
     name: "Push-Ups",
     description: "Perform a set of push-ups.",
     icon: Heart,
@@ -91,8 +91,8 @@ export const calistheticsTasks: { [id in CalistheticCategoryTaskId]: Task } = {
     applicableModifiers: agilityCommonModifiers,
   },
 
-  [CalistheticCategoryTaskId.PULL_UPS]: {
-    id: CalistheticCategoryTaskId.PULL_UPS,
+  [TaskId.PULL_UPS]: {
+    id: TaskId.PULL_UPS,
     name: "Pull-Ups",
     description: "Perform a set of pull-ups.",
     icon: UserCheck,
@@ -109,8 +109,8 @@ export const calistheticsTasks: { [id in CalistheticCategoryTaskId]: Task } = {
     applicableModifiers: agilityCommonModifiers,
   },
 
-  [CalistheticCategoryTaskId.BURPEES]: {
-    id: CalistheticCategoryTaskId.BURPEES,
+  [TaskId.BURPEES]: {
+    id: TaskId.BURPEES,
     name: "Burpees",
     description: "Perform a set of burpees.",
     icon: Repeat,
@@ -127,8 +127,8 @@ export const calistheticsTasks: { [id in CalistheticCategoryTaskId]: Task } = {
     applicableModifiers: agilityCommonModifiers,
   },
 
-  [CalistheticCategoryTaskId.MOUNTAIN_CLIMBERS]: {
-    id: CalistheticCategoryTaskId.MOUNTAIN_CLIMBERS,
+  [TaskId.MOUNTAIN_CLIMBERS]: {
+    id: TaskId.MOUNTAIN_CLIMBERS,
     name: "Mountain Climbers",
     description: "Perform mountain climbers.",
     icon: UploadIcon,

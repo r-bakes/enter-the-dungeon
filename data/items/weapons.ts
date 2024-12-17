@@ -1,20 +1,19 @@
 import { TASK_AND_ITEM_ICON_STYLE } from "@/configurations/configurations";
 import { Slot } from "@/data/character/character";
 import { combatCardTable } from "@/data/combatCards/combatCards";
-import { barsTable } from "@/data/items/bars";
-import { ItemType, WeaponId, MineralId, BarId } from "@/data/items/enums";
-import { mineralsTable } from "@/data/items/minerals";
 import { Equipment } from "@/types/items";
 import { Shield, Slice, Sword } from "lucide-react";
+import { ItemId, ItemType } from "./enums";
+import { itemTable } from "./items";
 
-export const weaponTable: { [id in WeaponId]: Equipment } = {
-  [WeaponId.BRONZE_DAGGER]: {
-    id: WeaponId.BRONZE_DAGGER,
+export const weaponTable: { [id in ItemId]?: Equipment } = {
+  [ItemId.BRONZE_DAGGER]: {
+    id: ItemId.BRONZE_DAGGER,
     name: "Bronze Dagger",
     description: "A bronze dagger.",
     icon: Slice,
     iconStyle: {
-      fill: mineralsTable[MineralId.COPPER_ORE].iconStyle.fill,
+      fill: itemTable[ItemId.COPPER_ORE].iconStyle.fill,
       ...TASK_AND_ITEM_ICON_STYLE,
     },
     type: ItemType.EQUIPMENT,
@@ -25,13 +24,13 @@ export const weaponTable: { [id in WeaponId]: Equipment } = {
     defenseBonus: 0,
     healthBonus: 0,
   },
-  [WeaponId.BRONZE_SWORD]: {
-    id: WeaponId.BRONZE_SWORD,
+  [ItemId.BRONZE_SWORD]: {
+    id: ItemId.BRONZE_SWORD,
     name: "Bronze Sword",
     description: "A bronze sword.",
     icon: Sword,
     iconStyle: {
-      fill: mineralsTable[MineralId.COPPER_ORE].iconStyle.fill,
+      fill: itemTable[ItemId.COPPER_ORE].iconStyle.fill,
       ...TASK_AND_ITEM_ICON_STYLE,
     },
     type: ItemType.EQUIPMENT,
@@ -46,13 +45,13 @@ export const weaponTable: { [id in WeaponId]: Equipment } = {
     defenseBonus: 0,
     healthBonus: 0,
   },
-  [WeaponId.BRONZE_SHIELD]: {
-    id: WeaponId.BRONZE_SHIELD,
+  [ItemId.BRONZE_SHIELD]: {
+    id: ItemId.BRONZE_SHIELD,
     name: "Bronze Shield",
     description: "A bronze shield.",
     icon: Shield,
     iconStyle: {
-      fill: mineralsTable[MineralId.COPPER_ORE].iconStyle.fill,
+      fill: itemTable[ItemId.COPPER_ORE].iconStyle.fill,
       ...TASK_AND_ITEM_ICON_STYLE,
     },
     type: ItemType.EQUIPMENT,
@@ -67,13 +66,13 @@ export const weaponTable: { [id in WeaponId]: Equipment } = {
     defenseBonus: 1,
     healthBonus: 0,
   },
-  [WeaponId.BRONZE_GREAT_SWORD]: {
-    id: WeaponId.BRONZE_GREAT_SWORD,
+  [ItemId.BRONZE_GREAT_SWORD]: {
+    id: ItemId.BRONZE_GREAT_SWORD,
     name: "Bronze Great Sword",
     description: "A bronze great sword.",
     icon: Sword,
     iconStyle: {
-      fill: mineralsTable[MineralId.COPPER_ORE].iconStyle.fill,
+      fill: itemTable[ItemId.COPPER_ORE].iconStyle.fill,
       ...TASK_AND_ITEM_ICON_STYLE,
     },
     type: ItemType.EQUIPMENT,
@@ -85,13 +84,13 @@ export const weaponTable: { [id in WeaponId]: Equipment } = {
     defenseBonus: 0,
     healthBonus: 0,
   },
-  [WeaponId.IRON_DAGGER]: {
-    id: WeaponId.IRON_DAGGER,
+  [ItemId.IRON_DAGGER]: {
+    id: ItemId.IRON_DAGGER,
     name: "Iron Dagger",
     description: "An iron dagger.",
     icon: Slice,
     iconStyle: {
-      fill: mineralsTable[MineralId.IRON_ORE].iconStyle.fill,
+      fill: itemTable[ItemId.IRON_ORE].iconStyle.fill,
       ...TASK_AND_ITEM_ICON_STYLE,
     },
     type: ItemType.EQUIPMENT,
@@ -102,13 +101,13 @@ export const weaponTable: { [id in WeaponId]: Equipment } = {
     defenseBonus: 0,
     healthBonus: 0,
   },
-  [WeaponId.IRON_SWORD]: {
-    id: WeaponId.IRON_SWORD,
+  [ItemId.IRON_SWORD]: {
+    id: ItemId.IRON_SWORD,
     name: "Iron Sword",
     description: "An iron sword.",
     icon: Sword,
     iconStyle: {
-      fill: mineralsTable[MineralId.IRON_ORE].iconStyle.fill,
+      fill: itemTable[ItemId.IRON_ORE].iconStyle.fill,
       ...TASK_AND_ITEM_ICON_STYLE,
     },
     type: ItemType.EQUIPMENT,
@@ -123,13 +122,13 @@ export const weaponTable: { [id in WeaponId]: Equipment } = {
     defenseBonus: 0,
     healthBonus: 0,
   },
-  [WeaponId.IRON_SHIELD]: {
-    id: WeaponId.IRON_SHIELD,
+  [ItemId.IRON_SHIELD]: {
+    id: ItemId.IRON_SHIELD,
     name: "Iron Shield",
     description: "An iron shield.",
     icon: Shield,
     iconStyle: {
-      fill: mineralsTable[MineralId.IRON_ORE].iconStyle.fill,
+      fill: itemTable[ItemId.IRON_ORE].iconStyle.fill,
       ...TASK_AND_ITEM_ICON_STYLE,
     },
     type: ItemType.EQUIPMENT,
@@ -144,13 +143,13 @@ export const weaponTable: { [id in WeaponId]: Equipment } = {
     defenseBonus: 2,
     healthBonus: 0,
   },
-  [WeaponId.IRON_GREAT_SWORD]: {
-    id: WeaponId.IRON_GREAT_SWORD,
+  [ItemId.IRON_GREAT_SWORD]: {
+    id: ItemId.IRON_GREAT_SWORD,
     name: "Iron Great Sword",
     description: "An iron great sword.",
     icon: Sword,
     iconStyle: {
-      fill: mineralsTable[MineralId.IRON_ORE].iconStyle.fill,
+      fill: itemTable[ItemId.IRON_ORE].iconStyle.fill,
       ...TASK_AND_ITEM_ICON_STYLE,
     },
     type: ItemType.EQUIPMENT,
@@ -162,13 +161,13 @@ export const weaponTable: { [id in WeaponId]: Equipment } = {
     defenseBonus: 0,
     healthBonus: 0,
   },
-  [WeaponId.STEEL_DAGGER]: {
-    id: WeaponId.STEEL_DAGGER,
+  [ItemId.STEEL_DAGGER]: {
+    id: ItemId.STEEL_DAGGER,
     name: "Steel Dagger",
     description: "A steel dagger.",
     icon: Slice,
     iconStyle: {
-      fill: barsTable[BarId.STEEL_BAR].iconStyle.fill,
+      fill: itemTable[ItemId.STEEL_BAR].iconStyle.fill,
       ...TASK_AND_ITEM_ICON_STYLE,
     },
     type: ItemType.EQUIPMENT,
@@ -179,13 +178,13 @@ export const weaponTable: { [id in WeaponId]: Equipment } = {
     defenseBonus: 0,
     healthBonus: 0,
   },
-  [WeaponId.STEEL_SWORD]: {
-    id: WeaponId.STEEL_SWORD,
+  [ItemId.STEEL_SWORD]: {
+    id: ItemId.STEEL_SWORD,
     name: "Steel Sword",
     description: "A steel sword.",
     icon: Sword,
     iconStyle: {
-      fill: barsTable[BarId.STEEL_BAR].iconStyle.fill,
+      fill: itemTable[ItemId.STEEL_BAR].iconStyle.fill,
       ...TASK_AND_ITEM_ICON_STYLE,
     },
     type: ItemType.EQUIPMENT,
@@ -200,13 +199,13 @@ export const weaponTable: { [id in WeaponId]: Equipment } = {
     defenseBonus: 0,
     healthBonus: 0,
   },
-  [WeaponId.STEEL_SHIELD]: {
-    id: WeaponId.STEEL_SHIELD,
+  [ItemId.STEEL_SHIELD]: {
+    id: ItemId.STEEL_SHIELD,
     name: "Steel Shield",
     description: "A steel shield.",
     icon: Shield,
     iconStyle: {
-      fill: barsTable[BarId.STEEL_BAR].iconStyle.fill,
+      fill: itemTable[ItemId.STEEL_BAR].iconStyle.fill,
       ...TASK_AND_ITEM_ICON_STYLE,
     },
     type: ItemType.EQUIPMENT,
@@ -221,13 +220,13 @@ export const weaponTable: { [id in WeaponId]: Equipment } = {
     defenseBonus: 3,
     healthBonus: 0,
   },
-  [WeaponId.STEEL_GREAT_SWORD]: {
-    id: WeaponId.STEEL_GREAT_SWORD,
+  [ItemId.STEEL_GREAT_SWORD]: {
+    id: ItemId.STEEL_GREAT_SWORD,
     name: "Steel Great Sword",
     description: "A steel great sword.",
     icon: Sword,
     iconStyle: {
-      fill: barsTable[BarId.STEEL_BAR].iconStyle.fill,
+      fill: itemTable[ItemId.STEEL_BAR].iconStyle.fill,
       ...TASK_AND_ITEM_ICON_STYLE,
     },
     type: ItemType.EQUIPMENT,
@@ -239,13 +238,13 @@ export const weaponTable: { [id in WeaponId]: Equipment } = {
     defenseBonus: 0,
     healthBonus: 0,
   },
-  [WeaponId.MITHRIL_DAGGER]: {
-    id: WeaponId.MITHRIL_DAGGER,
+  [ItemId.MITHRIL_DAGGER]: {
+    id: ItemId.MITHRIL_DAGGER,
     name: "Mithril Dagger",
     description: "A mithril dagger.",
     icon: Slice,
     iconStyle: {
-      fill: mineralsTable[MineralId.MITHRIL_ORE].iconStyle.fill,
+      fill: itemTable[ItemId.MITHRIL_ORE].iconStyle.fill,
       ...TASK_AND_ITEM_ICON_STYLE,
     },
     type: ItemType.EQUIPMENT,
@@ -256,13 +255,13 @@ export const weaponTable: { [id in WeaponId]: Equipment } = {
     defenseBonus: 0,
     healthBonus: 0,
   },
-  [WeaponId.MITHRIL_SWORD]: {
-    id: WeaponId.MITHRIL_SWORD,
+  [ItemId.MITHRIL_SWORD]: {
+    id: ItemId.MITHRIL_SWORD,
     name: "Mithril Sword",
     description: "A mithril sword.",
     icon: Sword,
     iconStyle: {
-      fill: mineralsTable[MineralId.MITHRIL_ORE].iconStyle.fill,
+      fill: itemTable[ItemId.MITHRIL_ORE].iconStyle.fill,
       ...TASK_AND_ITEM_ICON_STYLE,
     },
     type: ItemType.EQUIPMENT,
@@ -277,13 +276,13 @@ export const weaponTable: { [id in WeaponId]: Equipment } = {
     defenseBonus: 0,
     healthBonus: 0,
   },
-  [WeaponId.MITHRIL_SHIELD]: {
-    id: WeaponId.MITHRIL_SHIELD,
+  [ItemId.MITHRIL_SHIELD]: {
+    id: ItemId.MITHRIL_SHIELD,
     name: "Mithril Shield",
     description: "A mithril shield.",
     icon: Shield,
     iconStyle: {
-      fill: mineralsTable[MineralId.MITHRIL_ORE].iconStyle.fill,
+      fill: itemTable[ItemId.MITHRIL_ORE].iconStyle.fill,
       ...TASK_AND_ITEM_ICON_STYLE,
     },
     type: ItemType.EQUIPMENT,
@@ -298,13 +297,13 @@ export const weaponTable: { [id in WeaponId]: Equipment } = {
     defenseBonus: 4,
     healthBonus: 0,
   },
-  [WeaponId.MITHRIL_GREAT_SWORD]: {
-    id: WeaponId.MITHRIL_GREAT_SWORD,
+  [ItemId.MITHRIL_GREAT_SWORD]: {
+    id: ItemId.MITHRIL_GREAT_SWORD,
     name: "Mithril Great Sword",
     description: "A mithril great sword.",
     icon: Sword,
     iconStyle: {
-      fill: mineralsTable[MineralId.MITHRIL_ORE].iconStyle.fill,
+      fill: itemTable[ItemId.MITHRIL_ORE].iconStyle.fill,
       ...TASK_AND_ITEM_ICON_STYLE,
     },
     type: ItemType.EQUIPMENT,
@@ -316,13 +315,13 @@ export const weaponTable: { [id in WeaponId]: Equipment } = {
     defenseBonus: 0,
     healthBonus: 0,
   },
-  [WeaponId.ADAMANT_DAGGER]: {
-    id: WeaponId.ADAMANT_DAGGER,
+  [ItemId.ADAMANT_DAGGER]: {
+    id: ItemId.ADAMANT_DAGGER,
     name: "Adamant Dagger",
     description: "An adamant dagger.",
     icon: Slice,
     iconStyle: {
-      fill: mineralsTable[MineralId.ADAMANTITE_ORE].iconStyle.fill,
+      fill: itemTable[ItemId.ADAMANTITE_ORE].iconStyle.fill,
       ...TASK_AND_ITEM_ICON_STYLE,
     },
     type: ItemType.EQUIPMENT,
@@ -333,13 +332,13 @@ export const weaponTable: { [id in WeaponId]: Equipment } = {
     defenseBonus: 0,
     healthBonus: 0,
   },
-  [WeaponId.ADAMANT_SWORD]: {
-    id: WeaponId.ADAMANT_SWORD,
+  [ItemId.ADAMANT_SWORD]: {
+    id: ItemId.ADAMANT_SWORD,
     name: "Adamant Sword",
     description: "An adamant sword.",
     icon: Sword,
     iconStyle: {
-      fill: mineralsTable[MineralId.ADAMANTITE_ORE].iconStyle.fill,
+      fill: itemTable[ItemId.ADAMANTITE_ORE].iconStyle.fill,
       ...TASK_AND_ITEM_ICON_STYLE,
     },
     type: ItemType.EQUIPMENT,
@@ -354,13 +353,13 @@ export const weaponTable: { [id in WeaponId]: Equipment } = {
     defenseBonus: 0,
     healthBonus: 0,
   },
-  [WeaponId.ADAMANT_SHIELD]: {
-    id: WeaponId.ADAMANT_SHIELD,
+  [ItemId.ADAMANT_SHIELD]: {
+    id: ItemId.ADAMANT_SHIELD,
     name: "Adamant Shield",
     description: "An adamant shield.",
     icon: Shield,
     iconStyle: {
-      fill: mineralsTable[MineralId.ADAMANTITE_ORE].iconStyle.fill,
+      fill: itemTable[ItemId.ADAMANTITE_ORE].iconStyle.fill,
       ...TASK_AND_ITEM_ICON_STYLE,
     },
     type: ItemType.EQUIPMENT,
@@ -375,13 +374,13 @@ export const weaponTable: { [id in WeaponId]: Equipment } = {
     defenseBonus: 5,
     healthBonus: 0,
   },
-  [WeaponId.ADAMANT_GREAT_SWORD]: {
-    id: WeaponId.ADAMANT_GREAT_SWORD,
+  [ItemId.ADAMANT_GREAT_SWORD]: {
+    id: ItemId.ADAMANT_GREAT_SWORD,
     name: "Adamant Great Sword",
     description: "An adamant great sword.",
     icon: Sword,
     iconStyle: {
-      fill: mineralsTable[MineralId.ADAMANTITE_ORE].iconStyle.fill,
+      fill: itemTable[ItemId.ADAMANTITE_ORE].iconStyle.fill,
       ...TASK_AND_ITEM_ICON_STYLE,
     },
     type: ItemType.EQUIPMENT,

@@ -1,19 +1,19 @@
 import { TASK_AND_ITEM_ICON_STYLE } from "@/configurations/configurations";
 import { Slot } from "@/data/character/character";
-import { ItemType, ArmorId, MineralId } from "@/data/items/enums";
+import { ItemId, ItemType } from "@/data/items/enums";
 import { Equipment } from "@/types/items";
 import { Hand, HardHat, Shirt, Tangent, ToyBrick } from "lucide-react";
-import { mineralsTable } from "./minerals";
+import { itemTable } from "./items";
 
-export const armorTable: { [id in ArmorId]: Equipment } = {
+export const armorTable: { [id in ItemId]?: Equipment } = {
   // Bronze Armor
-  [ArmorId.BRONZE_HELMET]: {
-    id: ArmorId.BRONZE_HELMET,
+  [ItemId.BRONZE_HELMET]: {
+    id: ItemId.BRONZE_HELMET,
     name: "Bronze Helmet",
     description: "A sturdy bronze helmet.",
     icon: HardHat,
     iconStyle: {
-      fill: mineralsTable[MineralId.COPPER_ORE].iconStyle.fill,
+      fill: itemTable[ItemId.COPPER_ORE].iconStyle.fill,
       ...TASK_AND_ITEM_ICON_STYLE,
     },
     type: ItemType.EQUIPMENT,
@@ -24,13 +24,13 @@ export const armorTable: { [id in ArmorId]: Equipment } = {
     defenseBonus: 1,
     healthBonus: 0,
   },
-  [ArmorId.BRONZE_CHESTPLATE]: {
-    id: ArmorId.BRONZE_CHESTPLATE,
+  [ItemId.BRONZE_CHESTPLATE]: {
+    id: ItemId.BRONZE_CHESTPLATE,
     name: "Bronze Chestplate",
     description: "A durable bronze chestplate.",
     icon: Shirt,
     iconStyle: {
-      fill: mineralsTable[MineralId.COPPER_ORE].iconStyle.fill,
+      fill: itemTable[ItemId.COPPER_ORE].iconStyle.fill,
       ...TASK_AND_ITEM_ICON_STYLE,
     },
     type: ItemType.EQUIPMENT,
@@ -41,13 +41,13 @@ export const armorTable: { [id in ArmorId]: Equipment } = {
     defenseBonus: 1,
     healthBonus: 0,
   },
-  [ArmorId.BRONZE_BELT]: {
-    id: ArmorId.BRONZE_BELT,
+  [ItemId.BRONZE_BELT]: {
+    id: ItemId.BRONZE_BELT,
     name: "Bronze Belt",
     description: "A reliable bronze belt.",
     icon: Tangent,
     iconStyle: {
-      fill: mineralsTable[MineralId.COPPER_ORE].iconStyle.fill,
+      fill: itemTable[ItemId.COPPER_ORE].iconStyle.fill,
       ...TASK_AND_ITEM_ICON_STYLE,
     },
     type: ItemType.EQUIPMENT,
@@ -58,13 +58,13 @@ export const armorTable: { [id in ArmorId]: Equipment } = {
     defenseBonus: 1,
     healthBonus: 0,
   },
-  [ArmorId.BRONZE_PLATELEGGINGS]: {
-    id: ArmorId.BRONZE_PLATELEGGINGS,
+  [ItemId.BRONZE_PLATELEGGINGS]: {
+    id: ItemId.BRONZE_PLATELEGGINGS,
     name: "Bronze Plateleggings",
     description: "Robust bronze plateleggings.",
     icon: ToyBrick,
     iconStyle: {
-      fill: mineralsTable[MineralId.COPPER_ORE].iconStyle.fill,
+      fill: itemTable[ItemId.COPPER_ORE].iconStyle.fill,
       ...TASK_AND_ITEM_ICON_STYLE,
     },
     type: ItemType.EQUIPMENT,
@@ -75,13 +75,13 @@ export const armorTable: { [id in ArmorId]: Equipment } = {
     defenseBonus: 1,
     healthBonus: 0,
   },
-  [ArmorId.BRONZE_GAUNTLETS]: {
-    id: ArmorId.BRONZE_GAUNTLETS,
+  [ItemId.BRONZE_GAUNTLETS]: {
+    id: ItemId.BRONZE_GAUNTLETS,
     name: "Bronze Gauntlets",
     description: "A pair of sturdy bronze gauntlets.",
     icon: Hand,
     iconStyle: {
-      fill: mineralsTable[MineralId.COPPER_ORE].iconStyle.fill,
+      fill: itemTable[ItemId.COPPER_ORE].iconStyle.fill,
       ...TASK_AND_ITEM_ICON_STYLE,
     },
     type: ItemType.EQUIPMENT,
@@ -94,13 +94,13 @@ export const armorTable: { [id in ArmorId]: Equipment } = {
   },
 
   // Iron Armor
-  [ArmorId.IRON_HELMET]: {
-    id: ArmorId.IRON_HELMET,
+  [ItemId.IRON_HELMET]: {
+    id: ItemId.IRON_HELMET,
     name: "Iron Helmet",
     description: "A strong iron helmet.",
     icon: HardHat,
     iconStyle: {
-      fill: mineralsTable[MineralId.IRON_ORE].iconStyle.fill,
+      fill: itemTable[ItemId.IRON_ORE].iconStyle.fill,
       ...TASK_AND_ITEM_ICON_STYLE,
     },
     type: ItemType.EQUIPMENT,
@@ -111,13 +111,13 @@ export const armorTable: { [id in ArmorId]: Equipment } = {
     defenseBonus: 2,
     healthBonus: 0,
   },
-  [ArmorId.IRON_CHESTPLATE]: {
-    id: ArmorId.IRON_CHESTPLATE,
+  [ItemId.IRON_CHESTPLATE]: {
+    id: ItemId.IRON_CHESTPLATE,
     name: "Iron Chestplate",
     description: "A durable iron chestplate.",
     icon: Shirt,
     iconStyle: {
-      fill: mineralsTable[MineralId.IRON_ORE].iconStyle.fill,
+      fill: itemTable[ItemId.IRON_ORE].iconStyle.fill,
       ...TASK_AND_ITEM_ICON_STYLE,
     },
     type: ItemType.EQUIPMENT,
@@ -128,13 +128,13 @@ export const armorTable: { [id in ArmorId]: Equipment } = {
     defenseBonus: 2,
     healthBonus: 0,
   },
-  [ArmorId.IRON_BELT]: {
-    id: ArmorId.IRON_BELT,
+  [ItemId.IRON_BELT]: {
+    id: ItemId.IRON_BELT,
     name: "Iron Belt",
     description: "A reliable iron belt.",
     icon: Tangent,
     iconStyle: {
-      fill: mineralsTable[MineralId.IRON_ORE].iconStyle.fill,
+      fill: itemTable[ItemId.IRON_ORE].iconStyle.fill,
       ...TASK_AND_ITEM_ICON_STYLE,
     },
     type: ItemType.EQUIPMENT,
@@ -145,13 +145,13 @@ export const armorTable: { [id in ArmorId]: Equipment } = {
     defenseBonus: 2,
     healthBonus: 0,
   },
-  [ArmorId.IRON_PLATELEGGINGS]: {
-    id: ArmorId.IRON_PLATELEGGINGS,
+  [ItemId.IRON_PLATELEGGINGS]: {
+    id: ItemId.IRON_PLATELEGGINGS,
     name: "Iron Plateleggings",
     description: "Sturdy iron plateleggings.",
     icon: ToyBrick,
     iconStyle: {
-      fill: mineralsTable[MineralId.IRON_ORE].iconStyle.fill,
+      fill: itemTable[ItemId.IRON_ORE].iconStyle.fill,
       ...TASK_AND_ITEM_ICON_STYLE,
     },
     type: ItemType.EQUIPMENT,
@@ -162,13 +162,13 @@ export const armorTable: { [id in ArmorId]: Equipment } = {
     defenseBonus: 2,
     healthBonus: 0,
   },
-  [ArmorId.IRON_GAUNTLETS]: {
-    id: ArmorId.IRON_GAUNTLETS,
+  [ItemId.IRON_GAUNTLETS]: {
+    id: ItemId.IRON_GAUNTLETS,
     name: "Iron Gauntlets",
     description: "A pair of strong iron gauntlets.",
     icon: Hand,
     iconStyle: {
-      fill: mineralsTable[MineralId.IRON_ORE].iconStyle.fill,
+      fill: itemTable[ItemId.IRON_ORE].iconStyle.fill,
       ...TASK_AND_ITEM_ICON_STYLE,
     },
     type: ItemType.EQUIPMENT,
@@ -181,13 +181,13 @@ export const armorTable: { [id in ArmorId]: Equipment } = {
   },
 
   // Steel Armor
-  [ArmorId.STEEL_HELMET]: {
-    id: ArmorId.STEEL_HELMET,
+  [ItemId.STEEL_HELMET]: {
+    id: ItemId.STEEL_HELMET,
     name: "Steel Helmet",
     description: "A robust steel helmet.",
     icon: HardHat,
     iconStyle: {
-      fill: mineralsTable[MineralId.IRON_ORE].iconStyle.fill,
+      fill: itemTable[ItemId.IRON_ORE].iconStyle.fill,
       ...TASK_AND_ITEM_ICON_STYLE,
     },
     type: ItemType.EQUIPMENT,
@@ -198,13 +198,13 @@ export const armorTable: { [id in ArmorId]: Equipment } = {
     defenseBonus: 3,
     healthBonus: 0,
   },
-  [ArmorId.STEEL_CHESTPLATE]: {
-    id: ArmorId.STEEL_CHESTPLATE,
+  [ItemId.STEEL_CHESTPLATE]: {
+    id: ItemId.STEEL_CHESTPLATE,
     name: "Steel Chestplate",
     description: "A strong steel chestplate.",
     icon: Shirt,
     iconStyle: {
-      fill: mineralsTable[MineralId.IRON_ORE].iconStyle.fill,
+      fill: itemTable[ItemId.IRON_ORE].iconStyle.fill,
       ...TASK_AND_ITEM_ICON_STYLE,
     },
     type: ItemType.EQUIPMENT,
@@ -215,13 +215,13 @@ export const armorTable: { [id in ArmorId]: Equipment } = {
     defenseBonus: 3,
     healthBonus: 0,
   },
-  [ArmorId.STEEL_BELT]: {
-    id: ArmorId.STEEL_BELT,
+  [ItemId.STEEL_BELT]: {
+    id: ItemId.STEEL_BELT,
     name: "Steel Belt",
     description: "A dependable steel belt.",
     icon: Tangent,
     iconStyle: {
-      fill: mineralsTable[MineralId.IRON_ORE].iconStyle.fill,
+      fill: itemTable[ItemId.IRON_ORE].iconStyle.fill,
       ...TASK_AND_ITEM_ICON_STYLE,
     },
     type: ItemType.EQUIPMENT,
@@ -232,13 +232,13 @@ export const armorTable: { [id in ArmorId]: Equipment } = {
     defenseBonus: 3,
     healthBonus: 0,
   },
-  [ArmorId.STEEL_PLATELEGGINGS]: {
-    id: ArmorId.STEEL_PLATELEGGINGS,
+  [ItemId.STEEL_PLATELEGGINGS]: {
+    id: ItemId.STEEL_PLATELEGGINGS,
     name: "Steel Plateleggings",
     description: "Sturdy steel plateleggings.",
     icon: ToyBrick,
     iconStyle: {
-      fill: mineralsTable[MineralId.IRON_ORE].iconStyle.fill,
+      fill: itemTable[ItemId.IRON_ORE].iconStyle.fill,
       ...TASK_AND_ITEM_ICON_STYLE,
     },
     type: ItemType.EQUIPMENT,
@@ -249,13 +249,13 @@ export const armorTable: { [id in ArmorId]: Equipment } = {
     defenseBonus: 3,
     healthBonus: 0,
   },
-  [ArmorId.STEEL_GAUNTLETS]: {
-    id: ArmorId.STEEL_GAUNTLETS,
+  [ItemId.STEEL_GAUNTLETS]: {
+    id: ItemId.STEEL_GAUNTLETS,
     name: "Steel Gauntlets",
     description: "A pair of strong steel gauntlets.",
     icon: Hand,
     iconStyle: {
-      fill: mineralsTable[MineralId.IRON_ORE].iconStyle.fill,
+      fill: itemTable[ItemId.IRON_ORE].iconStyle.fill,
       ...TASK_AND_ITEM_ICON_STYLE,
     },
     type: ItemType.EQUIPMENT,
@@ -268,13 +268,13 @@ export const armorTable: { [id in ArmorId]: Equipment } = {
   },
 
   // Mithril Armor
-  [ArmorId.MITHRIL_HELMET]: {
-    id: ArmorId.MITHRIL_HELMET,
+  [ItemId.MITHRIL_HELMET]: {
+    id: ItemId.MITHRIL_HELMET,
     name: "Mithril Helmet",
     description: "A lightweight mithril helmet.",
     icon: HardHat,
     iconStyle: {
-      fill: mineralsTable[MineralId.MITHRIL_ORE].iconStyle.fill,
+      fill: itemTable[ItemId.MITHRIL_ORE].iconStyle.fill,
       ...TASK_AND_ITEM_ICON_STYLE,
     },
     type: ItemType.EQUIPMENT,
@@ -285,13 +285,13 @@ export const armorTable: { [id in ArmorId]: Equipment } = {
     defenseBonus: 4,
     healthBonus: 0,
   },
-  [ArmorId.MITHRIL_CHESTPLATE]: {
-    id: ArmorId.MITHRIL_CHESTPLATE,
+  [ItemId.MITHRIL_CHESTPLATE]: {
+    id: ItemId.MITHRIL_CHESTPLATE,
     name: "Mithril Chestplate",
     description: "A resilient mithril chestplate.",
     icon: Shirt,
     iconStyle: {
-      fill: mineralsTable[MineralId.MITHRIL_ORE].iconStyle.fill,
+      fill: itemTable[ItemId.MITHRIL_ORE].iconStyle.fill,
       ...TASK_AND_ITEM_ICON_STYLE,
     },
     type: ItemType.EQUIPMENT,
@@ -302,13 +302,13 @@ export const armorTable: { [id in ArmorId]: Equipment } = {
     defenseBonus: 4,
     healthBonus: 0,
   },
-  [ArmorId.MITHRIL_BELT]: {
-    id: ArmorId.MITHRIL_BELT,
+  [ItemId.MITHRIL_BELT]: {
+    id: ItemId.MITHRIL_BELT,
     name: "Mithril Belt",
     description: "A flexible mithril belt.",
     icon: Tangent,
     iconStyle: {
-      fill: mineralsTable[MineralId.MITHRIL_ORE].iconStyle.fill,
+      fill: itemTable[ItemId.MITHRIL_ORE].iconStyle.fill,
       ...TASK_AND_ITEM_ICON_STYLE,
     },
     type: ItemType.EQUIPMENT,
@@ -319,13 +319,13 @@ export const armorTable: { [id in ArmorId]: Equipment } = {
     defenseBonus: 4,
     healthBonus: 0,
   },
-  [ArmorId.MITHRIL_PLATELEGGINGS]: {
-    id: ArmorId.MITHRIL_PLATELEGGINGS,
+  [ItemId.MITHRIL_PLATELEGGINGS]: {
+    id: ItemId.MITHRIL_PLATELEGGINGS,
     name: "Mithril Plateleggings",
     description: "Elegant mithril plateleggings.",
     icon: ToyBrick,
     iconStyle: {
-      fill: mineralsTable[MineralId.MITHRIL_ORE].iconStyle.fill,
+      fill: itemTable[ItemId.MITHRIL_ORE].iconStyle.fill,
       ...TASK_AND_ITEM_ICON_STYLE,
     },
     type: ItemType.EQUIPMENT,
@@ -336,13 +336,13 @@ export const armorTable: { [id in ArmorId]: Equipment } = {
     defenseBonus: 4,
     healthBonus: 0,
   },
-  [ArmorId.MITHRIL_GAUNTLETS]: {
-    id: ArmorId.MITHRIL_GAUNTLETS,
+  [ItemId.MITHRIL_GAUNTLETS]: {
+    id: ItemId.MITHRIL_GAUNTLETS,
     name: "Mithril Gauntlets",
     description: "A pair of dexterous mithril gauntlets.",
     icon: Hand,
     iconStyle: {
-      fill: mineralsTable[MineralId.MITHRIL_ORE].iconStyle.fill,
+      fill: itemTable[ItemId.MITHRIL_ORE].iconStyle.fill,
       ...TASK_AND_ITEM_ICON_STYLE,
     },
     type: ItemType.EQUIPMENT,
@@ -355,13 +355,13 @@ export const armorTable: { [id in ArmorId]: Equipment } = {
   },
 
   // Adamant Armor
-  [ArmorId.ADAMANT_HELMET]: {
-    id: ArmorId.ADAMANT_HELMET,
+  [ItemId.ADAMANT_HELMET]: {
+    id: ItemId.ADAMANT_HELMET,
     name: "Adamant Helmet",
     description: "An indestructible adamant helmet.",
     icon: HardHat,
     iconStyle: {
-      fill: mineralsTable[MineralId.ADAMANTITE_ORE].iconStyle.fill,
+      fill: itemTable[ItemId.ADAMANTITE_ORE].iconStyle.fill,
       ...TASK_AND_ITEM_ICON_STYLE,
     },
     type: ItemType.EQUIPMENT,
@@ -372,13 +372,13 @@ export const armorTable: { [id in ArmorId]: Equipment } = {
     defenseBonus: 5,
     healthBonus: 0,
   },
-  [ArmorId.ADAMANT_CHESTPLATE]: {
-    id: ArmorId.ADAMANT_CHESTPLATE,
+  [ItemId.ADAMANT_CHESTPLATE]: {
+    id: ItemId.ADAMANT_CHESTPLATE,
     name: "Adamant Chestplate",
     description: "A formidable adamant chestplate.",
     icon: Shirt,
     iconStyle: {
-      fill: mineralsTable[MineralId.ADAMANTITE_ORE].iconStyle.fill,
+      fill: itemTable[ItemId.ADAMANTITE_ORE].iconStyle.fill,
       ...TASK_AND_ITEM_ICON_STYLE,
     },
     type: ItemType.EQUIPMENT,
@@ -389,13 +389,13 @@ export const armorTable: { [id in ArmorId]: Equipment } = {
     defenseBonus: 5,
     healthBonus: 0,
   },
-  [ArmorId.ADAMANT_BELT]: {
-    id: ArmorId.ADAMANT_BELT,
+  [ItemId.ADAMANT_BELT]: {
+    id: ItemId.ADAMANT_BELT,
     name: "Adamant Belt",
     description: "A sturdy adamant belt.",
     icon: Tangent,
     iconStyle: {
-      fill: mineralsTable[MineralId.ADAMANTITE_ORE].iconStyle.fill,
+      fill: itemTable[ItemId.ADAMANTITE_ORE].iconStyle.fill,
       ...TASK_AND_ITEM_ICON_STYLE,
     },
     type: ItemType.EQUIPMENT,
@@ -406,13 +406,13 @@ export const armorTable: { [id in ArmorId]: Equipment } = {
     defenseBonus: 5,
     healthBonus: 0,
   },
-  [ArmorId.ADAMANT_PLATELEGGINGS]: {
-    id: ArmorId.ADAMANT_PLATELEGGINGS,
+  [ItemId.ADAMANT_PLATELEGGINGS]: {
+    id: ItemId.ADAMANT_PLATELEGGINGS,
     name: "Adamant Plateleggings",
     description: "Impenetrable adamant plateleggings.",
     icon: ToyBrick,
     iconStyle: {
-      fill: mineralsTable[MineralId.ADAMANTITE_ORE].iconStyle.fill,
+      fill: itemTable[ItemId.ADAMANTITE_ORE].iconStyle.fill,
       ...TASK_AND_ITEM_ICON_STYLE,
     },
     type: ItemType.EQUIPMENT,
@@ -423,13 +423,13 @@ export const armorTable: { [id in ArmorId]: Equipment } = {
     defenseBonus: 5,
     healthBonus: 0,
   },
-  [ArmorId.ADAMANT_GAUNTLETS]: {
-    id: ArmorId.ADAMANT_GAUNTLETS,
+  [ItemId.ADAMANT_GAUNTLETS]: {
+    id: ItemId.ADAMANT_GAUNTLETS,
     name: "Adamant Gauntlets",
     description: "A pair of unyielding adamant gauntlets.",
     icon: Hand,
     iconStyle: {
-      fill: mineralsTable[MineralId.ADAMANTITE_ORE].iconStyle.fill,
+      fill: itemTable[ItemId.ADAMANTITE_ORE].iconStyle.fill,
       ...TASK_AND_ITEM_ICON_STYLE,
     },
     type: ItemType.EQUIPMENT,

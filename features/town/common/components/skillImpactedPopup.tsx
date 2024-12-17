@@ -6,7 +6,7 @@ import {
   PopoverContent,
   PopoverTrigger,
 } from "@/components/ui/popover";
-import { Skill } from "@/types/skills";
+import { Skill } from "@/types/Skill";
 import { Upgrade } from "@/types/upgrades";
 import { formatCapitalCase, renderIcon } from "@/utils/formattingUtilities";
 import { formatModifiers } from "@/utils/modifierUtilities";

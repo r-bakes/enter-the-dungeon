@@ -1,5 +1,7 @@
 import { Slot } from "@/data/character/character";
-import { ArmorId, WeaponId } from "@/data/items/enums";
+import { ItemId } from "@/data/items/enums";
+import { SkillId } from "@/data/skills/enums";
+import { TaskId } from "@/data/tasks/enum";
 
 export type Character = {
   name: string;
@@ -12,14 +14,14 @@ export type Character = {
   working: Working;
 };
 export type Inventory = {
-  [itemId: string]: number;
+  [id in ItemId]?: number;
 };
 export type Loadout = {
-  [slotId in Slot]: WeaponId | ArmorId | null;
+  [slotId in Slot]: ItemId | null;
 };
 export type Upgrades = Set<string>;
 export type Skills = {
-  [skillId: string]: CharacterSkill;
+  [id in SkillId]: CharacterSkill;
 };
 export type CharacterSkill = {
   level: number;
@@ -60,8 +62,8 @@ export type Agriculture = {
 };
 export type Working =
   | {
-      workingSkill: [skillId: string];
-      workingTask: [taskId: string];
+      workingSkill: SkillId;
+      workingTask: TaskId;
       startTime: number | null;
       agriculture: Agriculture;
     }

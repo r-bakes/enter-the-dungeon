@@ -4,10 +4,11 @@ import { pickaxeUpgrades } from "@/data/upgrades/pickaxeUpgrades";
 import { hammerUpgrades } from "@/data/upgrades/hammerUpgrades";
 import { bedUpgrades } from "@/data/upgrades/bedUpgrades";
 import { miscUpgrades } from "./misc";
+import { UpgradeId } from "./enums";
 
-export const upgradeTable: { [upgradeId: string]: Upgrade } = {
+export const upgradeTable = {
   ...pickaxeUpgrades,
   ...hammerUpgrades,
   ...bedUpgrades,
   ...miscUpgrades,
-};
+} as { [id in UpgradeId]: Upgrade };

@@ -3,7 +3,8 @@
 import { useState } from "react";
 import { useTownEngineContext } from "@/engines/townEngineContext";
 import { useCharacterEngineContext } from "@/engines/characterEngineContext";
-import { Skill, Task } from "@/types/skills";
+import { Task } from "@/types/skills";
+import { Skill } from "@/types/Skill";
 import { SkillHeader } from "@/features/town/skillMenu/components/skillHeader/skillHeader";
 import TaskInfo from "@/features/town/skillMenu/components/taskInfo/taskInfo";
 import TasksMenu from "@/features/town/skillMenu/components/tasksMenu/tasksMenu";

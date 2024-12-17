@@ -3,8 +3,9 @@ import { Gem } from "lucide-react";
 import { TASK_AND_ITEM_ICON_STYLE } from "@/configurations/configurations";
 import { SkillModifierType } from "@/data/modifiers/enums";
 import { ProspectingTaskCategories } from "@/data/skills/enums";
-import { ProspectingCraftingTaskId } from "./enum";
 import { Task } from "@/types/tasks";
+import { ItemId } from "@/data/items/enums";
+import { TaskId } from "../enum";
 
 const prospectingCommonModifiers = new Set([
   SkillModifierType.SPEED,
@@ -13,9 +14,9 @@ const prospectingCommonModifiers = new Set([
   SkillModifierType.PRODUCTION_MULTIPLIER,
 ]);
 
-export const craftingTasks: { [id in ProspectingCraftingTaskId]: Task } = {
-  [ProspectingCraftingTaskId.CUT_GEODE]: {
-    id: ProspectingCraftingTaskId.CUT_GEODE,
+export const craftingTasks: { [id in TaskId]?: Task } = {
+  [TaskId.CUT_GEODE]: {
+    id: TaskId.CUT_GEODE,
     name: "Cut Geode",
     description: "Cut a geode into a gem.",
     icon: Gem,
@@ -25,9 +26,9 @@ export const craftingTasks: { [id in ProspectingCraftingTaskId]: Task } = {
     requiredLevel: 10,
     lootTable: {
       gems: {
-        sapphire: { weight: 90, minQuantity: 1, maxQuantity: 1 },
-        emerald: { weight: 9, minQuantity: 1, maxQuantity: 1 },
-        diamond: { weight: 1, minQuantity: 1, maxQuantity: 1 },
+        [ItemId.SAPPHIRE]: { weight: 90, minQuantity: 1, maxQuantity: 1 },
+        [ItemId.EMERALD]: { weight: 9, minQuantity: 1, maxQuantity: 1 },
+        [ItemId.DIAMOND]: { weight: 1, minQuantity: 1, maxQuantity: 1 },
       },
     },
     requires: { geode: 1 },

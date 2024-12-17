@@ -8,7 +8,8 @@ import {
 import { useCharacterEngineContext } from "@/engines/characterEngineContext";
 import React from "react";
 import TaskComplete from "@/features/town/toast/TaskComplete";
-import { Skill, Task } from "@/types/skills";
+import { Task } from "@/types/skills";
+import { Skill } from "@/types/Skill";
 import { SkillModifierTable } from "@/types/modifiers";
 import { TICK_RATE_MS } from "@/configurations/configurations";
 import generateLoot from "@/utils/lootUtilities";

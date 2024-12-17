@@ -1,5 +1,5 @@
 import { Swords } from "lucide-react";
-import { Skill } from "@/types/skills";
+import { Skill } from "@/types/Skill";
 import { SKILL_AND_MENU_ICON_STYLE } from "@/configurations/configurations";
 
 export const martial: Skill = {

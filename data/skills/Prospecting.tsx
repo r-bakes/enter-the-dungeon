@@ -1,7 +1,7 @@
 import { SearchSlash } from "lucide-react";
 
 import { SKILL_AND_MENU_ICON_STYLE } from "@/configurations/configurations";
-import { Skill } from "@/types/skills";
+import { Skill } from "@/types/Skill";
 import { ProspectingTaskCategories, SkillId } from "@/data/skills/enums";
 import { craftingTasks } from "../tasks/prospecting/crafting";
 import { miningTasks } from "../tasks/prospecting/mining";

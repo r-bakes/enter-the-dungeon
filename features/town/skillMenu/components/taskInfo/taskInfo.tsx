@@ -16,7 +16,8 @@ import TaskDataEntry from "./taskDataEntry";
 import { Separator } from "@/components/ui/separator";
 
 import { itemTable } from "@/data/items/items";
-import { Skill, Task } from "@/types/skills";
+import { Task } from "@/types/skills";
+import { Skill } from "@/types/Skill";
 import { generateDropRates } from "@/utils/lootUtilities";
 import { Item } from "@/types/items";
 import { renderIcon } from "@/utils/formattingUtilities";

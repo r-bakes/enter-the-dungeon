@@ -9,7 +9,8 @@ import { Label } from "@/components/ui/label";
 import { useTownEngineContext } from "@/engines/townEngineContext";
 
 import { renderIcon } from "@/utils/formattingUtilities";
-import { Skill, Task } from "@/types/skills";
+import { Task } from "@/types/skills";
+import { Skill } from "@/types/Skill";
 import { SkillModifierType } from "@/data/modifiers/enums";
 import {
   applyExperienceModifier,
