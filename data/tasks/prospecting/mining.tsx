@@ -147,10 +147,10 @@ export const miningTasks: { [id in TaskId]?: Task } = {
     experience: 20,
     requiredLevel: 30,
     lootTable: {
-      ore: { goldOre: { weight: 1, minQuantity: 1, maxQuantity: 1 } },
+      ore: { [ItemId.GOLD_ORE]: { weight: 1, minQuantity: 1, maxQuantity: 1 } },
       geode: {
-        _: { weight: 95, minQuantity: 0, maxQuantity: 0 },
-        geode: { weight: 5, minQuantity: 1, maxQuantity: 1 },
+        [NoLootId.NO_LOOT]: { weight: 95, minQuantity: 0, maxQuantity: 0 },
+        [ItemId.GEODE]: { weight: 5, minQuantity: 1, maxQuantity: 1 },
       },
     },
     requires: {},
@@ -170,10 +170,12 @@ export const miningTasks: { [id in TaskId]?: Task } = {
     experience: 20,
     requiredLevel: 30,
     lootTable: {
-      ore: { mithrilOre: { weight: 1, minQuantity: 1, maxQuantity: 1 } },
+      ore: {
+        [ItemId.MITHRIL_ORE]: { weight: 1, minQuantity: 1, maxQuantity: 1 },
+      },
       geode: {
-        _: { weight: 95, minQuantity: 0, maxQuantity: 0 },
-        geode: { weight: 5, minQuantity: 1, maxQuantity: 1 },
+        [NoLootId.NO_LOOT]: { weight: 95, minQuantity: 0, maxQuantity: 0 },
+        [ItemId.GEODE]: { weight: 5, minQuantity: 1, maxQuantity: 1 },
       },
     },
     requires: {},
@@ -193,10 +195,12 @@ export const miningTasks: { [id in TaskId]?: Task } = {
     experience: 20,
     requiredLevel: 50,
     lootTable: {
-      ore: { platinumOre: { weight: 1, minQuantity: 1, maxQuantity: 1 } },
+      ore: {
+        [ItemId.PLATINUM_ORE]: { weight: 1, minQuantity: 1, maxQuantity: 1 },
+      },
       geode: {
-        _: { weight: 95, minQuantity: 0, maxQuantity: 0 },
-        geode: { weight: 5, minQuantity: 1, maxQuantity: 1 },
+        [NoLootId.NO_LOOT]: { weight: 95, minQuantity: 0, maxQuantity: 0 },
+        [ItemId.GEODE]: { weight: 5, minQuantity: 1, maxQuantity: 1 },
       },
     },
     requires: {},
@@ -216,10 +220,12 @@ export const miningTasks: { [id in TaskId]?: Task } = {
     experience: 20,
     requiredLevel: 50,
     lootTable: {
-      ore: { adamantiteOre: { weight: 1, minQuantity: 1, maxQuantity: 1 } }, // Corrected from platinumOre to adamantiteOre
+      ore: {
+        [ItemId.ADAMANTITE_ORE]: { weight: 1, minQuantity: 1, maxQuantity: 1 },
+      },
       geode: {
-        _: { weight: 95, minQuantity: 0, maxQuantity: 0 },
-        geode: { weight: 5, minQuantity: 1, maxQuantity: 1 },
+        [NoLootId.NO_LOOT]: { weight: 95, minQuantity: 0, maxQuantity: 0 },
+        [ItemId.GEODE]: { weight: 5, minQuantity: 1, maxQuantity: 1 },
       },
     },
     requires: {},

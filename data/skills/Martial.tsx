@@ -1,9 +1,10 @@
 import { Swords } from "lucide-react";
-import { Skill } from "@/types/Skill";
 import { SKILL_AND_MENU_ICON_STYLE } from "@/configurations/configurations";
+import { Skill } from "@/types/skills";
+import { SkillId } from "./enums";
 
 export const martial: Skill = {
-  id: "martial",
+  id: SkillId.MARTIAL,
   name: "Martial",
   description: "test",
   icon: Swords,

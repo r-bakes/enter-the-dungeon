@@ -31,7 +31,7 @@ export const craftingTasks: { [id in TaskId]?: Task } = {
         [ItemId.DIAMOND]: { weight: 1, minQuantity: 1, maxQuantity: 1 },
       },
     },
-    requires: { geode: 1 },
+    requires: { [ItemId.GEODE]: 1 },
     category: ProspectingTaskCategories.CRAFTING,
     applicableModifiers: prospectingCommonModifiers,
   },

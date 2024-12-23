@@ -13,7 +13,7 @@ export const weaponTable: { [id in ItemId]?: Equipment } = {
     description: "A bronze dagger.",
     icon: Slice,
     iconStyle: {
-      fill: itemTable[ItemId.COPPER_ORE].iconStyle.fill,
+      fill: "#F2613F",
       ...TASK_AND_ITEM_ICON_STYLE,
     },
     type: ItemType.EQUIPMENT,
@@ -30,7 +30,7 @@ export const weaponTable: { [id in ItemId]?: Equipment } = {
     description: "A bronze sword.",
     icon: Sword,
     iconStyle: {
-      fill: itemTable[ItemId.COPPER_ORE].iconStyle.fill,
+      fill: "#F2613F",
       ...TASK_AND_ITEM_ICON_STYLE,
     },
     type: ItemType.EQUIPMENT,
@@ -51,7 +51,7 @@ export const weaponTable: { [id in ItemId]?: Equipment } = {
     description: "A bronze shield.",
     icon: Shield,
     iconStyle: {
-      fill: itemTable[ItemId.COPPER_ORE].iconStyle.fill,
+      fill: "#F2613F",
       ...TASK_AND_ITEM_ICON_STYLE,
     },
     type: ItemType.EQUIPMENT,
@@ -72,7 +72,7 @@ export const weaponTable: { [id in ItemId]?: Equipment } = {
     description: "A bronze great sword.",
     icon: Sword,
     iconStyle: {
-      fill: itemTable[ItemId.COPPER_ORE].iconStyle.fill,
+      fill: "#F2613F",
       ...TASK_AND_ITEM_ICON_STYLE,
     },
     type: ItemType.EQUIPMENT,
@@ -90,7 +90,7 @@ export const weaponTable: { [id in ItemId]?: Equipment } = {
     description: "An iron dagger.",
     icon: Slice,
     iconStyle: {
-      fill: itemTable[ItemId.IRON_ORE].iconStyle.fill,
+      fill: "#B3C8CF",
       ...TASK_AND_ITEM_ICON_STYLE,
     },
     type: ItemType.EQUIPMENT,
@@ -107,7 +107,7 @@ export const weaponTable: { [id in ItemId]?: Equipment } = {
     description: "An iron sword.",
     icon: Sword,
     iconStyle: {
-      fill: itemTable[ItemId.IRON_ORE].iconStyle.fill,
+      fill: "#B3C8CF",
       ...TASK_AND_ITEM_ICON_STYLE,
     },
     type: ItemType.EQUIPMENT,
@@ -128,7 +128,7 @@ export const weaponTable: { [id in ItemId]?: Equipment } = {
     description: "An iron shield.",
     icon: Shield,
     iconStyle: {
-      fill: itemTable[ItemId.IRON_ORE].iconStyle.fill,
+      fill: "#B3C8CF",
       ...TASK_AND_ITEM_ICON_STYLE,
     },
     type: ItemType.EQUIPMENT,
@@ -149,7 +149,7 @@ export const weaponTable: { [id in ItemId]?: Equipment } = {
     description: "An iron great sword.",
     icon: Sword,
     iconStyle: {
-      fill: itemTable[ItemId.IRON_ORE].iconStyle.fill,
+      fill: "#B3C8CF",
       ...TASK_AND_ITEM_ICON_STYLE,
     },
     type: ItemType.EQUIPMENT,
@@ -167,7 +167,7 @@ export const weaponTable: { [id in ItemId]?: Equipment } = {
     description: "A steel dagger.",
     icon: Slice,
     iconStyle: {
-      fill: itemTable[ItemId.STEEL_BAR].iconStyle.fill,
+      fill: "#B3C8CF",
       ...TASK_AND_ITEM_ICON_STYLE,
     },
     type: ItemType.EQUIPMENT,
@@ -184,7 +184,7 @@ export const weaponTable: { [id in ItemId]?: Equipment } = {
     description: "A steel sword.",
     icon: Sword,
     iconStyle: {
-      fill: itemTable[ItemId.STEEL_BAR].iconStyle.fill,
+      fill: "#B3C8CF",
       ...TASK_AND_ITEM_ICON_STYLE,
     },
     type: ItemType.EQUIPMENT,
@@ -205,7 +205,7 @@ export const weaponTable: { [id in ItemId]?: Equipment } = {
     description: "A steel shield.",
     icon: Shield,
     iconStyle: {
-      fill: itemTable[ItemId.STEEL_BAR].iconStyle.fill,
+      fill: "#B3C8CF",
       ...TASK_AND_ITEM_ICON_STYLE,
     },
     type: ItemType.EQUIPMENT,
@@ -226,7 +226,7 @@ export const weaponTable: { [id in ItemId]?: Equipment } = {
     description: "A steel great sword.",
     icon: Sword,
     iconStyle: {
-      fill: itemTable[ItemId.STEEL_BAR].iconStyle.fill,
+      fill: "#B3C8CF",
       ...TASK_AND_ITEM_ICON_STYLE,
     },
     type: ItemType.EQUIPMENT,
@@ -244,7 +244,7 @@ export const weaponTable: { [id in ItemId]?: Equipment } = {
     description: "A mithril dagger.",
     icon: Slice,
     iconStyle: {
-      fill: itemTable[ItemId.MITHRIL_ORE].iconStyle.fill,
+      fill: "#5C88C4",
       ...TASK_AND_ITEM_ICON_STYLE,
     },
     type: ItemType.EQUIPMENT,
@@ -261,7 +261,7 @@ export const weaponTable: { [id in ItemId]?: Equipment } = {
     description: "A mithril sword.",
     icon: Sword,
     iconStyle: {
-      fill: itemTable[ItemId.MITHRIL_ORE].iconStyle.fill,
+      fill: "#5C88C4",
       ...TASK_AND_ITEM_ICON_STYLE,
     },
     type: ItemType.EQUIPMENT,
@@ -282,7 +282,7 @@ export const weaponTable: { [id in ItemId]?: Equipment } = {
     description: "A mithril shield.",
     icon: Shield,
     iconStyle: {
-      fill: itemTable[ItemId.MITHRIL_ORE].iconStyle.fill,
+      fill: "#5C88C4",
       ...TASK_AND_ITEM_ICON_STYLE,
     },
     type: ItemType.EQUIPMENT,
@@ -303,7 +303,7 @@ export const weaponTable: { [id in ItemId]?: Equipment } = {
     description: "A mithril great sword.",
     icon: Sword,
     iconStyle: {
-      fill: itemTable[ItemId.MITHRIL_ORE].iconStyle.fill,
+      fill: "#5C88C4",
       ...TASK_AND_ITEM_ICON_STYLE,
     },
     type: ItemType.EQUIPMENT,
@@ -321,7 +321,7 @@ export const weaponTable: { [id in ItemId]?: Equipment } = {
     description: "An adamant dagger.",
     icon: Slice,
     iconStyle: {
-      fill: itemTable[ItemId.ADAMANTITE_ORE].iconStyle.fill,
+      fill: "#B2A4FF",
       ...TASK_AND_ITEM_ICON_STYLE,
     },
     type: ItemType.EQUIPMENT,
@@ -338,7 +338,7 @@ export const weaponTable: { [id in ItemId]?: Equipment } = {
     description: "An adamant sword.",
     icon: Sword,
     iconStyle: {
-      fill: itemTable[ItemId.ADAMANTITE_ORE].iconStyle.fill,
+      fill: "#B2A4FF",
       ...TASK_AND_ITEM_ICON_STYLE,
     },
     type: ItemType.EQUIPMENT,
@@ -359,7 +359,7 @@ export const weaponTable: { [id in ItemId]?: Equipment } = {
     description: "An adamant shield.",
     icon: Shield,
     iconStyle: {
-      fill: itemTable[ItemId.ADAMANTITE_ORE].iconStyle.fill,
+      fill: "#B2A4FF",
       ...TASK_AND_ITEM_ICON_STYLE,
     },
     type: ItemType.EQUIPMENT,
@@ -380,7 +380,7 @@ export const weaponTable: { [id in ItemId]?: Equipment } = {
     description: "An adamant great sword.",
     icon: Sword,
     iconStyle: {
-      fill: itemTable[ItemId.ADAMANTITE_ORE].iconStyle.fill,
+      fill: "#B2A4FF",
       ...TASK_AND_ITEM_ICON_STYLE,
     },
     type: ItemType.EQUIPMENT,

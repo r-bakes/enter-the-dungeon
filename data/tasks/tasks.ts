@@ -2,13 +2,14 @@ import { craftingTasks } from "./prospecting/crafting";
 import { smeltingTasks } from "./smithing/smelting";
 import { smithingTasks } from "./smithing/smithing";
 import { miningTasks } from "./prospecting/mining";
-import { Task, TaskId } from "@/types/tasks";
 import { calistheticsTasks } from "./athletics/calisthetics";
+import { TaskId } from "./enum";
+import { Task } from "@/types/tasks";
 
-export const tasksTable: { [id in TaskId]: Task } = {
+export const tasksTable = {
   ...smithingTasks,
   ...smeltingTasks,
   ...miningTasks,
   ...craftingTasks,
   ...calistheticsTasks,
-};
+} as { [id in TaskId]: Task };

@@ -8,16 +8,18 @@ import { martial } from "@/data/skills/martial";
 import { prospecting } from "@/data/skills/prospecting";
 import { smithing } from "@/data/skills/smithing";
 import { stealth } from "@/data/skills/stealth";
+import { SkillId } from "./enums";
+import { Skill } from "@/types/skills";
 
-export const skillTable = {
-  [prospecting.id]: prospecting,
-  [smithing.id]: smithing,
-  [martial.id]: martial,
-  [magic.id]: magic,
-  [enchanting.id]: enchanting,
-  [crafting.id]: crafting,
-  [athletics.id]: athletics,
-  [stealth.id]: stealth,
-  [alchemy.id]: alchemy,
-  [agriculture.id]: agriculture,
+export const skillTable: { [id in SkillId]: Skill } = {
+  [SkillId.PROSPECTING]: prospecting,
+  [SkillId.SMITHING]: smithing,
+  [SkillId.MARTIAL]: martial,
+  [SkillId.MAGIC]: magic,
+  [SkillId.ENCHANTING]: enchanting,
+  [SkillId.CRAFTING]: crafting,
+  [SkillId.ATHLETICS]: athletics,
+  [SkillId.STEALTH]: stealth,
+  [SkillId.ALCHEMY]: alchemy,
+  [SkillId.AGRICULTURE]: agriculture,
 };

@@ -11,12 +11,12 @@ import {
 
 import { TASK_AND_ITEM_ICON_STYLE } from "@/configurations/configurations";
 import { SkillModifierType } from "@/data/modifiers/enums";
-import { barsTable } from "@/data/items/bars";
 import { SmithingTaskCategories } from "@/data/skills/enums";
 import { Task } from "@/types/tasks";
 import { TaskId } from "../enum";
 import { ItemId } from "@/data/items/enums";
 import { itemTable } from "@/data/items/items";
+import { Item } from "@radix-ui/react-select";
 
 const smithingCommonModifiers = new Set<SkillModifierType>([
   SkillModifierType.SPEED,
@@ -40,9 +40,11 @@ export const smithingTasks: { [id in TaskId]?: Task } = {
     experience: 1,
     requiredLevel: 5,
     lootTable: {
-      dagger: { bronzeDagger: { weight: 1, minQuantity: 1, maxQuantity: 1 } },
+      dagger: {
+        [ItemId.BRONZE_DAGGER]: { weight: 1, minQuantity: 1, maxQuantity: 1 },
+      },
     },
-    requires: { bronzeBar: 1 },
+    requires: { [ItemId.BRONZE_BAR]: 1 },
     category: SmithingTaskCategories.BRONZE_SMITHING,
     applicableModifiers: smithingCommonModifiers,
   },
@@ -59,9 +61,11 @@ export const smithingTasks: { [id in TaskId]?: Task } = {
     experience: 1,
     requiredLevel: 5,
     lootTable: {
-      sword: { bronzeSword: { weight: 1, minQuantity: 1, maxQuantity: 1 } },
+      sword: {
+        [ItemId.BRONZE_SWORD]: { weight: 1, minQuantity: 1, maxQuantity: 1 },
+      },
     },
-    requires: { bronzeBar: 2 },
+    requires: { [ItemId.BRONZE_BAR]: 2 },
     category: SmithingTaskCategories.BRONZE_SMITHING,
     applicableModifiers: smithingCommonModifiers,
   },
@@ -78,9 +82,11 @@ export const smithingTasks: { [id in TaskId]?: Task } = {
     experience: 1,
     requiredLevel: 5,
     lootTable: {
-      shield: { bronzeShield: { weight: 1, minQuantity: 1, maxQuantity: 1 } },
+      shield: {
+        [ItemId.BRONZE_SHIELD]: { weight: 1, minQuantity: 1, maxQuantity: 1 },
+      },
     },
-    requires: { bronzeBar: 2 },
+    requires: { [ItemId.BRONZE_BAR]: 2 },
     category: SmithingTaskCategories.BRONZE_SMITHING,
     applicableModifiers: smithingCommonModifiers,
   },
@@ -98,10 +104,14 @@ export const smithingTasks: { [id in TaskId]?: Task } = {
     requiredLevel: 5,
     lootTable: {
       greatsword: {
-        bronzeGreatSword: { weight: 1, minQuantity: 1, maxQuantity: 1 },
+        [ItemId.BRONZE_GREAT_SWORD]: {
+          weight: 1,
+          minQuantity: 1,
+          maxQuantity: 1,
+        },
       },
     },
-    requires: { bronzeBar: 4 },
+    requires: { [ItemId.BRONZE_BAR]: 4 },
     category: SmithingTaskCategories.BRONZE_SMITHING,
     applicableModifiers: smithingCommonModifiers,
   },
@@ -118,9 +128,11 @@ export const smithingTasks: { [id in TaskId]?: Task } = {
     experience: 1,
     requiredLevel: 5,
     lootTable: {
-      helmet: { bronzeHelmet: { weight: 1, minQuantity: 1, maxQuantity: 1 } },
+      helmet: {
+        [ItemId.BRONZE_HELMET]: { weight: 1, minQuantity: 1, maxQuantity: 1 },
+      },
     },
-    requires: { bronzeBar: 2 },
+    requires: { [ItemId.BRONZE_BAR]: 2 },
     category: SmithingTaskCategories.BRONZE_SMITHING,
     applicableModifiers: smithingCommonModifiers,
   },
@@ -138,10 +150,14 @@ export const smithingTasks: { [id in TaskId]?: Task } = {
     requiredLevel: 5,
     lootTable: {
       chestplate: {
-        bronzeChestplate: { weight: 1, minQuantity: 1, maxQuantity: 1 },
+        [ItemId.BRONZE_CHESTPLATE]: {
+          weight: 1,
+          minQuantity: 1,
+          maxQuantity: 1,
+        },
       },
     },
-    requires: { bronzeBar: 4 },
+    requires: { [ItemId.BRONZE_BAR]: 4 },
     category: SmithingTaskCategories.BRONZE_SMITHING,
     applicableModifiers: smithingCommonModifiers,
   },
@@ -158,9 +174,11 @@ export const smithingTasks: { [id in TaskId]?: Task } = {
     experience: 1,
     requiredLevel: 5,
     lootTable: {
-      belt: { bronzeBelt: { weight: 1, minQuantity: 1, maxQuantity: 1 } },
+      belt: {
+        [ItemId.BRONZE_BELT]: { weight: 1, minQuantity: 1, maxQuantity: 1 },
+      },
     },
-    requires: { bronzeBar: 2 },
+    requires: { [ItemId.BRONZE_BAR]: 2 },
     category: SmithingTaskCategories.BRONZE_SMITHING,
     applicableModifiers: smithingCommonModifiers,
   },
@@ -178,10 +196,14 @@ export const smithingTasks: { [id in TaskId]?: Task } = {
     requiredLevel: 5,
     lootTable: {
       plateleggings: {
-        bronzePlateleggings: { weight: 1, minQuantity: 1, maxQuantity: 1 },
+        [ItemId.BRONZE_PLATELEGGINGS]: {
+          weight: 1,
+          minQuantity: 1,
+          maxQuantity: 1,
+        },
       },
     },
-    requires: { bronzeBar: 4 },
+    requires: { [ItemId.BRONZE_BAR]: 4 },
     category: SmithingTaskCategories.BRONZE_SMITHING,
     applicableModifiers: smithingCommonModifiers,
   },
@@ -199,10 +221,14 @@ export const smithingTasks: { [id in TaskId]?: Task } = {
     requiredLevel: 5,
     lootTable: {
       gauntlets: {
-        bronzeGauntlets: { weight: 1, minQuantity: 1, maxQuantity: 1 },
+        [ItemId.BRONZE_GAUNTLETS]: {
+          weight: 1,
+          minQuantity: 1,
+          maxQuantity: 1,
+        },
       },
     },
-    requires: { bronzeBar: 2 },
+    requires: { [ItemId.BRONZE_BAR]: 2 },
     category: SmithingTaskCategories.BRONZE_SMITHING,
     applicableModifiers: smithingCommonModifiers,
   },
@@ -221,9 +247,11 @@ export const smithingTasks: { [id in TaskId]?: Task } = {
     experience: 10,
     requiredLevel: 10,
     lootTable: {
-      dagger: { ironDagger: { weight: 1, minQuantity: 1, maxQuantity: 1 } },
+      dagger: {
+        [ItemId.IRON_DAGGER]: { weight: 1, minQuantity: 1, maxQuantity: 1 },
+      },
     },
-    requires: { ironBar: 1 },
+    requires: { [ItemId.IRON_BAR]: 1 },
     category: SmithingTaskCategories.IRON_SMITHING,
     applicableModifiers: smithingCommonModifiers,
   },
@@ -240,9 +268,11 @@ export const smithingTasks: { [id in TaskId]?: Task } = {
     experience: 15,
     requiredLevel: 10,
     lootTable: {
-      sword: { ironSword: { weight: 1, minQuantity: 1, maxQuantity: 1 } },
+      sword: {
+        [ItemId.IRON_SWORD]: { weight: 1, minQuantity: 1, maxQuantity: 1 },
+      },
     },
-    requires: { ironBar: 2 },
+    requires: { [ItemId.IRON_BAR]: 2 },
     category: SmithingTaskCategories.IRON_SMITHING,
     applicableModifiers: smithingCommonModifiers,
   },
@@ -259,9 +289,11 @@ export const smithingTasks: { [id in TaskId]?: Task } = {
     experience: 20,
     requiredLevel: 10,
     lootTable: {
-      shield: { ironShield: { weight: 1, minQuantity: 1, maxQuantity: 1 } },
+      shield: {
+        [ItemId.IRON_SHIELD]: { weight: 1, minQuantity: 1, maxQuantity: 1 },
+      },
     },
-    requires: { ironBar: 2 },
+    requires: { [ItemId.IRON_BAR]: 2 },
     category: SmithingTaskCategories.IRON_SMITHING,
     applicableModifiers: smithingCommonModifiers,
   },
@@ -279,10 +311,14 @@ export const smithingTasks: { [id in TaskId]?: Task } = {
     requiredLevel: 10,
     lootTable: {
       greatsword: {
-        ironGreatSword: { weight: 1, minQuantity: 1, maxQuantity: 1 },
+        [ItemId.IRON_GREAT_SWORD]: {
+          weight: 1,
+          minQuantity: 1,
+          maxQuantity: 1,
+        },
       },
     },
-    requires: { ironBar: 3 },
+    requires: { [ItemId.IRON_BAR]: 3 },
     category: SmithingTaskCategories.IRON_SMITHING,
     applicableModifiers: smithingCommonModifiers,
   },
@@ -299,9 +335,11 @@ export const smithingTasks: { [id in TaskId]?: Task } = {
     experience: 10,
     requiredLevel: 10,
     lootTable: {
-      helmet: { ironHelmet: { weight: 1, minQuantity: 1, maxQuantity: 1 } },
+      helmet: {
+        [ItemId.IRON_HELMET]: { weight: 1, minQuantity: 1, maxQuantity: 1 },
+      },
     },
-    requires: { ironBar: 2 },
+    requires: { [ItemId.IRON_BAR]: 2 },
     category: SmithingTaskCategories.IRON_SMITHING,
     applicableModifiers: smithingCommonModifiers,
   },
@@ -319,10 +357,10 @@ export const smithingTasks: { [id in TaskId]?: Task } = {
     requiredLevel: 10,
     lootTable: {
       chestplate: {
-        ironChestplate: { weight: 1, minQuantity: 1, maxQuantity: 1 },
+        [ItemId.IRON_CHESTPLATE]: { weight: 1, minQuantity: 1, maxQuantity: 1 },
       },
     },
-    requires: { ironBar: 4 },
+    requires: { [ItemId.IRON_BAR]: 4 },
     category: SmithingTaskCategories.IRON_SMITHING,
     applicableModifiers: smithingCommonModifiers,
   },
@@ -339,9 +377,11 @@ export const smithingTasks: { [id in TaskId]?: Task } = {
     experience: 10,
     requiredLevel: 10,
     lootTable: {
-      belt: { ironBelt: { weight: 1, minQuantity: 1, maxQuantity: 1 } },
+      belt: {
+        [ItemId.IRON_BELT]: { weight: 1, minQuantity: 1, maxQuantity: 1 },
+      },
     },
-    requires: { ironBar: 2 },
+    requires: { [ItemId.IRON_BAR]: 2 },
     category: SmithingTaskCategories.IRON_SMITHING,
     applicableModifiers: smithingCommonModifiers,
   },
@@ -359,10 +399,14 @@ export const smithingTasks: { [id in TaskId]?: Task } = {
     requiredLevel: 10,
     lootTable: {
       plateleggings: {
-        ironPlateleggings: { weight: 1, minQuantity: 1, maxQuantity: 1 },
+        [ItemId.IRON_PLATELEGGINGS]: {
+          weight: 1,
+          minQuantity: 1,
+          maxQuantity: 1,
+        },
       },
     },
-    requires: { ironBar: 4 },
+    requires: { [ItemId.IRON_BAR]: 4 },
     category: SmithingTaskCategories.IRON_SMITHING,
     applicableModifiers: smithingCommonModifiers,
   },
@@ -380,10 +424,10 @@ export const smithingTasks: { [id in TaskId]?: Task } = {
     requiredLevel: 10,
     lootTable: {
       gauntlets: {
-        ironGauntlets: { weight: 1, minQuantity: 1, maxQuantity: 1 },
+        [ItemId.IRON_GAUNTLETS]: { weight: 1, minQuantity: 1, maxQuantity: 1 },
       },
     },
-    requires: { ironBar: 2 },
+    requires: { [ItemId.IRON_BAR]: 2 },
     category: SmithingTaskCategories.IRON_SMITHING,
     applicableModifiers: smithingCommonModifiers,
   },
@@ -395,16 +439,18 @@ export const smithingTasks: { [id in TaskId]?: Task } = {
     description: "Smith a steel dagger.",
     icon: Slice,
     iconStyle: {
-      fill: barsTable[BarId.STEEL_BAR].iconStyle.fill,
+      fill: itemTable[ItemId.STEEL_BAR].iconStyle.fill,
       ...TASK_AND_ITEM_ICON_STYLE,
     },
     durationSec: 14,
     experience: 20,
     requiredLevel: 20,
     lootTable: {
-      dagger: { steelDagger: { weight: 1, minQuantity: 1, maxQuantity: 1 } },
+      dagger: {
+        [ItemId.STEEL_DAGGER]: { weight: 1, minQuantity: 1, maxQuantity: 1 },
+      },
     },
-    requires: { steelBar: 1 },
+    requires: { [ItemId.STEEL_BAR]: 1 },
     category: SmithingTaskCategories.STEEL_SMITHING,
     applicableModifiers: smithingCommonModifiers,
   },
@@ -414,16 +460,18 @@ export const smithingTasks: { [id in TaskId]?: Task } = {
     description: "Smith a steel sword.",
     icon: Sword,
     iconStyle: {
-      fill: barsTable[BarId.STEEL_BAR].iconStyle.fill,
+      fill: itemTable[ItemId.STEEL_BAR].iconStyle.fill,
       ...TASK_AND_ITEM_ICON_STYLE,
     },
     durationSec: 16,
     experience: 25,
     requiredLevel: 20,
     lootTable: {
-      sword: { steelSword: { weight: 1, minQuantity: 1, maxQuantity: 1 } },
+      sword: {
+        [ItemId.STEEL_SWORD]: { weight: 1, minQuantity: 1, maxQuantity: 1 },
+      },
     },
-    requires: { steelBar: 2 },
+    requires: { [ItemId.STEEL_BAR]: 2 },
     category: SmithingTaskCategories.STEEL_SMITHING,
     applicableModifiers: smithingCommonModifiers,
   },
@@ -433,16 +481,18 @@ export const smithingTasks: { [id in TaskId]?: Task } = {
     description: "Smith a steel shield.",
     icon: Shield,
     iconStyle: {
-      fill: barsTable[BarId.STEEL_BAR].iconStyle.fill,
+      fill: itemTable[ItemId.STEEL_BAR].iconStyle.fill,
       ...TASK_AND_ITEM_ICON_STYLE,
     },
     durationSec: 16,
     experience: 30,
     requiredLevel: 20,
     lootTable: {
-      shield: { steelShield: { weight: 1, minQuantity: 1, maxQuantity: 1 } },
+      shield: {
+        [ItemId.STEEL_SHIELD]: { weight: 1, minQuantity: 1, maxQuantity: 1 },
+      },
     },
-    requires: { steelBar: 2 },
+    requires: { [ItemId.STEEL_BAR]: 2 },
     category: SmithingTaskCategories.STEEL_SMITHING,
     applicableModifiers: smithingCommonModifiers,
   },
@@ -452,7 +502,7 @@ export const smithingTasks: { [id in TaskId]?: Task } = {
     description: "Smith a steel great sword.",
     icon: Sword,
     iconStyle: {
-      fill: barsTable[BarId.STEEL_BAR].iconStyle.fill,
+      fill: itemTable[ItemId.STEEL_BAR].iconStyle.fill,
       ...TASK_AND_ITEM_ICON_STYLE,
     },
     durationSec: 22,
@@ -460,10 +510,14 @@ export const smithingTasks: { [id in TaskId]?: Task } = {
     requiredLevel: 20,
     lootTable: {
       greatsword: {
-        steelGreatSword: { weight: 1, minQuantity: 1, maxQuantity: 1 },
+        [ItemId.STEEL_GREAT_SWORD]: {
+          weight: 1,
+          minQuantity: 1,
+          maxQuantity: 1,
+        },
       },
     },
-    requires: { steelBar: 3 },
+    requires: { [ItemId.STEEL_BAR]: 3 },
     category: SmithingTaskCategories.STEEL_SMITHING,
     applicableModifiers: smithingCommonModifiers,
   },
@@ -473,16 +527,18 @@ export const smithingTasks: { [id in TaskId]?: Task } = {
     description: "Smith a steel helmet.",
     icon: HardHat,
     iconStyle: {
-      fill: barsTable[BarId.STEEL_BAR].iconStyle.fill,
+      fill: itemTable[ItemId.STEEL_BAR].iconStyle.fill,
       ...TASK_AND_ITEM_ICON_STYLE,
     },
     durationSec: 14,
     experience: 20,
     requiredLevel: 20,
     lootTable: {
-      helmet: { steelHelmet: { weight: 1, minQuantity: 1, maxQuantity: 1 } },
+      helmet: {
+        [ItemId.STEEL_HELMET]: { weight: 1, minQuantity: 1, maxQuantity: 1 },
+      },
     },
-    requires: { steelBar: 2 },
+    requires: { [ItemId.STEEL_BAR]: 2 },
     category: SmithingTaskCategories.STEEL_SMITHING,
     applicableModifiers: smithingCommonModifiers,
   },
@@ -492,7 +548,7 @@ export const smithingTasks: { [id in TaskId]?: Task } = {
     description: "Smith a steel chestplate.",
     icon: Shirt,
     iconStyle: {
-      fill: barsTable[BarId.STEEL_BAR].iconStyle.fill,
+      fill: itemTable[ItemId.STEEL_BAR].iconStyle.fill,
       ...TASK_AND_ITEM_ICON_STYLE,
     },
     durationSec: 20,
@@ -500,10 +556,14 @@ export const smithingTasks: { [id in TaskId]?: Task } = {
     requiredLevel: 20,
     lootTable: {
       chestplate: {
-        steelChestplate: { weight: 1, minQuantity: 1, maxQuantity: 1 },
+        [ItemId.STEEL_CHESTPLATE]: {
+          weight: 1,
+          minQuantity: 1,
+          maxQuantity: 1,
+        },
       },
     },
-    requires: { steelBar: 4 },
+    requires: { [ItemId.STEEL_BAR]: 4 },
     category: SmithingTaskCategories.STEEL_SMITHING,
     applicableModifiers: smithingCommonModifiers,
   },
@@ -513,16 +573,18 @@ export const smithingTasks: { [id in TaskId]?: Task } = {
     description: "Smith a steel belt.",
     icon: Tangent,
     iconStyle: {
-      fill: barsTable[BarId.STEEL_BAR].iconStyle.fill,
+      fill: itemTable[ItemId.STEEL_BAR].iconStyle.fill,
       ...TASK_AND_ITEM_ICON_STYLE,
     },
     durationSec: 14,
     experience: 20,
     requiredLevel: 20,
     lootTable: {
-      belt: { steelBelt: { weight: 1, minQuantity: 1, maxQuantity: 1 } },
+      belt: {
+        [ItemId.STEEL_BELT]: { weight: 1, minQuantity: 1, maxQuantity: 1 },
+      },
     },
-    requires: { steelBar: 2 },
+    requires: { [ItemId.STEEL_BAR]: 2 },
     category: SmithingTaskCategories.STEEL_SMITHING,
     applicableModifiers: smithingCommonModifiers,
   },
@@ -532,7 +594,7 @@ export const smithingTasks: { [id in TaskId]?: Task } = {
     description: "Smith steel plate leggings.",
     icon: ToyBrick,
     iconStyle: {
-      fill: barsTable[BarId.STEEL_BAR].iconStyle.fill,
+      fill: itemTable[ItemId.STEEL_BAR].iconStyle.fill,
       ...TASK_AND_ITEM_ICON_STYLE,
     },
     durationSec: 20,
@@ -540,10 +602,14 @@ export const smithingTasks: { [id in TaskId]?: Task } = {
     requiredLevel: 20,
     lootTable: {
       plateleggings: {
-        steelPlateleggings: { weight: 1, minQuantity: 1, maxQuantity: 1 },
+        [ItemId.STEEL_PLATELEGGINGS]: {
+          weight: 1,
+          minQuantity: 1,
+          maxQuantity: 1,
+        },
       },
     },
-    requires: { steelBar: 4 },
+    requires: { [ItemId.STEEL_BAR]: 4 },
     category: SmithingTaskCategories.STEEL_SMITHING,
     applicableModifiers: smithingCommonModifiers,
   },
@@ -553,7 +619,7 @@ export const smithingTasks: { [id in TaskId]?: Task } = {
     description: "Smith steel gauntlets.",
     icon: Hand,
     iconStyle: {
-      fill: barsTable[BarId.STEEL_BAR].iconStyle.fill,
+      fill: itemTable[ItemId.STEEL_BAR].iconStyle.fill,
       ...TASK_AND_ITEM_ICON_STYLE,
     },
     durationSec: 14,
@@ -561,10 +627,10 @@ export const smithingTasks: { [id in TaskId]?: Task } = {
     requiredLevel: 20,
     lootTable: {
       gauntlets: {
-        steelGauntlets: { weight: 1, minQuantity: 1, maxQuantity: 1 },
+        [ItemId.STEEL_GAUNTLETS]: { weight: 1, minQuantity: 1, maxQuantity: 1 },
       },
     },
-    requires: { steelBar: 2 },
+    requires: { [ItemId.STEEL_BAR]: 2 },
     category: SmithingTaskCategories.STEEL_SMITHING,
     applicableModifiers: smithingCommonModifiers,
   },
@@ -583,9 +649,11 @@ export const smithingTasks: { [id in TaskId]?: Task } = {
     experience: 90,
     requiredLevel: 50,
     lootTable: {
-      dagger: { mithrilDagger: { weight: 1, minQuantity: 1, maxQuantity: 1 } },
+      dagger: {
+        [ItemId.MITHRIL_DAGGER]: { weight: 1, minQuantity: 1, maxQuantity: 1 },
+      },
     },
-    requires: { mithrilBar: 1 },
+    requires: { [ItemId.MITHRIL_BAR]: 1 },
     category: SmithingTaskCategories.MITHRIL_SMITHING,
     applicableModifiers: smithingCommonModifiers,
   },
@@ -602,9 +670,11 @@ export const smithingTasks: { [id in TaskId]?: Task } = {
     experience: 95,
     requiredLevel: 50,
     lootTable: {
-      sword: { mithrilSword: { weight: 1, minQuantity: 1, maxQuantity: 1 } },
+      sword: {
+        [ItemId.MITHRIL_SWORD]: { weight: 1, minQuantity: 1, maxQuantity: 1 },
+      },
     },
-    requires: { mithrilBar: 2 },
+    requires: { [ItemId.MITHRIL_BAR]: 2 },
     category: SmithingTaskCategories.MITHRIL_SMITHING,
     applicableModifiers: smithingCommonModifiers,
   },
@@ -621,9 +691,11 @@ export const smithingTasks: { [id in TaskId]?: Task } = {
     experience: 100,
     requiredLevel: 50,
     lootTable: {
-      shield: { mithrilShield: { weight: 1, minQuantity: 1, maxQuantity: 1 } },
+      shield: {
+        [ItemId.MITHRIL_SHIELD]: { weight: 1, minQuantity: 1, maxQuantity: 1 },
+      },
     },
-    requires: { mithrilBar: 2 },
+    requires: { [ItemId.MITHRIL_BAR]: 2 },
     category: SmithingTaskCategories.MITHRIL_SMITHING,
     applicableModifiers: smithingCommonModifiers,
   },
@@ -641,10 +713,14 @@ export const smithingTasks: { [id in TaskId]?: Task } = {
     requiredLevel: 50,
     lootTable: {
       greatsword: {
-        mithrilGreatSword: { weight: 1, minQuantity: 1, maxQuantity: 1 },
+        [ItemId.MITHRIL_GREAT_SWORD]: {
+          weight: 1,
+          minQuantity: 1,
+          maxQuantity: 1,
+        },
       },
     },
-    requires: { mithrilBar: 3 },
+    requires: { [ItemId.MITHRIL_BAR]: 3 },
     category: SmithingTaskCategories.MITHRIL_SMITHING,
     applicableModifiers: smithingCommonModifiers,
   },
@@ -661,9 +737,11 @@ export const smithingTasks: { [id in TaskId]?: Task } = {
     experience: 90,
     requiredLevel: 50,
     lootTable: {
-      helmet: { mithrilHelmet: { weight: 1, minQuantity: 1, maxQuantity: 1 } },
+      helmet: {
+        [ItemId.MITHRIL_HELMET]: { weight: 1, minQuantity: 1, maxQuantity: 1 },
+      },
     },
-    requires: { mithrilBar: 2 },
+    requires: { [ItemId.MITHRIL_BAR]: 2 },
     category: SmithingTaskCategories.MITHRIL_SMITHING,
     applicableModifiers: smithingCommonModifiers,
   },
@@ -681,10 +759,14 @@ export const smithingTasks: { [id in TaskId]?: Task } = {
     requiredLevel: 50,
     lootTable: {
       chestplate: {
-        mithrilChestplate: { weight: 1, minQuantity: 1, maxQuantity: 1 },
+        [ItemId.MITHRIL_CHESTPLATE]: {
+          weight: 1,
+          minQuantity: 1,
+          maxQuantity: 1,
+        },
       },
     },
-    requires: { mithrilBar: 4 },
+    requires: { [ItemId.MITHRIL_BAR]: 4 },
     category: SmithingTaskCategories.MITHRIL_SMITHING,
     applicableModifiers: smithingCommonModifiers,
   },
@@ -701,9 +783,11 @@ export const smithingTasks: { [id in TaskId]?: Task } = {
     experience: 90,
     requiredLevel: 50,
     lootTable: {
-      belt: { mithrilBelt: { weight: 1, minQuantity: 1, maxQuantity: 1 } },
+      belt: {
+        [ItemId.MITHRIL_BELT]: { weight: 1, minQuantity: 1, maxQuantity: 1 },
+      },
     },
-    requires: { mithrilBar: 2 },
+    requires: { [ItemId.MITHRIL_BAR]: 2 },
     category: SmithingTaskCategories.MITHRIL_SMITHING,
     applicableModifiers: smithingCommonModifiers,
   },
@@ -721,10 +805,14 @@ export const smithingTasks: { [id in TaskId]?: Task } = {
     requiredLevel: 50,
     lootTable: {
       plateleggings: {
-        mithrilPlateleggings: { weight: 1, minQuantity: 1, maxQuantity: 1 },
+        [ItemId.MITHRIL_PLATELEGGINGS]: {
+          weight: 1,
+          minQuantity: 1,
+          maxQuantity: 1,
+        },
       },
     },
-    requires: { mithrilBar: 4 },
+    requires: { [ItemId.MITHRIL_BAR]: 4 },
     category: SmithingTaskCategories.MITHRIL_SMITHING,
     applicableModifiers: smithingCommonModifiers,
   },
@@ -742,10 +830,14 @@ export const smithingTasks: { [id in TaskId]?: Task } = {
     requiredLevel: 50,
     lootTable: {
       gauntlets: {
-        mithrilGauntlets: { weight: 1, minQuantity: 1, maxQuantity: 1 },
+        [ItemId.MITHRIL_GAUNTLETS]: {
+          weight: 1,
+          minQuantity: 1,
+          maxQuantity: 1,
+        },
       },
     },
-    requires: { mithrilBar: 2 },
+    requires: { [ItemId.MITHRIL_BAR]: 2 },
     category: SmithingTaskCategories.MITHRIL_SMITHING,
     applicableModifiers: smithingCommonModifiers,
   },
@@ -764,9 +856,11 @@ export const smithingTasks: { [id in TaskId]?: Task } = {
     experience: 100,
     requiredLevel: 60,
     lootTable: {
-      dagger: { adamantDagger: { weight: 1, minQuantity: 1, maxQuantity: 1 } },
+      dagger: {
+        [ItemId.ADAMANT_DAGGER]: { weight: 1, minQuantity: 1, maxQuantity: 1 },
+      },
     },
-    requires: { adamantBar: 1 },
+    requires: { [ItemId.ADAMANT_BAR]: 1 },
     category: SmithingTaskCategories.ADAMANT_SMITHING,
     applicableModifiers: smithingCommonModifiers,
   },
@@ -783,9 +877,11 @@ export const smithingTasks: { [id in TaskId]?: Task } = {
     experience: 110,
     requiredLevel: 60,
     lootTable: {
-      sword: { adamantSword: { weight: 1, minQuantity: 1, maxQuantity: 1 } },
+      sword: {
+        [ItemId.ADAMANT_SWORD]: { weight: 1, minQuantity: 1, maxQuantity: 1 },
+      },
     },
-    requires: { adamantBar: 2 },
+    requires: { [ItemId.ADAMANT_BAR]: 2 },
     category: SmithingTaskCategories.ADAMANT_SMITHING,
     applicableModifiers: smithingCommonModifiers,
   },
@@ -802,9 +898,11 @@ export const smithingTasks: { [id in TaskId]?: Task } = {
     experience: 120,
     requiredLevel: 60,
     lootTable: {
-      shield: { adamantShield: { weight: 1, minQuantity: 1, maxQuantity: 1 } },
+      shield: {
+        [ItemId.ADAMANT_SHIELD]: { weight: 1, minQuantity: 1, maxQuantity: 1 },
+      },
     },
-    requires: { adamantBar: 2 },
+    requires: { [ItemId.ADAMANT_BAR]: 2 },
     category: SmithingTaskCategories.ADAMANT_SMITHING,
     applicableModifiers: smithingCommonModifiers,
   },
@@ -822,10 +920,14 @@ export const smithingTasks: { [id in TaskId]?: Task } = {
     requiredLevel: 60,
     lootTable: {
       greatsword: {
-        adamantGreatSword: { weight: 1, minQuantity: 1, maxQuantity: 1 },
+        [ItemId.ADAMANT_GREAT_SWORD]: {
+          weight: 1,
+          minQuantity: 1,
+          maxQuantity: 1,
+        },
       },
     },
-    requires: { adamantBar: 3 },
+    requires: { [ItemId.ADAMANT_BAR]: 3 },
     category: SmithingTaskCategories.ADAMANT_SMITHING,
     applicableModifiers: smithingCommonModifiers,
   },
@@ -842,9 +944,11 @@ export const smithingTasks: { [id in TaskId]?: Task } = {
     experience: 100,
     requiredLevel: 60,
     lootTable: {
-      helmet: { adamantHelmet: { weight: 1, minQuantity: 1, maxQuantity: 1 } },
+      helmet: {
+        [ItemId.ADAMANT_HELMET]: { weight: 1, minQuantity: 1, maxQuantity: 1 },
+      },
     },
-    requires: { adamantBar: 2 },
+    requires: { [ItemId.ADAMANT_BAR]: 2 },
     category: SmithingTaskCategories.ADAMANT_SMITHING,
     applicableModifiers: smithingCommonModifiers,
   },
@@ -862,10 +966,14 @@ export const smithingTasks: { [id in TaskId]?: Task } = {
     requiredLevel: 60,
     lootTable: {
       chestplate: {
-        adamantChestplate: { weight: 1, minQuantity: 1, maxQuantity: 1 },
+        [ItemId.ADAMANT_CHESTPLATE]: {
+          weight: 1,
+          minQuantity: 1,
+          maxQuantity: 1,
+        },
       },
     },
-    requires: { adamantBar: 4 },
+    requires: { [ItemId.ADAMANT_BAR]: 4 },
     category: SmithingTaskCategories.ADAMANT_SMITHING,
     applicableModifiers: smithingCommonModifiers,
   },
@@ -882,9 +990,11 @@ export const smithingTasks: { [id in TaskId]?: Task } = {
     experience: 100,
     requiredLevel: 60,
     lootTable: {
-      belt: { adamantBelt: { weight: 1, minQuantity: 1, maxQuantity: 1 } },
+      belt: {
+        [ItemId.ADAMANT_BELT]: { weight: 1, minQuantity: 1, maxQuantity: 1 },
+      },
     },
-    requires: { adamantBar: 2 },
+    requires: { [ItemId.ADAMANT_BAR]: 2 },
     category: SmithingTaskCategories.ADAMANT_SMITHING,
     applicableModifiers: smithingCommonModifiers,
   },
@@ -902,10 +1012,14 @@ export const smithingTasks: { [id in TaskId]?: Task } = {
     requiredLevel: 60,
     lootTable: {
       plateleggings: {
-        adamantPlateleggings: { weight: 1, minQuantity: 1, maxQuantity: 1 },
+        [ItemId.ADAMANT_PLATELEGGINGS]: {
+          weight: 1,
+          minQuantity: 1,
+          maxQuantity: 1,
+        },
       },
     },
-    requires: { adamantBar: 4 },
+    requires: { [ItemId.ADAMANT_BAR]: 4 },
     category: SmithingTaskCategories.ADAMANT_SMITHING,
     applicableModifiers: smithingCommonModifiers,
   },
@@ -923,10 +1037,14 @@ export const smithingTasks: { [id in TaskId]?: Task } = {
     requiredLevel: 60,
     lootTable: {
       gauntlets: {
-        adamantGauntlets: { weight: 1, minQuantity: 1, maxQuantity: 1 },
+        [ItemId.ADAMANT_GAUNTLETS]: {
+          weight: 1,
+          minQuantity: 1,
+          maxQuantity: 1,
+        },
       },
     },
-    requires: { adamantBar: 2 },
+    requires: { [ItemId.ADAMANT_BAR]: 2 },
     category: SmithingTaskCategories.ADAMANT_SMITHING,
     applicableModifiers: smithingCommonModifiers,
   },

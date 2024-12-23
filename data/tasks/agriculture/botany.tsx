@@ -32,7 +32,7 @@ export const BotanyTasks: { [id in TaskId]?: Task } = {
         [ItemId.GINSENG_SEED]: { weight: 100, minQuantity: 1, maxQuantity: 5 },
       },
     },
-    requires: { geode: 1 },
+    requires: { [ItemId.GEODE]: 1 },
     category: ProspectingTaskCategories.CRAFTING,
     applicableModifiers: prospectingCommonModifiers,
   },

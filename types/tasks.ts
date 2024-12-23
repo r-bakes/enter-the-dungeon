@@ -1,6 +1,7 @@
 import { GameObject } from "./gameObjects";
 import { SkillModifierType } from "@/data/modifiers/enums";
 import { LootTable } from "./loot";
+import { ItemId } from "@/data/items/enums";
 
 export type Task = {
   durationSec: number;
@@ -8,6 +9,6 @@ export type Task = {
   requiredLevel: number;
   lootTable: LootTable;
   category: string;
-  requires: { [itemId: string]: number };
+  requires: { [id in ItemId]?: number };
   applicableModifiers: Set<SkillModifierType>;
 } & GameObject;

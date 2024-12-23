@@ -13,7 +13,7 @@ export const armorTable: { [id in ItemId]?: Equipment } = {
     description: "A sturdy bronze helmet.",
     icon: HardHat,
     iconStyle: {
-      fill: itemTable[ItemId.COPPER_ORE].iconStyle.fill,
+      fill: "#F2613F",
       ...TASK_AND_ITEM_ICON_STYLE,
     },
     type: ItemType.EQUIPMENT,
@@ -30,7 +30,7 @@ export const armorTable: { [id in ItemId]?: Equipment } = {
     description: "A durable bronze chestplate.",
     icon: Shirt,
     iconStyle: {
-      fill: itemTable[ItemId.COPPER_ORE].iconStyle.fill,
+      fill: "#F2613F",
       ...TASK_AND_ITEM_ICON_STYLE,
     },
     type: ItemType.EQUIPMENT,
@@ -47,7 +47,7 @@ export const armorTable: { [id in ItemId]?: Equipment } = {
     description: "A reliable bronze belt.",
     icon: Tangent,
     iconStyle: {
-      fill: itemTable[ItemId.COPPER_ORE].iconStyle.fill,
+      fill: "#F2613F",
       ...TASK_AND_ITEM_ICON_STYLE,
     },
     type: ItemType.EQUIPMENT,
@@ -64,7 +64,7 @@ export const armorTable: { [id in ItemId]?: Equipment } = {
     description: "Robust bronze plateleggings.",
     icon: ToyBrick,
     iconStyle: {
-      fill: itemTable[ItemId.COPPER_ORE].iconStyle.fill,
+      fill: "#F2613F",
       ...TASK_AND_ITEM_ICON_STYLE,
     },
     type: ItemType.EQUIPMENT,
@@ -81,7 +81,7 @@ export const armorTable: { [id in ItemId]?: Equipment } = {
     description: "A pair of sturdy bronze gauntlets.",
     icon: Hand,
     iconStyle: {
-      fill: itemTable[ItemId.COPPER_ORE].iconStyle.fill,
+      fill: "#F2613F",
       ...TASK_AND_ITEM_ICON_STYLE,
     },
     type: ItemType.EQUIPMENT,
@@ -100,7 +100,7 @@ export const armorTable: { [id in ItemId]?: Equipment } = {
     description: "A strong iron helmet.",
     icon: HardHat,
     iconStyle: {
-      fill: itemTable[ItemId.IRON_ORE].iconStyle.fill,
+      fill: "#B3C8CF",
       ...TASK_AND_ITEM_ICON_STYLE,
     },
     type: ItemType.EQUIPMENT,
@@ -117,7 +117,7 @@ export const armorTable: { [id in ItemId]?: Equipment } = {
     description: "A durable iron chestplate.",
     icon: Shirt,
     iconStyle: {
-      fill: itemTable[ItemId.IRON_ORE].iconStyle.fill,
+      fill: "#B3C8CF",
       ...TASK_AND_ITEM_ICON_STYLE,
     },
     type: ItemType.EQUIPMENT,
@@ -134,7 +134,7 @@ export const armorTable: { [id in ItemId]?: Equipment } = {
     description: "A reliable iron belt.",
     icon: Tangent,
     iconStyle: {
-      fill: itemTable[ItemId.IRON_ORE].iconStyle.fill,
+      fill: "#B3C8CF",
       ...TASK_AND_ITEM_ICON_STYLE,
     },
     type: ItemType.EQUIPMENT,
@@ -151,7 +151,7 @@ export const armorTable: { [id in ItemId]?: Equipment } = {
     description: "Sturdy iron plateleggings.",
     icon: ToyBrick,
     iconStyle: {
-      fill: itemTable[ItemId.IRON_ORE].iconStyle.fill,
+      fill: "#B3C8CF",
       ...TASK_AND_ITEM_ICON_STYLE,
     },
     type: ItemType.EQUIPMENT,
@@ -168,7 +168,7 @@ export const armorTable: { [id in ItemId]?: Equipment } = {
     description: "A pair of strong iron gauntlets.",
     icon: Hand,
     iconStyle: {
-      fill: itemTable[ItemId.IRON_ORE].iconStyle.fill,
+      fill: "#B3C8CF",
       ...TASK_AND_ITEM_ICON_STYLE,
     },
     type: ItemType.EQUIPMENT,
@@ -187,7 +187,7 @@ export const armorTable: { [id in ItemId]?: Equipment } = {
     description: "A robust steel helmet.",
     icon: HardHat,
     iconStyle: {
-      fill: itemTable[ItemId.IRON_ORE].iconStyle.fill,
+      fill: "#B3C8CF",
       ...TASK_AND_ITEM_ICON_STYLE,
     },
     type: ItemType.EQUIPMENT,
@@ -204,7 +204,7 @@ export const armorTable: { [id in ItemId]?: Equipment } = {
     description: "A strong steel chestplate.",
     icon: Shirt,
     iconStyle: {
-      fill: itemTable[ItemId.IRON_ORE].iconStyle.fill,
+      fill: "#B3C8CF",
       ...TASK_AND_ITEM_ICON_STYLE,
     },
     type: ItemType.EQUIPMENT,
@@ -221,7 +221,7 @@ export const armorTable: { [id in ItemId]?: Equipment } = {
     description: "A dependable steel belt.",
     icon: Tangent,
     iconStyle: {
-      fill: itemTable[ItemId.IRON_ORE].iconStyle.fill,
+      fill: "#B3C8CF",
       ...TASK_AND_ITEM_ICON_STYLE,
     },
     type: ItemType.EQUIPMENT,
@@ -238,7 +238,7 @@ export const armorTable: { [id in ItemId]?: Equipment } = {
     description: "Sturdy steel plateleggings.",
     icon: ToyBrick,
     iconStyle: {
-      fill: itemTable[ItemId.IRON_ORE].iconStyle.fill,
+      fill: "#B3C8CF",
       ...TASK_AND_ITEM_ICON_STYLE,
     },
     type: ItemType.EQUIPMENT,
@@ -255,7 +255,7 @@ export const armorTable: { [id in ItemId]?: Equipment } = {
     description: "A pair of strong steel gauntlets.",
     icon: Hand,
     iconStyle: {
-      fill: itemTable[ItemId.IRON_ORE].iconStyle.fill,
+      fill: "#B3C8CF",
       ...TASK_AND_ITEM_ICON_STYLE,
     },
     type: ItemType.EQUIPMENT,
@@ -274,7 +274,7 @@ export const armorTable: { [id in ItemId]?: Equipment } = {
     description: "A lightweight mithril helmet.",
     icon: HardHat,
     iconStyle: {
-      fill: itemTable[ItemId.MITHRIL_ORE].iconStyle.fill,
+      fill: "#5C88C4",
       ...TASK_AND_ITEM_ICON_STYLE,
     },
     type: ItemType.EQUIPMENT,
@@ -291,7 +291,7 @@ export const armorTable: { [id in ItemId]?: Equipment } = {
     description: "A resilient mithril chestplate.",
     icon: Shirt,
     iconStyle: {
-      fill: itemTable[ItemId.MITHRIL_ORE].iconStyle.fill,
+      fill: "#5C88C4",
       ...TASK_AND_ITEM_ICON_STYLE,
     },
     type: ItemType.EQUIPMENT,
@@ -308,7 +308,7 @@ export const armorTable: { [id in ItemId]?: Equipment } = {
     description: "A flexible mithril belt.",
     icon: Tangent,
     iconStyle: {
-      fill: itemTable[ItemId.MITHRIL_ORE].iconStyle.fill,
+      fill: "#5C88C4",
       ...TASK_AND_ITEM_ICON_STYLE,
     },
     type: ItemType.EQUIPMENT,
@@ -325,7 +325,7 @@ export const armorTable: { [id in ItemId]?: Equipment } = {
     description: "Elegant mithril plateleggings.",
     icon: ToyBrick,
     iconStyle: {
-      fill: itemTable[ItemId.MITHRIL_ORE].iconStyle.fill,
+      fill: "#5C88C4",
       ...TASK_AND_ITEM_ICON_STYLE,
     },
     type: ItemType.EQUIPMENT,
@@ -342,7 +342,7 @@ export const armorTable: { [id in ItemId]?: Equipment } = {
     description: "A pair of dexterous mithril gauntlets.",
     icon: Hand,
     iconStyle: {
-      fill: itemTable[ItemId.MITHRIL_ORE].iconStyle.fill,
+      fill: "#5C88C4",
       ...TASK_AND_ITEM_ICON_STYLE,
     },
     type: ItemType.EQUIPMENT,
@@ -361,7 +361,7 @@ export const armorTable: { [id in ItemId]?: Equipment } = {
     description: "An indestructible adamant helmet.",
     icon: HardHat,
     iconStyle: {
-      fill: itemTable[ItemId.ADAMANTITE_ORE].iconStyle.fill,
+      fill: "#B2A4FF",
       ...TASK_AND_ITEM_ICON_STYLE,
     },
     type: ItemType.EQUIPMENT,
@@ -378,7 +378,7 @@ export const armorTable: { [id in ItemId]?: Equipment } = {
     description: "A formidable adamant chestplate.",
     icon: Shirt,
     iconStyle: {
-      fill: itemTable[ItemId.ADAMANTITE_ORE].iconStyle.fill,
+      fill: "#B2A4FF",
       ...TASK_AND_ITEM_ICON_STYLE,
     },
     type: ItemType.EQUIPMENT,
@@ -395,7 +395,7 @@ export const armorTable: { [id in ItemId]?: Equipment } = {
     description: "A sturdy adamant belt.",
     icon: Tangent,
     iconStyle: {
-      fill: itemTable[ItemId.ADAMANTITE_ORE].iconStyle.fill,
+      fill: "#B2A4FF",
       ...TASK_AND_ITEM_ICON_STYLE,
     },
     type: ItemType.EQUIPMENT,
@@ -412,7 +412,7 @@ export const armorTable: { [id in ItemId]?: Equipment } = {
     description: "Impenetrable adamant plateleggings.",
     icon: ToyBrick,
     iconStyle: {
-      fill: itemTable[ItemId.ADAMANTITE_ORE].iconStyle.fill,
+      fill: "#B2A4FF",
       ...TASK_AND_ITEM_ICON_STYLE,
     },
     type: ItemType.EQUIPMENT,
@@ -429,7 +429,7 @@ export const armorTable: { [id in ItemId]?: Equipment } = {
     description: "A pair of unyielding adamant gauntlets.",
     icon: Hand,
     iconStyle: {
-      fill: itemTable[ItemId.ADAMANTITE_ORE].iconStyle.fill,
+      fill: "#B2A4FF",
       ...TASK_AND_ITEM_ICON_STYLE,
     },
     type: ItemType.EQUIPMENT,

@@ -1,6 +1,6 @@
 import { SKILL_AND_MENU_ICON_STYLE } from "@/configurations/configurations";
 import { SkillModifierType } from "@/data/modifiers/enums";
-import { AlchemyTaskCategories } from "@/data/skills/enums";
+import { AlchemyTaskCategories, SkillId } from "@/data/skills/enums";
 import { Droplet } from "lucide-react";
 import { TaskId } from "../tasks/enum";
 import { Task } from "@/types/tasks";
@@ -16,7 +16,7 @@ const alchemyCommonModifiers = new Set([
 const alchemyTasks: { [id in TaskId]?: Task } = {};
 
 export const alchemy: Skill = {
-  id: "alchemy",
+  id: SkillId.ALCHEMY,
   name: "Alchemy",
   description: "The ability to potions and tinctures.",
   icon: Droplet,

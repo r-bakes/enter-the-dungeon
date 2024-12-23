@@ -28,9 +28,11 @@ export const smeltingTasks: { [id in TaskId]?: Task } = {
     experience: 1,
     requiredLevel: 1,
     lootTable: {
-      bar: { bronzeBar: { weight: 1, minQuantity: 1, maxQuantity: 1 } },
+      bar: {
+        [ItemId.BRONZE_BAR]: { weight: 1, minQuantity: 1, maxQuantity: 1 },
+      },
     },
-    requires: { copperOre: 1, tinOre: 1, coal: 1 },
+    requires: { [ItemId.COPPER_ORE]: 1, [ItemId.TIN_ORE]: 1, [ItemId.COAL]: 1 },
     category: SmithingTaskCategories.SMELTING,
     applicableModifiers: smithingCommonModifiers,
   },
@@ -47,9 +49,9 @@ export const smeltingTasks: { [id in TaskId]?: Task } = {
     experience: 10,
     requiredLevel: 10,
     lootTable: {
-      bar: { ironBar: { weight: 1, minQuantity: 1, maxQuantity: 1 } },
+      bar: { [ItemId.IRON_BAR]: { weight: 1, minQuantity: 1, maxQuantity: 1 } },
     },
-    requires: { ironOre: 2, coal: 2 },
+    requires: { [ItemId.IRON_ORE]: 2, [ItemId.COAL]: 2 },
     category: SmithingTaskCategories.SMELTING,
     applicableModifiers: smithingCommonModifiers,
   },
@@ -66,9 +68,11 @@ export const smeltingTasks: { [id in TaskId]?: Task } = {
     experience: 20,
     requiredLevel: 20,
     lootTable: {
-      bar: { steelBar: { weight: 1, minQuantity: 1, maxQuantity: 1 } },
+      bar: {
+        [ItemId.STEEL_BAR]: { weight: 1, minQuantity: 1, maxQuantity: 1 },
+      },
     },
-    requires: { ironOre: 5, coal: 5 },
+    requires: { [ItemId.IRON_ORE]: 5, [ItemId.COAL]: 5 },
     category: SmithingTaskCategories.SMELTING,
     applicableModifiers: smithingCommonModifiers,
   },
@@ -85,9 +89,11 @@ export const smeltingTasks: { [id in TaskId]?: Task } = {
     experience: 20,
     requiredLevel: 20,
     lootTable: {
-      bar: { silverBar: { weight: 1, minQuantity: 1, maxQuantity: 1 } },
+      bar: {
+        [ItemId.SILVER_BAR]: { weight: 1, minQuantity: 1, maxQuantity: 1 },
+      },
     },
-    requires: { silverOre: 5, coal: 5 },
+    requires: { [ItemId.SILVER_ORE]: 5, [ItemId.COAL]: 5 },
     category: SmithingTaskCategories.SMELTING,
     applicableModifiers: smithingCommonModifiers,
   },
@@ -104,9 +110,9 @@ export const smeltingTasks: { [id in TaskId]?: Task } = {
     experience: 30,
     requiredLevel: 30,
     lootTable: {
-      bar: { goldBar: { weight: 1, minQuantity: 1, maxQuantity: 1 } },
+      bar: { [ItemId.GOLD_BAR]: { weight: 1, minQuantity: 1, maxQuantity: 1 } },
     },
-    requires: { goldOre: 5, coal: 10 },
+    requires: { [ItemId.GOLD_ORE]: 5, [ItemId.COAL]: 10 },
     category: SmithingTaskCategories.SMELTING,
     applicableModifiers: smithingCommonModifiers,
   },
@@ -123,9 +129,11 @@ export const smeltingTasks: { [id in TaskId]?: Task } = {
     experience: 90,
     requiredLevel: 30,
     lootTable: {
-      bar: { mithrilBar: { weight: 1, minQuantity: 1, maxQuantity: 1 } },
+      bar: {
+        [ItemId.MITHRIL_BAR]: { weight: 1, minQuantity: 1, maxQuantity: 1 },
+      },
     },
-    requires: { mithrilOre: 5, coal: 10 },
+    requires: { [ItemId.MITHRIL_ORE]: 5, [ItemId.COAL]: 10 },
     category: SmithingTaskCategories.SMELTING,
     applicableModifiers: smithingCommonModifiers,
   },
@@ -142,9 +150,11 @@ export const smeltingTasks: { [id in TaskId]?: Task } = {
     experience: 100,
     requiredLevel: 40,
     lootTable: {
-      bar: { platinumBar: { weight: 1, minQuantity: 1, maxQuantity: 1 } },
+      bar: {
+        [ItemId.PLATINUM_BAR]: { weight: 1, minQuantity: 1, maxQuantity: 1 },
+      },
     },
-    requires: { platinumOre: 5, coal: 15 },
+    requires: { [ItemId.PLATINUM_ORE]: 5, [ItemId.COAL]: 15 },
     category: SmithingTaskCategories.SMELTING,
     applicableModifiers: smithingCommonModifiers,
   },
@@ -161,9 +171,11 @@ export const smeltingTasks: { [id in TaskId]?: Task } = {
     experience: 100,
     requiredLevel: 40,
     lootTable: {
-      bar: { adamantBar: { weight: 1, minQuantity: 1, maxQuantity: 1 } },
+      bar: {
+        [ItemId.ADAMANT_BAR]: { weight: 1, minQuantity: 1, maxQuantity: 1 },
+      },
     },
-    requires: { adamantiteOre: 5, coal: 15 },
+    requires: { [ItemId.ADAMANTITE_ORE]: 5, [ItemId.COAL]: 15 },
     category: SmithingTaskCategories.SMELTING,
     applicableModifiers: smithingCommonModifiers,
   },

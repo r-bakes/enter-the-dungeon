@@ -1,4 +1,3 @@
-import { SkillId } from "@/data/skills/enums";
 import { GameObject } from "./gameObjects";
 import { TaskId } from "@/data/tasks/enum";
 import { Task } from "./tasks";

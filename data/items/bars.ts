@@ -12,7 +12,7 @@ export const barsTable: { [id in ItemId]?: Item } = {
     description: "a bronze bar.",
     icon: RectangleVertical,
     iconStyle: {
-      fill: itemTable[ItemId.COPPER_ORE].iconStyle.fill,
+      fill: "#F2613F",
       ...TASK_AND_ITEM_ICON_STYLE,
     },
     type: ItemType.TRADEGOODS,
@@ -24,7 +24,7 @@ export const barsTable: { [id in ItemId]?: Item } = {
     description: "an iron bar.",
     icon: RectangleVertical,
     iconStyle: {
-      fill: itemTable[ItemId.IRON_ORE].iconStyle.fill,
+      fill: "#B3C8CF",
       ...TASK_AND_ITEM_ICON_STYLE,
     },
     type: ItemType.TRADEGOODS,
@@ -45,7 +45,7 @@ export const barsTable: { [id in ItemId]?: Item } = {
     value: 1,
     icon: RectangleVertical,
     iconStyle: {
-      fill: itemTable[ItemId.SILVER_ORE].iconStyle.fill,
+      fill: "#BED7DC",
       ...TASK_AND_ITEM_ICON_STYLE,
     },
     type: ItemType.TRADEGOODS,
@@ -57,7 +57,7 @@ export const barsTable: { [id in ItemId]?: Item } = {
     value: 1,
     icon: RectangleVertical,
     iconStyle: {
-      fill: itemTable[ItemId.GOLD_ORE].iconStyle.fill,
+      fill: "#F3CA52",
       ...TASK_AND_ITEM_ICON_STYLE,
     },
     type: ItemType.TRADEGOODS,
@@ -69,7 +69,7 @@ export const barsTable: { [id in ItemId]?: Item } = {
     value: 1,
     icon: RectangleVertical,
     iconStyle: {
-      fill: itemTable[ItemId.MITHRIL_ORE].iconStyle.fill,
+      fill: "#5C88C4",
       ...TASK_AND_ITEM_ICON_STYLE,
     },
     type: ItemType.TRADEGOODS,
@@ -81,7 +81,7 @@ export const barsTable: { [id in ItemId]?: Item } = {
     value: 1,
     icon: RectangleVertical,
     iconStyle: {
-      fill: itemTable[ItemId.PLATINUM_ORE].iconStyle.fill,
+      fill: "#CAF4FF",
       ...TASK_AND_ITEM_ICON_STYLE,
     },
     type: ItemType.TRADEGOODS,
@@ -93,7 +93,7 @@ export const barsTable: { [id in ItemId]?: Item } = {
     value: 1,
     icon: RectangleVertical,
     iconStyle: {
-      fill: itemTable[ItemId.ADAMANTITE_ORE].iconStyle.fill,
+      fill: "#B2A4FF",
       ...TASK_AND_ITEM_ICON_STYLE,
     },
     type: ItemType.TRADEGOODS,

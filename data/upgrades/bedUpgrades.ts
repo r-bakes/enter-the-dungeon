@@ -9,11 +9,11 @@ import { UpgradeId } from "./enums";
 import { SkillId } from "../skills/enums";
 
 const getGlobalModifier = (): { [id in SkillId]: string[] } => {
-  let targetsEverything: { [id in SkillId]: string[] } = {};
+  let targetsEverything: { [id in SkillId]: string[] } = Object.fromEntries(
+    [SkillId].map((id) => [id, []]),
+  );
 
   for (const [skillId, skill] of Object.entries(skillTable)) {
-    targetsEverything[skillId] = [];
-
     Object.keys(skill.tasks).forEach((taskId) =>
       targetsEverything[skillId].push(taskId),
     );
