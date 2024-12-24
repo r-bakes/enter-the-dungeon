@@ -26,7 +26,6 @@ import {
   formatLargeQuantity,
   renderIcon,
 } from "@/utils/formattingUtilities";
-import { ItemType } from "@/data/items/enums";
 import { useCharacterEngineContext } from "@/engines/characterEngineContext";
 import {
   Select,
@@ -38,6 +37,7 @@ import {
 import { ChevronDown, ChevronUp } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import TableEntryDialog from "@/features/town/inventoryMenu/components/tableEntryDialog/tableEntryDialog";
+import { ItemId, ItemType } from "@/data/items/enums";
 
 type TableData = {
   quantity: number;
@@ -49,8 +49,11 @@ export default function InventoryTable() {
   const [selectedItemId, setSelectedItemId] = React.useState(null);
   const data: TableData[] = React.useMemo(() => {
     return Object.entries(character.inventory)
-      .filter(([itemId, _]) => itemTable[itemId].type != ItemType.HIDDEN)
-      .map(([itemId, quantity]) => {
+      .filter(
+        ([itemId, _]: [ItemId, number]) =>
+          itemTable[itemId].type !== ItemType.HIDDEN,
+      )
+      .map(([itemId, quantity]: [ItemId, number]) => {
         return { ...itemTable[itemId], quantity: quantity };
       });
   }, [character]);

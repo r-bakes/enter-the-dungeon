@@ -16,7 +16,7 @@ export default function EquipmentSlot({
 
   return (
     <div className={"h-14 w-14 border text-center"}>
-      {character.loadout[slot] != null ? (
+      {character.loadout[slot] ? (
         <EquipmentSlotContent
           item={itemTable[character.loadout[slot]] as Equipment}
           slot={slot}

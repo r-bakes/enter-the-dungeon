@@ -80,19 +80,19 @@ export default function TableEntryDialogEquipment({
           </div>
         </div>
       </Card>
-      {item.slots.includes(Slot.LEFTHAND) &&
-      item.slots.includes(Slot.RIGHTHAND) ? (
+      {item.slots.includes(Slot.LEFT_HAND) &&
+      item.slots.includes(Slot.RIGHT_HAND) ? (
         <div className="mt-2 flex w-full items-center">
           <Button
             size="sm"
-            onClick={() => equip(item.id, Slot.LEFTHAND)}
+            onClick={() => equip(item.id, Slot.LEFT_HAND)}
             className="w-1/2 text-xs"
           >
             Equip - L
           </Button>
           <Button
             size="sm"
-            onClick={() => equip(item.id, Slot.RIGHTHAND)}
+            onClick={() => equip(item.id, Slot.RIGHT_HAND)}
             className="w-1/2 text-xs"
           >
             Equip - R

@@ -3,29 +3,29 @@ import { UpgradeId } from "../upgrades/enums";
 import { SkillId } from "../skills/enums";
 import { CombatCardId } from "../combatCards/enums";
 import { Character } from "@/types/character";
-import { PastureId, PlotId } from "./enums";
+import { PastureId, PlotId, Slot } from "./enums";
 
 export const testCharacter: Character = {
   name: "Riley",
   loadout: {
-    head: ItemId.BRONZE_HELMET,
-    neck: null,
-    shoulder: null,
-    cloak: null,
-    chest: ItemId.BRONZE_CHESTPLATE,
-    waist: ItemId.BRONZE_BELT,
-    leg: ItemId.BRONZE_PLATELEGGINGS,
-    wrist: null,
-    glove: ItemId.BRONZE_GAUNTLETS,
-    feet: null,
-    ring1: null,
-    ring2: null,
-    trinket1: null,
-    trinket2: null,
-    leftHand: ItemId.IRON_SWORD,
-    rightHand: ItemId.IRON_SHIELD,
-    flask1: null,
-    flask2: null,
+    [Slot.HEAD]: ItemId.BRONZE_HELMET,
+    [Slot.NECK]: null,
+    [Slot.SHOULDER]: null,
+    [Slot.CLOAK]: null,
+    [Slot.CHEST]: ItemId.BRONZE_CHESTPLATE,
+    [Slot.WAIST]: ItemId.BRONZE_BELT,
+    [Slot.LEG]: ItemId.BRONZE_PLATELEGGINGS,
+    [Slot.WRIST]: null,
+    [Slot.GLOVE]: ItemId.BRONZE_GAUNTLETS,
+    [Slot.FEET]: null,
+    [Slot.RING1]: null,
+    [Slot.RING2]: null,
+    [Slot.TRINKET1]: null,
+    [Slot.TRINKET2]: null,
+    [Slot.LEFT_HAND]: ItemId.IRON_SWORD,
+    [Slot.RIGHT_HAND]: ItemId.IRON_SHIELD,
+    [Slot.FLASK1]: null,
+    [Slot.FLASK2]: null,
   },
   inventory: {
     [ItemId.GOLD]: 10000,
