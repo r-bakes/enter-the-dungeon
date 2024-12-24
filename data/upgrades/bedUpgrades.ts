@@ -9,6 +9,8 @@ import { UpgradeId } from "./enums";
 import { SkillId } from "../skills/enums";
 import { Skill } from "@/types/skills";
 import { TaskId } from "../tasks/enum";
+import { ItemId } from "../items/enums";
+import { MilestoneId } from "../milestones/enums";
 
 const getGlobalModifier = (): { [id in SkillId]: TaskId[] } => {
   let targetsEverything: { [id in SkillId]: TaskId[] } = Object.values(
@@ -52,9 +54,9 @@ export const bedUpgrades: { [id in UpgradeId]?: Upgrade } = {
         [SkillModifierType.EXPERIENCE]: 1,
       },
     },
-    requiresItems: { gold: 0 },
+    requiresItems: { [ItemId.GOLD]: 0 },
     requiresUpgrades: new Set<UpgradeId>([]),
-    requiresMilestones: new Set<string>([]),
+    requiresMilestones: new Set<MilestoneId>([]),
     homeRoom: HomeRooms.BEDROOM,
   },
   [UpgradeId.STRAW_BED]: {
@@ -74,9 +76,9 @@ export const bedUpgrades: { [id in UpgradeId]?: Upgrade } = {
         [SkillModifierType.EXPERIENCE]: 2,
       },
     },
-    requiresItems: { gold: 1000 },
+    requiresItems: { [ItemId.GOLD]: 1000 },
     requiresUpgrades: new Set<UpgradeId>([UpgradeId.BASIC_BED]),
-    requiresMilestones: new Set<string>([]),
+    requiresMilestones: new Set<MilestoneId>([]),
     homeRoom: HomeRooms.BEDROOM,
   },
   [UpgradeId.COMFORTABLE_BED]: {
@@ -96,9 +98,9 @@ export const bedUpgrades: { [id in UpgradeId]?: Upgrade } = {
         [SkillModifierType.EXPERIENCE]: 3,
       },
     },
-    requiresItems: { gold: 100000 },
+    requiresItems: { [ItemId.GOLD]: 100000 },
     requiresUpgrades: new Set<UpgradeId>([UpgradeId.STRAW_BED]),
-    requiresMilestones: new Set<string>([]),
+    requiresMilestones: new Set<MilestoneId>([]),
     homeRoom: HomeRooms.BEDROOM,
   },
   [UpgradeId.REFINED_BED]: {
@@ -118,9 +120,9 @@ export const bedUpgrades: { [id in UpgradeId]?: Upgrade } = {
         [SkillModifierType.EXPERIENCE]: 4,
       },
     },
-    requiresItems: { gold: 1000000 },
+    requiresItems: { [ItemId.GOLD]: 1000000 },
     requiresUpgrades: new Set<UpgradeId>([UpgradeId.COMFORTABLE_BED]),
-    requiresMilestones: new Set<string>([]),
+    requiresMilestones: new Set<MilestoneId>([]),
     homeRoom: HomeRooms.BEDROOM,
   },
   [UpgradeId.LUXURY_BED]: {
@@ -140,9 +142,9 @@ export const bedUpgrades: { [id in UpgradeId]?: Upgrade } = {
         [SkillModifierType.EXPERIENCE]: 5,
       },
     },
-    requiresItems: { gold: 10000000 },
+    requiresItems: { [ItemId.GOLD]: 10000000 },
     requiresUpgrades: new Set<UpgradeId>([UpgradeId.REFINED_BED]),
-    requiresMilestones: new Set<string>([]),
+    requiresMilestones: new Set<MilestoneId>([]),
     homeRoom: HomeRooms.BEDROOM,
   },
 };

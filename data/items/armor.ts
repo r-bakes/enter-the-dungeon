@@ -1,9 +1,8 @@
 import { TASK_AND_ITEM_ICON_STYLE } from "@/configurations/configurations";
-import { Slot } from "@/data/character/character";
 import { ItemId, ItemType } from "@/data/items/enums";
 import { Equipment } from "@/types/items";
 import { Hand, HardHat, Shirt, Tangent, ToyBrick } from "lucide-react";
-import { itemTable } from "./items";
+import { Slot } from "../character/enums";
 
 export const armorTable: { [id in ItemId]?: Equipment } = {
   // Bronze Armor

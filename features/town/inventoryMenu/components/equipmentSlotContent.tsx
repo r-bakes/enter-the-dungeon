@@ -1,7 +1,11 @@
 import { Button } from "@/components/ui/button";
 import { Label } from "@/components/ui/label";
-import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
-import { Slot } from "@/data/character/character";
+import {
+  Popover,
+  PopoverContent,
+  PopoverTrigger,
+} from "@/components/ui/popover";
+import { Slot } from "@/data/character/enums";
 import { useCharacterEngineContext } from "@/engines/characterEngineContext";
 import { Equipment } from "@/types/items";
 import { renderIcon } from "@/utils/formattingUtilities";

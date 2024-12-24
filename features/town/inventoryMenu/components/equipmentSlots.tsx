@@ -1,7 +1,7 @@
-import { Slot } from "@/data/character/character";
 import { Card } from "@/components/ui/card";
 import EquipmentSlot from "@/features/town/inventoryMenu/components/equipmentSlot";
 import EquipmentAttributes from "@/features/town/inventoryMenu/components/equipmentAttributes";
+import { Slot } from "@/data/character/enums";
 
 export default function EquipmentSlots() {
   return (
@@ -41,11 +41,11 @@ export default function EquipmentSlots() {
       <div className="flex w-full justify-between">
         <div className="flex">
           <EquipmentSlot
-            slot={Slot.LEFTHAND}
+            slot={Slot.LEFT_HAND}
             slotName="Left Hand"
           ></EquipmentSlot>
           <EquipmentSlot
-            slot={Slot.RIGHTHAND}
+            slot={Slot.RIGHT_HAND}
             slotName="Right Hand"
           ></EquipmentSlot>
         </div>

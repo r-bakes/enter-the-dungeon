@@ -1,6 +1,5 @@
 import {
   Card,
-  CardContent,
   CardDescription,
   CardHeader,
   CardTitle,
@@ -40,10 +39,10 @@ export default function InventoryMenu() {
             </Label>
             <Card className="flex items-center gap-1 p-2">
               {renderIcon(CircleDollarSign, 24, {
-                ...itemTable["gold"].iconStyle,
+                ...itemTable.GOLD.iconStyle,
               })}
               <Label className="font-normal text-green-500">
-                {formatLargeQuantity(character.inventory.gold)}
+                {formatLargeQuantity(character.inventory.GOLD)}
               </Label>
               <Label className="text-xs font-normal text-muted-foreground">
                 gold

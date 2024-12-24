@@ -6,6 +6,7 @@ import { ItemId } from "@/data/items/enums";
 import { MilestoneId } from "@/data/milestones/enums";
 
 export type Upgrade = {
+  id: UpgradeId;
   previous: UpgradeId | null;
   next: UpgradeId | null;
   modifier: Modifier;

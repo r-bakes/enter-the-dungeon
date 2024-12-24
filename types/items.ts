@@ -1,5 +1,5 @@
-import { Slot } from "@/data/character/character";
-import { ItemType } from "@/data/items/enums";
+import { Slot } from "@/data/character/enums";
+import { ItemId, ItemType } from "@/data/items/enums";
 import { CombatCardTemplate } from "@/types/combatCards";
 import { GameObject } from "@/types/gameObjects";
 
@@ -14,6 +14,7 @@ export type Equipment = {
 } & Item;
 
 export type Item = {
+  id: ItemId;
   type: ItemType;
   value: number;
 } & GameObject;

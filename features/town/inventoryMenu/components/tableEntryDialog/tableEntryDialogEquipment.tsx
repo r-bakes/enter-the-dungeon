@@ -1,7 +1,8 @@
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Label } from "@/components/ui/label";
-import { Slot } from "@/data/character/character";
+import { Slot } from "@/data/character/enums";
+import { ItemId } from "@/data/items/enums";
 import { useCharacterEngineContext } from "@/engines/characterEngineContext";
 import { Equipment } from "@/types/items";
 import { formatCapitalCase, renderIcon } from "@/utils/formattingUtilities";
@@ -16,7 +17,7 @@ export default function TableEntryDialogEquipment({
 }>) {
   const { equipItem } = useCharacterEngineContext();
 
-  const equip = (itemId: string, slot: Slot) => {
+  const equip = (itemId: ItemId, slot: Slot) => {
     equipItem(itemId, slot);
     setOpen(false);
   };

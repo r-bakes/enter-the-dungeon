@@ -57,7 +57,7 @@ export default function TableEntryDialogSellEntry({
           <div className="flex flex-row gap-1">
             <Plus size={22} strokeWidth={1}></Plus>
             {renderIcon(CircleDollarSign, 22, {
-              ...itemTable["gold"].iconStyle,
+              ...itemTable.GOLD.iconStyle,
             })}
           </div>
         </CardHeader>

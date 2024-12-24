@@ -1,4 +1,3 @@
-import { Slot, testCharacter } from "@/data/character/character";
 import { toast } from "sonner";
 
 import React from "react";
@@ -16,16 +15,20 @@ import {
   MARTIAL_DECK_LIMIT,
 } from "@/configurations/configurations";
 import { itemTable } from "@/data/items/items";
+import { ItemId } from "@/data/items/enums";
+import { CombatCardId } from "@/data/combatCards/enums";
+import { Slot } from "@/data/character/enums";
+import { testCharacter } from "@/data/character/character";
 
 type CharacterEngineContextContents = {
   character: Character;
   setCharacter: React.Dispatch<React.SetStateAction<Character>>;
-  equipCard: (cardId: string) => void;
-  unequipCard: (cardId: string) => void;
-  equipItem: (itemId: string, slot: Slot) => void;
+  equipCard: (cardId: CombatCardId) => void;
+  unequipCard: (cardId: CombatCardId) => void;
+  equipItem: (itemId: ItemId, slot: Slot) => void;
   unequip: (slot: Slot) => void;
   getModifiers: () => { hp: number; atk: number; def: number; stamina: number };
-  sellItem: (itemId: string, amount: number) => void;
+  sellItem: (itemId: ItemId, amount: number) => void;
   save: () => void;
 };
 
@@ -83,7 +86,7 @@ export default function CharacterEngineProvider({
     setCharacter({ ...character });
   };
 
-  const equipItem = (itemId: string, slot: Slot) => {
+  const equipItem = (itemId: ItemId, slot: Slot) => {
     removeItem(character.inventory, itemId, 1);
     if (character.loadout[slot] != null) {
       unequipItem(slot);
@@ -95,7 +98,7 @@ export default function CharacterEngineProvider({
 
   const unequipItem = (slot: Slot) => {
     if (character.loadout[slot] != null) {
-      let itemId = character.loadout[slot] as string;
+      let itemId = character.loadout[slot];
       character.loadout[slot] = null;
       addItem(character.inventory, itemId, 1);
       removeCardsByItem(
@@ -107,13 +110,13 @@ export default function CharacterEngineProvider({
     }
   };
 
-  const sellItem = (itemId: string, amount: number) => {
+  const sellItem = (itemId: ItemId, amount: number) => {
     removeItem(character.inventory, itemId, amount);
-    addItem(character.inventory, "gold", itemTable[itemId].value * amount);
+    addItem(character.inventory, ItemId.GOLD, itemTable[itemId].value * amount);
     setCharacter({ ...character });
   };
 
-  const unequipCard = (cardId: string) => {
+  const unequipCard = (cardId: CombatCardId) => {
     if (character.deck.equppedMartial.includes(cardId)) {
       character.deck.equppedMartial.splice(
         character.deck.equppedMartial.findIndex(
@@ -139,7 +142,7 @@ export default function CharacterEngineProvider({
   const getModifiers = () => {
     return {
       ...getCombatModifiers(character),
-      ...getAgilityModifiers(character.skills.athletics.level),
+      ...getAgilityModifiers(character.skills.ATHLETICS.level),
     };
   };
 

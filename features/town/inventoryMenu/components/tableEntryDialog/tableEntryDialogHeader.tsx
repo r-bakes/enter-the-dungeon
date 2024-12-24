@@ -34,7 +34,7 @@ export default function TableEntryDialogHeader({
         <span className="flex items-center gap-1">
           <Label className="font-normal">{item.value}</Label>
           {renderIcon(CircleDollarSign, 16, {
-            ...itemTable["gold"].iconStyle,
+            ...itemTable.GOLD.iconStyle,
           })}
         </span>
         <div className="mx-4 h-1 w-1 rounded-full bg-black"></div>
