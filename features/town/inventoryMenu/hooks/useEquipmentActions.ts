@@ -2,10 +2,13 @@ import { Slot } from "@/data/character/enums";
 import { ItemId } from "@/data/items/enums";
 import { useCharacterEngineContext } from "@/engines/characterEngineContext";
 import useInventoryActions from "@/features/common/inventory/hooks/useInventoryActions";
+import useDeckActions from "@/features/deck/hooks/useDeckActions";
 
 const useEquipmentActions = () => {
   const { character, setCharacter } = useCharacterEngineContext();
   const { addItem, removeItem } = useInventoryActions();
+  const { addCardsToDeckByItemId, removeCardsFromDeckByItemId } =
+    useDeckActions();
 
   const equipItem = (itemId: ItemId, slot: Slot): void => {
     removeItem(itemId, 1);
@@ -13,9 +16,10 @@ const useEquipmentActions = () => {
     if (character.loadout[slot] !== null) {
       unequipItem(slot);
     }
+
     character.loadout[slot] = itemId;
 
-    addCardsByItemId(itemId);
+    addCardsToDeckByItemId(itemId);
 
     setCharacter({ ...character });
   };
@@ -24,19 +28,18 @@ const useEquipmentActions = () => {
     if (character.loadout[slot] != null) {
       let itemId = character.loadout[slot];
       character.loadout[slot] = null;
-      addItem(character.inventory, itemId, 1);
-      removeCardsByItemId(
-        itemId,
-        character.deck.equppedMartial,
-        character.deck.unequippedMartial,
-      );
+
+      addItem(itemId, 1);
+
+      removeCardsFromDeckByItemId(itemId);
+
       setCharacter({ ...character });
     }
   };
 
   return {
-    addItem,
-    removeItem,
+    equipItem,
+    unequipItem,
   };
 };
 export default useEquipmentActions;

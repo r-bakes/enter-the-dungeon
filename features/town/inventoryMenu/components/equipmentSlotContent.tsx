@@ -9,6 +9,7 @@ import { Slot } from "@/data/character/enums";
 import { useCharacterEngineContext } from "@/engines/characterEngineContext";
 import { Equipment } from "@/types/items";
 import { renderIcon } from "@/features/common/utils/formattingUtilities";
+import useEquipmentActions from "../hooks/useEquipmentActions";
 
 export default function EquipmentSlotContent({
   item,
@@ -17,7 +18,7 @@ export default function EquipmentSlotContent({
   item: Equipment;
   slot: Slot;
 }>) {
-  let { unequip } = useCharacterEngineContext();
+  let { unequipItem } = useEquipmentActions();
   return (
     <Popover>
       <PopoverTrigger asChild>
