@@ -9,7 +9,7 @@ import {
 import { Progress } from "@/components/ui/progress";
 import { LEVEL_CAP } from "@/configurations/configurations";
 import { Skill } from "@/types/Skill";
-import { requiredExpForLevelUp } from "@/utils/charaterStateUtilities";
+import { requiredExpForLevelUp } from "@/utils/characterStateUtilities";
 import { formatRoundedQuantity } from "@/utils/formattingUtilities";
 import { FlaskRound } from "lucide-react";
 

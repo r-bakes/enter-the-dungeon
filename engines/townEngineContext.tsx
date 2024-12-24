@@ -4,7 +4,7 @@ import {
   addItem,
   initializeCharacterModifierTable,
   removeItem,
-} from "@/utils/charaterStateUtilities";
+} from "@/utils/characterStateUtilities";
 import { useCharacterEngineContext } from "@/engines/characterEngineContext";
 import React from "react";
 import TaskComplete from "@/features/town/toast/TaskComplete";

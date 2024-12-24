@@ -7,16 +7,27 @@ import { Upgrade } from "@/types/upgrades";
 import { Bed } from "lucide-react";
 import { UpgradeId } from "./enums";
 import { SkillId } from "../skills/enums";
+import { Skill } from "@/types/skills";
+import { TaskId } from "../tasks/enum";
 
-const getGlobalModifier = (): { [id in SkillId]: string[] } => {
-  let targetsEverything: { [id in SkillId]: string[] } = Object.fromEntries(
-    [SkillId].map((id) => [id, []]),
+const getGlobalModifier = (): { [id in SkillId]: TaskId[] } => {
+  let targetsEverything: { [id in SkillId]: TaskId[] } = Object.values(
+    SkillId,
+  ).reduce(
+    (result, id) => {
+      result[id] = [];
+      return result;
+    },
+    {} as { [id in SkillId]: TaskId[] },
   );
 
-  for (const [skillId, skill] of Object.entries(skillTable)) {
-    Object.keys(skill.tasks).forEach((taskId) =>
-      targetsEverything[skillId].push(taskId),
-    );
+  for (const [skillId, skill] of Object.entries(skillTable) as [
+    SkillId,
+    Skill,
+  ][]) {
+    for (const taskId of Object.keys(skill.tasks) as TaskId[]) {
+      targetsEverything[skillId].push(taskId);
+    }
   }
 
   return targetsEverything;

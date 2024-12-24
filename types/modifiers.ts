@@ -5,14 +5,18 @@ import { SkillId } from "@/data/skills/enums";
 import { TaskId } from "@/data/tasks/enum";
 
 export type Modifier = {
-  targets: { [id in SkillId]?: string[] };
+  targets: { [id in SkillId]?: TaskId[] };
   values: { [type in SkillModifierType]?: number };
 };
 export type SkillModifierTable = {
-  [id in SkillId]?: {
+  [id in SkillId]: {
     [id in TaskId]?: SkillModifier;
   };
 };
+export type TaskModifierTable = {
+  [id in TaskId]: SkillModifier;
+};
+
 export type SkillModifier = {
   [type in SkillModifierType]?: number;
 };

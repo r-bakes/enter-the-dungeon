@@ -1,0 +1,41 @@
+export enum Slot {
+  HEAD = "head",
+  NECK = "neck",
+  SHOULDER = "shoulder",
+  CLOAK = "cloak",
+  CHEST = "chest",
+  WAIST = "waist",
+  LEG = "leg",
+  WRIST = "wrist",
+  GLOVE = "glove",
+  FEET = "feet",
+  RING1 = "ring1",
+  RING2 = "ring2",
+  TRINKET1 = "trinket1",
+  TRINKET2 = "trinket2",
+  FLASK1 = "flask1",
+  FLASK2 = "flask2",
+  LEFTHAND = "leftHand",
+  RIGHTHAND = "rightHand",
+}
+
+export enum PlotId {
+  PLOT_ONE = "PLOT_ONE",
+  PLOT_TWO = "PLOT_TWO",
+  PLOT_THREE = "PLOT_THREE",
+  PLOT_FOUR = "PLOT_FOUR",
+  PLOT_FIVE = "PLOT_FIVE",
+  PLOT_SIX = "PLOT_SIX",
+  PLOT_SEVEN = "PLOT_SEVEN",
+  PLOT_EIGHT = "PLOT_EIGHT",
+}
+export enum PastureId {
+  PASTURE_ONE = "PASTURE_ONE",
+  PASTURE_TWO = "PASTURE_TWO",
+  PASTURE_THREE = "PASTURE_THREE",
+  PASTURE_FOUR = "PASTURE_FOUR",
+  PASTURE_FIVE = "PASTURE_FIVE",
+  PASTURE_SIX = "PASTURE_SIX",
+  PASTURE_SEVEN = "PASTURE_SEVEN",
+  PASTURE_EIGHT = "PASTURE_EIGHT",
+}

@@ -9,7 +9,7 @@ import {
   getCombatModifiers,
   removeCardsByItem,
   removeItem,
-} from "@/utils/charaterStateUtilities";
+} from "@/utils/characterStateUtilities";
 import { Character } from "@/types/character";
 import {
   MAGIC_DECK_LIMIT,

@@ -1,110 +1,101 @@
-import { Character, PastureId, PlotId } from "@/types/character";
-
-export enum Slot {
-  HEAD = "head",
-  NECK = "neck",
-  SHOULDER = "shoulder",
-  CLOAK = "cloak",
-  CHEST = "chest",
-  WAIST = "waist",
-  LEG = "leg",
-  WRIST = "wrist",
-  GLOVE = "glove",
-  FEET = "feet",
-  RING1 = "ring1",
-  RING2 = "ring2",
-  TRINKET1 = "trinket1",
-  TRINKET2 = "trinket2",
-  FLASK1 = "flask1",
-  FLASK2 = "flask2",
-  LEFTHAND = "leftHand",
-  RIGHTHAND = "rightHand",
-}
+import { ItemId } from "../items/enums";
+import { UpgradeId } from "../upgrades/enums";
+import { SkillId } from "../skills/enums";
+import { CombatCardId } from "../combatCards/enums";
+import { Character } from "@/types/character";
+import { PastureId, PlotId } from "./enums";
 
 export const testCharacter: Character = {
   name: "Riley",
   loadout: {
-    head: "bronzeHelmet",
+    head: ItemId.BRONZE_HELMET,
     neck: null,
     shoulder: null,
     cloak: null,
-    chest: "bronzeChestplate",
-    waist: "bronzeBelt",
-    leg: "bronzePlateleggings",
+    chest: ItemId.BRONZE_CHESTPLATE,
+    waist: ItemId.BRONZE_BELT,
+    leg: ItemId.BRONZE_PLATELEGGINGS,
     wrist: null,
-    glove: "bronzeGauntlets",
+    glove: ItemId.BRONZE_GAUNTLETS,
     feet: null,
     ring1: null,
     ring2: null,
     trinket1: null,
     trinket2: null,
-    leftHand: "ironSword",
-    rightHand: "ironShield",
+    leftHand: ItemId.IRON_SWORD,
+    rightHand: ItemId.IRON_SHIELD,
     flask1: null,
     flask2: null,
   },
   inventory: {
-    gold: 10000,
-    copperOre: 10,
-    geode: 1,
-    tinOre: 10,
-    coal: 10,
-    bronzeBar: 100,
+    [ItemId.GOLD]: 10000,
+    [ItemId.COPPER_ORE]: 10,
+    [ItemId.GEODE]: 1,
+    [ItemId.TIN_ORE]: 10,
+    [ItemId.COAL]: 10,
+    [ItemId.BRONZE_BAR]: 100,
   },
   upgrades: new Set([
-    "basicPickaxe",
-    "bronzePickaxe",
-    "basicHammer",
-    "basicAnvil",
-    "basicForge",
-    "basicBed",
-    "coalMineCanery",
+    UpgradeId.BASIC_PICKAXE,
+    UpgradeId.BRONZE_PICKAXE,
+    UpgradeId.BASIC_HAMMER,
+    UpgradeId.BASIC_ANVIL,
+    UpgradeId.BASIC_FORGE,
+    UpgradeId.BASIC_BED,
+    UpgradeId.COAL_MINE_CANERY,
   ]),
   skills: {
-    martial: {
+    [SkillId.MARTIAL]: {
       level: 5,
       experience: 0,
     },
-    magic: {
+    [SkillId.MAGIC]: {
       level: 10,
       experience: 0,
     },
-    prospecting: {
+    [SkillId.PROSPECTING]: {
       level: 10,
       experience: 300,
     },
-    smithing: {
+    [SkillId.SMITHING]: {
       level: 60,
       experience: 10737418239,
     },
-    athletics: {
+    [SkillId.ATHLETICS]: {
       level: 15,
       experience: 0,
     },
-    crafting: {
+    [SkillId.CRAFTING]: {
       level: 1,
       experience: 0,
     },
-    agriculture: {
+    [SkillId.AGRICULTURE]: {
       level: 1,
       experience: 0,
     },
-    alchemy: {
+    [SkillId.ALCHEMY]: {
       level: 1,
       experience: 0,
     },
-    enchanting: {
+    [SkillId.ENCHANTING]: {
       level: 1,
       experience: 0,
     },
-    stealth: {
+    [SkillId.STEALTH]: {
       level: 15,
       experience: 0,
     },
   },
   milestones: new Set([]),
   deck: {
-    equppedMartial: ["slice", "slice", "slice", "defend", "defend", "defend"],
+    equppedMartial: [
+      CombatCardId.SLICE,
+      CombatCardId.SLICE,
+      CombatCardId.SLICE,
+      CombatCardId.DEFEND,
+      CombatCardId.DEFEND,
+      CombatCardId.DEFEND,
+    ],
     unequippedMartial: [],
     equippedMagic: [],
     unequippedMagic: [],

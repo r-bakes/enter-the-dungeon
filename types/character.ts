@@ -1,4 +1,4 @@
-import { Slot } from "@/data/character/character";
+import { PastureId, PlotId, Slot } from "@/data/character/enums";
 import { ItemId } from "@/data/items/enums";
 import { SkillId } from "@/data/skills/enums";
 import { TaskId } from "@/data/tasks/enum";
@@ -73,24 +73,3 @@ export type Working =
       startTime: null;
       agriculture: Agriculture;
     };
-
-export enum PlotId {
-  PLOT_ONE = "PLOT_ONE",
-  PLOT_TWO = "PLOT_TWO",
-  PLOT_THREE = "PLOT_THREE",
-  PLOT_FOUR = "PLOT_FOUR",
-  PLOT_FIVE = "PLOT_FIVE",
-  PLOT_SIX = "PLOT_SIX",
-  PLOT_SEVEN = "PLOT_SEVEN",
-  PLOT_EIGHT = "PLOT_EIGHT",
-}
-export enum PastureId {
-  PASTURE_ONE = "PASTURE_ONE",
-  PASTURE_TWO = "PASTURE_TWO",
-  PASTURE_THREE = "PASTURE_THREE",
-  PASTURE_FOUR = "PASTURE_FOUR",
-  PASTURE_FIVE = "PASTURE_FIVE",
-  PASTURE_SIX = "PASTURE_SIX",
-  PASTURE_SEVEN = "PASTURE_SEVEN",
-  PASTURE_EIGHT = "PASTURE_EIGHT",
-}

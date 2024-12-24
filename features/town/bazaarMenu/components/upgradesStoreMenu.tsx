@@ -4,7 +4,7 @@ import { itemTable } from "@/data/items/items";
 import { skillTable } from "@/data/skills/skills";
 import { useTownEngineContext } from "@/engines/townEngineContext";
 import { useCharacterEngineContext } from "@/engines/characterEngineContext";
-import { addUpgrade, removeItem } from "@/utils/charaterStateUtilities";
+import { addUpgrade, removeItem } from "@/utils/characterStateUtilities";
 import {
   formatCapitalCase,
   formatLargeQuantity,

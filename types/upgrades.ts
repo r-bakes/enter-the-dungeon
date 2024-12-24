@@ -1,15 +1,18 @@
 import { GameObject } from "@/types/gameObjects";
 import { Modifier } from "@/types/modifiers";
 import { HomeRooms } from "@/data/menus/enums";
+import { UpgradeId } from "@/data/upgrades/enums";
+import { ItemId } from "@/data/items/enums";
+import { MilestoneId } from "@/data/milestones/enums";
 
 export type Upgrade = {
-  previous: string | null;
-  next: string | null;
+  previous: UpgradeId | null;
+  next: UpgradeId | null;
   modifier: Modifier;
   requiresItems: {
-    [itemId: string]: number;
+    [id in ItemId]?: number;
   };
-  requiresMilestones: Set<string>;
-  requiresUpgrades: Set<string>;
+  requiresMilestones: Set<MilestoneId>;
+  requiresUpgrades: Set<UpgradeId>;
   homeRoom: HomeRooms;
 } & GameObject;
