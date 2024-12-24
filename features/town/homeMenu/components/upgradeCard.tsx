@@ -11,7 +11,8 @@ import {
   formatCapitalCase,
   renderIcon,
 } from "@/features/common/utils/formattingUtilities";
-import { formatModifiers } from "@/features/common/utils/modifierUtilities";
+import { SkillId } from "@/data/skills/enums";
+import { formatModifiers } from "../../modifiers/services/modifier";
 
 export default function UpgradeCard({
   upgrade,
@@ -34,7 +35,7 @@ export default function UpgradeCard({
               ([skillId, taskIds]) => (
                 <SkillImpactedPopup
                   key={skillId}
-                  skill={skillTable[skillId]}
+                  skill={skillTable[skillId as SkillId]}
                   taskIds={taskIds}
                   upgrade={upgrade}
                 ></SkillImpactedPopup>

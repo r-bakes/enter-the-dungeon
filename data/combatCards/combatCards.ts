@@ -1,13 +1,13 @@
 import { Shield, Sword, Swords } from "lucide-react";
 import { CombatCard, CombatCardTemplate } from "@/types/combatCards";
 import { TASK_AND_ITEM_ICON_STYLE } from "@/configurations/configurations";
-import { CombatCardId, Target } from "@/data/combatCards/enums";
+import { CombatCardId, CombatCardTarget, CombatCardType } from "./enums";
 
 export const combatCardTable: { [id in CombatCardId]: CombatCardTemplate } = {
   [CombatCardId.SLICE]: {
     id: CombatCardId.SLICE,
     name: "Slice",
-    target: Target.ENEMIES,
+    target: CombatCardTarget.ENEMIES,
     icon: Sword,
     iconStyle: {
       fill: "#B3C8CF",
@@ -18,11 +18,12 @@ export const combatCardTable: { [id in CombatCardId]: CombatCardTemplate } = {
     targets: 1,
     modifier: 1,
     cost: 1,
+    type: CombatCardType.MARTIAL,
   },
   [CombatCardId.STAB]: {
     id: CombatCardId.STAB,
     name: "Stab",
-    target: Target.ENEMIES,
+    target: CombatCardTarget.ENEMIES,
     icon: Swords,
     iconStyle: {
       fill: "#B3C8CF",
@@ -33,11 +34,12 @@ export const combatCardTable: { [id in CombatCardId]: CombatCardTemplate } = {
     targets: 1,
     modifier: 0.5,
     cost: 1,
+    type: CombatCardType.MARTIAL,
   },
   [CombatCardId.DEFEND]: {
     id: CombatCardId.DEFEND,
     name: "Defend",
-    target: Target.ALLIES,
+    target: CombatCardTarget.ALLIES,
     icon: Shield,
     iconStyle: {
       fill: "#B3C8CF",
@@ -48,6 +50,7 @@ export const combatCardTable: { [id in CombatCardId]: CombatCardTemplate } = {
     targets: 1,
     modifier: 1,
     cost: 1,
+    type: CombatCardType.MARTIAL,
   },
 };
 

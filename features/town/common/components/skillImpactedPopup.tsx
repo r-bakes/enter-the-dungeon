@@ -14,7 +14,7 @@ import {
   formatCapitalCase,
   renderIcon,
 } from "@/features/common/utils/formattingUtilities";
-import { formatModifiers } from "@/features/common/utils/modifierUtilities";
+import { formatModifiers } from "../../modifiers/services/modifier";
 
 export function SkillImpactedPopup({
   skill,

@@ -9,14 +9,14 @@ import { Label } from "@/components/ui/label";
 import { useTownEngineContext } from "@/engines/townEngineContext";
 
 import { renderIcon } from "@/features/common/utils/formattingUtilities";
-import { Task } from "@/types/skills";
-import { Skill } from "@/types/Skill";
 import { SkillModifierType } from "@/data/modifiers/enums";
+import { Skill } from "@/types/skills";
+import { Task } from "@/types/tasks";
 import {
   applyExperienceModifier,
   applySpeedModifier,
   getModifiers,
-} from "@/features/common/utils/modifierUtilities";
+} from "@/features/town/modifiers/services/modifier";
 
 export default function TaskButton({
   skill,

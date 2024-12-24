@@ -2,22 +2,15 @@ import { toast } from "sonner";
 
 import React from "react";
 import {
-  addCardsByItemId,
-  addItem,
   getAgilityModifiers,
   getCombatModifiers,
-  removeCardsByItem,
-  removeItem,
 } from "@/features/common/utils/characterStateUtilities";
 import { Character } from "@/types/character";
 import {
   MAGIC_DECK_LIMIT,
   MARTIAL_DECK_LIMIT,
 } from "@/configurations/configurations";
-import { itemTable } from "@/data/items/items";
-import { ItemId } from "@/data/items/enums";
 import { CombatCardId } from "@/data/combatCards/enums";
-import { Slot } from "@/data/character/enums";
 import { testCharacter } from "@/data/character/character";
 
 type CharacterEngineContextContents = {
@@ -25,8 +18,6 @@ type CharacterEngineContextContents = {
   setCharacter: React.Dispatch<React.SetStateAction<Character>>;
   equipCard: (cardId: CombatCardId) => void;
   unequipCard: (cardId: CombatCardId) => void;
-  equipItem: (itemId: ItemId, slot: Slot) => void;
-  unequip: (slot: Slot) => void;
   getModifiers: () => { hp: number; atk: number; def: number; stamina: number };
   save: () => void;
 };
@@ -85,30 +76,6 @@ export default function CharacterEngineProvider({
     setCharacter({ ...character });
   };
 
-  const equipItem = (itemId: ItemId, slot: Slot) => {
-    removeItem(character.inventory, itemId, 1);
-    if (character.loadout[slot] != null) {
-      unequipItem(slot);
-    }
-    character.loadout[slot] = itemId;
-    addCardsByItemId(itemId, character.deck.unequippedMartial);
-    setCharacter({ ...character });
-  };
-
-  const unequipItem = (slot: Slot) => {
-    if (character.loadout[slot] != null) {
-      let itemId = character.loadout[slot];
-      character.loadout[slot] = null;
-      addItem(character.inventory, itemId, 1);
-      removeCardsByItem(
-        itemId,
-        character.deck.equppedMartial,
-        character.deck.unequippedMartial,
-      );
-      setCharacter({ ...character });
-    }
-  };
-
   const unequipCard = (cardId: CombatCardId) => {
     if (character.deck.equppedMartial.includes(cardId)) {
       character.deck.equppedMartial.splice(
@@ -148,8 +115,6 @@ export default function CharacterEngineProvider({
         setCharacter,
         equipCard,
         unequipCard,
-        equipItem,
-        unequip: unequipItem,
         getModifiers,
         save,
       }}

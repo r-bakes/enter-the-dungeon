@@ -16,8 +16,6 @@ import TaskDataEntry from "./taskDataEntry";
 import { Separator } from "@/components/ui/separator";
 
 import { itemTable } from "@/data/items/items";
-import { Task } from "@/types/skills";
-import { Skill } from "@/types/Skill";
 import { generateDropRates } from "@/features/common/loot/loot";
 import { Item } from "@/types/items";
 import { renderIcon } from "@/features/common/utils/formattingUtilities";
@@ -25,11 +23,14 @@ import { SkillModifierType } from "@/data/modifiers/enums";
 import TaskProducesEntry from "@/features/town/skillMenu/components/taskInfo/taskProducesEntry";
 import { TaskRequiresEntry } from "@/features/town/skillMenu/components/taskInfo/taskRequiresEntry";
 import TaskModifiers from "@/features/town/skillMenu/components/taskInfo/taskModifiers";
+import { Skill } from "@/types/skills";
+import { Task } from "@/types/tasks";
 import {
   applyExperienceModifier,
   applySpeedModifier,
   getModifiers,
-} from "@/features/common/utils/modifierUtilities";
+} from "@/features/town/modifiers/services/modifier";
+import { ItemId } from "@/data/items/enums";
 
 const rootCardFormat =
   "flex flex-col h-full grow-0 w-80 min-w-80 max-w-80 items-center overflow-y-scroll";
@@ -70,11 +71,11 @@ export default function TaskInfo({
 
   if (task.requires) {
     taskRequires = Object.entries(task.requires).map(([itemId, quantity]) => ({
-      item: itemTable[itemId],
+      item: itemTable[itemId as ItemId],
       quantity: quantity,
       haveEnough:
         itemId in character.inventory &&
-        quantity <= character.inventory[itemId],
+        quantity <= character.inventory[itemId as ItemId],
     }));
 
     for (const element of taskRequires) {

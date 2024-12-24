@@ -19,7 +19,9 @@ import { Label } from "@/components/ui/label";
 import { Upgrade } from "@/types/upgrades";
 import { Character } from "@/types/character";
 import { SkillModifierTable } from "@/types/modifiers";
-import { formatModifiers } from "@/features/common/utils/modifierUtilities";
+import { ItemId } from "@/data/items/enums";
+import { SkillId } from "@/data/skills/enums";
+import { formatModifiers } from "../../modifiers/services/modifier";
 
 export default function UpgradesStoreMenu({
   upgrades,
@@ -35,7 +37,7 @@ export default function UpgradesStoreMenu({
     character: Character,
   ): void => {
     Object.entries(upgrade.requiresItems).forEach(([itemId, amount]) =>
-      removeItem(character.inventory, itemId, amount),
+      removeItem(character.inventory, itemId as ItemId, amount),
     );
 
     addUpgrade(upgrade, modifierTable, character);
@@ -46,7 +48,7 @@ export default function UpgradesStoreMenu({
 
   const canPurchase = (upgrade: Upgrade, character: Character): boolean => {
     for (const [itemId, amount] of Object.entries(upgrade.requiresItems)) {
-      if (!haveEnough(itemId, amount, character)) {
+      if (!haveEnough(itemId as ItemId, amount, character)) {
         return false;
       }
     }
@@ -54,13 +56,11 @@ export default function UpgradesStoreMenu({
   };
 
   const haveEnough = (
-    itemId: string,
+    itemId: ItemId,
     amount: number,
     character: Character,
   ): boolean => {
-    return (
-      itemId in character.inventory && character.inventory[itemId] >= amount
-    );
+    return character.inventory[itemId] >= amount;
   };
 
   return (
@@ -85,7 +85,7 @@ export default function UpgradesStoreMenu({
                 ([skillId, taskIds]) => (
                   <SkillImpactedPopup
                     key={skillId}
-                    skill={skillTable[skillId]}
+                    skill={skillTable[skillId as SkillId]}
                     taskIds={taskIds}
                     upgrade={upgrade}
                   ></SkillImpactedPopup>
@@ -109,8 +109,12 @@ export default function UpgradesStoreMenu({
             <div className="flex flex-row gap-2">
               {Object.entries(upgrade.requiresItems).map(
                 ([itemId, quantity]) => {
-                  let item = itemTable[itemId];
-                  let cardFormat = haveEnough(itemId, quantity, character)
+                  let item = itemTable[itemId as ItemId];
+                  let cardFormat = haveEnough(
+                    itemId as ItemId,
+                    quantity,
+                    character,
+                  )
                     ? ""
                     : "border-red-300";
                   return (
@@ -133,7 +137,11 @@ export default function UpgradesStoreMenu({
                         </div>
                         <div className="flex w-full items-center justify-end">
                           <Label className="mr-1 text-xs font-normal text-muted-foreground">
-                            ({formatLargeQuantity(character.inventory[itemId])})
+                            (
+                            {formatLargeQuantity(
+                              character.inventory[itemId as ItemId],
+                            )}
+                            )
                           </Label>
                           <Backpack size={14} strokeWidth={1}></Backpack>
                         </div>

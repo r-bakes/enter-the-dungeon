@@ -14,15 +14,15 @@ import generateLoot from "@/features/common/loot/loot";
 import { Loot } from "@/types/loot";
 import { SkillModifierType } from "@/data/modifiers/enums";
 import { toast } from "sonner";
+import { ItemId } from "@/data/items/enums";
+import { Task } from "@/types/tasks";
+import { Skill } from "@/types/skills";
 import {
   applyExperienceModifier,
   applyProductionModifier,
   applySpeedModifier,
   getModifiers,
-} from "@/features/common/utils/modifierUtilities";
-import { ItemId } from "@/data/items/enums";
-import { Task } from "@/types/tasks";
-import { Skill } from "@/types/skills";
+} from "@/features/town/modifiers/services/modifier";
 
 type TownEngineContextContents = {
   taskProgress: number;

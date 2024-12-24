@@ -2,11 +2,12 @@ import {
   AGILITY_LEVELS_FOR_STAMINA_BONUS,
   LEVEL_CAP,
 } from "@/configurations/configurations";
-import { ItemId, ItemType } from "@/data/items/enums";
+import { ItemId } from "@/data/items/enums";
 import { itemTable } from "@/data/items/items";
 import { SkillModifierType } from "@/data/modifiers/enums";
 import { SkillId } from "@/data/skills/enums";
 import { skillTable } from "@/data/skills/skills";
+import { TaskId } from "@/data/tasks/enum";
 import { upgradeTable } from "@/data/upgrades/upgrades";
 import { Character, Inventory, Skills, Upgrades } from "@/types/character";
 import { Equipment } from "@/types/items";
@@ -28,52 +29,6 @@ export function addExp(skills: Skills, skillId: SkillId, exp: number): Skills {
   );
 
   return skills;
-}
-
-export function addCardsByItemId(itemId: ItemId, unequipped: string[]) {
-  let item = itemTable[itemId] as Equipment;
-
-  item.cards.forEach((card) => unequipped.push(card.id));
-}
-
-export function removeCardsByItem(
-  itemId: ItemId,
-  equipped: string[],
-  unequipped: string[],
-) {
-  let item = itemTable[itemId] as Equipment;
-
-  item.cards.forEach((card) => {
-    if (unequipped.includes(card.id)) {
-      unequipped.splice(
-        unequipped.findIndex((unequippedCard) => unequippedCard === card.id),
-        1,
-      );
-    } else {
-      equipped.splice(
-        equipped.findIndex((equippedCard) => equippedCard === card.id),
-        1,
-      );
-    }
-  });
-}
-
-export function addItem(
-  inventory: Inventory,
-  itemId: ItemId,
-  amount: number = 1,
-): Inventory {
-  inventory[itemId] = (inventory[itemId] ?? 0) + amount;
-  return inventory;
-}
-
-export function removeItem(
-  inventory: Inventory,
-  itemId: ItemId,
-  amount: number = 1,
-): Inventory {
-  inventory[itemId] = (inventory[itemId] ?? amount) - amount;
-  return inventory;
 }
 
 export function requiredExpForLevelUp(level: number) {
@@ -120,7 +75,7 @@ export function addUpgrade(
         for (const type in previousUpgrade.modifier.values) {
           const value =
             previousUpgrade.modifier.values[type as SkillModifierType];
-          modifierTable[skillId as SkillId][taskId][
+          modifierTable[skillId as SkillId][taskId as TaskId][
             type as SkillModifierType
           ] -= value;
         }

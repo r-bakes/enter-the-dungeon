@@ -1,4 +1,4 @@
-import { Target } from "@/data/combatCards/enums";
+import { CombatCardTarget, CombatCardType } from "@/data/combatCards/enums";
 import { GameObject } from "@/types/gameObjects";
 
 export type CombatCard = {
@@ -9,6 +9,7 @@ export type CombatCardTemplate = {
   modifier: number;
   strikes: number;
   targets: number;
-  target: Target;
+  target: CombatCardTarget;
   cost: number;
+  type: CombatCardType;
 } & GameObject;
