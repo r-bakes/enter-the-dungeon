@@ -1,5 +1,5 @@
-import CardBack from "@/components/cards/cardBack";
-import CombatDeckCard from "@/components/cards/combatDeckCard";
+import CardBack from "@/features/common/cards/cardBack";
+import CombatDeckCard from "@/features/common/cards/combatDeckCard";
 import { Card, CardContent } from "@/components/ui/card";
 import { Label } from "@/components/ui/label";
 import { useCombatCardEngineContext } from "@/engines/combatCardEngineContext";

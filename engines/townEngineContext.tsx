@@ -7,7 +7,7 @@ import {
 } from "@/utils/characterStateUtilities";
 import { useCharacterEngineContext } from "@/engines/characterEngineContext";
 import React from "react";
-import TaskComplete from "@/features/town/toast/TaskComplete";
+import TaskComplete from "@/features/town/toast/components/TaskComplete";
 import { SkillModifierTable } from "@/types/modifiers";
 import { TICK_RATE_MS } from "@/configurations/configurations";
 import generateLoot from "@/utils/lootUtilities";
@@ -99,14 +99,10 @@ export default function CampEngineProvider({
   }, TICK_RATE_MS);
 
   const canContinueTask = (inventory: Inventory, task: Task) => {
-    let canContinue = true;
-    if (task.requires) {
-      Object.entries(task.requires).forEach(([itemId, quantity]) => {
-        if (!(itemId in inventory) || inventory[itemId] < quantity) {
-          canContinue = false;
-        }
-      });
-    }
+    let canContinue = Object.entries(task.requires).every(
+      ([itemId, quantity]) => (inventory[itemId as ItemId] ?? 0) < quantity,
+    );
+
     if (!canContinue) {
       setWorkingSkill(null);
       setWorkingTask(null);
@@ -159,7 +155,7 @@ export default function CampEngineProvider({
   const updateInventory = (
     inventory: Inventory,
     loot: Loot,
-    taskConsumed?: { [id in ItemId]: number },
+    taskConsumed?: { [id in ItemId]?: number },
   ) => {
     if (taskConsumed) {
       Object.entries(taskConsumed).forEach(([itemId, amount]) => {

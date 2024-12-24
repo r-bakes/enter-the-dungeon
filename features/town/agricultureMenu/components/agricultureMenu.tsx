@@ -4,7 +4,7 @@ import { useCharacterEngineContext } from "@/engines/characterEngineContext";
 import { useTownEngineContext } from "@/engines/townEngineContext";
 import { SkillHeader } from "../../skillMenu/components/skillHeader/skillHeader";
 import { agriculture } from "@/data/skills/agriculture";
-import VerticalAccent from "../../common/components/verticalAccent";
+import VerticalAccent from "../../../../components/verticalAccent";
 import TasksMenu from "./tasksMenu";
 
 export default function AgricultureMenu({}) {

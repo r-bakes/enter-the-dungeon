@@ -1,5 +1,5 @@
-import CharacterCombatantCard from "@/components/cards/characterCombatantCard";
-import CombatantCard from "@/components/cards/combatantCard/combatantCard";
+import CharacterCombatantCard from "@/features/common/cards/characterCombatantCard";
+import CombatantCard from "@/features/common/cards/combatantCard/combatantCard";
 import { Card, CardContent } from "@/components/ui/card";
 import { useCombatCardEngineContext } from "@/engines/combatCardEngineContext";
 import { useExpeditionContext } from "@/engines/expeditionEngineContext";

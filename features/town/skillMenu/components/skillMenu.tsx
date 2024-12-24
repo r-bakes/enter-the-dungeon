@@ -8,7 +8,7 @@ import { Skill } from "@/types/Skill";
 import { SkillHeader } from "@/features/town/skillMenu/components/skillHeader/skillHeader";
 import TaskInfo from "@/features/town/skillMenu/components/taskInfo/taskInfo";
 import TasksMenu from "@/features/town/skillMenu/components/tasksMenu/tasksMenu";
-import VerticalAccent from "../../common/components/verticalAccent";
+import VerticalAccent from "../../../../components/verticalAccent";
 
 export default function SkillMenu({ skill }: Readonly<{ skill: Skill }>) {
   const { character } = useCharacterEngineContext();

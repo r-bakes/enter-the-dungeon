@@ -4,7 +4,7 @@ import { useCharacterEngineContext } from "@/engines/characterEngineContext";
 import { ArrowDownUp } from "lucide-react";
 import { Separator } from "@/components/ui/separator";
 import { combatCardTable } from "@/data/combatCards/combatCards";
-import CombatDeckCard from "@/components/cards/combatDeckCard";
+import CombatDeckCard from "@/features/common/cards/combatDeckCard";
 import {
   MAGIC_DECK_LIMIT,
   MARTIAL_DECK_LIMIT,
