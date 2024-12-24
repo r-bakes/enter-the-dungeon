@@ -3,11 +3,12 @@ import { Label } from "@radix-ui/react-label";
 import { Backpack } from "lucide-react";
 import { Card } from "@/components/ui/card";
 import { Character } from "@/types/character";
-import { Task } from "@/types/skills";
 import { Loot } from "@/types/loot";
 import { formatLargeQuantity, renderIcon } from "@/utils/formattingUtilities";
 import { Item } from "@/types/items";
 import { Separator } from "@/components/ui/separator";
+import { Task } from "@/types/tasks";
+import { ItemId } from "@/data/items/enums";
 
 export default function TaskComplete({
   task,
@@ -61,7 +62,7 @@ export default function TaskComplete({
         <div className="flex flex-col gap-1">
           <Separator className="mb-3 mt-2"></Separator>
           {Object.entries(loot).map(([itemId, number]) =>
-            itemCard(itemTable[itemId], number),
+            itemCard(itemTable[itemId as ItemId], number),
           )}
         </div>
       ) : (

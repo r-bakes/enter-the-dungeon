@@ -8,8 +8,6 @@ import {
 import { useCharacterEngineContext } from "@/engines/characterEngineContext";
 import React from "react";
 import TaskComplete from "@/features/town/toast/TaskComplete";
-import { Task } from "@/types/skills";
-import { Skill } from "@/types/Skill";
 import { SkillModifierTable } from "@/types/modifiers";
 import { TICK_RATE_MS } from "@/configurations/configurations";
 import generateLoot from "@/utils/lootUtilities";
@@ -22,6 +20,9 @@ import {
   applySpeedModifier,
   getModifiers,
 } from "@/utils/modifierUtilities";
+import { ItemId } from "@/data/items/enums";
+import { Task } from "@/types/tasks";
+import { Skill } from "@/types/skills";
 
 type TownEngineContextContents = {
   taskProgress: number;
@@ -158,15 +159,15 @@ export default function CampEngineProvider({
   const updateInventory = (
     inventory: Inventory,
     loot: Loot,
-    taskConsumed?: { [itemid: string]: number },
+    taskConsumed?: { [id in ItemId]: number },
   ) => {
     if (taskConsumed) {
-      Object.entries(taskConsumed).forEach(([itemdId, amount]) => {
-        removeItem(inventory, itemdId, amount);
+      Object.entries(taskConsumed).forEach(([itemId, amount]) => {
+        removeItem(inventory, itemId as ItemId, amount);
       });
     }
     Object.entries(loot).forEach(([itemId, amount]) => {
-      addItem(inventory, itemId, amount);
+      addItem(inventory, itemId as ItemId, amount);
     });
   };
 
