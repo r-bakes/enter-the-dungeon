@@ -5,7 +5,7 @@ import { itemTable } from "@/data/items/items";
 import { Heart, Shield, Sword } from "lucide-react";
 import StatBlock from "./combatantCard/statBlock";
 import { CharacterCombatant } from "@/types/combatants";
-import { renderIcon } from "@/utils/formattingUtilities";
+import { renderIcon } from "@/features/common/utils/formattingUtilities";
 
 export default function CharacterCombatantCard({
   combatant,

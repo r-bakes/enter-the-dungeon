@@ -13,11 +13,14 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { useCharacterEngineContext } from "@/engines/characterEngineContext";
-import { formatCapitalCase, renderIcon } from "@/utils/formattingUtilities";
+import {
+  formatCapitalCase,
+  renderIcon,
+} from "@/features/common/utils/formattingUtilities";
 import React from "react";
 import { bazaar } from "@/data/menus/bazaar";
 import UpgradesStoreMenu from "./upgradesStoreMenu";
-import { generateUpgradeOptions } from "@/utils/bazaarStateUtilities";
+import { generateUpgradeOptions } from "@/features/town/bazaarMenu/services/helpers";
 import { BazaarStores } from "@/data/menus/enums";
 
 export default function BazaarMenu() {

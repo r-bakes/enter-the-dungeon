@@ -18,9 +18,9 @@ import { Separator } from "@/components/ui/separator";
 import { itemTable } from "@/data/items/items";
 import { Task } from "@/types/skills";
 import { Skill } from "@/types/Skill";
-import { generateDropRates } from "@/utils/lootUtilities";
+import { generateDropRates } from "@/features/common/loot/loot";
 import { Item } from "@/types/items";
-import { renderIcon } from "@/utils/formattingUtilities";
+import { renderIcon } from "@/features/common/utils/formattingUtilities";
 import { SkillModifierType } from "@/data/modifiers/enums";
 import TaskProducesEntry from "@/features/town/skillMenu/components/taskInfo/taskProducesEntry";
 import { TaskRequiresEntry } from "@/features/town/skillMenu/components/taskInfo/taskRequiresEntry";
@@ -29,7 +29,7 @@ import {
   applyExperienceModifier,
   applySpeedModifier,
   getModifiers,
-} from "@/utils/modifierUtilities";
+} from "@/features/common/utils/modifierUtilities";
 
 const rootCardFormat =
   "flex flex-col h-full grow-0 w-80 min-w-80 max-w-80 items-center overflow-y-scroll";

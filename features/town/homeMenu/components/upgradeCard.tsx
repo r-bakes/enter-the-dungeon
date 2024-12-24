@@ -7,8 +7,11 @@ import {
 import { skillTable } from "@/data/skills/skills";
 import { SkillImpactedPopup } from "@/features/town/common/components/skillImpactedPopup";
 import { Upgrade } from "@/types/upgrades";
-import { formatCapitalCase, renderIcon } from "@/utils/formattingUtilities";
-import { formatModifiers } from "@/utils/modifierUtilities";
+import {
+  formatCapitalCase,
+  renderIcon,
+} from "@/features/common/utils/formattingUtilities";
+import { formatModifiers } from "@/features/common/utils/modifierUtilities";
 
 export default function UpgradeCard({
   upgrade,

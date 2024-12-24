@@ -25,7 +25,7 @@ import {
   formatCapitalCase,
   formatLargeQuantity,
   renderIcon,
-} from "@/utils/formattingUtilities";
+} from "@/features/common/utils/formattingUtilities";
 import { useCharacterEngineContext } from "@/engines/characterEngineContext";
 import {
   Select,
@@ -50,8 +50,8 @@ export default function InventoryTable() {
   const data: TableData[] = React.useMemo(() => {
     return Object.entries(character.inventory)
       .filter(
-        ([itemId, _]: [ItemId, number]) =>
-          itemTable[itemId].type !== ItemType.HIDDEN,
+        ([itemId, amount]: [ItemId, number]) =>
+          itemTable[itemId].type !== ItemType.HIDDEN && amount > 0,
       )
       .map(([itemId, quantity]: [ItemId, number]) => {
         return { ...itemTable[itemId], quantity: quantity };

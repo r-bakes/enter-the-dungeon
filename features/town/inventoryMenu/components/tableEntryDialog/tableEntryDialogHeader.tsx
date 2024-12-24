@@ -7,7 +7,10 @@ import {
 } from "@/components/ui/sheet";
 import { itemTable } from "@/data/items/items";
 import { Item } from "@/types/items";
-import { formatCapitalCase, renderIcon } from "@/utils/formattingUtilities";
+import {
+  formatCapitalCase,
+  renderIcon,
+} from "@/features/common/utils/formattingUtilities";
 import { Backpack, CircleDollarSign } from "lucide-react";
 
 export default function TableEntryDialogHeader({

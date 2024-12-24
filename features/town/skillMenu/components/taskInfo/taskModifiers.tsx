@@ -3,7 +3,10 @@ import { Label } from "@/components/ui/label";
 import { SkillModifierType } from "@/data/modifiers/enums";
 import { SkillModifierIcons } from "@/data/modifiers/skillModifiers";
 import { SkillModifier } from "@/types/modifiers";
-import { formatCapitalCase, renderIcon } from "@/utils/formattingUtilities";
+import {
+  formatCapitalCase,
+  renderIcon,
+} from "@/features/common/utils/formattingUtilities";
 
 export default function TaskModifiers({
   data,

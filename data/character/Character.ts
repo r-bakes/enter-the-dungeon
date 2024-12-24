@@ -2,8 +2,23 @@ import { ItemId } from "../items/enums";
 import { UpgradeId } from "../upgrades/enums";
 import { SkillId } from "../skills/enums";
 import { CombatCardId } from "../combatCards/enums";
-import { Character } from "@/types/character";
+import { Character, Inventory } from "@/types/character";
 import { PastureId, PlotId, Slot } from "./enums";
+
+const initializeInventory = (): Inventory => {
+  let inventory = {} as Inventory;
+  for (let itemId in ItemId) {
+    inventory[itemId as ItemId] = 0;
+  }
+  inventory[ItemId.GOLD] = 10000;
+  inventory[ItemId.COPPER_ORE] = 10;
+  inventory[ItemId.GEODE] = 1;
+  inventory[ItemId.TIN_ORE] = 10;
+  inventory[ItemId.COAL] = 10;
+  inventory[ItemId.BRONZE_BAR] = 100;
+
+  return inventory;
+};
 
 export const testCharacter: Character = {
   name: "Riley",
@@ -27,14 +42,7 @@ export const testCharacter: Character = {
     [Slot.FLASK1]: null,
     [Slot.FLASK2]: null,
   },
-  inventory: {
-    [ItemId.GOLD]: 10000,
-    [ItemId.COPPER_ORE]: 10,
-    [ItemId.GEODE]: 1,
-    [ItemId.TIN_ORE]: 10,
-    [ItemId.COAL]: 10,
-    [ItemId.BRONZE_BAR]: 100,
-  },
+  inventory: initializeInventory(),
   upgrades: new Set([
     UpgradeId.BASIC_PICKAXE,
     UpgradeId.BRONZE_PICKAXE,

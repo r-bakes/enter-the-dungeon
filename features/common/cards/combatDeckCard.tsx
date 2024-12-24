@@ -5,7 +5,7 @@ import { Target } from "@/data/combatCards/enums";
 import { motion } from "framer-motion";
 import { Zap } from "lucide-react";
 import { CombatCardTemplate } from "@/types/combatCards";
-import { renderIcon } from "@/utils/formattingUtilities";
+import { renderIcon } from "@/features/common/utils/formattingUtilities";
 
 export default function CombatDeckCard({
   card,

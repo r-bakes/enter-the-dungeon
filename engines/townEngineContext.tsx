@@ -4,13 +4,13 @@ import {
   addItem,
   initializeCharacterModifierTable,
   removeItem,
-} from "@/utils/characterStateUtilities";
+} from "@/features/common/utils/characterStateUtilities";
 import { useCharacterEngineContext } from "@/engines/characterEngineContext";
 import React from "react";
 import TaskComplete from "@/features/town/toast/components/TaskComplete";
 import { SkillModifierTable } from "@/types/modifiers";
 import { TICK_RATE_MS } from "@/configurations/configurations";
-import generateLoot from "@/utils/lootUtilities";
+import generateLoot from "@/features/common/loot/loot";
 import { Loot } from "@/types/loot";
 import { SkillModifierType } from "@/data/modifiers/enums";
 import { toast } from "sonner";
@@ -19,7 +19,7 @@ import {
   applyProductionModifier,
   applySpeedModifier,
   getModifiers,
-} from "@/utils/modifierUtilities";
+} from "@/features/common/utils/modifierUtilities";
 import { ItemId } from "@/data/items/enums";
 import { Task } from "@/types/tasks";
 import { Skill } from "@/types/skills";
@@ -100,7 +100,7 @@ export default function CampEngineProvider({
 
   const canContinueTask = (inventory: Inventory, task: Task) => {
     let canContinue = Object.entries(task.requires).every(
-      ([itemId, quantity]) => (inventory[itemId as ItemId] ?? 0) < quantity,
+      ([itemId, quantity]) => (inventory[itemId as ItemId] ?? 0) >= quantity,
     );
 
     if (!canContinue) {

@@ -1,6 +1,6 @@
 import { goblinRunt } from "@/data/combatants/goblins";
 import { Encounter } from "@/types/encounters";
-import { createCombatant } from "@/utils/encounterUtilities";
+import { createCombatant } from "@/features/common/utils/encounterUtilities";
 
 export const floor1a: Encounter = {
   id: "floor1a",

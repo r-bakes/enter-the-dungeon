@@ -4,7 +4,10 @@ import { Backpack } from "lucide-react";
 import { Card } from "@/components/ui/card";
 import { Character } from "@/types/character";
 import { Loot } from "@/types/loot";
-import { formatLargeQuantity, renderIcon } from "@/utils/formattingUtilities";
+import {
+  formatLargeQuantity,
+  renderIcon,
+} from "@/features/common/utils/formattingUtilities";
 import { Item } from "@/types/items";
 import { Separator } from "@/components/ui/separator";
 import { Task } from "@/types/tasks";

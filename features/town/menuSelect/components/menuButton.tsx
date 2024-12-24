@@ -1,6 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { Label } from "@radix-ui/react-label";
-import { renderIcon } from "@/utils/formattingUtilities";
+import { renderIcon } from "@/features/common/utils/formattingUtilities";
 import { GameObject } from "@/types/gameObjects";
 
 export default function MenuButton({

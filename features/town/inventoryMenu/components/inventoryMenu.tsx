@@ -9,7 +9,10 @@ import { useCharacterEngineContext } from "@/engines/characterEngineContext";
 import { inventory } from "@/data/menus/inventory";
 import React from "react";
 import { itemTable } from "@/data/items/items";
-import { formatLargeQuantity, renderIcon } from "@/utils/formattingUtilities";
+import {
+  formatLargeQuantity,
+  renderIcon,
+} from "@/features/common/utils/formattingUtilities";
 import { Label } from "@/components/ui/label";
 import EquipmentSlots from "@/features/town/inventoryMenu/components/equipmentSlots";
 import InventoryTable from "@/features/town/inventoryMenu/components/inventoryTable";

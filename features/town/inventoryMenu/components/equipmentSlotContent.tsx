@@ -8,7 +8,7 @@ import {
 import { Slot } from "@/data/character/enums";
 import { useCharacterEngineContext } from "@/engines/characterEngineContext";
 import { Equipment } from "@/types/items";
-import { renderIcon } from "@/utils/formattingUtilities";
+import { renderIcon } from "@/features/common/utils/formattingUtilities";
 
 export default function EquipmentSlotContent({
   item,

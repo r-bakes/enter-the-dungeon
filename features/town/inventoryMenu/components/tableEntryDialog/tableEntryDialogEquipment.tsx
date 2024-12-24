@@ -5,7 +5,10 @@ import { Slot } from "@/data/character/enums";
 import { ItemId } from "@/data/items/enums";
 import { useCharacterEngineContext } from "@/engines/characterEngineContext";
 import { Equipment } from "@/types/items";
-import { formatCapitalCase, renderIcon } from "@/utils/formattingUtilities";
+import {
+  formatCapitalCase,
+  renderIcon,
+} from "@/features/common/utils/formattingUtilities";
 import { Heart, Shield, Sword, Zap } from "lucide-react";
 
 export default function TableEntryDialogEquipment({

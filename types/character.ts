@@ -14,7 +14,7 @@ export type Character = {
   working: Working;
 };
 export type Inventory = {
-  [id in ItemId]?: number;
+  [id in ItemId]: number;
 };
 export type Loadout = {
   [slotId in Slot]: ItemId | null;

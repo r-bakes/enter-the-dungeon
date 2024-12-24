@@ -3,7 +3,10 @@ import { Label } from "@/components/ui/label";
 import { useCharacterEngineContext } from "@/engines/characterEngineContext";
 import { Backpack } from "lucide-react";
 import { Item } from "@/types/items";
-import { formatLargeQuantity, renderIcon } from "@/utils/formattingUtilities";
+import {
+  formatLargeQuantity,
+  renderIcon,
+} from "@/features/common/utils/formattingUtilities";
 
 export function TaskRequiresEntry({
   data,

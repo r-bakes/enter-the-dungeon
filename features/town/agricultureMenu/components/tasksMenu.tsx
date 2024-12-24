@@ -7,7 +7,7 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { agriculture } from "@/data/skills/agriculture";
-import { formatCapitalCase } from "@/utils/formattingUtilities";
+import { formatCapitalCase } from "@/features/common/utils/formattingUtilities";
 import React from "react";
 import PasturesMenu from "./pasturesMenu/pasturesMenu";
 import PlotsMenu from "./plotsMenu/plotsMenu";

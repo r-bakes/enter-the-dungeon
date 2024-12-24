@@ -6,9 +6,10 @@ import { Slider } from "@/components/ui/slider";
 import { itemTable } from "@/data/items/items";
 import { useCharacterEngineContext } from "@/engines/characterEngineContext";
 import { Item } from "@/types/items";
-import { renderIcon } from "@/utils/formattingUtilities";
+import { renderIcon } from "@/features/common/utils/formattingUtilities";
 import { CircleDollarSign, Minus, Plus } from "lucide-react";
 import React from "react";
+import useSellItem from "../../hooks/useSellItem";
 
 export default function TableEntryDialogSellEntry({
   item,
@@ -20,8 +21,7 @@ export default function TableEntryDialogSellEntry({
   setOpen: React.Dispatch<React.SetStateAction<boolean>>;
 }>) {
   const [amountSelected, setAmountSelected] = React.useState(1);
-  const { sellItem } = useCharacterEngineContext();
-
+  const sellItem = useSellItem();
   const sell = () => {
     sellItem(item.id, amountSelected);
     setOpen(false);

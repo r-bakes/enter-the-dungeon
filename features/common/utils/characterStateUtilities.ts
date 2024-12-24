@@ -73,9 +73,6 @@ export function removeItem(
   amount: number = 1,
 ): Inventory {
   inventory[itemId] = (inventory[itemId] ?? amount) - amount;
-  if (inventory[itemId] == 0 && itemTable[itemId].type !== ItemType.HIDDEN) {
-    delete inventory[itemId];
-  }
   return inventory;
 }
 

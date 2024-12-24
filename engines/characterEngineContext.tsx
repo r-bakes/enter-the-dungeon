@@ -8,7 +8,7 @@ import {
   getCombatModifiers,
   removeCardsByItem,
   removeItem,
-} from "@/utils/characterStateUtilities";
+} from "@/features/common/utils/characterStateUtilities";
 import { Character } from "@/types/character";
 import {
   MAGIC_DECK_LIMIT,
@@ -28,7 +28,6 @@ type CharacterEngineContextContents = {
   equipItem: (itemId: ItemId, slot: Slot) => void;
   unequip: (slot: Slot) => void;
   getModifiers: () => { hp: number; atk: number; def: number; stamina: number };
-  sellItem: (itemId: ItemId, amount: number) => void;
   save: () => void;
 };
 
@@ -110,12 +109,6 @@ export default function CharacterEngineProvider({
     }
   };
 
-  const sellItem = (itemId: ItemId, amount: number) => {
-    removeItem(character.inventory, itemId, amount);
-    addItem(character.inventory, ItemId.GOLD, itemTable[itemId].value * amount);
-    setCharacter({ ...character });
-  };
-
   const unequipCard = (cardId: CombatCardId) => {
     if (character.deck.equppedMartial.includes(cardId)) {
       character.deck.equppedMartial.splice(
@@ -158,7 +151,6 @@ export default function CharacterEngineProvider({
         equipItem,
         unequip: unequipItem,
         getModifiers,
-        sellItem,
         save,
       }}
     >

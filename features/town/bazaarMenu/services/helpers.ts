@@ -1,3 +1,4 @@
+import { UpgradeId } from "@/data/upgrades/enums";
 import { upgradeTable } from "@/data/upgrades/upgrades";
 import { Milestones, Upgrades } from "@/types/character";
 import { Upgrade } from "@/types/upgrades";
@@ -11,7 +12,11 @@ export const generateUpgradeOptions = (
   Object.entries(upgradeTable).forEach(([upgradeId, upgrade]) => {
     if (
       !characterUpgrades.has(upgradeId) &&
-      requirementsMet(upgradeId, characterUpgrades, characterMilestones)
+      requirementsMet(
+        upgradeId as UpgradeId,
+        characterUpgrades,
+        characterMilestones,
+      )
     ) {
       upgradeOptions.push(upgrade);
     }
@@ -21,7 +26,7 @@ export const generateUpgradeOptions = (
 };
 
 const requirementsMet = (
-  upgradeId: string,
+  upgradeId: UpgradeId,
   characterUpgrades: Upgrades,
   characterMilestones: Milestones,
 ): boolean => {

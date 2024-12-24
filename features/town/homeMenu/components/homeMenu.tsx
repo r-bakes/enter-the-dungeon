@@ -20,7 +20,10 @@ import { Lock } from "lucide-react";
 import { Label } from "@/components/ui/label";
 import { HomeRooms } from "@/data/menus/enums";
 import { upgradeTable } from "@/data/upgrades/upgrades";
-import { formatCapitalCase, renderIcon } from "@/utils/formattingUtilities";
+import {
+  formatCapitalCase,
+  renderIcon,
+} from "@/features/common/utils/formattingUtilities";
 import { TASK_AND_ITEM_ICON_STYLE } from "@/configurations/configurations";
 
 export default function HomeMenu() {
@@ -43,7 +46,7 @@ export default function HomeMenu() {
       <Card className="w-full items-center">
         <CardHeader className="flex flex-row items-center">
           {renderIcon(home.icon, 44, home.iconStyle)}
-          <div className="flex flex-col pl-4 m-0">
+          <div className="m-0 flex flex-col pl-4">
             <CardTitle>{home.name}</CardTitle>
             <CardDescription>{home.description}</CardDescription>
           </div>

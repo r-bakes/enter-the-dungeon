@@ -1,5 +1,5 @@
 import { Sheet, SheetContent, SheetFooter } from "@/components/ui/sheet";
-import { ItemType } from "@/data/items/enums";
+import { ItemId, ItemType } from "@/data/items/enums";
 import { itemTable } from "@/data/items/items";
 import { useCharacterEngineContext } from "@/engines/characterEngineContext";
 import TableEntryDialogEquipment from "@/features/town/inventoryMenu/components/tableEntryDialog/tableEntryDialogEquipment";
@@ -14,7 +14,7 @@ export default function TableEntryDialog({
   setOpen,
 }: Readonly<{
   open: boolean;
-  itemId: string;
+  itemId: ItemId | null;
   setOpen: React.Dispatch<React.SetStateAction<boolean>>;
 }>) {
   const { character } = useCharacterEngineContext();
@@ -23,13 +23,14 @@ export default function TableEntryDialog({
     return <></>;
   }
   let item = itemTable[itemId];
+  let itemAmount = character.inventory[itemId];
 
   return (
     <Sheet open={open} onOpenChange={setOpen}>
       <SheetContent className="flex min-h-96 w-[450px] flex-col justify-between">
         <TableEntryDialogHeader
           item={item}
-          itemAmount={character.inventory[itemId]}
+          itemAmount={itemAmount}
         ></TableEntryDialogHeader>
         {item.type === ItemType.EQUIPMENT ? (
           <TableEntryDialogEquipment
@@ -39,7 +40,7 @@ export default function TableEntryDialog({
         ) : null}
         <TableEntryDialogSellEntry
           item={item}
-          amountInInventory={character.inventory[itemId]}
+          amountInInventory={itemAmount}
           setOpen={setOpen}
         ></TableEntryDialogSellEntry>
       </SheetContent>

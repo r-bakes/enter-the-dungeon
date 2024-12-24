@@ -4,19 +4,22 @@ import { itemTable } from "@/data/items/items";
 import { skillTable } from "@/data/skills/skills";
 import { useTownEngineContext } from "@/engines/townEngineContext";
 import { useCharacterEngineContext } from "@/engines/characterEngineContext";
-import { addUpgrade, removeItem } from "@/utils/characterStateUtilities";
+import {
+  addUpgrade,
+  removeItem,
+} from "@/features/common/utils/characterStateUtilities";
 import {
   formatCapitalCase,
   formatLargeQuantity,
   renderIcon,
-} from "@/utils/formattingUtilities";
+} from "@/features/common/utils/formattingUtilities";
 import { SkillImpactedPopup } from "../../common/components/skillImpactedPopup";
 import { Backpack } from "lucide-react";
 import { Label } from "@/components/ui/label";
 import { Upgrade } from "@/types/upgrades";
 import { Character } from "@/types/character";
 import { SkillModifierTable } from "@/types/modifiers";
-import { formatModifiers } from "@/utils/modifierUtilities";
+import { formatModifiers } from "@/features/common/utils/modifierUtilities";
 
 export default function UpgradesStoreMenu({
   upgrades,
