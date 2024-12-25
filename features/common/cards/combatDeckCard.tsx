@@ -1,7 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Label } from "@/components/ui/label";
-import { Target } from "@/data/combatCards/enums";
+import { CombatCardTarget } from "@/data/combatCards/enums";
 import { motion } from "framer-motion";
 import { Zap } from "lucide-react";
 import { CombatCardTemplate } from "@/types/combatCards";
@@ -79,7 +79,7 @@ export default function CombatDeckCard({
 
 const formatCardContent = (card: CombatCardTemplate) => {
   let content = null;
-  if (card.target === Target.ENEMIES) {
+  if (card.target === CombatCardTarget.ENEMIES) {
     content = (
       <div className="flex flex-col gap-1">
         <span className="flex justify-center gap-1">

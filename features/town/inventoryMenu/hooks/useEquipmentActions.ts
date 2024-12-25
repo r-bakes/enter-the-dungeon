@@ -2,7 +2,7 @@ import { Slot } from "@/data/character/enums";
 import { ItemId } from "@/data/items/enums";
 import { useCharacterEngineContext } from "@/engines/characterEngineContext";
 import useInventoryActions from "@/features/common/inventory/hooks/useInventoryActions";
-import useDeckActions from "@/features/deck/hooks/useDeckActions";
+import useDeckActions from "@/features/common/deck/hooks/useDeckActions";
 
 const useEquipmentActions = () => {
   const { character, setCharacter } = useCharacterEngineContext();

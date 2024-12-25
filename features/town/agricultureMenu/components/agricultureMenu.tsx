@@ -1,7 +1,6 @@
 "use client";
 
 import { useCharacterEngineContext } from "@/engines/characterEngineContext";
-import { useTownEngineContext } from "@/engines/townEngineContext";
 import { SkillHeader } from "../../skillMenu/components/skillHeader/skillHeader";
 import { agriculture } from "@/data/skills/agriculture";
 import VerticalAccent from "../../../../components/verticalAccent";
@@ -9,7 +8,6 @@ import TasksMenu from "./tasksMenu";
 
 export default function AgricultureMenu({}) {
   const { character } = useCharacterEngineContext();
-  const { workingTask } = useTownEngineContext();
 
   return (
     <div className="flex h-full w-full flex-col gap-6 overflow-y-scroll px-8">

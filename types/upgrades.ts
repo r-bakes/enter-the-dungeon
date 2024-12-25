@@ -4,12 +4,13 @@ import { HomeRooms } from "@/data/menus/enums";
 import { UpgradeId } from "@/data/upgrades/enums";
 import { ItemId } from "@/data/items/enums";
 import { MilestoneId } from "@/data/milestones/enums";
+import { TaskId } from "@/data/tasks/enum";
 
 export type Upgrade = {
   id: UpgradeId;
   previous: UpgradeId | null;
   next: UpgradeId | null;
-  modifier: Modifier;
+  modifier: UpgradeModifies;
   requiresItems: {
     [id in ItemId]?: number;
   };
@@ -17,3 +18,8 @@ export type Upgrade = {
   requiresUpgrades: Set<UpgradeId>;
   homeRoom: HomeRooms;
 } & GameObject;
+
+export type UpgradeModifies = {
+  targets: TaskId[];
+  values: Modifier;
+};

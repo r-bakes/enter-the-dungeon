@@ -10,46 +10,39 @@ import {
 import { Progress } from "@/components/ui/progress";
 import { Label } from "@radix-ui/react-label";
 import { Play, X } from "lucide-react";
-import { useTownEngineContext } from "@/engines/townEngineContext";
 import { useCharacterEngineContext } from "@/engines/characterEngineContext";
 import TaskDataEntry from "./taskDataEntry";
 import { Separator } from "@/components/ui/separator";
 
 import { itemTable } from "@/data/items/items";
-import { generateDropRates } from "@/features/common/loot/loot";
+import { generateDropRates } from "@/features/common/loot/utils/lootUtils";
 import { Item } from "@/types/items";
 import { renderIcon } from "@/features/common/utils/formattingUtilities";
-import { SkillModifierType } from "@/data/modifiers/enums";
+import { ModifierType } from "@/data/modifiers/enums";
 import TaskProducesEntry from "@/features/town/skillMenu/components/taskInfo/taskProducesEntry";
 import { TaskRequiresEntry } from "@/features/town/skillMenu/components/taskInfo/taskRequiresEntry";
 import TaskModifiers from "@/features/town/skillMenu/components/taskInfo/taskModifiers";
-import { Skill } from "@/types/skills";
 import { Task } from "@/types/tasks";
 import {
   applyExperienceModifier,
   applySpeedModifier,
   getModifiers,
-} from "@/features/town/modifiers/services/modifier";
+} from "@/features/town/modifiers/utils/modifier";
 import { ItemId } from "@/data/items/enums";
+import useWorkingActions from "@/features/common/working/hooks/useWorkingActions";
+import { useModifierActions } from "@/features/town/modifiers/hooks/useModifierActions";
 
 const rootCardFormat =
   "flex flex-col h-full grow-0 w-80 min-w-80 max-w-80 items-center overflow-y-scroll";
 
 export default function TaskInfo({
-  skill,
   task,
 }: Readonly<{
-  skill: Skill;
   task: Task | null;
 }>) {
-  const {
-    setWorkingSkill,
-    setWorkingTask,
-    taskProgress,
-    workingTask,
-    modifierTable,
-  } = useTownEngineContext();
+  const { setWorkingTask, taskProgress, workingTask } = useWorkingActions();
   const { character } = useCharacterEngineContext();
+  const { modifiers } = useModifierActions();
 
   if (!task) {
     return (
@@ -67,7 +60,6 @@ export default function TaskInfo({
   let taskRequires: { item: Item; quantity: number; haveEnough: boolean }[] =
     [];
   let requirementsMet: boolean = true;
-  let modifiers = getModifiers(modifierTable, skill.id, task.id);
 
   if (task.requires) {
     taskRequires = Object.entries(task.requires).map(([itemId, quantity]) => ({
@@ -108,7 +100,7 @@ export default function TaskInfo({
               ? (taskProgress /
                   applySpeedModifier(
                     task.durationSec,
-                    modifiers[SkillModifierType.SPEED],
+                    modifiers[task.id][ModifierType.SPEED],
                   )) *
                 100
               : 0
@@ -119,7 +111,7 @@ export default function TaskInfo({
           <TaskDataEntry
             data={applySpeedModifier(
               task.durationSec,
-              modifiers[SkillModifierType.SPEED],
+              modifiers[task.id][ModifierType.SPEED],
             )}
             label={"seconds"}
           ></TaskDataEntry>
@@ -127,7 +119,7 @@ export default function TaskInfo({
           <TaskDataEntry
             data={applyExperienceModifier(
               task.experience,
-              modifiers[SkillModifierType.EXPERIENCE],
+              modifiers[task.id][ModifierType.EXPERIENCE],
             )}
             label={"experience"}
           ></TaskDataEntry>
@@ -136,7 +128,7 @@ export default function TaskInfo({
           <TaskProducesEntry
             label={"produces"}
             data={taskProduction}
-            multiplier={modifiers[SkillModifierType.PRODUCTION_MULTIPLIER]}
+            multiplier={modifiers[task.id][ModifierType.PRODUCTION_MULTIPLIER]}
           ></TaskProducesEntry>
           <TaskRequiresEntry
             data={taskRequires}
@@ -150,7 +142,6 @@ export default function TaskInfo({
           className="w-1/2 text-center"
           disabled={!requirementsMet}
           onClick={() => {
-            setWorkingSkill(skill);
             setWorkingTask(task);
           }}
         >
@@ -161,7 +152,6 @@ export default function TaskInfo({
             className="w-1/2 text-center"
             variant="destructive"
             onClick={() => {
-              setWorkingSkill(null);
               setWorkingTask(null);
             }}
           >

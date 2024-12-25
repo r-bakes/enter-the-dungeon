@@ -6,17 +6,16 @@ import {
 } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Label } from "@/components/ui/label";
-import { useTownEngineContext } from "@/engines/townEngineContext";
-
 import { renderIcon } from "@/features/common/utils/formattingUtilities";
-import { SkillModifierType } from "@/data/modifiers/enums";
 import { Skill } from "@/types/skills";
 import { Task } from "@/types/tasks";
 import {
   applyExperienceModifier,
   applySpeedModifier,
   getModifiers,
-} from "@/features/town/modifiers/services/modifier";
+} from "@/features/town/modifiers/utils/modifier";
+import { useModifierActions } from "@/features/town/modifiers/hooks/useModifierActions";
+import { ModifierType } from "@/data/modifiers/enums";
 
 export default function TaskButton({
   skill,
@@ -27,8 +26,7 @@ export default function TaskButton({
   task: Task;
   onClick: React.Dispatch<React.SetStateAction<any>>;
 }>) {
-  const { modifierTable } = useTownEngineContext();
-  let modifiers = getModifiers(modifierTable, skill.id, task.id);
+  const { modifiers } = useModifierActions();
 
   return (
     <Card className="flex w-full min-w-max">
@@ -54,7 +52,7 @@ export default function TaskButton({
               <Label className="text-xs">
                 {applySpeedModifier(
                   task.durationSec,
-                  modifiers[SkillModifierType.SPEED],
+                  modifiers[task.id][ModifierType.SPEED],
                 )}
               </Label>
               <Label className="text-xs font-normal text-muted-foreground">
@@ -65,7 +63,7 @@ export default function TaskButton({
               <Label className="text-xs">
                 {applyExperienceModifier(
                   task.experience,
-                  modifiers[SkillModifierType.EXPERIENCE],
+                  modifiers[task.id][ModifierType.EXPERIENCE],
                 )}{" "}
               </Label>
               <Label className="text-xs font-normal text-muted-foreground">

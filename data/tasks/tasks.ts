@@ -6,7 +6,7 @@ import { calistheticsTasks } from "./athletics/calisthetics";
 import { TaskId } from "./enum";
 import { Task } from "@/types/tasks";
 
-export const tasksTable = {
+export const taskTable = {
   ...smithingTasks,
   ...smeltingTasks,
   ...miningTasks,

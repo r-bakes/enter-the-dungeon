@@ -5,10 +5,12 @@ import { SkillModifierType } from "../modifiers/enums";
 import { HomeRooms } from "../menus/enums";
 import { prospecting } from "../skills/prospecting";
 import { Upgrade } from "@/types/upgrades";
-import { tasksTable } from "../tasks/tasks";
+import { taskTable } from "../tasks/tasks";
 import { UpgradeId } from "./enums";
 import { ItemId } from "../items/enums";
 import { itemTable } from "../items/items";
+import { SkillId } from "../skills/enums";
+import { TaskId } from "../tasks/enum";
 
 export const miscUpgrades: { [id in UpgradeId]?: Upgrade } = {
   [UpgradeId.BASIC_FORGE]: {
@@ -24,7 +26,7 @@ export const miscUpgrades: { [id in UpgradeId]?: Upgrade } = {
     previous: null,
     modifier: {
       targets: {
-        [smithing.id]: Object.keys(smithing.tasks),
+        [SkillId.SMITHING]: Object.keys(smithing.tasks) as TaskId[],
       },
       values: {
         [SkillModifierType.SPEED]: 0,
@@ -51,7 +53,7 @@ export const miscUpgrades: { [id in UpgradeId]?: Upgrade } = {
     previous: null,
     modifier: {
       targets: {
-        [smithing.id]: Object.keys(smithing.tasks),
+        [SkillId.SMITHING]: Object.keys(smithing.tasks) as TaskId[],
       },
       values: {
         [SkillModifierType.SPEED]: 0,
@@ -76,7 +78,7 @@ export const miscUpgrades: { [id in UpgradeId]?: Upgrade } = {
     previous: null,
     modifier: {
       targets: {
-        [prospecting.id]: [tasksTable.MINE_COAL.id],
+        [SkillId.PROSPECTING]: [taskTable.MINE_COAL.id],
       },
       values: {
         [SkillModifierType.SPEED]: 10,

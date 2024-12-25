@@ -12,7 +12,7 @@ import {
   renderIcon,
 } from "@/features/common/utils/formattingUtilities";
 import { SkillId } from "@/data/skills/enums";
-import { formatModifiers } from "../../modifiers/services/modifier";
+import { formatModifiers } from "../../modifiers/utils/modifier";
 
 export default function UpgradeCard({
   upgrade,

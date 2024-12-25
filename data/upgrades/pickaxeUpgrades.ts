@@ -3,7 +3,7 @@
 import { TASK_AND_ITEM_ICON_STYLE } from "@/configurations/configurations";
 import { HomeRooms } from "@/data/menus/enums";
 import { SkillModifierType } from "@/data/modifiers/enums";
-import { ProspectingTaskCategories } from "@/data/skills/enums";
+import { ProspectingTaskCategories, SkillId } from "@/data/skills/enums";
 import { Pickaxe } from "lucide-react";
 import { Upgrade } from "@/types/upgrades";
 import { UpgradeId } from "./enums";
@@ -11,6 +11,7 @@ import { prospecting } from "../skills/prospecting";
 import { ItemId } from "../items/enums";
 import { itemTable } from "../items/items";
 import { MilestoneId } from "../milestones/enums";
+import { TaskId } from "../tasks/enum";
 
 export const pickaxeUpgrades: { [id in UpgradeId]?: Upgrade } = {
   [UpgradeId.BASIC_PICKAXE]: {
@@ -26,12 +27,12 @@ export const pickaxeUpgrades: { [id in UpgradeId]?: Upgrade } = {
     previous: null,
     modifier: {
       targets: {
-        [prospecting.id]: Object.entries(prospecting.tasks)
+        [SkillId.PROSPECTING]: Object.entries(prospecting.tasks)
           .filter(
             ([taskId, task]) =>
               task.category === ProspectingTaskCategories.MINE,
           )
-          .map(([taskId, task]) => taskId),
+          .map(([taskId, task]) => taskId) as TaskId[],
       },
       values: {
         [SkillModifierType.SPEED]: 0,
@@ -56,12 +57,12 @@ export const pickaxeUpgrades: { [id in UpgradeId]?: Upgrade } = {
     previous: UpgradeId.BASIC_PICKAXE,
     modifier: {
       targets: {
-        [prospecting.id]: Object.entries(prospecting.tasks)
+        [SkillId.PROSPECTING]: Object.entries(prospecting.tasks)
           .filter(
             ([taskId, task]) =>
               task.category === ProspectingTaskCategories.MINE,
           )
-          .map(([taskId, task]) => taskId),
+          .map(([taskId, task]) => taskId) as TaskId[],
       },
       values: {
         [SkillModifierType.SPEED]: 2,
@@ -86,12 +87,12 @@ export const pickaxeUpgrades: { [id in UpgradeId]?: Upgrade } = {
     previous: UpgradeId.BRONZE_PICKAXE,
     modifier: {
       targets: {
-        [prospecting.id]: Object.entries(prospecting.tasks)
+        [SkillId.PROSPECTING]: Object.entries(prospecting.tasks)
           .filter(
             ([taskId, task]) =>
               task.category === ProspectingTaskCategories.MINE,
           )
-          .map(([taskId, task]) => taskId),
+          .map(([taskId, task]) => taskId as TaskId),
       },
       values: {
         [SkillModifierType.SPEED]: 4,
@@ -116,12 +117,12 @@ export const pickaxeUpgrades: { [id in UpgradeId]?: Upgrade } = {
     previous: UpgradeId.BRONZE_PICKAXE1,
     modifier: {
       targets: {
-        [prospecting.id]: Object.entries(prospecting.tasks)
+        [SkillId.PROSPECTING]: Object.entries(prospecting.tasks)
           .filter(
             ([taskId, task]) =>
               task.category === ProspectingTaskCategories.MINE,
           )
-          .map(([taskId, task]) => taskId),
+          .map(([taskId, task]) => taskId as TaskId),
       },
       values: {
         [SkillModifierType.SPEED]: 6,
@@ -146,12 +147,12 @@ export const pickaxeUpgrades: { [id in UpgradeId]?: Upgrade } = {
     previous: UpgradeId.BRONZE_PICKAXE2,
     modifier: {
       targets: {
-        [prospecting.id]: Object.entries(prospecting.tasks)
+        [SkillId.PROSPECTING]: Object.entries(prospecting.tasks)
           .filter(
             ([taskId, task]) =>
               task.category === ProspectingTaskCategories.MINE,
           )
-          .map(([taskId, task]) => taskId),
+          .map(([taskId, task]) => taskId as TaskId),
       },
       values: {
         [SkillModifierType.SPEED]: 8,
@@ -176,12 +177,12 @@ export const pickaxeUpgrades: { [id in UpgradeId]?: Upgrade } = {
     previous: UpgradeId.BRONZE_PICKAXE3,
     modifier: {
       targets: {
-        [prospecting.id]: Object.entries(prospecting.tasks)
+        [SkillId.PROSPECTING]: Object.entries(prospecting.tasks)
           .filter(
             ([taskId, task]) =>
               task.category === ProspectingTaskCategories.MINE,
           )
-          .map(([taskId, task]) => taskId),
+          .map(([taskId, task]) => taskId as TaskId),
       },
       values: {
         [SkillModifierType.SPEED]: 10,
@@ -206,12 +207,12 @@ export const pickaxeUpgrades: { [id in UpgradeId]?: Upgrade } = {
     previous: UpgradeId.BRONZE_PICKAXE4,
     modifier: {
       targets: {
-        [prospecting.id]: Object.entries(prospecting.tasks)
+        [SkillId.PROSPECTING]: Object.entries(prospecting.tasks)
           .filter(
             ([taskId, task]) =>
               task.category === ProspectingTaskCategories.MINE,
           )
-          .map(([taskId, task]) => taskId),
+          .map(([taskId, task]) => taskId as TaskId),
       },
       values: {
         [SkillModifierType.SPEED]: 12,
@@ -236,12 +237,12 @@ export const pickaxeUpgrades: { [id in UpgradeId]?: Upgrade } = {
     previous: UpgradeId.IRON_PICKAXE,
     modifier: {
       targets: {
-        [prospecting.id]: Object.entries(prospecting.tasks)
+        [SkillId.PROSPECTING]: Object.entries(prospecting.tasks)
           .filter(
             ([taskId, task]) =>
               task.category === ProspectingTaskCategories.MINE,
           )
-          .map(([taskId, task]) => taskId),
+          .map(([taskId, task]) => taskId as TaskId),
       },
       values: {
         [SkillModifierType.SPEED]: 14,
@@ -266,12 +267,12 @@ export const pickaxeUpgrades: { [id in UpgradeId]?: Upgrade } = {
     previous: UpgradeId.IRON_PICKAXE1,
     modifier: {
       targets: {
-        [prospecting.id]: Object.entries(prospecting.tasks)
+        [SkillId.PROSPECTING]: Object.entries(prospecting.tasks)
           .filter(
             ([taskId, task]) =>
               task.category === ProspectingTaskCategories.MINE,
           )
-          .map(([taskId, task]) => taskId),
+          .map(([taskId, task]) => taskId as TaskId),
       },
       values: {
         [SkillModifierType.SPEED]: 16,
@@ -296,12 +297,12 @@ export const pickaxeUpgrades: { [id in UpgradeId]?: Upgrade } = {
     previous: UpgradeId.IRON_PICKAXE2,
     modifier: {
       targets: {
-        [prospecting.id]: Object.entries(prospecting.tasks)
+        [SkillId.PROSPECTING]: Object.entries(prospecting.tasks)
           .filter(
             ([taskId, task]) =>
               task.category === ProspectingTaskCategories.MINE,
           )
-          .map(([taskId, task]) => taskId),
+          .map(([taskId, task]) => taskId as TaskId),
       },
       values: {
         [SkillModifierType.SPEED]: 18,
@@ -326,12 +327,12 @@ export const pickaxeUpgrades: { [id in UpgradeId]?: Upgrade } = {
     previous: UpgradeId.IRON_PICKAXE3,
     modifier: {
       targets: {
-        [prospecting.id]: Object.entries(prospecting.tasks)
+        [SkillId.PROSPECTING]: Object.entries(prospecting.tasks)
           .filter(
             ([taskId, task]) =>
               task.category === ProspectingTaskCategories.MINE,
           )
-          .map(([taskId, task]) => taskId),
+          .map(([taskId, task]) => taskId as TaskId),
       },
       values: {
         [SkillModifierType.SPEED]: 20,
@@ -356,12 +357,12 @@ export const pickaxeUpgrades: { [id in UpgradeId]?: Upgrade } = {
     previous: UpgradeId.IRON_PICKAXE4,
     modifier: {
       targets: {
-        [prospecting.id]: Object.entries(prospecting.tasks)
+        [SkillId.PROSPECTING]: Object.entries(prospecting.tasks)
           .filter(
             ([taskId, task]) =>
               task.category === ProspectingTaskCategories.MINE,
           )
-          .map(([taskId, task]) => taskId),
+          .map(([taskId, task]) => taskId as TaskId),
       },
       values: {
         [SkillModifierType.SPEED]: 22,
@@ -386,12 +387,12 @@ export const pickaxeUpgrades: { [id in UpgradeId]?: Upgrade } = {
     previous: UpgradeId.STEEL_PICKAXE,
     modifier: {
       targets: {
-        [prospecting.id]: Object.entries(prospecting.tasks)
+        [SkillId.PROSPECTING]: Object.entries(prospecting.tasks)
           .filter(
             ([taskId, task]) =>
               task.category === ProspectingTaskCategories.MINE,
           )
-          .map(([taskId, task]) => taskId),
+          .map(([taskId, task]) => taskId as TaskId),
       },
       values: {
         [SkillModifierType.SPEED]: 24,
@@ -416,12 +417,12 @@ export const pickaxeUpgrades: { [id in UpgradeId]?: Upgrade } = {
     previous: UpgradeId.STEEL_PICKAXE1,
     modifier: {
       targets: {
-        [prospecting.id]: Object.entries(prospecting.tasks)
+        [SkillId.PROSPECTING]: Object.entries(prospecting.tasks)
           .filter(
             ([taskId, task]) =>
               task.category === ProspectingTaskCategories.MINE,
           )
-          .map(([taskId, task]) => taskId),
+          .map(([taskId, task]) => taskId as TaskId),
       },
       values: {
         [SkillModifierType.SPEED]: 26,
@@ -446,12 +447,12 @@ export const pickaxeUpgrades: { [id in UpgradeId]?: Upgrade } = {
     previous: UpgradeId.STEEL_PICKAXE2,
     modifier: {
       targets: {
-        [prospecting.id]: Object.entries(prospecting.tasks)
+        [SkillId.PROSPECTING]: Object.entries(prospecting.tasks)
           .filter(
             ([taskId, task]) =>
               task.category === ProspectingTaskCategories.MINE,
           )
-          .map(([taskId, task]) => taskId),
+          .map(([taskId, task]) => taskId as TaskId),
       },
       values: {
         [SkillModifierType.SPEED]: 28,
@@ -476,12 +477,12 @@ export const pickaxeUpgrades: { [id in UpgradeId]?: Upgrade } = {
     previous: UpgradeId.STEEL_PICKAXE3,
     modifier: {
       targets: {
-        [prospecting.id]: Object.entries(prospecting.tasks)
+        [SkillId.PROSPECTING]: Object.entries(prospecting.tasks)
           .filter(
             ([taskId, task]) =>
               task.category === ProspectingTaskCategories.MINE,
           )
-          .map(([taskId, task]) => taskId),
+          .map(([taskId, task]) => taskId as TaskId),
       },
       values: {
         [SkillModifierType.SPEED]: 30,
@@ -506,12 +507,12 @@ export const pickaxeUpgrades: { [id in UpgradeId]?: Upgrade } = {
     previous: UpgradeId.STEEL_PICKAXE4,
     modifier: {
       targets: {
-        [prospecting.id]: Object.entries(prospecting.tasks)
+        [SkillId.PROSPECTING]: Object.entries(prospecting.tasks)
           .filter(
             ([taskId, task]) =>
               task.category === ProspectingTaskCategories.MINE,
           )
-          .map(([taskId, task]) => taskId),
+          .map(([taskId, task]) => taskId as TaskId),
       },
       values: {
         [SkillModifierType.SPEED]: 32,
@@ -536,12 +537,12 @@ export const pickaxeUpgrades: { [id in UpgradeId]?: Upgrade } = {
     previous: UpgradeId.MITHRIL_PICKAXE,
     modifier: {
       targets: {
-        [prospecting.id]: Object.entries(prospecting.tasks)
+        [SkillId.PROSPECTING]: Object.entries(prospecting.tasks)
           .filter(
             ([taskId, task]) =>
               task.category === ProspectingTaskCategories.MINE,
           )
-          .map(([taskId, task]) => taskId),
+          .map(([taskId, task]) => taskId as TaskId),
       },
       values: {
         [SkillModifierType.SPEED]: 34,
@@ -566,12 +567,12 @@ export const pickaxeUpgrades: { [id in UpgradeId]?: Upgrade } = {
     previous: UpgradeId.MITHRIL_PICKAXE1,
     modifier: {
       targets: {
-        [prospecting.id]: Object.entries(prospecting.tasks)
+        [SkillId.PROSPECTING]: Object.entries(prospecting.tasks)
           .filter(
             ([taskId, task]) =>
               task.category === ProspectingTaskCategories.MINE,
           )
-          .map(([taskId, task]) => taskId),
+          .map(([taskId, task]) => taskId as TaskId),
       },
       values: {
         [SkillModifierType.SPEED]: 36,
@@ -596,12 +597,12 @@ export const pickaxeUpgrades: { [id in UpgradeId]?: Upgrade } = {
     previous: UpgradeId.MITHRIL_PICKAXE2,
     modifier: {
       targets: {
-        [prospecting.id]: Object.entries(prospecting.tasks)
+        [SkillId.PROSPECTING]: Object.entries(prospecting.tasks)
           .filter(
             ([taskId, task]) =>
               task.category === ProspectingTaskCategories.MINE,
           )
-          .map(([taskId, task]) => taskId),
+          .map(([taskId, task]) => taskId as TaskId),
       },
       values: {
         [SkillModifierType.SPEED]: 38,
@@ -626,12 +627,12 @@ export const pickaxeUpgrades: { [id in UpgradeId]?: Upgrade } = {
     previous: UpgradeId.MITHRIL_PICKAXE3,
     modifier: {
       targets: {
-        [prospecting.id]: Object.entries(prospecting.tasks)
+        [SkillId.PROSPECTING]: Object.entries(prospecting.tasks)
           .filter(
             ([taskId, task]) =>
               task.category === ProspectingTaskCategories.MINE,
           )
-          .map(([taskId, task]) => taskId),
+          .map(([taskId, task]) => taskId as TaskId),
       },
       values: {
         [SkillModifierType.SPEED]: 40,
@@ -656,12 +657,12 @@ export const pickaxeUpgrades: { [id in UpgradeId]?: Upgrade } = {
     previous: UpgradeId.MITHRIL_PICKAXE4,
     modifier: {
       targets: {
-        [prospecting.id]: Object.entries(prospecting.tasks)
+        [SkillId.PROSPECTING]: Object.entries(prospecting.tasks)
           .filter(
             ([taskId, task]) =>
               task.category === ProspectingTaskCategories.MINE,
           )
-          .map(([taskId, task]) => taskId),
+          .map(([taskId, task]) => taskId as TaskId),
       },
       values: {
         [SkillModifierType.SPEED]: 42,
@@ -686,12 +687,12 @@ export const pickaxeUpgrades: { [id in UpgradeId]?: Upgrade } = {
     previous: UpgradeId.ADAMANT_PICKAXE,
     modifier: {
       targets: {
-        [prospecting.id]: Object.entries(prospecting.tasks)
+        [SkillId.PROSPECTING]: Object.entries(prospecting.tasks)
           .filter(
             ([taskId, task]) =>
               task.category === ProspectingTaskCategories.MINE,
           )
-          .map(([taskId, task]) => taskId),
+          .map(([taskId, task]) => taskId as TaskId),
       },
       values: {
         [SkillModifierType.SPEED]: 44,
@@ -716,12 +717,12 @@ export const pickaxeUpgrades: { [id in UpgradeId]?: Upgrade } = {
     previous: UpgradeId.ADAMANT_PICKAXE1,
     modifier: {
       targets: {
-        [prospecting.id]: Object.entries(prospecting.tasks)
+        [SkillId.PROSPECTING]: Object.entries(prospecting.tasks)
           .filter(
             ([taskId, task]) =>
               task.category === ProspectingTaskCategories.MINE,
           )
-          .map(([taskId, task]) => taskId),
+          .map(([taskId, task]) => taskId as TaskId),
       },
       values: {
         [SkillModifierType.SPEED]: 46,
@@ -746,12 +747,12 @@ export const pickaxeUpgrades: { [id in UpgradeId]?: Upgrade } = {
     previous: UpgradeId.ADAMANT_PICKAXE2,
     modifier: {
       targets: {
-        [prospecting.id]: Object.entries(prospecting.tasks)
+        [SkillId.PROSPECTING]: Object.entries(prospecting.tasks)
           .filter(
             ([taskId, task]) =>
               task.category === ProspectingTaskCategories.MINE,
           )
-          .map(([taskId, task]) => taskId),
+          .map(([taskId, task]) => taskId as TaskId),
       },
       values: {
         [SkillModifierType.SPEED]: 48,
@@ -776,12 +777,12 @@ export const pickaxeUpgrades: { [id in UpgradeId]?: Upgrade } = {
     previous: UpgradeId.ADAMANT_PICKAXE3,
     modifier: {
       targets: {
-        [prospecting.id]: Object.entries(prospecting.tasks)
+        [SkillId.PROSPECTING]: Object.entries(prospecting.tasks)
           .filter(
             ([taskId, task]) =>
               task.category === ProspectingTaskCategories.MINE,
           )
-          .map(([taskId, task]) => taskId),
+          .map(([taskId, task]) => taskId as TaskId),
       },
       values: {
         [SkillModifierType.SPEED]: 50,

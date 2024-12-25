@@ -1,18 +1,17 @@
 "use client";
 
 import { useState } from "react";
-import { useTownEngineContext } from "@/engines/townEngineContext";
 import { useCharacterEngineContext } from "@/engines/characterEngineContext";
-import { Task } from "@/types/skills";
-import { Skill } from "@/types/Skill";
 import { SkillHeader } from "@/features/town/skillMenu/components/skillHeader/skillHeader";
 import TaskInfo from "@/features/town/skillMenu/components/taskInfo/taskInfo";
 import TasksMenu from "@/features/town/skillMenu/components/tasksMenu/tasksMenu";
 import VerticalAccent from "../../../../components/verticalAccent";
+import { Skill } from "@/types/skills";
+import useWorkingActions from "@/features/common/working/hooks/useWorkingActions";
 
 export default function SkillMenu({ skill }: Readonly<{ skill: Skill }>) {
   const { character } = useCharacterEngineContext();
-  const { workingTask } = useTownEngineContext();
+  const { workingTask } = useWorkingActions();
   const [task, setTask] = useState<Task | null>(
     workingTask != null && Object.values(skill.tasks).includes(workingTask)
       ? workingTask

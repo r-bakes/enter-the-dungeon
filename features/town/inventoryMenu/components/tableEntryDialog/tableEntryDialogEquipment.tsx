@@ -3,13 +3,13 @@ import { Card } from "@/components/ui/card";
 import { Label } from "@/components/ui/label";
 import { Slot } from "@/data/character/enums";
 import { ItemId } from "@/data/items/enums";
-import { useCharacterEngineContext } from "@/engines/characterEngineContext";
 import { Equipment } from "@/types/items";
 import {
   formatCapitalCase,
   renderIcon,
 } from "@/features/common/utils/formattingUtilities";
 import { Heart, Shield, Sword, Zap } from "lucide-react";
+import useEquipmentActions from "../../hooks/useEquipmentActions";
 
 export default function TableEntryDialogEquipment({
   item,
@@ -18,7 +18,7 @@ export default function TableEntryDialogEquipment({
   item: Equipment;
   setOpen: React.Dispatch<React.SetStateAction<boolean>>;
 }>) {
-  const { equipItem } = useCharacterEngineContext();
+  const { equipItem } = useEquipmentActions();
 
   const equip = (itemId: ItemId, slot: Slot) => {
     equipItem(itemId, slot);

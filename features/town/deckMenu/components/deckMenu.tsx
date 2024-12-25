@@ -9,22 +9,26 @@ import {
   MAGIC_DECK_LIMIT,
   MARTIAL_DECK_LIMIT,
 } from "@/configurations/configurations";
+import useDeckActions from "@/features/common/deck/hooks/useDeckActions";
+import { CombatCardId } from "@/data/combatCards/enums";
 
 export default function DeckMenu({}: {}) {
-  const { character, equipCard, unequipCard } = useCharacterEngineContext();
+  const { equipCard, unequipCard } = useDeckActions();
+  const { character } = useCharacterEngineContext();
+
   let martialEquipped = character.deck.equppedMartial.map((cardId, id) => (
     <CombatDeckCard
       key={id + "equipped"}
-      onClick={() => unequipCard(cardId)}
-      card={combatCardTable[cardId]}
+      onClick={() => unequipCard(cardId as CombatCardId)}
+      card={combatCardTable[cardId as CombatCardId]}
       hoverTranslateDirection="u"
     ></CombatDeckCard>
   ));
   let martialUnequipped = character.deck.unequippedMartial.map((cardId, id) => (
     <CombatDeckCard
       key={id + "unequipped"}
-      onClick={() => equipCard(cardId)}
-      card={combatCardTable[cardId]}
+      onClick={() => equipCard(cardId as CombatCardId)}
+      card={combatCardTable[cardId as CombatCardId]}
       hoverTranslateDirection="d"
     ></CombatDeckCard>
   ));
@@ -32,16 +36,16 @@ export default function DeckMenu({}: {}) {
   let magicEquipped = character.deck.equippedMagic.map((cardId, id) => (
     <CombatDeckCard
       key={id + "equipped"}
-      onClick={() => unequipCard(cardId)}
-      card={combatCardTable[cardId]}
+      onClick={() => unequipCard(cardId as CombatCardId)}
+      card={combatCardTable[cardId as CombatCardId]}
       hoverTranslateDirection="l"
     ></CombatDeckCard>
   ));
   let magicUnequipped = character.deck.unequippedMagic.map((cardId, id) => (
     <CombatDeckCard
       key={id + "unequipped"}
-      onClick={() => equipCard(cardId)}
-      card={combatCardTable[cardId]}
+      onClick={() => equipCard(cardId as CombatCardId)}
+      card={combatCardTable[cardId as CombatCardId]}
       hoverTranslateDirection="r"
     ></CombatDeckCard>
   ));

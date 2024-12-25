@@ -2,7 +2,6 @@
 import SkillMenu from "@/features/town/skillMenu/components/skillMenu";
 import { inventory } from "@/data/menus/inventory";
 import { martial } from "@/data/skills/martial";
-import TownEngineProvider from "@/engines/townEngineContext";
 import React from "react";
 import { prospecting } from "@/data/skills/prospecting";
 import { smithing } from "@/data/skills/smithing";
@@ -99,18 +98,16 @@ export default function Page({}) {
 
   return (
     <CharacterEngineProvider>
-      <TownEngineProvider>
-        <MenuSelect
-          miscMenus={Object.values(miscMenus).map((menu) => menu.data)}
-          combatMenus={Object.values(combatMenus).map((menu) => menu.data)}
-          skillMenus={Object.values(skillMenus).map((menu) => menu.data)}
-          selectedMenu={selectedMenu}
-          setSelectedMenu={setSelectedMenu}
-        ></MenuSelect>
-        <div className="flex h-full w-full bg-secondaryBackground py-10">
-          {menus[selectedMenu.id].menu}
-        </div>
-      </TownEngineProvider>
+      <MenuSelect
+        miscMenus={Object.values(miscMenus).map((menu) => menu.data)}
+        combatMenus={Object.values(combatMenus).map((menu) => menu.data)}
+        skillMenus={Object.values(skillMenus).map((menu) => menu.data)}
+        selectedMenu={selectedMenu}
+        setSelectedMenu={setSelectedMenu}
+      ></MenuSelect>
+      <div className="flex h-full w-full bg-secondaryBackground py-10">
+        {menus[selectedMenu.id].menu}
+      </div>
     </CharacterEngineProvider>
   );
 }

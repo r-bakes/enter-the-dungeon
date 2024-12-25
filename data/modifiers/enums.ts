@@ -1,4 +1,4 @@
-export enum SkillModifierType {
+export enum ModifierType {
   SPEED = "speed",
   DOUBLE_CHANCE = "double chance",
   PRODUCTION_MULTIPLIER = "production multiplier",

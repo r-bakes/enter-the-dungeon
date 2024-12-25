@@ -1,9 +1,6 @@
 import { ItemId } from "@/data/items/enums";
-import { SkillModifierType } from "@/data/modifiers/enums";
-import { SkillId } from "@/data/skills/enums";
-import { TaskId } from "@/data/tasks/enum";
+import { ModifierType } from "@/data/modifiers/enums";
 import { Loot } from "@/types/loot";
-import { SkillModifierTable, SkillModifier } from "@/types/modifiers";
 
 export const applySpeedModifier = (
   duration: number,
@@ -40,13 +37,6 @@ export const applyProductionModifier = (
   return loot;
 };
 
-export const getModifiers = (
-  modifierTable: SkillModifierTable,
-  skillId: SkillId,
-  taskId: TaskId,
-): SkillModifier => {
-  return modifierTable[skillId][taskId] ?? {};
-};
 const roundModifiedValue = (value: number): number => {
   return Math.round(value * 100) / 100;
 };
@@ -55,7 +45,7 @@ export const formatModifiers = (
   value: number,
   modifierType: string,
 ): string => {
-  if (modifierType === SkillModifierType.PRODUCTION_MULTIPLIER) {
+  if (modifierType === ModifierType.PRODUCTION_MULTIPLIER) {
     return "+" + value;
   }
   return "+" + value + "%";

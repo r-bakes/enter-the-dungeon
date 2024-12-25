@@ -2,7 +2,6 @@ import {
   MAGIC_DECK_LIMIT,
   MARTIAL_DECK_LIMIT,
 } from "@/configurations/configurations";
-import { Slot } from "@/data/character/enums";
 import { CombatCardId, CombatCardType } from "@/data/combatCards/enums";
 import { ItemId } from "@/data/items/enums";
 import { itemTable } from "@/data/items/items";
@@ -70,7 +69,7 @@ const useDeckActions = () => {
     setCharacter({ ...character });
   };
 
-  const unequipCard = (cardId: CombatCardId) => {
+  const equipCard = (cardId: CombatCardId) => {
     if (character.deck.unequippedMartial.includes(cardId)) {
       if (character.deck.equppedMartial.length == MARTIAL_DECK_LIMIT) {
         toast.error("Deck limit reached!", {
@@ -111,7 +110,7 @@ const useDeckActions = () => {
     setCharacter({ ...character });
   };
 
-  const equipCard = (cardId: CombatCardId) => {
+  const unequipCard = (cardId: CombatCardId) => {
     if (character.deck.equppedMartial.includes(cardId)) {
       character.deck.equppedMartial.splice(
         character.deck.equppedMartial.findIndex(

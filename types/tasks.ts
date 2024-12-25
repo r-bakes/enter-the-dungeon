@@ -1,5 +1,5 @@
 import { GameObject } from "./gameObjects";
-import { SkillModifierType } from "@/data/modifiers/enums";
+import { ModifierType } from "@/data/modifiers/enums";
 import { LootTable } from "./loot";
 import { ItemId } from "@/data/items/enums";
 import { TaskId } from "@/data/tasks/enum";
@@ -12,5 +12,5 @@ export type Task = {
   lootTable: LootTable;
   category: string;
   requires: { [id in ItemId]?: number };
-  applicableModifiers: Set<SkillModifierType>;
+  applicableModifiers: Set<ModifierType>;
 } & GameObject;

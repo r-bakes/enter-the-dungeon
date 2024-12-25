@@ -6,7 +6,6 @@ import {
   PopoverTrigger,
 } from "@/components/ui/popover";
 import { Slot } from "@/data/character/enums";
-import { useCharacterEngineContext } from "@/engines/characterEngineContext";
 import { Equipment } from "@/types/items";
 import { renderIcon } from "@/features/common/utils/formattingUtilities";
 import useEquipmentActions from "../hooks/useEquipmentActions";
@@ -81,7 +80,7 @@ export default function EquipmentSlotContent({
                 <></>
               )}
               <Button
-                onClick={() => unequip(slot)}
+                onClick={() => unequipItem(slot)}
                 className="mt-4 h-6 text-xs"
               >
                 Unequip

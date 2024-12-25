@@ -2,12 +2,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardDescription, CardTitle } from "@/components/ui/card";
 import { itemTable } from "@/data/items/items";
 import { skillTable } from "@/data/skills/skills";
-import { useTownEngineContext } from "@/engines/townEngineContext";
 import { useCharacterEngineContext } from "@/engines/characterEngineContext";
-import {
-  addUpgrade,
-  removeItem,
-} from "@/features/common/utils/characterStateUtilities";
 import {
   formatCapitalCase,
   formatLargeQuantity,
@@ -21,7 +16,8 @@ import { Character } from "@/types/character";
 import { SkillModifierTable } from "@/types/modifiers";
 import { ItemId } from "@/data/items/enums";
 import { SkillId } from "@/data/skills/enums";
-import { formatModifiers } from "../../modifiers/services/modifier";
+import { formatModifiers } from "../../modifiers/utils/modifier";
+import useInventoryActions from "@/features/common/inventory/hooks/useInventoryActions";
 
 export default function UpgradesStoreMenu({
   upgrades,
@@ -29,7 +25,7 @@ export default function UpgradesStoreMenu({
   upgrades: Upgrade[];
 }>) {
   const { character, setCharacter } = useCharacterEngineContext();
-  const { modifierTable, setModifierTable } = useTownEngineContext();
+  const { removeItem } = useInventoryActions();
 
   const buy = (
     upgrade: Upgrade,
@@ -37,7 +33,7 @@ export default function UpgradesStoreMenu({
     character: Character,
   ): void => {
     Object.entries(upgrade.requiresItems).forEach(([itemId, amount]) =>
-      removeItem(character.inventory, itemId as ItemId, amount),
+      removeItem(itemId as ItemId, amount),
     );
 
     addUpgrade(upgrade, modifierTable, character);
