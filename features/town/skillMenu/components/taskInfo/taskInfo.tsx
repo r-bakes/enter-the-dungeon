@@ -23,14 +23,10 @@ import TaskProducesEntry from "@/features/town/skillMenu/components/taskInfo/tas
 import { TaskRequiresEntry } from "@/features/town/skillMenu/components/taskInfo/taskRequiresEntry";
 import TaskModifiers from "@/features/town/skillMenu/components/taskInfo/taskModifiers";
 import { Task } from "@/types/tasks";
-import {
-  applyExperienceModifier,
-  applySpeedModifier,
-  getModifiers,
-} from "@/features/town/modifiers/utils/modifier";
 import { ItemId } from "@/data/items/enums";
-import useWorkingActions from "@/features/common/working/hooks/useWorkingActions";
 import { useModifierActions } from "@/features/town/modifiers/hooks/useModifierActions";
+import { useModifierEngineContext } from "@/engines/modifierEngineContext";
+import { useWorkingEngineContext } from "@/engines/workingEngineContext";
 
 const rootCardFormat =
   "flex flex-col h-full grow-0 w-80 min-w-80 max-w-80 items-center overflow-y-scroll";
@@ -40,9 +36,11 @@ export default function TaskInfo({
 }: Readonly<{
   task: Task | null;
 }>) {
-  const { setWorkingTask, taskProgress, workingTask } = useWorkingActions();
+  const { setWorkingTask, taskProgress, workingTask } =
+    useWorkingEngineContext();
   const { character } = useCharacterEngineContext();
-  const { modifiers } = useModifierActions();
+  const { applyExperienceModifier, applySpeedModifier } = useModifierActions();
+  const { modifiers } = useModifierEngineContext();
 
   if (!task) {
     return (
@@ -97,30 +95,19 @@ export default function TaskInfo({
           className="h-4 w-full rounded-sm"
           value={
             task === workingTask
-              ? (taskProgress /
-                  applySpeedModifier(
-                    task.durationSec,
-                    modifiers[task.id][ModifierType.SPEED],
-                  )) *
-                100
+              ? (taskProgress / applySpeedModifier(task.id)) * 100
               : 0
           }
         ></Progress>
         <Separator></Separator>
         <div className="flex w-full items-center justify-between gap-4">
           <TaskDataEntry
-            data={applySpeedModifier(
-              task.durationSec,
-              modifiers[task.id][ModifierType.SPEED],
-            )}
+            data={applySpeedModifier(task.id)}
             label={"seconds"}
           ></TaskDataEntry>
           <div className="h-1 w-1 rounded-full bg-black"></div>
           <TaskDataEntry
-            data={applyExperienceModifier(
-              task.experience,
-              modifiers[task.id][ModifierType.EXPERIENCE],
-            )}
+            data={applyExperienceModifier(task.id)}
             label={"experience"}
           ></TaskDataEntry>
         </div>
@@ -134,7 +121,7 @@ export default function TaskInfo({
             data={taskRequires}
             label={"requires"}
           ></TaskRequiresEntry>
-          <TaskModifiers data={modifiers}></TaskModifiers>
+          <TaskModifiers data={modifiers[task.id]}></TaskModifiers>
         </div>
       </CardContent>
       <CardFooter className="flex h-24 w-full items-end">

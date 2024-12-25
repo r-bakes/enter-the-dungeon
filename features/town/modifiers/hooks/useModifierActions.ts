@@ -1,50 +1,54 @@
 import { ModifierType } from "@/data/modifiers/enums";
 import { TaskId } from "@/data/tasks/enum";
 import { taskTable } from "@/data/tasks/tasks";
-import { UpgradeId } from "@/data/upgrades/enums";
-import { upgradeTable } from "@/data/upgrades/upgrades";
-import { useCharacterEngineContext } from "@/engines/characterEngineContext";
-import { Modifiers } from "@/types/modifiers";
-import React from "react";
+import { Loot } from "@/types/loot";
+import { ItemId } from "@/data/items/enums";
+import { useModifierEngineContext } from "@/engines/modifierEngineContext";
 
 export const useModifierActions = () => {
-  const { character } = useCharacterEngineContext();
+  const { modifiers, setModifiers } = useModifierEngineContext();
 
-  const initializeCharacterModifierTable = (): Modifiers => {
-    let modifiers: Modifiers = Object.fromEntries(
-      Object.values(TaskId).map((id) => [id, {}]),
-    ) as Modifiers;
-
-    for (let id of Object.values(TaskId)) {
-      let task = taskTable[id];
-
-      for (let type of task.applicableModifiers) {
-        if (type === ModifierType.PRODUCTION_MULTIPLIER) {
-          modifiers[id][type as ModifierType] = 1;
-        } else {
-          modifiers[id][type as ModifierType] = 0;
-        }
-      }
-    }
-
-    for (let upgradeId of Object.values(UpgradeId)) {
-      let upgrade = upgradeTable[upgradeId as UpgradeId];
-
-      for (let taskId in upgrade.modifier.targets) {
-        for (let [modifier, value] of Object.entries(upgrade.modifier.values)) {
-          if (!(upgrade.next && character.upgrades.has(upgrade.next))) {
-            modifiers[taskId as TaskId][modifier as ModifierType]! += value;
-          }
-        }
-      }
-    }
-
-    return modifiers;
+  const roundModifiedValue = (value: number): number => {
+    return Math.round(value * 100) / 100;
   };
 
-  const [modifiers, setModifiers] = React.useState(
-    initializeCharacterModifierTable(),
-  );
+  const applySpeedModifier = (taskId: TaskId): number => {
+    let modifier = modifiers[taskId][ModifierType.SPEED];
+    let duration = taskTable[taskId].durationSec;
 
-  return { modifiers, setModifiers };
+    if (!modifier) {
+      return duration;
+    }
+
+    return roundModifiedValue(duration * (1 - modifier / 100));
+  };
+
+  const applyExperienceModifier = (taskId: TaskId): number => {
+    let modifier = modifiers[taskId][ModifierType.EXPERIENCE];
+    let amount = taskTable[taskId].experience;
+
+    if (!modifier) {
+      return amount;
+    }
+
+    return roundModifiedValue(amount + (amount * modifier) / 100);
+  };
+
+  const applyProductionModifier = (taskId: TaskId, loot: Loot): Loot => {
+    let modifier = modifiers[taskId][ModifierType.PRODUCTION_MULTIPLIER];
+
+    if (!modifier) {
+      return loot;
+    }
+    Object.entries(loot).forEach(
+      ([itemId, amount]) => (loot[itemId as ItemId] = amount * modifier),
+    );
+    return loot;
+  };
+
+  return {
+    applySpeedModifier,
+    applyExperienceModifier,
+    applyProductionModifier,
+  };
 };

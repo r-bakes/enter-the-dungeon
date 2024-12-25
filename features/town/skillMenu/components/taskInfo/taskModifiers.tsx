@@ -1,16 +1,14 @@
 import { Card } from "@/components/ui/card";
 import { Label } from "@/components/ui/label";
-import { SkillModifierType } from "@/data/modifiers/enums";
-import { SkillModifierIcons } from "@/data/modifiers/skillModifiers";
-import { SkillModifier } from "@/types/modifiers";
+import { ModifierType } from "@/data/modifiers/enums";
+import { ModifierIcons } from "@/data/modifiers/modifiers";
 import {
   formatCapitalCase,
   renderIcon,
 } from "@/features/common/utils/formattingUtilities";
+import { Modifier } from "@/types/modifiers";
 
-export default function TaskModifiers({
-  data,
-}: Readonly<{ data: SkillModifier }>) {
+export default function TaskModifiers({ data }: Readonly<{ data: Modifier }>) {
   if (Object.entries(data).length === 0) {
     return <></>;
   }
@@ -23,16 +21,12 @@ export default function TaskModifiers({
       {Object.entries(data).map(([type, value]) => (
         <Card key={type} className="flex w-full justify-between p-2">
           <div className="flex h-full items-center gap-1">
-            {renderIcon(
-              SkillModifierIcons[type as SkillModifierType].icon,
-              24,
-              {
-                ...SkillModifierIcons[type as SkillModifierType].iconStyle,
-                strokeOpacity: 1,
-              },
-            )}
+            {renderIcon(ModifierIcons[type as ModifierType].icon, 24, {
+              ...ModifierIcons[type as ModifierType].iconStyle,
+              strokeOpacity: 1,
+            })}
             <Label className="text-xs font-medium">
-              {type !== SkillModifierType.PRODUCTION_MULTIPLIER
+              {type !== ModifierType.PRODUCTION_MULTIPLIER
                 ? "+" + value + "%"
                 : "x" + value}
             </Label>

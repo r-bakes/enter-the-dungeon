@@ -25,9 +25,7 @@ export const miscUpgrades: { [id in UpgradeId]?: Upgrade } = {
     next: null,
     previous: null,
     modifier: {
-      targets: {
-        [SkillId.SMITHING]: Object.keys(smithing.tasks) as TaskId[],
-      },
+      targets: Object.keys(smithing.tasks) as TaskId[],
       values: {
         [ModifierType.SPEED]: 0,
         [ModifierType.DOUBLE_CHANCE]: 0,
@@ -52,9 +50,8 @@ export const miscUpgrades: { [id in UpgradeId]?: Upgrade } = {
     next: null,
     previous: null,
     modifier: {
-      targets: {
-        [SkillId.SMITHING]: Object.keys(smithing.tasks) as TaskId[],
-      },
+      targets: Object.keys(smithing.tasks) as TaskId[],
+
       values: {
         [ModifierType.SPEED]: 0,
         [ModifierType.DOUBLE_CHANCE]: 0,
@@ -77,9 +74,7 @@ export const miscUpgrades: { [id in UpgradeId]?: Upgrade } = {
     next: null,
     previous: null,
     modifier: {
-      targets: {
-        [SkillId.PROSPECTING]: [taskTable.MINE_COAL.id],
-      },
+      targets: [taskTable.MINE_COAL.id],
       values: {
         [ModifierType.SPEED]: 10,
         [ModifierType.PRODUCTION_MULTIPLIER]: 1,

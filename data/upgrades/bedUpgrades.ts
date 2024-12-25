@@ -12,30 +12,6 @@ import { TaskId } from "../tasks/enum";
 import { ItemId } from "../items/enums";
 import { MilestoneId } from "../milestones/enums";
 
-const getGlobalModifier = (): { [id in SkillId]: TaskId[] } => {
-  let targetsEverything: { [id in SkillId]: TaskId[] } = Object.values(
-    SkillId,
-  ).reduce(
-    (result, id) => {
-      result[id] = [];
-      return result;
-    },
-    {} as { [id in SkillId]: TaskId[] },
-  );
-
-  for (const [skillId, skill] of Object.entries(skillTable) as [
-    SkillId,
-    Skill,
-  ][]) {
-    for (const taskId of Object.keys(skill.tasks) as TaskId[]) {
-      targetsEverything[skillId].push(taskId);
-    }
-  }
-
-  return targetsEverything;
-};
-const GLOBAL_MODIFIER = getGlobalModifier();
-
 export const bedUpgrades: { [id in UpgradeId]?: Upgrade } = {
   [UpgradeId.BASIC_BED]: {
     id: UpgradeId.BASIC_BED,
@@ -49,7 +25,7 @@ export const bedUpgrades: { [id in UpgradeId]?: Upgrade } = {
     next: UpgradeId.STRAW_BED,
     previous: null,
     modifier: {
-      targets: GLOBAL_MODIFIER,
+      targets: Object.values(TaskId),
       values: {
         [ModifierType.EXPERIENCE]: 1,
       },
@@ -71,7 +47,7 @@ export const bedUpgrades: { [id in UpgradeId]?: Upgrade } = {
     next: UpgradeId.COMFORTABLE_BED,
     previous: UpgradeId.BASIC_BED,
     modifier: {
-      targets: GLOBAL_MODIFIER,
+      targets: Object.values(TaskId),
       values: {
         [ModifierType.EXPERIENCE]: 2,
       },
@@ -93,7 +69,7 @@ export const bedUpgrades: { [id in UpgradeId]?: Upgrade } = {
     next: UpgradeId.REFINED_BED,
     previous: UpgradeId.STRAW_BED,
     modifier: {
-      targets: GLOBAL_MODIFIER,
+      targets: Object.values(TaskId),
       values: {
         [ModifierType.EXPERIENCE]: 3,
       },
@@ -115,7 +91,7 @@ export const bedUpgrades: { [id in UpgradeId]?: Upgrade } = {
     next: UpgradeId.LUXURY_BED,
     previous: UpgradeId.COMFORTABLE_BED,
     modifier: {
-      targets: GLOBAL_MODIFIER,
+      targets: Object.values(TaskId),
       values: {
         [ModifierType.EXPERIENCE]: 4,
       },
@@ -137,7 +113,7 @@ export const bedUpgrades: { [id in UpgradeId]?: Upgrade } = {
     next: null,
     previous: UpgradeId.REFINED_BED,
     modifier: {
-      targets: GLOBAL_MODIFIER,
+      targets: Object.values(TaskId),
       values: {
         [ModifierType.EXPERIENCE]: 5,
       },

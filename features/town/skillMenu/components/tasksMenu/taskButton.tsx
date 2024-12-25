@@ -9,24 +9,16 @@ import { Label } from "@/components/ui/label";
 import { renderIcon } from "@/features/common/utils/formattingUtilities";
 import { Skill } from "@/types/skills";
 import { Task } from "@/types/tasks";
-import {
-  applyExperienceModifier,
-  applySpeedModifier,
-  getModifiers,
-} from "@/features/town/modifiers/utils/modifier";
 import { useModifierActions } from "@/features/town/modifiers/hooks/useModifierActions";
-import { ModifierType } from "@/data/modifiers/enums";
 
 export default function TaskButton({
-  skill,
   task,
   onClick,
 }: Readonly<{
-  skill: Skill;
   task: Task;
   onClick: React.Dispatch<React.SetStateAction<any>>;
 }>) {
-  const { modifiers } = useModifierActions();
+  const { applySpeedModifier, applyExperienceModifier } = useModifierActions();
 
   return (
     <Card className="flex w-full min-w-max">
@@ -50,10 +42,7 @@ export default function TaskButton({
           <div className="flex h-full flex-col">
             <div className="flex w-full gap-1">
               <Label className="text-xs">
-                {applySpeedModifier(
-                  task.durationSec,
-                  modifiers[task.id][ModifierType.SPEED],
-                )}
+                {applySpeedModifier(task.id, task.durationSec)}
               </Label>
               <Label className="text-xs font-normal text-muted-foreground">
                 seconds
@@ -61,10 +50,7 @@ export default function TaskButton({
             </div>
             <div className="flex w-full gap-1">
               <Label className="text-xs">
-                {applyExperienceModifier(
-                  task.experience,
-                  modifiers[task.id][ModifierType.EXPERIENCE],
-                )}{" "}
+                {applyExperienceModifier(task.id, task.experience)}{" "}
               </Label>
               <Label className="text-xs font-normal text-muted-foreground">
                 experience

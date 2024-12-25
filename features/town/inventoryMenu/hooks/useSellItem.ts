@@ -1,15 +1,14 @@
 import { ItemId } from "@/data/items/enums";
 import { itemTable } from "@/data/items/items";
 import { useCharacterEngineContext } from "@/engines/characterEngineContext";
-import {
-  addItem,
-  removeItem,
-} from "@/features/common/utils/characterStateUtilities";
+import useInventoryActions from "@/features/common/inventory/hooks/useInventoryActions";
+import {} from "@/features/common/utils/characterStateUtilities";
 import { formatLargeQuantity } from "@/features/common/utils/formattingUtilities";
 import { toast } from "sonner";
 
 const useSellItem = () => {
   const { character, setCharacter } = useCharacterEngineContext();
+  const { addItem, removeItem } = useInventoryActions();
 
   const sellItem = (itemId: ItemId, amount: number) => {
     // Validate if the character has enough items to sell
@@ -24,11 +23,11 @@ const useSellItem = () => {
     }
 
     // Remove the specified amount of the item from inventory
-    removeItem(character.inventory, itemId, amount);
+    removeItem(itemId, amount);
 
     // Add gold based on the item's value and the amount sold
     const goldEarned = itemTable[itemId].value * amount;
-    addItem(character.inventory, ItemId.GOLD, goldEarned);
+    addItem(ItemId.GOLD, goldEarned);
 
     // Update the character state
     setCharacter({ ...character });

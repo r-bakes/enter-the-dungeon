@@ -1,5 +1,3 @@
-// src/data/upgrades/hammerUpgrades.ts
-
 import { TASK_AND_ITEM_ICON_STYLE } from "@/configurations/configurations";
 import { HomeRooms } from "@/data/menus/enums";
 import { ModifierType } from "@/data/modifiers/enums";
@@ -10,6 +8,7 @@ import { UpgradeId } from "./enums";
 import { ItemId } from "../items/enums";
 import { itemTable } from "../items/items";
 import { MilestoneId } from "../milestones/enums";
+import { TaskId } from "../tasks/enum";
 
 export const hammerUpgrades: { [id in UpgradeId]?: Upgrade } = {
   [UpgradeId.BASIC_HAMMER]: {
@@ -24,7 +23,7 @@ export const hammerUpgrades: { [id in UpgradeId]?: Upgrade } = {
     next: UpgradeId.BRONZE_HAMMER,
     previous: null,
     modifier: {
-      targets: { [smithing.id]: Object.keys(smithing.tasks) },
+      targets: Object.keys(smithing.tasks) as TaskId[],
       values: {
         [ModifierType.SPEED]: 0,
       },
@@ -46,7 +45,7 @@ export const hammerUpgrades: { [id in UpgradeId]?: Upgrade } = {
     next: UpgradeId.BRONZE_HAMMER1,
     previous: UpgradeId.BASIC_HAMMER,
     modifier: {
-      targets: { [smithing.id]: Object.keys(smithing.tasks) },
+      targets: Object.keys(smithing.tasks) as TaskId[],
       values: {
         [ModifierType.SPEED]: 2,
       },
@@ -68,7 +67,7 @@ export const hammerUpgrades: { [id in UpgradeId]?: Upgrade } = {
     next: UpgradeId.BRONZE_HAMMER2,
     previous: UpgradeId.BRONZE_HAMMER,
     modifier: {
-      targets: { [smithing.id]: Object.keys(smithing.tasks) },
+      targets: Object.keys(smithing.tasks) as TaskId[],
       values: {
         [ModifierType.SPEED]: 4,
       },
@@ -90,7 +89,7 @@ export const hammerUpgrades: { [id in UpgradeId]?: Upgrade } = {
     next: UpgradeId.BRONZE_HAMMER3,
     previous: UpgradeId.BRONZE_HAMMER1,
     modifier: {
-      targets: { [smithing.id]: Object.keys(smithing.tasks) },
+      targets: Object.keys(smithing.tasks) as TaskId[],
       values: {
         [ModifierType.SPEED]: 6,
       },
@@ -112,7 +111,7 @@ export const hammerUpgrades: { [id in UpgradeId]?: Upgrade } = {
     next: UpgradeId.BRONZE_HAMMER4,
     previous: UpgradeId.BRONZE_HAMMER2,
     modifier: {
-      targets: { [smithing.id]: Object.keys(smithing.tasks) },
+      targets: Object.keys(smithing.tasks) as TaskId[],
       values: {
         [ModifierType.SPEED]: 8,
       },
@@ -134,7 +133,7 @@ export const hammerUpgrades: { [id in UpgradeId]?: Upgrade } = {
     next: UpgradeId.IRON_HAMMER,
     previous: UpgradeId.BRONZE_HAMMER3,
     modifier: {
-      targets: { [smithing.id]: Object.keys(smithing.tasks) },
+      targets: Object.keys(smithing.tasks) as TaskId[],
       values: {
         [ModifierType.SPEED]: 10,
       },
@@ -156,7 +155,7 @@ export const hammerUpgrades: { [id in UpgradeId]?: Upgrade } = {
     next: UpgradeId.IRON_HAMMER1,
     previous: UpgradeId.BRONZE_HAMMER4,
     modifier: {
-      targets: { [smithing.id]: Object.keys(smithing.tasks) },
+      targets: Object.keys(smithing.tasks) as TaskId[],
       values: {
         [ModifierType.SPEED]: 12,
       },
@@ -178,7 +177,7 @@ export const hammerUpgrades: { [id in UpgradeId]?: Upgrade } = {
     next: UpgradeId.IRON_HAMMER2,
     previous: UpgradeId.IRON_HAMMER,
     modifier: {
-      targets: { [smithing.id]: Object.keys(smithing.tasks) },
+      targets: Object.keys(smithing.tasks) as TaskId[],
       values: {
         [ModifierType.SPEED]: 14,
       },
@@ -200,7 +199,7 @@ export const hammerUpgrades: { [id in UpgradeId]?: Upgrade } = {
     next: UpgradeId.IRON_HAMMER3,
     previous: UpgradeId.IRON_HAMMER1,
     modifier: {
-      targets: { [smithing.id]: Object.keys(smithing.tasks) },
+      targets: Object.keys(smithing.tasks) as TaskId[],
       values: {
         [ModifierType.SPEED]: 16,
       },
@@ -222,7 +221,7 @@ export const hammerUpgrades: { [id in UpgradeId]?: Upgrade } = {
     next: UpgradeId.IRON_HAMMER4,
     previous: UpgradeId.IRON_HAMMER2,
     modifier: {
-      targets: { [smithing.id]: Object.keys(smithing.tasks) },
+      targets: Object.keys(smithing.tasks) as TaskId[],
       values: {
         [ModifierType.SPEED]: 18,
       },
@@ -244,7 +243,7 @@ export const hammerUpgrades: { [id in UpgradeId]?: Upgrade } = {
     next: UpgradeId.STEEL_HAMMER,
     previous: UpgradeId.IRON_HAMMER3,
     modifier: {
-      targets: { [smithing.id]: Object.keys(smithing.tasks) },
+      targets: Object.keys(smithing.tasks) as TaskId[],
       values: {
         [ModifierType.SPEED]: 20,
       },
@@ -266,9 +265,7 @@ export const hammerUpgrades: { [id in UpgradeId]?: Upgrade } = {
     next: UpgradeId.STEEL_HAMMER1,
     previous: UpgradeId.IRON_HAMMER4,
     modifier: {
-      targets: {
-        [smithing.id]: Object.keys(smithing.tasks),
-      },
+      targets: Object.keys(smithing.tasks) as TaskId[],
       values: {
         [ModifierType.SPEED]: 22,
       },
@@ -290,9 +287,7 @@ export const hammerUpgrades: { [id in UpgradeId]?: Upgrade } = {
     next: UpgradeId.STEEL_HAMMER2,
     previous: UpgradeId.STEEL_HAMMER,
     modifier: {
-      targets: {
-        [smithing.id]: Object.keys(smithing.tasks),
-      },
+      targets: Object.keys(smithing.tasks) as TaskId[],
       values: {
         [ModifierType.SPEED]: 24,
       },
@@ -314,9 +309,7 @@ export const hammerUpgrades: { [id in UpgradeId]?: Upgrade } = {
     next: UpgradeId.STEEL_HAMMER3,
     previous: UpgradeId.STEEL_HAMMER1,
     modifier: {
-      targets: {
-        [smithing.id]: Object.keys(smithing.tasks),
-      },
+      targets: Object.keys(smithing.tasks) as TaskId[],
       values: {
         [ModifierType.SPEED]: 26,
       },
@@ -338,9 +331,7 @@ export const hammerUpgrades: { [id in UpgradeId]?: Upgrade } = {
     next: UpgradeId.STEEL_HAMMER4,
     previous: UpgradeId.STEEL_HAMMER2,
     modifier: {
-      targets: {
-        [smithing.id]: Object.keys(smithing.tasks),
-      },
+      targets: Object.keys(smithing.tasks) as TaskId[],
       values: {
         [ModifierType.SPEED]: 28,
       },
@@ -362,7 +353,7 @@ export const hammerUpgrades: { [id in UpgradeId]?: Upgrade } = {
     next: UpgradeId.MITHRIL_HAMMER,
     previous: UpgradeId.STEEL_HAMMER3,
     modifier: {
-      targets: { [smithing.id]: Object.keys(smithing.tasks) },
+      targets: Object.keys(smithing.tasks) as TaskId[],
       values: {
         [ModifierType.SPEED]: 30,
       },
@@ -384,9 +375,7 @@ export const hammerUpgrades: { [id in UpgradeId]?: Upgrade } = {
     next: UpgradeId.MITHRIL_HAMMER1,
     previous: UpgradeId.STEEL_HAMMER4,
     modifier: {
-      targets: {
-        [smithing.id]: Object.keys(smithing.tasks),
-      },
+      targets: Object.keys(smithing.tasks) as TaskId[],
       values: {
         [ModifierType.SPEED]: 32,
       },
@@ -408,9 +397,7 @@ export const hammerUpgrades: { [id in UpgradeId]?: Upgrade } = {
     next: UpgradeId.MITHRIL_HAMMER2,
     previous: UpgradeId.MITHRIL_HAMMER,
     modifier: {
-      targets: {
-        [smithing.id]: Object.keys(smithing.tasks),
-      },
+      targets: Object.keys(smithing.tasks) as TaskId[],
       values: {
         [ModifierType.SPEED]: 34,
       },
@@ -432,9 +419,7 @@ export const hammerUpgrades: { [id in UpgradeId]?: Upgrade } = {
     next: UpgradeId.MITHRIL_HAMMER3,
     previous: UpgradeId.MITHRIL_HAMMER1,
     modifier: {
-      targets: {
-        [smithing.id]: Object.keys(smithing.tasks),
-      },
+      targets: Object.keys(smithing.tasks) as TaskId[],
       values: {
         [ModifierType.SPEED]: 36,
       },
@@ -447,7 +432,7 @@ export const hammerUpgrades: { [id in UpgradeId]?: Upgrade } = {
   [UpgradeId.MITHRIL_HAMMER3]: {
     id: UpgradeId.MITHRIL_HAMMER3,
     name: "Mithril Hammer +3",
-    description: "A mithril hammer with unmatched efficiency",
+    description: "An adamant hammer with unmatched efficiency",
     icon: Hammer,
     iconStyle: {
       fill: itemTable[ItemId.MITHRIL_ORE].iconStyle.fill,
@@ -456,9 +441,7 @@ export const hammerUpgrades: { [id in UpgradeId]?: Upgrade } = {
     next: UpgradeId.MITHRIL_HAMMER4,
     previous: UpgradeId.MITHRIL_HAMMER2,
     modifier: {
-      targets: {
-        [smithing.id]: Object.keys(smithing.tasks),
-      },
+      targets: Object.keys(smithing.tasks) as TaskId[],
       values: {
         [ModifierType.SPEED]: 38,
       },
@@ -471,7 +454,7 @@ export const hammerUpgrades: { [id in UpgradeId]?: Upgrade } = {
   [UpgradeId.MITHRIL_HAMMER4]: {
     id: UpgradeId.MITHRIL_HAMMER4,
     name: "Mithril Hammer +4",
-    description: "A mithril hammer with ultimate efficiency",
+    description: "An adamant hammer with ultimate efficiency",
     icon: Hammer,
     iconStyle: {
       fill: itemTable[ItemId.MITHRIL_ORE].iconStyle.fill,
@@ -480,9 +463,7 @@ export const hammerUpgrades: { [id in UpgradeId]?: Upgrade } = {
     next: UpgradeId.ADAMANT_HAMMER,
     previous: UpgradeId.MITHRIL_HAMMER3,
     modifier: {
-      targets: {
-        [smithing.id]: Object.keys(smithing.tasks),
-      },
+      targets: Object.keys(smithing.tasks) as TaskId[],
       values: {
         [ModifierType.SPEED]: 40,
       },
@@ -504,9 +485,7 @@ export const hammerUpgrades: { [id in UpgradeId]?: Upgrade } = {
     next: UpgradeId.ADAMANT_HAMMER1,
     previous: UpgradeId.MITHRIL_HAMMER4,
     modifier: {
-      targets: {
-        [smithing.id]: Object.keys(smithing.tasks),
-      },
+      targets: Object.keys(smithing.tasks) as TaskId[],
       values: {
         [ModifierType.SPEED]: 42,
       },
@@ -528,9 +507,7 @@ export const hammerUpgrades: { [id in UpgradeId]?: Upgrade } = {
     next: UpgradeId.ADAMANT_HAMMER2,
     previous: UpgradeId.ADAMANT_HAMMER,
     modifier: {
-      targets: {
-        [smithing.id]: Object.keys(smithing.tasks),
-      },
+      targets: Object.keys(smithing.tasks) as TaskId[],
       values: {
         [ModifierType.SPEED]: 44,
       },
@@ -552,9 +529,7 @@ export const hammerUpgrades: { [id in UpgradeId]?: Upgrade } = {
     next: UpgradeId.ADAMANT_HAMMER3,
     previous: UpgradeId.ADAMANT_HAMMER1,
     modifier: {
-      targets: {
-        [smithing.id]: Object.keys(smithing.tasks),
-      },
+      targets: Object.keys(smithing.tasks) as TaskId[],
       values: {
         [ModifierType.SPEED]: 46,
       },
@@ -576,9 +551,7 @@ export const hammerUpgrades: { [id in UpgradeId]?: Upgrade } = {
     next: UpgradeId.ADAMANT_HAMMER4,
     previous: UpgradeId.ADAMANT_HAMMER2,
     modifier: {
-      targets: {
-        [smithing.id]: Object.keys(smithing.tasks),
-      },
+      targets: Object.keys(smithing.tasks) as TaskId[],
       values: {
         [ModifierType.SPEED]: 48,
       },
@@ -600,9 +573,7 @@ export const hammerUpgrades: { [id in UpgradeId]?: Upgrade } = {
     next: null,
     previous: UpgradeId.ADAMANT_HAMMER3,
     modifier: {
-      targets: {
-        [smithing.id]: Object.keys(smithing.tasks),
-      },
+      targets: Object.keys(smithing.tasks) as TaskId[],
       values: {
         [ModifierType.SPEED]: 50,
       },

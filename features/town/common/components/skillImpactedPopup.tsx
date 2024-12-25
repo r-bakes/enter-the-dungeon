@@ -7,7 +7,6 @@ import {
   PopoverTrigger,
 } from "@/components/ui/popover";
 import { TaskId } from "@/data/tasks/enum";
-import { Skill } from "@/types/skills";
 import { Upgrade } from "@/types/upgrades";
 import {
   formatCapitalCase,
@@ -15,6 +14,7 @@ import {
 } from "@/features/common/utils/formattingUtilities";
 import { formatModifiers } from "../../modifiers/utils/modifier";
 import { taskTable } from "@/data/tasks/tasks";
+import { Skill } from "@/types/skills";
 
 export function SkillImpactedPopup({
   skill,

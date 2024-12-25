@@ -8,9 +8,9 @@ import {
 } from "@/components/ui/card";
 import { Progress } from "@/components/ui/progress";
 import { LEVEL_CAP } from "@/configurations/configurations";
-import { Skill } from "@/types/Skill";
-import { requiredExpForLevelUp } from "@/features/common/utils/characterStateUtilities";
+import { requiredExpForLevelUp } from "@/features/common/experience/utils/experienceUtils";
 import { formatRoundedQuantity } from "@/features/common/utils/formattingUtilities";
+import { Skill } from "@/types/skills";
 import { FlaskRound } from "lucide-react";
 
 export function SkillHeader({

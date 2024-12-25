@@ -7,11 +7,12 @@ import TaskInfo from "@/features/town/skillMenu/components/taskInfo/taskInfo";
 import TasksMenu from "@/features/town/skillMenu/components/tasksMenu/tasksMenu";
 import VerticalAccent from "../../../../components/verticalAccent";
 import { Skill } from "@/types/skills";
-import useWorkingActions from "@/features/common/working/hooks/useWorkingActions";
+import { useWorkingEngineContext } from "@/engines/workingEngineContext";
+import { Task } from "@/types/tasks";
 
 export default function SkillMenu({ skill }: Readonly<{ skill: Skill }>) {
   const { character } = useCharacterEngineContext();
-  const { workingTask } = useWorkingActions();
+  const { workingTask } = useWorkingEngineContext();
   const [task, setTask] = useState<Task | null>(
     workingTask != null && Object.values(skill.tasks).includes(workingTask)
       ? workingTask
@@ -26,7 +27,7 @@ export default function SkillMenu({ skill }: Readonly<{ skill: Skill }>) {
         skillExperience={character.skills[skill.id].experience}
       ></SkillHeader>
       <div className="flex h-[calc(100%-184px)] w-full gap-6">
-        <TaskInfo task={task} skill={skill}></TaskInfo>
+        <TaskInfo task={task}></TaskInfo>
         <TasksMenu
           skill={skill}
           tasks={skill.tasks}

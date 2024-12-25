@@ -1,32 +1,27 @@
 import { Button } from "@/components/ui/button";
 import { Card, CardDescription, CardTitle } from "@/components/ui/card";
 import { itemTable } from "@/data/items/items";
-import { skillTable } from "@/data/skills/skills";
 import { useCharacterEngineContext } from "@/engines/characterEngineContext";
 import {
   formatCapitalCase,
   formatLargeQuantity,
   renderIcon,
 } from "@/features/common/utils/formattingUtilities";
-import { SkillImpactedPopup } from "../../common/components/skillImpactedPopup";
 import { Backpack } from "lucide-react";
 import { Label } from "@/components/ui/label";
 import { Upgrade } from "@/types/upgrades";
 import { ItemId } from "@/data/items/enums";
-import { SkillId } from "@/data/skills/enums";
 import { formatModifiers } from "../../modifiers/utils/modifier";
 import useInventoryActions from "@/features/common/inventory/hooks/useInventoryActions";
 import useUpgradeActions from "../../upgrades/hooks/useUpgradeActions";
-import { useModifierActions } from "../../modifiers/hooks/useModifierActions";
 
 export default function UpgradesStoreMenu({
   upgrades,
 }: Readonly<{
   upgrades: Upgrade[];
 }>) {
-  const { character, setCharacter } = useCharacterEngineContext();
+  const { character } = useCharacterEngineContext();
   const { addUpgrade } = useUpgradeActions();
-  const { modifiers } = useModifierActions();
   const { removeItem } = useInventoryActions();
 
   const buy = (upgrade: Upgrade): void => {

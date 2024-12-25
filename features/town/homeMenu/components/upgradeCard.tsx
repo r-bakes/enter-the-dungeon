@@ -31,16 +31,16 @@ export default function UpgradeCard({
             </div>
           </div>
           <div className="mx-6 flex h-full max-w-[500px] gap-2 overflow-x-scroll py-2">
-            {Object.entries(upgrade.modifier.targets).map(
-              ([skillId, taskIds]) => (
-                <SkillImpactedPopup
-                  key={skillId}
-                  skill={skillTable[skillId as SkillId]}
-                  taskIds={taskIds}
-                  upgrade={upgrade}
-                ></SkillImpactedPopup>
-              ),
-            )}
+            {/* {Object.entries(upgrade.modifier.targets).map( */}
+            {/*   ([skillId, taskIds]) => ( */}
+            {/*     <SkillImpactedPopup */}
+            {/*       key={skillId} */}
+            {/*       skill={skillTable[skillId as SkillId]} */}
+            {/*       taskIds={taskIds} */}
+            {/*       upgrade={upgrade} */}
+            {/*     ></SkillImpactedPopup> */}
+            {/*   ), */}
+            {/* )} */}
           </div>
         </div>
         <div className="flex h-full gap-4">

@@ -24,6 +24,8 @@ import MenuSelect from "@/features/town/menuSelect/components/menuSelect";
 import InventoryMenu from "@/features/town/inventoryMenu/components/inventoryMenu";
 import { GameObject } from "@/types/gameObjects";
 import AgricultureMenu from "@/features/town/agricultureMenu/components/agricultureMenu";
+import { ModifierEngineProvider } from "@/engines/modifierEngineContext";
+import { WorkingEngineProvider } from "@/engines/workingEngineContext";
 
 export default function Page({}) {
   const [selectedMenu, setSelectedMenu] = React.useState<GameObject>(home);
@@ -98,16 +100,20 @@ export default function Page({}) {
 
   return (
     <CharacterEngineProvider>
-      <MenuSelect
-        miscMenus={Object.values(miscMenus).map((menu) => menu.data)}
-        combatMenus={Object.values(combatMenus).map((menu) => menu.data)}
-        skillMenus={Object.values(skillMenus).map((menu) => menu.data)}
-        selectedMenu={selectedMenu}
-        setSelectedMenu={setSelectedMenu}
-      ></MenuSelect>
-      <div className="flex h-full w-full bg-secondaryBackground py-10">
-        {menus[selectedMenu.id].menu}
-      </div>
+      <ModifierEngineProvider>
+        <WorkingEngineProvider>
+          <MenuSelect
+            miscMenus={Object.values(miscMenus).map((menu) => menu.data)}
+            combatMenus={Object.values(combatMenus).map((menu) => menu.data)}
+            skillMenus={Object.values(skillMenus).map((menu) => menu.data)}
+            selectedMenu={selectedMenu}
+            setSelectedMenu={setSelectedMenu}
+          ></MenuSelect>
+          <div className="flex h-full w-full bg-secondaryBackground py-10">
+            {menus[selectedMenu.id].menu}
+          </div>
+        </WorkingEngineProvider>
+      </ModifierEngineProvider>
     </CharacterEngineProvider>
   );
 }

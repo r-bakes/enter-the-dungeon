@@ -51,7 +51,7 @@ export default function TaskComplete({
   return (
     <div className="flex h-full w-full flex-col">
       <div className="flex items-center justify-between gap-2">
-        <div className="flex items-center gap-1">
+        <div className="flex items-center gap-2">
           {renderIcon(task.icon, 24, {
             ...task.iconStyle,
           })}
