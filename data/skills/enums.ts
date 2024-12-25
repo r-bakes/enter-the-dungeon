@@ -1,35 +1,35 @@
 export enum ProspectingTaskCategories {
-  MINE = "mine",
-  CRAFTING = "crafting",
+  MINE = "MINE",
+  CRAFTING = "CRAFTING",
 }
 export enum SmithingTaskCategories {
-  SMELTING = "smelting",
-  BRONZE_SMITHING = "bronze smithing",
-  IRON_SMITHING = "iron smithing",
-  STEEL_SMITHING = "steel smithing",
-  MITHRIL_SMITHING = "mithril smithing",
-  ADAMANT_SMITHING = "adamant smithing",
+  SMELTING = "SMELTING",
+  BRONZE_SMITHING = "BRONZE_SMITHING",
+  IRON_SMITHING = "IRON_SMITHING",
+  STEEL_SMITHING = "STEEL_SMITHING",
+  MITHRIL_SMITHING = "MITHRIL_SMITHING",
+  ADAMANT_SMITHING = "ADAMANT_SMITHING",
 }
 export enum AthleticsTaskCategories {
-  CALISTHETICS = "calisthetics",
+  CALISTHETICS = "CALISTHETICS",
 }
 export enum CraftingTaskCategories {
-  NECKLACES = "necklaces",
+  NECKLACES = "NECKLACES",
 }
 export enum EnchantingTaskCategories {}
 export enum AlchemyTaskCategories {
-  REAGENTS = "reagents",
-  POTIONS = "potions",
-  FLASKS = "flasks",
+  REAGENTS = "REAGENTS",
+  POTIONS = "POTIONS",
+  FLASKS = "FLASKS",
 }
 export enum StealthTaskCategories {
-  THIEVING = "thieving",
-  HEISTS = "heists",
+  THIEVING = "THIEVING",
+  HEISTS = "HEISTS",
 }
 
 export enum AgricultureTaskCategories {
-  BOTANY = "botany",
-  RANCHING = "ranching",
+  BOTANY = "BOTANY",
+  RANCHING = "RANCHING",
 }
 
 export enum SkillId {

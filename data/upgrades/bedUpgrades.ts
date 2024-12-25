@@ -1,7 +1,7 @@
 // src/data/upgrades/bedUpgrades.ts
 import { TASK_AND_ITEM_ICON_STYLE } from "@/configurations/configurations";
 import { HomeRooms } from "@/data/menus/enums";
-import { SkillModifierType } from "@/data/modifiers/enums";
+import { ModifierType } from "@/data/modifiers/enums";
 import { skillTable } from "@/data/skills/skills";
 import { Upgrade } from "@/types/upgrades";
 import { Bed } from "lucide-react";
@@ -51,7 +51,7 @@ export const bedUpgrades: { [id in UpgradeId]?: Upgrade } = {
     modifier: {
       targets: GLOBAL_MODIFIER,
       values: {
-        [SkillModifierType.EXPERIENCE]: 1,
+        [ModifierType.EXPERIENCE]: 1,
       },
     },
     requiresItems: { [ItemId.GOLD]: 0 },
@@ -73,7 +73,7 @@ export const bedUpgrades: { [id in UpgradeId]?: Upgrade } = {
     modifier: {
       targets: GLOBAL_MODIFIER,
       values: {
-        [SkillModifierType.EXPERIENCE]: 2,
+        [ModifierType.EXPERIENCE]: 2,
       },
     },
     requiresItems: { [ItemId.GOLD]: 1000 },
@@ -95,7 +95,7 @@ export const bedUpgrades: { [id in UpgradeId]?: Upgrade } = {
     modifier: {
       targets: GLOBAL_MODIFIER,
       values: {
-        [SkillModifierType.EXPERIENCE]: 3,
+        [ModifierType.EXPERIENCE]: 3,
       },
     },
     requiresItems: { [ItemId.GOLD]: 100000 },
@@ -117,7 +117,7 @@ export const bedUpgrades: { [id in UpgradeId]?: Upgrade } = {
     modifier: {
       targets: GLOBAL_MODIFIER,
       values: {
-        [SkillModifierType.EXPERIENCE]: 4,
+        [ModifierType.EXPERIENCE]: 4,
       },
     },
     requiresItems: { [ItemId.GOLD]: 1000000 },
@@ -139,7 +139,7 @@ export const bedUpgrades: { [id in UpgradeId]?: Upgrade } = {
     modifier: {
       targets: GLOBAL_MODIFIER,
       values: {
-        [SkillModifierType.EXPERIENCE]: 5,
+        [ModifierType.EXPERIENCE]: 5,
       },
     },
     requiresItems: { [ItemId.GOLD]: 10000000 },

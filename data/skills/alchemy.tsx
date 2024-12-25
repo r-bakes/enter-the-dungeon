@@ -1,5 +1,5 @@
 import { SKILL_AND_MENU_ICON_STYLE } from "@/configurations/configurations";
-import { SkillModifierType } from "@/data/modifiers/enums";
+import { ModifierType } from "@/data/modifiers/enums";
 import { AlchemyTaskCategories, SkillId } from "@/data/skills/enums";
 import { Droplet } from "lucide-react";
 import { TaskId } from "../tasks/enum";
@@ -7,10 +7,10 @@ import { Task } from "@/types/tasks";
 import { Skill } from "@/types/skills";
 
 const alchemyCommonModifiers = new Set([
-  SkillModifierType.SPEED,
-  SkillModifierType.EXPERIENCE,
-  SkillModifierType.DOUBLE_CHANCE,
-  SkillModifierType.PRODUCTION_MULTIPLIER,
+  ModifierType.SPEED,
+  ModifierType.EXPERIENCE,
+  ModifierType.DOUBLE_CHANCE,
+  ModifierType.PRODUCTION_MULTIPLIER,
 ]);
 
 const alchemyTasks: { [id in TaskId]?: Task } = {};

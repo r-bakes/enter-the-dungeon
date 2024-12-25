@@ -15,19 +15,19 @@ export const useModifierActions = () => {
       Object.values(TaskId).map((id) => [id, {}]),
     ) as Modifiers;
 
-    for (let id in TaskId) {
-      let task = taskTable[id as TaskId];
+    for (let id of Object.values(TaskId)) {
+      let task = taskTable[id];
 
-      for (let type in task.applicableModifiers) {
+      for (let type of task.applicableModifiers) {
         if (type === ModifierType.PRODUCTION_MULTIPLIER) {
-          modifiers[id as TaskId][type as ModifierType] = 1;
+          modifiers[id][type as ModifierType] = 1;
         } else {
-          modifiers[id as TaskId][type as ModifierType] = 0;
+          modifiers[id][type as ModifierType] = 0;
         }
       }
     }
 
-    for (let upgradeId in UpgradeId) {
+    for (let upgradeId of Object.values(UpgradeId)) {
       let upgrade = upgradeTable[upgradeId as UpgradeId];
 
       for (let taskId in upgrade.modifier.targets) {

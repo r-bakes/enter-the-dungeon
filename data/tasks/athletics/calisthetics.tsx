@@ -1,5 +1,5 @@
 import { TASK_AND_ITEM_ICON_STYLE } from "@/configurations/configurations";
-import { SkillModifierType } from "@/data/modifiers/enums";
+import { ModifierType } from "@/data/modifiers/enums";
 import { AthleticsTaskCategories } from "@/data/skills/enums";
 import {
   PersonStanding,
@@ -14,8 +14,8 @@ import { Task } from "@/types/tasks";
 import { TaskId } from "../enum";
 
 const agilityCommonModifiers = new Set([
-  SkillModifierType.SPEED,
-  SkillModifierType.EXPERIENCE,
+  ModifierType.SPEED,
+  ModifierType.EXPERIENCE,
 ]);
 
 export const calistheticsTasks: { [id in TaskId]?: Task } = {

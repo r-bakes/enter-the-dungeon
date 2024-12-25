@@ -5,11 +5,11 @@ import { TaskId } from "@/data/tasks/enum";
 const instantiateTaskToSkill = (): { [id in TaskId]: SkillId } => {
   let map = {} as { [id in TaskId]: SkillId };
 
-  for (let skillId in SkillId) {
-    let skill = skillTable[skillId as SkillId];
+  for (let skillId of Object.values(SkillId)) {
+    let skill = skillTable[skillId];
 
-    for (let taskId in skill.tasks) {
-      map[taskId as TaskId] = skillId as SkillId;
+    for (let taskId of Object.keys(skill.tasks)) {
+      map[taskId as TaskId] = skillId;
     }
   }
   return map as { [id in TaskId]: SkillId };

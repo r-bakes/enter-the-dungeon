@@ -1,17 +1,17 @@
 import { RectangleVertical } from "lucide-react";
 
 import { TASK_AND_ITEM_ICON_STYLE } from "@/configurations/configurations";
-import { SkillModifierType } from "@/data/modifiers/enums";
+import { ModifierType } from "@/data/modifiers/enums";
 import { SmithingTaskCategories } from "@/data/skills/enums";
 import { Task } from "@/types/tasks";
 import { TaskId } from "../enum";
 import { ItemId } from "@/data/items/enums";
 import { itemTable } from "@/data/items/items";
-const smithingCommonModifiers = new Set<SkillModifierType>([
-  SkillModifierType.SPEED,
-  SkillModifierType.EXPERIENCE,
-  SkillModifierType.DOUBLE_CHANCE,
-  SkillModifierType.PRODUCTION_MULTIPLIER,
+const smithingCommonModifiers = new Set<ModifierType>([
+  ModifierType.SPEED,
+  ModifierType.EXPERIENCE,
+  ModifierType.DOUBLE_CHANCE,
+  ModifierType.PRODUCTION_MULTIPLIER,
 ]);
 
 export const smeltingTasks: { [id in TaskId]?: Task } = {

@@ -1,17 +1,17 @@
 import { Gem } from "lucide-react";
 
 import { TASK_AND_ITEM_ICON_STYLE } from "@/configurations/configurations";
-import { SkillModifierType } from "@/data/modifiers/enums";
+import { ModifierType } from "@/data/modifiers/enums";
 import { ProspectingTaskCategories } from "@/data/skills/enums";
 import { Task } from "@/types/tasks";
 import { ItemId } from "@/data/items/enums";
 import { TaskId } from "../enum";
 
 const prospectingCommonModifiers = new Set([
-  SkillModifierType.SPEED,
-  SkillModifierType.EXPERIENCE,
-  SkillModifierType.DOUBLE_CHANCE,
-  SkillModifierType.PRODUCTION_MULTIPLIER,
+  ModifierType.SPEED,
+  ModifierType.EXPERIENCE,
+  ModifierType.DOUBLE_CHANCE,
+  ModifierType.PRODUCTION_MULTIPLIER,
 ]);
 
 export const craftingTasks: { [id in TaskId]?: Task } = {

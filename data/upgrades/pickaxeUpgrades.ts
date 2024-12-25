@@ -2,7 +2,7 @@
 
 import { TASK_AND_ITEM_ICON_STYLE } from "@/configurations/configurations";
 import { HomeRooms } from "@/data/menus/enums";
-import { SkillModifierType } from "@/data/modifiers/enums";
+import { ModifierType } from "@/data/modifiers/enums";
 import { ProspectingTaskCategories, SkillId } from "@/data/skills/enums";
 import { Pickaxe } from "lucide-react";
 import { Upgrade } from "@/types/upgrades";
@@ -35,7 +35,7 @@ export const pickaxeUpgrades: { [id in UpgradeId]?: Upgrade } = {
           .map(([taskId, task]) => taskId) as TaskId[],
       },
       values: {
-        [SkillModifierType.SPEED]: 0,
+        [ModifierType.SPEED]: 0,
       },
     },
     requiresItems: { [ItemId.GOLD]: 0 },
@@ -65,7 +65,7 @@ export const pickaxeUpgrades: { [id in UpgradeId]?: Upgrade } = {
           .map(([taskId, task]) => taskId) as TaskId[],
       },
       values: {
-        [SkillModifierType.SPEED]: 2,
+        [ModifierType.SPEED]: 2,
       },
     },
     requiresItems: { [ItemId.GOLD]: 10 },
@@ -95,7 +95,7 @@ export const pickaxeUpgrades: { [id in UpgradeId]?: Upgrade } = {
           .map(([taskId, task]) => taskId as TaskId),
       },
       values: {
-        [SkillModifierType.SPEED]: 4,
+        [ModifierType.SPEED]: 4,
       },
     },
     requiresItems: { [ItemId.GOLD]: 20 },
@@ -125,7 +125,7 @@ export const pickaxeUpgrades: { [id in UpgradeId]?: Upgrade } = {
           .map(([taskId, task]) => taskId as TaskId),
       },
       values: {
-        [SkillModifierType.SPEED]: 6,
+        [ModifierType.SPEED]: 6,
       },
     },
     requiresItems: { [ItemId.GOLD]: 30 },
@@ -155,7 +155,7 @@ export const pickaxeUpgrades: { [id in UpgradeId]?: Upgrade } = {
           .map(([taskId, task]) => taskId as TaskId),
       },
       values: {
-        [SkillModifierType.SPEED]: 8,
+        [ModifierType.SPEED]: 8,
       },
     },
     requiresItems: { [ItemId.GOLD]: 40 },
@@ -185,7 +185,7 @@ export const pickaxeUpgrades: { [id in UpgradeId]?: Upgrade } = {
           .map(([taskId, task]) => taskId as TaskId),
       },
       values: {
-        [SkillModifierType.SPEED]: 10,
+        [ModifierType.SPEED]: 10,
       },
     },
     requiresItems: { [ItemId.GOLD]: 50 },
@@ -215,7 +215,7 @@ export const pickaxeUpgrades: { [id in UpgradeId]?: Upgrade } = {
           .map(([taskId, task]) => taskId as TaskId),
       },
       values: {
-        [SkillModifierType.SPEED]: 12,
+        [ModifierType.SPEED]: 12,
       },
     },
     requiresItems: { [ItemId.GOLD]: 100 },
@@ -245,7 +245,7 @@ export const pickaxeUpgrades: { [id in UpgradeId]?: Upgrade } = {
           .map(([taskId, task]) => taskId as TaskId),
       },
       values: {
-        [SkillModifierType.SPEED]: 14,
+        [ModifierType.SPEED]: 14,
       },
     },
     requiresItems: { [ItemId.GOLD]: 200 },
@@ -275,7 +275,7 @@ export const pickaxeUpgrades: { [id in UpgradeId]?: Upgrade } = {
           .map(([taskId, task]) => taskId as TaskId),
       },
       values: {
-        [SkillModifierType.SPEED]: 16,
+        [ModifierType.SPEED]: 16,
       },
     },
     requiresItems: { [ItemId.GOLD]: 300 },
@@ -305,7 +305,7 @@ export const pickaxeUpgrades: { [id in UpgradeId]?: Upgrade } = {
           .map(([taskId, task]) => taskId as TaskId),
       },
       values: {
-        [SkillModifierType.SPEED]: 18,
+        [ModifierType.SPEED]: 18,
       },
     },
     requiresItems: { [ItemId.GOLD]: 400 },
@@ -335,7 +335,7 @@ export const pickaxeUpgrades: { [id in UpgradeId]?: Upgrade } = {
           .map(([taskId, task]) => taskId as TaskId),
       },
       values: {
-        [SkillModifierType.SPEED]: 20,
+        [ModifierType.SPEED]: 20,
       },
     },
     requiresItems: { [ItemId.GOLD]: 500 },
@@ -365,7 +365,7 @@ export const pickaxeUpgrades: { [id in UpgradeId]?: Upgrade } = {
           .map(([taskId, task]) => taskId as TaskId),
       },
       values: {
-        [SkillModifierType.SPEED]: 22,
+        [ModifierType.SPEED]: 22,
       },
     },
     requiresItems: { [ItemId.GOLD]: 1000 },
@@ -395,7 +395,7 @@ export const pickaxeUpgrades: { [id in UpgradeId]?: Upgrade } = {
           .map(([taskId, task]) => taskId as TaskId),
       },
       values: {
-        [SkillModifierType.SPEED]: 24,
+        [ModifierType.SPEED]: 24,
       },
     },
     requiresItems: { [ItemId.GOLD]: 2000 },
@@ -425,7 +425,7 @@ export const pickaxeUpgrades: { [id in UpgradeId]?: Upgrade } = {
           .map(([taskId, task]) => taskId as TaskId),
       },
       values: {
-        [SkillModifierType.SPEED]: 26,
+        [ModifierType.SPEED]: 26,
       },
     },
     requiresItems: { [ItemId.GOLD]: 3000 },
@@ -455,7 +455,7 @@ export const pickaxeUpgrades: { [id in UpgradeId]?: Upgrade } = {
           .map(([taskId, task]) => taskId as TaskId),
       },
       values: {
-        [SkillModifierType.SPEED]: 28,
+        [ModifierType.SPEED]: 28,
       },
     },
     requiresItems: { [ItemId.GOLD]: 4000 },
@@ -485,7 +485,7 @@ export const pickaxeUpgrades: { [id in UpgradeId]?: Upgrade } = {
           .map(([taskId, task]) => taskId as TaskId),
       },
       values: {
-        [SkillModifierType.SPEED]: 30,
+        [ModifierType.SPEED]: 30,
       },
     },
     requiresItems: { [ItemId.GOLD]: 5000 },
@@ -515,7 +515,7 @@ export const pickaxeUpgrades: { [id in UpgradeId]?: Upgrade } = {
           .map(([taskId, task]) => taskId as TaskId),
       },
       values: {
-        [SkillModifierType.SPEED]: 32,
+        [ModifierType.SPEED]: 32,
       },
     },
     requiresItems: { [ItemId.GOLD]: 10000 },
@@ -545,7 +545,7 @@ export const pickaxeUpgrades: { [id in UpgradeId]?: Upgrade } = {
           .map(([taskId, task]) => taskId as TaskId),
       },
       values: {
-        [SkillModifierType.SPEED]: 34,
+        [ModifierType.SPEED]: 34,
       },
     },
     requiresItems: { [ItemId.GOLD]: 20000 },
@@ -575,7 +575,7 @@ export const pickaxeUpgrades: { [id in UpgradeId]?: Upgrade } = {
           .map(([taskId, task]) => taskId as TaskId),
       },
       values: {
-        [SkillModifierType.SPEED]: 36,
+        [ModifierType.SPEED]: 36,
       },
     },
     requiresItems: { [ItemId.GOLD]: 30000 },
@@ -605,7 +605,7 @@ export const pickaxeUpgrades: { [id in UpgradeId]?: Upgrade } = {
           .map(([taskId, task]) => taskId as TaskId),
       },
       values: {
-        [SkillModifierType.SPEED]: 38,
+        [ModifierType.SPEED]: 38,
       },
     },
     requiresItems: { [ItemId.GOLD]: 40000 },
@@ -635,7 +635,7 @@ export const pickaxeUpgrades: { [id in UpgradeId]?: Upgrade } = {
           .map(([taskId, task]) => taskId as TaskId),
       },
       values: {
-        [SkillModifierType.SPEED]: 40,
+        [ModifierType.SPEED]: 40,
       },
     },
     requiresItems: { [ItemId.GOLD]: 50000 },
@@ -665,7 +665,7 @@ export const pickaxeUpgrades: { [id in UpgradeId]?: Upgrade } = {
           .map(([taskId, task]) => taskId as TaskId),
       },
       values: {
-        [SkillModifierType.SPEED]: 42,
+        [ModifierType.SPEED]: 42,
       },
     },
     requiresItems: { [ItemId.GOLD]: 100000 },
@@ -695,7 +695,7 @@ export const pickaxeUpgrades: { [id in UpgradeId]?: Upgrade } = {
           .map(([taskId, task]) => taskId as TaskId),
       },
       values: {
-        [SkillModifierType.SPEED]: 44,
+        [ModifierType.SPEED]: 44,
       },
     },
     requiresItems: { [ItemId.GOLD]: 200000 },
@@ -725,7 +725,7 @@ export const pickaxeUpgrades: { [id in UpgradeId]?: Upgrade } = {
           .map(([taskId, task]) => taskId as TaskId),
       },
       values: {
-        [SkillModifierType.SPEED]: 46,
+        [ModifierType.SPEED]: 46,
       },
     },
     requiresItems: { [ItemId.GOLD]: 300000 },
@@ -755,7 +755,7 @@ export const pickaxeUpgrades: { [id in UpgradeId]?: Upgrade } = {
           .map(([taskId, task]) => taskId as TaskId),
       },
       values: {
-        [SkillModifierType.SPEED]: 48,
+        [ModifierType.SPEED]: 48,
       },
     },
     requiresItems: { [ItemId.GOLD]: 400000 },
@@ -785,7 +785,7 @@ export const pickaxeUpgrades: { [id in UpgradeId]?: Upgrade } = {
           .map(([taskId, task]) => taskId as TaskId),
       },
       values: {
-        [SkillModifierType.SPEED]: 50,
+        [ModifierType.SPEED]: 50,
       },
     },
     requiresItems: { [ItemId.GOLD]: 500000 },

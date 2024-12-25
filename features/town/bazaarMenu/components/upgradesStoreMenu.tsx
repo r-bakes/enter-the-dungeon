@@ -12,12 +12,12 @@ import { SkillImpactedPopup } from "../../common/components/skillImpactedPopup";
 import { Backpack } from "lucide-react";
 import { Label } from "@/components/ui/label";
 import { Upgrade } from "@/types/upgrades";
-import { Character } from "@/types/character";
-import { SkillModifierTable } from "@/types/modifiers";
 import { ItemId } from "@/data/items/enums";
 import { SkillId } from "@/data/skills/enums";
 import { formatModifiers } from "../../modifiers/utils/modifier";
 import useInventoryActions from "@/features/common/inventory/hooks/useInventoryActions";
+import useUpgradeActions from "../../upgrades/hooks/useUpgradeActions";
+import { useModifierActions } from "../../modifiers/hooks/useModifierActions";
 
 export default function UpgradesStoreMenu({
   upgrades,
@@ -25,37 +25,28 @@ export default function UpgradesStoreMenu({
   upgrades: Upgrade[];
 }>) {
   const { character, setCharacter } = useCharacterEngineContext();
+  const { addUpgrade } = useUpgradeActions();
+  const { modifiers } = useModifierActions();
   const { removeItem } = useInventoryActions();
 
-  const buy = (
-    upgrade: Upgrade,
-    modifierTable: SkillModifierTable,
-    character: Character,
-  ): void => {
+  const buy = (upgrade: Upgrade): void => {
     Object.entries(upgrade.requiresItems).forEach(([itemId, amount]) =>
       removeItem(itemId as ItemId, amount),
     );
 
-    addUpgrade(upgrade, modifierTable, character);
-
-    setCharacter({ ...character });
-    setModifierTable({ ...modifierTable });
+    addUpgrade(upgrade.id);
   };
 
-  const canPurchase = (upgrade: Upgrade, character: Character): boolean => {
+  const canPurchase = (upgrade: Upgrade): boolean => {
     for (const [itemId, amount] of Object.entries(upgrade.requiresItems)) {
-      if (!haveEnough(itemId as ItemId, amount, character)) {
+      if (!haveEnough(itemId as ItemId, amount)) {
         return false;
       }
     }
     return true;
   };
 
-  const haveEnough = (
-    itemId: ItemId,
-    amount: number,
-    character: Character,
-  ): boolean => {
+  const haveEnough = (itemId: ItemId, amount: number): boolean => {
     return character.inventory[itemId] >= amount;
   };
 
@@ -77,16 +68,16 @@ export default function UpgradesStoreMenu({
               </div>
             </div>
             <div className="mx-6 flex h-full max-w-[500px] gap-2 overflow-x-scroll py-2">
-              {Object.entries(upgrade.modifier.targets).map(
-                ([skillId, taskIds]) => (
-                  <SkillImpactedPopup
-                    key={skillId}
-                    skill={skillTable[skillId as SkillId]}
-                    taskIds={taskIds}
-                    upgrade={upgrade}
-                  ></SkillImpactedPopup>
-                ),
-              )}
+              {/* {upgrade.modifier.targets.map( */}
+              {/*   (taskIds) => ( */}
+              {/*     <SkillImpactedPopup */}
+              {/*       key={skillId} */}
+              {/*       skill={skillTable[skillId as SkillId]} */}
+              {/*       taskIds={taskIds} */}
+              {/*       upgrade={upgrade} */}
+              {/*     ></SkillImpactedPopup> */}
+              {/*   ), */}
+              {/* )} */}
             </div>
             <div className="flex h-full px-6">
               {Object.entries(upgrade.modifier.values).map(([type, value]) => (
@@ -106,11 +97,7 @@ export default function UpgradesStoreMenu({
               {Object.entries(upgrade.requiresItems).map(
                 ([itemId, quantity]) => {
                   let item = itemTable[itemId as ItemId];
-                  let cardFormat = haveEnough(
-                    itemId as ItemId,
-                    quantity,
-                    character,
-                  )
+                  let cardFormat = haveEnough(itemId as ItemId, quantity)
                     ? ""
                     : "border-red-300";
                   return (
@@ -148,8 +135,8 @@ export default function UpgradesStoreMenu({
               )}
             </div>
             <Button
-              onClick={() => buy(upgrade, modifierTable, character)}
-              disabled={!canPurchase(upgrade, character)}
+              onClick={() => buy(upgrade)}
+              disabled={!canPurchase(upgrade)}
             >
               Buy
             </Button>

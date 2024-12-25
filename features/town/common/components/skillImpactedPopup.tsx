@@ -7,7 +7,6 @@ import {
   PopoverTrigger,
 } from "@/components/ui/popover";
 import { TaskId } from "@/data/tasks/enum";
-import { tasksTable } from "@/data/tasks/tasks";
 import { Skill } from "@/types/skills";
 import { Upgrade } from "@/types/upgrades";
 import {
@@ -15,6 +14,7 @@ import {
   renderIcon,
 } from "@/features/common/utils/formattingUtilities";
 import { formatModifiers } from "../../modifiers/utils/modifier";
+import { taskTable } from "@/data/tasks/tasks";
 
 export function SkillImpactedPopup({
   skill,
@@ -22,7 +22,7 @@ export function SkillImpactedPopup({
   upgrade,
 }: Readonly<{
   skill: Skill;
-  taskIds: string[];
+  taskIds: TaskId[];
   upgrade: Upgrade;
 }>) {
   return (
@@ -74,7 +74,7 @@ export function SkillImpactedPopup({
             <div className="flex flex-col gap-1 overflow-y-scroll">
               {taskIds.length < Object.keys(skill.tasks).length ? (
                 taskIds.map((taskId) => {
-                  let task = tasksTable[taskId as TaskId];
+                  let task = taskTable[taskId as TaskId];
                   return (
                     <Card
                       key={taskId}

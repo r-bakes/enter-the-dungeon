@@ -1,7 +1,7 @@
 import { TASK_AND_ITEM_ICON_STYLE } from "@/configurations/configurations";
 import { Anvil, Bird, Heater } from "lucide-react";
 import { smithing } from "../skills/smithing";
-import { SkillModifierType } from "../modifiers/enums";
+import { ModifierType } from "../modifiers/enums";
 import { HomeRooms } from "../menus/enums";
 import { prospecting } from "../skills/prospecting";
 import { Upgrade } from "@/types/upgrades";
@@ -29,10 +29,10 @@ export const miscUpgrades: { [id in UpgradeId]?: Upgrade } = {
         [SkillId.SMITHING]: Object.keys(smithing.tasks) as TaskId[],
       },
       values: {
-        [SkillModifierType.SPEED]: 0,
-        [SkillModifierType.DOUBLE_CHANCE]: 0,
-        [SkillModifierType.PRODUCTION_MULTIPLIER]: 0,
-        [SkillModifierType.EXPERIENCE]: 0,
+        [ModifierType.SPEED]: 0,
+        [ModifierType.DOUBLE_CHANCE]: 0,
+        [ModifierType.PRODUCTION_MULTIPLIER]: 0,
+        [ModifierType.EXPERIENCE]: 0,
       },
     },
     requiresItems: { [ItemId.GOLD]: 0 },
@@ -56,8 +56,8 @@ export const miscUpgrades: { [id in UpgradeId]?: Upgrade } = {
         [SkillId.SMITHING]: Object.keys(smithing.tasks) as TaskId[],
       },
       values: {
-        [SkillModifierType.SPEED]: 0,
-        [SkillModifierType.DOUBLE_CHANCE]: 0,
+        [ModifierType.SPEED]: 0,
+        [ModifierType.DOUBLE_CHANCE]: 0,
       },
     },
     requiresItems: { [ItemId.GOLD]: 0 },
@@ -81,8 +81,8 @@ export const miscUpgrades: { [id in UpgradeId]?: Upgrade } = {
         [SkillId.PROSPECTING]: [taskTable.MINE_COAL.id],
       },
       values: {
-        [SkillModifierType.SPEED]: 10,
-        [SkillModifierType.PRODUCTION_MULTIPLIER]: 1,
+        [ModifierType.SPEED]: 10,
+        [ModifierType.PRODUCTION_MULTIPLIER]: 1,
       },
     },
     requiresItems: { [ItemId.GOLD]: 1000000 },

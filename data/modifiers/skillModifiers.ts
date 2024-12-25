@@ -1,23 +1,27 @@
-import { Copy, Gauge, Sparkle, SquareStack } from "lucide-react";
-import { SkillModifierType } from "./enums";
-import { SkillModifierIconsType } from "@/types/modifiers";
+import { Copy, Eye, Gauge, Sparkle, SquareStack } from "lucide-react";
 import { TASK_AND_ITEM_ICON_STYLE } from "@/configurations/configurations";
+import { ModifierType } from "./enums";
+import { ModifierIconsType } from "@/types/modifiers";
 
-export const SkillModifierIcons: SkillModifierIconsType = {
-  [SkillModifierType.SPEED]: {
+export const ModifierIcons: ModifierIconsType = {
+  [ModifierType.SPEED]: {
     icon: Gauge,
     iconStyle: { fill: "none", ...TASK_AND_ITEM_ICON_STYLE },
   },
-  [SkillModifierType.DOUBLE_CHANCE]: {
+  [ModifierType.DOUBLE_CHANCE]: {
     icon: Copy,
     iconStyle: { fill: "none", ...TASK_AND_ITEM_ICON_STYLE },
   },
-  [SkillModifierType.PRODUCTION_MULTIPLIER]: {
+  [ModifierType.PRODUCTION_MULTIPLIER]: {
     icon: SquareStack,
     iconStyle: { fill: "none", ...TASK_AND_ITEM_ICON_STYLE },
   },
-  [SkillModifierType.EXPERIENCE]: {
+  [ModifierType.EXPERIENCE]: {
     icon: Sparkle,
+    iconStyle: { fill: "none", ...TASK_AND_ITEM_ICON_STYLE },
+  },
+  [ModifierType.DETECTION]: {
+    icon: Eye,
     iconStyle: { fill: "none", ...TASK_AND_ITEM_ICON_STYLE },
   },
 };
