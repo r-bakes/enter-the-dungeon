@@ -17,7 +17,7 @@ const smithingCommonModifiers = new Set<ModifierType>([
 export const smeltingTasks: { [id in TaskId]?: Task } = {
   [TaskId.SMELT_BRONZE_BAR]: {
     id: TaskId.SMELT_BRONZE_BAR,
-    name: "Bronze Bar",
+    name: "Smelt Bronze Bar",
     description: "Smelt a bronze bar.",
     icon: RectangleVertical,
     iconStyle: {
@@ -38,7 +38,7 @@ export const smeltingTasks: { [id in TaskId]?: Task } = {
   },
   [TaskId.SMELT_IRON_BAR]: {
     id: TaskId.SMELT_IRON_BAR,
-    name: "Iron Bar",
+    name: "Smelt Iron Bar",
     description: "Smelt an iron bar.",
     icon: RectangleVertical,
     iconStyle: {
@@ -57,7 +57,7 @@ export const smeltingTasks: { [id in TaskId]?: Task } = {
   },
   [TaskId.SMELT_STEEL_BAR]: {
     id: TaskId.SMELT_STEEL_BAR,
-    name: "Steel Bar",
+    name: "Smelt Steel Bar",
     description: "Smelt a steel bar.",
     icon: RectangleVertical,
     iconStyle: {
@@ -78,7 +78,7 @@ export const smeltingTasks: { [id in TaskId]?: Task } = {
   },
   [TaskId.SMELT_SILVER_BAR]: {
     id: TaskId.SMELT_SILVER_BAR,
-    name: "Silver Bar",
+    name: "Smelt Silver Bar",
     description: "Smelt a silver bar.",
     icon: RectangleVertical,
     iconStyle: {
@@ -99,7 +99,7 @@ export const smeltingTasks: { [id in TaskId]?: Task } = {
   },
   [TaskId.SMELT_GOLD_BAR]: {
     id: TaskId.SMELT_GOLD_BAR,
-    name: "Gold Bar",
+    name: "Smelt Gold Bar",
     description: "Smelt a gold bar.",
     icon: RectangleVertical,
     iconStyle: {
@@ -118,7 +118,7 @@ export const smeltingTasks: { [id in TaskId]?: Task } = {
   },
   [TaskId.SMELT_MITHRIL_BAR]: {
     id: TaskId.SMELT_MITHRIL_BAR,
-    name: "Mithril Bar",
+    name: "Smelt Mithril Bar",
     description: "Smelt a mithril bar.",
     icon: RectangleVertical,
     iconStyle: {
@@ -139,7 +139,7 @@ export const smeltingTasks: { [id in TaskId]?: Task } = {
   },
   [TaskId.SMELT_PLATINUM_BAR]: {
     id: TaskId.SMELT_PLATINUM_BAR,
-    name: "Platinum Bar",
+    name: "Smelt Platinum Bar",
     description: "Smelt a platinum bar.",
     icon: RectangleVertical,
     iconStyle: {
@@ -160,7 +160,7 @@ export const smeltingTasks: { [id in TaskId]?: Task } = {
   },
   [TaskId.SMELT_ADAMANT_BAR]: {
     id: TaskId.SMELT_ADAMANT_BAR,
-    name: "Adamant Bar",
+    name: "Smelt Adamant Bar",
     description: "Smelt an adamant bar.",
     icon: RectangleVertical,
     iconStyle: {

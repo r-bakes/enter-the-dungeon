@@ -1,38 +1,38 @@
 import { ScrollArea } from "@radix-ui/react-scroll-area";
 import { useCharacterEngineContext } from "@/engines/characterEngineContext";
-import { martial } from "@/data/skills/martial";
-import { magic } from "@/data/skills/magic";
-import { GameObject } from "@/types/gameObjects";
 import MenuButton from "@/features/town/menuSelect/components/menuButton";
+import { MenuId } from "@/data/menus/enums";
+import { menuTable } from "@/data/menus/menus";
+import { SkillId } from "@/data/skills/enums";
+import { useMenuEngineContext } from "@/engines/menuEngineContext";
 
 export default function MenuContainer({
   menuItems,
-  selectedMenu,
-  setSelectedMenu,
 }: Readonly<{
-  menuItems: Array<GameObject>;
-  selectedMenu: GameObject;
-  setSelectedMenu: React.Dispatch<React.SetStateAction<GameObject>>;
+  menuItems: Array<MenuId>;
 }>) {
   const { character } = useCharacterEngineContext();
+  const { selectedMenu, setSelectedMenu } = useMenuEngineContext();
+
   return (
     <ScrollArea className="flex w-full flex-col">
-      {menuItems.map((item) => {
+      {menuItems.map((menuId) => {
+        let menu = menuTable[menuId];
         let level =
-          item.id in character.skills
-            ? character.skills[item.id].level
+          menuId in SkillId
+            ? character.skills[menuId as SkillId].level
             : undefined;
         return (
           <MenuButton
             level={level}
-            menu={item}
+            menu={menu.data}
             isSelected={
-              item.name === selectedMenu.name ||
-              ([martial.name, magic.name].includes(selectedMenu.name) &&
-                [martial.name, magic.name].includes(item.name))
+              menuId === selectedMenu ||
+              ([MenuId.MARTIAL, MenuId.MAGIC].includes(selectedMenu) &&
+                [MenuId.MARTIAL, MenuId.MAGIC].includes(menuId))
             }
-            key={item.id}
-            onClick={() => setSelectedMenu(item)}
+            key={menuId}
+            onClick={() => setSelectedMenu(menuId)}
           ></MenuButton>
         );
       })}

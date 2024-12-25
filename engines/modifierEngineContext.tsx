@@ -1,11 +1,4 @@
-import React, {
-  createContext,
-  useContext,
-  useState,
-  ReactNode,
-  useEffect,
-  useCallback,
-} from "react";
+import React, { createContext, useContext, useState, ReactNode } from "react";
 import { ModifierType } from "@/data/modifiers/enums";
 import { TaskId } from "@/data/tasks/enum";
 import { taskTable } from "@/data/tasks/tasks";
@@ -13,8 +6,6 @@ import { UpgradeId } from "@/data/upgrades/enums";
 import { upgradeTable } from "@/data/upgrades/upgrades";
 import { useCharacterEngineContext } from "@/engines/characterEngineContext";
 import { Modifiers } from "@/types/modifiers";
-import { Loot } from "@/types/loot";
-import { ItemId } from "@/data/items/enums";
 
 type ModifierEngineContextProps = {
   modifiers: Modifiers;
@@ -59,7 +50,6 @@ export const ModifierEngineProvider = ({
       }
     }
 
-    console.log("action modifiers initialized:", JSON.stringify(modifiers));
     return modifiers;
   };
 

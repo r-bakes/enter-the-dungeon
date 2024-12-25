@@ -12,6 +12,9 @@ import { Item } from "@/types/items";
 import { Separator } from "@/components/ui/separator";
 import { Task } from "@/types/tasks";
 import { ItemId } from "@/data/items/enums";
+import { useMenuEngineContext } from "@/engines/menuEngineContext";
+import { taskToSkill } from "@/features/common/working/utils/workingUtils";
+import { MenuId } from "@/data/menus/enums";
 
 export default function TaskComplete({
   task,
@@ -24,6 +27,8 @@ export default function TaskComplete({
   experience: number;
   character: Character;
 }>) {
+  const { setSelectedMenu } = useMenuEngineContext();
+
   const itemCard = (item: Item, amount: number) => {
     return (
       <Card key={item.id} className="flex w-full items-center gap-2 p-1">
@@ -49,7 +54,10 @@ export default function TaskComplete({
   };
 
   return (
-    <div className="flex h-full w-full flex-col">
+    <div
+      className="flex h-full w-full flex-col"
+      onClick={() => setSelectedMenu(taskToSkill[task.id] as MenuId)}
+    >
       <div className="flex items-center justify-between gap-2">
         <div className="flex items-center gap-2">
           {renderIcon(task.icon, 24, {

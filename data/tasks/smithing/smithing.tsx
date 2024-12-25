@@ -28,7 +28,7 @@ export const smithingTasks: { [id in TaskId]?: Task } = {
   // Bronze Tasks
   [TaskId.SMITH_BRONZE_DAGGER]: {
     id: TaskId.SMITH_BRONZE_DAGGER,
-    name: "Dagger",
+    name: "Smith Dagger",
     description: "Smith a bronze dagger.",
     icon: Slice,
     iconStyle: {
@@ -49,7 +49,7 @@ export const smithingTasks: { [id in TaskId]?: Task } = {
   },
   [TaskId.SMITH_BRONZE_SWORD]: {
     id: TaskId.SMITH_BRONZE_SWORD,
-    name: "Sword",
+    name: "Smith Sword",
     description: "Smith a bronze sword.",
     icon: Sword,
     iconStyle: {
@@ -70,7 +70,7 @@ export const smithingTasks: { [id in TaskId]?: Task } = {
   },
   [TaskId.SMITH_BRONZE_SHIELD]: {
     id: TaskId.SMITH_BRONZE_SHIELD,
-    name: "Shield",
+    name: "Smith Shield",
     description: "Smith a bronze shield.",
     icon: Shield,
     iconStyle: {
@@ -91,7 +91,7 @@ export const smithingTasks: { [id in TaskId]?: Task } = {
   },
   [TaskId.SMITH_BRONZE_GREATSWORD]: {
     id: TaskId.SMITH_BRONZE_GREATSWORD,
-    name: "Great Sword",
+    name: "Smith Great Sword",
     description: "Smith a bronze great sword.",
     icon: Sword,
     iconStyle: {
@@ -116,7 +116,7 @@ export const smithingTasks: { [id in TaskId]?: Task } = {
   },
   [TaskId.SMITH_BRONZE_HELMET]: {
     id: TaskId.SMITH_BRONZE_HELMET,
-    name: "Helmet",
+    name: "Smith Helmet",
     description: "Smith a bronze helmet.",
     icon: HardHat,
     iconStyle: {
@@ -137,7 +137,7 @@ export const smithingTasks: { [id in TaskId]?: Task } = {
   },
   [TaskId.SMITH_BRONZE_CHESTPLATE]: {
     id: TaskId.SMITH_BRONZE_CHESTPLATE,
-    name: "Chestplate",
+    name: "Smith Chestplate",
     description: "Smith a bronze chestplate.",
     icon: Shirt,
     iconStyle: {
@@ -162,7 +162,7 @@ export const smithingTasks: { [id in TaskId]?: Task } = {
   },
   [TaskId.SMITH_BRONZE_BELT]: {
     id: TaskId.SMITH_BRONZE_BELT,
-    name: "Belt",
+    name: "Smith Belt",
     description: "Smith a bronze belt.",
     icon: Tangent,
     iconStyle: {
@@ -183,7 +183,7 @@ export const smithingTasks: { [id in TaskId]?: Task } = {
   },
   [TaskId.SMITH_BRONZE_PLATELEGGINGS]: {
     id: TaskId.SMITH_BRONZE_PLATELEGGINGS,
-    name: "Plate Leggings",
+    name: "Smith Plate Leggings",
     description: "Smith bronze plate leggings.",
     icon: ToyBrick,
     iconStyle: {
@@ -208,7 +208,7 @@ export const smithingTasks: { [id in TaskId]?: Task } = {
   },
   [TaskId.SMITH_BRONZE_GAUNTLETS]: {
     id: TaskId.SMITH_BRONZE_GAUNTLETS,
-    name: "Gauntlets",
+    name: "Smith Gauntlets",
     description: "Smith bronze gauntlets.",
     icon: Hand,
     iconStyle: {
@@ -235,7 +235,7 @@ export const smithingTasks: { [id in TaskId]?: Task } = {
   // Iron Tasks
   [TaskId.SMITH_IRON_DAGGER]: {
     id: TaskId.SMITH_IRON_DAGGER,
-    name: "Dagger",
+    name: "Smith Dagger",
     description: "Smith an iron dagger.",
     icon: Slice,
     iconStyle: {
@@ -256,7 +256,7 @@ export const smithingTasks: { [id in TaskId]?: Task } = {
   },
   [TaskId.SMITH_IRON_SWORD]: {
     id: TaskId.SMITH_IRON_SWORD,
-    name: "Sword",
+    name: "Smith Sword",
     description: "Smith an iron sword.",
     icon: Sword,
     iconStyle: {
@@ -277,7 +277,7 @@ export const smithingTasks: { [id in TaskId]?: Task } = {
   },
   [TaskId.SMITH_IRON_SHIELD]: {
     id: TaskId.SMITH_IRON_SHIELD,
-    name: "Shield",
+    name: "Smith Shield",
     description: "Smith an iron shield.",
     icon: Shield,
     iconStyle: {
@@ -298,7 +298,7 @@ export const smithingTasks: { [id in TaskId]?: Task } = {
   },
   [TaskId.SMITH_IRON_GREATSWORD]: {
     id: TaskId.SMITH_IRON_GREATSWORD,
-    name: "Great Sword",
+    name: "Smith Great Sword",
     description: "Smith an iron great sword.",
     icon: Sword,
     iconStyle: {
@@ -323,7 +323,7 @@ export const smithingTasks: { [id in TaskId]?: Task } = {
   },
   [TaskId.SMITH_IRON_HELMET]: {
     id: TaskId.SMITH_IRON_HELMET,
-    name: "Helmet",
+    name: "Smith Helmet",
     description: "Smith an iron helmet.",
     icon: HardHat,
     iconStyle: {
@@ -344,7 +344,7 @@ export const smithingTasks: { [id in TaskId]?: Task } = {
   },
   [TaskId.SMITH_IRON_CHESTPLATE]: {
     id: TaskId.SMITH_IRON_CHESTPLATE,
-    name: "Chestplate",
+    name: "Smith Chestplate",
     description: "Smith an iron chestplate.",
     icon: Shirt,
     iconStyle: {
@@ -365,7 +365,7 @@ export const smithingTasks: { [id in TaskId]?: Task } = {
   },
   [TaskId.SMITH_IRON_BELT]: {
     id: TaskId.SMITH_IRON_BELT,
-    name: "Belt",
+    name: "Smith Belt",
     description: "Smith an iron belt.",
     icon: Tangent,
     iconStyle: {
@@ -386,7 +386,7 @@ export const smithingTasks: { [id in TaskId]?: Task } = {
   },
   [TaskId.SMITH_IRON_PLATELEGGINGS]: {
     id: TaskId.SMITH_IRON_PLATELEGGINGS,
-    name: "Plate Leggings",
+    name: "Smith Plate Leggings",
     description: "Smith iron plate leggings.",
     icon: ToyBrick,
     iconStyle: {
@@ -411,7 +411,7 @@ export const smithingTasks: { [id in TaskId]?: Task } = {
   },
   [TaskId.SMITH_IRON_GAUNTLETS]: {
     id: TaskId.SMITH_IRON_GAUNTLETS,
-    name: "Gauntlets",
+    name: "Smith Gauntlets",
     description: "Smith iron gauntlets.",
     icon: Hand,
     iconStyle: {
@@ -434,7 +434,7 @@ export const smithingTasks: { [id in TaskId]?: Task } = {
   // Steel Tasks
   [TaskId.SMITH_STEEL_DAGGER]: {
     id: TaskId.SMITH_STEEL_DAGGER,
-    name: "Dagger",
+    name: "Smith Dagger",
     description: "Smith a steel dagger.",
     icon: Slice,
     iconStyle: {
@@ -455,7 +455,7 @@ export const smithingTasks: { [id in TaskId]?: Task } = {
   },
   [TaskId.SMITH_STEEL_SWORD]: {
     id: TaskId.SMITH_STEEL_SWORD,
-    name: "Sword",
+    name: "Smith Sword",
     description: "Smith a steel sword.",
     icon: Sword,
     iconStyle: {
@@ -476,7 +476,7 @@ export const smithingTasks: { [id in TaskId]?: Task } = {
   },
   [TaskId.SMITH_STEEL_SHIELD]: {
     id: TaskId.SMITH_STEEL_SHIELD,
-    name: "Shield",
+    name: "Smith Shield",
     description: "Smith a steel shield.",
     icon: Shield,
     iconStyle: {
@@ -497,7 +497,7 @@ export const smithingTasks: { [id in TaskId]?: Task } = {
   },
   [TaskId.SMITH_STEEL_GREATSWORD]: {
     id: TaskId.SMITH_STEEL_GREATSWORD,
-    name: "Great Sword",
+    name: "Smith Great Sword",
     description: "Smith a steel great sword.",
     icon: Sword,
     iconStyle: {
@@ -522,7 +522,7 @@ export const smithingTasks: { [id in TaskId]?: Task } = {
   },
   [TaskId.SMITH_STEEL_HELMET]: {
     id: TaskId.SMITH_STEEL_HELMET,
-    name: "Helmet",
+    name: "Smith Helmet",
     description: "Smith a steel helmet.",
     icon: HardHat,
     iconStyle: {
@@ -543,7 +543,7 @@ export const smithingTasks: { [id in TaskId]?: Task } = {
   },
   [TaskId.SMITH_STEEL_CHESTPLATE]: {
     id: TaskId.SMITH_STEEL_CHESTPLATE,
-    name: "Chestplate",
+    name: "Smith Chestplate",
     description: "Smith a steel chestplate.",
     icon: Shirt,
     iconStyle: {
@@ -568,7 +568,7 @@ export const smithingTasks: { [id in TaskId]?: Task } = {
   },
   [TaskId.SMITH_STEEL_BELT]: {
     id: TaskId.SMITH_STEEL_BELT,
-    name: "Belt",
+    name: "Smith Belt",
     description: "Smith a steel belt.",
     icon: Tangent,
     iconStyle: {
@@ -589,7 +589,7 @@ export const smithingTasks: { [id in TaskId]?: Task } = {
   },
   [TaskId.SMITH_STEEL_PLATELEGGINGS]: {
     id: TaskId.SMITH_STEEL_PLATELEGGINGS,
-    name: "Plate Leggings",
+    name: "Smith Plate Leggings",
     description: "Smith steel plate leggings.",
     icon: ToyBrick,
     iconStyle: {
@@ -614,7 +614,7 @@ export const smithingTasks: { [id in TaskId]?: Task } = {
   },
   [TaskId.SMITH_STEEL_GAUNTLETS]: {
     id: TaskId.SMITH_STEEL_GAUNTLETS,
-    name: "Gauntlets",
+    name: "Smith Gauntlets",
     description: "Smith steel gauntlets.",
     icon: Hand,
     iconStyle: {
@@ -637,7 +637,7 @@ export const smithingTasks: { [id in TaskId]?: Task } = {
   // Mithril Tasks
   [TaskId.SMITH_MITHRIL_DAGGER]: {
     id: TaskId.SMITH_MITHRIL_DAGGER,
-    name: "Dagger",
+    name: "Smith Dagger",
     description: "Smith a mithril dagger.",
     icon: Slice,
     iconStyle: {
@@ -658,7 +658,7 @@ export const smithingTasks: { [id in TaskId]?: Task } = {
   },
   [TaskId.SMITH_MITHRIL_SWORD]: {
     id: TaskId.SMITH_MITHRIL_SWORD,
-    name: "Sword",
+    name: "Smith Sword",
     description: "Smith a mithril sword.",
     icon: Sword,
     iconStyle: {
@@ -679,7 +679,7 @@ export const smithingTasks: { [id in TaskId]?: Task } = {
   },
   [TaskId.SMITH_MITHRIL_SHIELD]: {
     id: TaskId.SMITH_MITHRIL_SHIELD,
-    name: "Shield",
+    name: "Smith Shield",
     description: "Smith a mithril shield.",
     icon: Shield,
     iconStyle: {
@@ -700,7 +700,7 @@ export const smithingTasks: { [id in TaskId]?: Task } = {
   },
   [TaskId.SMITH_MITHRIL_GREATSWORD]: {
     id: TaskId.SMITH_MITHRIL_GREATSWORD,
-    name: "Great Sword",
+    name: "Smith Great Sword",
     description: "Smith a mithril great sword.",
     icon: Sword,
     iconStyle: {
@@ -725,7 +725,7 @@ export const smithingTasks: { [id in TaskId]?: Task } = {
   },
   [TaskId.SMITH_MITHRIL_HELMET]: {
     id: TaskId.SMITH_MITHRIL_HELMET,
-    name: "Helmet",
+    name: "Smith Helmet",
     description: "Smith a mithril helmet.",
     icon: HardHat,
     iconStyle: {
@@ -746,7 +746,7 @@ export const smithingTasks: { [id in TaskId]?: Task } = {
   },
   [TaskId.SMITH_MITHRIL_CHESTPLATE]: {
     id: TaskId.SMITH_MITHRIL_CHESTPLATE,
-    name: "Chestplate",
+    name: "Smith Chestplate",
     description: "Smith a mithril chestplate.",
     icon: Shirt,
     iconStyle: {
@@ -771,7 +771,7 @@ export const smithingTasks: { [id in TaskId]?: Task } = {
   },
   [TaskId.SMITH_MITHRIL_BELT]: {
     id: TaskId.SMITH_MITHRIL_BELT,
-    name: "Belt",
+    name: "Smith Belt",
     description: "Smith a mithril belt.",
     icon: Tangent,
     iconStyle: {
@@ -792,7 +792,7 @@ export const smithingTasks: { [id in TaskId]?: Task } = {
   },
   [TaskId.SMITH_MITHRIL_PLATELEGGINGS]: {
     id: TaskId.SMITH_MITHRIL_PLATELEGGINGS,
-    name: "Plate Leggings",
+    name: "Smith Plate Leggings",
     description: "Smith mithril plate leggings.",
     icon: ToyBrick,
     iconStyle: {
@@ -817,7 +817,7 @@ export const smithingTasks: { [id in TaskId]?: Task } = {
   },
   [TaskId.SMITH_MITHRIL_GAUNTLETS]: {
     id: TaskId.SMITH_MITHRIL_GAUNTLETS,
-    name: "Gauntlets",
+    name: "Smith Gauntlets",
     description: "Smith mithril gauntlets.",
     icon: Hand,
     iconStyle: {
@@ -844,7 +844,7 @@ export const smithingTasks: { [id in TaskId]?: Task } = {
   // Adamant Tasks
   [TaskId.SMITH_ADAMANT_DAGGER]: {
     id: TaskId.SMITH_ADAMANT_DAGGER,
-    name: "Dagger",
+    name: "Smith Dagger",
     description: "Smith an adamant dagger.",
     icon: Slice,
     iconStyle: {
@@ -865,7 +865,7 @@ export const smithingTasks: { [id in TaskId]?: Task } = {
   },
   [TaskId.SMITH_ADAMANT_SWORD]: {
     id: TaskId.SMITH_ADAMANT_SWORD,
-    name: "Sword",
+    name: "Smith Sword",
     description: "Smith an adamant sword.",
     icon: Sword,
     iconStyle: {
@@ -886,7 +886,7 @@ export const smithingTasks: { [id in TaskId]?: Task } = {
   },
   [TaskId.SMITH_ADAMANT_SHIELD]: {
     id: TaskId.SMITH_ADAMANT_SHIELD,
-    name: "Shield",
+    name: "Smith Shield",
     description: "Smith an adamant shield.",
     icon: Shield,
     iconStyle: {
@@ -907,7 +907,7 @@ export const smithingTasks: { [id in TaskId]?: Task } = {
   },
   [TaskId.SMITH_ADAMANT_GREATSWORD]: {
     id: TaskId.SMITH_ADAMANT_GREATSWORD,
-    name: "Great Sword",
+    name: "Smith Great Sword",
     description: "Smith an adamant great sword.",
     icon: Sword,
     iconStyle: {
@@ -932,7 +932,7 @@ export const smithingTasks: { [id in TaskId]?: Task } = {
   },
   [TaskId.SMITH_ADAMANT_HELMET]: {
     id: TaskId.SMITH_ADAMANT_HELMET,
-    name: "Helmet",
+    name: "Smith Helmet",
     description: "Smith an adamant helmet.",
     icon: HardHat,
     iconStyle: {
@@ -953,7 +953,7 @@ export const smithingTasks: { [id in TaskId]?: Task } = {
   },
   [TaskId.SMITH_ADAMANT_CHESTPLATE]: {
     id: TaskId.SMITH_ADAMANT_CHESTPLATE,
-    name: "Chestplate",
+    name: "Smith Chestplate",
     description: "Smith an adamant chestplate.",
     icon: Shirt,
     iconStyle: {
@@ -978,7 +978,7 @@ export const smithingTasks: { [id in TaskId]?: Task } = {
   },
   [TaskId.SMITH_ADAMANT_BELT]: {
     id: TaskId.SMITH_ADAMANT_BELT,
-    name: "Belt",
+    name: "Smith Belt",
     description: "Smith an adamant belt.",
     icon: Tangent,
     iconStyle: {
@@ -999,7 +999,7 @@ export const smithingTasks: { [id in TaskId]?: Task } = {
   },
   [TaskId.SMITH_ADAMANT_PLATELEGGINGS]: {
     id: TaskId.SMITH_ADAMANT_PLATELEGGINGS,
-    name: "Plate Leggings",
+    name: "Smith Plate Leggings",
     description: "Smith adamant plate leggings.",
     icon: ToyBrick,
     iconStyle: {
@@ -1024,7 +1024,7 @@ export const smithingTasks: { [id in TaskId]?: Task } = {
   },
   [TaskId.SMITH_ADAMANT_GAUNTLETS]: {
     id: TaskId.SMITH_ADAMANT_GAUNTLETS,
-    name: "Gauntlets",
+    name: "Smith Gauntlets",
     description: "Smith adamant gauntlets.",
     icon: Hand,
     iconStyle: {

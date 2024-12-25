@@ -6,20 +6,10 @@ import MenuContainer from "@/features/town/menuSelect/components/menuContainer";
 import { Separator } from "@/components/ui/separator";
 import { Exit } from "@/features/common/exit/exit";
 import { SettingsButton } from "@/features/common/settingsButton/settingsButton";
+import { MenuId } from "@/data/menus/enums";
+import { combatMenus, miscMenus, skillMenus } from "@/data/menus/menus";
 
-export default function MenuSelect({
-  miscMenus,
-  combatMenus,
-  skillMenus,
-  selectedMenu,
-  setSelectedMenu,
-}: Readonly<{
-  miscMenus: GameObject[];
-  combatMenus: GameObject[];
-  skillMenus: GameObject[];
-  selectedMenu: GameObject;
-  setSelectedMenu: React.Dispatch<React.SetStateAction<GameObject>>;
-}>) {
+export default function MenuSelect({}: Readonly<{}>) {
   return (
     <div
       className={
@@ -40,25 +30,19 @@ export default function MenuSelect({
           Character
         </Label>
         <MenuContainer
-          menuItems={miscMenus}
-          selectedMenu={selectedMenu}
-          setSelectedMenu={setSelectedMenu}
+          menuItems={Object.keys(miscMenus) as MenuId[]}
         ></MenuContainer>
         <Label className="px-5 pb-2 pt-4 text-xs text-muted-foreground text-white">
           Combat
         </Label>
         <MenuContainer
-          menuItems={combatMenus}
-          selectedMenu={selectedMenu}
-          setSelectedMenu={setSelectedMenu}
+          menuItems={Object.keys(combatMenus) as MenuId[]}
         ></MenuContainer>
         <Label className="px-5 pb-2 pt-4 text-xs text-muted-foreground text-white">
           Skills
         </Label>
         <MenuContainer
-          menuItems={skillMenus}
-          selectedMenu={selectedMenu}
-          setSelectedMenu={setSelectedMenu}
+          menuItems={Object.keys(skillMenus) as MenuId[]}
         ></MenuContainer>
         <div className="h-[220px] shrink-0"></div>
       </div>
