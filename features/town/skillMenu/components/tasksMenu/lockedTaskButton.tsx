@@ -5,9 +5,10 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { Task } from "@/types/skills";
 
-export default function LockedTaskButton({ task }: Readonly<{ task: Task }>) {
+export default function LockedTaskButton({
+  requiredLevel,
+}: Readonly<{ requiredLevel: number }>) {
   return (
     <Card className="flex w-full min-w-max">
       <Button
@@ -18,7 +19,7 @@ export default function LockedTaskButton({ task }: Readonly<{ task: Task }>) {
         <CardHeader className="flex flex-col p-0">
           <CardTitle className="text-xl">Locked</CardTitle>
           <CardDescription className="text-left text-xs">
-            Requires level {task.requiredLevel}
+            Requires level {requiredLevel}
           </CardDescription>
         </CardHeader>
       </Button>

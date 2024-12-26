@@ -18,11 +18,11 @@ export default function UpgradeCard({
   upgrade,
 }: Readonly<{ upgrade: Upgrade }>) {
   return (
-    <Card className="flex w-full min-w-max items-center px-4 py-2">
+    <Card className="flex h-20 w-full min-w-max items-center px-4 py-2">
       <CardHeader className="flex h-full w-full flex-row items-center justify-between p-0">
         <div className="flex h-full">
           <div className="flex h-full w-60 items-center gap-4">
-            {renderIcon(upgrade.icon, 40, { ...upgrade.iconStyle })}
+            {renderIcon(upgrade.icon, 44, { ...upgrade.iconStyle })}
             <div className="flex h-full flex-col justify-center">
               <CardTitle className="text-base">{upgrade.name}</CardTitle>
               <CardDescription className="p-0 text-left text-xs">

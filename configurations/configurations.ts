@@ -1,3 +1,4 @@
+import { PastureId, PlotId } from "@/data/character/enums";
 import { IconStylePrimitive } from "@/types/gameObjects";
 
 export const LEVEL_CAP = 60;
@@ -17,4 +18,26 @@ export const TASK_AND_ITEM_ICON_STYLE: IconStylePrimitive = {
   strokeWidth: 0.5,
   strokeOpacity: 1,
   fillOpacity: 1,
+};
+
+export const PLOT_LEVEL_REQUIREMENTS = {
+  [PlotId.PLOT_ONE]: 1,
+  [PlotId.PLOT_TWO]: 5,
+  [PlotId.PLOT_THREE]: 10,
+  [PlotId.PLOT_FOUR]: 20,
+  [PlotId.PLOT_FIVE]: 30,
+  [PlotId.PLOT_SIX]: 40,
+  [PlotId.PLOT_SEVEN]: 50,
+  [PlotId.PLOT_EIGHT]: 60,
+};
+
+export const PASTURE_LEVEL_REQURIEMENTS = {
+  [PastureId.PASTURE_ONE]: 1,
+  [PastureId.PASTURE_TWO]: 5,
+  [PastureId.PASTURE_THREE]: 10,
+  [PastureId.PASTURE_FOUR]: 20,
+  [PastureId.PASTURE_FIVE]: 30,
+  [PastureId.PASTURE_SIX]: 40,
+  [PastureId.PASTURE_SEVEN]: 50,
+  [PastureId.PASTURE_EIGHT]: 60,
 };

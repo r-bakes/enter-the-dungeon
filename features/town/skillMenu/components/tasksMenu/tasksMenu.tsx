@@ -7,10 +7,10 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import React from "react";
-import { Task, Tasks } from "@/types/skills";
-import { Skill } from "@/types/Skill";
 import { formatCapitalCase } from "@/features/common/utils/formattingUtilities";
 import TasksContainer from "@/features/town/skillMenu/components/tasksMenu/tasksContainer";
+import { Skill } from "@/types/skills";
+import { Task } from "@/types/tasks";
 
 export default function TasksMenu({
   skill,
@@ -19,7 +19,7 @@ export default function TasksMenu({
   setTask,
 }: Readonly<{
   skill: Skill;
-  tasks: Tasks;
+  tasks: Task[];
   skillLevel: number;
   setTask: React.Dispatch<React.SetStateAction<Task | null>>;
 }>) {
@@ -55,11 +55,8 @@ export default function TasksMenu({
         </SelectContent>
       </Select>
       <TasksContainer
-        skill={skill}
         skillLevel={skillLevel}
-        tasks={Object.values(tasks).filter(
-          (task) => task.category === selectedTasksCategory,
-        )}
+        tasks={tasks.filter((task) => task.category === selectedTasksCategory)}
         setTask={setTask}
       ></TasksContainer>
     </div>

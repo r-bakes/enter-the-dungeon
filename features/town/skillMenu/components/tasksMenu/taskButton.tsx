@@ -7,7 +7,6 @@ import {
 import { Button } from "@/components/ui/button";
 import { Label } from "@/components/ui/label";
 import { renderIcon } from "@/features/common/utils/formattingUtilities";
-import { Skill } from "@/types/skills";
 import { Task } from "@/types/tasks";
 import { useModifierActions } from "@/features/town/modifiers/hooks/useModifierActions";
 
@@ -21,13 +20,13 @@ export default function TaskButton({
   const { applySpeedModifier, applyExperienceModifier } = useModifierActions();
 
   return (
-    <Card className="flex w-full min-w-max">
+    <Card className="flex h-20 w-full min-w-max">
       <Button
-        className="flex h-full w-full flex-col items-start justify-start py-4"
+        className="flex h-full w-full flex-col items-center py-4"
         onClick={onClick}
         variant="ghost"
       >
-        <CardHeader className="flex w-full flex-row items-center justify-between gap-6 p-0">
+        <CardHeader className="flex w-full flex-row justify-between gap-6 p-0">
           <div className="flex h-full flex-row items-center gap-4">
             {renderIcon(task.icon, 44, {
               ...task.iconStyle,
@@ -39,18 +38,16 @@ export default function TaskButton({
               </CardDescription>
             </div>
           </div>
-          <div className="flex h-full flex-col">
+          <div className="flex h-full flex-col justify-center">
             <div className="flex w-full gap-1">
-              <Label className="text-xs">
-                {applySpeedModifier(task.id, task.durationSec)}
-              </Label>
+              <Label className="text-xs">{applySpeedModifier(task.id)}</Label>
               <Label className="text-xs font-normal text-muted-foreground">
                 seconds
               </Label>
             </div>
             <div className="flex w-full gap-1">
               <Label className="text-xs">
-                {applyExperienceModifier(task.id, task.experience)}{" "}
+                {applyExperienceModifier(task.id)}
               </Label>
               <Label className="text-xs font-normal text-muted-foreground">
                 experience

@@ -49,12 +49,12 @@ export default function UpgradesStoreMenu({
     <div className="flex w-full flex-col gap-2 overflow-y-scroll">
       {upgrades.map((upgrade) => (
         <Card
-          className="flex w-full min-w-max items-center justify-between px-4 py-2"
+          className="flex h-20 w-full min-w-max items-center justify-between px-4 py-2"
           key={upgrade.id}
         >
           <div className="flex h-full min-w-max items-center gap-2">
             <div className="flex h-full w-60 items-center gap-4">
-              {renderIcon(upgrade.icon, 40, { ...upgrade.iconStyle })}
+              {renderIcon(upgrade.icon, 44, { ...upgrade.iconStyle })}
               <div className="flex h-full flex-col justify-center text-left">
                 <CardTitle className="text-base">{upgrade.name}</CardTitle>
                 <CardDescription className="p-0 text-left text-xs">

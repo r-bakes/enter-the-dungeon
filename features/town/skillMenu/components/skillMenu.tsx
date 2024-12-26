@@ -30,7 +30,7 @@ export default function SkillMenu({ skill }: Readonly<{ skill: Skill }>) {
         <TaskInfo task={task}></TaskInfo>
         <TasksMenu
           skill={skill}
-          tasks={skill.tasks}
+          tasks={Object.values(skill.tasks)}
           skillLevel={character.skills[skill.id].level}
           setTask={setTask}
         ></TasksMenu>

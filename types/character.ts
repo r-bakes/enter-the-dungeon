@@ -35,7 +35,7 @@ export type Deck = {
   unequippedMagic: string[];
 };
 export type PlotFilled = {
-  seedId: string;
+  seedId: ItemId;
   startTime: number;
 };
 export type PlotEmpty = {
@@ -46,7 +46,7 @@ export type Botany = {
   [id in PlotId]: PlotFilled | PlotEmpty;
 };
 export type PastureFilled = {
-  livestockId: string;
+  livestockId: ItemId;
   startTime: number;
 };
 export type PastureEmpty = {

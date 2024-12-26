@@ -11,6 +11,7 @@ import { formatCapitalCase } from "@/features/common/utils/formattingUtilities";
 import React from "react";
 import PasturesMenu from "./pasturesMenu/pasturesMenu";
 import PlotsMenu from "./plotsMenu/plotsMenu";
+import ActionCard from "./actionCard/actionCard";
 
 export default function TasksMenu() {
   const [selectedTasksCategory, setSelectedTasksCategory] = React.useState(
@@ -42,6 +43,7 @@ export default function TasksMenu() {
           </SelectGroup>
         </SelectContent>
       </Select>
+      <ActionCard></ActionCard>
       {selectedTasksCategory == agriculture.taskCategories.BOTANY ? (
         <PlotsMenu></PlotsMenu>
       ) : (

@@ -18,7 +18,6 @@ export enum Slot {
   LEFT_HAND = "LEFT_HAND",
   RIGHT_HAND = "RIGHT_HAND",
 }
-
 export enum PlotId {
   PLOT_ONE = "PLOT_ONE",
   PLOT_TWO = "PLOT_TWO",
