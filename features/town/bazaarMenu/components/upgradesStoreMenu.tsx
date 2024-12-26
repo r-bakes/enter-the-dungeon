@@ -99,7 +99,7 @@ export default function UpgradesStoreMenu({
                     <Card
                       key={itemId}
                       className={
-                        "flex w-32 items-center justify-between gap-2 px-4 py-2 " +
+                        "flex w-36 items-center justify-between gap-2 px-4 py-2 " +
                         cardFormat
                       }
                     >
