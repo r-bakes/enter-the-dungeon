@@ -99,7 +99,7 @@ export default function UpgradesStoreMenu({
                     <Card
                       key={itemId}
                       className={
-                        "flex items-center justify-center gap-2 px-4 py-2 " +
+                        "flex w-32 items-center justify-between gap-2 px-4 py-2 " +
                         cardFormat
                       }
                     >
@@ -110,7 +110,7 @@ export default function UpgradesStoreMenu({
                             {formatLargeQuantity(quantity)}
                           </CardDescription>
                           <CardDescription className="text-xs">
-                            {item.name}
+                            {item.name.toLowerCase()}
                           </CardDescription>
                         </div>
                         <div className="flex w-full items-center justify-end">
