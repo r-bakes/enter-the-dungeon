@@ -13,8 +13,8 @@ import { home } from "./home";
 import HomeMenu from "@/features/town/homeMenu/components/homeMenu";
 import { inventory } from "./inventory";
 import InventoryMenu from "@/features/town/inventoryMenu/components/inventoryMenu";
-import BazaarMenu from "@/features/town/bazaarMenu/components/bazaarMenu";
-import { bazaar } from "./bazaar";
+import MarcketplaceMenu from "@/features/town/marketplaceMenu/components/marketplaceMenu";
+import { marketplace } from "./marketplace";
 import { expeditions } from "./expeditions";
 import ExpeditionsMenu from "@/features/town/expeditionsMenu/components/expeditionsMenu";
 import { martial } from "../skills/martial";
@@ -25,7 +25,6 @@ import { MenuTable } from "@/types/menus";
 export const skillMenus = {
   [MenuId.PROSPECTING]: {
     data: prospecting,
-    // eslint-disable-next-line react/jsx-no-undef
     menu: <SkillMenu key={prospecting.id} skill={prospecting}></SkillMenu>,
   },
   [MenuId.SMITHING]: {
@@ -66,9 +65,9 @@ export const miscMenus = {
     data: inventory,
     menu: <InventoryMenu></InventoryMenu>,
   },
-  [MenuId.BAZAAR]: {
-    data: bazaar,
-    menu: <BazaarMenu></BazaarMenu>,
+  [MenuId.MARKETPLACE]: {
+    data: marketplace,
+    menu: <MarcketplaceMenu></MarcketplaceMenu>,
   },
 };
 export const combatMenus = {

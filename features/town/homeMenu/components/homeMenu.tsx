@@ -96,7 +96,9 @@ export default function HomeMenu() {
                 {selectedRoom === HomeRooms.TROPHY_ROOM ? (
                   <Label>Progress more to unlock trophies.</Label>
                 ) : (
-                  <Label>Purchase home upgrades from the Grand Bazaar.</Label>
+                  <Label>
+                    Purchase home upgrades from the Grand Marketplace.
+                  </Label>
                 )}
               </div>
             )}

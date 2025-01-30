@@ -14,8 +14,8 @@ const stealthCommonModifiers = new Set([
 ]);
 
 export const thievingTasks: { [id in TaskId]?: Task } = {
-  [TaskId.PICKPOCET_TOWNSPERSON]: {
-    id: TaskId.PICKPOCET_TOWNSPERSON,
+  [TaskId.PICKPOCKET_TOWNSPERSON]: {
+    id: TaskId.PICKPOCKET_TOWNSPERSON,
     name: "Pickpocket Townsperson",
     description: "Pickpocket a townsperson.",
     icon: PersonStanding,
@@ -33,10 +33,31 @@ export const thievingTasks: { [id in TaskId]?: Task } = {
     category: StealthTaskCategories.THIEVING,
     applicableModifiers: stealthCommonModifiers,
   },
-  [TaskId.STEAL_FROM_BAZAAR]: {
-    id: TaskId.STEAL_FROM_BAZAAR,
-    name: "Steal from Bazaar",
-    description: "Steal from stalls in the grand marketplace.",
+  [TaskId.SEED_STALL_THEFT]: {
+    id: TaskId.SEED_STALL_THEFT,
+    name: "Seed Stall Theft",
+    description: "Steal from the grand marketplace's seed stall.",
+    icon: Store,
+    iconStyle: {
+      fill: "none",
+      ...TASK_AND_ITEM_ICON_STYLE,
+    },
+    durationSec: 4,
+    experience: 12,
+    requiredLevel: 10,
+    lootTable: {
+      food: {
+        [ItemId.GINSENG_SEED]: { weight: 100, minQuantity: 1, maxQuantity: 5 },
+      },
+    },
+    requires: {},
+    category: StealthTaskCategories.THIEVING,
+    applicableModifiers: stealthCommonModifiers,
+  },
+  [TaskId.GEM_STALL_THEFT]: {
+    id: TaskId.GEM_STALL_THEFT,
+    name: "Gem Stall Theft",
+    description: "Steal from the grand marketplace's gem stall.",
     icon: Store,
     iconStyle: {
       fill: "none",
@@ -44,13 +65,100 @@ export const thievingTasks: { [id in TaskId]?: Task } = {
     },
     durationSec: 3,
     experience: 20,
-    requiredLevel: 15,
+    requiredLevel: 30,
     lootTable: {
       misc: {
         [ItemId.GOLD]: { weight: 84, minQuantity: 50, maxQuantity: 100 },
         [ItemId.SAPPHIRE]: { weight: 10, minQuantity: 1, maxQuantity: 1 },
         [ItemId.EMERALD]: { weight: 5, minQuantity: 1, maxQuantity: 1 },
         [ItemId.DIAMOND]: { weight: 1, minQuantity: 1, maxQuantity: 1 },
+      },
+    },
+    requires: {},
+    category: StealthTaskCategories.THIEVING,
+    applicableModifiers: stealthCommonModifiers,
+  },
+  [TaskId.PICKPOCKET_GUARD]: {
+    id: TaskId.PICKPOCKET_GUARD,
+    name: "Pickpocket Guard",
+    description: "Pickpocket a guard in the town.",
+    icon: PersonStanding,
+    iconStyle: {
+      fill: "none",
+      ...TASK_AND_ITEM_ICON_STYLE,
+    },
+    durationSec: 8,
+    experience: 50,
+    requiredLevel: 35,
+    lootTable: {
+      gear: {
+        [ItemId.IRON_SWORD]: { weight: 25, minQuantity: 1, maxQuantity: 1 },
+        [ItemId.IRON_SHIELD]: { weight: 25, minQuantity: 1, maxQuantity: 1 },
+      },
+    },
+    requires: {},
+    category: StealthTaskCategories.THIEVING,
+    applicableModifiers: stealthCommonModifiers,
+  },
+  [TaskId.PICKPOCKET_MERCHANT]: {
+    id: TaskId.PICKPOCKET_MERCHANT,
+    name: "Pickpocket Merchant",
+    description: "Pickpocket a wealthy merchant in the grand marketplace.",
+    icon: PersonStanding,
+    iconStyle: {
+      fill: "none",
+      ...TASK_AND_ITEM_ICON_STYLE,
+    },
+    durationSec: 5,
+    experience: 100,
+    requiredLevel: 40,
+    lootTable: {
+      goods: {
+        [ItemId.PLATINUM_BAR]: { weight: 10, minQuantity: 1, maxQuantity: 5 },
+        [ItemId.GOLD_BAR]: { weight: 90, minQuantity: 1, maxQuantity: 5 },
+      },
+    },
+    requires: {},
+    category: StealthTaskCategories.THIEVING,
+    applicableModifiers: stealthCommonModifiers,
+  },
+  [TaskId.PICKPOCKET_KNIGHT]: {
+    id: TaskId.PICKPOCKET_KNIGHT,
+    name: "Pickpocket Knight",
+    description: "Pickpocket a knight in shining armor.",
+    icon: PersonStanding,
+    iconStyle: {
+      fill: "none",
+      ...TASK_AND_ITEM_ICON_STYLE,
+    },
+    durationSec: 5,
+    experience: 150,
+    requiredLevel: 45,
+    lootTable: {
+      combat: {
+        [ItemId.STEEL_SWORD]: { weight: 20, minQuantity: 1, maxQuantity: 1 },
+        [ItemId.STEEL_SHIELD]: { weight: 20, minQuantity: 1, maxQuantity: 1 },
+      },
+    },
+    requires: {},
+    category: StealthTaskCategories.THIEVING,
+    applicableModifiers: stealthCommonModifiers,
+  },
+  [TaskId.PICKPOCKET_DUKE]: {
+    id: TaskId.PICKPOCKET_DUKE,
+    name: "Pickpocket Duke",
+    description: "Pickpocket the duke.",
+    icon: PersonStanding,
+    iconStyle: {
+      fill: "none",
+      ...TASK_AND_ITEM_ICON_STYLE,
+    },
+    durationSec: 5,
+    experience: 200,
+    requiredLevel: 50,
+    lootTable: {
+      treasures: {
+        [ItemId.GOLD]: { weight: 100, minQuantity: 500, maxQuantity: 1000 },
       },
     },
     requires: {},

@@ -3,7 +3,7 @@ import { GameObject } from "@/types/gameObjects";
 import { Map } from "lucide-react";
 
 export const expeditions: GameObject = {
-  id: "expeditions",
+  id: MenuId.EXPEDITIONS,
   name: "Expeditions",
   description: "Plan an expedition.",
   icon: Map,

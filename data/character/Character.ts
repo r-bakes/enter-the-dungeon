@@ -90,7 +90,7 @@ export const testCharacter: Character = {
       experience: 0,
     },
     [SkillId.STEALTH]: {
-      level: 15,
+      level: 50,
       experience: 0,
     },
   },

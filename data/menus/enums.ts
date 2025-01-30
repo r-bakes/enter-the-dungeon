@@ -12,13 +12,13 @@ export enum HomeRooms {
   MENAGERIE = "Menagerie",
 }
 
-export enum BazaarStores {
+export enum MarketplaceStores {
   UPGRADES = "upgrades",
 }
 
 export enum MenuId {
   HOME = "HOME",
-  BAZAAR = "BAZAAR",
+  MARKETPLACE = "MARKETPLACE",
   EXPEDITIONS = "EXPEDITIONS",
   INVENTORY = "INVENTORY",
   AGRICULTURE = "AGRICULTURE",
