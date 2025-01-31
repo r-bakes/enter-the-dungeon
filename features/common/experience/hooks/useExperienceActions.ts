@@ -8,12 +8,12 @@ import { taskToSkill } from "@/features/town/common/utils/utils";
 const useExperienceActions = () => {
   const { character, setCharacter } = useCharacterEngineContext();
 
-  const addExp = (skillOrTaskid: SkillId | TaskId, exp: number) => {
+  const addExp = (skillOrTaskId: SkillId | TaskId, exp: number) => {
     let skillId: SkillId;
-    if (skillOrTaskid in TaskId) {
-      skillId = taskToSkill[skillOrTaskid as TaskId];
+    if (skillOrTaskId in TaskId) {
+      skillId = taskToSkill[skillOrTaskId as TaskId];
     } else {
-      skillId = skillOrTaskid as SkillId;
+      skillId = skillOrTaskId as SkillId;
     }
 
     while (

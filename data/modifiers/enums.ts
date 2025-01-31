@@ -3,5 +3,4 @@ export enum ModifierType {
   DOUBLE_CHANCE = "double chance",
   PRODUCTION_MULTIPLIER = "production multiplier",
   EXPERIENCE = "experience",
-  DETECTION = "detection",
 }

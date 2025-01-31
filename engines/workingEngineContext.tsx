@@ -22,6 +22,7 @@ import useInventoryActions from "@/features/common/inventory/hooks/useInventoryA
 import useExperienceActions from "@/features/common/experience/hooks/useExperienceActions";
 import generateLoot from "@/features/common/loot/utils/lootUtils";
 import { StealthTaskCategories } from "@/data/skills/enums";
+import { rollStealthSuccess } from "@/features/common/stealth/utils/stealthUtils";
 
 type WorkingEngineContextProps = {
   workingTask: Task | null;
@@ -97,10 +98,15 @@ export const WorkingEngineProvider = ({
   const taskComplete = useCallback(() => {
     if (!workingTask) return;
 
-    // // Skill specific interceptions
-    // if (workingTask.category == StealthTaskCategories.THIEVING && ) {
-    //
-    // }
+    // Skill specific interceptions
+    if (
+      workingTask.category == StealthTaskCategories.THIEVING &&
+      !rollStealthSuccess(character.skills.STEALTH.level, 45)
+    ) {
+      toast.error("You were caught trying to steal!");
+      setWorkingTask(null);
+      return;
+    }
 
     let loot: Loot = {};
     const task = workingTask;
