@@ -21,6 +21,7 @@ import { useModifierActions } from "@/features/town/modifiers/hooks/useModifierA
 import useInventoryActions from "@/features/common/inventory/hooks/useInventoryActions";
 import useExperienceActions from "@/features/common/experience/hooks/useExperienceActions";
 import generateLoot from "@/features/common/loot/utils/lootUtils";
+import { StealthTaskCategories } from "@/data/skills/enums";
 
 type WorkingEngineContextProps = {
   workingTask: Task | null;
@@ -96,16 +97,22 @@ export const WorkingEngineProvider = ({
   const taskComplete = useCallback(() => {
     if (!workingTask) return;
 
+    // // Skill specific interceptions
+    // if (workingTask.category == StealthTaskCategories.THIEVING && ) {
+    //
+    // }
+
     let loot: Loot = {};
     const task = workingTask;
     const experience = applyExperienceModifier(task.id);
-
     loot = applyProductionModifier(task.id, generateLoot(task.lootTable));
+
+    // Prepare player state
     addLoot(loot);
     removeItems(task.requires);
-
     addExp(task.id, experience);
 
+    // Notify player
     toast(
       <TaskComplete
         task={task}
