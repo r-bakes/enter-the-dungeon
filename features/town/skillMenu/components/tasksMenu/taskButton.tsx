@@ -45,7 +45,7 @@ export default function TaskButton({
                 seconds
               </Label>
             </div>
-            <div className="flex w-full gap-1">
+            <div className="flex w-28 gap-1">
               <Label className="text-xs">
                 {applyExperienceModifier(task.id)}
               </Label>

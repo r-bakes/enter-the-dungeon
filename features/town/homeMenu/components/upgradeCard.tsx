@@ -23,7 +23,7 @@ export default function UpgradeCard({
         <div className="flex h-full">
           <div className="flex h-full w-60 items-center gap-4">
             {renderIcon(upgrade.icon, 44, { ...upgrade.iconStyle })}
-            <div className="flex h-full flex-col justify-center">
+            <div className="flex h-full min-w-max flex-col justify-center">
               <CardTitle className="text-base">{upgrade.name}</CardTitle>
               <CardDescription className="p-0 text-left text-xs">
                 {upgrade.description}

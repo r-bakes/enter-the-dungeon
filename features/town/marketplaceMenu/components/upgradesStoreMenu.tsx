@@ -80,10 +80,10 @@ export default function UpgradesStoreMenu({
                   key={type}
                   className="flex h-full items-center justify-center gap-1"
                 >
-                  <Label className="text-sm font-medium">
+                  <Label className="text-xs">
                     {formatModifier(value, type)}
                   </Label>
-                  <Label className="text-sm font-normal text-muted-foreground">
+                  <Label className="text-xs font-normal text-muted-foreground">
                     {formatCapitalCase(type)}
                   </Label>
                 </div>
