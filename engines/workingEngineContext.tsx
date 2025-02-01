@@ -14,7 +14,7 @@ import { useCharacterEngineContext } from "@/engines/characterEngineContext";
 import { Task } from "@/types/tasks";
 import { TICK_RATE_MS } from "@/configurations/configurations";
 import { toast } from "sonner";
-import TaskComplete from "@/features/town/toast/components/TaskComplete";
+import TaskComplete from "@/features/town/toast/components/taskCompleteToast";
 import { Loot } from "@/types/loot";
 import { ItemId } from "@/data/items/enums";
 import { useModifierActions } from "@/features/town/modifiers/hooks/useModifierActions";
@@ -106,11 +106,13 @@ export const WorkingEngineProvider = ({
       !rollStealthSuccess(character.skills.STEALTH.level, 1000)
     ) {
       setTaskWorkingLocked(true);
+      let duration = 10000;
+
       toast("You were caught trying to steal!", {
         description: "Escaping in ...",
         position: "top-center",
         dismissible: false,
-        duration: 10000,
+        duration: duration,
         closeButton: false,
         onAutoClose: () => setTaskWorkingLocked(false),
       });
