@@ -16,7 +16,7 @@ import { useMenuEngineContext } from "@/engines/menuEngineContext";
 import { taskToSkill } from "@/features/common/working/utils/workingUtils";
 import { MenuId } from "@/data/menus/enums";
 
-export default function TaskComplete({
+export default function TaskCompleteToast({
   task,
   loot,
   experience,

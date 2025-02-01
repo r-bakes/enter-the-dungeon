@@ -23,6 +23,10 @@ import useExperienceActions from "@/features/common/experience/hooks/useExperien
 import generateLoot from "@/features/common/loot/utils/lootUtils";
 import { StealthTaskCategories } from "@/data/skills/enums";
 import { rollStealthSuccess } from "@/features/common/stealth/utils/stealthUtils";
+import StealthFailedToast from "@/features/town/toast/components/stealthFailedToast";
+import TaskCompleteToast from "@/features/town/toast/components/taskCompleteToast";
+import { AlertCircleIcon } from "lucide-react";
+import { Label } from "@/components/ui/label";
 
 type WorkingEngineContextProps = {
   workingTask: Task | null;
@@ -105,18 +109,30 @@ export const WorkingEngineProvider = ({
       workingTask.category == StealthTaskCategories.THIEVING &&
       !rollStealthSuccess(character.skills.STEALTH.level, 1000)
     ) {
-      setTaskWorkingLocked(true);
-      let duration = 10000;
-
-      toast("You were caught trying to steal!", {
-        description: "Escaping in ...",
-        position: "top-center",
-        dismissible: false,
-        duration: duration,
-        closeButton: false,
-        onAutoClose: () => setTaskWorkingLocked(false),
-      });
       setWorkingTask(null);
+      setTaskWorkingLocked(true);
+      toast(
+        <div className="flex w-full gap-4">
+          <AlertCircleIcon></AlertCircleIcon>
+          <div className="flex flex-col gap-2">
+            <Label className="flex items-center gap-2">
+              You were caught stealing!
+            </Label>
+            <Label className="text-sm text-muted-foreground">
+              ...making your escape.
+            </Label>
+          </div>
+        </div>,
+        {
+          description: "... making your escape.",
+          position: "top-center",
+          dismissible: false,
+          duration: 10000,
+          closeButton: false,
+          onAutoClose: () => setTaskWorkingLocked(false),
+        },
+      );
+
       return;
     }
 
@@ -132,7 +148,7 @@ export const WorkingEngineProvider = ({
 
     // Notify player
     toast(
-      <TaskComplete
+      <TaskCompleteToast
         task={task}
         character={character}
         loot={loot}
