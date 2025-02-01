@@ -28,6 +28,7 @@ type WorkingEngineContextProps = {
   workingTask: Task | null;
   taskProgress: number;
   setWorkingTask: React.Dispatch<React.SetStateAction<Task | null>>;
+  taskWorkingLocked: boolean;
 };
 
 const WorkingEngineContext = createContext({} as WorkingEngineContextProps);
@@ -52,6 +53,7 @@ export const WorkingEngineProvider = ({
       : null,
   );
   const [taskProgress, setTaskProgress] = useState(0);
+  const [taskWorkingLocked, setTaskWorkingLocked] = useState(false);
 
   // Custom useInterval Hook
   const useInterval = (callback: () => void, delay: number | null) => {
@@ -101,9 +103,17 @@ export const WorkingEngineProvider = ({
     // Skill specific interceptions
     if (
       workingTask.category == StealthTaskCategories.THIEVING &&
-      !rollStealthSuccess(character.skills.STEALTH.level, 45)
+      !rollStealthSuccess(character.skills.STEALTH.level, 1000)
     ) {
-      toast.error("You were caught trying to steal!");
+      setTaskWorkingLocked(true);
+      toast("You were caught trying to steal!", {
+        description: "Escaping in ...",
+        position: "top-center",
+        dismissible: false,
+        duration: 10000,
+        closeButton: false,
+        onAutoClose: () => setTaskWorkingLocked(false),
+      });
       setWorkingTask(null);
       return;
     }
@@ -164,6 +174,7 @@ export const WorkingEngineProvider = ({
         workingTask,
         taskProgress,
         setWorkingTask,
+        taskWorkingLocked,
       }}
     >
       {children}

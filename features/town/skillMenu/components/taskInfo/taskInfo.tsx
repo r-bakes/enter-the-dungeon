@@ -36,7 +36,7 @@ export default function TaskInfo({
 }: Readonly<{
   task: Task | null;
 }>) {
-  const { setWorkingTask, taskProgress, workingTask } =
+  const { setWorkingTask, taskProgress, workingTask, taskWorkingLocked } =
     useWorkingEngineContext();
   const { character } = useCharacterEngineContext();
   const { applyExperienceModifier, applySpeedModifier } = useModifierActions();
@@ -127,32 +127,23 @@ export default function TaskInfo({
       <CardFooter className="flex h-24 w-full items-end">
         <Button
           className="w-1/2 text-center"
-          disabled={!requirementsMet}
+          disabled={!requirementsMet || taskWorkingLocked}
           onClick={() => {
             setWorkingTask(task);
           }}
         >
           <Play className="mr-2"></Play>Start
         </Button>
-        {task == workingTask ? (
-          <Button
-            className="w-1/2 text-center"
-            variant="destructive"
-            onClick={() => {
-              setWorkingTask(null);
-            }}
-          >
-            <X className="mr-2"></X>Stop
-          </Button>
-        ) : (
-          <Button
-            className="w-1/2 text-center"
-            variant="secondary"
-            disabled={true}
-          >
-            <X className="mr-2"></X>Stop
-          </Button>
-        )}
+        <Button
+          className="w-1/2 text-center"
+          variant={task == workingTask ? "destructive" : "secondary"}
+          disabled={task != workingTask}
+          onClick={() => {
+            setWorkingTask(null);
+          }}
+        >
+          <X className="mr-2"></X>Stop
+        </Button>
       </CardFooter>
     </Card>
   );
