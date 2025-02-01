@@ -14,3 +14,7 @@ export type Task = {
   requires: { [id in ItemId]?: number };
   applicableModifiers: Set<ModifierType>;
 } & GameObject;
+
+export type StealthTask = {
+  perception: number;
+} & Task;

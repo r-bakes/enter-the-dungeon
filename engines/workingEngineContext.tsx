@@ -11,10 +11,9 @@ import React, {
 } from "react";
 import { taskTable } from "@/data/tasks/tasks";
 import { useCharacterEngineContext } from "@/engines/characterEngineContext";
-import { Task } from "@/types/tasks";
+import { StealthTask, Task } from "@/types/tasks";
 import { TICK_RATE_MS } from "@/configurations/configurations";
 import { toast } from "sonner";
-import TaskComplete from "@/features/town/toast/components/taskCompleteToast";
 import { Loot } from "@/types/loot";
 import { ItemId } from "@/data/items/enums";
 import { useModifierActions } from "@/features/town/modifiers/hooks/useModifierActions";
@@ -22,17 +21,16 @@ import useInventoryActions from "@/features/common/inventory/hooks/useInventoryA
 import useExperienceActions from "@/features/common/experience/hooks/useExperienceActions";
 import generateLoot from "@/features/common/loot/utils/lootUtils";
 import { StealthTaskCategories } from "@/data/skills/enums";
-import { rollStealthSuccess } from "@/features/common/stealth/utils/stealthUtils";
-import StealthFailedToast from "@/features/town/toast/components/stealthFailedToast";
 import TaskCompleteToast from "@/features/town/toast/components/taskCompleteToast";
-import { AlertCircleIcon } from "lucide-react";
-import { Label } from "@/components/ui/label";
+import StealthTaskFailedToast from "@/features/town/toast/components/stealthTaskFailedToast";
+import { rollStealthSuccess } from "@/features/common/stealth/utils/stealthUtils";
 
 type WorkingEngineContextProps = {
-  workingTask: Task | null;
   taskProgress: number;
+  workingTask: Task | null;
   setWorkingTask: React.Dispatch<React.SetStateAction<Task | null>>;
   taskWorkingLocked: boolean;
+  setTaskWorkingLocked: React.Dispatch<React.SetStateAction<boolean>>;
 };
 
 const WorkingEngineContext = createContext({} as WorkingEngineContextProps);
@@ -100,42 +98,40 @@ export const WorkingEngineProvider = ({
     }
   }, [workingTask, character.inventory]);
 
-  // Function to handle task completion
-  const taskComplete = useCallback(() => {
+  // Apply the useInterval hook
+  useInterval(() => {
+    if (workingTask != null) {
+      const taskDuration = applySpeedModifier(workingTask.id);
+      const newProgress = taskProgress + TICK_RATE_MS / 1000;
+
+      if (newProgress >= taskDuration) {
+        setTaskProgress(newProgress - taskDuration);
+        taskComplete();
+        canContinueTask();
+      } else {
+        setTaskProgress(newProgress);
+      }
+    }
+  }, TICK_RATE_MS);
+
+  const taskComplete = () => {
     if (!workingTask) return;
+    let completedSuccessfully = true;
 
-    // Skill specific interceptions
-    if (
-      workingTask.category == StealthTaskCategories.THIEVING &&
-      !rollStealthSuccess(character.skills.STEALTH.level, 1000)
-    ) {
-      setWorkingTask(null);
-      setTaskWorkingLocked(true);
-      toast(
-        <div className="flex w-full gap-4">
-          <AlertCircleIcon></AlertCircleIcon>
-          <div className="flex flex-col gap-2">
-            <Label className="flex items-center gap-2">
-              You were caught stealing!
-            </Label>
-            <Label className="text-sm text-muted-foreground">
-              ...making your escape.
-            </Label>
-          </div>
-        </div>,
-        {
-          description: "... making your escape.",
-          position: "top-center",
-          dismissible: false,
-          duration: 10000,
-          closeButton: false,
-          onAutoClose: () => setTaskWorkingLocked(false),
-        },
-      );
-
-      return;
+    // Skill & task specific interceptions
+    if (workingTask.category == StealthTaskCategories.THIEVING) {
+      completedSuccessfully = stealthTaskSuccess(workingTask as StealthTask);
     }
 
+    if (completedSuccessfully) {
+      taskCompletedSuccessfully();
+    }
+  };
+
+  const taskCompletedSuccessfully = () => {
+    if (!workingTask) return;
+
+    // Regular task completion flow
     let loot: Loot = {};
     const task = workingTask;
     const experience = applyExperienceModifier(task.id);
@@ -159,40 +155,33 @@ export const WorkingEngineProvider = ({
 
     // Update character state if needed
     setCharacter({ ...character });
-  }, [
-    workingTask,
-    applyExperienceModifier,
-    applyProductionModifier,
-    addExp,
-    addLoot,
-    removeItems,
-    character,
-    setCharacter,
-  ]);
+  };
 
-  // Apply the useInterval hook
-  useInterval(() => {
-    if (workingTask != null) {
-      const taskDuration = applySpeedModifier(workingTask.id);
-      const newProgress = taskProgress + TICK_RATE_MS / 1000;
-
-      if (newProgress >= taskDuration) {
-        setTaskProgress(newProgress - taskDuration);
-        taskComplete();
-        canContinueTask();
-      } else {
-        setTaskProgress(newProgress);
-      }
+  const stealthTaskSuccess = (task: StealthTask): boolean => {
+    if (!rollStealthSuccess(character.skills.STEALTH.level, task.perception)) {
+      setWorkingTask(null);
+      setTaskWorkingLocked(true);
+      toast(<StealthTaskFailedToast />, {
+        position: "top-center",
+        dismissible: false,
+        duration: 10000,
+        closeButton: false,
+        onAutoClose: () => setTaskWorkingLocked(false),
+      });
+      return false;
     }
-  }, TICK_RATE_MS);
+
+    return true;
+  };
 
   return (
     <WorkingEngineContext.Provider
       value={{
-        workingTask,
         taskProgress,
+        workingTask,
         setWorkingTask,
         taskWorkingLocked,
+        setTaskWorkingLocked,
       }}
     >
       {children}
