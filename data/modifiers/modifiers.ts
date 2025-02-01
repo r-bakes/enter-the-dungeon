@@ -20,8 +20,4 @@ export const ModifierIcons: ModifierIconsType = {
     icon: Sparkle,
     iconStyle: { fill: "none", ...TASK_AND_ITEM_ICON_STYLE },
   },
-  [ModifierType.DETECTION]: {
-    icon: Eye,
-    iconStyle: { fill: "none", ...TASK_AND_ITEM_ICON_STYLE },
-  },
 };

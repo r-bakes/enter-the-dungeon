@@ -17,16 +17,23 @@ import { Separator } from "@/components/ui/separator";
 import { itemTable } from "@/data/items/items";
 import { generateDropRates } from "@/features/common/loot/utils/lootUtils";
 import { Item } from "@/types/items";
-import { renderIcon } from "@/features/common/utils/formattingUtilities";
+import {
+  formatRoundedQuantity,
+  renderIcon,
+} from "@/features/common/utils/formattingUtilities";
 import { ModifierType } from "@/data/modifiers/enums";
 import TaskProducesEntry from "@/features/town/skillMenu/components/taskInfo/taskProducesEntry";
 import { TaskRequiresEntry } from "@/features/town/skillMenu/components/taskInfo/taskRequiresEntry";
-import TaskModifiers from "@/features/town/skillMenu/components/taskInfo/taskModifiers";
+import TaskModifiersEntry from "@/features/town/skillMenu/components/taskInfo/taskModifiersEntry";
 import { Task } from "@/types/tasks";
 import { ItemId } from "@/data/items/enums";
 import { useModifierActions } from "@/features/town/modifiers/hooks/useModifierActions";
 import { useModifierEngineContext } from "@/engines/modifierEngineContext";
 import { useWorkingEngineContext } from "@/engines/workingEngineContext";
+import { taskToSkill } from "@/features/common/working/utils/workingUtils";
+import { SkillId } from "@/data/skills/enums";
+import TaskSuccessEntry from "./taskSuccessEntry";
+import { calculateSuccessChance } from "@/features/common/stealth/utils/stealthUtils";
 
 const rootCardFormat =
   "flex flex-col h-full grow-0 w-80 min-w-80 max-w-80 items-center overflow-y-scroll";
@@ -112,16 +119,25 @@ export default function TaskInfo({
           ></TaskDataEntry>
         </div>
         <div className="flex grow flex-col gap-4 overflow-y-scroll">
+          {taskToSkill[task.id] == SkillId.STEALTH ? (
+            <TaskSuccessEntry
+              value={formatRoundedQuantity(
+                calculateSuccessChance(
+                  character.skills.STEALTH.level,
+                  task.perception,
+                ),
+              ).toString()}
+              description="chance to evade detection"
+            ></TaskSuccessEntry>
+          ) : (
+            <></>
+          )}
           <TaskProducesEntry
-            label={"produces"}
             data={taskProduction}
             multiplier={modifiers[task.id][ModifierType.PRODUCTION_MULTIPLIER]}
           ></TaskProducesEntry>
-          <TaskRequiresEntry
-            data={taskRequires}
-            label={"requires"}
-          ></TaskRequiresEntry>
-          <TaskModifiers data={modifiers[task.id]}></TaskModifiers>
+          <TaskRequiresEntry data={taskRequires}></TaskRequiresEntry>
+          <TaskModifiersEntry data={modifiers[task.id]}></TaskModifiersEntry>
         </div>
       </CardContent>
       <CardFooter className="flex h-24 w-full items-end">

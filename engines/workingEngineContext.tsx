@@ -12,18 +12,19 @@ import React, {
 import { taskTable } from "@/data/tasks/tasks";
 import { useCharacterEngineContext } from "@/engines/characterEngineContext";
 import { StealthTask, Task } from "@/types/tasks";
-import { TICK_RATE_MS } from "@/configurations/configurations";
+import { LEVEL_CAP, TICK_RATE_MS } from "@/configurations/configurations";
 import { toast } from "sonner";
 import { Loot } from "@/types/loot";
 import { ItemId } from "@/data/items/enums";
 import { useModifierActions } from "@/features/town/modifiers/hooks/useModifierActions";
 import useInventoryActions from "@/features/common/inventory/hooks/useInventoryActions";
-import useExperienceActions from "@/features/common/experience/hooks/useExperienceActions";
 import generateLoot from "@/features/common/loot/utils/lootUtils";
-import { StealthTaskCategories } from "@/data/skills/enums";
+import { SkillId, StealthTaskCategories } from "@/data/skills/enums";
 import TaskCompleteToast from "@/features/town/toast/components/taskCompleteToast";
 import StealthTaskFailedToast from "@/features/town/toast/components/stealthTaskFailedToast";
 import { rollStealthSuccess } from "@/features/common/stealth/utils/stealthUtils";
+import { TaskId } from "@/data/tasks/enum";
+import { taskToSkill } from "@/features/common/working/utils/workingUtils";
 
 type WorkingEngineContextProps = {
   taskProgress: number;
@@ -47,8 +48,6 @@ export const WorkingEngineProvider = ({
     applySpeedModifier,
     applyProductionModifier,
   } = useModifierActions();
-  const addExp = useExperienceActions();
-
   const [workingTask, setWorkingTask] = useState<Task | null>(
     character.working.workingTask
       ? taskTable[character.working.workingTask]
@@ -174,6 +173,31 @@ export const WorkingEngineProvider = ({
     return true;
   };
 
+  const addExp = (skillOrTaskId: SkillId | TaskId, exp: number): void => {
+    let skillId: SkillId;
+    if (skillOrTaskId in TaskId) {
+      skillId = taskToSkill[skillOrTaskId as TaskId];
+    } else {
+      skillId = skillOrTaskId as SkillId;
+    }
+
+    while (
+      character.skills[skillId].experience + exp >=
+        requiredExpForLevelUp(character.skills[skillId as SkillId].level) &&
+      character.skills[skillId].level < LEVEL_CAP
+    ) {
+      character.skills[skillId].level += 1;
+    }
+
+    character.skills[skillId].experience += exp;
+    character.skills[skillId].experience = Math.min(
+      requiredExpForLevelUp(LEVEL_CAP),
+      character.skills[skillId].experience,
+    );
+
+    setCharacter({ ...character });
+  };
+
   return (
     <WorkingEngineContext.Provider
       value={{
@@ -191,3 +215,6 @@ export const WorkingEngineProvider = ({
 
 export const useWorkingEngineContext = (): WorkingEngineContextProps =>
   useContext(WorkingEngineContext);
+function requiredExpForLevelUp(LEVEL_CAP: number): number {
+  throw new Error("Function not implemented.");
+}

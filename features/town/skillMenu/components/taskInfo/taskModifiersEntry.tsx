@@ -8,7 +8,9 @@ import {
 } from "@/features/common/utils/formattingUtilities";
 import { Modifier } from "@/types/modifiers";
 
-export default function TaskModifiers({ data }: Readonly<{ data: Modifier }>) {
+export default function TaskModifiersEntry({
+  data,
+}: Readonly<{ data: Modifier }>) {
   if (Object.entries(data).length === 0) {
     return <></>;
   }
@@ -16,7 +18,7 @@ export default function TaskModifiers({ data }: Readonly<{ data: Modifier }>) {
   return (
     <div className="flex flex-col gap-1">
       <Label className="text-xs font-light text-muted-foreground">
-        modifiers
+        Modifiers
       </Label>
       {Object.entries(data).map(([type, value]) => (
         <Card key={type} className="flex w-full justify-between p-2">

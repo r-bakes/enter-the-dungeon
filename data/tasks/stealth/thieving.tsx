@@ -112,7 +112,7 @@ export const thievingTasks: { [id in TaskId]?: StealthTask } = {
       ...TASK_AND_ITEM_ICON_STYLE,
     },
     durationSec: 3,
-    experience: 20,
+    experience: 150,
     requiredLevel: 40,
     perception: 80,
     lootTable: {
@@ -137,7 +137,7 @@ export const thievingTasks: { [id in TaskId]?: StealthTask } = {
       ...TASK_AND_ITEM_ICON_STYLE,
     },
     durationSec: 5,
-    experience: 150,
+    experience: 200,
     requiredLevel: 50,
     perception: 100,
     lootTable: {
@@ -160,7 +160,7 @@ export const thievingTasks: { [id in TaskId]?: StealthTask } = {
       ...TASK_AND_ITEM_ICON_STYLE,
     },
     durationSec: 5,
-    experience: 200,
+    experience: 300,
     requiredLevel: 60,
     perception: 120,
     lootTable: {

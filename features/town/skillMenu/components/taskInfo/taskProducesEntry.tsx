@@ -5,7 +5,6 @@ import { renderIcon } from "@/features/common/utils/formattingUtilities";
 
 export default function TaskProducesEntry({
   data,
-  label,
   multiplier,
 }: Readonly<{
   data: {
@@ -14,7 +13,6 @@ export default function TaskProducesEntry({
     maxQuantity: number;
     chance: number;
   }[][];
-  label: string;
   multiplier: number | undefined;
 }>) {
   if (data.length === 0) {
@@ -27,7 +25,7 @@ export default function TaskProducesEntry({
   return (
     <div className="flex flex-col gap-1">
       <Label className="mb-1 text-xs font-light text-muted-foreground">
-        {label}
+        Produces
       </Label>
       {data.map((lootGroup) => (
         <Card

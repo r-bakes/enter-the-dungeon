@@ -60,7 +60,7 @@ export const renderIcon = (
   return (
     <Icon
       className="shrink-0"
-      fill={iconStyle.fill}
+      fill={iconStyle.fill ? iconStyle.fill : "none"}
       fillOpacity={iconStyle.fillOpacity}
       color={iconStyle.color}
       strokeWidth={iconStyle.strokeWidth}

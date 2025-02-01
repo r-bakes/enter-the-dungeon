@@ -10,14 +10,12 @@ import {
 
 export function TaskRequiresEntry({
   data,
-  label,
 }: Readonly<{
   data: {
     item: Item;
     quantity: number;
     haveEnough: boolean;
   }[];
-  label: string;
 }>) {
   const { character } = useCharacterEngineContext();
   if (data.length === 0) {
@@ -27,7 +25,7 @@ export function TaskRequiresEntry({
   return (
     <div className="flex flex-col gap-1">
       <Label className="mb-1 text-xs font-light text-muted-foreground">
-        {label}
+        Requires
       </Label>
       {data.map((item) => {
         let cardFormat = item.haveEnough ? "" : "border-red-300";
