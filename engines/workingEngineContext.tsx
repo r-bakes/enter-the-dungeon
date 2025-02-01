@@ -25,6 +25,7 @@ import StealthTaskFailedToast from "@/features/town/toast/components/stealthTask
 import { rollStealthSuccess } from "@/features/common/stealth/utils/stealthUtils";
 import { TaskId } from "@/data/tasks/enum";
 import { taskToSkill } from "@/features/common/working/utils/workingUtils";
+import { requiredExpForLevelUp } from "@/features/common/experience/utils/experienceUtils";
 
 type WorkingEngineContextProps = {
   taskProgress: number;
@@ -215,6 +216,3 @@ export const WorkingEngineProvider = ({
 
 export const useWorkingEngineContext = (): WorkingEngineContextProps =>
   useContext(WorkingEngineContext);
-function requiredExpForLevelUp(LEVEL_CAP: number): number {
-  throw new Error("Function not implemented.");
-}
