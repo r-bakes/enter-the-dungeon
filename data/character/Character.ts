@@ -44,6 +44,7 @@ export const testCharacter: Character = {
   },
   inventory: initializeInventory(),
   upgrades: new Set([
+    UpgradeId.BASIC_THIEVES_TOOLS,
     UpgradeId.BASIC_PICKAXE,
     UpgradeId.BRONZE_PICKAXE,
     UpgradeId.BASIC_HAMMER,

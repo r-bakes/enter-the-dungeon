@@ -11,7 +11,7 @@ import { Backpack } from "lucide-react";
 import { Label } from "@/components/ui/label";
 import { Upgrade } from "@/types/upgrades";
 import { ItemId } from "@/data/items/enums";
-import { formatModifiers } from "../../modifiers/utils/modifier";
+import { formatModifier } from "../../modifiers/utils/modifier";
 import useInventoryActions from "@/features/common/inventory/hooks/useInventoryActions";
 import useUpgradeActions from "../../upgrades/hooks/useUpgradeActions";
 
@@ -49,13 +49,13 @@ export default function UpgradesStoreMenu({
     <div className="flex w-full flex-col gap-2 overflow-y-scroll">
       {upgrades.map((upgrade) => (
         <Card
-          className="flex h-20 w-full min-w-max items-center justify-between px-4 py-2"
+          className="flex h-20 min-h-max w-full min-w-max items-center justify-between px-4 py-4"
           key={upgrade.id}
         >
-          <div className="flex h-full min-w-max items-center gap-2">
+          <div className="flex h-full min-w-max items-center gap-4">
             <div className="flex h-full w-60 items-center gap-4">
               {renderIcon(upgrade.icon, 44, { ...upgrade.iconStyle })}
-              <div className="flex h-full flex-col justify-center text-left">
+              <div className="flex h-full min-w-max flex-col justify-center text-left">
                 <CardTitle className="text-base">{upgrade.name}</CardTitle>
                 <CardDescription className="p-0 text-left text-xs">
                   {upgrade.description}
@@ -74,15 +74,18 @@ export default function UpgradesStoreMenu({
               {/*   ), */}
               {/* )} */}
             </div>
-            <div className="flex h-full px-6">
+            <div className="flex h-full flex-col items-start gap-1 px-6">
               {Object.entries(upgrade.modifier.values).map(([type, value]) => (
-                <div key={type} className="flex h-full flex-col justify-center">
-                  <CardTitle className="text-base">
-                    {formatModifiers(value, type)}
-                  </CardTitle>
-                  <CardDescription className="max-w-min p-0 text-center text-xs">
+                <div
+                  key={type}
+                  className="flex h-full items-center justify-center gap-1"
+                >
+                  <Label className="text-sm font-medium">
+                    {formatModifier(value, type)}
+                  </Label>
+                  <Label className="text-sm font-normal text-muted-foreground">
                     {formatCapitalCase(type)}
-                  </CardDescription>
+                  </Label>
                 </div>
               ))}
             </div>

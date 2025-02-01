@@ -46,7 +46,8 @@ export default function TaskInfo({
   const { setWorkingTask, taskProgress, workingTask, taskWorkingLocked } =
     useWorkingEngineContext();
   const { character } = useCharacterEngineContext();
-  const { applyExperienceModifier, applySpeedModifier } = useModifierActions();
+  const { applyExperienceModifier, applySpeedModifier, applyStealthModifier } =
+    useModifierActions();
   const { modifiers } = useModifierEngineContext();
 
   if (!task) {
@@ -123,7 +124,7 @@ export default function TaskInfo({
             <TaskSuccessEntry
               value={formatRoundedQuantity(
                 calculateSuccessChance(
-                  character.skills.STEALTH.level,
+                  applyStealthModifier(character.skills.STEALTH.level, task.id),
                   task.perception,
                 ),
               ).toString()}

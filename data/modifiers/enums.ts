@@ -1,6 +1,7 @@
 export enum ModifierType {
-  SPEED = "speed",
-  DOUBLE_CHANCE = "double chance",
-  PRODUCTION_MULTIPLIER = "production multiplier",
-  EXPERIENCE = "experience",
+  SPEED = "SPEED",
+  DOUBLE_CHANCE = "DOUBLE_CHANCE",
+  PRODUCTION_MULTIPLIER = "PRODUCTION_MULTIPLIER",
+  EXPERIENCE = "EXPERIENCE",
+  STEALTH = "STEALTH",
 }

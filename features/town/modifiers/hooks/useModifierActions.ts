@@ -6,7 +6,7 @@ import { ItemId } from "@/data/items/enums";
 import { useModifierEngineContext } from "@/engines/modifierEngineContext";
 
 export const useModifierActions = () => {
-  const { modifiers, setModifiers } = useModifierEngineContext();
+  const { modifiers } = useModifierEngineContext();
 
   const roundModifiedValue = (value: number): number => {
     return Math.round(value * 100) / 100;
@@ -34,6 +34,15 @@ export const useModifierActions = () => {
     return roundModifiedValue(amount + (amount * modifier) / 100);
   };
 
+  const applyStealthModifier = (stealth: number, taskId: TaskId): number => {
+    let modifier = modifiers[taskId][ModifierType.STEALTH];
+    if (!modifier) {
+      return stealth;
+    }
+
+    return roundModifiedValue(stealth + modifier);
+  };
+
   const applyProductionModifier = (taskId: TaskId, loot: Loot): Loot => {
     let modifier = modifiers[taskId][ModifierType.PRODUCTION_MULTIPLIER];
 
@@ -50,5 +59,6 @@ export const useModifierActions = () => {
     applySpeedModifier,
     applyExperienceModifier,
     applyProductionModifier,
+    applyStealthModifier,
   };
 };

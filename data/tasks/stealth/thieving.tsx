@@ -7,6 +7,7 @@ import { StealthTask, Task } from "@/types/tasks";
 import { ItemId } from "@/data/items/enums";
 
 const stealthCommonModifiers = new Set([
+  ModifierType.STEALTH,
   ModifierType.SPEED,
   ModifierType.EXPERIENCE,
   ModifierType.DOUBLE_CHANCE,
@@ -94,8 +95,9 @@ export const thievingTasks: { [id in TaskId]?: StealthTask } = {
     perception: 60,
     lootTable: {
       goods: {
+        [ItemId.GOLD]: { weight: 50, minQuantity: 200, maxQuantity: 300 },
+        [ItemId.GOLD_BAR]: { weight: 40, minQuantity: 1, maxQuantity: 5 },
         [ItemId.PLATINUM_BAR]: { weight: 10, minQuantity: 1, maxQuantity: 5 },
-        [ItemId.GOLD_BAR]: { weight: 90, minQuantity: 1, maxQuantity: 5 },
       },
     },
     requires: {},

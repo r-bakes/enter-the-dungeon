@@ -48,6 +48,7 @@ export const WorkingEngineProvider = ({
     applyExperienceModifier,
     applySpeedModifier,
     applyProductionModifier,
+    applyStealthModifier,
   } = useModifierActions();
   const [workingTask, setWorkingTask] = useState<Task | null>(
     character.working.workingTask
@@ -158,7 +159,12 @@ export const WorkingEngineProvider = ({
   };
 
   const stealthTaskSuccess = (task: StealthTask): boolean => {
-    if (!rollStealthSuccess(character.skills.STEALTH.level, task.perception)) {
+    if (
+      !rollStealthSuccess(
+        applyStealthModifier(character.skills.STEALTH.level, task.id),
+        task.perception,
+      )
+    ) {
       setWorkingTask(null);
       setTaskWorkingLocked(true);
       toast(<StealthTaskFailedToast />, {

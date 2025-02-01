@@ -6,6 +6,7 @@ import {
   formatCapitalCase,
   renderIcon,
 } from "@/features/common/utils/formattingUtilities";
+import { formatModifier } from "@/features/town/modifiers/utils/modifier";
 import { Modifier } from "@/types/modifiers";
 
 export default function TaskModifiersEntry({
@@ -28,9 +29,7 @@ export default function TaskModifiersEntry({
               strokeOpacity: 1,
             })}
             <Label className="text-xs font-medium">
-              {type !== ModifierType.PRODUCTION_MULTIPLIER
-                ? "+" + value + "%"
-                : "x" + value}
+              {formatModifier(value, type)}
             </Label>
             <Label className="text-xs font-normal text-muted-foreground">
               {formatCapitalCase(type)}

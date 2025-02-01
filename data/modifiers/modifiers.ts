@@ -1,4 +1,11 @@
-import { Copy, Eye, Gauge, Sparkle, SquareStack } from "lucide-react";
+import {
+  Copy,
+  Eye,
+  EyeClosed,
+  Gauge,
+  Sparkle,
+  SquareStack,
+} from "lucide-react";
 import { TASK_AND_ITEM_ICON_STYLE } from "@/configurations/configurations";
 import { ModifierType } from "./enums";
 import { ModifierIconsType } from "@/types/modifiers";
@@ -18,6 +25,10 @@ export const ModifierIcons: ModifierIconsType = {
   },
   [ModifierType.EXPERIENCE]: {
     icon: Sparkle,
+    iconStyle: { fill: "none", ...TASK_AND_ITEM_ICON_STYLE },
+  },
+  [ModifierType.STEALTH]: {
+    icon: EyeClosed,
     iconStyle: { fill: "none", ...TASK_AND_ITEM_ICON_STYLE },
   },
 };

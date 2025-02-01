@@ -5,10 +5,12 @@ import { hammerUpgrades } from "@/data/upgrades/hammerUpgrades";
 import { bedUpgrades } from "@/data/upgrades/bedUpgrades";
 import { miscUpgrades } from "./misc";
 import { UpgradeId } from "./enums";
+import { thievingUpgrades } from "./thievingUpgrades";
 
 export const upgradeTable = {
   ...pickaxeUpgrades,
   ...hammerUpgrades,
   ...bedUpgrades,
   ...miscUpgrades,
+  ...thievingUpgrades,
 } as { [id in UpgradeId]: Upgrade };

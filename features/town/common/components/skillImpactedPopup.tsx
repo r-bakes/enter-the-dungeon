@@ -12,7 +12,7 @@ import {
   formatCapitalCase,
   renderIcon,
 } from "@/features/common/utils/formattingUtilities";
-import { formatModifiers } from "../../modifiers/utils/modifier";
+import { formatModifier } from "../../modifiers/utils/modifier";
 import { taskTable } from "@/data/tasks/tasks";
 import { Skill } from "@/types/skills";
 
@@ -57,7 +57,7 @@ export function SkillImpactedPopup({
                     className="flex flex-row items-center justify-center gap-1 p-2"
                   >
                     <Label className="text-xs font-medium">
-                      {formatModifiers(value, type)}
+                      {formatModifier(value, type)}
                     </Label>
                     <Label className="text-xs font-normal text-muted-foreground">
                       {formatCapitalCase(type)}

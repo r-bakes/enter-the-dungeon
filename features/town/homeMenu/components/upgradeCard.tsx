@@ -12,7 +12,7 @@ import {
   renderIcon,
 } from "@/features/common/utils/formattingUtilities";
 import { SkillId } from "@/data/skills/enums";
-import { formatModifiers } from "../../modifiers/utils/modifier";
+import { formatModifier } from "../../modifiers/utils/modifier";
 
 export default function UpgradeCard({
   upgrade,
@@ -50,7 +50,7 @@ export default function UpgradeCard({
               className="flex h-full flex-col items-center justify-center"
             >
               <CardTitle className="text-base">
-                {formatModifiers(value, type)}
+                {formatModifier(value, type)}
               </CardTitle>
               <CardDescription className="max-w-min p-0 text-center text-xs">
                 {formatCapitalCase(type)}
