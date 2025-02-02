@@ -43,6 +43,18 @@ export const useModifierActions = () => {
     return roundModifiedValue(stealth + modifier);
   };
 
+  const applyDoubleChance = (taskId: TaskId, loot: Loot) => {
+    let modifier = modifiers[taskId][ModifierType.DOUBLE_CHANCE];
+
+    if (modifier && Math.random() * 100 < modifier) {
+      Object.entries(loot).forEach(
+        ([itemId, amount]) => (loot[itemId as ItemId] = amount * 2),
+      );
+    }
+
+    return loot;
+  };
+
   const applyProductionModifier = (taskId: TaskId, loot: Loot): Loot => {
     let modifier = modifiers[taskId][ModifierType.PRODUCTION_MULTIPLIER];
 
@@ -60,5 +72,6 @@ export const useModifierActions = () => {
     applyExperienceModifier,
     applyProductionModifier,
     applyStealthModifier,
+    applyDoubleChance,
   };
 };

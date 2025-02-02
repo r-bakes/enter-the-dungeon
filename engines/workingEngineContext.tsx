@@ -49,6 +49,7 @@ export const WorkingEngineProvider = ({
     applySpeedModifier,
     applyProductionModifier,
     applyStealthModifier,
+    applyDoubleChance,
   } = useModifierActions();
   const [workingTask, setWorkingTask] = useState<Task | null>(
     character.working.workingTask
@@ -133,10 +134,12 @@ export const WorkingEngineProvider = ({
     if (!workingTask) return;
 
     // Regular task completion flow
-    let loot: Loot = {};
     const task = workingTask;
     const experience = applyExperienceModifier(task.id);
-    loot = applyProductionModifier(task.id, generateLoot(task.lootTable));
+    let loot = applyDoubleChance(
+      task.id,
+      applyProductionModifier(task.id, generateLoot(task.lootTable)),
+    );
 
     // Prepare player state
     addLoot(loot);

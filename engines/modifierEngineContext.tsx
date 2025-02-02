@@ -44,7 +44,11 @@ export const ModifierEngineProvider = ({
       for (let taskId of upgrade.modifier.targets) {
         for (let [modifier, value] of Object.entries(upgrade.modifier.values)) {
           if (!(upgrade.next && character.upgrades.has(upgrade.next))) {
-            modifiers[taskId][modifier as ModifierType]! += value;
+            if (modifier === ModifierType.PRODUCTION_MULTIPLIER) {
+              modifiers[taskId][modifier as ModifierType]! = value;
+            } else {
+              modifiers[taskId][modifier as ModifierType]! += value;
+            }
           }
         }
       }

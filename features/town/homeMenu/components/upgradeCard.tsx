@@ -13,12 +13,13 @@ import {
 } from "@/features/common/utils/formattingUtilities";
 import { SkillId } from "@/data/skills/enums";
 import { formatModifier } from "../../modifiers/utils/modifier";
+import { Label } from "@/components/ui/label";
 
 export default function UpgradeCard({
   upgrade,
 }: Readonly<{ upgrade: Upgrade }>) {
   return (
-    <Card className="flex h-20 w-full min-w-max items-center px-4 py-2">
+    <Card className="flex h-20 min-h-max w-full min-w-max items-center p-4">
       <CardHeader className="flex h-full w-full flex-row items-center justify-between p-0">
         <div className="flex h-full">
           <div className="flex h-full w-60 items-center gap-4">
@@ -43,18 +44,16 @@ export default function UpgradeCard({
             {/* )} */}
           </div>
         </div>
-        <div className="flex h-full gap-4">
+        <div className="flex h-full w-48 flex-col items-start gap-1 px-6">
           {Object.entries(upgrade.modifier.values).map(([type, value]) => (
             <div
               key={type}
-              className="flex h-full flex-col items-center justify-center"
+              className="flex h-full items-center justify-center gap-1"
             >
-              <CardTitle className="text-base">
-                {formatModifier(value, type)}
-              </CardTitle>
-              <CardDescription className="max-w-min p-0 text-center text-xs">
+              <Label className="text-xs">{formatModifier(value, type)}</Label>
+              <Label className="text-xs font-normal text-muted-foreground">
                 {formatCapitalCase(type)}
-              </CardDescription>
+              </Label>
             </div>
           ))}
         </div>

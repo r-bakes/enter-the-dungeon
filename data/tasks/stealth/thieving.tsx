@@ -138,7 +138,7 @@ export const thievingTasks: { [id in TaskId]?: StealthTask } = {
       fill: "none",
       ...TASK_AND_ITEM_ICON_STYLE,
     },
-    durationSec: 5,
+    durationSec: 3,
     experience: 200,
     requiredLevel: 50,
     perception: 100,
@@ -161,10 +161,10 @@ export const thievingTasks: { [id in TaskId]?: StealthTask } = {
       fill: "none",
       ...TASK_AND_ITEM_ICON_STYLE,
     },
-    durationSec: 5,
+    durationSec: 3,
     experience: 300,
     requiredLevel: 60,
-    perception: 120,
+    perception: 100,
     lootTable: {
       treasures: {
         [ItemId.GOLD]: { weight: 100, minQuantity: 500, maxQuantity: 1000 },
