@@ -13,7 +13,7 @@ import {
 } from "@/features/common/utils/formattingUtilities";
 import { Backpack, CircleDollarSign } from "lucide-react";
 
-export default function TableEntryDialogHeader({
+export default function TableEntrySheetHeader({
   item,
   itemAmount,
 }: Readonly<{

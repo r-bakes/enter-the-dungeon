@@ -14,7 +14,6 @@ import { useCharacterEngineContext } from "@/engines/characterEngineContext";
 import { StealthTask, Task } from "@/types/tasks";
 import { LEVEL_CAP, TICK_RATE_MS } from "@/configurations/configurations";
 import { toast } from "sonner";
-import { Loot } from "@/types/loot";
 import { ItemId } from "@/data/items/enums";
 import { useModifierActions } from "@/features/town/modifiers/hooks/useModifierActions";
 import useInventoryActions from "@/features/common/inventory/hooks/useInventoryActions";
@@ -33,6 +32,7 @@ type WorkingEngineContextProps = {
   setWorkingTask: React.Dispatch<React.SetStateAction<Task | null>>;
   taskWorkingLocked: boolean;
   setTaskWorkingLocked: React.Dispatch<React.SetStateAction<boolean>>;
+  taskComplete: (task: Task) => void;
 };
 
 const WorkingEngineContext = createContext({} as WorkingEngineContextProps);
@@ -100,7 +100,7 @@ export const WorkingEngineProvider = ({
     }
   }, [workingTask, character.inventory]);
 
-  // Apply the useInterval hook
+  // Working task Update hook.
   useInterval(() => {
     if (workingTask != null) {
       const taskDuration = applySpeedModifier(workingTask.id);
@@ -108,7 +108,7 @@ export const WorkingEngineProvider = ({
 
       if (newProgress >= taskDuration) {
         setTaskProgress(newProgress - taskDuration);
-        taskComplete();
+        taskComplete(workingTask);
         canContinueTask();
       } else {
         setTaskProgress(newProgress);
@@ -116,25 +116,21 @@ export const WorkingEngineProvider = ({
     }
   }, TICK_RATE_MS);
 
-  const taskComplete = () => {
-    if (!workingTask) return;
+  const taskComplete = (task: Task) => {
     let completedSuccessfully = true;
 
     // Skill & task specific interceptions
-    if (workingTask.category == StealthTaskCategories.THIEVING) {
-      completedSuccessfully = stealthTaskSuccess(workingTask as StealthTask);
+    if (task.category == StealthTaskCategories.THIEVING) {
+      completedSuccessfully = stealthTaskSuccess(task as StealthTask);
     }
 
     if (completedSuccessfully) {
-      taskCompletedSuccessfully();
+      taskCompletedSuccessfully(task);
     }
   };
 
-  const taskCompletedSuccessfully = () => {
-    if (!workingTask) return;
-
+  const taskCompletedSuccessfully = (task: Task) => {
     // Regular task completion flow
-    const task = workingTask;
     const experience = applyExperienceModifier(task.id);
     let loot = applyDoubleChance(
       task.id,
@@ -216,6 +212,7 @@ export const WorkingEngineProvider = ({
         setWorkingTask,
         taskWorkingLocked,
         setTaskWorkingLocked,
+        taskComplete,
       }}
     >
       {children}

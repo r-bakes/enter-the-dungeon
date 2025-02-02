@@ -92,7 +92,7 @@ export default function TaskInfo({
       <CardHeader className="flex h-32 w-full flex-row gap-4">
         {renderIcon(task.icon, 48, task.iconStyle)}
         <div className="flex flex-col gap-1">
-          <CardTitle>{task.name}</CardTitle>
+          <CardTitle className="text-lg">{task.name}</CardTitle>
           <CardDescription className="font-normal">
             {task.description}
           </CardDescription>

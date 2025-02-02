@@ -33,7 +33,7 @@ export default function TaskButton({
             })}
             <div className="flex h-full flex-col gap-1 text-left">
               <CardTitle className="text-base">{task.name}</CardTitle>
-              <CardDescription className="text-left text-xs font-normal">
+              <CardDescription className="text-xs font-normal">
                 {task.description}
               </CardDescription>
             </div>

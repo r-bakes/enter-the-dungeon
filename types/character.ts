@@ -35,22 +35,22 @@ export type Deck = {
   unequippedMagic: string[];
 };
 export type PlotFilled = {
-  seedId: ItemId;
+  taskId: TaskId;
   startTime: number;
 };
 export type PlotEmpty = {
-  seedId: null;
+  taskId: null;
   startTime: null;
 };
 export type Botany = {
   [id in PlotId]: PlotFilled | PlotEmpty;
 };
 export type PastureFilled = {
-  livestockId: ItemId;
+  taskId: TaskId;
   startTime: number;
 };
 export type PastureEmpty = {
-  livestockId: null;
+  taskId: null;
   startTime: null;
 };
 export type Ranching = {
@@ -62,13 +62,11 @@ export type Agriculture = {
 };
 export type Working =
   | {
-      workingSkill: SkillId;
       workingTask: TaskId;
       startTime: number | null;
       agriculture: Agriculture;
     }
   | {
-      workingSkill: null;
       workingTask: null;
       startTime: null;
       agriculture: Agriculture;

@@ -4,14 +4,13 @@ import { Label } from "@/components/ui/label";
 import { Separator } from "@/components/ui/separator";
 import { Slider } from "@/components/ui/slider";
 import { itemTable } from "@/data/items/items";
-import { useCharacterEngineContext } from "@/engines/characterEngineContext";
 import { Item } from "@/types/items";
 import { renderIcon } from "@/features/common/utils/formattingUtilities";
 import { CircleDollarSign, Minus, Plus } from "lucide-react";
 import React from "react";
 import useSellItem from "../../hooks/useSellItem";
 
-export default function TableEntryDialogSellEntry({
+export default function TableEntrySheetSellEntry({
   item,
   amountInInventory,
   setOpen,

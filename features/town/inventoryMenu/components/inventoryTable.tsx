@@ -36,8 +36,8 @@ import {
 } from "@/components/ui/select";
 import { ChevronDown, ChevronUp } from "lucide-react";
 import { Input } from "@/components/ui/input";
-import TableEntryDialog from "@/features/town/inventoryMenu/components/tableEntryDialog/tableEntryDialog";
 import { ItemId, ItemType } from "@/data/items/enums";
+import TableEntrySheet from "./tableEntrySheet/tableEntrySheet";
 
 type TableData = {
   quantity: number;
@@ -182,11 +182,11 @@ export default function InventoryTable() {
           ))}
         </TableBody>
       </Table>
-      <TableEntryDialog
+      <TableEntrySheet
         open={open}
         setOpen={setOpen}
         itemId={selectedItemId}
-      ></TableEntryDialog>
+      ></TableEntrySheet>
     </Card>
   );
 }

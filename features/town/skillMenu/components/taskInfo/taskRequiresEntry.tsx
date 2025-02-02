@@ -33,7 +33,9 @@ export function TaskRequiresEntry({
         return (
           <Card
             key={item.item.id}
-            className={"flex w-full justify-between p-2 " + cardFormat}
+            className={
+              "flex w-full items-center justify-between p-2 " + cardFormat
+            }
           >
             <div className="flex h-full items-center gap-1">
               {renderIcon(item.item.icon, 24, {

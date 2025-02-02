@@ -11,7 +11,7 @@ import {
 import { Heart, Shield, Sword, Zap } from "lucide-react";
 import useEquipmentActions from "../../hooks/useEquipmentActions";
 
-export default function TableEntryDialogEquipment({
+export default function TableEntrySheetEquipment({
   item,
   setOpen,
 }: Readonly<{

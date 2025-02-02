@@ -2,13 +2,13 @@ import { Sheet, SheetContent, SheetFooter } from "@/components/ui/sheet";
 import { ItemId, ItemType } from "@/data/items/enums";
 import { itemTable } from "@/data/items/items";
 import { useCharacterEngineContext } from "@/engines/characterEngineContext";
-import TableEntryDialogEquipment from "@/features/town/inventoryMenu/components/tableEntryDialog/tableEntryDialogEquipment";
-import TableEntryDialogHeader from "@/features/town/inventoryMenu/components/tableEntryDialog/tableEntryDialogHeader";
-import TableEntryDialogSellEntry from "@/features/town/inventoryMenu/components/tableEntryDialog/tableEntryDialogSellEntry";
+import TableEntrySheetEquipment from "@/features/town/inventoryMenu/components/tableEntrySheet/tableEntrySheetEquipment";
+import TableEntrySheetHeader from "@/features/town/inventoryMenu/components/tableEntrySheet/tableEntrySheetHeader";
+import TableEntryDialogSellEntry from "@/features/town/inventoryMenu/components/tableEntrySheet/tableEntrySheetSellEntry";
 import { Equipment } from "@/types/items";
 import React from "react";
 
-export default function TableEntryDialog({
+export default function TableEntrySheet({
   open,
   itemId,
   setOpen,
@@ -28,15 +28,15 @@ export default function TableEntryDialog({
   return (
     <Sheet open={open} onOpenChange={setOpen}>
       <SheetContent className="flex min-h-96 w-[450px] flex-col justify-between">
-        <TableEntryDialogHeader
+        <TableEntrySheetHeader
           item={item}
           itemAmount={itemAmount}
-        ></TableEntryDialogHeader>
+        ></TableEntrySheetHeader>
         {item.type === ItemType.EQUIPMENT ? (
-          <TableEntryDialogEquipment
+          <TableEntrySheetEquipment
             item={item as Equipment}
             setOpen={setOpen}
-          ></TableEntryDialogEquipment>
+          ></TableEntrySheetEquipment>
         ) : null}
         <TableEntryDialogSellEntry
           item={item}

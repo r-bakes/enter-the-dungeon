@@ -33,6 +33,22 @@ export const formatLargeQuantity = (
   return quantity.toString();
 };
 
+export const formatTime = (
+  seconds: number | string,
+): [string, "seconds" | "minutes" | "hours"] => {
+  if (typeof seconds === "string") {
+    seconds = Number.parseInt(seconds);
+  }
+
+  if (seconds < 60) {
+    return [seconds.toString(), "seconds"];
+  } else if (seconds < 3600 && seconds >= 60) {
+    return [Math.round(seconds / 60).toString(), "minutes"];
+  } else {
+    return [Math.round(seconds / 3600).toString(), "hours"];
+  }
+};
+
 export const formatRoundedQuantity = (
   quantity: number | string | undefined,
 ): string => {
