@@ -23,17 +23,19 @@ export default function TaskModifiersEntry({
       </Label>
       {Object.entries(data).map(([type, value]) => (
         <Card key={type} className="flex w-full justify-between p-2">
-          <div className="flex h-full items-center gap-1">
+          <div className="flex h-full items-center gap-2">
             {renderIcon(ModifierIcons[type as ModifierType].icon, 24, {
               ...ModifierIcons[type as ModifierType].iconStyle,
               strokeOpacity: 1,
             })}
-            <Label className="text-xs font-medium">
-              {formatModifier(value, type)}
-            </Label>
-            <Label className="text-xs font-normal text-muted-foreground">
-              {formatCapitalCase(type)}
-            </Label>
+            <div className="flex gap-1">
+              <Label className="text-xs font-medium">
+                {formatModifier(value, type)}
+              </Label>
+              <Label className="text-xs font-normal text-muted-foreground">
+                {formatCapitalCase(type)}
+              </Label>
+            </div>
           </div>
         </Card>
       ))}

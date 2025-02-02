@@ -34,7 +34,7 @@ export default function TaskProducesEntry({
             "flex w-full flex-col " + (lootGroup.length > 1 ? "px-1" : "")
           }
         >
-          <div className="h-full flex-col items-center gap-1">
+          <div className="h-full flex-col items-center">
             {lootGroup.map((data) => (
               <Card
                 key={data.item.id}
@@ -43,20 +43,22 @@ export default function TaskProducesEntry({
                   (lootGroup.length == 1 ? "border-0 shadow-none" : "")
                 }
               >
-                <div className="flex h-full items-center gap-1">
+                <div className="flex h-full items-center gap-2">
                   {renderIcon(data.item.icon, 24, {
                     ...data.item.iconStyle,
                   })}
-                  <Label className="text-xs">
-                    {data.minQuantity === data.maxQuantity
-                      ? data.minQuantity * multiplier
-                      : data.minQuantity * multiplier +
-                        " - " +
-                        data.maxQuantity * multiplier}
-                  </Label>
-                  <Label className="w-max text-xs font-normal text-muted-foreground">
-                    {data.item.name}
-                  </Label>
+                  <div className="flex gap-1">
+                    <Label className="text-xs">
+                      {data.minQuantity === data.maxQuantity
+                        ? data.minQuantity * multiplier
+                        : data.minQuantity * multiplier +
+                          " - " +
+                          data.maxQuantity * multiplier}
+                    </Label>
+                    <Label className="w-max text-xs font-normal text-muted-foreground">
+                      {data.item.name}
+                    </Label>
+                  </div>
                 </div>
                 <Label className="font-nornmal w-max text-xs text-muted-foreground">
                   {data.chance}%

@@ -16,14 +16,16 @@ export default function TaskSuccessEntry({
       <Label className="text-xs font-light text-muted-foreground">
         Success
       </Label>
-      <Card className="w-fill flex items-center gap-1 p-2">
+      <Card className="w-fill flex items-center gap-2 p-2">
         {renderIcon(EyeClosed, 24, {
           ...TASK_AND_ITEM_ICON_STYLE,
         })}
-        <Label className="text-xs font-medium">{value}%</Label>
-        <Label className="text-xs font-normal text-muted-foreground">
-          {description}
-        </Label>
+        <div className="flex gap-2">
+          <Label className="text-xs font-medium">{value}%</Label>
+          <Label className="text-xs font-normal text-muted-foreground">
+            {description}
+          </Label>
+        </div>
       </Card>
     </div>
   );

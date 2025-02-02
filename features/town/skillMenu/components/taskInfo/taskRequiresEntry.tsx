@@ -37,14 +37,16 @@ export function TaskRequiresEntry({
               "flex w-full items-center justify-between p-2 " + cardFormat
             }
           >
-            <div className="flex h-full items-center gap-1">
+            <div className="flex h-full items-center gap-2">
               {renderIcon(item.item.icon, 24, {
                 ...item.item.iconStyle,
               })}
-              <Label className="text-xs font-medium">{item.quantity}</Label>
-              <Label className="w-max text-xs font-normal text-muted-foreground">
-                {item.item.name}
-              </Label>
+              <div className="flex gap-1">
+                <Label className="text-xs font-medium">{item.quantity}</Label>
+                <Label className="w-max text-xs font-normal text-muted-foreground">
+                  {item.item.name}
+                </Label>
+              </div>
             </div>
             <div className="flex h-full items-center gap-1">
               <Label className="text-xs font-normal text-muted-foreground">
