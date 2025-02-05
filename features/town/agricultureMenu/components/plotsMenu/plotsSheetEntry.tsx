@@ -71,7 +71,7 @@ export default function PlotSheetsEntry({
 
   return (
     <Card className="flex h-[90%] min-w-80 max-w-80 flex-col items-center justify-between">
-      <div>
+      <div className="flex w-full flex-col">
         <CardHeader className="flex w-full flex-row gap-4">
           {renderIcon(task.icon, 48, task.iconStyle)}
           <div className="flex flex-col items-start">

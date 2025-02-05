@@ -8,6 +8,13 @@ export const useAgricultureActions = () => {
   const { character, setCharacter } = useCharacterEngineContext();
   const { taskComplete } = useWorkingEngineContext();
 
+  const timeRemainingMs = (
+    startTimeMs: number,
+    taskDurationSec: number,
+  ): number => {
+    return Math.max(0, startTimeMs + taskDurationSec * 1000 - Date.now());
+  };
+
   const canCompleteTask = (id: PlotId | PastureId): boolean => {
     if (id in PlotId) {
       return canCompleteBotanyTask(id as PlotId);
@@ -85,7 +92,7 @@ export const useAgricultureActions = () => {
   const pasture = (pastureId: PastureId, taskId: TaskId) => {};
   const grab = (id: PastureId) => {};
 
-  return { canCompleteTask, assign, collect };
+  return { canCompleteTask, assign, collect, timeRemainingMs };
 };
 
 export default useAgricultureActions;
