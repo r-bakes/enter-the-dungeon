@@ -20,7 +20,7 @@ export default function SkillMenu({ skill }: Readonly<{ skill: Skill }>) {
   );
 
   return (
-    <div className="flex h-full w-full flex-col gap-6 overflow-y-scroll px-8">
+    <div className="flex h-screen w-full flex-col gap-6 overflow-y-scroll px-8">
       <SkillHeader
         skill={skill}
         skillLevel={character.skills[skill.id].level}

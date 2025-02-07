@@ -36,7 +36,7 @@ import TaskSuccessEntry from "./taskSuccessEntry";
 import { calculateSuccessChance } from "@/features/common/stealth/utils/stealthUtils";
 
 const rootCardFormat =
-  "flex flex-col h-full grow-0 w-80 min-w-80 max-w-80 items-center overflow-y-scroll";
+  "flex flex-col grow-0 w-80 min-w-80 max-w-80 items-center";
 
 export default function TaskInfo({
   task,
@@ -54,7 +54,7 @@ export default function TaskInfo({
     return (
       <Card className={rootCardFormat}>
         <div className="flex h-full w-full items-center justify-center">
-          <Label className="h-10 text-2xl font-extralight text-muted-foreground">
+          <Label className="text-muted-foreground h-10 text-2xl font-extralight">
             Select a task
           </Label>
         </div>
@@ -98,7 +98,7 @@ export default function TaskInfo({
           </CardDescription>
         </div>
       </CardHeader>
-      <CardContent className="flex w-full grow flex-col gap-4">
+      <CardContent className="flex min-h-0 w-full grow flex-col gap-4">
         <Progress
           className="h-4 w-full rounded-sm"
           value={

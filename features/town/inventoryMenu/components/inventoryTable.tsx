@@ -129,10 +129,7 @@ export default function InventoryTable() {
                   {header.isPlaceholder ? null : (
                     <div
                       className={
-                        "flex h-full flex-row items-center gap-2 text-xs " +
-                        (header.column.columnDef.meta?.size !== undefined
-                          ? `w-[${header.column.columnDef.meta.size}px] `
-                          : "")
+                        "flex h-full flex-row items-center gap-2 text-xs"
                       }
                     >
                       <div
@@ -203,11 +200,11 @@ function Filter({ column }: { column: Column<any, unknown> }) {
         onValueChange={(value) => column.setFilterValue(value)}
         defaultValue={columnFilterValue?.toString()}
       >
-        <SelectTrigger className="h-6 w-32 text-xs font-normal text-muted-foreground">
+        <SelectTrigger className="text-muted-foreground h-6 w-32 text-xs font-normal">
           <SelectValue></SelectValue>
         </SelectTrigger>
         <SelectContent>
-          <SelectItem className="text-xs font-normal text-muted-foreground">
+          <SelectItem className="text-muted-foreground text-xs font-normal">
             All
           </SelectItem>
           {Object.entries(ItemType)
@@ -216,7 +213,7 @@ function Filter({ column }: { column: Column<any, unknown> }) {
               <SelectItem
                 key={typeId}
                 value={type}
-                className="text-xs font-normal text-muted-foreground"
+                className="text-muted-foreground text-xs font-normal"
               >
                 {formatCapitalCase(type)}
               </SelectItem>

@@ -13,7 +13,7 @@ export default function MenuSelect({}: Readonly<{}>) {
   return (
     <div
       className={
-        "flex h-full w-60 shrink-0 flex-col border-r-4 bg-slate-800 pb-2 pt-10 shadow-xs"
+        "flex h-screen w-60 shrink-0 flex-col border-r-4 bg-slate-800 pt-10 pb-2 shadow-xs"
       }
     >
       <Logo></Logo>
@@ -26,19 +26,19 @@ export default function MenuSelect({}: Readonly<{}>) {
         <Separator className="my-4"></Separator>
       </div>
       <div className="flex flex-col overflow-y-scroll">
-        <Label className="px-5 pb-2 text-xs text-muted-foreground text-white">
+        <Label className="text-muted-foreground px-5 pb-2 text-xs text-white">
           Character
         </Label>
         <MenuContainer
           menuItems={Object.keys(miscMenus) as MenuId[]}
         ></MenuContainer>
-        <Label className="px-5 pb-2 pt-4 text-xs text-muted-foreground text-white">
+        <Label className="text-muted-foreground px-5 pt-4 pb-2 text-xs text-white">
           Combat
         </Label>
         <MenuContainer
           menuItems={Object.keys(combatMenus) as MenuId[]}
         ></MenuContainer>
-        <Label className="px-5 pb-2 pt-4 text-xs text-muted-foreground text-white">
+        <Label className="text-muted-foreground px-5 pt-4 pb-2 text-xs text-white">
           Skills
         </Label>
         <MenuContainer
