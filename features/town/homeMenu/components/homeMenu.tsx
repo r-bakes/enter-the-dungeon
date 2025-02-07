@@ -53,7 +53,7 @@ export default function HomeMenu() {
         </CardHeader>
       </Card>
       <div className="flex h-full w-full flex-row gap-6">
-        <div className="w-0 border-4 shadow-sm"></div>
+        <div className="w-0 border-4 shadow-xs"></div>
 
         <div className="flex h-full grow flex-col">
           <Select

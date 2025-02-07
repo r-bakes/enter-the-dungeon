@@ -227,7 +227,7 @@ function Filter({ column }: { column: Column<any, unknown> }) {
   } else {
     return (
       <DebouncedInput
-        className="w-36 rounded border shadow"
+        className="w-36 rounded border shadow-sm"
         onChange={(value) => column.setFilterValue(value)}
         placeholder={`Search`}
         type="text"

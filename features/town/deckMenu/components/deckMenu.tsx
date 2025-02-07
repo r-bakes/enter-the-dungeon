@@ -54,7 +54,7 @@ export default function DeckMenu({}: {}) {
     <div className="flex h-full w-full flex-row gap-6 px-8">
       <div className="flex h-full w-[calc(100%-4px)] flex-col gap-6 overflow-y-scroll">
         <div className="flex w-full flex-row gap-6">
-          <div className="w-0 border-4 shadow-sm"></div>
+          <div className="w-0 border-4 shadow-xs"></div>
           <div className="flex grow flex-col gap-1">
             <Label className="pb-2 text-xl font-medium">Martial</Label>
             <Label className="text-lg font-medium text-muted-foreground">
@@ -82,7 +82,7 @@ export default function DeckMenu({}: {}) {
           <Separator></Separator>
         </div>
         <div className="flex w-full flex-row gap-6">
-          <div className="w-0 border-4 shadow-sm"></div>
+          <div className="w-0 border-4 shadow-xs"></div>
           <div className="flex w-full flex-col gap-1">
             <Label className="pb-2 text-xl font-medium">Magic</Label>
             <Label className="text-lg font-medium text-muted-foreground">

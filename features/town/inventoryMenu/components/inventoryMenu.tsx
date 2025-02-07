@@ -67,7 +67,7 @@ export default function InventoryMenu() {
           </div>
         </Card>
         <InventoryTable></InventoryTable>
-        <div className="w-0 border-4 shadow-sm"></div>
+        <div className="w-0 border-4 shadow-xs"></div>
       </div>
     </div>
   );

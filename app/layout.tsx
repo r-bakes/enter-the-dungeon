@@ -14,7 +14,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className="max-w-screen-4xl flex h-screen max-h-screen min-h-[800px] w-screen min-w-[800px] select-none">
+      <body className="max-w-[theme(screens.4xl)] flex h-screen max-h-screen min-h-[800px] w-screen min-w-[800px] select-none">
         <ThemeProvider
           attribute="class"
           defaultTheme="system"
