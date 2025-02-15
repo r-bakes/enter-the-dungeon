@@ -45,7 +45,7 @@ export const useAgricultureActions = () => {
     if (
       taskStartTime &&
       taskId &&
-      taskTable[taskId].durationSec <= currentTime - taskStartTime
+      taskTable[taskId].durationSec * 1000 <= currentTime - taskStartTime
     ) {
       return true;
     }
@@ -59,7 +59,7 @@ export const useAgricultureActions = () => {
     if (
       taskStartTime &&
       taskId &&
-      taskTable[taskId].durationSec <= currentTime - taskStartTime
+      taskTable[taskId].durationSec * 1000 <= currentTime - taskStartTime
     ) {
       return true;
     }

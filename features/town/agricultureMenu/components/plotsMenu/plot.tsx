@@ -43,10 +43,10 @@ export default function Plot({ id }: { id: PlotId }) {
             className="flex h-full w-full flex-col items-center justify-center p-4"
           >
             <CardHeader>
-              <CardTitle className="text-xl text-muted-foreground">
+              <CardTitle className="text-muted-foreground text-xl">
                 Empty
               </CardTitle>
-              <CardDescription className="text-left text-xs text-muted-foreground">
+              <CardDescription className="text-muted-foreground text-left text-xs">
                 Click to sow
               </CardDescription>
             </CardHeader>
@@ -84,14 +84,14 @@ export default function Plot({ id }: { id: PlotId }) {
               {renderIcon(Clock, 16, TASK_AND_ITEM_ICON_STYLE)}
               <div className="flex h-full items-center gap-1">
                 <Label className="text-xs font-normal">{time}</Label>
-                <Label className="text-xs font-normal text-muted-foreground">
+                <Label className="text-muted-foreground text-xs font-normal">
                   {timeUnit} remaining
                 </Label>
               </div>
             </div>
           </div>
         </div>
-        <Button disabled={canCompleteTask(id)} onClick={() => collect(id)}>
+        <Button disabled={!canCompleteTask(id)} onClick={() => collect(id)}>
           Harvest
         </Button>
       </div>

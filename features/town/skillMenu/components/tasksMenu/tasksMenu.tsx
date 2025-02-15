@@ -35,7 +35,7 @@ export default function TasksMenu({
         }}
         defaultValue={Object.values(skill.taskCategories)[0]}
       >
-        <SelectTrigger className="w-full font-normal text-muted-foreground">
+        <SelectTrigger className="text-muted-foreground w-full font-normal">
           <SelectValue></SelectValue>
         </SelectTrigger>
         <SelectContent>
@@ -43,7 +43,7 @@ export default function TasksMenu({
             {Object.entries(skill.taskCategories).map(
               ([categoryId, category]) => (
                 <SelectItem
-                  className="font-normal text-muted-foreground"
+                  className="text-muted-foreground font-normal"
                   key={categoryId + "-select-item"}
                   value={category}
                 >
