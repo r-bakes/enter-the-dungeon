@@ -14,7 +14,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className="max-w-[theme(screens.4xl)] flex h-screen max-h-screen min-h-[800px] w-screen min-w-[800px] select-none">
+      <body className="flex h-screen w-screen select-none">
         <ThemeProvider
           attribute="class"
           defaultTheme="system"
@@ -26,7 +26,7 @@ export default function RootLayout({
               <WorkingEngineProvider>
                 <MenuEngineProvider>
                   <Toaster position="bottom-left" closeButton />
-                  <main className="flex h-full w-full">{children}</main>
+                  <main className="flex h-screen w-screen">{children}</main>
                 </MenuEngineProvider>
               </WorkingEngineProvider>
             </ModifierEngineProvider>

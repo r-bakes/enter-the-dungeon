@@ -98,7 +98,7 @@ export default function TaskInfo({
           </CardDescription>
         </div>
       </CardHeader>
-      <CardContent className="flex min-h-0 w-full grow flex-col gap-4">
+      <CardContent className="flex min-h-0 w-full flex-1 flex-col gap-4">
         <Progress
           className="h-4 w-full rounded-sm"
           value={

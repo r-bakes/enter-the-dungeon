@@ -1,11 +1,10 @@
 "use client";
-
 import { useState } from "react";
 import { useCharacterEngineContext } from "@/engines/characterEngineContext";
-import { SkillHeader } from "@/features/town/skillMenu/components/skillHeader/skillHeader";
-import TaskInfo from "@/features/town/skillMenu/components/taskInfo/taskInfo";
-import TasksMenu from "@/features/town/skillMenu/components/tasksMenu/tasksMenu";
-import VerticalAccent from "../../../../components/verticalAccent";
+import { SkillHeader } from "./skillHeader/skillHeader";
+import TaskInfo from "./taskInfo/taskInfo";
+import TasksMenu from "./tasksMenu/tasksMenu";
+import VerticalAccent from "@/components/verticalAccent";
 import { Skill } from "@/types/skills";
 import { useWorkingEngineContext } from "@/engines/workingEngineContext";
 import { Task } from "@/types/tasks";
@@ -20,21 +19,28 @@ export default function SkillMenu({ skill }: Readonly<{ skill: Skill }>) {
   );
 
   return (
-    <div className="flex h-screen w-full flex-col gap-6 overflow-y-scroll px-8">
-      <SkillHeader
-        skill={skill}
-        skillLevel={character.skills[skill.id].level}
-        skillExperience={character.skills[skill.id].experience}
-      ></SkillHeader>
-      <div className="flex h-[calc(100%-184px)] w-full gap-6">
-        <TaskInfo task={task}></TaskInfo>
-        <TasksMenu
+    <div className="flex h-full w-full flex-col gap-6 px-8">
+      {/* Top section (Header) */}
+      <div className="flex-none">
+        <SkillHeader
           skill={skill}
-          tasks={Object.values(skill.tasks)}
           skillLevel={character.skills[skill.id].level}
-          setTask={setTask}
-        ></TasksMenu>
-        <VerticalAccent></VerticalAccent>
+          skillExperience={character.skills[skill.id].experience}
+        />
+      </div>
+
+      {/* Scrollable content */}
+      <div className="flex min-h-0 flex-1">
+        <div className="flex w-full gap-6">
+          <TaskInfo task={task} />
+          <TasksMenu
+            skill={skill}
+            tasks={Object.values(skill.tasks)}
+            skillLevel={character.skills[skill.id].level}
+            setTask={setTask}
+          />
+          <VerticalAccent />
+        </div>
       </div>
     </div>
   );
