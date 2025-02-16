@@ -59,13 +59,15 @@ export default function Plot({ id }: { id: PlotId }) {
             <SheetDescription>Check back in a while!</SheetDescription>
           </SheetHeader>
           <Separator className="my-6"></Separator>
-          {Object.values(botanyTasks).map((task) => (
-            <PlotSheetsEntry
-              key={task.id}
-              plotId={id}
-              task={task}
-            ></PlotSheetsEntry>
-          ))}
+          <div className="flex h-full gap-4 overflow-x-scroll">
+            {Object.values(botanyTasks).map((task) => (
+              <PlotSheetsEntry
+                key={task.id}
+                plotId={id}
+                task={task}
+              ></PlotSheetsEntry>
+            ))}
+          </div>
         </SheetContent>
       </Sheet>
     );

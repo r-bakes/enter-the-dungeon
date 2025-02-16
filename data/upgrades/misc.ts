@@ -77,7 +77,7 @@ export const miscUpgrades: { [id in UpgradeId]?: Upgrade } = {
       targets: [taskTable.MINE_COAL.id],
       values: {
         [ModifierType.SPEED]: 10,
-        [ModifierType.PRODUCTION_MULTIPLIER]: 1,
+        [ModifierType.PRODUCTION_MULTIPLIER]: 2,
       },
     },
     requiresItems: { [ItemId.GOLD]: 1000000 },

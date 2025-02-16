@@ -17,6 +17,8 @@ const initializeInventory = (): Inventory => {
   inventory[ItemId.COAL] = 10;
   inventory[ItemId.BRONZE_BAR] = 100;
   inventory[ItemId.GINSENG_SEED] = 10;
+  inventory[ItemId.NIGHTSHADE_SEED] = 10;
+  inventory[ItemId.SILVERLEAF_SEED] = 10;
 
   return inventory;
 };
@@ -80,7 +82,7 @@ export const testCharacter: Character = {
       experience: 0,
     },
     [SkillId.AGRICULTURE]: {
-      level: 1,
+      level: 50,
       experience: 0,
     },
     [SkillId.ALCHEMY]: {
