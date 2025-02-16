@@ -12,6 +12,7 @@ import React from "react";
 import PasturesMenu from "./pasturesMenu/pasturesMenu";
 import PlotsMenu from "./plotsMenu/plotsMenu";
 import ActionCard from "./actionCard/actionCard";
+import { AgricultureTaskCategories } from "@/data/skills/enums";
 
 export default function TasksMenu() {
   const [selectedTasksCategory, setSelectedTasksCategory] = React.useState(
@@ -24,7 +25,7 @@ export default function TasksMenu() {
         onValueChange={(value) => setSelectedTasksCategory(value)}
         defaultValue={Object.values(agriculture.taskCategories)[0]}
       >
-        <SelectTrigger className="w-full font-normal text-muted-foreground">
+        <SelectTrigger className="text-muted-foreground w-full font-normal">
           <SelectValue></SelectValue>
         </SelectTrigger>
         <SelectContent>
@@ -32,7 +33,7 @@ export default function TasksMenu() {
             {Object.entries(agriculture.taskCategories).map(
               ([categoryId, category]) => (
                 <SelectItem
-                  className="font-normal text-muted-foreground"
+                  className="text-muted-foreground font-normal"
                   key={categoryId + "-select-item"}
                   value={category}
                 >
@@ -43,7 +44,9 @@ export default function TasksMenu() {
           </SelectGroup>
         </SelectContent>
       </Select>
-      <ActionCard></ActionCard>
+      <ActionCard
+        taskCategory={selectedTasksCategory as AgricultureTaskCategories}
+      ></ActionCard>
       {selectedTasksCategory == agriculture.taskCategories.BOTANY ? (
         <PlotsMenu></PlotsMenu>
       ) : (

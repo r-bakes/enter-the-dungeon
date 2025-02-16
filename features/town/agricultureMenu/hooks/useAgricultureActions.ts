@@ -1,4 +1,5 @@
 import { PastureId, PlotId } from "@/data/character/enums";
+import { AgricultureTaskCategories } from "@/data/skills/enums";
 import { TaskId } from "@/data/tasks/enum";
 import { taskTable } from "@/data/tasks/tasks";
 import { useCharacterEngineContext } from "@/engines/characterEngineContext";
@@ -22,6 +23,15 @@ export const useAgricultureActions = () => {
       return canCompleteRanchingTask(id as PastureId);
     }
   };
+
+  const remove = (id: PlotId | PastureId): void => {
+    if (id in PlotId) {
+      return uproot(id as PlotId);
+    } else {
+      return release(id as PastureId);
+    }
+  };
+
   const collect = (id: PlotId | PastureId): void => {
     if (id in PlotId) {
       return harvest(id as PlotId);
@@ -76,9 +86,7 @@ export const useAgricultureActions = () => {
   };
   const harvest = (id: PlotId) => {
     const taskId = character.working.agriculture.botany[id].taskId;
-    if (!taskId) {
-      return;
-    }
+    if (!taskId) return;
 
     const task = taskTable[taskId];
     character.working.agriculture.botany[id] = {
@@ -92,7 +100,77 @@ export const useAgricultureActions = () => {
   const pasture = (pastureId: PastureId, taskId: TaskId) => {};
   const grab = (id: PastureId) => {};
 
-  return { canCompleteTask, assign, collect, timeRemainingMs };
+  const uproot = (id: PlotId) => {
+    character.working.agriculture.botany[id] = {
+      startTime: null,
+      taskId: null,
+    };
+
+    setCharacter({ ...character });
+  };
+
+  const release = (id: PastureId) => {
+    character.working.agriculture.ranching[id] = {
+      startTime: null,
+      taskId: null,
+    };
+
+    setCharacter({ ...character });
+  };
+
+  const harvestAll = () => {
+    for (const plotId of Object.values(PlotId)) {
+      if (canCompleteBotanyTask(plotId)) {
+        harvest(plotId);
+      }
+    }
+  };
+
+  const grabAll = () => {
+    for (const ranchId of Object.values(PastureId)) {
+      if (canCompleteRanchingTask(ranchId)) {
+        grab(ranchId);
+      }
+    }
+  };
+
+  const collectAll = (taskCategory: AgricultureTaskCategories) => {
+    if (taskCategory == AgricultureTaskCategories.BOTANY) {
+      harvestAll();
+    } else {
+      grabAll();
+    }
+  };
+
+  const removeAll = (taskCategory: AgricultureTaskCategories) => {
+    if (taskCategory == AgricultureTaskCategories.BOTANY) {
+      for (const plotId of Object.values(PlotId)) {
+        character.working.agriculture.botany[plotId] = {
+          startTime: null,
+          taskId: null,
+        };
+      }
+    } else {
+      for (const ranchId of Object.values(PastureId)) {
+        character.working.agriculture.ranching[ranchId] = {
+          startTime: null,
+          taskId: null,
+        };
+      }
+    }
+
+    setCharacter({ ...character });
+  };
+
+  return {
+    canCompleteTask,
+    assign,
+    collect,
+    collectAll,
+    timeRemainingMs,
+    remove,
+    removeAll,
+  };
 };
 
 export default useAgricultureActions;

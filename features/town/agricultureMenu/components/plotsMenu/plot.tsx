@@ -30,7 +30,8 @@ import useAgricultureActions from "../../hooks/useAgricultureActions";
 
 export default function Plot({ id }: { id: PlotId }) {
   const { character } = useCharacterEngineContext();
-  const { timeRemainingMs, canCompleteTask, collect } = useAgricultureActions();
+  const { timeRemainingMs, canCompleteTask, collect, remove } =
+    useAgricultureActions();
   let plotContent = character.working.agriculture.botany[id];
   let cardContent;
 
@@ -82,18 +83,35 @@ export default function Plot({ id }: { id: PlotId }) {
             <Label>{task.name}</Label>
             <div className="flex h-full items-center gap-1">
               {renderIcon(Clock, 16, TASK_AND_ITEM_ICON_STYLE)}
-              <div className="flex h-full items-center gap-1">
-                <Label className="text-xs font-normal">{time}</Label>
-                <Label className="text-muted-foreground text-xs font-normal">
-                  {timeUnit} remaining
-                </Label>
-              </div>
+              {Number(time) > 0 ? (
+                <div className="flex h-full items-center gap-1">
+                  <Label className="text-xs font-normal">{time}</Label>
+                  <Label className="text-muted-foreground text-xs font-normal">
+                    {timeUnit} remaining
+                  </Label>
+                </div>
+              ) : (
+                <Label className="text-xs font-normal">Ready!</Label>
+              )}
             </div>
           </div>
         </div>
-        <Button disabled={!canCompleteTask(id)} onClick={() => collect(id)}>
-          Harvest
-        </Button>
+        <div>
+          <Button
+            disabled={!canCompleteTask(id)}
+            className="w-30"
+            onClick={() => collect(id)}
+          >
+            Harvest
+          </Button>
+          <Button
+            variant="destructive"
+            className="w-30"
+            onClick={() => remove(id)}
+          >
+            Uproot
+          </Button>
+        </div>
       </div>
     );
   }
