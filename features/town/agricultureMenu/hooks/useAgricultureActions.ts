@@ -40,6 +40,7 @@ export const useAgricultureActions = () => {
     }
   };
   const assign = (id: PlotId | PastureId, taskId: TaskId): void => {
+    // TODO: Implement seed/resource removal process
     if (id in PlotId) {
       return plant(id as PlotId, taskId);
     } else {
@@ -77,10 +78,14 @@ export const useAgricultureActions = () => {
   };
 
   const plant = (plotId: PlotId, taskId: TaskId) => {
+    if (character.working.agriculture.botany[plotId].taskId) return;
+
     let startTime = Date.now();
 
-    character.working.agriculture.botany[plotId].startTime = startTime;
-    character.working.agriculture.botany[plotId].taskId = taskId;
+    character.working.agriculture.botany[plotId] = {
+      startTime: startTime,
+      taskId: taskId,
+    };
 
     setCharacter({ ...character });
   };
@@ -142,6 +147,21 @@ export const useAgricultureActions = () => {
     }
   };
 
+  const assignAll = (
+    taskCategory: AgricultureTaskCategories,
+    taskId: TaskId,
+  ) => {
+    if (taskCategory == AgricultureTaskCategories.BOTANY) {
+      for (const plotId of Object.values(PlotId)) {
+        assign(plotId, taskId);
+      }
+    } else {
+      for (const ranchId of Object.values(PastureId)) {
+        assign(ranchId, taskId);
+      }
+    }
+  };
+
   const removeAll = (taskCategory: AgricultureTaskCategories) => {
     if (taskCategory == AgricultureTaskCategories.BOTANY) {
       for (const plotId of Object.values(PlotId)) {
@@ -165,6 +185,7 @@ export const useAgricultureActions = () => {
   return {
     canCompleteTask,
     assign,
+    assignAll,
     collect,
     collectAll,
     timeRemainingMs,

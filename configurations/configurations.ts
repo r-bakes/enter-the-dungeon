@@ -21,7 +21,7 @@ export const TASK_AND_ITEM_ICON_STYLE: IconStylePrimitive = {
   fillOpacity: 1,
 };
 
-export const PLOT_LEVEL_REQUIREMENTS = {
+export const CONTAINER_LEVEL_REQUIREMENTS = {
   [PlotId.PLOT_ONE]: 1,
   [PlotId.PLOT_TWO]: 5,
   [PlotId.PLOT_THREE]: 10,
@@ -30,9 +30,6 @@ export const PLOT_LEVEL_REQUIREMENTS = {
   [PlotId.PLOT_SIX]: 40,
   [PlotId.PLOT_SEVEN]: 50,
   [PlotId.PLOT_EIGHT]: 60,
-};
-
-export const PASTURE_LEVEL_REQURIEMENTS = {
   [PastureId.PASTURE_ONE]: 1,
   [PastureId.PASTURE_TWO]: 5,
   [PastureId.PASTURE_THREE]: 10,

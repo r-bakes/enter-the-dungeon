@@ -7,15 +7,12 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import { Label } from "@/components/ui/label";
 import {
   formatTime,
   renderIcon,
 } from "@/features/common/utils/formattingUtilities";
 import { useModifierActions } from "@/features/town/modifiers/hooks/useModifierActions";
 import { Task } from "@/types/tasks";
-import useAgricultureActions from "../../hooks/useAgricultureActions";
-import { PlotId } from "@/data/character/enums";
 import { TaskRequiresEntry } from "@/features/town/skillMenu/components/taskInfo/taskRequiresEntry";
 import { Item } from "@/types/items";
 import { itemTable } from "@/data/items/items";
@@ -29,18 +26,18 @@ import { Separator } from "@/components/ui/separator";
 import TaskDataEntry from "@/features/town/skillMenu/components/taskInfo/taskDataEntry";
 import { Play } from "lucide-react";
 import TaskModifiersEntry from "@/features/town/skillMenu/components/taskInfo/taskModifiersEntry";
+import { SheetClose } from "@/components/ui/sheet";
 
-export default function PlotSheetsEntry({
+export default function ContainerSheetEntry({
   task,
-  plotId,
+  onClick,
 }: {
   task: Task;
-  plotId: PlotId;
+  onClick: React.MouseEventHandler<HTMLButtonElement>;
 }) {
   const { character } = useCharacterEngineContext();
   const { modifiers } = useModifierEngineContext();
   const { applySpeedModifier, applyExperienceModifier } = useModifierActions();
-  const { assign } = useAgricultureActions();
 
   let [time, timeUnit] = formatTime(applySpeedModifier(task.id));
 
@@ -70,7 +67,7 @@ export default function PlotSheetsEntry({
   }
 
   return (
-    <Card className="flex h-[90%] min-w-80 max-w-80 flex-col items-center justify-between">
+    <Card className="flex max-w-80 min-w-80 flex-1 flex-col items-center justify-between">
       <div className="flex w-full flex-col">
         <CardHeader className="flex w-full flex-row gap-4">
           {renderIcon(task.icon, 48, task.iconStyle)}
@@ -104,15 +101,15 @@ export default function PlotSheetsEntry({
         </CardContent>
       </div>
       <CardFooter className="flex w-full">
-        <Button
-          className="flex w-full text-center"
-          disabled={!requirementsMet}
-          onClick={() => {
-            assign(plotId, task.id);
-          }}
-        >
-          <Play className="mr-2"></Play>Plant
-        </Button>
+        <SheetClose asChild>
+          <Button
+            className="flex w-full text-center"
+            disabled={!requirementsMet}
+            onClick={onClick}
+          >
+            <Play className="mr-2"></Play>Plant
+          </Button>
+        </SheetClose>
       </CardFooter>
     </Card>
   );

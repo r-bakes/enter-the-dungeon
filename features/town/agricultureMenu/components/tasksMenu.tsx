@@ -9,8 +9,7 @@ import {
 import { agriculture } from "@/data/skills/agriculture";
 import { formatCapitalCase } from "@/features/common/utils/formattingUtilities";
 import React from "react";
-import PasturesMenu from "./pasturesMenu/pasturesMenu";
-import PlotsMenu from "./plotsMenu/plotsMenu";
+import ContainerMenu from "./containerMenu/containerMenu";
 import ActionCard from "./actionCard/actionCard";
 import { AgricultureTaskCategories } from "@/data/skills/enums";
 
@@ -47,11 +46,9 @@ export default function TasksMenu() {
       <ActionCard
         taskCategory={selectedTasksCategory as AgricultureTaskCategories}
       ></ActionCard>
-      {selectedTasksCategory == agriculture.taskCategories.BOTANY ? (
-        <PlotsMenu></PlotsMenu>
-      ) : (
-        <PasturesMenu></PasturesMenu>
-      )}
+      <ContainerMenu
+        taskCategory={selectedTasksCategory as AgricultureTaskCategories}
+      ></ContainerMenu>
     </div>
   );
 }

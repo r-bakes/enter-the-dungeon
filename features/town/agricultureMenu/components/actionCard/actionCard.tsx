@@ -3,33 +3,57 @@
 import { Button } from "@/components/ui/button";
 import { AgricultureTaskCategories } from "@/data/skills/enums";
 import useAgricultureActions from "../../hooks/useAgricultureActions";
-// labelHelpers.ts
+import {
+  Sheet,
+  SheetContent,
+  SheetDescription,
+  SheetHeader,
+  SheetTitle,
+  SheetTrigger,
+} from "@/components/ui/sheet";
+import { Separator } from "@/components/ui/separator";
+import ContainerSheetEntry from "../containerMenu/containerSheetEntry";
+import { botanyTasks } from "@/data/tasks/agriculture/botany";
+import { Task } from "@/types/tasks";
+import { TaskId } from "@/data/tasks/enum";
+import { ranchingTasks } from "@/data/tasks/agriculture/ranching";
 
 type LabelSet = {
   collectAll: string;
   speedAll: string;
   assignAll: string;
   removeAll: string;
+  sheetTitle: string;
+  sheetDescription: string;
 };
 
-export function getAgricultureLabels(
+export function getAgricultureContent(
   taskCategory: AgricultureTaskCategories,
-): LabelSet {
+): [LabelSet, { [id in TaskId]?: Task }] {
   if (taskCategory === AgricultureTaskCategories.BOTANY) {
-    return {
-      collectAll: "Harvest All",
-      speedAll: "Fertilize All",
-      assignAll: "Plant All",
-      removeAll: "Uproot All",
-    };
+    return [
+      {
+        collectAll: "Harvest All",
+        speedAll: "Fertilize All",
+        assignAll: "Plant All",
+        removeAll: "Uproot All",
+        sheetTitle: "Select a Plant",
+        sheetDescription: "Check back in a while!",
+      },
+      botanyTasks,
+    ];
   } else {
-    // If it's ranching or you have other categories
-    return {
-      collectAll: "Collect All",
-      speedAll: "Growth Elixer All",
-      assignAll: "Pasture All",
-      removeAll: "Release All",
-    };
+    return [
+      {
+        collectAll: "Collect All",
+        speedAll: "Growth Elixer All",
+        assignAll: "Pasture All",
+        removeAll: "Release All",
+        sheetTitle: "Select a Beast",
+        sheetDescription: "Check back in a while!",
+      },
+      ranchingTasks,
+    ];
   }
 }
 export default function ActionCard({
@@ -37,8 +61,8 @@ export default function ActionCard({
 }: {
   taskCategory: AgricultureTaskCategories;
 }) {
-  const { collectAll, removeAll } = useAgricultureActions();
-  const labels = getAgricultureLabels(taskCategory);
+  const { collectAll, removeAll, assignAll } = useAgricultureActions();
+  const [labels, tasks] = getAgricultureContent(taskCategory);
 
   return (
     <div className="flex w-full items-center py-2">
@@ -48,7 +72,30 @@ export default function ActionCard({
 
       <Button className="h-full w-1/4">{labels.speedAll}</Button>
 
-      <Button className="h-full w-1/4">{labels.assignAll}</Button>
+      <Sheet>
+        <SheetTrigger asChild>
+          <Button className="h-full w-1/4">{labels.assignAll}</Button>
+        </SheetTrigger>
+        <SheetContent
+          className="flex h-full max-h-screen flex-col"
+          side={"right"}
+        >
+          <SheetHeader>
+            <SheetTitle>{labels.sheetTitle}</SheetTitle>
+            <SheetDescription>{labels.sheetDescription}</SheetDescription>
+          </SheetHeader>
+          <Separator className="my-6"></Separator>
+          <div className="flex grow gap-4 overflow-x-scroll">
+            {Object.values(tasks).map((task) => (
+              <ContainerSheetEntry
+                key={task.id}
+                onClick={() => assignAll(taskCategory, task.id)}
+                task={task}
+              ></ContainerSheetEntry>
+            ))}
+          </div>
+        </SheetContent>
+      </Sheet>
 
       <Button
         className="h-full w-1/4"

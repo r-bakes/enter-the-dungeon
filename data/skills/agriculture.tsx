@@ -3,8 +3,9 @@ import { AgricultureTaskCategories, SkillId } from "@/data/skills/enums";
 import { Skill } from "@/types/skills";
 import { Sprout } from "lucide-react";
 import { botanyTasks } from "../tasks/agriculture/botany";
+import { ranchingTasks } from "../tasks/agriculture/ranching";
 
-const agricultureTasks = { ...botanyTasks };
+const agricultureTasks = { ...botanyTasks, ...ranchingTasks };
 
 export const agriculture: Skill = {
   id: SkillId.AGRICULTURE,

@@ -14,9 +14,9 @@ import {
   SheetTitle,
   SheetTrigger,
 } from "@/components/ui/sheet";
-import { PlotId } from "@/data/character/enums";
+import { PastureId, PlotId } from "@/data/character/enums";
 import { useCharacterEngineContext } from "@/engines/characterEngineContext";
-import PlotSheetsEntry from "./plotsSheetEntry";
+import ContainerSheetEntry from "./containerSheetEntry";
 import { botanyTasks } from "@/data/tasks/agriculture/botany";
 import {
   formatTime,
@@ -27,15 +27,20 @@ import { Label } from "@/components/ui/label";
 import { Clock } from "lucide-react";
 import { TASK_AND_ITEM_ICON_STYLE } from "@/configurations/configurations";
 import useAgricultureActions from "../../hooks/useAgricultureActions";
+import { ranchingTasks } from "@/data/tasks/agriculture/ranching";
 
-export default function Plot({ id }: { id: PlotId }) {
+export default function Container({ id }: { id: PlotId | PastureId }) {
   const { character } = useCharacterEngineContext();
-  const { timeRemainingMs, canCompleteTask, collect, remove } =
+  const { timeRemainingMs, canCompleteTask, collect, assign, remove } =
     useAgricultureActions();
-  let plotContent = character.working.agriculture.botany[id];
+  let containerContent =
+    id in PlotId
+      ? character.working.agriculture.botany[id as PlotId]
+      : character.working.agriculture.ranching[id as PastureId];
+  let tasks = id in PlotId ? botanyTasks : ranchingTasks;
   let cardContent;
 
-  if (!plotContent.taskId) {
+  if (!containerContent.taskId) {
     cardContent = (
       <Sheet>
         <SheetTrigger asChild>
@@ -53,28 +58,31 @@ export default function Plot({ id }: { id: PlotId }) {
             </CardHeader>
           </Button>
         </SheetTrigger>
-        <SheetContent side={"right"}>
+        <SheetContent
+          className="flex h-full max-h-screen flex-col"
+          side={"right"}
+        >
           <SheetHeader>
             <SheetTitle>Select a Plant</SheetTitle>
             <SheetDescription>Check back in a while!</SheetDescription>
           </SheetHeader>
           <Separator className="my-6"></Separator>
-          <div className="flex h-full gap-4 overflow-x-scroll">
-            {Object.values(botanyTasks).map((task) => (
-              <PlotSheetsEntry
+          <div className="flex grow gap-4 overflow-x-scroll">
+            {Object.values(tasks).map((task) => (
+              <ContainerSheetEntry
                 key={task.id}
-                plotId={id}
                 task={task}
-              ></PlotSheetsEntry>
+                onClick={() => assign(id, task.id)}
+              ></ContainerSheetEntry>
             ))}
           </div>
         </SheetContent>
       </Sheet>
     );
   } else {
-    let task = taskTable[plotContent.taskId];
+    let task = taskTable[containerContent.taskId];
     let [time, timeUnit] = formatTime(
-      timeRemainingMs(plotContent.startTime, task.durationSec) / 1000,
+      timeRemainingMs(containerContent.startTime, task.durationSec) / 1000,
     );
 
     cardContent = (
