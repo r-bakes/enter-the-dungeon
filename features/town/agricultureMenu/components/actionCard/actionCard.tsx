@@ -61,12 +61,23 @@ export default function ActionCard({
 }: {
   taskCategory: AgricultureTaskCategories;
 }) {
-  const { collectAll, removeAll, assignAll } = useAgricultureActions();
+  const {
+    collectAll,
+    removeAll,
+    assignAll,
+    isCollectAllDisabled,
+    isAssignAllDisabled,
+    isRemoveAllDisabled,
+  } = useAgricultureActions();
   const [labels, tasks] = getAgricultureContent(taskCategory);
 
   return (
     <div className="flex w-full items-center py-2">
-      <Button className="h-full w-1/4" onClick={() => collectAll(taskCategory)}>
+      <Button
+        className="h-full w-1/4"
+        onClick={() => collectAll(taskCategory)}
+        disabled={isCollectAllDisabled(taskCategory)}
+      >
         {labels.collectAll}
       </Button>
 
@@ -74,7 +85,12 @@ export default function ActionCard({
 
       <Sheet>
         <SheetTrigger asChild>
-          <Button className="h-full w-1/4">{labels.assignAll}</Button>
+          <Button
+            className="h-full w-1/4"
+            disabled={isAssignAllDisabled(taskCategory)}
+          >
+            {labels.assignAll}
+          </Button>
         </SheetTrigger>
         <SheetContent
           className="flex h-full max-h-screen flex-col"
@@ -100,6 +116,7 @@ export default function ActionCard({
       <Button
         className="h-full w-1/4"
         variant="destructive"
+        disabled={isRemoveAllDisabled(taskCategory)}
         onClick={() => removeAll(taskCategory)}
       >
         {labels.removeAll}

@@ -1,3 +1,4 @@
+import { CONTAINER_LEVEL_REQUIREMENTS } from "@/configurations/configurations";
 import { PastureId, PlotId } from "@/data/character/enums";
 import { AgricultureTaskCategories } from "@/data/skills/enums";
 import { TaskId } from "@/data/tasks/enum";
@@ -182,6 +183,71 @@ export const useAgricultureActions = () => {
     setCharacter({ ...character });
   };
 
+  const isCollectAllDisabled = (
+    taskCategory: AgricultureTaskCategories,
+  ): boolean => {
+    if (taskCategory == AgricultureTaskCategories.BOTANY) {
+      for (const plotId of Object.values(PlotId)) {
+        if (canCompleteTask(plotId)) return false;
+      }
+    } else {
+      for (const ranchId of Object.values(PastureId)) {
+        if (canCompleteTask(ranchId)) return false;
+      }
+    }
+
+    return true;
+  };
+
+  const isAssignAllDisabled = (
+    taskCategory: AgricultureTaskCategories,
+  ): boolean => {
+    const characterLevel = character.skills.AGRICULTURE.level;
+
+    if (taskCategory == AgricultureTaskCategories.BOTANY) {
+      for (const plotId of Object.values(PlotId)) {
+        const isRequiredLevel =
+          CONTAINER_LEVEL_REQUIREMENTS[plotId] <= characterLevel;
+
+        if (
+          !character.working.agriculture.botany[plotId].taskId &&
+          isRequiredLevel
+        )
+          return false;
+      }
+    } else {
+      for (const ranchId of Object.values(PastureId)) {
+        const isRequiredLevel =
+          CONTAINER_LEVEL_REQUIREMENTS[ranchId] <= characterLevel;
+
+        if (
+          !character.working.agriculture.ranching[ranchId].taskId &&
+          isRequiredLevel
+        )
+          return false;
+      }
+    }
+
+    return true;
+  };
+
+  const isRemoveAllDisabled = (
+    taskCategory: AgricultureTaskCategories,
+  ): boolean => {
+    if (taskCategory == AgricultureTaskCategories.BOTANY) {
+      for (const plotId of Object.values(PlotId)) {
+        if (character.working.agriculture.botany[plotId].taskId) return false;
+      }
+    } else {
+      for (const ranchId of Object.values(PastureId)) {
+        if (character.working.agriculture.ranching[ranchId].taskId)
+          return false;
+      }
+    }
+
+    return true;
+  };
+
   return {
     canCompleteTask,
     assign,
@@ -191,6 +257,9 @@ export const useAgricultureActions = () => {
     timeRemainingMs,
     remove,
     removeAll,
+    isCollectAllDisabled,
+    isAssignAllDisabled,
+    isRemoveAllDisabled,
   };
 };
 

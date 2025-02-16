@@ -13,11 +13,10 @@ export default function AgricultureMenu({}) {
   // Local state just to force updates. Want waiting on page for elements to update
   const [tick, setTick] = useState(0);
 
-  // Increment 'tick' every 60 seconds
   useEffect(() => {
     const interval = setInterval(() => {
       setTick((t) => t + 1);
-    }, 60_000);
+    }, 60_000); // refresh every 60 seconds
 
     return () => clearInterval(interval);
   }, []);
