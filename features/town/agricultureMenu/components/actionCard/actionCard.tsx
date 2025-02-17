@@ -12,7 +12,7 @@ import {
   SheetTrigger,
 } from "@/components/ui/sheet";
 import { Separator } from "@/components/ui/separator";
-import ContainerSheetEntry from "../containerMenu/containerSheetEntry";
+import ContainersSheetEntry from "../containerMenu/containersSheetEntry";
 import { botanyTasks } from "@/data/tasks/agriculture/botany";
 import { Task } from "@/types/tasks";
 import { TaskId } from "@/data/tasks/enum";
@@ -68,8 +68,10 @@ export default function ActionCard({
     isCollectAllDisabled,
     isAssignAllDisabled,
     isRemoveAllDisabled,
+    numberContainersAvailable,
   } = useAgricultureActions();
   const [labels, tasks] = getAgricultureContent(taskCategory);
+  const numberContainersCanAssign = numberContainersAvailable(taskCategory);
 
   return (
     <div className="flex w-full items-center py-2">
@@ -103,11 +105,12 @@ export default function ActionCard({
           <Separator className="my-6"></Separator>
           <div className="flex grow gap-4 overflow-x-scroll">
             {Object.values(tasks).map((task) => (
-              <ContainerSheetEntry
+              <ContainersSheetEntry
                 key={task.id}
                 onClick={() => assignAll(taskCategory, task.id)}
                 task={task}
-              ></ContainerSheetEntry>
+                numberContainers={numberContainersCanAssign}
+              ></ContainersSheetEntry>
             ))}
           </div>
         </SheetContent>

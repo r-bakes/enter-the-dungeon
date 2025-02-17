@@ -16,7 +16,7 @@ import {
 } from "@/components/ui/sheet";
 import { PastureId, PlotId } from "@/data/character/enums";
 import { useCharacterEngineContext } from "@/engines/characterEngineContext";
-import ContainerSheetEntry from "./containerSheetEntry";
+import ContainersSheetEntry from "./containersSheetEntry";
 import { botanyTasks } from "@/data/tasks/agriculture/botany";
 import {
   formatTime,
@@ -69,11 +69,11 @@ export default function Container({ id }: { id: PlotId | PastureId }) {
           <Separator className="my-6"></Separator>
           <div className="flex grow gap-4 overflow-x-scroll">
             {Object.values(tasks).map((task) => (
-              <ContainerSheetEntry
+              <ContainersSheetEntry
                 key={task.id}
                 task={task}
                 onClick={() => assign(id, task.id)}
-              ></ContainerSheetEntry>
+              ></ContainersSheetEntry>
             ))}
           </div>
         </SheetContent>

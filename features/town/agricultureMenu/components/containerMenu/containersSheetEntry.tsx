@@ -27,44 +27,25 @@ import TaskDataEntry from "@/features/town/skillMenu/components/taskInfo/taskDat
 import { Play } from "lucide-react";
 import TaskModifiersEntry from "@/features/town/skillMenu/components/taskInfo/taskModifiersEntry";
 import { SheetClose } from "@/components/ui/sheet";
+import useInventoryActions from "@/features/common/inventory/hooks/useInventoryActions";
 
-export default function ContainerSheetEntry({
+export default function ContainersSheetEntry({
   task,
   onClick,
+  numberContainers = 1,
 }: {
   task: Task;
   onClick: React.MouseEventHandler<HTMLButtonElement>;
+  numberContainers?: number;
 }) {
-  const { character } = useCharacterEngineContext();
   const { modifiers } = useModifierEngineContext();
+  const { hasItems } = useInventoryActions();
   const { applySpeedModifier, applyExperienceModifier } = useModifierActions();
 
   let [time, timeUnit] = formatTime(applySpeedModifier(task.id));
 
   let taskProduction = generateDropRates(task.lootTable);
-  let taskRequires: { item: Item; quantity: number; haveEnough: boolean }[] =
-    [];
-  let requirementsMet: boolean = true;
-
-  if (task.requires) {
-    taskRequires = Object.entries(task.requires).map(([itemId, quantity]) => ({
-      item: itemTable[itemId as ItemId],
-      quantity: quantity,
-      haveEnough:
-        itemId in character.inventory &&
-        quantity <= character.inventory[itemId as ItemId],
-    }));
-
-    for (const element of taskRequires) {
-      let reqs = element;
-      if (
-        !(reqs.item.id in character.inventory) ||
-        reqs.quantity > character.inventory[reqs.item.id]
-      ) {
-        requirementsMet = false;
-      }
-    }
-  }
+  let requirementsMet = hasItems(task.requires, numberContainers);
 
   return (
     <Card className="flex max-w-80 min-w-80 flex-1 flex-col items-center justify-between">
@@ -95,7 +76,10 @@ export default function ContainerSheetEntry({
                 modifiers[task.id][ModifierType.PRODUCTION_MULTIPLIER]
               }
             ></TaskProducesEntry>
-            <TaskRequiresEntry data={taskRequires}></TaskRequiresEntry>
+            <TaskRequiresEntry
+              data={task.requires}
+              requiresMultiplier={numberContainers}
+            ></TaskRequiresEntry>
             <TaskModifiersEntry data={modifiers[task.id]}></TaskModifiersEntry>
           </div>
         </CardContent>

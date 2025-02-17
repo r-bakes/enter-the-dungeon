@@ -4,6 +4,8 @@ import { LootTable } from "./loot";
 import { ItemId } from "@/data/items/enums";
 import { TaskId } from "@/data/tasks/enum";
 
+export type TaskRequires = { [id in ItemId]?: number };
+
 export type Task = {
   id: TaskId;
   durationSec: number;
@@ -11,7 +13,7 @@ export type Task = {
   requiredLevel: number;
   lootTable: LootTable;
   category: string;
-  requires: { [id in ItemId]?: number };
+  requires: TaskRequires;
   applicableModifiers: Set<ModifierType>;
 } & GameObject;
 

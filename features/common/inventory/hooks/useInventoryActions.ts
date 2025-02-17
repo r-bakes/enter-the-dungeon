@@ -1,6 +1,7 @@
 import { ItemId } from "@/data/items/enums";
 import { useCharacterEngineContext } from "@/engines/characterEngineContext";
 import { Loot } from "@/types/loot";
+import { TaskRequires } from "@/types/tasks";
 
 const useInventoryActions = () => {
   const { character, setCharacter } = useCharacterEngineContext();
@@ -28,11 +29,24 @@ const useInventoryActions = () => {
     }
   };
 
+  const hasItems = (
+    requires: TaskRequires,
+    requiresMultiplier: number = 1,
+  ): boolean => {
+    return Object.entries(requires).every(([id, requiredAmount]) => {
+      return (
+        (character.inventory[id as ItemId] || 0) * requiresMultiplier >=
+        requiredAmount
+      );
+    });
+  };
+
   return {
     addItem,
     addLoot,
     removeItems,
     removeItem,
+    hasItems,
   };
 };
 export default useInventoryActions;

@@ -34,6 +34,7 @@ import { taskToSkill } from "@/features/common/working/utils/workingUtils";
 import { SkillId } from "@/data/skills/enums";
 import TaskSuccessEntry from "./taskSuccessEntry";
 import { calculateSuccessChance } from "@/features/common/stealth/utils/stealthUtils";
+import useInventoryActions from "@/features/common/inventory/hooks/useInventoryActions";
 
 const rootCardFormat =
   "flex flex-col grow-0 w-80 min-w-80 max-w-80 items-center";
@@ -49,6 +50,7 @@ export default function TaskInfo({
   const { applyExperienceModifier, applySpeedModifier, applyStealthModifier } =
     useModifierActions();
   const { modifiers } = useModifierEngineContext();
+  const { hasItems } = useInventoryActions();
 
   if (!task) {
     return (
@@ -65,27 +67,7 @@ export default function TaskInfo({
   let taskProduction = generateDropRates(task.lootTable);
   let taskRequires: { item: Item; quantity: number; haveEnough: boolean }[] =
     [];
-  let requirementsMet: boolean = true;
-
-  if (task.requires) {
-    taskRequires = Object.entries(task.requires).map(([itemId, quantity]) => ({
-      item: itemTable[itemId as ItemId],
-      quantity: quantity,
-      haveEnough:
-        itemId in character.inventory &&
-        quantity <= character.inventory[itemId as ItemId],
-    }));
-
-    for (const element of taskRequires) {
-      let reqs = element;
-      if (
-        !(reqs.item.id in character.inventory) ||
-        reqs.quantity > character.inventory[reqs.item.id]
-      ) {
-        requirementsMet = false;
-      }
-    }
-  }
+  let requirementsMet = hasItems(task.requires);
 
   return (
     <Card className={rootCardFormat}>
@@ -137,7 +119,7 @@ export default function TaskInfo({
             data={taskProduction}
             multiplier={modifiers[task.id][ModifierType.PRODUCTION_MULTIPLIER]}
           ></TaskProducesEntry>
-          <TaskRequiresEntry data={taskRequires}></TaskRequiresEntry>
+          <TaskRequiresEntry data={task.requires}></TaskRequiresEntry>
           <TaskModifiersEntry data={modifiers[task.id]}></TaskModifiersEntry>
         </div>
       </CardContent>

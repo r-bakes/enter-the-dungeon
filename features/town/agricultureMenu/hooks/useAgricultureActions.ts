@@ -5,9 +5,11 @@ import { TaskId } from "@/data/tasks/enum";
 import { taskTable } from "@/data/tasks/tasks";
 import { useCharacterEngineContext } from "@/engines/characterEngineContext";
 import { useWorkingEngineContext } from "@/engines/workingEngineContext";
+import useInventoryActions from "@/features/common/inventory/hooks/useInventoryActions";
 
 export const useAgricultureActions = () => {
   const { character, setCharacter } = useCharacterEngineContext();
+  const { hasItems, removeItems } = useInventoryActions();
   const { taskComplete } = useWorkingEngineContext();
 
   const timeRemainingMs = (
@@ -15,6 +17,48 @@ export const useAgricultureActions = () => {
     taskDurationSec: number,
   ): number => {
     return Math.max(0, startTimeMs + taskDurationSec * 1000 - Date.now());
+  };
+
+  const numberContainersAvailable = (
+    taskCategory: AgricultureTaskCategories,
+  ): number => {
+    let count = 0;
+    if (taskCategory == AgricultureTaskCategories.BOTANY) {
+      for (const plotId of Object.values(PlotId)) {
+        if (
+          !character.working.agriculture.botany[plotId].taskId &&
+          isContainerUnlocked(plotId)
+        )
+          count += 1;
+      }
+    } else {
+      for (const ranchId of Object.values(PastureId)) {
+        if (
+          !character.working.agriculture.ranching[ranchId].taskId &&
+          isContainerUnlocked(ranchId)
+        )
+          count += 1;
+      }
+    }
+    return count;
+  };
+
+  const isContainerUnlocked = (id: PlotId | PastureId): boolean => {
+    return (
+      CONTAINER_LEVEL_REQUIREMENTS[id] <= character.skills.AGRICULTURE.level
+    );
+  };
+
+  const isContainerFilled = (id: PlotId | PastureId): boolean => {
+    if (id in PlotId) {
+      return character.working.agriculture.botany[id as PlotId].taskId
+        ? true
+        : false;
+    } else {
+      return character.working.agriculture.ranching[id as PastureId].taskId
+        ? true
+        : false;
+    }
   };
 
   const canCompleteTask = (id: PlotId | PastureId): boolean => {
@@ -41,7 +85,16 @@ export const useAgricultureActions = () => {
     }
   };
   const assign = (id: PlotId | PastureId, taskId: TaskId): void => {
-    // TODO: Implement seed/resource removal process
+    const task = taskTable[taskId];
+    if (
+      !hasItems(task.requires) ||
+      isContainerFilled(id) ||
+      !isContainerUnlocked(id)
+    )
+      return;
+
+    removeItems(task.requires);
+
     if (id in PlotId) {
       return plant(id as PlotId, taskId);
     } else {
@@ -79,12 +132,8 @@ export const useAgricultureActions = () => {
   };
 
   const plant = (plotId: PlotId, taskId: TaskId) => {
-    if (character.working.agriculture.botany[plotId].taskId) return;
-
-    let startTime = Date.now();
-
     character.working.agriculture.botany[plotId] = {
-      startTime: startTime,
+      startTime: Date.now(),
       taskId: taskId,
     };
 
@@ -202,27 +251,19 @@ export const useAgricultureActions = () => {
   const isAssignAllDisabled = (
     taskCategory: AgricultureTaskCategories,
   ): boolean => {
-    const characterLevel = character.skills.AGRICULTURE.level;
-
     if (taskCategory == AgricultureTaskCategories.BOTANY) {
       for (const plotId of Object.values(PlotId)) {
-        const isRequiredLevel =
-          CONTAINER_LEVEL_REQUIREMENTS[plotId] <= characterLevel;
-
         if (
           !character.working.agriculture.botany[plotId].taskId &&
-          isRequiredLevel
+          isContainerUnlocked(plotId)
         )
           return false;
       }
     } else {
       for (const ranchId of Object.values(PastureId)) {
-        const isRequiredLevel =
-          CONTAINER_LEVEL_REQUIREMENTS[ranchId] <= characterLevel;
-
         if (
           !character.working.agriculture.ranching[ranchId].taskId &&
-          isRequiredLevel
+          isContainerUnlocked(ranchId)
         )
           return false;
       }
@@ -260,6 +301,7 @@ export const useAgricultureActions = () => {
     isCollectAllDisabled,
     isAssignAllDisabled,
     isRemoveAllDisabled,
+    numberContainersAvailable,
   };
 };
 
