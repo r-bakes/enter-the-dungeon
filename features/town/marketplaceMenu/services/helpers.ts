@@ -1,3 +1,4 @@
+import { MilestoneId } from "@/data/milestones/enums";
 import { UpgradeId } from "@/data/upgrades/enums";
 import { upgradeTable } from "@/data/upgrades/upgrades";
 import { Milestones, Upgrades } from "@/types/character";

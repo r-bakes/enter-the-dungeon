@@ -52,28 +52,17 @@ export default function UpgradesStoreMenu({
           className="flex h-20 min-h-max w-full min-w-max items-center justify-between px-4 py-4"
           key={upgrade.id}
         >
-          <div className="flex h-full min-w-max items-center gap-4">
-            <div className="flex h-full w-60 items-center gap-4">
+          <div className="flex h-full items-center gap-4">
+            <div className="flex h-full w-80 items-center gap-4">
               {renderIcon(upgrade.icon, 44, { ...upgrade.iconStyle })}
-              <div className="flex h-full min-w-max flex-col justify-center text-left">
+              <div className="flex h-full flex-col justify-center text-left">
                 <CardTitle className="text-base">{upgrade.name}</CardTitle>
                 <CardDescription className="p-0 text-left text-xs">
                   {upgrade.description}
                 </CardDescription>
               </div>
             </div>
-            <div className="mx-6 flex h-full max-w-[500px] gap-2 overflow-x-scroll py-2">
-              {/* {upgrade.modifier.targets.map( */}
-              {/*   (taskIds) => ( */}
-              {/*     <SkillImpactedPopup */}
-              {/*       key={skillId} */}
-              {/*       skill={skillTable[skillId as SkillId]} */}
-              {/*       taskIds={taskIds} */}
-              {/*       upgrade={upgrade} */}
-              {/*     ></SkillImpactedPopup> */}
-              {/*   ), */}
-              {/* )} */}
-            </div>
+            <div className="mx-6 flex h-full max-w-[500px] gap-2 overflow-x-scroll py-2"></div>
             <div className="flex h-full flex-col items-start gap-1 px-6">
               {Object.entries(upgrade.modifier.values).map(([type, value]) => (
                 <div
@@ -83,7 +72,7 @@ export default function UpgradesStoreMenu({
                   <Label className="text-xs">
                     {formatModifier(value, type)}
                   </Label>
-                  <Label className="text-xs font-normal text-muted-foreground">
+                  <Label className="text-muted-foreground text-xs font-normal">
                     {formatCapitalCase(type)}
                   </Label>
                 </div>
@@ -109,7 +98,7 @@ export default function UpgradesStoreMenu({
                       {renderIcon(item.icon, 32, { ...item.iconStyle })}
                       <div className="flex flex-col gap-1">
                         <div className="flex flex-row gap-1">
-                          <CardDescription className="text-xs font-black text-foreground">
+                          <CardDescription className="text-foreground text-xs font-black">
                             {formatLargeQuantity(quantity)}
                           </CardDescription>
                           <CardDescription className="text-xs">
@@ -117,7 +106,7 @@ export default function UpgradesStoreMenu({
                           </CardDescription>
                         </div>
                         <div className="flex w-full items-center justify-end">
-                          <Label className="mr-1 text-xs font-normal text-muted-foreground">
+                          <Label className="text-muted-foreground mr-1 text-xs font-normal">
                             (
                             {formatLargeQuantity(
                               character.inventory[itemId as ItemId],

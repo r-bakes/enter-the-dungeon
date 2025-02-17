@@ -1,11 +1,9 @@
 import { TASK_AND_ITEM_ICON_STYLE } from "@/configurations/configurations";
 import { HomeRooms } from "@/data/menus/enums";
 import { ModifierType } from "@/data/modifiers/enums";
-import { ProspectingTaskCategories, SkillId } from "@/data/skills/enums";
 import { Pickaxe } from "lucide-react";
 import { Upgrade } from "@/types/upgrades";
 import { UpgradeId } from "./enums";
-import { prospecting } from "../skills/prospecting";
 import { ItemId } from "../items/enums";
 import { itemTable } from "../items/items";
 import { MilestoneId } from "../milestones/enums";

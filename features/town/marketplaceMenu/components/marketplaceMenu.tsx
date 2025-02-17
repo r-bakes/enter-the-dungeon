@@ -53,16 +53,16 @@ export default function MarcketplaceMenu() {
           </div>
         </CardHeader>
       </Card>
-      <div className="flex h-full w-full flex-row gap-6">
+      <div className="flex min-h-0 w-full flex-1 flex-row gap-6">
         <div className="w-0 border-4 shadow-xs"></div>
-        <div className="flex h-full grow flex-col">
+        <div className="flex flex-1 flex-col">
           <Select
             defaultValue={defaultCategory}
             onValueChange={(value: MarketplaceStores) => {
               setSelectedStore(value);
             }}
           >
-            <SelectTrigger className="mb-2 w-full font-normal text-muted-foreground">
+            <SelectTrigger className="text-muted-foreground mb-2 w-full font-normal">
               <SelectValue></SelectValue>
             </SelectTrigger>
             <SelectContent>
@@ -70,7 +70,7 @@ export default function MarcketplaceMenu() {
                 {Object.entries(MarketplaceStores).map(
                   ([categoryId, category]) => (
                     <SelectItem
-                      className="font-light text-muted-foreground"
+                      className="text-muted-foreground font-light"
                       key={categoryId}
                       value={category}
                     >
