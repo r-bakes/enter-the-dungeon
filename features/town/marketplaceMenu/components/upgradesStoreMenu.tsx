@@ -49,7 +49,7 @@ export default function UpgradesStoreMenu({
     <div className="flex w-full flex-col gap-2 overflow-y-scroll">
       {upgrades.map((upgrade) => (
         <Card
-          className="flex h-20 min-h-max w-full min-w-max items-center justify-between px-4 py-4"
+          className="flex h-min w-full items-center justify-between px-4 py-4"
           key={upgrade.id}
         >
           <div className="flex h-full items-center gap-4">
@@ -57,7 +57,7 @@ export default function UpgradesStoreMenu({
               {renderIcon(upgrade.icon, 44, { ...upgrade.iconStyle })}
               <div className="flex h-full flex-col justify-center text-left">
                 <CardTitle className="text-base">{upgrade.name}</CardTitle>
-                <CardDescription className="p-0 text-left text-xs">
+                <CardDescription className="text-xs">
                   {upgrade.description}
                 </CardDescription>
               </div>
@@ -98,9 +98,9 @@ export default function UpgradesStoreMenu({
                       {renderIcon(item.icon, 32, { ...item.iconStyle })}
                       <div className="flex flex-col gap-1">
                         <div className="flex flex-row gap-1">
-                          <CardDescription className="text-foreground text-xs font-black">
+                          <CardTitle className="text-xs">
                             {formatLargeQuantity(quantity)}
-                          </CardDescription>
+                          </CardTitle>
                           <CardDescription className="text-xs">
                             {item.name.toLowerCase()}
                           </CardDescription>

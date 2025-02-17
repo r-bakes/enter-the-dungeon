@@ -13,7 +13,8 @@ export enum HomeRooms {
 }
 
 export enum MarketplaceStores {
-  UPGRADES = "upgrades",
+  UPGRADES = "UPGRADES",
+  TRADE_GOODS = "TRADE_GOODS",
 }
 
 export enum MenuId {

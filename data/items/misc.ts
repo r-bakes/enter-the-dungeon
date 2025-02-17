@@ -1,6 +1,6 @@
 import { TASK_AND_ITEM_ICON_STYLE } from "@/configurations/configurations";
 import { Item } from "@/types/items";
-import { CircleDollarSign } from "lucide-react";
+import { CircleDollarSign, FlaskRound } from "lucide-react";
 import { ItemId, ItemType } from "./enums";
 
 export const miscTable: { [id in ItemId]?: Item } = {
@@ -16,5 +16,16 @@ export const miscTable: { [id in ItemId]?: Item } = {
       strokeWidth: 1,
     },
     type: ItemType.HIDDEN,
+  },
+  [ItemId.GLASS_VIAL]: {
+    id: ItemId.GLASS_VIAL,
+    name: "Glass Vial",
+    description: "Useful for Alchemy.",
+    value: 10,
+    icon: FlaskRound,
+    iconStyle: {
+      ...TASK_AND_ITEM_ICON_STYLE,
+    },
+    type: ItemType.TRADEGOODS,
   },
 };

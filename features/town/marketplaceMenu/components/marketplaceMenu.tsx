@@ -22,6 +22,8 @@ import { marketplace } from "@/data/menus/marketplace";
 import UpgradesStoreMenu from "./upgradesStoreMenu";
 import { generateUpgradeOptions } from "@/features/town/marketplaceMenu/services/helpers";
 import { MarketplaceStores } from "@/data/menus/enums";
+import StoreMenu from "./storeMenu";
+import { itemTable } from "@/data/items/items";
 
 export default function MarcketplaceMenu() {
   const defaultCategory = MarketplaceStores.UPGRADES;
@@ -29,14 +31,18 @@ export default function MarcketplaceMenu() {
   const [selectedStore, setSelectedStore] =
     React.useState<MarketplaceStores>(defaultCategory);
 
-  let upgradeStoreContent = generateUpgradeOptions(
+  const upgradeStoreContent = generateUpgradeOptions(
     character.upgrades,
     character.milestones,
   );
+  const tradeGoodsItemsForSale = [itemTable.GLASS_VIAL];
 
   const storeMenu = {
     [MarketplaceStores.UPGRADES]: (
       <UpgradesStoreMenu upgrades={upgradeStoreContent}></UpgradesStoreMenu>
+    ),
+    [MarketplaceStores.TRADE_GOODS]: (
+      <StoreMenu items={tradeGoodsItemsForSale}></StoreMenu>
     ),
   };
 
@@ -81,7 +87,7 @@ export default function MarcketplaceMenu() {
               </SelectGroup>
             </SelectContent>
           </Select>
-          <div className="flex w-full flex-col gap-2 overflow-y-scroll">
+          <div className="flex w-full grow flex-col gap-2 overflow-y-scroll">
             {storeMenu[selectedStore]}
           </div>
         </div>

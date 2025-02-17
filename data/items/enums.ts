@@ -82,6 +82,7 @@ export enum ItemId {
   ADAMANT_BAR = "ADAMANT_BAR",
 
   GOLD = "GOLD",
+  GLASS_VIAL = "GLASS_VIAL",
 
   GINSENG = "GINSENG",
   GINSENG_SEED = "GINSENG_SEED",
