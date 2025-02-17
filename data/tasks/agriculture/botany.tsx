@@ -26,13 +26,13 @@ export const botanyTasks: { [id in TaskId]?: Task } = {
     requiredLevel: 0,
     lootTable: {
       plants: {
-        [ItemId.GINSENG]: { weight: 100, minQuantity: 1, maxQuantity: 5 },
+        [ItemId.GINSENG]: { weight: 100, minQuantity: 1, maxQuantity: 2 },
       },
       seeds: {
-        [ItemId.GINSENG_SEED]: { weight: 100, minQuantity: 1, maxQuantity: 5 },
+        [ItemId.GINSENG_SEED]: { weight: 100, minQuantity: 1, maxQuantity: 2 },
       },
     },
-    requires: { [ItemId.GINSENG_SEED]: 1 },
+    requires: { [ItemId.GINSENG_SEED]: 10 },
     category: ProspectingTaskCategories.CRAFTING,
     applicableModifiers: agricultureCommonModifiers,
   },
@@ -48,13 +48,13 @@ export const botanyTasks: { [id in TaskId]?: Task } = {
     requiredLevel: 5,
     lootTable: {
       plants: {
-        [ItemId.MANDRAKE]: { weight: 100, minQuantity: 1, maxQuantity: 4 },
+        [ItemId.MANDRAKE]: { weight: 100, minQuantity: 1, maxQuantity: 2 },
       },
       seeds: {
-        [ItemId.MANDRAKE_SEED]: { weight: 100, minQuantity: 1, maxQuantity: 3 },
+        [ItemId.MANDRAKE_SEED]: { weight: 100, minQuantity: 1, maxQuantity: 2 },
       },
     },
-    requires: { [ItemId.MANDRAKE_SEED]: 1 },
+    requires: { [ItemId.MANDRAKE_SEED]: 10 },
     category: ProspectingTaskCategories.CRAFTING,
     applicableModifiers: agricultureCommonModifiers,
   },
@@ -70,7 +70,7 @@ export const botanyTasks: { [id in TaskId]?: Task } = {
     requiredLevel: 10,
     lootTable: {
       plants: {
-        [ItemId.NIGHTSHADE]: { weight: 100, minQuantity: 1, maxQuantity: 3 },
+        [ItemId.NIGHTSHADE]: { weight: 100, minQuantity: 1, maxQuantity: 2 },
       },
       seeds: {
         [ItemId.NIGHTSHADE_SEED]: {
@@ -80,7 +80,7 @@ export const botanyTasks: { [id in TaskId]?: Task } = {
         },
       },
     },
-    requires: { [ItemId.NIGHTSHADE_SEED]: 1 },
+    requires: { [ItemId.NIGHTSHADE_SEED]: 10 },
     category: ProspectingTaskCategories.CRAFTING,
     applicableModifiers: agricultureCommonModifiers,
   },
@@ -97,7 +97,7 @@ export const botanyTasks: { [id in TaskId]?: Task } = {
     requiredLevel: 0,
     lootTable: {
       plants: {
-        [ItemId.SILVERLEAF]: { weight: 100, minQuantity: 1, maxQuantity: 5 },
+        [ItemId.SILVERLEAF]: { weight: 100, minQuantity: 1, maxQuantity: 2 },
       },
       seeds: {
         [ItemId.SILVERLEAF_SEED]: {
@@ -107,7 +107,7 @@ export const botanyTasks: { [id in TaskId]?: Task } = {
         },
       },
     },
-    requires: { [ItemId.SILVERLEAF_SEED]: 1 },
+    requires: { [ItemId.SILVERLEAF_SEED]: 10 },
     category: ProspectingTaskCategories.CRAFTING,
     applicableModifiers: agricultureCommonModifiers,
   },
@@ -134,7 +134,7 @@ export const botanyTasks: { [id in TaskId]?: Task } = {
         },
       },
     },
-    requires: { [ItemId.EMBER_BLOSSOM_SEED]: 1 },
+    requires: { [ItemId.EMBER_BLOSSOM_SEED]: 10 },
     category: ProspectingTaskCategories.CRAFTING,
     applicableModifiers: agricultureCommonModifiers,
   },
@@ -151,13 +151,13 @@ export const botanyTasks: { [id in TaskId]?: Task } = {
     requiredLevel: 8,
     lootTable: {
       plants: {
-        [ItemId.CRYSTAL_FERN]: { weight: 100, minQuantity: 1, maxQuantity: 4 },
+        [ItemId.CRYSTAL_FERN]: { weight: 100, minQuantity: 1, maxQuantity: 2 },
       },
       seeds: {
         [ItemId.CRYSTAL_FERN_SEED]: {
           weight: 100,
           minQuantity: 1,
-          maxQuantity: 4,
+          maxQuantity: 2,
         },
       },
     },
@@ -177,17 +177,17 @@ export const botanyTasks: { [id in TaskId]?: Task } = {
     requiredLevel: 5,
     lootTable: {
       plants: {
-        [ItemId.GHOST_PEPPER]: { weight: 100, minQuantity: 1, maxQuantity: 5 },
+        [ItemId.GHOST_PEPPER]: { weight: 100, minQuantity: 1, maxQuantity: 2 },
       },
       seeds: {
         [ItemId.GHOST_PEPPER_SEED]: {
           weight: 100,
           minQuantity: 1,
-          maxQuantity: 5,
+          maxQuantity: 2,
         },
       },
     },
-    requires: { [ItemId.GHOST_PEPPER_SEED]: 1 },
+    requires: { [ItemId.GHOST_PEPPER_SEED]: 10 },
     category: ProspectingTaskCategories.CRAFTING,
     applicableModifiers: agricultureCommonModifiers,
   },
@@ -203,7 +203,7 @@ export const botanyTasks: { [id in TaskId]?: Task } = {
     requiredLevel: 15,
     lootTable: {
       plants: {
-        [ItemId.VENOMWEED]: { weight: 100, minQuantity: 1, maxQuantity: 3 },
+        [ItemId.VENOMWEED]: { weight: 100, minQuantity: 1, maxQuantity: 2 },
       },
       seeds: {
         [ItemId.VENOMWEED_SEED]: {
@@ -213,7 +213,7 @@ export const botanyTasks: { [id in TaskId]?: Task } = {
         },
       },
     },
-    requires: { [ItemId.VENOMWEED_SEED]: 1 },
+    requires: { [ItemId.VENOMWEED_SEED]: 10 },
     category: ProspectingTaskCategories.CRAFTING,
     applicableModifiers: agricultureCommonModifiers,
   },

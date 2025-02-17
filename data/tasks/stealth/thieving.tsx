@@ -49,8 +49,24 @@ export const thievingTasks: { [id in TaskId]?: StealthTask } = {
     requiredLevel: 10,
     perception: 20,
     lootTable: {
-      food: {
-        [ItemId.GINSENG_SEED]: { weight: 100, minQuantity: 1, maxQuantity: 5 },
+      seeds: {
+        [ItemId.GINSENG_SEED]: { weight: 40, minQuantity: 1, maxQuantity: 1 },
+        [ItemId.MANDRAKE_SEED]: { weight: 30, minQuantity: 1, maxQuantity: 1 },
+        [ItemId.NIGHTSHADE_SEED]: {
+          weight: 20,
+          minQuantity: 1,
+          maxQuantity: 1,
+        },
+        [ItemId.SILVERLEAF_SEED]: {
+          weight: 9,
+          minQuantity: 1,
+          maxQuantity: 1,
+        },
+        [ItemId.EMBER_BLOSSOM_SEED]: {
+          weight: 1,
+          minQuantity: 1,
+          maxQuantity: 1,
+        },
       },
     },
     requires: {},
