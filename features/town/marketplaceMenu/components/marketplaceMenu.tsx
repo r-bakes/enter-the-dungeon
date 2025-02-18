@@ -35,7 +35,16 @@ export default function MarcketplaceMenu() {
     character.upgrades,
     character.milestones,
   );
-  const tradeGoodsItemsForSale = [itemTable.GLASS_VIAL];
+  const tradeGoodsItemsForSale = [
+    itemTable.GLASS_VIAL,
+    itemTable.MANURE,
+    itemTable.COMPOST,
+  ];
+  const materialsForSale = [
+    itemTable.GINSENG_SEED,
+    itemTable.MANDRAKE_SEED,
+    itemTable.SILVERLEAF_SEED,
+  ];
 
   const storeMenu = {
     [MarketplaceStores.UPGRADES]: (
@@ -43,6 +52,9 @@ export default function MarcketplaceMenu() {
     ),
     [MarketplaceStores.TRADE_GOODS]: (
       <StoreMenu items={tradeGoodsItemsForSale}></StoreMenu>
+    ),
+    [MarketplaceStores.MATERIALS]: (
+      <StoreMenu items={materialsForSale}></StoreMenu>
     ),
   };
 

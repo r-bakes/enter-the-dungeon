@@ -15,6 +15,7 @@ export enum HomeRooms {
 export enum MarketplaceStores {
   UPGRADES = "UPGRADES",
   TRADE_GOODS = "TRADE_GOODS",
+  MATERIALS = "MATERIALS",
 }
 
 export enum MenuId {

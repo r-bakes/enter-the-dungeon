@@ -16,7 +16,6 @@ import {
 } from "@/components/ui/dialog";
 import { Label } from "@/components/ui/label";
 import { Separator } from "@/components/ui/separator";
-import { Slider } from "@/components/ui/slider";
 import { ItemId } from "@/data/items/enums";
 import { itemTable } from "@/data/items/items";
 import { useCharacterEngineContext } from "@/engines/characterEngineContext";
@@ -53,7 +52,7 @@ export default function StoreMenu({ items }: { items: Item[] }) {
   };
 
   return (
-    <div className="flex h-full w-full">
+    <div className="flex h-full w-full flex-col gap-2">
       {items.map((item) => (
         <Card
           key={item.id}
@@ -101,7 +100,26 @@ export default function StoreMenu({ items }: { items: Item[] }) {
                 <DialogTitle>Buy</DialogTitle>
                 <DialogDescription>how much?</DialogDescription>
                 <div className="flex flex-col gap-1">
-                  <Separator className="my-6"></Separator>
+                  <Separator className="my-2"></Separator>
+
+                  <div className="mb-1 flex items-center gap-1">
+                    {renderIcon(CircleDollarSign, 16, {
+                      ...itemTable.GOLD.iconStyle,
+                    })}
+                    <Label className="font-light">
+                      {formatLargeQuantity(character.inventory.GOLD)}
+                    </Label>
+                    <Backpack size={16} strokeWidth={1}></Backpack>
+                  </div>
+                  <div className="mb-4 flex items-center gap-1">
+                    {renderIcon(item.icon, 16, {
+                      ...item.iconStyle,
+                    })}
+                    <Label className="font-light">
+                      {formatLargeQuantity(character.inventory[item.id] || 0)}
+                    </Label>
+                    <Backpack size={16} strokeWidth={1}></Backpack>
+                  </div>
                   <Card>
                     <CardHeader className="flex h-full flex-row items-center justify-between p-2">
                       <span className="flex h-full items-center gap-1">
@@ -127,7 +145,7 @@ export default function StoreMenu({ items }: { items: Item[] }) {
                         <Label className="text-muted-foreground w-8 text-xs font-normal">
                           For
                         </Label>
-                        <Label className="items-center text-lg text-red-500">
+                        <Label className="items-center text-lg">
                           {formatLargeQuantity(amountSelected * item.value)}
                         </Label>
                       </span>

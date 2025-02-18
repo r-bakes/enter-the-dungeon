@@ -1,6 +1,11 @@
 import { TASK_AND_ITEM_ICON_STYLE } from "@/configurations/configurations";
 import { Item } from "@/types/items";
-import { CircleDollarSign, FlaskRound } from "lucide-react";
+import {
+  Biohazard,
+  CircleDollarSign,
+  Droplets,
+  FlaskRound,
+} from "lucide-react";
 import { ItemId, ItemType } from "./enums";
 
 export const miscTable: { [id in ItemId]?: Item } = {
@@ -23,6 +28,28 @@ export const miscTable: { [id in ItemId]?: Item } = {
     description: "Useful for Alchemy.",
     value: 10,
     icon: FlaskRound,
+    iconStyle: {
+      ...TASK_AND_ITEM_ICON_STYLE,
+    },
+    type: ItemType.TRADEGOODS,
+  },
+  [ItemId.COMPOST]: {
+    id: ItemId.COMPOST,
+    name: "Compost",
+    description: "Useful for making fertilizer.",
+    value: 100,
+    icon: Droplets,
+    iconStyle: {
+      ...TASK_AND_ITEM_ICON_STYLE,
+    },
+    type: ItemType.TRADEGOODS,
+  },
+  [ItemId.MANURE]: {
+    id: ItemId.MANURE,
+    name: "Monster Manure",
+    description: "Useful for making fertilizer.",
+    value: 100,
+    icon: Biohazard,
     iconStyle: {
       ...TASK_AND_ITEM_ICON_STYLE,
     },

@@ -1,5 +1,10 @@
 import { Button } from "@/components/ui/button";
-import { Card, CardDescription, CardTitle } from "@/components/ui/card";
+import {
+  Card,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
 import { itemTable } from "@/data/items/items";
 import { useCharacterEngineContext } from "@/engines/characterEngineContext";
 import {
@@ -51,13 +56,13 @@ export default function UpgradesStoreMenu({
   };
 
   return (
-    <div className="flex w-full flex-col gap-2 overflow-y-scroll">
+    <div className="flex w-full flex-col gap-2">
       {upgrades.map((upgrade) => (
         <Card
-          className="flex h-min w-full items-center justify-between px-4 py-4"
+          className="flex h-min w-full items-center justify-between"
           key={upgrade.id}
         >
-          <div className="flex h-full items-center gap-4">
+          <CardHeader className="flex flex-row gap-3">
             <div className="flex h-full w-80 items-center gap-4">
               {renderIcon(upgrade.icon, 44, { ...upgrade.iconStyle })}
               <div className="flex h-full flex-col justify-center text-left">
@@ -83,8 +88,8 @@ export default function UpgradesStoreMenu({
                 </div>
               ))}
             </div>
-          </div>
-          <div className="flex h-full flex-row items-center gap-12">
+          </CardHeader>
+          <CardHeader className="flex h-full flex-row items-center gap-12">
             <div className="flex flex-row gap-2">
               {Object.entries(upgrade.requiresItems).map(
                 ([itemId, quantity]) => {
@@ -132,7 +137,7 @@ export default function UpgradesStoreMenu({
             >
               Buy
             </Button>
-          </div>
+          </CardHeader>
         </Card>
       ))}
     </div>

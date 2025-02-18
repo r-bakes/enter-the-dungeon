@@ -83,6 +83,8 @@ export enum ItemId {
 
   GOLD = "GOLD",
   GLASS_VIAL = "GLASS_VIAL",
+  COMPOST = "COMPOST",
+  MANURE = "MANURE",
 
   GINSENG = "GINSENG",
   GINSENG_SEED = "GINSENG_SEED",
