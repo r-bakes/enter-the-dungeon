@@ -3,7 +3,7 @@ import { useEncounterContext } from "@/engines/encounterEngineContext";
 import { Combatant } from "@/types/combatants";
 import { CombatCard } from "@/types/combatCards";
 import { useExpeditionContext } from "@/engines/expeditionEngineContext";
-import { Target } from "@/data/combatCards/enums";
+import { CombatCardTarget } from "@/data/combatCards/enums";
 
 type CombatCardEngineContextContents = {
   selectedCard: CombatCard | null;
@@ -53,13 +53,13 @@ export default function CombatCardEngineProvider({
       return;
     }
     switch (selectedCard.target) {
-      case Target.ENEMIES: {
+      case CombatCardTarget.ENEMIES: {
         if (enemyCombatants.includes(combatant)) {
           setSelectedEnemyCombatants([...selectedEnemyCombatants, combatant]);
         }
         break;
       }
-      case Target.ALLIES: {
+      case CombatCardTarget.ALLIES: {
         if (
           alliedCombatants.includes(combatant) ||
           combatant === characterCombatant
@@ -75,7 +75,7 @@ export default function CombatCardEngineProvider({
       return;
     }
     switch (selectedCard.target) {
-      case Target.ENEMIES: {
+      case CombatCardTarget.ENEMIES: {
         setSelectedEnemyCombatants([
           ...selectedEnemyCombatants.filter(
             (selectedCombatant) =>
@@ -84,7 +84,7 @@ export default function CombatCardEngineProvider({
         ]);
         break;
       }
-      case Target.ALLIES: {
+      case CombatCardTarget.ALLIES: {
         setSelectedAlliedCombatants([
           ...selectedAlliedCombatants.filter(
             (selectedCombatant) =>
@@ -108,11 +108,11 @@ export default function CombatCardEngineProvider({
     }
 
     switch (selectedCard.target) {
-      case Target.ENEMIES: {
+      case CombatCardTarget.ENEMIES: {
         executeOffensiveCard(selectedCard);
         break;
       }
-      case Target.ALLIES: {
+      case CombatCardTarget.ALLIES: {
         executeDefensiveCard(selectedCard);
         break;
       }
@@ -158,9 +158,9 @@ export default function CombatCardEngineProvider({
     if (
       selectedCard &&
       ((selectedEnemyCombatants.length === selectedCard.targets &&
-        selectedCard.target === Target.ENEMIES) ||
+        selectedCard.target === CombatCardTarget.ENEMIES) ||
         (selectedAlliedCombatants.length === selectedCard.targets &&
-          selectedCard.target === Target.ALLIES))
+          selectedCard.target === CombatCardTarget.ALLIES))
     ) {
       executeCard();
     }

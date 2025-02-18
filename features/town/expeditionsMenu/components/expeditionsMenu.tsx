@@ -1,14 +1,14 @@
 import { Button } from "@/components/ui/button";
+import { MenuId } from "@/data/menus/enums";
+import { useMenuEngineContext } from "@/engines/menuEngineContext";
 import { DoorClosed } from "lucide-react";
-import { useRouter } from "next/navigation";
 import React from "react";
 
 export default function ExpeditionsMenu() {
-  let [buttonPressed, setButtonPressed] = React.useState<boolean>(false);
-  const router = useRouter();
+  const { setSelectedMenu } = useMenuEngineContext();
 
   const enterDungeon = () => {
-    router.push("/expedition");
+    setSelectedMenu(MenuId.EXPEDITION);
   };
 
   let icon = <DoorClosed id={"test"} size={512} strokeWidth={1.2}></DoorClosed>;

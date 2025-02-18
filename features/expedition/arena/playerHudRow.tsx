@@ -9,8 +9,8 @@ export default function PlayerHudRow({}: {}) {
   const { round, stamina, finishTurn } = useEncounterContext();
   return (
     <div className="flex w-full min-w-full items-end gap-4">
-      <div className="border-r-1 flex w-16 flex-col gap-2 border-r">
-        <Label className="font-extralight text-muted-foreground">Round</Label>
+      <div className="flex w-16 flex-col gap-2 border-r border-r-1">
+        <Label className="text-muted-foreground font-extralight">Round</Label>
         <div className="justify-left flex h-10 w-10 text-center">
           <motion.div
             key={round}
@@ -27,11 +27,12 @@ export default function PlayerHudRow({}: {}) {
         </div>
       </div>
       <div className="flex flex-col gap-2">
-        <Label className="font-extralight text-muted-foreground">Stamina</Label>
+        <Label className="text-muted-foreground font-extralight">Stamina</Label>
         <Card className="flex h-10 w-80">
           <CardContent className="flex h-full w-full items-center justify-start gap-4 p-0 px-4">
             {[...Array(stamina)].map((_, i) => (
               <motion.div
+                key={i}
                 className="flex"
                 initial={{ opacity: 0, scale: 0.5 }}
                 animate={{ opacity: 1, scale: 1 }}
@@ -48,7 +49,7 @@ export default function PlayerHudRow({}: {}) {
         </Card>
       </div>
       <div className="flex flex-col gap-2">
-        <Label className="font-extralight text-muted-foreground">Flasks</Label>
+        <Label className="text-muted-foreground font-extralight">Flasks</Label>
         <Card className="flex h-10 w-64">
           <CardContent className="flex h-full w-full items-center justify-center">
             {}
@@ -56,7 +57,7 @@ export default function PlayerHudRow({}: {}) {
         </Card>
       </div>
       <div className="flex flex-col gap-2">
-        <Label className="font-extralight text-muted-foreground">
+        <Label className="text-muted-foreground font-extralight">
           Trinkets
         </Label>
         <Card className="flex h-10 w-64">
