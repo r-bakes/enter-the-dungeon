@@ -3,7 +3,7 @@ import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import { Label } from "@/components/ui/label";
 import { itemTable } from "@/data/items/items";
 import { Heart, Shield, Sword } from "lucide-react";
-import StatBlock from "./combatantCard/statBlock";
+import StatBlock from "../../expedition/combatantCard/components/statBlock";
 import { CharacterCombatant } from "@/types/combatants";
 import { renderIcon } from "@/features/common/utils/formattingUtilities";
 
@@ -17,16 +17,16 @@ export default function CharacterCombatantCard({
   onClick: React.Dispatch<React.SetStateAction<any>>;
 }) {
   let selectedStyle = isSelected ? "bg-accent" : "";
-  let leftHand = combatant.loadout.leftHand
-    ? itemTable[combatant.loadout.leftHand]
+  let leftHand = combatant.loadout.LEFT_HAND
+    ? itemTable[combatant.loadout.LEFT_HAND]
     : undefined;
-  let rightHand = combatant.loadout.rightHand
-    ? itemTable[combatant.loadout.rightHand]
+  let rightHand = combatant.loadout.RIGHT_HAND
+    ? itemTable[combatant.loadout.RIGHT_HAND]
     : undefined;
 
   return (
     <div className="flex flex-col gap-1 text-center">
-      <Label className="font-extralight text-muted-foreground">
+      <Label className="text-muted-foreground font-extralight">
         {combatant.name}
       </Label>
       <Card className={"flex h-52 w-44 justify-center" + selectedStyle}>

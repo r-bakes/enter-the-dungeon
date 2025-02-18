@@ -5,6 +5,7 @@ import { UpgradeId } from "@/data/upgrades/enums";
 import { ItemId } from "@/data/items/enums";
 import { TaskId } from "@/data/tasks/enum";
 import { MenuId } from "@/data/menus/enums";
+import { CombatantId } from "@/data/combatants/enums";
 
 export type GameObject = {
   id: GameObjectId;
@@ -31,6 +32,7 @@ export type IconStylePrimitive = {
 export type GameObjectId =
   | ItemId
   | CombatCardId
+  | CombatantId
   | TaskId
   | SkillId
   | UpgradeId

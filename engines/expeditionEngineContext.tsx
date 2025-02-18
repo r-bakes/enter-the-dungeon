@@ -5,6 +5,7 @@ import { createCombatCard } from "@/data/combatCards/combatCards";
 import { CharacterCombatant } from "@/types/combatants";
 import { CombatCard } from "@/types/combatCards";
 import { Loot } from "@/types/loot";
+import { CombatantId } from "@/data/combatants/enums";
 
 type ExpeditionEngineContextContents = {
   characterCombatant: CharacterCombatant;
@@ -33,7 +34,7 @@ export default function ExpeditionEngineProvider({
     let characterModifiers = getModifiers();
     return {
       combatantId: 0,
-      id: "spellSword",
+      id: CombatantId.SPELL_SWORD,
       name: "The Spellsword",
       description: "A fearsome foe.",
       icon: User,

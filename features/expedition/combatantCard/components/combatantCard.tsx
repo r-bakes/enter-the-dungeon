@@ -28,7 +28,7 @@ export default function CombatantCard({
       }}
     >
       <div className="flex flex-col gap-1 text-center">
-        <Label className="font-extralight text-muted-foreground">
+        <Label className="text-muted-foreground font-extralight">
           {combatant.name}
         </Label>
         <Card className={"h-48 w-40 justify-center" + selectedStyle}>

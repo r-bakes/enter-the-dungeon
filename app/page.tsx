@@ -15,7 +15,7 @@ export default function Page() {
   return (
     <div className="flex h-full w-full">
       {selectedMenu === MenuId.EXPEDITION ? (
-        <div className="flex w-full grow p-10">
+        <div className="bg-secondary-background flex w-full grow p-10">
           <ExpeditionEngineProvider>
             <EncounterEngineProvider>
               <CombatCardEngineProvider>
@@ -27,7 +27,7 @@ export default function Page() {
       ) : (
         <div className="flex h-full w-full">
           <MenuSelect />
-          <div className="flex min-h-0 flex-1 py-10">
+          <div className="bg-secondary-background flex min-h-0 flex-1 py-10">
             {menuTable[selectedMenu].menu}
           </div>
         </div>

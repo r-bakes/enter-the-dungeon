@@ -1,12 +1,15 @@
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Label } from "@/components/ui/label";
+import { MenuId } from "@/data/menus/enums";
 import { useEncounterContext } from "@/engines/encounterEngineContext";
+import { useMenuEngineContext } from "@/engines/menuEngineContext";
 import { motion } from "framer-motion";
 import { Backpack, Zap } from "lucide-react";
 
 export default function PlayerHudRow({}: {}) {
   const { round, stamina, finishTurn } = useEncounterContext();
+  const { setSelectedMenu } = useMenuEngineContext();
   return (
     <div className="flex w-full min-w-full items-end gap-4">
       <div className="flex w-16 flex-col gap-2 border-r border-r-1">
@@ -42,7 +45,7 @@ export default function PlayerHudRow({}: {}) {
                   ease: [0, 0.71, 0.2, 1.01],
                 }}
               >
-                <Zap key={i} className="h-6 w-6"></Zap>
+                <Zap key={i} size={24} strokeWidth={1}></Zap>
               </motion.div>
             ))}
           </CardContent>
@@ -70,6 +73,7 @@ export default function PlayerHudRow({}: {}) {
         <Backpack></Backpack>
       </Button>
       <div className="flex grow"></div>
+      <Button onClick={() => setSelectedMenu(MenuId.HOME)}>Escape</Button>
       <Button className="w-28" variant="destructive" onClick={finishTurn}>
         End Turn
       </Button>
