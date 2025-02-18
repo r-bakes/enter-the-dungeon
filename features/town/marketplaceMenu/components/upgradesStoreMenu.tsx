@@ -14,6 +14,7 @@ import { ItemId } from "@/data/items/enums";
 import { formatModifier } from "../../modifiers/utils/modifier";
 import useInventoryActions from "@/features/common/inventory/hooks/useInventoryActions";
 import useUpgradeActions from "../../upgrades/hooks/useUpgradeActions";
+import { toast } from "sonner";
 
 export default function UpgradesStoreMenu({
   upgrades,
@@ -30,6 +31,10 @@ export default function UpgradesStoreMenu({
     );
 
     addUpgrade(upgrade.id);
+
+    toast.success(`Purchased the '${upgrade.name}' upgrade.`, {
+      position: "top-center",
+    });
   };
 
   const canPurchase = (upgrade: Upgrade): boolean => {

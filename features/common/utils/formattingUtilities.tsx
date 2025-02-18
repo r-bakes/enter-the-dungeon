@@ -21,13 +21,12 @@ export const formatLargeQuantity = (
 
   if (quantity < 1000000 && quantity >= 1000) {
     let amount = quantity / 1000;
-
     return (Math.round(amount * 1000) / 1000).toString() + "K";
-  } else if (quantity < 10000000 && quantity >= 1000000) {
+  } else if (quantity < 1_000_000_000 && quantity >= 1_000_000) {
     let amount = quantity / 1000000;
     return (Math.round(amount * 1000) / 1000).toString() + "M";
-  } else if (quantity >= 10000000) {
-    let amount = quantity / 10000000;
+  } else if (quantity >= 1_000_000_000) {
+    let amount = quantity / 1_000_000_000;
     return (Math.round(amount * 1000) / 1000).toString() + "B";
   }
   return quantity.toString();
