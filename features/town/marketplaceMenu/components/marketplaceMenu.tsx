@@ -35,12 +35,10 @@ export default function MarcketplaceMenu() {
     character.upgrades,
     character.milestones,
   );
-  const tradeGoodsItemsForSale = [
-    itemTable.GLASS_VIAL,
+  const tradeGoodsItemsForSale = [itemTable.GLASS_VIAL];
+  const materialsForSale = [
     itemTable.MANURE,
     itemTable.COMPOST,
-  ];
-  const materialsForSale = [
     itemTable.GINSENG_SEED,
     itemTable.MANDRAKE_SEED,
     itemTable.SILVERLEAF_SEED,

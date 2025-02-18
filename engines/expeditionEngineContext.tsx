@@ -33,7 +33,7 @@ export default function ExpeditionEngineProvider({
   let initializeCharacterExcursionState = (): CharacterCombatant => {
     let characterModifiers = getModifiers();
     return {
-      combatantId: 0,
+      combatantInstanceId: 0,
       id: CombatantId.SPELL_SWORD,
       name: "The Spellsword",
       description: "A fearsome foe.",

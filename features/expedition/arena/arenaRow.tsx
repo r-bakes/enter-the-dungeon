@@ -44,14 +44,14 @@ export default function ArenaRow({
         {combatants.map((combatant) =>
           combatant === characterCombatant ? (
             <CharacterCombatantCard
-              key={combatant.combatantId}
+              key={combatant.combatantInstanceId}
               combatant={combatant as CharacterCombatant}
               isSelected={isSelected(combatant)}
               onClick={() => onClick(combatant)}
             ></CharacterCombatantCard>
           ) : (
             <CombatantCard
-              key={combatant.combatantId}
+              key={combatant.combatantInstanceId}
               combatant={combatant}
               onClick={() => onClick(combatant)}
               isSelected={isSelected(combatant)}

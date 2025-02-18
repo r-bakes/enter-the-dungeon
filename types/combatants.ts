@@ -10,10 +10,11 @@ export type CharacterCombatant = {
 } & Combatant;
 
 export type Combatant = {
-  combatantId: number;
+  combatantInstanceId: number;
   hp: number;
   atk: number;
   def: number;
+  modifiers: [];
 } & CombatantTemplate;
 
 export type CombatantTemplate = {
@@ -22,5 +23,4 @@ export type CombatantTemplate = {
   baseDef: number;
   baseHp: number;
   lootTable: LootTable;
-  modifiers: [];
 } & GameObject;

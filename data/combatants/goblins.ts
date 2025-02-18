@@ -15,8 +15,7 @@ export const goblinRunt: CombatantTemplate = {
       [ItemId.EMERALD]: { weight: 10, minQuantity: 1, maxQuantity: 1 },
     },
   },
-  baseAtk: 1,
+  baseAtk: 5,
   baseDef: 1,
   baseHp: 5,
-  modifiers: [],
 };

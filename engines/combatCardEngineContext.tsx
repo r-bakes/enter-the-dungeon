@@ -79,7 +79,8 @@ export default function CombatCardEngineProvider({
         setSelectedEnemyCombatants([
           ...selectedEnemyCombatants.filter(
             (selectedCombatant) =>
-              selectedCombatant.combatantId != combatant.combatantId,
+              selectedCombatant.combatantInstanceId !=
+              combatant.combatantInstanceId,
           ),
         ]);
         break;
@@ -88,7 +89,8 @@ export default function CombatCardEngineProvider({
         setSelectedAlliedCombatants([
           ...selectedAlliedCombatants.filter(
             (selectedCombatant) =>
-              selectedCombatant.combatantId != combatant.combatantId,
+              selectedCombatant.combatantInstanceId !=
+              combatant.combatantInstanceId,
           ),
         ]);
         break;
@@ -141,14 +143,16 @@ export default function CombatCardEngineProvider({
     for (var combatant of selectedAlliedCombatants) {
       combatant.def += characterCombatant.baseDef * selectedCard.modifier;
       alliedCombatants.filter(
-        (ally) => ally.combatantId != combatant.combatantId,
+        (ally) => ally.combatantInstanceId != combatant.combatantInstanceId,
       );
     }
 
     setAlliedCombatants([
       ...alliedCombatants,
       ...selectedAlliedCombatants.filter(
-        (combatant) => combatant.combatantId != characterCombatant.combatantId,
+        (combatant) =>
+          combatant.combatantInstanceId !=
+          characterCombatant.combatantInstanceId,
       ),
     ]);
     setCharacterCombatant({ ...characterCombatant });

@@ -99,10 +99,17 @@ export default function StoreMenu({ items }: { items: Item[] }) {
               <DialogContent>
                 <DialogTitle>Buy</DialogTitle>
                 <DialogDescription>how much?</DialogDescription>
-                <div className="flex flex-col gap-1">
-                  <Separator className="my-2"></Separator>
-
-                  <div className="mb-1 flex items-center gap-1">
+                <div className="flex items-center">
+                  <div className="flex items-center gap-2">
+                    {renderIcon(CircleDollarSign, 16, {
+                      ...itemTable.GOLD.iconStyle,
+                    })}
+                    <Label className="font-light">
+                      {formatLargeQuantity(item.value)}
+                    </Label>
+                  </div>
+                  <div className="mx-6 h-1 w-1 rounded-full bg-black"></div>
+                  <div className="flex items-center gap-2">
                     {renderIcon(CircleDollarSign, 16, {
                       ...itemTable.GOLD.iconStyle,
                     })}
@@ -111,7 +118,8 @@ export default function StoreMenu({ items }: { items: Item[] }) {
                     </Label>
                     <Backpack size={16} strokeWidth={1}></Backpack>
                   </div>
-                  <div className="mb-4 flex items-center gap-1">
+                  <div className="mx-6 h-1 w-1 rounded-full bg-black"></div>
+                  <div className="flex items-center gap-2">
                     {renderIcon(item.icon, 16, {
                       ...item.iconStyle,
                     })}
@@ -120,6 +128,9 @@ export default function StoreMenu({ items }: { items: Item[] }) {
                     </Label>
                     <Backpack size={16} strokeWidth={1}></Backpack>
                   </div>
+                </div>
+                <Separator className="my-2"></Separator>
+                <div className="flex flex-col gap-1">
                   <Card>
                     <CardHeader className="flex h-full flex-row items-center justify-between p-2">
                       <span className="flex h-full items-center gap-1">

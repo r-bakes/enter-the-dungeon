@@ -6,6 +6,30 @@ import { Heart, Shield, Sword } from "lucide-react";
 import StatBlock from "./statBlock";
 import { Combatant } from "@/types/combatants";
 import { renderIcon } from "@/features/common/utils/formattingUtilities";
+import { useState } from "react";
+
+const cardVariants = {
+  idle: {
+    scale: 1,
+    rotate: 0,
+  },
+  growShakeShrink: {
+    // Keyframe arrays for scale and rotate
+    scale: [1, 1.3, 1, 1.3, 1],
+    rotate: [0, 5, -5, 5, -5, 0],
+    transition: {
+      duration: 0.8,
+      // 'ease' can be "easeInOut" or custom; you can also define times for each keyframe
+      ease: "easeInOut",
+    },
+  },
+  quickShrink: {
+    scale: 0.5,
+    transition: {
+      duration: 0.3,
+    },
+  },
+};
 
 export default function CombatantCard({
   combatant,
@@ -17,15 +41,18 @@ export default function CombatantCard({
   onClick: React.Dispatch<React.SetStateAction<any>>;
 }) {
   let selectedStyle = isSelected ? "bg-accent" : "";
+  const [animationState, setAnimationState] =
+    useState<keyof typeof cardVariants>("idle");
 
   return (
     <motion.div
-      initial={{ opacity: 0, scale: 0.5 }}
-      animate={{ opacity: 1, scale: 1 }}
-      exit={{ scale: [null, 0], rotate: [null, 360], opacity: [null, 0.1] }}
-      transition={{
-        duration: 1,
+      variants={cardVariants}
+      animate={animationState}
+      onAnimationComplete={() => {
+        // Optionally revert back to idle or do something else
+        setAnimationState("idle");
       }}
+      // You can keep your initial, exit, or other props as needed
     >
       <div className="flex flex-col gap-1 text-center">
         <Label className="text-muted-foreground font-extralight">

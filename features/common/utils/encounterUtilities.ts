@@ -1,12 +1,11 @@
 import { CombatantTemplate, Combatant } from "@/types/combatants";
 
-
 export const createCombatant = (
   combatant: CombatantTemplate,
-  combatantId: number
+  combatantId: number,
 ): Combatant => {
   return {
-    combatantId: combatantId,
+    combatantInstanceId: combatantId,
     hp: combatant.baseHp,
     atk: combatant.baseAtk,
     def: combatant.baseDef,
