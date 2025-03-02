@@ -1,4 +1,7 @@
-import { CombatAnimationId } from "@/data/combatAnimations/enums";
+import {
+  AnimationTypes,
+  CombatAnimationId,
+} from "@/data/combatAnimations/enums";
 import { HTMLMotionProps, motion, Variant } from "framer-motion";
 import { ForwardRefExoticComponent } from "react";
 
@@ -15,8 +18,3 @@ export type SpawnAnimation = {
   type: AnimationTypes.SPAWN;
   div: ForwardRefExoticComponent<HTMLMotionProps<"div">>;
 };
-
-export enum AnimationTypes {
-  SPAWN = "SPAWN",
-  MODIFY = "MODIFY",
-}

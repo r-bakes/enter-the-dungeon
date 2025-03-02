@@ -1,4 +1,5 @@
-import { AnimationTypes, SpawnAnimation } from "@/types/combatAnimation";
+import { SpawnAnimation } from "@/types/combatAnimation";
+import { AnimationTypes } from "./enums";
 import { CombatAnimationId } from "./enums";
 import { HTMLMotionProps, motion } from "framer-motion";
 import React from "react";
