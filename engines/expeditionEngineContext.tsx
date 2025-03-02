@@ -9,12 +9,16 @@ import { CombatantId } from "@/data/combatants/enums";
 
 type ExpeditionEngineContextContents = {
   characterCombatant: CharacterCombatant;
-  deck: CombatCard[];
-  loot: Loot;
-  artifacts: string[];
   setCharacterCombatant: React.Dispatch<
     React.SetStateAction<CharacterCombatant>
   >;
+  deck: CombatCard[];
+  loot: Loot;
+  setLoot: React.Dispatch<React.SetStateAction<Loot>>;
+  artifacts: {};
+  setArtifacts: React.Dispatch<React.SetStateAction<{}>>;
+  supplies: {};
+  setSupplies: React.Dispatch<React.SetStateAction<{}>>;
 };
 
 const ExpeditionEngineContext = React.createContext(
@@ -30,7 +34,8 @@ export default function ExpeditionEngineProvider({
   children: React.ReactNode;
 }>) {
   const { character, getModifiers } = useCharacterEngineContext();
-  let initializeCharacterExcursionState = (): CharacterCombatant => {
+
+  let initializeCharacterCombatant = (): CharacterCombatant => {
     let characterModifiers = getModifiers();
     return {
       combatantInstanceId: 0,
@@ -38,6 +43,7 @@ export default function ExpeditionEngineProvider({
       name: "The Spellsword",
       description: "A fearsome foe.",
       icon: User,
+      iconStyle: {},
       baseHp: characterModifiers.hp,
       baseAtk: characterModifiers.atk,
       baseDef: characterModifiers.def,
@@ -48,25 +54,33 @@ export default function ExpeditionEngineProvider({
       modifiers: [],
     };
   };
-  const [characterCombatant, setCharacterCombatant] = React.useState(
-    initializeCharacterExcursionState(),
-  );
+
+  let initializedCharacterCombatant = initializeCharacterCombatant();
   let initializedDeck: CombatCard[] = [
     ...character.deck.equippedMagic,
     ...character.deck.equppedMartial,
   ].map((cardId, deckId) => createCombatCard(cardId, deckId));
+
   const [deck, setDeck] = React.useState(initializedDeck);
   const [loot, setLoot] = React.useState<Loot>({});
-  const [artifacts, setArtifacts] = React.useState([]);
+  const [artifacts, setArtifacts] = React.useState({});
+  const [supplies, setSupplies] = React.useState({});
+  const [characterCombatant, setCharacterCombatant] = React.useState(
+    initializedCharacterCombatant,
+  );
 
   return (
     <ExpeditionEngineContext.Provider
       value={{
         characterCombatant,
+        setCharacterCombatant,
         deck,
         loot,
+        setLoot,
         artifacts,
-        setCharacterCombatant,
+        setArtifacts,
+        supplies,
+        setSupplies,
       }}
     >
       {children}

@@ -6,6 +6,8 @@ import { ItemId } from "@/data/items/enums";
 import { TaskId } from "@/data/tasks/enum";
 import { MenuId } from "@/data/menus/enums";
 import { CombatantId } from "@/data/combatants/enums";
+import { EncounterId } from "@/data/encounters/enums";
+import { ExpeditionId } from "./ExpeditionId";
 
 export type GameObject = {
   id: GameObjectId;
@@ -31,8 +33,10 @@ export type IconStylePrimitive = {
 
 export type GameObjectId =
   | ItemId
-  | CombatCardId
+  | ExpeditionId
+  | EncounterId
   | CombatantId
+  | CombatCardId
   | TaskId
   | SkillId
   | UpgradeId

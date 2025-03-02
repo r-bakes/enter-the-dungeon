@@ -1,8 +1,8 @@
+import { EncounterId } from "@/data/encounters/enums";
 import { Combatant } from "@/types/combatants";
 
 export type Encounter = {
-  id: string;
-  difficulty: number;
+  id: EncounterId;
   combatants: Combatant[];
   modifiers: Modifier[];
 };
