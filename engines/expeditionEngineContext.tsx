@@ -6,6 +6,7 @@ import { CharacterCombatant } from "@/types/combatants";
 import { CombatCard } from "@/types/combatCards";
 import { Loot } from "@/types/loot";
 import { CombatantId } from "@/data/combatants/enums";
+import { Loadout } from "@/types/character";
 
 type ExpeditionEngineContextContents = {
   characterCombatant: CharacterCombatant;
@@ -19,6 +20,32 @@ type ExpeditionEngineContextContents = {
   setArtifacts: React.Dispatch<React.SetStateAction<{}>>;
   supplies: {};
   setSupplies: React.Dispatch<React.SetStateAction<{}>>;
+};
+const createCharacterCombatant = (
+  characterModifiers: {
+    hp: number;
+    atk: number;
+    def: number;
+    stamina: number;
+  },
+  loadout: Loadout,
+): CharacterCombatant => {
+  return {
+    combatantInstanceId: 0,
+    id: CombatantId.SPELL_SWORD,
+    name: "The Spellsword",
+    description: "A fearsome foe.",
+    icon: User,
+    iconStyle: {},
+    baseHp: characterModifiers.hp,
+    baseAtk: characterModifiers.atk,
+    baseDef: characterModifiers.def,
+    baseStamina: characterModifiers.stamina,
+    ...characterModifiers,
+    loadout: loadout,
+    lootTable: {},
+    modifiers: [],
+  };
 };
 
 const ExpeditionEngineContext = React.createContext(
@@ -35,27 +62,10 @@ export default function ExpeditionEngineProvider({
 }>) {
   const { character, getModifiers } = useCharacterEngineContext();
 
-  let initializeCharacterCombatant = (): CharacterCombatant => {
-    let characterModifiers = getModifiers();
-    return {
-      combatantInstanceId: 0,
-      id: CombatantId.SPELL_SWORD,
-      name: "The Spellsword",
-      description: "A fearsome foe.",
-      icon: User,
-      iconStyle: {},
-      baseHp: characterModifiers.hp,
-      baseAtk: characterModifiers.atk,
-      baseDef: characterModifiers.def,
-      baseStamina: characterModifiers.stamina,
-      ...characterModifiers,
-      lootTable: {},
-      loadout: character.loadout,
-      modifiers: [],
-    };
-  };
-
-  let initializedCharacterCombatant = initializeCharacterCombatant();
+  let initializedCharacterCombatant = createCharacterCombatant(
+    getModifiers(),
+    character.loadout,
+  );
   let initializedDeck: CombatCard[] = [
     ...character.deck.equippedMagic,
     ...character.deck.equppedMartial,

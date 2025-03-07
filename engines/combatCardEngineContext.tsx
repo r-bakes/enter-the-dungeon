@@ -21,7 +21,7 @@ const CombatCardEngineContext = React.createContext(
 export const useCombatCardEngineContext = () =>
   React.useContext(CombatCardEngineContext);
 
-export default function CombatCardEngineProvider({
+export default function CombatdEngineProvider({
   children,
 }: Readonly<{
   children: React.ReactNode;
@@ -54,14 +54,14 @@ export default function CombatCardEngineProvider({
     }
     switch (selectedCard.target) {
       case CombatCardTarget.ENEMIES: {
-        if (enemyCombatants.includes(combatant)) {
+        if (Object.entries(enemyCombatants).includes(combatant)) {
           setSelectedEnemyCombatants([...selectedEnemyCombatants, combatant]);
         }
         break;
       }
       case CombatCardTarget.ALLIES: {
         if (
-          alliedCombatants.includes(combatant) ||
+          Object.values(alliedCombatants).includes(combatant) ||
           combatant === characterCombatant
         ) {
           setSelectedAlliedCombatants([...selectedAlliedCombatants, combatant]);

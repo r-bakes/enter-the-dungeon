@@ -6,10 +6,13 @@ import { useEncounterContext } from "@/engines/encounterEngineContext";
 import { useMenuEngineContext } from "@/engines/menuEngineContext";
 import { motion } from "framer-motion";
 import { Backpack, Zap } from "lucide-react";
+import useEncounterRoundActions from "../encounters/hooks/useEncounterRoundActions";
 
 export default function PlayerHudRow({}: {}) {
-  const { round, stamina, finishTurn } = useEncounterContext();
   const { setSelectedMenu } = useMenuEngineContext();
+  const { stamina, round } = useEncounterContext();
+  const { finishTurn } = useEncounterRoundActions();
+
   return (
     <div className="flex w-full min-w-full items-end gap-4">
       <div className="flex w-16 flex-col gap-2 border-r border-r-1">

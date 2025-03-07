@@ -3,13 +3,14 @@ import { Card, CardContent } from "@/components/ui/card";
 import { useCombatCardEngineContext } from "@/engines/combatCardEngineContext";
 import { useExpeditionContext } from "@/engines/expeditionEngineContext";
 import { CharacterCombatant, Combatant } from "@/types/combatants";
-import CombatantCard from "../combatantCard/components/combatantCard";
+import CombatantCard from "../combatantCards/components/combatantCard";
+import { EncounterCombatants } from "@/types/encounters";
 
 export default function ArenaRow({
   combatants,
   style,
 }: {
-  combatants: Combatant[];
+  combatants: EncounterCombatants;
   style?: "sm" | "lg";
 }) {
   let height = "h-80";
@@ -41,7 +42,7 @@ export default function ArenaRow({
   return (
     <Card className={"flex w-full min-w-full " + height}>
       <CardContent className="flex h-full w-full items-center justify-center space-x-6 p-3">
-        {combatants.map((combatant) =>
+        {Object.values(combatants).map((combatant) =>
           combatant === characterCombatant ? (
             <CharacterCombatantCard
               key={combatant.combatantInstanceId}

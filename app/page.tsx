@@ -4,7 +4,7 @@ import { useMenuEngineContext } from "@/engines/menuEngineContext";
 import { menuTable } from "@/data/menus/menus";
 import MenuSelect from "@/features/town/menuSelect/components/menuSelect";
 import { MenuId } from "@/data/menus/enums";
-import Arena from "@/features/expedition/arena/arena";
+import Arena from "@/features/expeditions/arena/arena";
 import ExpeditionEngineProvider from "@/engines/expeditionEngineContext";
 import EncounterEngineProvider from "@/engines/encounterEngineContext";
 import CombatCardEngineProvider from "@/engines/combatCardEngineContext";

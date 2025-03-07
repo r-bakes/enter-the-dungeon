@@ -3,7 +3,7 @@ import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import { Label } from "@/components/ui/label";
 import { itemTable } from "@/data/items/items";
 import { Heart, Shield, Sword } from "lucide-react";
-import StatBlock from "../../expedition/combatantCard/components/statBlock";
+import StatBlock from "../../expeditions/combatantCards/components/statBlock";
 import { CharacterCombatant } from "@/types/combatants";
 import { renderIcon } from "@/features/common/utils/formattingUtilities";
 

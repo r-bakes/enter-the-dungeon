@@ -1,14 +1,15 @@
 import { CombatantTemplate, Combatant } from "@/types/combatants";
 
 export const createCombatant = (
-  combatant: CombatantTemplate,
-  combatantId: number,
+  combatantInstanceId: number,
+  combatantTemplate: CombatantTemplate,
 ): Combatant => {
   return {
-    combatantInstanceId: combatantId,
-    hp: combatant.baseHp,
-    atk: combatant.baseAtk,
-    def: combatant.baseDef,
-    ...combatant,
+    combatantInstanceId: combatantInstanceId,
+    hp: combatantTemplate.baseHp,
+    atk: combatantTemplate.baseAtk,
+    def: combatantTemplate.baseDef,
+    modifiers: [],
+    ...combatantTemplate,
   };
 };

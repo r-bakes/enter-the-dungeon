@@ -40,6 +40,6 @@ const useEncounterDeckActions = () => {
     setHand([...newHand]);
   };
 
-  return { draw };
+  return { draw, shuffle };
 };
 export default useEncounterDeckActions;

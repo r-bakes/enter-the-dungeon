@@ -7,7 +7,7 @@ import { TaskId } from "@/data/tasks/enum";
 import { MenuId } from "@/data/menus/enums";
 import { CombatantId } from "@/data/combatants/enums";
 import { EncounterId } from "@/data/encounters/enums";
-import { ExpeditionId } from "./ExpeditionId";
+import { ExpeditionId } from "@/data/expeditions/enums";
 
 export type GameObject = {
   id: GameObjectId;

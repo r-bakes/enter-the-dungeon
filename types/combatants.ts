@@ -1,7 +1,7 @@
 import { CombatantId } from "@/data/combatants/enums";
-import { Loadout } from "@/types/character";
 import { GameObject } from "@/types/gameObjects";
 import { LootTable } from "@/types/loot";
+import { Loadout } from "./character";
 
 export type CharacterCombatant = {
   baseStamina: number;
