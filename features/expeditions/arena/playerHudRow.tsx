@@ -4,7 +4,7 @@ import { Label } from "@/components/ui/label";
 import { MenuId } from "@/data/menus/enums";
 import { useEncounterContext } from "@/engines/encounterEngineContext";
 import { useMenuEngineContext } from "@/engines/menuEngineContext";
-import { motion } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
 import { Backpack, Zap } from "lucide-react";
 import useEncounterRoundActions from "../encounters/hooks/useEncounterRoundActions";
 
@@ -36,21 +36,27 @@ export default function PlayerHudRow({}: {}) {
         <Label className="text-muted-foreground font-extralight">Stamina</Label>
         <Card className="flex h-10 w-80">
           <CardContent className="flex h-full w-full items-center justify-start gap-4 p-0 px-4">
-            {[...Array(stamina)].map((_, i) => (
-              <motion.div
-                key={i}
-                className="flex"
-                initial={{ opacity: 0, scale: 0.5 }}
-                animate={{ opacity: 1, scale: 1 }}
-                transition={{
-                  duration: 4,
-                  delay: 0.5,
-                  ease: [0, 0.71, 0.2, 1.01],
-                }}
-              >
-                <Zap key={i} size={24} strokeWidth={1}></Zap>
-              </motion.div>
-            ))}
+            <AnimatePresence>
+              {[...Array(stamina)].map((_, i) => (
+                <motion.div
+                  key={i}
+                  className="flex"
+                  initial={{ opacity: 0, scale: 0.5 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  transition={{
+                    duration: 1,
+                    ease: "easeInOut",
+                  }}
+                  exit={{
+                    opacity: 0,
+                    y: -60,
+                    transition: { duration: 0.5, east: "easeInOut" },
+                  }}
+                >
+                  <Zap key={i} size={24} strokeWidth={1}></Zap>
+                </motion.div>
+              ))}
+            </AnimatePresence>
           </CardContent>
         </Card>
       </div>
@@ -73,7 +79,7 @@ export default function PlayerHudRow({}: {}) {
         </Card>
       </div>
       <Button variant="outline" size="icon">
-        <Backpack></Backpack>
+        <Backpack strokeWidth={1}></Backpack>
       </Button>
       <div className="flex grow"></div>
       <Button onClick={() => setSelectedMenu(MenuId.HOME)}>Escape</Button>

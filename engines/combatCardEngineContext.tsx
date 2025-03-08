@@ -54,7 +54,7 @@ export default function CombatdEngineProvider({
     }
     switch (selectedCard.target) {
       case CombatCardTarget.ENEMIES: {
-        if (Object.entries(enemyCombatants).includes(combatant)) {
+        if (Object.values(enemyCombatants).includes(combatant)) {
           setSelectedEnemyCombatants([...selectedEnemyCombatants, combatant]);
         }
         break;
@@ -134,27 +134,15 @@ export default function CombatdEngineProvider({
       combatant.def = combatant.baseDef;
     }
 
-    setEnemyCombatants([
-      ...enemyCombatants.filter((combatant) => combatant.hp > 0),
-    ]);
+    setEnemyCombatants({ ...enemyCombatants });
   };
 
   const executeDefensiveCard = (selectedCard: CombatCard) => {
     for (var combatant of selectedAlliedCombatants) {
       combatant.def += characterCombatant.baseDef * selectedCard.modifier;
-      alliedCombatants.filter(
-        (ally) => ally.combatantInstanceId != combatant.combatantInstanceId,
-      );
     }
 
-    setAlliedCombatants([
-      ...alliedCombatants,
-      ...selectedAlliedCombatants.filter(
-        (combatant) =>
-          combatant.combatantInstanceId !=
-          characterCombatant.combatantInstanceId,
-      ),
-    ]);
+    setAlliedCombatants({ ...alliedCombatants });
     setCharacterCombatant({ ...characterCombatant });
   };
 

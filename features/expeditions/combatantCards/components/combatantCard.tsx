@@ -13,20 +13,29 @@ const cardVariants = {
     scale: 1,
     rotate: 0,
   },
-  growShakeShrink: {
-    // Keyframe arrays for scale and rotate
-    scale: [1, 1.3, 1, 1.3, 1],
-    rotate: [0, 5, -5, 5, -5, 0],
+  attacked: {
+    scale: 0.6,
+    y: -40,
     transition: {
-      duration: 0.8,
-      // 'ease' can be "easeInOut" or custom; you can also define times for each keyframe
+      duration: 1,
       ease: "easeInOut",
     },
   },
-  quickShrink: {
-    scale: 0.5,
+  attacking: {
+    scale: 1.4,
+    y: 40,
     transition: {
-      duration: 0.3,
+      duration: 1,
+      ease: "easeInOut",
+    },
+  },
+  exit: {
+    scale: [1, 0],
+    rotate: [0, 360 * 10],
+    transition: {
+      delay: 0.1,
+      duration: 1.5,
+      ease: "easeInOut",
     },
   },
 };
@@ -34,57 +43,56 @@ const cardVariants = {
 export default function CombatantCard({
   combatant,
   isSelected,
+  animation,
   onClick,
 }: {
   combatant: Combatant;
   isSelected: boolean;
+  animation?: "attacked";
   onClick: React.Dispatch<React.SetStateAction<any>>;
 }) {
-  let selectedStyle = isSelected ? "bg-accent" : "";
-  const [animationState, setAnimationState] =
-    useState<keyof typeof cardVariants>("idle");
+  const selectedStyle = isSelected ? "bg-accent" : "";
+  const [animationState, setAnimationState] = useState<
+    keyof typeof cardVariants
+  >(animation ? animation : "idle");
 
   return (
     <motion.div
       variants={cardVariants}
       animate={animationState}
-      onAnimationComplete={() => {
-        // Optionally revert back to idle or do something else
-        setAnimationState("idle");
-      }}
-      // You can keep your initial, exit, or other props as needed
+      exit="exit" // This triggers the exit animation when unmounting
     >
       <div className="flex flex-col gap-1 text-center">
         <Label className="text-muted-foreground font-extralight">
           {combatant.name}
         </Label>
-        <Card className={"h-48 w-40 justify-center" + selectedStyle}>
+        <Card className={"h-54 w-48 justify-center " + selectedStyle}>
           <Button
             onClick={onClick}
-            className="flex h-full w-full flex-col p-0"
+            className="flex h-full w-full flex-col"
             variant="ghost"
           >
-            <CardHeader className="h-3/5 items-center justify-center p-0">
-              {renderIcon(combatant.icon, 80, {
-                ...combatant.iconStyle,
-              })}
+            <CardHeader className="items-center justify-center">
+              {renderIcon(combatant.icon, 80, combatant.iconStyle)}
             </CardHeader>
-            <CardContent className="flex h-2/5 items-start justify-center gap-3 py-0">
+            <CardContent className="flex w-full grow items-start justify-between">
               <StatBlock
                 icon={Sword}
                 baseValue={combatant.baseAtk}
                 value={combatant.atk}
-              ></StatBlock>
+              />
               <StatBlock
                 icon={Shield}
+                updateVariant="def"
                 baseValue={combatant.baseDef}
                 value={combatant.def}
-              ></StatBlock>
+              />
               <StatBlock
                 icon={Heart}
-                baseValue={combatant.hp}
-                value={0}
-              ></StatBlock>
+                updateVariant="hp"
+                baseValue={combatant.baseHp}
+                value={combatant.hp}
+              />
             </CardContent>
           </Button>
         </Card>

@@ -29,21 +29,21 @@ export default function CharacterCombatantCard({
       <Label className="text-muted-foreground font-extralight">
         {combatant.name}
       </Label>
-      <Card className={"flex h-52 w-44 justify-center" + selectedStyle}>
+      <Card className={"flex h-62 w-48 " + selectedStyle}>
         <Button
           onClick={onClick}
-          className="relative h-full w-full flex-col p-0"
+          className="relative h-full w-full flex-col"
           variant="ghost"
         >
-          <CardHeader className="h-3/5 items-center justify-center p-0">
+          <CardHeader className="items-center justify-center">
             {renderIcon(combatant.icon, 80, {
               ...combatant.iconStyle,
             })}
           </CardHeader>
           {leftHand ? (
-            <Card className="absolute right-36 shadow-md">
+            <Card className="absolute right-44 shadow-md">
               <CardHeader className="p-2">
-                {renderIcon(leftHand.icon, 80, {
+                {renderIcon(leftHand.icon, 72, {
                   ...leftHand.iconStyle,
                 })}
               </CardHeader>
@@ -52,9 +52,9 @@ export default function CharacterCombatantCard({
             <></>
           )}
           {rightHand ? (
-            <Card className="absolute left-36 shadow-md">
+            <Card className="absolute left-44 shadow-md">
               <CardHeader className="p-2">
-                {renderIcon(rightHand.icon, 80, {
+                {renderIcon(rightHand.icon, 72, {
                   ...rightHand.iconStyle,
                 })}
               </CardHeader>
@@ -62,7 +62,7 @@ export default function CharacterCombatantCard({
           ) : (
             <></>
           )}
-          <CardContent className="flex h-2/5 items-start justify-center gap-3 py-0">
+          <CardContent className="flex w-full grow items-start justify-between">
             <StatBlock
               icon={Sword}
               baseValue={combatant.baseAtk}
@@ -70,13 +70,15 @@ export default function CharacterCombatantCard({
             ></StatBlock>
             <StatBlock
               icon={Shield}
+              updateVariant="def"
               baseValue={combatant.baseDef}
               value={combatant.def}
             ></StatBlock>
             <StatBlock
               icon={Heart}
-              baseValue={combatant.hp}
-              value={0}
+              updateVariant="hp"
+              baseValue={combatant.baseHp}
+              value={combatant.hp}
             ></StatBlock>
           </CardContent>
         </Button>

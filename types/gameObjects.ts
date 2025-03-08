@@ -26,9 +26,9 @@ export type IconStyle = {
 };
 
 export type IconStylePrimitive = {
-  fillOpacity: number;
-  strokeWidth: number;
-  strokeOpacity: number;
+  fillOpacity?: number;
+  strokeWidth?: number;
+  strokeOpacity?: number;
 };
 
 export type GameObjectId =

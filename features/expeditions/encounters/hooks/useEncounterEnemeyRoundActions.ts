@@ -7,12 +7,13 @@ const useEncounterEnemeyRoundActions = () => {
 
   const enemeyRound = () => {
     let damageTaken = 0;
-    for (var combatant of enemyCombatants) {
+    for (var combatant of Object.values(enemyCombatants)) {
       damageTaken += combatant.atk;
     }
     characterCombatant.hp -= Math.max(damageTaken - characterCombatant.def, 0);
     characterCombatant.def = characterCombatant.baseDef;
     characterCombatant.atk = characterCombatant.baseAtk;
+
     setCharacterCombatant({ ...characterCombatant });
   };
 

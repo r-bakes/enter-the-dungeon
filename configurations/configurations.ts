@@ -11,14 +11,14 @@ export const AGILITY_LEVELS_FOR_STAMINA_BONUS = 15;
 
 export const SKILL_AND_MENU_ICON_STYLE: IconStylePrimitive = {
   strokeWidth: 1,
-  strokeOpacity: 1,
-  fillOpacity: 1,
 };
 
 export const TASK_AND_ITEM_ICON_STYLE: IconStylePrimitive = {
   strokeWidth: 0.5,
-  strokeOpacity: 1,
-  fillOpacity: 1,
+};
+
+export const COMBATANT_ICON_STYLE: IconStylePrimitive = {
+  strokeWidth: 1.5,
 };
 
 export const CONTAINER_LEVEL_REQUIREMENTS = {

@@ -7,6 +7,7 @@ import { CombatCard } from "@/types/combatCards";
 import { Loot } from "@/types/loot";
 import { CombatantId } from "@/data/combatants/enums";
 import { Loadout } from "@/types/character";
+import { COMBATANT_ICON_STYLE } from "@/configurations/configurations";
 
 type ExpeditionEngineContextContents = {
   characterCombatant: CharacterCombatant;
@@ -36,7 +37,7 @@ const createCharacterCombatant = (
     name: "The Spellsword",
     description: "A fearsome foe.",
     icon: User,
-    iconStyle: {},
+    iconStyle: COMBATANT_ICON_STYLE,
     baseHp: characterModifiers.hp,
     baseAtk: characterModifiers.atk,
     baseDef: characterModifiers.def,

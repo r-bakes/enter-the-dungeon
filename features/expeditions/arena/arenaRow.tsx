@@ -5,18 +5,13 @@ import { useExpeditionContext } from "@/engines/expeditionEngineContext";
 import { CharacterCombatant, Combatant } from "@/types/combatants";
 import CombatantCard from "../combatantCards/components/combatantCard";
 import { EncounterCombatants } from "@/types/encounters";
+import { AnimatePresence } from "framer-motion";
 
 export default function ArenaRow({
   combatants,
-  style,
 }: {
   combatants: EncounterCombatants;
-  style?: "sm" | "lg";
 }) {
-  let height = "h-80";
-  if (style === "sm") {
-    height = "h-64";
-  }
   const { characterCombatant } = useExpeditionContext();
   const {
     selectedEnemyCombatants,
@@ -40,25 +35,27 @@ export default function ArenaRow({
   };
 
   return (
-    <Card className={"flex w-full min-w-full " + height}>
+    <Card className={"flex h-74 w-full min-w-full"}>
       <CardContent className="flex h-full w-full items-center justify-center space-x-6 p-3">
-        {Object.values(combatants).map((combatant) =>
-          combatant === characterCombatant ? (
-            <CharacterCombatantCard
-              key={combatant.combatantInstanceId}
-              combatant={combatant as CharacterCombatant}
-              isSelected={isSelected(combatant)}
-              onClick={() => onClick(combatant)}
-            ></CharacterCombatantCard>
-          ) : (
-            <CombatantCard
-              key={combatant.combatantInstanceId}
-              combatant={combatant}
-              onClick={() => onClick(combatant)}
-              isSelected={isSelected(combatant)}
-            ></CombatantCard>
-          ),
-        )}
+        <AnimatePresence>
+          {Object.values(combatants).map((combatant) =>
+            combatant === characterCombatant ? (
+              <CharacterCombatantCard
+                key={characterCombatant.id}
+                combatant={combatant as CharacterCombatant}
+                isSelected={isSelected(combatant)}
+                onClick={() => onClick(combatant)}
+              ></CharacterCombatantCard>
+            ) : (
+              <CombatantCard
+                key={combatant.combatantInstanceId}
+                combatant={combatant}
+                onClick={() => onClick(combatant)}
+                isSelected={isSelected(combatant)}
+              ></CombatantCard>
+            ),
+          )}
+        </AnimatePresence>
       </CardContent>
     </Card>
   );

@@ -13,7 +13,6 @@ export default function Arena() {
       <ArenaRow combatants={enemyCombatants}></ArenaRow>
       <ArenaRow
         combatants={{ ...alliedCombatants, ...{ "0": characterCombatant } }}
-        style="sm"
       ></ArenaRow>
       <PlayerHudRow></PlayerHudRow>
       <DeckRow></DeckRow>
