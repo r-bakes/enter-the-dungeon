@@ -55,8 +55,8 @@ export default function ArenaRow({
                     transition: { duration: isCharacter ? 0 : 4 },
                   }}
                   exit={{
-                    scale: [1, 0],
-                    rotate: [0, 360 * 10],
+                    opacity: 0,
+                    y: -40,
                     transition: {
                       duration: 1.5,
                       ease: "easeInOut",
