@@ -31,7 +31,7 @@ export default function DeckRow() {
           </div>
           <div className="h-5/6 border-r"></div>
           <ul className="flex h-full grow items-center justify-center gap-3">
-            <AnimatePresence>
+            <AnimatePresence mode="popLayout">
               {hand.map((card) => (
                 <motion.li
                   layout
@@ -42,7 +42,7 @@ export default function DeckRow() {
                   exit={{
                     opacity: 0,
                     y: 0,
-                    x: 500,
+                    x: 600,
                     scale: 0.5,
                     transition: { duration: 0.8 },
                   }}

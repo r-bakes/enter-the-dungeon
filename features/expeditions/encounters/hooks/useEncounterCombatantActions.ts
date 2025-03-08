@@ -9,6 +9,8 @@ const useEncounterCombatantActions = () => {
     setAlliedCombatants,
   } = useEncounterContext();
 
+  const lootMonster = () => {};
+
   // Remove dead enemies
   React.useEffect(() => {
     let initialLength = Object.keys(enemyCombatants).length;
