@@ -1,7 +1,7 @@
 import React from "react";
 import { useCharacterEngineContext } from "@/engines/characterEngineContext";
 import { User } from "lucide-react";
-import { createCombatCard } from "@/data/combatCards/combatCards";
+import { createCombatCard } from "@/features/common/utils/cardUtilities";
 import { CharacterCombatant } from "@/types/combatants";
 import { CombatCard } from "@/types/combatCards";
 import { Loot } from "@/types/loot";
@@ -70,7 +70,7 @@ export default function ExpeditionEngineProvider({
   let initializedDeck: CombatCard[] = [
     ...character.deck.equippedMagic,
     ...character.deck.equppedMartial,
-  ].map((cardId, deckId) => createCombatCard(cardId, deckId));
+  ].map((cardId, cardInstanceId) => createCombatCard(cardId, cardInstanceId));
 
   const [deck, setDeck] = React.useState(initializedDeck);
   const [loot, setLoot] = React.useState<Loot>({});

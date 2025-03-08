@@ -12,7 +12,7 @@ export default function Arena() {
     <div className="flex h-full w-full flex-col gap-4">
       <ArenaRow combatants={enemyCombatants}></ArenaRow>
       <ArenaRow
-        combatants={{ ...alliedCombatants, ...{ "0": characterCombatant } }}
+        combatants={{ ...alliedCombatants, ...{ pc: characterCombatant } }}
       ></ArenaRow>
       <PlayerHudRow></PlayerHudRow>
       <DeckRow></DeckRow>

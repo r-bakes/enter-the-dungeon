@@ -1,4 +1,5 @@
 import { PastureId, PlotId, Slot } from "@/data/character/enums";
+import { CombatCardId } from "@/data/combatCards/enums";
 import { ItemId } from "@/data/items/enums";
 import { MilestoneId } from "@/data/milestones/enums";
 import { SkillId } from "@/data/skills/enums";
@@ -30,10 +31,10 @@ export type CharacterSkill = {
 };
 export type Milestones = Set<MilestoneId>;
 export type Deck = {
-  equppedMartial: string[];
-  unequippedMartial: string[];
-  equippedMagic: string[];
-  unequippedMagic: string[];
+  equppedMartial: CombatCardId[];
+  unequippedMartial: CombatCardId[];
+  equippedMagic: CombatCardId[];
+  unequippedMagic: CombatCardId[];
 };
 export type PlotFilled = {
   taskId: TaskId;

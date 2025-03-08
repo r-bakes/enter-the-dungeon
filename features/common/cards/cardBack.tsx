@@ -8,13 +8,13 @@ export default function CardBack({
   onClick: React.Dispatch<React.SetStateAction<any>>;
 }>) {
   return (
-    <Card className="h-48 w-40">
+    <Card className="h-44 w-36">
       <Button
         onClick={() => {}}
         className="flex h-full w-full items-start justify-start"
         variant="ghost"
       >
-        <CardContent className="flex h-full w-full flex-col justify-start pt-6">
+        <CardContent className="flex h-full w-full flex-col items-center justify-center">
           <Label className="text-xl font-extrabold">Enter</Label>
           <Label className="font-extrabold">the</Label>
           <Label className="text-xl font-extrabold">Dungeon</Label>

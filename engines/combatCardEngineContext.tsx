@@ -39,12 +39,15 @@ export default function CombatdEngineProvider({
     setHand,
     setStamina,
   } = useEncounterContext();
+
   const [selectedCard, setSelectedCard] = React.useState<CombatCard | null>(
     null,
   );
+
   const [selectedEnemyCombatants, setSelectedEnemyCombatants] = React.useState<
     Combatant[]
   >([]);
+
   const [selectedAlliedCombatants, setSelectedAlliedCombatants] =
     React.useState<Combatant[]>([]);
 
@@ -120,7 +123,11 @@ export default function CombatdEngineProvider({
       }
     }
 
-    setHand([...hand.filter((card) => card.deckId != selectedCard.deckId)]);
+    setHand([
+      ...hand.filter(
+        (card) => card.cardInstanceId != selectedCard.cardInstanceId,
+      ),
+    ]);
     setDiscardPile([...discardPile, selectedCard]);
     setStamina(stamina - selectedCard.cost);
     resetState();

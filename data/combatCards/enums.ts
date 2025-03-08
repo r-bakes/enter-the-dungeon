@@ -1,6 +1,6 @@
 export enum CombatCardTarget {
-  ENEMIES = 0,
-  ALLIES,
+  ENEMIES = "ENEMIES",
+  ALLIES = "ALLIES",
 }
 
 export enum CombatCardType {

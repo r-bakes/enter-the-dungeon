@@ -1,11 +1,16 @@
-import { CombatCardTarget, CombatCardType } from "@/data/combatCards/enums";
+import {
+  CombatCardId,
+  CombatCardTarget,
+  CombatCardType,
+} from "@/data/combatCards/enums";
 import { GameObject } from "@/types/gameObjects";
 
 export type CombatCard = {
-  deckId: number;
+  cardInstanceId: number;
 } & CombatCardTemplate;
 
 export type CombatCardTemplate = {
+  id: CombatCardId;
   modifier: number;
   strikes: number;
   targets: number;

@@ -6,6 +6,8 @@ import { Heart, Shield, Sword } from "lucide-react";
 import StatBlock from "../../expeditions/combatantCards/components/statBlock";
 import { CharacterCombatant } from "@/types/combatants";
 import { renderIcon } from "@/features/common/utils/formattingUtilities";
+import { useCombatCardEngineContext } from "@/engines/combatCardEngineContext";
+import { CombatCardTarget, CombatCardType } from "@/data/combatCards/enums";
 
 export default function CharacterCombatantCard({
   combatant,
@@ -16,6 +18,7 @@ export default function CharacterCombatantCard({
   isSelected: boolean;
   onClick: React.Dispatch<React.SetStateAction<any>>;
 }) {
+  let { selectedCard } = useCombatCardEngineContext();
   let selectedStyle = isSelected ? "bg-accent" : "";
   let leftHand = combatant.loadout.LEFT_HAND
     ? itemTable[combatant.loadout.LEFT_HAND]
@@ -32,6 +35,9 @@ export default function CharacterCombatantCard({
       <Card className={"flex h-62 w-48 " + selectedStyle}>
         <Button
           onClick={onClick}
+          disabled={
+            selectedCard?.target === CombatCardTarget.ENEMIES ? true : false
+          }
           className="relative h-full w-full flex-col"
           variant="ghost"
         >

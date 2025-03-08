@@ -21,19 +21,19 @@ export default function CombatDeckCard({
   let formattedHoverTranslateDirection = {};
   switch (hoverTranslateDirection) {
     case "u": {
-      formattedHoverTranslateDirection = { y: -20 };
+      formattedHoverTranslateDirection = { y: -60 };
       break;
     }
     case "d": {
-      formattedHoverTranslateDirection = { y: 20 };
+      formattedHoverTranslateDirection = { y: 60 };
       break;
     }
     case "l": {
-      formattedHoverTranslateDirection = { x: 20 };
+      formattedHoverTranslateDirection = { x: 60 };
       break;
     }
     case "r": {
-      formattedHoverTranslateDirection = { x: -20 };
+      formattedHoverTranslateDirection = { x: -60 };
       break;
     }
   }
@@ -41,21 +41,21 @@ export default function CombatDeckCard({
   return (
     <motion.div
       whileHover={{
-        scale: 1.15,
+        scale: 1.25,
         ...formattedHoverTranslateDirection,
+        transition: { duration: 0.3 },
       }}
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1, transition: { duration: 0.5 } }}
-      exit={{ opacity: 0 }}
-      transition={{
-        duration: 0.2,
+      animate={{
+        ...(isSelected && { scale: 1.25, ...formattedHoverTranslateDirection }),
+        transition: { duration: 0.3 },
       }}
     >
       <Card className="flex h-44 w-36">
         <Button
           onClick={onClick}
           className={
-            "flex h-full w-full flex-col items-start justify-start px-2 py-3"
+            "flex h-full w-full flex-col items-start justify-start px-2 py-3 " +
+            (isSelected && "bg-accent")
           }
           variant="ghost"
         >
@@ -83,23 +83,23 @@ const formatCardContent = (card: CombatCardTemplate) => {
     content = (
       <div className="flex flex-col gap-1">
         <span className="flex justify-center gap-1">
-          <Label className="text-xs font-normal text-muted-foreground">
+          <Label className="text-muted-foreground text-xs font-normal">
             Deals
           </Label>
           <Label className="text-xs font-medium">{card.modifier} x ATK</Label>
         </span>
         <span className="flex justify-center gap-1">
           <Label className="text-xs font-medium">{card.strikes}</Label>
-          <Label className="text-xs font-normal text-muted-foreground">
+          <Label className="text-muted-foreground text-xs font-normal">
             {card.strikes > 1 ? "times" : "time"}
           </Label>
         </span>
         <span className="flex justify-center gap-1">
-          <Label className="text-xs font-normal text-muted-foreground">
+          <Label className="text-muted-foreground text-xs font-normal">
             to
           </Label>
           <Label className="text-xs font-medium">{card.targets}</Label>
-          <Label className="text-xs font-normal text-muted-foreground">
+          <Label className="text-muted-foreground text-xs font-normal">
             {card.targets > 1 ? "targets" : "target"}
           </Label>
         </span>
@@ -110,17 +110,17 @@ const formatCardContent = (card: CombatCardTemplate) => {
     content = (
       <div className="flex flex-col gap-1">
         <span className="flex justify-center gap-1">
-          <Label className="text-xs font-normal text-muted-foreground">
+          <Label className="text-muted-foreground text-xs font-normal">
             Adds
           </Label>
           <Label className="text-xs font-medium">{card.modifier} x DEF</Label>
         </span>
         <span className="flex justify-center gap-1">
-          <Label className="text-xs font-normal text-muted-foreground">
+          <Label className="text-muted-foreground text-xs font-normal">
             to
           </Label>
           <Label className="text-xs font-medium">{card.targets}</Label>
-          <Label className="text-xs font-normal text-muted-foreground">
+          <Label className="text-muted-foreground text-xs font-normal">
             {card.targets > 1 ? "allies" : "ally"}
           </Label>
         </span>

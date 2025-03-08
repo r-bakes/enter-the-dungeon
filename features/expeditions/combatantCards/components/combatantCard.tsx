@@ -7,6 +7,8 @@ import StatBlock from "./statBlock";
 import { Combatant } from "@/types/combatants";
 import { renderIcon } from "@/features/common/utils/formattingUtilities";
 import { useState } from "react";
+import { useCombatCardEngineContext } from "@/engines/combatCardEngineContext";
+import { CombatCardTarget } from "@/data/combatCards/enums";
 
 const cardVariants = {
   idle: {
@@ -18,6 +20,7 @@ const cardVariants = {
     y: -40,
     transition: {
       duration: 1,
+      type: "spring",
       ease: "easeInOut",
     },
   },
@@ -26,15 +29,7 @@ const cardVariants = {
     y: 40,
     transition: {
       duration: 1,
-      ease: "easeInOut",
-    },
-  },
-  exit: {
-    scale: [1, 0],
-    rotate: [0, 360 * 10],
-    transition: {
-      delay: 0.1,
-      duration: 1.5,
+      type: "spring",
       ease: "easeInOut",
     },
   },
@@ -52,16 +47,13 @@ export default function CombatantCard({
   onClick: React.Dispatch<React.SetStateAction<any>>;
 }) {
   const selectedStyle = isSelected ? "bg-accent" : "";
+  const { selectedCard } = useCombatCardEngineContext();
   const [animationState, setAnimationState] = useState<
     keyof typeof cardVariants
   >(animation ? animation : "idle");
 
   return (
-    <motion.div
-      variants={cardVariants}
-      animate={animationState}
-      exit="exit" // This triggers the exit animation when unmounting
-    >
+    <motion.div variants={cardVariants} animate={animationState}>
       <div className="flex flex-col gap-1 text-center">
         <Label className="text-muted-foreground font-extralight">
           {combatant.name}
@@ -69,6 +61,9 @@ export default function CombatantCard({
         <Card className={"h-54 w-48 justify-center " + selectedStyle}>
           <Button
             onClick={onClick}
+            disabled={
+              selectedCard?.target === CombatCardTarget.ALLIES ? true : false
+            }
             className="flex h-full w-full flex-col"
             variant="ghost"
           >

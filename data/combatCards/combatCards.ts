@@ -1,5 +1,5 @@
 import { Shield, Sword, Swords } from "lucide-react";
-import { CombatCard, CombatCardTemplate } from "@/types/combatCards";
+import { CombatCardTemplate } from "@/types/combatCards";
 import { TASK_AND_ITEM_ICON_STYLE } from "@/configurations/configurations";
 import { CombatCardId, CombatCardTarget, CombatCardType } from "./enums";
 
@@ -52,14 +52,4 @@ export const combatCardTable: { [id in CombatCardId]: CombatCardTemplate } = {
     cost: 1,
     type: CombatCardType.MARTIAL,
   },
-};
-
-export const createCombatCard = (
-  cardId: CombatCardId,
-  deckId: number,
-): CombatCard => {
-  return {
-    deckId: deckId,
-    ...combatCardTable[cardId],
-  };
 };
