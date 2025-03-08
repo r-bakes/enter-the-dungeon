@@ -2,7 +2,7 @@ import { useEncounterContext } from "@/engines/encounterEngineContext";
 import { useExpeditionContext } from "@/engines/expeditionEngineContext";
 import useEncounterDeckActions from "./useEncounterDeckActions";
 import React from "react";
-import useEncounterEnemeyRoundActions from "./useEncounterEnemeyRoundActions";
+import useEncounterEnemyRoundActions from "./useEncounterEnemyRoundActions";
 import useEncounterCombatantActions from "./useEncounterCombatantActions";
 
 const useEncounterRoundActions = () => {
@@ -10,7 +10,7 @@ const useEncounterRoundActions = () => {
   const { hand, round, setRound, stamina, setStamina, enemyCombatants } =
     useEncounterContext();
   const { draw } = useEncounterDeckActions();
-  const { enemeyRound } = useEncounterEnemeyRoundActions();
+  const { enemyRound: enemyRound } = useEncounterEnemyRoundActions();
   const {} = useEncounterCombatantActions();
 
   const newRound = () => {
@@ -21,7 +21,7 @@ const useEncounterRoundActions = () => {
 
   const finishTurn = () => {
     setTimeout(() => {
-      enemeyRound();
+      enemyRound();
       newRound();
     }, 600);
   };

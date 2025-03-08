@@ -1,11 +1,11 @@
 import { useEncounterContext } from "@/engines/encounterEngineContext";
 import { useExpeditionContext } from "@/engines/expeditionEngineContext";
 
-const useEncounterEnemeyRoundActions = () => {
+const useEncounterEnemyRoundActions = () => {
   const { characterCombatant, setCharacterCombatant } = useExpeditionContext();
   const { enemyCombatants } = useEncounterContext();
 
-  const enemeyRound = () => {
+  const enemyRound = () => {
     let damageTaken = 0;
     for (var combatant of Object.values(enemyCombatants)) {
       damageTaken += combatant.atk;
@@ -17,6 +17,6 @@ const useEncounterEnemeyRoundActions = () => {
     setCharacterCombatant({ ...characterCombatant });
   };
 
-  return { enemeyRound };
+  return { enemyRound };
 };
-export default useEncounterEnemeyRoundActions;
+export default useEncounterEnemyRoundActions;
