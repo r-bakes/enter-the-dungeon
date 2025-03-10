@@ -1,3 +1,10 @@
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogHeader,
+  DialogTitle,
+} from "@/components/ui/dialog";
 import { floor1a } from "@/data/encounters/floor1a";
 import { useExpeditionContext } from "@/engines/expeditionEngineContext";
 import { createCombatant } from "@/features/common/utils/encounterUtilities";
@@ -23,6 +30,7 @@ type EncounterContextContents = {
   discardPile: CombatCard[];
   setDiscardPile: React.Dispatch<React.SetStateAction<CombatCard[]>>;
   setStamina: React.Dispatch<React.SetStateAction<number>>;
+  setIsRoundDialogOpen: React.Dispatch<React.SetStateAction<boolean>>;
 };
 
 const EncounterEngineContext = React.createContext(
@@ -59,6 +67,7 @@ export default function EncounterEngineProvider({
   const [drawPile, setDrawPile] = React.useState<CombatCard[]>(encounterDeck);
   const [hand, setHand] = React.useState<CombatCard[]>([]);
   const [discardPile, setDiscardPile] = React.useState<CombatCard[]>([]);
+  const [isRoundDialogOpen, setIsRoundDialogOpen] = React.useState(false);
 
   return (
     <EncounterEngineContext.Provider
@@ -78,8 +87,19 @@ export default function EncounterEngineProvider({
         setHand,
         discardPile,
         setDiscardPile,
+        setIsRoundDialogOpen,
       }}
     >
+      <Dialog open={isRoundDialogOpen} onOpenChange={setIsRoundDialogOpen}>
+        <DialogContent className="min-h-40 min-w-full">
+          <DialogHeader className="flex w-screen items-center justify-center">
+            <DialogTitle className="text-3xl">Round {round}</DialogTitle>
+            <DialogDescription className="text-lg">
+              Begin Player Phase
+            </DialogDescription>
+          </DialogHeader>
+        </DialogContent>
+      </Dialog>
       {children}
     </EncounterEngineContext.Provider>
   );

@@ -7,13 +7,22 @@ import useEncounterCombatantActions from "./useEncounterCombatantActions";
 
 const useEncounterRoundActions = () => {
   const { characterCombatant } = useExpeditionContext();
-  const { hand, round, setRound, stamina, setStamina, enemyCombatants } =
-    useEncounterContext();
+  const {
+    hand,
+    round,
+    setRound,
+    stamina,
+    setStamina,
+    enemyCombatants,
+    setIsRoundDialogOpen,
+  } = useEncounterContext();
   const { draw } = useEncounterDeckActions();
   const { enemyRound: enemyRound } = useEncounterEnemyRoundActions();
   const {} = useEncounterCombatantActions();
 
   const newRound = () => {
+    setIsRoundDialogOpen(true);
+    setTimeout(() => setIsRoundDialogOpen(false), 4000);
     setStamina(characterCombatant.stamina);
     setRound(round + 1);
     draw();

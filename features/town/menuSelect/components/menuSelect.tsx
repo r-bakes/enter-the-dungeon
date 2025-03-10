@@ -26,21 +26,15 @@ export default function MenuSelect({}: Readonly<{}>) {
         <Separator className="my-4"></Separator>
       </div>
       <div className="flex flex-col overflow-y-scroll">
-        <Label className="text-muted-foreground px-5 pb-2 text-xs text-white">
-          Character
-        </Label>
+        <Label className="px-5 pb-2 text-xs text-white">Character</Label>
         <MenuContainer
           menuItems={Object.keys(miscMenus) as MenuId[]}
         ></MenuContainer>
-        <Label className="text-muted-foreground px-5 pt-4 pb-2 text-xs text-white">
-          Combat
-        </Label>
+        <Label className="px-5 pt-4 pb-2 text-xs text-white">Combat</Label>
         <MenuContainer
           menuItems={Object.keys(combatMenus) as MenuId[]}
         ></MenuContainer>
-        <Label className="text-muted-foreground px-5 pt-4 pb-2 text-xs text-white">
-          Skills
-        </Label>
+        <Label className="px-5 pt-4 pb-2 text-xs text-white">Skills</Label>
         <MenuContainer
           menuItems={Object.keys(skillMenus) as MenuId[]}
         ></MenuContainer>
