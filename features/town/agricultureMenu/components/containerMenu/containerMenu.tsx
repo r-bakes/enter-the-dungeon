@@ -20,21 +20,18 @@ export default function ContainerMenu({
     taskCategory === AgricultureTaskCategories.BOTANY ? PlotId : PastureId;
 
   return (
-    <ScrollArea>
-      <div className="flex w-full flex-col gap-2">
-        {Object.values(ids).map((id) => {
-          const requiredLevel =
-            CONTAINER_LEVEL_REQUIREMENTS[id as PlotId | PastureId];
-          const currentLevel = character.skills.AGRICULTURE.level;
+    <div className="flex w-full flex-col gap-2 overflow-y-auto">
+      {Object.values(ids).map((id) => {
+        const requiredLevel =
+          CONTAINER_LEVEL_REQUIREMENTS[id as PlotId | PastureId];
+        const currentLevel = character.skills.AGRICULTURE.level;
 
-          return currentLevel >= requiredLevel ? (
-            <Container key={id} id={id} />
-          ) : (
-            <LockedTaskButton requiredLevel={requiredLevel} key={id} />
-          );
-        })}
-      </div>
-      <ScrollBar orientation="vertical" />
-    </ScrollArea>
+        return currentLevel >= requiredLevel ? (
+          <Container key={id} id={id} />
+        ) : (
+          <LockedTaskButton requiredLevel={requiredLevel} key={id} />
+        );
+      })}
+    </div>
   );
 }

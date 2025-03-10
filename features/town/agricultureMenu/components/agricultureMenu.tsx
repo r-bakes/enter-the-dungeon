@@ -22,13 +22,13 @@ export default function AgricultureMenu({}) {
   }, []);
 
   return (
-    <div className="flex h-full w-full flex-col gap-6 overflow-y-scroll px-8">
+    <div className="flex h-full w-full flex-col gap-6 px-8">
       <SkillHeader
         skill={agriculture}
         skillLevel={character.skills[agriculture.id].level}
         skillExperience={character.skills[agriculture.id].experience}
       ></SkillHeader>
-      <div className="flex w-full grow gap-6">
+      <div className="flex min-h-0 w-full grow gap-6">
         <TasksMenu></TasksMenu>
         <VerticalAccent></VerticalAccent>
       </div>

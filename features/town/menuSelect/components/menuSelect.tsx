@@ -13,7 +13,7 @@ export default function MenuSelect({}: Readonly<{}>) {
   return (
     <div
       className={
-        "flex h-screen w-60 shrink-0 flex-col border-r-4 bg-slate-800 pt-10 pb-2 shadow-xs"
+        "flex h-full w-60 flex-col border-r-4 bg-slate-800 pt-10 pb-2 shadow-xs"
       }
     >
       <Logo></Logo>
