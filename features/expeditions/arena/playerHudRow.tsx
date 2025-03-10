@@ -6,30 +6,19 @@ import { useEncounterContext } from "@/engines/encounterEngineContext";
 import { useMenuEngineContext } from "@/engines/menuEngineContext";
 import { AnimatePresence, motion } from "framer-motion";
 import { Backpack, Zap } from "lucide-react";
-import useEncounterRoundActions from "../encounters/hooks/useEncounterRoundActions";
+import useEncounterPhaseActions from "../encounters/hooks/useEncounterPhaseActions";
 
 export default function PlayerHudRow({}: {}) {
   const { setSelectedMenu } = useMenuEngineContext();
   const { stamina, round } = useEncounterContext();
-  const { finishTurn } = useEncounterRoundActions();
+  const { finishTurn } = useEncounterPhaseActions();
 
   return (
     <div className="flex w-full min-w-full items-end gap-4">
       <div className="flex w-16 flex-col gap-2 border-r border-r-1">
         <Label className="text-muted-foreground font-extralight">Round</Label>
         <div className="justify-left flex h-10 w-10 text-center">
-          <motion.div
-            key={round}
-            className="flex"
-            initial={{ opacity: 0.6, scale: 10, x: 400, y: -200 }}
-            animate={{ opacity: 1, scale: 1, x: 0, y: 0 }}
-            transition={{
-              duration: 2,
-              delay: 0.2,
-            }}
-          >
-            <Label className="text-2xl font-bold">{round}</Label>
-          </motion.div>
+          <Label className="text-2xl font-bold">{round}</Label>
         </div>
       </div>
       <div className="flex flex-col gap-2">

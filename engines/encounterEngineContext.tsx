@@ -1,10 +1,12 @@
 import {
   Dialog,
+  DialogClose,
   DialogContent,
   DialogDescription,
   DialogHeader,
   DialogTitle,
 } from "@/components/ui/dialog";
+import { EncounterPhases } from "@/data/encounters/enums";
 import { floor1a } from "@/data/encounters/floor1a";
 import { useExpeditionContext } from "@/engines/expeditionEngineContext";
 import { createCombatant } from "@/features/common/utils/encounterUtilities";
@@ -31,6 +33,8 @@ type EncounterContextContents = {
   setDiscardPile: React.Dispatch<React.SetStateAction<CombatCard[]>>;
   setStamina: React.Dispatch<React.SetStateAction<number>>;
   setIsRoundDialogOpen: React.Dispatch<React.SetStateAction<boolean>>;
+  phase: EncounterPhases;
+  setPhase: React.Dispatch<React.SetStateAction<EncounterPhases>>;
 };
 
 const EncounterEngineContext = React.createContext(
@@ -48,7 +52,7 @@ export default function EncounterEngineProvider({
   const { characterCombatant, setCharacterCombatant, deck } =
     useExpeditionContext();
 
-  const [round, setRound] = React.useState(0);
+  const [round, setRound] = React.useState(1);
   const [stamina, setStamina] = React.useState(characterCombatant.stamina);
   const [encounter, setEncounter] = React.useState(floor1a);
   const [enemyCombatants, setEnemyCombatants] =
@@ -67,6 +71,7 @@ export default function EncounterEngineProvider({
   const [drawPile, setDrawPile] = React.useState<CombatCard[]>(encounterDeck);
   const [hand, setHand] = React.useState<CombatCard[]>([]);
   const [discardPile, setDiscardPile] = React.useState<CombatCard[]>([]);
+  const [phase, setPhase] = React.useState(EncounterPhases.ENCOUNTER_START);
   const [isRoundDialogOpen, setIsRoundDialogOpen] = React.useState(false);
 
   return (
@@ -88,19 +93,29 @@ export default function EncounterEngineProvider({
         discardPile,
         setDiscardPile,
         setIsRoundDialogOpen,
+        phase,
+        setPhase,
       }}
     >
-      <Dialog open={isRoundDialogOpen} onOpenChange={setIsRoundDialogOpen}>
-        <DialogContent className="min-h-40 min-w-full">
-          <DialogHeader className="flex w-screen items-center justify-center">
-            <DialogTitle className="text-3xl">Round {round}</DialogTitle>
-            <DialogDescription className="text-lg">
-              Begin Player Phase
-            </DialogDescription>
-          </DialogHeader>
-        </DialogContent>
-      </Dialog>
-      {children}
+      <div
+        className={
+          phase !== EncounterPhases.PLAYER_PHASE
+            ? "pointer-events-none h-full w-full"
+            : "h-full w-full"
+        }
+      >
+        <Dialog open={isRoundDialogOpen} onOpenChange={() => {}}>
+          <DialogContent className="min-h-34 min-w-full">
+            <DialogHeader className="flex w-screen items-center justify-center">
+              <DialogTitle className="text-3xl">Round {round}</DialogTitle>
+              <DialogDescription className="text-lg">
+                Begin Player Phase
+              </DialogDescription>
+            </DialogHeader>
+          </DialogContent>
+        </Dialog>
+        {children}
+      </div>
     </EncounterEngineContext.Provider>
   );
 }
