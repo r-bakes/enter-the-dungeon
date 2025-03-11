@@ -38,10 +38,8 @@ const useEncounterPhaseActions = () => {
   React.useEffect(() => {
     switch (phase) {
       case EncounterPhases.ENCOUNTER_START:
-        setIsRoundDialogOpen(true);
         setTimeout(() => {
-          setIsRoundDialogOpen(false);
-          setPhase(EncounterPhases.PLAYER_PREP);
+          setPhase(EncounterPhases.NEW_ROUND);
         }, 3000);
         break;
       case EncounterPhases.PLAYER_PREP:
@@ -49,7 +47,7 @@ const useEncounterPhaseActions = () => {
         setStamina(characterCombatant.stamina);
         setTimeout(() => {
           setPhase(EncounterPhases.PLAYER_PHASE);
-        }, 1200);
+        }, 2400);
         break;
       case EncounterPhases.PLAYER_PHASE:
         break;
@@ -57,7 +55,7 @@ const useEncounterPhaseActions = () => {
         enemyRound();
         setTimeout(() => {
           setPhase(EncounterPhases.NEW_ROUND);
-        }, 1000);
+        }, 2000);
         break;
       case EncounterPhases.NEW_ROUND:
         setRound(round + 1);
@@ -65,7 +63,7 @@ const useEncounterPhaseActions = () => {
         setTimeout(() => {
           setIsRoundDialogOpen(false);
           setPhase(EncounterPhases.PLAYER_PREP);
-        }, 3000);
+        }, 2000);
         break;
       case EncounterPhases.ENCOUNTER_OVER:
         break;

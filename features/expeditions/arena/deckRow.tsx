@@ -35,10 +35,10 @@ export default function DeckRow() {
               {hand.map((card) => (
                 <motion.li
                   layout
-                  key={card.cardInstanceId + round * 20}
+                  key={card.cardInstanceId}
                   className="flex"
                   initial={{ opacity: 0, x: -500 }}
-                  animate={{ opacity: 1, x: 0, transition: { duration: 1 } }}
+                  animate={{ opacity: 1, x: 0, transition: { duration: 0.8 } }}
                   exit={{
                     opacity: 0,
                     y: 0,
@@ -68,11 +68,23 @@ export default function DeckRow() {
           <div className="h-5/6 border-r"></div>
 
           <div className="flex h-full min-w-[160px] flex-col justify-center">
-            {discardPile.length > 0 ? (
-              <CardBack onClick={() => {}}></CardBack>
-            ) : (
-              <div></div>
-            )}
+            <AnimatePresence>
+              {discardPile.length > 0 ? (
+                <motion.div
+                  key={"deck"}
+                  exit={{
+                    x: -1400,
+                    opacity: 0,
+                    scale: 0.5,
+                    transition: { duration: 0.8 },
+                  }}
+                >
+                  <CardBack onClick={() => {}}></CardBack>
+                </motion.div>
+              ) : (
+                <div></div>
+              )}
+            </AnimatePresence>
           </div>
         </CardContent>
       </Card>

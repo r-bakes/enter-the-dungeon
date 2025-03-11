@@ -49,10 +49,9 @@ export default function EncounterEngineProvider({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const { characterCombatant, setCharacterCombatant, deck } =
-    useExpeditionContext();
+  const { characterCombatant, deck } = useExpeditionContext();
 
-  const [round, setRound] = React.useState(1);
+  const [round, setRound] = React.useState(0);
   const [stamina, setStamina] = React.useState(characterCombatant.stamina);
   const [encounter, setEncounter] = React.useState(floor1a);
   const [enemyCombatants, setEnemyCombatants] =
@@ -105,11 +104,11 @@ export default function EncounterEngineProvider({
         }
       >
         <Dialog open={isRoundDialogOpen} onOpenChange={() => {}}>
-          <DialogContent className="min-h-34 min-w-full">
+          <DialogContent className="min-h-16 min-w-full">
             <DialogHeader className="flex w-screen items-center justify-center">
-              <DialogTitle className="text-3xl">Round {round}</DialogTitle>
+              <DialogTitle className="text-2xl">Round {round}</DialogTitle>
               <DialogDescription className="text-lg">
-                Begin Player Phase
+                Player Phase
               </DialogDescription>
             </DialogHeader>
           </DialogContent>

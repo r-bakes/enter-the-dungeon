@@ -92,14 +92,14 @@ export default function StoreMenu({ items }: { items: Item[] }) {
                 </div>
               </div>
             </Card>
-            <Dialog>
+            <Dialog onOpenChange={() => setAmountSelected(1)}>
               <DialogTrigger asChild>
                 <Button disabled={!canAfford(item, 1)}>Buy</Button>
               </DialogTrigger>
               <DialogContent>
                 <DialogTitle>Buy</DialogTitle>
                 <DialogDescription>how much?</DialogDescription>
-                <div className="flex items-center">
+                <div className="flex items-center justify-between">
                   <div className="flex items-center gap-2">
                     {renderIcon(CircleDollarSign, 16, {
                       ...itemTable.GOLD.iconStyle,
@@ -108,25 +108,26 @@ export default function StoreMenu({ items }: { items: Item[] }) {
                       {formatLargeQuantity(item.value)}
                     </Label>
                   </div>
-                  <div className="mx-6 h-1 w-1 rounded-full bg-black"></div>
-                  <div className="flex items-center gap-2">
-                    {renderIcon(CircleDollarSign, 16, {
-                      ...itemTable.GOLD.iconStyle,
-                    })}
-                    <Label className="font-light">
-                      {formatLargeQuantity(character.inventory.GOLD)}
-                    </Label>
-                    <Backpack size={16} strokeWidth={1}></Backpack>
-                  </div>
-                  <div className="mx-6 h-1 w-1 rounded-full bg-black"></div>
-                  <div className="flex items-center gap-2">
-                    {renderIcon(item.icon, 16, {
-                      ...item.iconStyle,
-                    })}
-                    <Label className="font-light">
-                      {formatLargeQuantity(character.inventory[item.id] || 0)}
-                    </Label>
-                    <Backpack size={16} strokeWidth={1}></Backpack>
+                  <div className="flex items-center">
+                    <div className="flex items-center gap-2">
+                      {renderIcon(CircleDollarSign, 16, {
+                        ...itemTable.GOLD.iconStyle,
+                      })}
+                      <Label className="font-light">
+                        {formatLargeQuantity(character.inventory.GOLD)}
+                      </Label>
+                      <Backpack size={16} strokeWidth={1}></Backpack>
+                    </div>
+                    <div className="mx-6 h-1 w-1 rounded-full bg-black"></div>
+                    <div className="flex items-center gap-2">
+                      {renderIcon(item.icon, 16, {
+                        ...item.iconStyle,
+                      })}
+                      <Label className="font-light">
+                        {formatLargeQuantity(character.inventory[item.id] || 0)}
+                      </Label>
+                      <Backpack size={16} strokeWidth={1}></Backpack>
+                    </div>
                   </div>
                 </div>
                 <Separator className="my-2"></Separator>
@@ -158,6 +159,9 @@ export default function StoreMenu({ items }: { items: Item[] }) {
                         </Label>
                         <Label className="items-center text-lg">
                           {formatLargeQuantity(amountSelected * item.value)}
+                        </Label>
+                        <Label className="text-muted-foreground ml-2 text-xs font-normal">
+                          gold
                         </Label>
                       </span>
                       <div className="flex flex-row gap-1">
