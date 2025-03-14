@@ -10,6 +10,7 @@ import {
 } from "@/features/common/utils/formattingUtilities";
 import { Heart, Shield, Sword, Zap } from "lucide-react";
 import useEquipmentActions from "../../hooks/useEquipmentActions";
+import { combatCardTable } from "@/data/combatCards/combatCards";
 
 export default function TableEntrySheetEquipment({
   item,
@@ -29,7 +30,7 @@ export default function TableEntrySheetEquipment({
     <div className="flex h-full w-full flex-col gap-1">
       <Card className="flex h-[195px] shrink-0 gap-6 p-4">
         <div className="flex flex-col gap-2">
-          <Label className="mb-2 font-normal text-muted-foreground">
+          <Label className="text-muted-foreground mb-2 font-normal">
             Attributes
           </Label>
           <div className="flex flex-col gap-5">
@@ -48,7 +49,7 @@ export default function TableEntrySheetEquipment({
           </div>
         </div>
         <div className="flex flex-col gap-2">
-          <Label className="mb-2 font-normal text-muted-foreground">Slot</Label>
+          <Label className="text-muted-foreground mb-2 font-normal">Slot</Label>
           <div className="flex flex-col gap-2">
             {item.slots.map((slot) => (
               <Label key={slot} className="font-normal">
@@ -58,27 +59,33 @@ export default function TableEntrySheetEquipment({
           </div>
         </div>
         <div className="flex grow flex-col gap-2">
-          <Label className="mb-2 font-normal text-muted-foreground">
+          <Label className="text-muted-foreground mb-2 font-normal">
             Cards
           </Label>
           <div className="flex flex-col gap-1 overflow-y-scroll">
             {item.cards.length > 0 ? (
-              item.cards.map((card) => (
-                <Card className="flex grow justify-between p-2" key={card.id}>
-                  <div className="flex items-center gap-2">
-                    {renderIcon(card.icon, 22, card.iconStyle)}
-                    <Label className="font-normal">{card.name}</Label>
-                  </div>
-                  <div className="flex items-center gap-2">
-                    <Label className="font-normal text-muted-foreground">
-                      {card.cost}
-                    </Label>
-                    <Zap size="16" strokeWidth={1}></Zap>
-                  </div>
-                </Card>
-              ))
+              item.cards.map((cardId, index) => {
+                let card = combatCardTable[cardId];
+                return (
+                  <Card
+                    className="flex grow justify-between p-2"
+                    key={card.id + index}
+                  >
+                    <div className="flex items-center gap-2">
+                      {renderIcon(card.icon, 22, card.iconStyle)}
+                      <Label className="font-normal">{card.name}</Label>
+                    </div>
+                    <div className="flex items-center gap-2">
+                      <Label className="text-muted-foreground font-normal">
+                        {card.cost}
+                      </Label>
+                      <Zap size="16" strokeWidth={1}></Zap>
+                    </div>
+                  </Card>
+                );
+              })
             ) : (
-              <Label className="font-normal text-muted-foreground">None</Label>
+              <Label className="text-muted-foreground font-normal">None</Label>
             )}
           </div>
         </div>

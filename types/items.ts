@@ -1,6 +1,6 @@
 import { Slot } from "@/data/character/enums";
+import { CombatCardId } from "@/data/combatCards/enums";
 import { ItemId, ItemType } from "@/data/items/enums";
-import { CombatCardTemplate } from "@/types/combatCards";
 import { GameObject } from "@/types/gameObjects";
 
 export type Equipment = {
@@ -9,7 +9,7 @@ export type Equipment = {
   defenseBonus: number;
   healthBonus: number;
   isTwoHanded?: boolean;
-  cards: CombatCardTemplate[];
+  cards: CombatCardId[];
   slots: Slot[];
 } & Item;
 

@@ -57,7 +57,7 @@ export default function DeckMenu({}: {}) {
           <div className="w-0 border-4 shadow-xs"></div>
           <div className="flex grow flex-col gap-1">
             <Label className="pb-2 text-xl font-medium">Martial</Label>
-            <Label className="text-lg font-medium text-muted-foreground">
+            <Label className="text-muted-foreground text-lg font-medium">
               Available
             </Label>
             <Card className="flex h-[200px] w-full flex-row px-6">
@@ -66,8 +66,8 @@ export default function DeckMenu({}: {}) {
               </div>
             </Card>
             <div className="flex w-1/2 items-end justify-between">
-              <Label className="text-lg font-medium text-muted-foreground">
-                {`Equipped (${martialEquipped.length}  / ${MARTIAL_DECK_LIMIT})`}
+              <Label className="text-muted-foreground text-lg font-medium">
+                {`Equipped (${martialEquipped.length} / ${MARTIAL_DECK_LIMIT})`}
               </Label>
               <ArrowDownUp size={45} strokeWidth={1} />
             </div>
@@ -85,7 +85,7 @@ export default function DeckMenu({}: {}) {
           <div className="w-0 border-4 shadow-xs"></div>
           <div className="flex w-full flex-col gap-1">
             <Label className="pb-2 text-xl font-medium">Magic</Label>
-            <Label className="text-lg font-medium text-muted-foreground">
+            <Label className="text-muted-foreground text-lg font-medium">
               Available
             </Label>
             <Card className="flex h-[200px] w-full flex-row px-6">
@@ -94,7 +94,7 @@ export default function DeckMenu({}: {}) {
               </div>
             </Card>
             <div className="flex w-1/2 items-end justify-between">
-              <Label className="text-lg font-medium text-muted-foreground">
+              <Label className="text-muted-foreground text-lg font-medium">
                 {`Equipped (${magicEquipped.length}  / ${MAGIC_DECK_LIMIT})`}
               </Label>
               <ArrowDownUp size={45} strokeWidth={1} />

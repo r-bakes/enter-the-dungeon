@@ -1,10 +1,10 @@
 import { TASK_AND_ITEM_ICON_STYLE } from "@/configurations/configurations";
-import { combatCardTable } from "@/data/combatCards/combatCards";
 import { Equipment } from "@/types/items";
 import { Shield, Slice, Sword } from "lucide-react";
 import { ItemId, ItemType } from "./enums";
 import { itemTable } from "./items";
 import { Slot } from "../character/enums";
+import { CombatCardId } from "../combatCards/enums";
 
 export const weaponTable: { [id in ItemId]?: Equipment } = {
   [ItemId.BRONZE_DAGGER]: {
@@ -19,7 +19,7 @@ export const weaponTable: { [id in ItemId]?: Equipment } = {
     type: ItemType.EQUIPMENT,
     value: 10,
     slots: [Slot.LEFT_HAND, Slot.RIGHT_HAND],
-    cards: [combatCardTable.STAB, combatCardTable.STAB, combatCardTable.STAB],
+    cards: [CombatCardId.STAB, CombatCardId.STAB, CombatCardId.STAB],
     attackBonus: 1,
     defenseBonus: 0,
     healthBonus: 0,
@@ -36,11 +36,7 @@ export const weaponTable: { [id in ItemId]?: Equipment } = {
     type: ItemType.EQUIPMENT,
     value: 10,
     slots: [Slot.LEFT_HAND, Slot.RIGHT_HAND],
-    cards: [
-      combatCardTable.SLICE,
-      combatCardTable.SLICE,
-      combatCardTable.SLICE,
-    ],
+    cards: [CombatCardId.SLICE, CombatCardId.SLICE, CombatCardId.SLICE],
     attackBonus: 1,
     defenseBonus: 0,
     healthBonus: 0,
@@ -57,11 +53,7 @@ export const weaponTable: { [id in ItemId]?: Equipment } = {
     type: ItemType.EQUIPMENT,
     value: 10,
     slots: [Slot.LEFT_HAND, Slot.RIGHT_HAND],
-    cards: [
-      combatCardTable.DEFEND,
-      combatCardTable.DEFEND,
-      combatCardTable.DEFEND,
-    ],
+    cards: [CombatCardId.DEFEND, CombatCardId.DEFEND, CombatCardId.DEFEND],
     attackBonus: 0,
     defenseBonus: 1,
     healthBonus: 0,
@@ -96,7 +88,7 @@ export const weaponTable: { [id in ItemId]?: Equipment } = {
     type: ItemType.EQUIPMENT,
     value: 10,
     slots: [Slot.LEFT_HAND, Slot.RIGHT_HAND],
-    cards: [combatCardTable.STAB, combatCardTable.STAB, combatCardTable.STAB],
+    cards: [CombatCardId.STAB, CombatCardId.STAB, CombatCardId.STAB],
     attackBonus: 2,
     defenseBonus: 0,
     healthBonus: 0,
@@ -113,11 +105,7 @@ export const weaponTable: { [id in ItemId]?: Equipment } = {
     type: ItemType.EQUIPMENT,
     value: 10,
     slots: [Slot.LEFT_HAND, Slot.RIGHT_HAND],
-    cards: [
-      combatCardTable.SLICE,
-      combatCardTable.SLICE,
-      combatCardTable.SLICE,
-    ],
+    cards: [CombatCardId.SLICE, CombatCardId.SLICE, CombatCardId.SLICE],
     attackBonus: 2,
     defenseBonus: 0,
     healthBonus: 0,
@@ -134,11 +122,7 @@ export const weaponTable: { [id in ItemId]?: Equipment } = {
     type: ItemType.EQUIPMENT,
     value: 10,
     slots: [Slot.LEFT_HAND, Slot.RIGHT_HAND],
-    cards: [
-      combatCardTable.DEFEND,
-      combatCardTable.DEFEND,
-      combatCardTable.DEFEND,
-    ],
+    cards: [CombatCardId.DEFEND, CombatCardId.DEFEND, CombatCardId.DEFEND],
     attackBonus: 0,
     defenseBonus: 2,
     healthBonus: 0,
@@ -173,7 +157,7 @@ export const weaponTable: { [id in ItemId]?: Equipment } = {
     type: ItemType.EQUIPMENT,
     value: 10,
     slots: [Slot.LEFT_HAND, Slot.RIGHT_HAND],
-    cards: [combatCardTable.STAB, combatCardTable.STAB, combatCardTable.STAB],
+    cards: [CombatCardId.STAB, CombatCardId.STAB, CombatCardId.STAB],
     attackBonus: 3,
     defenseBonus: 0,
     healthBonus: 0,
@@ -190,11 +174,7 @@ export const weaponTable: { [id in ItemId]?: Equipment } = {
     type: ItemType.EQUIPMENT,
     value: 10,
     slots: [Slot.LEFT_HAND, Slot.RIGHT_HAND],
-    cards: [
-      combatCardTable.SLICE,
-      combatCardTable.SLICE,
-      combatCardTable.SLICE,
-    ],
+    cards: [CombatCardId.SLICE, CombatCardId.SLICE, CombatCardId.SLICE],
     attackBonus: 3,
     defenseBonus: 0,
     healthBonus: 0,
@@ -211,11 +191,7 @@ export const weaponTable: { [id in ItemId]?: Equipment } = {
     type: ItemType.EQUIPMENT,
     value: 10,
     slots: [Slot.LEFT_HAND, Slot.RIGHT_HAND],
-    cards: [
-      combatCardTable.DEFEND,
-      combatCardTable.DEFEND,
-      combatCardTable.DEFEND,
-    ],
+    cards: [CombatCardId.DEFEND, CombatCardId.DEFEND, CombatCardId.DEFEND],
     attackBonus: 0,
     defenseBonus: 3,
     healthBonus: 0,
@@ -250,7 +226,7 @@ export const weaponTable: { [id in ItemId]?: Equipment } = {
     type: ItemType.EQUIPMENT,
     value: 10,
     slots: [Slot.LEFT_HAND, Slot.RIGHT_HAND],
-    cards: [combatCardTable.STAB, combatCardTable.STAB, combatCardTable.STAB],
+    cards: [CombatCardId.STAB, CombatCardId.STAB, CombatCardId.STAB],
     attackBonus: 4,
     defenseBonus: 0,
     healthBonus: 0,
@@ -267,11 +243,7 @@ export const weaponTable: { [id in ItemId]?: Equipment } = {
     type: ItemType.EQUIPMENT,
     value: 10,
     slots: [Slot.LEFT_HAND, Slot.RIGHT_HAND],
-    cards: [
-      combatCardTable.SLICE,
-      combatCardTable.SLICE,
-      combatCardTable.SLICE,
-    ],
+    cards: [CombatCardId.SLICE, CombatCardId.SLICE, CombatCardId.SLICE],
     attackBonus: 4,
     defenseBonus: 0,
     healthBonus: 0,
@@ -288,11 +260,7 @@ export const weaponTable: { [id in ItemId]?: Equipment } = {
     type: ItemType.EQUIPMENT,
     value: 10,
     slots: [Slot.LEFT_HAND, Slot.RIGHT_HAND],
-    cards: [
-      combatCardTable.DEFEND,
-      combatCardTable.DEFEND,
-      combatCardTable.DEFEND,
-    ],
+    cards: [CombatCardId.DEFEND, CombatCardId.DEFEND, CombatCardId.DEFEND],
     attackBonus: 0,
     defenseBonus: 4,
     healthBonus: 0,
@@ -327,7 +295,7 @@ export const weaponTable: { [id in ItemId]?: Equipment } = {
     type: ItemType.EQUIPMENT,
     value: 10,
     slots: [Slot.LEFT_HAND, Slot.RIGHT_HAND],
-    cards: [combatCardTable.STAB, combatCardTable.STAB, combatCardTable.STAB],
+    cards: [CombatCardId.STAB, CombatCardId.STAB, CombatCardId.STAB],
     attackBonus: 5,
     defenseBonus: 0,
     healthBonus: 0,
@@ -344,11 +312,7 @@ export const weaponTable: { [id in ItemId]?: Equipment } = {
     type: ItemType.EQUIPMENT,
     value: 10,
     slots: [Slot.LEFT_HAND, Slot.RIGHT_HAND],
-    cards: [
-      combatCardTable.SLICE,
-      combatCardTable.SLICE,
-      combatCardTable.SLICE,
-    ],
+    cards: [CombatCardId.SLICE, CombatCardId.SLICE, CombatCardId.SLICE],
     attackBonus: 5,
     defenseBonus: 0,
     healthBonus: 0,
@@ -365,11 +329,7 @@ export const weaponTable: { [id in ItemId]?: Equipment } = {
     type: ItemType.EQUIPMENT,
     value: 10,
     slots: [Slot.LEFT_HAND, Slot.RIGHT_HAND],
-    cards: [
-      combatCardTable.DEFEND,
-      combatCardTable.DEFEND,
-      combatCardTable.DEFEND,
-    ],
+    cards: [CombatCardId.DEFEND, CombatCardId.DEFEND, CombatCardId.DEFEND],
     attackBonus: 0,
     defenseBonus: 5,
     healthBonus: 0,

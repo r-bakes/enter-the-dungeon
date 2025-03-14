@@ -2,6 +2,7 @@ import {
   MAGIC_DECK_LIMIT,
   MARTIAL_DECK_LIMIT,
 } from "@/configurations/configurations";
+import { combatCardTable } from "@/data/combatCards/combatCards";
 import { CombatCardId, CombatCardType } from "@/data/combatCards/enums";
 import { ItemId } from "@/data/items/enums";
 import { itemTable } from "@/data/items/items";
@@ -16,7 +17,8 @@ const useDeckActions = () => {
   const addCardsToDeckByItemId = (itemId: ItemId) => {
     let item = itemTable[itemId] as Equipment;
 
-    item.cards.forEach((card) => {
+    item.cards.forEach((cardId) => {
+      let card = combatCardTable[cardId];
       if (card.type === CombatCardType.MARTIAL) {
         character.deck.unequippedMartial.push(card.id);
       } else {
@@ -30,8 +32,9 @@ const useDeckActions = () => {
   const removeCardsFromDeckByItemId = (itemId: ItemId) => {
     let item = itemTable[itemId] as Equipment;
 
-    let card: CombatCardTemplate;
-    for (card of item.cards) {
+    let cardId: CombatCardId;
+    for (cardId of item.cards) {
+      let card = combatCardTable[cardId];
       if (card.type === CombatCardType.MARTIAL) {
         if (character.deck.unequippedMartial.includes(card.id)) {
           character.deck.unequippedMartial.splice(
