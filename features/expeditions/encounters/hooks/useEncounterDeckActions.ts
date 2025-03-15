@@ -4,6 +4,7 @@ import { CombatCard } from "@/types/combatCards";
 import React from "react";
 
 const enum DrawPhase {
+  INACTIVE = "INACTIVE",
   DRAW = "DRAW",
   SHUFFLE = "SHUFFLE",
   DISCARD = "DISCARD",
@@ -12,7 +13,7 @@ const enum DrawPhase {
 const useEncounterDeckActions = () => {
   const { drawPile, hand, discardPile, setDrawPile, setDiscardPile, setHand } =
     useEncounterContext();
-  const [drawPhase, setDrawPhase] = React.useState<null | DrawPhase>(null);
+  const [drawPhase, setDrawPhase] = React.useState<DrawPhase>(null);
 
   const shuffle = (cards: CombatCard[]): CombatCard[] => {
     for (var i = cards.length - 1; i > 0; i--) {
@@ -63,7 +64,7 @@ const useEncounterDeckActions = () => {
         newHand.sort((a, b) => a.name.localeCompare(b.name));
         setDrawPile([...drawPile]);
         setHand([...newHand]);
-        setDrawPhase(null);
+        setDrawPhase(DrawPhase.INACTIVE);
 
         break;
     }

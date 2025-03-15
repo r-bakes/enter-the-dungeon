@@ -6,6 +6,7 @@ import { CharacterCombatant, Combatant } from "@/types/combatants";
 import CombatantCard from "../combatantCards/components/combatantCard";
 import { EncounterCombatants } from "@/types/encounters";
 import { AnimatePresence, motion } from "framer-motion";
+import useEncounterEnemyRoundActions from "../encounters/hooks/useEncounterEnemyRoundActions";
 
 export default function ArenaRow({
   combatants,
@@ -13,6 +14,7 @@ export default function ArenaRow({
   combatants: EncounterCombatants;
 }) {
   const { characterCombatant } = useExpeditionContext();
+  const { attackingEnemy } = useEncounterEnemyRoundActions();
   const {
     selectedEnemyCombatants,
     selectedAlliedCombatants,
@@ -39,7 +41,7 @@ export default function ArenaRow({
       <CardContent className="flex h-full w-full">
         <ul className="flex h-full w-full items-center justify-center gap-6">
           <AnimatePresence>
-            {Object.values(combatants).map((combatant) => {
+            {Object.values(combatants).map((combatant, combatantIndex) => {
               const isCharacter = combatant === characterCombatant;
               const key = isCharacter
                 ? characterCombatant.id
@@ -73,6 +75,11 @@ export default function ArenaRow({
                     <CombatantCard
                       combatant={combatant}
                       isSelected={isSelected(combatant)}
+                      animation={
+                        combatantIndex === attackingEnemy
+                          ? "attacking"
+                          : "attacking"
+                      }
                       onClick={() => onClick(combatant)}
                     />
                   )}

@@ -19,7 +19,7 @@ const useEncounterPhaseActions = () => {
     setPhase,
   } = useEncounterContext();
   const { draw } = useEncounterDeckActions();
-  const { enemyRound: enemyRound } = useEncounterEnemyRoundActions();
+  const { startEnemyRound } = useEncounterEnemyRoundActions();
   const {} = useEncounterCombatantActions();
 
   const finishTurn = () => {
@@ -52,10 +52,10 @@ const useEncounterPhaseActions = () => {
       case EncounterPhases.PLAYER_PHASE:
         break;
       case EncounterPhases.ENEMY_PHASE:
-        enemyRound();
+        startEnemyRound();
         setTimeout(() => {
           setPhase(EncounterPhases.NEW_ROUND);
-        }, 2000);
+        }, 10000);
         break;
       case EncounterPhases.NEW_ROUND:
         setRound(round + 1);

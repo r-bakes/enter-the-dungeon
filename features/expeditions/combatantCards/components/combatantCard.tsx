@@ -1,7 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import { Label } from "@/components/ui/label";
-import { AnimatePresence, motion } from "framer-motion";
+import { motion } from "framer-motion";
 import { Heart, Shield, Sword } from "lucide-react";
 import StatBlock from "./statBlock";
 import { Combatant } from "@/types/combatants";
@@ -9,51 +9,64 @@ import { renderIcon } from "@/features/common/utils/formattingUtilities";
 import { useState } from "react";
 import { useCombatCardEngineContext } from "@/engines/combatCardEngineContext";
 import { CombatCardTarget } from "@/data/combatCards/enums";
-
-const cardVariants = {
-  idle: {
-    scale: 1,
-    rotate: 0,
-  },
-  attacked: {
-    scale: 0.6,
-    y: -40,
-    transition: {
-      duration: 1,
-      type: "spring",
-      ease: "easeInOut",
-    },
-  },
-  attacking: {
-    scale: 1.4,
-    y: 40,
-    transition: {
-      duration: 1,
-      type: "spring",
-      ease: "easeInOut",
-    },
-  },
-};
+import useEncounterEnemyRoundActions from "../../encounters/hooks/useEncounterEnemyRoundActions";
+import React from "react";
 
 export default function CombatantCard({
   combatant,
   isSelected,
-  animation,
+  animation = "idle",
   onClick,
 }: {
   combatant: Combatant;
   isSelected: boolean;
-  animation?: "attacked";
+  animation?: "attacked" | "idle" | "attacking";
   onClick: React.Dispatch<React.SetStateAction<any>>;
 }) {
   const selectedStyle = isSelected ? "bg-accent" : "";
   const { selectedCard } = useCombatCardEngineContext();
-  const [animationState, setAnimationState] = useState<
-    keyof typeof cardVariants
-  >(animation ? animation : "idle");
+  const { handleEnemyAttackComplete } = useEncounterEnemyRoundActions();
+  const [animationState, setAnimationState] =
+    useState<keyof typeof cardVariants>(animation);
+
+  React.useEffect(() => {
+    setAnimationState(animation);
+  }, [animation]);
+
+  const cardVariants = {
+    idle: {
+      scale: 1,
+      rotate: 0,
+      onAnimationComplete: () => {},
+    },
+    attacked: {
+      scale: 0.6,
+      y: -40,
+      transition: {
+        duration: 1,
+        type: "spring",
+        ease: "easeInOut",
+      },
+      onAnimationComplete: () => {},
+    },
+    attacking: {
+      scale: 1.1,
+      y: 50,
+      transition: {
+        duration: 1,
+        type: "spring",
+        ease: "easeInOut",
+      },
+      onAnimationComplete: () => handleEnemyAttackComplete(),
+    },
+  };
 
   return (
-    <motion.div variants={cardVariants} animate={animationState}>
+    <motion.div
+      variants={cardVariants}
+      animate={animationState}
+      onAnimationComplete={cardVariants[animationState].onAnimationComplete}
+    >
       <div className="flex flex-col gap-1 text-center">
         <Label className="text-muted-foreground font-extralight">
           {combatant.name}

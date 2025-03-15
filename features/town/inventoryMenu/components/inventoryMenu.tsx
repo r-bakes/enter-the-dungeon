@@ -34,10 +34,10 @@ export default function InventoryMenu() {
           <div className="flex flex-col"></div>
         </CardHeader>
       </Card>
-      <div className="flex w-full grow gap-6">
-        <Card className="flex w-72 shrink-0 flex-col space-y-3 p-6">
+      <div className="flex min-h-0 w-full grow gap-6">
+        <Card className="flex w-72 shrink-0 flex-col gap-3 p-6">
           <div className="space-y-1">
-            <Label className="text-xs font-normal text-muted-foreground">
+            <Label className="text-muted-foreground text-xs font-normal">
               Currency
             </Label>
             <Card className="flex items-center gap-1 p-2">
@@ -47,20 +47,20 @@ export default function InventoryMenu() {
               <Label className="font-normal text-green-500">
                 {formatLargeQuantity(character.inventory.GOLD)}
               </Label>
-              <Label className="text-xs font-normal text-muted-foreground">
+              <Label className="text-muted-foreground text-xs font-normal">
                 gold
               </Label>
             </Card>
             <Card className="flex items-center gap-1 p-2">
               {renderIcon(Ghost, 24, { strokeWidth: 1, fill: "none" })}
               <Label className="font-normal text-green-500">0</Label>
-              <Label className="text-xs font-normal text-muted-foreground">
+              <Label className="text-muted-foreground text-xs font-normal">
                 souls
               </Label>
             </Card>
           </div>
           <div className="space-y-1">
-            <Label className="text-xs font-normal text-muted-foreground">
+            <Label className="text-muted-foreground text-xs font-normal">
               Equipment
             </Label>
             <EquipmentSlots></EquipmentSlots>
