@@ -6,38 +6,27 @@ import { Heart, Shield, Sword } from "lucide-react";
 import StatBlock from "./statBlock";
 import { Combatant } from "@/types/combatants";
 import { renderIcon } from "@/features/common/utils/formattingUtilities";
-import { useState } from "react";
 import { useCombatCardEngineContext } from "@/engines/combatCardEngineContext";
 import { CombatCardTarget } from "@/data/combatCards/enums";
-import useEncounterEnemyRoundActions from "../../encounters/hooks/useEncounterEnemyRoundActions";
 import React from "react";
+import useEncounterPhaseActions from "../../encounters/hooks/useEncounterPhaseActions";
 
 export default function CombatantCard({
   combatant,
   isSelected,
-  animation = "idle",
   onClick,
 }: {
   combatant: Combatant;
   isSelected: boolean;
-  animation?: "attacked" | "idle" | "attacking";
   onClick: React.Dispatch<React.SetStateAction<any>>;
 }) {
-  const selectedStyle = isSelected ? "bg-accent" : "";
   const { selectedCard } = useCombatCardEngineContext();
-  const { handleEnemyAttackComplete } = useEncounterEnemyRoundActions();
-  const [animationState, setAnimationState] =
-    useState<keyof typeof cardVariants>(animation);
-
-  React.useEffect(() => {
-    setAnimationState(animation);
-  }, [animation]);
+  const { attackingCombatant, handleEnemyAttackComplete } =
+    useEncounterPhaseActions();
 
   const cardVariants = {
     idle: {
       scale: 1,
-      rotate: 0,
-      onAnimationComplete: () => {},
     },
     attacked: {
       scale: 0.6,
@@ -47,7 +36,6 @@ export default function CombatantCard({
         type: "spring",
         ease: "easeInOut",
       },
-      onAnimationComplete: () => {},
     },
     attacking: {
       scale: 1.1,
@@ -57,21 +45,34 @@ export default function CombatantCard({
         type: "spring",
         ease: "easeInOut",
       },
-      onAnimationComplete: () => handleEnemyAttackComplete(),
     },
   };
+
+  let animationState = attackingCombatant === combatant ? "attacking" : "idle";
+  console.log("Current states:", {
+    attackingCombatant,
+    localCombatant: combatant,
+  });
 
   return (
     <motion.div
       variants={cardVariants}
       animate={animationState}
-      onAnimationComplete={cardVariants[animationState].onAnimationComplete}
+      onAnimationComplete={() => {
+        if (animationState === "attacking") {
+          handleEnemyAttackComplete();
+        }
+      }}
     >
       <div className="flex flex-col gap-1 text-center">
         <Label className="text-muted-foreground font-extralight">
           {combatant.name}
         </Label>
-        <Card className={"h-54 w-48 justify-center " + selectedStyle}>
+        <Card
+          className={
+            "h-54 w-48 justify-center " + (isSelected ? "bg-accent" : "")
+          }
+        >
           <Button
             onClick={onClick}
             disabled={
