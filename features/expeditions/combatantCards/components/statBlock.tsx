@@ -18,11 +18,28 @@ const updateVariants = {
       },
     },
   },
-  def: {
+  defPlayerPhase: {
     initial: { opacity: 0 },
     animate: {
       opacity: 1,
       transition: { duration: 0.5, ease: "easeInOut" },
+    },
+  },
+  defEnemyPhase: {
+    initial: { opacity: 0 },
+    animate: {
+      opacity: 1,
+      transition: { duration: 0.5, ease: "easeInOut" },
+    },
+    exit: {
+      opacity: 0,
+      rotate: [0, 75],
+      x: [0, 40],
+      y: [0, -30, 100],
+      transition: {
+        duration: 0.5,
+        ease: "easeInOut",
+      },
     },
   },
 };

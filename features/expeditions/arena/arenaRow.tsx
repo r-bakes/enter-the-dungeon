@@ -6,6 +6,7 @@ import { CharacterCombatant, Combatant } from "@/types/combatants";
 import CombatantCard from "../combatantCards/components/combatantCard";
 import { EncounterCombatants } from "@/types/encounters";
 import { AnimatePresence, motion } from "framer-motion";
+import useEncounterPhaseActions from "../encounters/hooks/useEncounterPhaseActions";
 
 export default function ArenaRow({
   combatants,
@@ -13,6 +14,8 @@ export default function ArenaRow({
   combatants: EncounterCombatants;
 }) {
   const { characterCombatant } = useExpeditionContext();
+  const { attackingCombatant, handleEnemyAttackComplete, phase } =
+    useEncounterPhaseActions();
   const {
     selectedEnemyCombatants,
     selectedAlliedCombatants,
@@ -66,12 +69,15 @@ export default function ArenaRow({
                   {isCharacter ? (
                     <CharacterCombatantCard
                       combatant={combatant as CharacterCombatant}
+                      phase={phase}
                       isSelected={isSelected(combatant)}
                       onClick={() => onClick(combatant)}
                     />
                   ) : (
                     <CombatantCard
                       combatant={combatant}
+                      attackingCombatant={attackingCombatant}
+                      handleEnemyAttackComplete={handleEnemyAttackComplete}
                       isSelected={isSelected(combatant)}
                       onClick={() => onClick(combatant)}
                     />

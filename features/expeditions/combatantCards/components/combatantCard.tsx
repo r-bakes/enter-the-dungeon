@@ -9,20 +9,21 @@ import { renderIcon } from "@/features/common/utils/formattingUtilities";
 import { useCombatCardEngineContext } from "@/engines/combatCardEngineContext";
 import { CombatCardTarget } from "@/data/combatCards/enums";
 import React from "react";
-import useEncounterPhaseActions from "../../encounters/hooks/useEncounterPhaseActions";
 
 export default function CombatantCard({
   combatant,
+  attackingCombatant,
+  handleEnemyAttackComplete,
   isSelected,
   onClick,
 }: {
   combatant: Combatant;
+  attackingCombatant: Combatant | null;
+  handleEnemyAttackComplete: () => void;
   isSelected: boolean;
   onClick: React.Dispatch<React.SetStateAction<any>>;
 }) {
   const { selectedCard } = useCombatCardEngineContext();
-  const { attackingCombatant, handleEnemyAttackComplete } =
-    useEncounterPhaseActions();
 
   const cardVariants = {
     idle: {
@@ -92,7 +93,7 @@ export default function CombatantCard({
               />
               <StatBlock
                 icon={Shield}
-                updateVariant="def"
+                updateVariant="defEnemyPhase"
                 baseValue={combatant.baseDef}
                 value={combatant.def}
               />

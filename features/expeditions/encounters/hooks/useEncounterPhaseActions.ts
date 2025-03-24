@@ -14,7 +14,7 @@ const enum DrawPhase {
 }
 
 const useEncounterPhaseActions = () => {
-  const { characterCombatant } = useExpeditionContext();
+  const { characterCombatant, setCharacterCombatant } = useExpeditionContext();
   const {
     hand,
     setHand,
@@ -44,37 +44,60 @@ const useEncounterPhaseActions = () => {
   const [attackingCombatant, setAttackingCombatant] =
     React.useState<null | Combatant>(null);
 
-  const startEnemyRound = () => {
-    setAttackingCombatants(Object.values(enemyCombatants));
-    nextAttacker();
-  };
+  // Initiate phase
+  React.useEffect(() => {
+    if (phase === EncounterPhases.ENEMY_PHASE) {
+      const phaseStartAttackers = Object.values(enemyCombatants);
+      const phaseStartAttacker = phaseStartAttackers.shift();
+
+      setTimeout(() => {
+        setAttackingCombatants(Object.values(phaseStartAttackers));
+        setAttackingCombatant(phaseStartAttacker || null);
+      }, 1000);
+    }
+  }, [phase]);
 
   const nextAttacker = () => {
     console.log("...Next attacker");
 
-    setAttackingCombatants((prevAttackingCombatants) => {
-      const attackingCombatants = [...prevAttackingCombatants];
-      const attacker = attackingCombatants.pop();
+    const newAttackingCombatants = [...attackingCombatants];
+    const attacker = newAttackingCombatants.shift();
 
-      setAttackingCombatant(attacker || null);
+    setAttackingCombatant(attacker || null);
+    setAttackingCombatants(newAttackingCombatants);
+    if (!attacker) {
+      resetPlayer();
+      setPhase(EncounterPhases.NEW_ROUND);
+    }
+  };
 
-      if (!attacker) {
-        setPhase(EncounterPhases.NEW_ROUND);
-      }
-      return attackingCombatants;
-    });
+  const damagePlayer = () => {
+    if (attackingCombatant === null) return;
+
+    let damageTaken = Math.max(
+      attackingCombatant.atk - characterCombatant.def,
+      0,
+    );
+    let defenceRemaining = Math.max(
+      characterCombatant.def - attackingCombatant.atk,
+      0,
+    );
+
+    characterCombatant.hp -= damageTaken;
+    characterCombatant.def = defenceRemaining;
+    setCharacterCombatant({ ...characterCombatant });
+  };
+
+  const resetPlayer = () => {
+    characterCombatant.def = characterCombatant.baseDef;
+    setCharacterCombatant({ ...characterCombatant });
   };
 
   const handleEnemyAttackComplete = () => {
-    if (attackingCombatant === null) return;
-
-    let damageTaken = attackingCombatant.atk;
-
-    characterCombatant.hp -= damageTaken;
-    characterCombatant.def = characterCombatant.baseDef;
-    characterCombatant.atk = characterCombatant.baseAtk;
-
-    nextAttacker();
+    damagePlayer();
+    setTimeout(() => {
+      nextAttacker();
+    }, 1000);
   };
 
   // NOTE: Player prep phase state management
@@ -134,7 +157,11 @@ const useEncounterPhaseActions = () => {
         newHand.sort((a, b) => a.name.localeCompare(b.name));
         setDrawPile([...prevDrawPile]);
         setHand([...newHand]);
-        setDrawPhase(DrawPhase.INACTIVE);
+
+        setTimeout(() => {
+          setDrawPhase(DrawPhase.INACTIVE);
+          setPhase(EncounterPhases.PLAYER_PHASE);
+        }, 1000);
 
         break;
     }
@@ -202,17 +229,12 @@ const useEncounterPhaseActions = () => {
         console.log("Player prep");
         draw();
         setStamina(characterCombatant.stamina);
-        setTimeout(() => {
-          setPhase(EncounterPhases.PLAYER_PHASE);
-        }, 2400);
         break;
       case EncounterPhases.PLAYER_PHASE:
         console.log("Player phase");
         break;
       case EncounterPhases.ENEMY_PHASE:
         console.log("Enemy phase");
-        startEnemyRound();
-        setTimeout(() => {}, 10000);
         break;
       case EncounterPhases.NEW_ROUND:
         console.log("New round");
@@ -229,6 +251,6 @@ const useEncounterPhaseActions = () => {
     }
   }, [phase]);
 
-  return { finishTurn, handleEnemyAttackComplete, attackingCombatant };
+  return { finishTurn, handleEnemyAttackComplete, attackingCombatant, phase };
 };
 export default useEncounterPhaseActions;

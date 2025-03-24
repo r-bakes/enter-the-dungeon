@@ -13,7 +13,7 @@ export default function Page() {
   const { selectedMenu } = useMenuEngineContext();
 
   return (
-    <div className="flex h-full w-full">
+    <div className="flex h-full min-h-min w-full min-w-min">
       {selectedMenu === MenuId.EXPEDITION ? (
         <div className="bg-secondary-background flex w-full grow p-10">
           <ExpeditionEngineProvider>

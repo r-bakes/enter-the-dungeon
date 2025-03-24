@@ -8,13 +8,17 @@ import { CharacterCombatant } from "@/types/combatants";
 import { renderIcon } from "@/features/common/utils/formattingUtilities";
 import { useCombatCardEngineContext } from "@/engines/combatCardEngineContext";
 import { CombatCardTarget, CombatCardType } from "@/data/combatCards/enums";
+import useEncounterPhaseActions from "@/features/expeditions/encounters/hooks/useEncounterPhaseActions";
+import { EncounterPhases } from "@/data/encounters/enums";
 
 export default function CharacterCombatantCard({
   combatant,
+  phase,
   isSelected,
   onClick,
 }: {
   combatant: CharacterCombatant;
+  phase: EncounterPhases;
   isSelected: boolean;
   onClick: React.Dispatch<React.SetStateAction<any>>;
 }) {
@@ -76,7 +80,11 @@ export default function CharacterCombatantCard({
             ></StatBlock>
             <StatBlock
               icon={Shield}
-              updateVariant="def"
+              updateVariant={
+                phase === EncounterPhases.PLAYER_PHASE
+                  ? "defPlayerPhase"
+                  : "defEnemyPhase"
+              }
               baseValue={combatant.baseDef}
               value={combatant.def}
             ></StatBlock>
