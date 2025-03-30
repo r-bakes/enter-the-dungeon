@@ -12,7 +12,7 @@ export const generateUpgradeOptions = (
 
   Object.entries(upgradeTable).forEach(([upgradeId, upgrade]) => {
     if (
-      !characterUpgrades.has(upgradeId) &&
+      !characterUpgrades.has(upgradeId as UpgradeId) &&
       requirementsMet(
         upgradeId as UpgradeId,
         characterUpgrades,

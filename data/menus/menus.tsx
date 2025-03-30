@@ -21,6 +21,7 @@ import { martial } from "../skills/martial";
 import DeckMenu from "@/features/town/deckMenu/components/deckMenu";
 import { magic } from "../skills/magic";
 import { MenuTable } from "@/types/menus";
+import Arena from "@/features/expeditions/arena/arena";
 
 export const skillMenus = {
   [MenuId.PROSPECTING]: {
@@ -84,7 +85,12 @@ export const combatMenus = {
     menu: <DeckMenu></DeckMenu>,
   },
 };
-export const expeditionsMenus = {};
+export const expeditionsMenus = {
+  [MenuId.EXPEDITION]: {
+    data: magic, // Placeholder
+    menu: <Arena></Arena>,
+  },
+};
 export const menuTable = {
   ...skillMenus,
   ...miscMenus,

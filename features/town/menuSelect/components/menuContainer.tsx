@@ -20,7 +20,7 @@ export default function MenuContainer({
         let menu = menuTable[menuId];
         let level =
           menuId in SkillId
-            ? character.skills[menuId as SkillId].level
+            ? character.skills[menuId as unknown as SkillId].level
             : undefined;
         return (
           <MenuButton

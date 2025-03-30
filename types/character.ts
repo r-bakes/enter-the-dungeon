@@ -4,6 +4,7 @@ import { ItemId } from "@/data/items/enums";
 import { MilestoneId } from "@/data/milestones/enums";
 import { SkillId } from "@/data/skills/enums";
 import { TaskId } from "@/data/tasks/enum";
+import { UpgradeId } from "@/data/upgrades/enums";
 
 export type Character = {
   name: string;
@@ -21,7 +22,7 @@ export type Inventory = {
 export type Loadout = {
   [slotId in Slot]: ItemId | null;
 };
-export type Upgrades = Set<string>;
+export type Upgrades = Set<UpgradeId>;
 export type Skills = {
   [id in SkillId]: CharacterSkill;
 };

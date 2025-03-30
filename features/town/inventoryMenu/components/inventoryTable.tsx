@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { Card } from "@/components/ui/card";
 import {
   Table,
@@ -46,15 +47,17 @@ type TableData = {
 export default function InventoryTable() {
   const { character } = useCharacterEngineContext();
   const [open, setOpen] = React.useState(false);
-  const [selectedItemId, setSelectedItemId] = React.useState(null);
+  const [selectedItemId, setSelectedItemId] = React.useState<ItemId | null>(
+    null,
+  );
   const data: TableData[] = React.useMemo(() => {
     return Object.entries(character.inventory)
       .filter(
-        ([itemId, amount]: [ItemId, number]) =>
-          itemTable[itemId].type !== ItemType.HIDDEN && amount > 0,
+        ([itemId, amount]) =>
+          itemTable[itemId as ItemId].type !== ItemType.HIDDEN && amount > 0,
       )
-      .map(([itemId, quantity]: [ItemId, number]) => {
-        return { ...itemTable[itemId], quantity: quantity };
+      .map(([itemId, quantity]) => {
+        return { ...itemTable[itemId as ItemId], quantity: quantity };
       });
   }, [character]);
   const [columnFilters, setColumnFilters] = React.useState<ColumnFiltersState>(
@@ -190,7 +193,7 @@ export default function InventoryTable() {
 
 function Filter({ column }: { column: Column<any, unknown> }) {
   const columnFilterValue = column.getFilterValue();
-  const { filterVariant } = column.columnDef.meta ?? {};
+  const { filterVariant } = column.columnDef.meta ?? {}; //@ts-ignore
 
   if (filterVariant === "range") {
     return <div></div>;

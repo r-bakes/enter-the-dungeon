@@ -37,7 +37,7 @@ export default function HomeMenu() {
       upgradeTable[upgradeId].homeRoom === selectedRoom &&
       !(
         upgradeTable[upgradeId].next &&
-        character.upgrades.has(upgradeTable[upgradeId].next)
+        character.upgrades.has(upgradeTable[upgradeId].next!)
       ),
   );
 
@@ -62,14 +62,14 @@ export default function HomeMenu() {
               setSelectedRoom(value);
             }}
           >
-            <SelectTrigger className="mb-2 w-full font-normal text-muted-foreground">
+            <SelectTrigger className="text-muted-foreground mb-2 w-full font-normal">
               <SelectValue></SelectValue>
             </SelectTrigger>
             <SelectContent>
               <SelectGroup>
                 {Object.entries(HomeRooms).map(([roomId, room]) => (
                   <SelectItem
-                    className="font-normal text-muted-foreground"
+                    className="text-muted-foreground font-normal"
                     key={roomId}
                     value={room}
                   >

@@ -25,7 +25,7 @@ import { ModifierType } from "@/data/modifiers/enums";
 import TaskProducesEntry from "@/features/town/skillMenu/components/taskInfo/taskProducesEntry";
 import { TaskRequiresEntry } from "@/features/town/skillMenu/components/taskInfo/taskRequiresEntry";
 import TaskModifiersEntry from "@/features/town/skillMenu/components/taskInfo/taskModifiersEntry";
-import { Task } from "@/types/tasks";
+import { StealthTask, Task } from "@/types/tasks";
 import { ItemId } from "@/data/items/enums";
 import { useModifierActions } from "@/features/town/modifiers/hooks/useModifierActions";
 import { useModifierEngineContext } from "@/engines/modifierEngineContext";
@@ -102,18 +102,16 @@ export default function TaskInfo({
           ></TaskDataEntry>
         </div>
         <div className="flex grow flex-col gap-4 overflow-y-scroll">
-          {taskToSkill[task.id] == SkillId.STEALTH ? (
+          {"perception" in task && (
             <TaskSuccessEntry
               value={formatRoundedQuantity(
                 calculateSuccessChance(
                   applyStealthModifier(character.skills.STEALTH.level, task.id),
-                  task.perception,
+                  task.perception as number,
                 ),
               ).toString()}
               description="chance to evade detection"
             ></TaskSuccessEntry>
-          ) : (
-            <></>
           )}
           <TaskProducesEntry
             data={taskProduction}

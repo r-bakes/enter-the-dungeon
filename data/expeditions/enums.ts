@@ -1,3 +1,3 @@
-export enum ExpeditionId = {
-  A : "A";
+export enum ExpeditionId {
+  A = "A",
 }
