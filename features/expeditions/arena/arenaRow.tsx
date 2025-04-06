@@ -6,7 +6,7 @@ import { CharacterCombatant, Combatant } from "@/types/combatants";
 import CombatantCard from "../combatantCards/components/combatantCard";
 import { EncounterCombatants } from "@/types/encounters";
 import { AnimatePresence, motion } from "framer-motion";
-import useEncounterPhaseActions from "../encounters/hooks/useEncounterPhaseActions";
+import { useAnimationEngineContext } from "@/engines/animationEngineContext";
 
 export default function ArenaRow({
   combatants,
@@ -15,7 +15,7 @@ export default function ArenaRow({
 }) {
   const { characterCombatant } = useExpeditionContext();
   const { attackingCombatant, handleEnemyAttackComplete, phase } =
-    useEncounterPhaseActions();
+    useAnimationEngineContext();
   const {
     selectedEnemyCombatants,
     selectedAlliedCombatants,

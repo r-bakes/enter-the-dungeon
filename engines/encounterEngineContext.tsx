@@ -5,7 +5,7 @@ import {
   DialogHeader,
   DialogTitle,
 } from "@/components/ui/dialog";
-import { EncounterPhases } from "@/data/encounters/enums";
+import { EncounterPhase } from "@/data/encounters/enums";
 import { floor1a } from "@/data/encounters/floor1a";
 import { useExpeditionContext } from "@/engines/expeditionEngineContext";
 import { createCombatant } from "@/features/common/utils/encounterUtilities";
@@ -32,8 +32,8 @@ type EncounterContextContents = {
   setDiscardPile: React.Dispatch<React.SetStateAction<CombatCard[]>>;
   setStamina: React.Dispatch<React.SetStateAction<number>>;
   setIsRoundDialogOpen: React.Dispatch<React.SetStateAction<boolean>>;
-  phase: EncounterPhases;
-  setPhase: React.Dispatch<React.SetStateAction<EncounterPhases>>;
+  phase: EncounterPhase;
+  setPhase: React.Dispatch<React.SetStateAction<EncounterPhase>>;
 };
 
 const EncounterEngineContext = React.createContext(
@@ -69,8 +69,38 @@ export default function EncounterEngineProvider({
   const [drawPile, setDrawPile] = React.useState<CombatCard[]>(encounterDeck);
   const [hand, setHand] = React.useState<CombatCard[]>([]);
   const [discardPile, setDiscardPile] = React.useState<CombatCard[]>([]);
-  const [phase, setPhase] = React.useState(EncounterPhases.ENCOUNTER_START);
+  const [phase, setPhase] = React.useState(EncounterPhase.ENCOUNTER_START);
   const [isRoundDialogOpen, setIsRoundDialogOpen] = React.useState(false);
+
+  // Remove dead enemies
+  React.useEffect(() => {
+    let initialLength = Object.keys(enemyCombatants).length;
+    let filteredEnemyCombatants = Object.fromEntries(
+      Object.entries(enemyCombatants).filter(
+        ([_, combatant]) => combatant.hp > 0,
+      ),
+    );
+    let newLength = Object.keys(filteredEnemyCombatants).length;
+
+    if (newLength < initialLength) {
+      setEnemyCombatants({ ...filteredEnemyCombatants });
+    }
+  }, [enemyCombatants]);
+
+  // Remove dead allies
+  React.useEffect(() => {
+    let initialLength = Object.keys(alliedCombatants).length;
+    let filteredAlliedCombatants = Object.fromEntries(
+      Object.entries(alliedCombatants).filter(
+        ([_, combatant]) => combatant.hp > 0,
+      ),
+    );
+    let newLength = Object.keys(alliedCombatants).length;
+
+    if (newLength < initialLength) {
+      setAlliedCombatants({ ...alliedCombatants });
+    }
+  }, [alliedCombatants]);
 
   return (
     <EncounterEngineContext.Provider
@@ -97,7 +127,7 @@ export default function EncounterEngineProvider({
     >
       <div
         className={
-          phase !== EncounterPhases.PLAYER_PHASE
+          phase !== EncounterPhase.PLAYER_PHASE
             ? "pointer-events-none h-full w-full"
             : "h-full w-full"
         }

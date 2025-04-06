@@ -8,6 +8,7 @@ import Arena from "@/features/expeditions/arena/arena";
 import ExpeditionEngineProvider from "@/engines/expeditionEngineContext";
 import EncounterEngineProvider from "@/engines/encounterEngineContext";
 import CombatCardEngineProvider from "@/engines/combatCardEngineContext";
+import AnimationEngineProvider from "@/engines/animationEngineContext";
 
 export default function Page() {
   const { selectedMenu } = useMenuEngineContext();
@@ -19,7 +20,9 @@ export default function Page() {
           <ExpeditionEngineProvider>
             <EncounterEngineProvider>
               <CombatCardEngineProvider>
-                <Arena></Arena>
+                <AnimationEngineProvider>
+                  <Arena></Arena>
+                </AnimationEngineProvider>
               </CombatCardEngineProvider>
             </EncounterEngineProvider>
           </ExpeditionEngineProvider>
