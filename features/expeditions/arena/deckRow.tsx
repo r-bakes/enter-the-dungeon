@@ -5,9 +5,12 @@ import { Label } from "@/components/ui/label";
 import { useCombatCardEngineContext } from "@/engines/combatCardEngineContext";
 import { useEncounterContext } from "@/engines/encounterEngineContext";
 import { AnimatePresence, motion } from "framer-motion";
+import { useAnimationEngineContext } from "@/engines/animationEngineContext";
 
 export default function DeckRow() {
   const { drawPile, hand, discardPile, round } = useEncounterContext();
+  const { handleDrawComplete, handleShuffleComplete } =
+    useAnimationEngineContext();
   const { selectCard, selectedCard } = useCombatCardEngineContext();
 
   return (
@@ -38,14 +41,15 @@ export default function DeckRow() {
                   key={card.cardInstanceId}
                   className="flex"
                   initial={{ opacity: 0, x: -500 }}
-                  animate={{ opacity: 1, x: 0, transition: { duration: 0.8 } }}
+                  animate={{ opacity: 1, x: 0, transition: { duration: 0.6 } }}
                   exit={{
                     opacity: 0,
                     y: 0,
                     x: 600,
                     scale: 0.5,
-                    transition: { duration: 0.8 },
+                    transition: { duration: 0.6 },
                   }}
+                  onAnimationComplete={() => handleDrawComplete()}
                 >
                   <CombatDeckCard
                     card={card}
@@ -76,8 +80,9 @@ export default function DeckRow() {
                     x: -1400,
                     opacity: 0,
                     scale: 0.5,
-                    transition: { duration: 0.8 },
+                    transition: { duration: 0.6 },
                   }}
+                  onAnimationComplete={() => handleShuffleComplete()}
                 >
                   <CardBack onClick={() => {}}></CardBack>
                 </motion.div>

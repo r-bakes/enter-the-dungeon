@@ -11,6 +11,8 @@ type AnimaationContextContents = {
   handleEnemyAttackComplete: () => void;
   attackingCombatant: null | Combatant;
   phase: EncounterPhase;
+  handleDrawComplete: () => void;
+  handleShuffleComplete: () => void;
 };
 const AnimationEngineContext = React.createContext(
   {} as AnimaationContextContents,
@@ -60,18 +62,17 @@ export default function AnimationEngineProvider({
       setTimeout(() => {
         setAttackingCombatants(Object.values(phaseStartAttackers));
         setAttackingCombatant(phaseStartAttacker || null);
-      }, 1000);
+      }, 600);
     }
   }, [phase]);
 
   const nextAttacker = () => {
-    console.log("...Next attacker");
-
     const newAttackingCombatants = [...attackingCombatants];
     const attacker = newAttackingCombatants.shift();
 
     setAttackingCombatant(attacker || null);
     setAttackingCombatants(newAttackingCombatants);
+
     if (!attacker) {
       resetPlayer();
       setPhase(EncounterPhase.NEW_ROUND);
@@ -104,7 +105,7 @@ export default function AnimationEngineProvider({
     damagePlayer();
     setTimeout(() => {
       nextAttacker();
-    }, 1000);
+    }, 600);
   };
 
   // NOTE: Player prep phase state management
@@ -112,70 +113,67 @@ export default function AnimationEngineProvider({
     DrawPhase.INACTIVE,
   );
 
-  const shuffle = (cards: CombatCard[]): CombatCard[] => {
-    for (var i = cards.length - 1; i > 0; i--) {
-      var j = Math.floor(Math.random() * (i + 1));
-      var temp = cards[i];
-      cards[i] = cards[j];
-      cards[j] = temp;
+  // Initiate phase
+  React.useEffect(() => {
+    if (phase === EncounterPhase.PLAYER_PREP) {
+      let newDiscardPile = [...discardPile, ...hand];
+
+      setStamina(characterCombatant.stamina);
+      setDiscardPile([...newDiscardPile]);
+      setHand([]);
+
+      setTimeout(() => {
+        draw();
+      }, 600);
     }
-    return cards;
+  }, [phase]);
+
+  const shuffle = () => {
+    const doShuffle = (cards: CombatCard[]): CombatCard[] => {
+      for (var i = cards.length - 1; i > 0; i--) {
+        var j = Math.floor(Math.random() * (i + 1));
+        var temp = cards[i];
+        cards[i] = cards[j];
+        cards[j] = temp;
+      }
+      return cards;
+    };
+
+    let newDrawPile = [...drawPile, ...doShuffle(discardPile)];
+
+    setDrawPile([...newDrawPile]);
+    setDiscardPile([]);
   };
 
-  React.useEffect(() => {
-    switch (drawPhase) {
-      case DrawPhase.DISCARD:
-        let newDiscardPile = [...discardPile, ...hand];
-
-        setDiscardPile(newDiscardPile);
-        setHand([]);
-
-        setTimeout(() => {
-          if (drawPile.length < DRAW_LIMIT) {
-            setDrawPhase(DrawPhase.SHUFFLE);
-          } else {
-            setDrawPhase(DrawPhase.DRAW);
-          }
-        }, 800);
-        break;
-
-      case DrawPhase.SHUFFLE:
-        let newDrawPile = [...drawPile, ...shuffle(discardPile)];
-
-        setDrawPile(newDrawPile);
-        setDiscardPile([]);
-
-        setTimeout(() => {
-          setDrawPhase(DrawPhase.DRAW);
-        }, 800);
-
-        break;
-
-      case DrawPhase.DRAW:
-        let newHand: CombatCard[] = [];
-        let prevDrawPile = [...drawPile];
-
-        for (let i = 0; i < DRAW_LIMIT; i++) {
-          if (prevDrawPile.length > 0) {
-            newHand.push(prevDrawPile.pop() as CombatCard);
-          }
-        }
-
-        newHand.sort((a, b) => a.name.localeCompare(b.name));
-        setDrawPile([...prevDrawPile]);
-        setHand([...newHand]);
-
-        setTimeout(() => {
-          setDrawPhase(DrawPhase.INACTIVE);
-          setPhase(EncounterPhase.PLAYER_PHASE);
-        }, 1000);
-
-        break;
-    }
-  }, [drawPhase]);
-
   const draw = () => {
-    setDrawPhase(DrawPhase.DISCARD);
+    setDrawPile((prevDrawPile) => {
+      if (drawPile.length < DRAW_LIMIT) {
+        shuffle();
+      }
+
+      let newHand: CombatCard[] = [];
+      let newDrawPile = [...drawPile];
+
+      console.log(prevDrawPile);
+      for (let i = 0; i < DRAW_LIMIT; i++) {
+        if (newDrawPile.length > 0) {
+          newHand.push(newDrawPile.shift() as CombatCard);
+        }
+      }
+
+      newHand.sort((a, b) => a.name.localeCompare(b.name));
+
+      setHand([...newHand]);
+      return [...newDrawPile];
+    });
+  };
+
+  const handleDrawComplete = () => {
+    setPhase(EncounterPhase.PLAYER_PHASE);
+  };
+
+  const handleShuffleComplete = () => {
+    draw();
   };
 
   // NOTE: General phase state management
@@ -204,8 +202,6 @@ export default function AnimationEngineProvider({
         break;
       case EncounterPhase.PLAYER_PREP:
         console.log("Player prep");
-        draw();
-        setStamina(characterCombatant.stamina);
         break;
       case EncounterPhase.PLAYER_PHASE:
         console.log("Player phase");
@@ -235,6 +231,8 @@ export default function AnimationEngineProvider({
         handleEnemyAttackComplete,
         attackingCombatant,
         phase,
+        handleDrawComplete,
+        handleShuffleComplete,
       }}
     >
       {children}
