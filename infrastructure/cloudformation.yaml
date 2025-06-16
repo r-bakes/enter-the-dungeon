@@ -1,0 +1,66 @@
+AWSTemplateFormatVersion: "2010-09-09"
+Description: Static demo website for the enter-the-dungeon project.
+
+Parameters:
+  SiteBucketName:
+    Type: String
+    Description: Globally unique bucket name
+  IndexDocument:
+    Type: String
+    Default: index.html
+  ErrorDocument:
+    Type: String
+    Default: 404.html
+  ProjectTag:
+    Type: String
+    Default: enter-the-dungeon
+  AccessTag:
+    Type: String
+    AllowedValues: [public, private]
+    Default: public
+
+Resources:
+  SiteBucket:
+    Type: AWS::S3::Bucket
+    Properties:
+      BucketName: !Ref SiteBucketName
+      WebsiteConfiguration:
+        IndexDocument: !Ref IndexDocument
+        ErrorDocument: !Ref ErrorDocument
+      PublicAccessBlockConfiguration:
+        BlockPublicAcls: false
+        BlockPublicPolicy: false
+        IgnorePublicAcls: false
+        RestrictPublicBuckets: false
+      Tags:
+        - Key: project
+          Value: !Ref ProjectTag
+        - Key: access
+          Value: !Ref AccessTag
+        - Key: awsApplication
+          Value: !GetAtt ApplicationRegistry.ApplicationTagValue
+
+  SiteBucketPolicy:
+    Type: AWS::S3::BucketPolicy
+    Properties:
+      Bucket: !Ref SiteBucket
+      PolicyDocument:
+        Version: "2012-10-17"
+        Statement:
+          - Sid: AllowPublicRead
+            Effect: Allow
+            Principal: "*"
+            Action: s3:GetObject
+            Resource: !Sub "${SiteBucket.Arn}/*"
+
+  #AppRegistry application
+  ApplicationRegistry:
+    Type: AWS::ServiceCatalogAppRegistry::Application
+    Properties:
+      Name: enter-the-dungeon
+      Description: "Demo application."
+
+Outputs:
+  WebsiteURL:
+    Value: !GetAtt SiteBucket.WebsiteURL
+    Description: Public URL of the website
