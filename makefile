@@ -10,7 +10,9 @@ CFN_DEPLOY     = aws cloudformation deploy \
                   --stack-name $(STACK) \
                   --template-file $(TEMPLATE) \
                   --capabilities CAPABILITY_NAMED_IAM \
-                  --parameter-overrides SiteBucketName=$(BUCKET)
+                  --parameter-overrides SiteBucketName=$(BUCKET) \
+  								--tags project=enter-the-dungeon \
+										     access=private
 
 # ---- TARGETS ----
 .PHONY: build deploy-stack sync-site deploy clean
