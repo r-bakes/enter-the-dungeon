@@ -2,6 +2,7 @@
 STACK          = enter-the-dungeon
 BUCKET         = enter-the-dungeon
 TEMPLATE       = infrastructure/cloudformation.yaml
+LINK           = http://enter-the-dungeon.s3-website-us-east-1.amazonaws.com
 REGION         = us-east-1
 OUT_DIR        = out
 CFN_DEPLOY     = aws cloudformation deploy \
@@ -43,3 +44,5 @@ sync-site:       ## 3) Upload static files to the bucket
 	    --recursive \
 	    --exclude "*" --include "*.html" \
 	    --cache-control "no-cache"
+	@echo "🚨 Validate Changes Here 🚨"
+	@echo "\033[1;34m$(LINK)\033[0m"
