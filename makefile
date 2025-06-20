@@ -1,17 +1,16 @@
 # ---- CONFIG  ----
 AWS_STACK      	= enter-the-dungeon
-AWS_BUCKET     	= enter-the-dungeon
+AWS_BUCKET     	= $(AWS_STACK)
 AWS_REGION     	= us-east-1
 NEXT_OUT_DIR    = out
 SITE_LINK      	= http://enter-the-dungeon.s3-website-us-east-1.amazonaws.com
-CF_TEMPLATE			= infrastructure/cloudformation.yaml
+CF_TEMPLATE			= infrastructure/enter-the-dungeon.yaml
 CF_DEPLOY     	= aws cloudformation deploy \
                   --region $(AWS_REGION) \
                   --stack-name $(AWS_STACK) \
                   --template-file $(CF_TEMPLATE) \
                   --capabilities CAPABILITY_NAMED_IAM \
-                  --parameter-overrides SiteBucketName=$(AWS_BUCKET) \
-  								--tags project=enter-the-dungeon \
+  								--tags project=$(AWS_STACK) \
 										     access=private
 
 # ---- TARGETS ----

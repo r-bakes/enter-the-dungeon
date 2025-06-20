@@ -2,9 +2,6 @@ AWSTemplateFormatVersion: "2010-09-09"
 Description: Static demo website for the enter-the-dungeon project.
 
 Parameters:
-  SiteBucketName:
-    Type: String
-    Description: Globally unique bucket name
   IndexDocument:
     Type: String
     Default: index.html
@@ -23,7 +20,7 @@ Resources:
   SiteBucket:
     Type: AWS::S3::Bucket
     Properties:
-      BucketName: !Ref SiteBucketName
+      BucketName: !Sub "${AWS::StackName}"
       WebsiteConfiguration:
         IndexDocument: !Ref IndexDocument
         ErrorDocument: !Ref ErrorDocument
@@ -58,7 +55,7 @@ Resources:
     Type: AWS::ServiceCatalogAppRegistry::Application
     Properties:
       Name: enter-the-dungeon
-      Description: "Demo application."
+      Description: "Demo game application."
 
 Outputs:
   WebsiteURL:
