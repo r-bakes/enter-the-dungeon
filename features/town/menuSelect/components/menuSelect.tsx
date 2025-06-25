@@ -8,6 +8,7 @@ import { Exit } from "@/features/common/exit/exit";
 import { SettingsButton } from "@/features/common/settingsButton/settingsButton";
 import { MenuId } from "@/data/menus/enums";
 import { combatMenus, miscMenus, skillMenus } from "@/data/menus/menus";
+import { DisableNotificationsToggle } from "@/features/common/disableNotificationsToggle/disableNotificationsToggle";
 
 export default function MenuSelect({}: Readonly<{}>) {
   return (
@@ -20,6 +21,7 @@ export default function MenuSelect({}: Readonly<{}>) {
       <div className="mt-4 flex w-full px-2">
         <SettingsButton></SettingsButton>
         <ThemeToggle></ThemeToggle>
+        <DisableNotificationsToggle></DisableNotificationsToggle>
         <Exit></Exit>
       </div>
       <div className="px-5">

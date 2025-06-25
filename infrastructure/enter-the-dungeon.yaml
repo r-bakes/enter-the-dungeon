@@ -50,11 +50,11 @@ Resources:
             Action: s3:GetObject
             Resource: !Sub "${SiteBucket.Arn}/*"
 
-  #AppRegistry application
+  # NOTE: AppRegistry registration
   ApplicationRegistry:
     Type: AWS::ServiceCatalogAppRegistry::Application
     Properties:
-      Name: enter-the-dungeon
+      Name: !Sub "${AWS::StackName}"
       Description: "Demo game application."
 
 Outputs:

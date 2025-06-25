@@ -9,12 +9,14 @@ import ExpeditionEngineProvider from "@/engines/expeditionEngineContext";
 import EncounterEngineProvider from "@/engines/encounterEngineContext";
 import CombatCardEngineProvider from "@/engines/combatCardEngineContext";
 import AnimationEngineProvider from "@/engines/animationEngineContext";
+import { Toaster } from "@/components/ui/sonner";
 
 export default function Page() {
-  const { selectedMenu } = useMenuEngineContext();
+  const { selectedMenu, isToastDisabled } = useMenuEngineContext();
 
   return (
     <div className="flex h-full min-h-min w-full min-w-min">
+      {!isToastDisabled && <Toaster position="bottom-left" closeButton />}
       {selectedMenu === MenuId.EXPEDITION ? (
         <div className="bg-secondary-background flex w-full grow p-10">
           <ExpeditionEngineProvider>

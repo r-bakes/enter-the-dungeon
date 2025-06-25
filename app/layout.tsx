@@ -1,5 +1,4 @@
 "use client";
-import { Toaster } from "@/components/ui/sonner";
 import "./globals.css";
 import { ThemeProvider } from "next-themes";
 import CharacterEngineProvider from "@/engines/characterEngineContext";
@@ -25,7 +24,6 @@ export default function RootLayout({
             <ModifierEngineProvider>
               <WorkingEngineProvider>
                 <MenuEngineProvider>
-                  <Toaster position="bottom-left" closeButton />
                   <main className="flex h-screen w-screen">{children}</main>
                 </MenuEngineProvider>
               </WorkingEngineProvider>

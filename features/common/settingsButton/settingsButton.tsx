@@ -6,9 +6,13 @@ export function SettingsButton({}: {}) {
     <Button
       variant="ghost"
       size="icon"
-      className="bg-inherit p-0 hover:bg-inherit"
+      className="bg-inherit p-0 hover:bg-transparent"
     >
-      <Settings color="white" strokeWidth={1.5} className="h-[1.2rem] w-[1.2rem]"></Settings>
+      <Settings
+        color="white"
+        strokeWidth={1.5}
+        className="h-[1.2rem] w-[1.2rem]"
+      ></Settings>
     </Button>
   );
 }

@@ -7,6 +7,8 @@ import { MenuId } from "@/data/menus/enums";
 type MenuEngineContextProps = {
   selectedMenu: MenuId;
   setSelectedMenu: React.Dispatch<React.SetStateAction<MenuId>>;
+  isToastDisabled: boolean;
+  setIsToastDisabled: React.Dispatch<React.SetStateAction<boolean>>;
 };
 
 // Create the context with default undefined
@@ -15,9 +17,17 @@ const MenuEngineContext = createContext({} as MenuEngineContextProps);
 // Create a provider component
 export const MenuEngineProvider = ({ children }: { children: ReactNode }) => {
   const [selectedMenu, setSelectedMenu] = useState(MenuId.HOME);
+  const [isToastDisabled, setIsToastDisabled] = React.useState(false);
 
   return (
-    <MenuEngineContext.Provider value={{ selectedMenu, setSelectedMenu }}>
+    <MenuEngineContext.Provider
+      value={{
+        selectedMenu,
+        setSelectedMenu,
+        isToastDisabled,
+        setIsToastDisabled,
+      }}
+    >
       {children}
     </MenuEngineContext.Provider>
   );
