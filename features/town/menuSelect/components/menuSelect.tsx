@@ -1,4 +1,3 @@
-import { GameObject } from "@/types/gameObjects";
 import { Label } from "@radix-ui/react-label";
 import { ThemeToggle } from "@/features/common/themeToggle/themeToggle";
 import Logo from "@/features/town/menuSelect/components/logo";
