@@ -15,9 +15,11 @@ import { DisableNotificationsToggle } from "@/features/common/disableNotificatio
 export default function MenuSelect({}: Readonly<{}>) {
   const [isMinimized, setIsMinimized] = useState(false);
   
-  // On mobile: always minimized (w-16)
-  // On desktop: toggleable between w-16 and w-60
+  // Mobile: always narrow width with minimized content
+  // Desktop: toggleable between narrow and wide
   const widthClasses = isMinimized ? "w-16" : "w-16 md:w-60";
+  const isMobileMinimized = true; // Always minimized-style on mobile
+  const isDesktopMinimized = isMinimized; // User-controlled on desktop
   
   return (
     <div
@@ -39,24 +41,24 @@ export default function MenuSelect({}: Readonly<{}>) {
         </Button>
       </div>
 
-      {/* Logo - hidden on mobile when minimized, conditional on desktop */}
+      {/* Logo - hidden on mobile, conditional on desktop */}
       <div className="hidden md:block">
-        {!isMinimized && <Logo />}
+        {!isDesktopMinimized && <Logo />}
       </div>
 
       {/* Action Buttons */}
-      <div className={`mt-4 flex w-full flex-col gap-2 px-2 md:flex-row ${isMinimized ? "md:flex-col md:gap-2 md:px-2" : "md:px-2"}`}>
+      <div className={`mt-4 flex w-full ${isDesktopMinimized ? "flex-col gap-2 px-2" : "flex-col gap-2 px-2 md:flex-row md:px-2"}`}>
         <SettingsButton />
-        <div className="hidden md:flex md:gap-0">
-          {!isMinimized && <ThemeToggle />}
-          {!isMinimized && <DisableNotificationsToggle />}
-          {!isMinimized && <Exit />}
+        <div className="hidden md:flex">
+          {!isDesktopMinimized && <ThemeToggle />}
+          {!isDesktopMinimized && <DisableNotificationsToggle />}
+          {!isDesktopMinimized && <Exit />}
         </div>
       </div>
 
       {/* Separator - hidden on mobile, conditional on desktop */}
       <div className="hidden md:block">
-        {!isMinimized && (
+        {!isDesktopMinimized && (
           <div className="px-5">
             <Separator className="my-4" />
           </div>
@@ -65,35 +67,58 @@ export default function MenuSelect({}: Readonly<{}>) {
 
       {/* Menu Content */}
       <div className="flex flex-col overflow-y-scroll">
-        <Label className="hidden px-5 pb-2 text-xs text-white md:block">{!isMinimized && "Character"}</Label>
-        <MenuContainer
-          menuItems={Object.keys(miscMenus) as MenuId[]}
-          isMinimized={isMinimized}
-        />
+        {/* Labels: hidden on mobile, conditional on desktop */}
+        <div className="hidden md:block">
+          {!isDesktopMinimized && <Label className="px-5 pb-2 text-xs text-white">Character</Label>}
+        </div>
         
-        {/* Separator between Character and Combat */}
-        {isMinimized ? (
+        {/* Mobile MenuContainers - always minimized */}
+        <div className="md:hidden">
+          <MenuContainer
+            menuItems={Object.keys(miscMenus) as MenuId[]}
+            isMinimized={true}
+          />
           <div className="mx-auto my-2 h-px w-8 bg-slate-600"></div>
-        ) : (
-          <Label className="px-5 pt-4 pb-2 text-xs text-white">Combat</Label>
-        )}
-        
-        <MenuContainer
-          menuItems={Object.keys(combatMenus) as MenuId[]}
-          isMinimized={isMinimized}
-        />
-        
-        {/* Separator between Combat and Skills */}
-        {isMinimized ? (
+          <MenuContainer
+            menuItems={Object.keys(combatMenus) as MenuId[]}
+            isMinimized={true}
+          />
           <div className="mx-auto my-2 h-px w-8 bg-slate-600"></div>
-        ) : (
-          <Label className="px-5 pt-4 pb-2 text-xs text-white">Skills</Label>
-        )}
+          <MenuContainer
+            menuItems={Object.keys(skillMenus) as MenuId[]}
+            isMinimized={true}
+          />
+        </div>
         
-        <MenuContainer
-          menuItems={Object.keys(skillMenus) as MenuId[]}
-          isMinimized={isMinimized}
-        />
+        {/* Desktop MenuContainers - conditional */}
+        <div className="hidden md:block">
+          <MenuContainer
+            menuItems={Object.keys(miscMenus) as MenuId[]}
+            isMinimized={isDesktopMinimized}
+          />
+          
+          {isDesktopMinimized ? (
+            <div className="mx-auto my-2 h-px w-8 bg-slate-600"></div>
+          ) : (
+            <Label className="px-5 pt-4 pb-2 text-xs text-white">Combat</Label>
+          )}
+          
+          <MenuContainer
+            menuItems={Object.keys(combatMenus) as MenuId[]}
+            isMinimized={isDesktopMinimized}
+          />
+          
+          {isDesktopMinimized ? (
+            <div className="mx-auto my-2 h-px w-8 bg-slate-600"></div>
+          ) : (
+            <Label className="px-5 pt-4 pb-2 text-xs text-white">Skills</Label>
+          )}
+          
+          <MenuContainer
+            menuItems={Object.keys(skillMenus) as MenuId[]}
+            isMinimized={isDesktopMinimized}
+          />
+        </div>
         <div className="h-[220px] shrink-0"></div>
       </div>
     </div>
