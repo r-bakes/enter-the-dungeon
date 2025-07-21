@@ -1,19 +1,25 @@
-import { craftingTasks } from "./prospecting/crafting";
-import { smeltingTasks } from "./smithing/smelting";
-import { smithingTasks } from "./smithing/smithing";
-import { miningTasks } from "./prospecting/mining";
-import { calistheticsTasks } from "./athletics/calisthetics";
+import { craftingTasks as prospectingCraftingTasks } from "./prospecting/crafting";
+import { smeltingTasks as smithingSmeltingTasks } from "./smithing/smelting";
+import { smithingTasks as smithingSmithingTasks } from "./smithing/smithing";
+import { miningTasks as prospectingMiningTasks } from "./prospecting/mining";
+import { calistheticsTasks as athleticsCalistheticsTasks } from "./athletics/calisthetics";
 import { TaskId } from "./enum";
 import { Task } from "@/types/tasks";
-import { botanyTasks } from "./agriculture/botany";
-import { thievingTasks } from "./stealth/thieving";
+import { botanyTasks as agricultureBotanyTasks } from "./agriculture/botany";
+import { thievingTasks as stealthThievingTasks } from "./stealth/thieving";
+import { alchemyReagentTasks } from "./alchemy/reagents";
+import { alchemyFlaskTasks } from "./alchemy/flasks";
+import { alchemyPotionTasks } from "./alchemy/potions";
 
 export const taskTable = {
-  ...smithingTasks,
-  ...smeltingTasks,
-  ...miningTasks,
-  ...craftingTasks,
-  ...calistheticsTasks,
-  ...botanyTasks,
-  ...thievingTasks,
+  ...smithingSmithingTasks,
+  ...smithingSmeltingTasks,
+  ...prospectingMiningTasks,
+  ...prospectingCraftingTasks,
+  ...athleticsCalistheticsTasks,
+  ...agricultureBotanyTasks,
+  ...stealthThievingTasks,
+  ...alchemyReagentTasks,
+  ...alchemyFlaskTasks,
+  ...alchemyPotionTasks,
 } as { [id in TaskId]: Task };

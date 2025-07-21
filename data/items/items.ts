@@ -5,6 +5,8 @@ import { miscTable } from "@/data/items/misc";
 import { weaponTable } from "@/data/items/weapons";
 import { plantsTable } from "./plants";
 import { seedsTable } from "./seeds";
+import { flasksTable } from "./flasks";
+import { potionsTable } from "./potions";
 import { ItemId } from "./enums";
 import { Item } from "@/types/items";
 
@@ -16,4 +18,6 @@ export const itemTable = {
   ...weaponTable,
   ...plantsTable,
   ...seedsTable,
+  ...flasksTable,
+  ...potionsTable,
 } as { [id in ItemId]: Item };

@@ -86,7 +86,7 @@ export const testCharacter: Character = {
       experience: 0,
     },
     [SkillId.ALCHEMY]: {
-      level: 1,
+      level: 55,
       experience: 0,
     },
     [SkillId.ENCHANTING]: {

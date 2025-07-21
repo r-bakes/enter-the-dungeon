@@ -5,6 +5,9 @@ import { Droplet } from "lucide-react";
 import { TaskId } from "../tasks/enum";
 import { Task } from "@/types/tasks";
 import { Skill } from "@/types/skills";
+import { alchemyReagentTasks } from "../tasks/alchemy/reagents";
+import { alchemyFlaskTasks } from "../tasks/alchemy/flasks";
+import { alchemyPotionTasks } from "../tasks/alchemy/potions";
 
 const alchemyCommonModifiers = new Set([
   ModifierType.SPEED,
@@ -13,7 +16,11 @@ const alchemyCommonModifiers = new Set([
   ModifierType.PRODUCTION_MULTIPLIER,
 ]);
 
-const alchemyTasks: { [id in TaskId]?: Task } = {};
+const alchemyTasks: { [id in TaskId]?: Task } = {
+  ...alchemyReagentTasks,
+  ...alchemyFlaskTasks,
+  ...alchemyPotionTasks,
+};
 
 export const alchemy: Skill = {
   id: SkillId.ALCHEMY,
