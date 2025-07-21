@@ -88,8 +88,8 @@ export default function DeckMenu({}: {}) {
             {renderIcon(Sword, 44, { strokeWidth: 1 })}
           </div>
           <div className="m-0 flex flex-col pl-3 lg:pl-4">
-            <CardTitle className="text-base lg:text-lg">Combat Cards</CardTitle>
-            <CardDescription className="text-xs lg:text-sm">
+            <CardTitle className="text-sm lg:text-base">Combat Cards</CardTitle>
+            <CardDescription className="text-sm lg:text-sm">
               Manage your martial and magic combat deck.
             </CardDescription>
           </div>

@@ -19,12 +19,12 @@ export default function TasksMenu() {
   );
 
   return (
-    <div className="flex h-full w-full flex-col gap-2">
+    <div className="flex h-full w-full flex-col gap-2 lg:gap-2">
       <Select
         onValueChange={(value) => setSelectedTasksCategory(value)}
         defaultValue={Object.values(agriculture.taskCategories)[0]}
       >
-        <SelectTrigger className="text-muted-foreground w-full font-normal">
+        <SelectTrigger className="text-muted-foreground mx-auto w-full font-normal lg:mx-0">
           <SelectValue></SelectValue>
         </SelectTrigger>
         <SelectContent>
@@ -43,12 +43,14 @@ export default function TasksMenu() {
           </SelectGroup>
         </SelectContent>
       </Select>
-      <ActionCard
-        taskCategory={selectedTasksCategory as AgricultureTaskCategories}
-      ></ActionCard>
-      <ContainerMenu
-        taskCategory={selectedTasksCategory as AgricultureTaskCategories}
-      ></ContainerMenu>
+      <div className="flex w-full flex-col gap-2 overflow-y-auto lg:gap-2">
+        <ActionCard
+          taskCategory={selectedTasksCategory as AgricultureTaskCategories}
+        />
+        <ContainerMenu
+          taskCategory={selectedTasksCategory as AgricultureTaskCategories}
+        />
+      </div>
     </div>
   );
 }

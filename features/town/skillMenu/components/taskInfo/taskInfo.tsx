@@ -60,7 +60,7 @@ export default function TaskInfo({
 
   return (
     <div className={`${rootCardFormat} lg:bg-card lg:border lg:shadow-sm`}>
-      <div className="flex h-20 w-full flex-row gap-3 p-4 lg:h-32 lg:gap-4 lg:p-6">
+      <div className="flex h-auto w-full flex-row gap-3 p-4 lg:gap-4 lg:p-6">
         <div className="lg:hidden">
           {renderIcon(task.icon, 32, task.iconStyle)}
         </div>

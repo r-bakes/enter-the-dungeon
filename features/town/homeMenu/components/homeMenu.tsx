@@ -52,8 +52,8 @@ export default function HomeMenu() {
             {renderIcon(home.icon, 44, home.iconStyle)}
           </div>
           <div className="m-0 flex flex-col pl-3 lg:pl-4">
-            <CardTitle className="text-base lg:text-lg">{home.name}</CardTitle>
-            <CardDescription className="text-xs lg:text-sm">
+            <CardTitle className="text-sm lg:text-base">{home.name}</CardTitle>
+            <CardDescription className="text-sm lg:text-sm">
               {home.description}
             </CardDescription>
           </div>

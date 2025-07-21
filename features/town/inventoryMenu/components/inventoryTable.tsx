@@ -35,7 +35,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import { ChevronDown, ChevronUp } from "lucide-react";
+import { ChevronDown, ChevronUp, Backpack } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import { ItemId, ItemType } from "@/data/items/enums";
 import TableEntrySheet from "./tableEntrySheet/tableEntrySheet";
@@ -122,71 +122,141 @@ export default function InventoryTable() {
   });
 
   return (
-    <Card className="flex h-full grow">
-      <Table>
-        <TableHeader>
-          {table.getHeaderGroups().map((headerGroup) => (
-            <TableRow key={headerGroup.id}>
-              {headerGroup.headers.map((header) => (
-                <TableHead key={header.id} colSpan={header.colSpan}>
-                  {header.isPlaceholder ? null : (
-                    <div
-                      className={
-                        "flex h-full flex-row items-center gap-2 text-xs"
-                      }
-                    >
-                      <div
-                        {...{
-                          className: header.column.getCanSort()
-                            ? "flex flex-row gap-1 cursor-pointer items-center select-none"
-                            : "",
-                          onClick: header.column.getToggleSortingHandler(),
-                        }}
-                      >
-                        {flexRender(
-                          header.column.columnDef.header,
-                          header.getContext(),
-                        )}
-                        {{
-                          asc: <ChevronUp size={16} />,
-                          desc: <ChevronDown size={16} />,
-                        }[header.column.getIsSorted() as string] ?? null}
-                      </div>
-                      {header.column.getCanFilter() ? (
-                        <div>
-                          <Filter column={header.column} />
-                        </div>
-                      ) : null}
-                    </div>
-                  )}
-                </TableHead>
-              ))}
-            </TableRow>
-          ))}
-        </TableHeader>
-        <TableBody>
+    <Card className="flex h-full grow flex-col">
+      {/* Mobile: Card-based layout */}
+      <div className="flex flex-1 flex-col gap-2 p-4 lg:hidden">
+        <div className="flex items-center justify-between pb-2">
+          <h3 className="text-sm font-medium">Items ({data.length})</h3>
+          <Select
+            onValueChange={(value) => 
+              table.getColumn("type")?.setFilterValue(value === "All" ? "" : value)
+            }
+          >
+            <SelectTrigger className="w-32 h-8 text-xs">
+              <SelectValue placeholder="Filter" />
+            </SelectTrigger>
+            <SelectContent>
+              <SelectItem value="All" className="text-xs">All</SelectItem>
+              {Object.entries(ItemType)
+                .filter(([_, type]) => type !== ItemType.HIDDEN)
+                .map(([_, type]) => (
+                  <SelectItem key={type} value={type} className="text-xs">
+                    {formatCapitalCase(type)}
+                  </SelectItem>
+                ))}
+            </SelectContent>
+          </Select>
+        </div>
+        
+        <div className="flex-1 overflow-y-auto overflow-x-hidden space-y-2">
           {table.getRowModel().rows.map((row) => (
-            <TableRow
+            <Card 
               key={row.id}
+              className="p-3 cursor-pointer hover:bg-accent transition-colors w-full max-w-full"
               onClick={() => {
                 setSelectedItemId(row.original.id);
                 setOpen(true);
               }}
             >
-              {row.getVisibleCells().map((cell) => (
-                <TableCell key={cell.id} className="py-2 text-xs">
-                  {flexRender(cell.column.columnDef.cell, cell.getContext())}
-                </TableCell>
-              ))}
-            </TableRow>
+              <div className="flex items-center gap-3 w-full max-w-full overflow-hidden">
+                <div className="shrink-0">
+                  {renderIcon(row.original.icon, 32, row.original.iconStyle)}
+                </div>
+                <div className="flex-1 min-w-0 max-w-full overflow-hidden">
+                  <div className="flex items-center justify-between gap-2 w-full">
+                    <h4 className="text-sm font-medium truncate flex-1 min-w-0">{row.original.name}</h4>
+                    <span className="text-xs text-muted-foreground whitespace-nowrap">
+                      {formatCapitalCase(row.original.type)}
+                    </span>
+                  </div>
+                  <div className="flex items-center justify-between gap-2 mt-1 w-full">
+                    <div className="flex items-center gap-1 whitespace-nowrap">
+                      <span className="text-sm text-green-600">
+                        {formatLargeQuantity(row.original.quantity)}
+                      </span>
+                      <Backpack size={12} strokeWidth={1} className="text-muted-foreground" />
+                    </div>
+                    <span className="text-xs text-muted-foreground truncate min-w-0">
+                      {formatLargeQuantity(row.original.value)} gold ea.
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </Card>
           ))}
-        </TableBody>
-      </Table>
+          
+          {table.getRowModel().rows.length === 0 && (
+            <div className="flex items-center justify-center py-8">
+              <p className="text-sm text-muted-foreground">No items found</p>
+            </div>
+          )}
+        </div>
+      </div>
+
+      {/* Desktop: Table layout */}
+      <div className="hidden lg:flex lg:h-full">
+        <Table>
+          <TableHeader>
+            {table.getHeaderGroups().map((headerGroup) => (
+              <TableRow key={headerGroup.id}>
+                {headerGroup.headers.map((header) => (
+                  <TableHead key={header.id} colSpan={header.colSpan}>
+                    {header.isPlaceholder ? null : (
+                      <div className="flex h-full flex-row items-center gap-2 text-xs">
+                        <div
+                          {...{
+                            className: header.column.getCanSort()
+                              ? "flex flex-row gap-1 cursor-pointer items-center select-none"
+                              : "",
+                            onClick: header.column.getToggleSortingHandler(),
+                          }}
+                        >
+                          {flexRender(
+                            header.column.columnDef.header,
+                            header.getContext(),
+                          )}
+                          {{
+                            asc: <ChevronUp size={16} />,
+                            desc: <ChevronDown size={16} />,
+                          }[header.column.getIsSorted() as string] ?? null}
+                        </div>
+                        {header.column.getCanFilter() ? (
+                          <div>
+                            <Filter column={header.column} />
+                          </div>
+                        ) : null}
+                      </div>
+                    )}
+                  </TableHead>
+                ))}
+              </TableRow>
+            ))}
+          </TableHeader>
+          <TableBody>
+            {table.getRowModel().rows.map((row) => (
+              <TableRow
+                key={row.id}
+                onClick={() => {
+                  setSelectedItemId(row.original.id);
+                  setOpen(true);
+                }}
+              >
+                {row.getVisibleCells().map((cell) => (
+                  <TableCell key={cell.id} className="py-2 text-xs">
+                    {flexRender(cell.column.columnDef.cell, cell.getContext())}
+                  </TableCell>
+                ))}
+              </TableRow>
+            ))}
+          </TableBody>
+        </Table>
+      </div>
+      
       <TableEntrySheet
         open={open}
         setOpen={setOpen}
         itemId={selectedItemId}
-      ></TableEntrySheet>
+      />
     </Card>
   );
 }
