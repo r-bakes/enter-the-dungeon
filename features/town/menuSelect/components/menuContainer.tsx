@@ -8,8 +8,10 @@ import { useMenuEngineContext } from "@/engines/menuEngineContext";
 
 export default function MenuContainer({
   menuItems,
+  isMinimized = false,
 }: Readonly<{
   menuItems: Array<MenuId>;
+  isMinimized?: boolean;
 }>) {
   const { character } = useCharacterEngineContext();
   const { selectedMenu, setSelectedMenu } = useMenuEngineContext();
@@ -31,6 +33,7 @@ export default function MenuContainer({
               ([MenuId.MARTIAL, MenuId.MAGIC].includes(selectedMenu) &&
                 [MenuId.MARTIAL, MenuId.MAGIC].includes(menuId))
             }
+            isMinimized={isMinimized}
             key={menuId}
             onClick={() => setSelectedMenu(menuId)}
           ></MenuButton>

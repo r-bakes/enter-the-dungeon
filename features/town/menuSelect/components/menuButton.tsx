@@ -7,16 +7,34 @@ export default function MenuButton({
   menu,
   isSelected,
   level,
+  isMinimized = false,
   onClick,
 }: Readonly<{
   menu: GameObject;
   isSelected: boolean;
   level?: number;
+  isMinimized?: boolean;
   onClick: React.Dispatch<React.SetStateAction<any>>;
 }>) {
   let extraFormat = isSelected
     ? "font-medium bg-slate-900 border-l-2 border-white rounded-none"
     : "font-normal";
+
+  if (isMinimized) {
+    return (
+      <Button
+        className={
+          "flex h-10 w-full justify-center rounded-none p-0 hover:rounded-none hover:bg-slate-900 " +
+          extraFormat
+        }
+        onClick={onClick}
+        variant="ghost"
+        title={menu.name} // Show tooltip on hover
+      >
+        {renderIcon(menu.icon, 20, { ...menu.iconStyle, color: "white" })}
+      </Button>
+    );
+  }
 
   return (
     <Button

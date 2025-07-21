@@ -1,4 +1,7 @@
+import { useState, useEffect } from "react";
 import { Label } from "@radix-ui/react-label";
+import { Button } from "@/components/ui/button";
+import { ChevronLeft, ChevronRight } from "lucide-react";
 import { ThemeToggle } from "@/features/common/themeToggle/themeToggle";
 import Logo from "@/features/town/menuSelect/components/logo";
 import MenuContainer from "@/features/town/menuSelect/components/menuContainer";
@@ -10,35 +13,94 @@ import { combatMenus, miscMenus, skillMenus } from "@/data/menus/menus";
 import { DisableNotificationsToggle } from "@/features/common/disableNotificationsToggle/disableNotificationsToggle";
 
 export default function MenuSelect({}: Readonly<{}>) {
+  const [isMinimized, setIsMinimized] = useState(false); // Default to expanded for desktop
+  
+  useEffect(() => {
+    // Check if device is mobile and set initial state
+    const checkIsMobile = () => {
+      const isMobile = window.innerWidth < 768; // md breakpoint in Tailwind
+      setIsMinimized(isMobile);
+    };
+    
+    // Set initial state
+    checkIsMobile();
+    
+    // Listen for window resize to handle orientation changes
+    window.addEventListener('resize', checkIsMobile);
+    
+    return () => window.removeEventListener('resize', checkIsMobile);
+  }, []);
   return (
     <div
-      className={
-        "flex h-full w-60 flex-col border-r-4 bg-slate-800 pt-10 pb-2 shadow-xs"
-      }
+      className={`flex h-full flex-col border-r-4 bg-slate-800 pt-10 pb-2 shadow-xs transition-all duration-300 ${
+        isMinimized ? "w-16" : "w-60"
+      }`}
     >
-      <Logo></Logo>
-      <div className="mt-4 flex w-full px-2">
-        <SettingsButton></SettingsButton>
-        <ThemeToggle></ThemeToggle>
-        <DisableNotificationsToggle></DisableNotificationsToggle>
-        <Exit></Exit>
+      {/* Toggle Button */}
+      <div className={`flex ${isMinimized ? "justify-center mb-4" : "justify-end pr-2 mb-2"}`}>
+        <Button
+          onClick={() => setIsMinimized(!isMinimized)}
+          variant="ghost"
+          size="sm"
+          className="h-8 w-8 p-0 text-white hover:bg-slate-700"
+        >
+          {isMinimized ? (
+            <ChevronRight className="h-4 w-4" />
+          ) : (
+            <ChevronLeft className="h-4 w-4" />
+          )}
+        </Button>
       </div>
-      <div className="px-5">
-        <Separator className="my-4"></Separator>
+
+      {/* Logo - only show when expanded */}
+      {!isMinimized && <Logo />}
+
+      {/* Action Buttons */}
+      <div className={`mt-4 flex w-full ${isMinimized ? "flex-col gap-2 px-2" : "px-2"}`}>
+        <SettingsButton />
+        {!isMinimized && <ThemeToggle />}
+        {!isMinimized && <DisableNotificationsToggle />}
+        {!isMinimized && <Exit />}
       </div>
+
+      {/* Separator - only show when expanded */}
+      {!isMinimized && (
+        <div className="px-5">
+          <Separator className="my-4" />
+        </div>
+      )}
+
+      {/* Menu Content */}
       <div className="flex flex-col overflow-y-scroll">
-        <Label className="px-5 pb-2 text-xs text-white">Character</Label>
+        {!isMinimized && <Label className="px-5 pb-2 text-xs text-white">Character</Label>}
         <MenuContainer
           menuItems={Object.keys(miscMenus) as MenuId[]}
-        ></MenuContainer>
-        <Label className="px-5 pt-4 pb-2 text-xs text-white">Combat</Label>
+          isMinimized={isMinimized}
+        />
+        
+        {/* Separator between Character and Combat */}
+        {isMinimized ? (
+          <div className="mx-auto my-2 h-px w-8 bg-slate-600"></div>
+        ) : (
+          <Label className="px-5 pt-4 pb-2 text-xs text-white">Combat</Label>
+        )}
+        
         <MenuContainer
           menuItems={Object.keys(combatMenus) as MenuId[]}
-        ></MenuContainer>
-        <Label className="px-5 pt-4 pb-2 text-xs text-white">Skills</Label>
+          isMinimized={isMinimized}
+        />
+        
+        {/* Separator between Combat and Skills */}
+        {isMinimized ? (
+          <div className="mx-auto my-2 h-px w-8 bg-slate-600"></div>
+        ) : (
+          <Label className="px-5 pt-4 pb-2 text-xs text-white">Skills</Label>
+        )}
+        
         <MenuContainer
           menuItems={Object.keys(skillMenus) as MenuId[]}
-        ></MenuContainer>
+          isMinimized={isMinimized}
+        />
         <div className="h-[220px] shrink-0"></div>
       </div>
     </div>
