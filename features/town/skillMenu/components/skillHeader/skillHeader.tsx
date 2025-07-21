@@ -22,8 +22,10 @@ export function SkillHeader({
   skillLevel: number;
   skillExperience: number;
 }>) {
-  let expGainedAtLevel =
-    skillExperience - requiredExpForLevelUp(skillLevel - 1);
+  let expGainedAtLevel = Math.max(
+    skillExperience - requiredExpForLevelUp(skillLevel - 1),
+    0,
+  );
   let expRemainingForLevelUp =
     requiredExpForLevelUp(skillLevel) - requiredExpForLevelUp(skillLevel - 1);
 
