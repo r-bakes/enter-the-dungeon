@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { Label } from "@radix-ui/react-label";
 import { Button } from "@/components/ui/button";
 import { ChevronLeft, ChevronRight } from "lucide-react";
@@ -13,31 +13,18 @@ import { combatMenus, miscMenus, skillMenus } from "@/data/menus/menus";
 import { DisableNotificationsToggle } from "@/features/common/disableNotificationsToggle/disableNotificationsToggle";
 
 export default function MenuSelect({}: Readonly<{}>) {
-  const [isMinimized, setIsMinimized] = useState(false); // Default to expanded for desktop
+  const [isMinimized, setIsMinimized] = useState(false);
   
-  useEffect(() => {
-    // Check if device is mobile and set initial state
-    const checkIsMobile = () => {
-      const isMobile = window.innerWidth < 768; // md breakpoint in Tailwind
-      setIsMinimized(isMobile);
-    };
-    
-    // Set initial state
-    checkIsMobile();
-    
-    // Listen for window resize to handle orientation changes
-    window.addEventListener('resize', checkIsMobile);
-    
-    return () => window.removeEventListener('resize', checkIsMobile);
-  }, []);
+  // On mobile: always minimized (w-16)
+  // On desktop: toggleable between w-16 and w-60
+  const widthClasses = isMinimized ? "w-16" : "w-16 md:w-60";
+  
   return (
     <div
-      className={`flex h-full flex-col border-r-4 bg-slate-800 pt-10 pb-2 shadow-xs transition-all duration-300 ${
-        isMinimized ? "w-16" : "w-60"
-      }`}
+      className={`flex h-full flex-col border-r-4 bg-slate-800 pt-10 pb-2 shadow-xs transition-all duration-300 ${widthClasses}`}
     >
-      {/* Toggle Button */}
-      <div className={`flex ${isMinimized ? "justify-center mb-4" : "justify-end pr-2 mb-2"}`}>
+      {/* Toggle Button - hidden on mobile, visible on desktop */}
+      <div className={`hidden md:flex ${isMinimized ? "justify-center mb-4" : "justify-end pr-2 mb-2"}`}>
         <Button
           onClick={() => setIsMinimized(!isMinimized)}
           variant="ghost"
@@ -52,27 +39,33 @@ export default function MenuSelect({}: Readonly<{}>) {
         </Button>
       </div>
 
-      {/* Logo - only show when expanded */}
-      {!isMinimized && <Logo />}
-
-      {/* Action Buttons */}
-      <div className={`mt-4 flex w-full ${isMinimized ? "flex-col gap-2 px-2" : "px-2"}`}>
-        <SettingsButton />
-        {!isMinimized && <ThemeToggle />}
-        {!isMinimized && <DisableNotificationsToggle />}
-        {!isMinimized && <Exit />}
+      {/* Logo - hidden on mobile when minimized, conditional on desktop */}
+      <div className="hidden md:block">
+        {!isMinimized && <Logo />}
       </div>
 
-      {/* Separator - only show when expanded */}
-      {!isMinimized && (
-        <div className="px-5">
-          <Separator className="my-4" />
+      {/* Action Buttons */}
+      <div className={`mt-4 flex w-full flex-col gap-2 px-2 md:flex-row ${isMinimized ? "md:flex-col md:gap-2 md:px-2" : "md:px-2"}`}>
+        <SettingsButton />
+        <div className="hidden md:flex md:gap-0">
+          {!isMinimized && <ThemeToggle />}
+          {!isMinimized && <DisableNotificationsToggle />}
+          {!isMinimized && <Exit />}
         </div>
-      )}
+      </div>
+
+      {/* Separator - hidden on mobile, conditional on desktop */}
+      <div className="hidden md:block">
+        {!isMinimized && (
+          <div className="px-5">
+            <Separator className="my-4" />
+          </div>
+        )}
+      </div>
 
       {/* Menu Content */}
       <div className="flex flex-col overflow-y-scroll">
-        {!isMinimized && <Label className="px-5 pb-2 text-xs text-white">Character</Label>}
+        <Label className="hidden px-5 pb-2 text-xs text-white md:block">{!isMinimized && "Character"}</Label>
         <MenuContainer
           menuItems={Object.keys(miscMenus) as MenuId[]}
           isMinimized={isMinimized}
