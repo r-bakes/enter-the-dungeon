@@ -4,14 +4,11 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import { skillTable } from "@/data/skills/skills";
-import { SkillImpactedPopup } from "@/features/town/common/components/skillImpactedPopup";
 import { Upgrade } from "@/types/upgrades";
 import {
   formatCapitalCase,
   renderIcon,
 } from "@/features/common/utils/formattingUtilities";
-import { SkillId } from "@/data/skills/enums";
 import { formatModifier } from "../../modifiers/utils/modifier";
 import { Label } from "@/components/ui/label";
 
@@ -19,39 +16,31 @@ export default function UpgradeCard({
   upgrade,
 }: Readonly<{ upgrade: Upgrade }>) {
   return (
-    <Card className="flex h-20 min-h-max w-full min-w-max items-center p-4">
-      <CardHeader className="flex h-full w-full flex-row items-center justify-between p-0">
-        <div className="flex h-full">
-          <div className="flex h-full w-60 items-center gap-4">
-            {renderIcon(upgrade.icon, 44, { ...upgrade.iconStyle })}
-            <div className="flex h-full min-w-max flex-col justify-center">
-              <CardTitle className="text-base">{upgrade.name}</CardTitle>
-              <CardDescription className="p-0 text-left text-xs">
+    <Card className="mx-auto flex h-auto min-h-max w-full items-center p-3 lg:mx-0 lg:h-16 lg:max-w-none lg:px-4 lg:py-3">
+      <CardHeader className="flex h-full w-full flex-col items-center gap-3 p-0 lg:flex-row lg:items-center lg:justify-between lg:gap-4">
+        <div className="flex w-full items-center justify-center gap-2 lg:w-auto lg:justify-start lg:gap-3">
+          <div className="flex items-start gap-3">
+            {renderIcon(upgrade.icon, 32, { ...upgrade.iconStyle })}
+            <div className="flex min-w-0 flex-1 flex-col justify-center gap-0.5 text-left lg:flex-none lg:text-left">
+              <CardTitle className="text-sm leading-tight break-words lg:text-sm">
+                {upgrade.name}
+              </CardTitle>
+              <CardDescription className="p-0 text-xs leading-tight break-words">
                 {upgrade.description}
               </CardDescription>
             </div>
           </div>
-          <div className="mx-6 flex h-full max-w-[500px] gap-2 overflow-x-scroll py-2">
-            {/* {Object.entries(upgrade.modifier.targets).map( */}
-            {/*   ([skillId, taskIds]) => ( */}
-            {/*     <SkillImpactedPopup */}
-            {/*       key={skillId} */}
-            {/*       skill={skillTable[skillId as SkillId]} */}
-            {/*       taskIds={taskIds} */}
-            {/*       upgrade={upgrade} */}
-            {/*     ></SkillImpactedPopup> */}
-            {/*   ), */}
-            {/* )} */}
-          </div>
         </div>
-        <div className="flex h-full w-48 flex-col items-start gap-1 px-6">
+        <div className="flex w-full flex-wrap items-center justify-center gap-x-3 gap-y-1 lg:w-auto lg:flex-col lg:items-end lg:gap-1">
           {Object.entries(upgrade.modifier.values).map(([type, value]) => (
             <div
               key={type}
-              className="flex h-full items-center justify-center gap-1"
+              className="flex items-center gap-1 whitespace-nowrap"
             >
-              <Label className="text-xs">{formatModifier(value, type)}</Label>
-              <Label className="text-xs font-normal text-muted-foreground">
+              <Label className="text-xs font-medium">
+                {formatModifier(value, type)}
+              </Label>
+              <Label className="text-muted-foreground text-xs font-normal">
                 {formatCapitalCase(type)}
               </Label>
             </div>

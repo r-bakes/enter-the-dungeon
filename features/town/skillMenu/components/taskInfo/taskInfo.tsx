@@ -1,16 +1,8 @@
-import { useState } from "react";
 import { Button } from "@/components/ui/button";
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardFooter,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
+import { Card } from "@/components/ui/card";
 import { Progress } from "@/components/ui/progress";
 import { Label } from "@radix-ui/react-label";
-import { Play, X, ChevronDown, ChevronUp } from "lucide-react";
+import { Play, X } from "lucide-react";
 import { useCharacterEngineContext } from "@/engines/characterEngineContext";
 import TaskDataEntry from "./taskDataEntry";
 import { Separator } from "@/components/ui/separator";

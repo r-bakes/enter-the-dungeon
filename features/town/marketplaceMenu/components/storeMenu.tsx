@@ -56,46 +56,49 @@ export default function StoreMenu({ items }: { items: Item[] }) {
       {items.map((item) => (
         <Card
           key={item.id}
-          className={"flex h-min w-full flex-row items-center justify-between"}
+          className="mx-auto flex h-auto min-h-max w-full items-center p-3 lg:mx-0 lg:h-16 lg:px-4 lg:py-3"
         >
-          <CardHeader className="flex flex-row gap-3">
-            {renderIcon(item.icon, 44, item.iconStyle)}
-            <div className="flex flex-col gap-1">
-              <CardTitle className="text-base">{item.name}</CardTitle>
-              <CardDescription className="text-xs">
-                {item.description}
-              </CardDescription>
-            </div>
-          </CardHeader>
-          <CardHeader className="flex flex-row items-center gap-12">
-            <Card
-              className={clsx(
-                "flex flex-row items-center gap-3 px-4 py-2",
-                !canAfford(item, 1) ? "border-red-300" : "",
-              )}
-            >
-              {renderIcon(itemTable.GOLD.icon, 32, itemTable.GOLD.iconStyle)}
-              <div className="flex flex-col gap-1">
-                <div className="flex flex-row gap-1">
-                  <CardTitle className="text-xs">
-                    {formatLargeQuantity(item.value)}
-                  </CardTitle>
-                  <CardDescription className="text-xs">
-                    {itemTable.GOLD.name.toLowerCase()}
+          <CardHeader className="flex h-full w-full flex-col items-center gap-3 p-0 lg:flex-row lg:items-center lg:justify-between lg:gap-4">
+            <div className="flex w-full items-center justify-center gap-2 lg:w-auto lg:justify-start lg:gap-3">
+              <div className="flex items-start gap-3">
+                {renderIcon(item.icon, 32, item.iconStyle)}
+                <div className="flex min-w-0 flex-1 flex-col justify-center gap-0.5 text-left lg:flex-none lg:text-left">
+                  <CardTitle className="text-sm leading-tight break-words lg:text-sm">{item.name}</CardTitle>
+                  <CardDescription className="p-0 text-xs leading-tight break-words">
+                    {item.description}
                   </CardDescription>
-                </div>
-                <div className="flex w-full items-center justify-end">
-                  <CardDescription className="text-muted-foreground mr-1 text-xs font-normal">
-                    ({formatLargeQuantity(character.inventory[ItemId.GOLD])})
-                  </CardDescription>
-                  <Backpack size={14} strokeWidth={1}></Backpack>
                 </div>
               </div>
-            </Card>
-            <Dialog onOpenChange={() => setAmountSelected(1)}>
-              <DialogTrigger asChild>
-                <Button disabled={!canAfford(item, 1)}>Buy</Button>
-              </DialogTrigger>
+            </div>
+            <div className="flex w-full flex-wrap items-center justify-center gap-x-3 gap-y-2 lg:w-auto lg:flex-row lg:items-center lg:gap-12">
+              <Card
+                className={clsx(
+                  "flex flex-row items-center gap-3 px-4 py-2",
+                  !canAfford(item, 1) ? "border-red-300" : "",
+                )}
+              >
+                {renderIcon(itemTable.GOLD.icon, 32, itemTable.GOLD.iconStyle)}
+                <div className="flex flex-col gap-1">
+                  <div className="flex flex-row gap-1">
+                    <CardTitle className="text-xs">
+                      {formatLargeQuantity(item.value)}
+                    </CardTitle>
+                    <CardDescription className="text-xs">
+                      {itemTable.GOLD.name.toLowerCase()}
+                    </CardDescription>
+                  </div>
+                  <div className="flex w-full items-center justify-end">
+                    <CardDescription className="text-muted-foreground mr-1 text-xs font-normal">
+                      ({formatLargeQuantity(character.inventory[ItemId.GOLD])})
+                    </CardDescription>
+                    <Backpack size={14} strokeWidth={1}></Backpack>
+                  </div>
+                </div>
+              </Card>
+              <Dialog onOpenChange={() => setAmountSelected(1)}>
+                <DialogTrigger asChild>
+                  <Button disabled={!canAfford(item, 1)}>Buy</Button>
+                </DialogTrigger>
               <DialogContent>
                 <DialogTitle>Buy</DialogTitle>
                 <DialogDescription>how much?</DialogDescription>
@@ -237,6 +240,7 @@ export default function StoreMenu({ items }: { items: Item[] }) {
                 </div>
               </DialogContent>
             </Dialog>
+            </div>
           </CardHeader>
         </Card>
       ))}

@@ -57,28 +57,31 @@ export default function MarcketplaceMenu() {
   };
 
   return (
-    <div className="flex h-full w-full flex-col gap-6 px-8">
+    <div className="flex h-full w-full flex-col gap-4 px-4 lg:gap-6 lg:px-8">
       <Card className="w-full items-center">
-        <CardHeader className="flex w-full flex-row items-center">
-          {renderIcon(marketplace.icon, 44, {
-            ...marketplace.iconStyle,
-          })}
-          <div className="flex flex-col pl-4">
-            <CardTitle>{marketplace.name}</CardTitle>
-            <CardDescription>{marketplace.description}</CardDescription>
+        <CardHeader className="flex flex-row items-center">
+          <div className="lg:hidden">
+            {renderIcon(marketplace.icon, 32, marketplace.iconStyle)}
+          </div>
+          <div className="hidden lg:block">
+            {renderIcon(marketplace.icon, 44, marketplace.iconStyle)}
+          </div>
+          <div className="m-0 flex flex-col pl-3 lg:pl-4">
+            <CardTitle className="text-base lg:text-lg">{marketplace.name}</CardTitle>
+            <CardDescription className="text-xs lg:text-sm">{marketplace.description}</CardDescription>
           </div>
         </CardHeader>
       </Card>
-      <div className="flex min-h-0 w-full flex-1 flex-row gap-6">
-        <div className="w-0 border-4 shadow-xs"></div>
-        <div className="flex flex-1 flex-col">
+      <div className="flex h-full w-full flex-col gap-4 lg:flex-row lg:gap-6">
+        <div className="hidden w-0 border-4 shadow-xs lg:block"></div>
+        <div className="flex h-full grow flex-col items-center lg:items-stretch lg:w-full">
           <Select
             defaultValue={defaultCategory}
             onValueChange={(value: MarketplaceStores) => {
               setSelectedStore(value);
             }}
           >
-            <SelectTrigger className="text-muted-foreground mb-2 w-full font-normal">
+            <SelectTrigger className="text-muted-foreground mx-auto mb-2 w-full font-normal lg:mx-0 lg:w-full">
               <SelectValue></SelectValue>
             </SelectTrigger>
             <SelectContent>
@@ -86,7 +89,7 @@ export default function MarcketplaceMenu() {
                 {Object.entries(MarketplaceStores).map(
                   ([categoryId, category]) => (
                     <SelectItem
-                      className="text-muted-foreground font-light"
+                      className="text-muted-foreground font-normal"
                       key={categoryId}
                       value={category}
                     >
@@ -97,7 +100,7 @@ export default function MarcketplaceMenu() {
               </SelectGroup>
             </SelectContent>
           </Select>
-          <div className="flex w-full grow flex-col gap-2 overflow-y-scroll">
+          <div className="flex h-full w-full flex-col items-center gap-1 overflow-y-auto lg:items-stretch lg:gap-2">
             {storeMenu[selectedStore]}
           </div>
         </div>

@@ -59,27 +59,28 @@ export default function UpgradesStoreMenu({
     <div className="flex w-full flex-col gap-2">
       {upgrades.map((upgrade) => (
         <Card
-          className="flex h-min w-full items-center justify-between"
+          className="mx-auto flex h-auto min-h-max w-full items-center p-3 lg:mx-0 lg:h-16 lg:px-4 lg:py-3"
           key={upgrade.id}
         >
-          <CardHeader className="flex flex-row gap-3">
-            <div className="flex h-full w-80 items-center gap-4">
-              {renderIcon(upgrade.icon, 44, { ...upgrade.iconStyle })}
-              <div className="flex h-full flex-col justify-center text-left">
-                <CardTitle className="text-base">{upgrade.name}</CardTitle>
-                <CardDescription className="text-xs">
-                  {upgrade.description}
-                </CardDescription>
+          <CardHeader className="flex h-full w-full flex-col items-center gap-3 p-0 lg:flex-row lg:items-center lg:justify-between lg:gap-4">
+            <div className="flex w-full items-center justify-center gap-2 lg:w-80 lg:shrink-0 lg:justify-start lg:gap-3">
+              <div className="flex items-start gap-3">
+                {renderIcon(upgrade.icon, 32, { ...upgrade.iconStyle })}
+                <div className="flex min-w-0 flex-1 flex-col justify-center gap-0.5 text-left lg:flex-none lg:text-left">
+                  <CardTitle className="text-sm leading-tight break-words lg:text-sm line-clamp-2">{upgrade.name}</CardTitle>
+                  <CardDescription className="p-0 text-xs leading-tight break-words line-clamp-2">
+                    {upgrade.description}
+                  </CardDescription>
+                </div>
               </div>
             </div>
-            <div className="mx-6 flex h-full max-w-[500px] gap-2 overflow-x-scroll py-2"></div>
-            <div className="flex h-full flex-col items-start gap-1 px-6">
+            <div className="flex w-full flex-wrap items-center justify-center gap-x-3 gap-y-1 lg:w-48 lg:shrink-0 lg:flex-col lg:items-end lg:gap-1">
               {Object.entries(upgrade.modifier.values).map(([type, value]) => (
                 <div
                   key={type}
-                  className="flex h-full items-center justify-center gap-1"
+                  className="flex items-center gap-1 whitespace-nowrap"
                 >
-                  <Label className="text-xs">
+                  <Label className="text-xs font-medium">
                     {formatModifier(value, type)}
                   </Label>
                   <Label className="text-muted-foreground text-xs font-normal">
@@ -88,55 +89,47 @@ export default function UpgradesStoreMenu({
                 </div>
               ))}
             </div>
-          </CardHeader>
-          <CardHeader className="flex h-full flex-row items-center gap-12">
-            <div className="flex flex-row gap-2">
-              {Object.entries(upgrade.requiresItems).map(
-                ([itemId, quantity]) => {
-                  let item = itemTable[itemId as ItemId];
-                  let cardFormat = haveEnough(itemId as ItemId, quantity)
-                    ? ""
-                    : "border-red-300";
-                  return (
-                    <Card
-                      key={itemId}
-                      className={
-                        "flex w-36 items-center justify-between gap-2 px-4 py-2 " +
-                        cardFormat
-                      }
-                    >
-                      {renderIcon(item.icon, 32, { ...item.iconStyle })}
-                      <div className="flex flex-col gap-1">
-                        <div className="flex flex-row gap-1">
+            <div className="flex w-full flex-col gap-2 lg:w-auto lg:shrink-0 lg:flex-row lg:items-center lg:gap-12">
+              <div className="flex flex-wrap justify-center gap-2 lg:flex-row">
+                {Object.entries(upgrade.requiresItems).map(
+                  ([itemId, quantity]) => {
+                    let item = itemTable[itemId as ItemId];
+                    let cardFormat = haveEnough(itemId as ItemId, quantity)
+                      ? ""
+                      : "border-red-300";
+                    return (
+                      <Card
+                        key={itemId}
+                        className={
+                          "flex w-auto items-center gap-2 px-3 py-2 " +
+                          cardFormat
+                        }
+                      >
+                        {renderIcon(item.icon, 20, { ...item.iconStyle })}
+                        <div className="flex items-center gap-1">
                           <CardTitle className="text-xs">
                             {formatLargeQuantity(quantity)}
                           </CardTitle>
                           <CardDescription className="text-xs">
                             {item.name.toLowerCase()}
                           </CardDescription>
-                        </div>
-                        <div className="flex w-full items-center justify-end">
-                          <Label className="text-muted-foreground mr-1 text-xs font-normal">
-                            (
-                            {formatLargeQuantity(
-                              character.inventory[itemId as ItemId],
-                            )}
-                            )
+                          <Label className="text-muted-foreground text-xs font-normal">
+                            ({formatLargeQuantity(character.inventory[itemId as ItemId])})
                           </Label>
-                          <Backpack size={14} strokeWidth={1}></Backpack>
+                          <Backpack size={12} strokeWidth={1}></Backpack>
                         </div>
-                      </div>
-                    </Card>
-                  );
-                },
-              )}
+                      </Card>
+                    );
+                  },
+                )}
+              </div>
+              <Button
+                onClick={() => buy(upgrade)}
+                disabled={!canPurchase(upgrade)}
+              >
+                Buy
+              </Button>
             </div>
-            <Button
-              onClick={() => buy(upgrade)}
-              disabled={!canPurchase(upgrade)}
-            >
-              Buy
-            </Button>
           </CardHeader>
         </Card>
       ))}

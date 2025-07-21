@@ -73,17 +73,17 @@ export function SkillHeader({
           </Button>
         </div>
       </CardHeader>
-      
+
       {/* Mobile: Compact experience bar */}
-      <CardContent className="flex flex-col px-4 pb-4 pt-0 lg:hidden">
+      <CardContent className="flex flex-col px-4 pt-0 pb-4 lg:hidden">
         <Progress
           className="h-1.5 w-full rounded-sm"
           value={(expGainedAtLevel / expRemainingForLevelUp) * 100}
         ></Progress>
       </CardContent>
-      
+
       {/* Desktop: Full experience section */}
-      <CardContent className="hidden flex-col gap-2 pb-0 lg:flex">
+      <CardContent className="hidden flex-col gap-2 pb-4 lg:flex">
         <Progress
           className="h-3 w-full rounded-sm"
           value={(expGainedAtLevel / expRemainingForLevelUp) * 100}

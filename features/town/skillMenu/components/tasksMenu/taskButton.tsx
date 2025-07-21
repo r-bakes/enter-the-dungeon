@@ -20,20 +20,20 @@ export default function TaskButton({
   const { applySpeedModifier, applyExperienceModifier } = useModifierActions();
 
   return (
-    <Card className="flex h-16 md:h-16 w-full min-w-max">
+    <Card className="flex h-16 md:h-16 w-full lg:min-w-max">
       <Button
         className="flex h-full w-full flex-col items-center py-3 md:py-4"
         onClick={onClick}
         variant="ghost"
       >
         <CardHeader className="flex w-full flex-row justify-between gap-3 md:gap-6 p-0">
-          <div className="flex h-full flex-row items-center gap-2 md:gap-4">
+          <div className="flex h-full flex-row items-center gap-2 md:gap-4 min-w-0 flex-1">
             {renderIcon(task.icon, 32, {
               ...task.iconStyle,
             })}
-            <div className="flex h-full flex-col gap-0.5 text-left">
-              <CardTitle className="text-sm md:text-base leading-tight">{task.name}</CardTitle>
-              <CardDescription className="text-xs font-normal leading-tight">
+            <div className="flex h-full flex-col gap-0.5 text-left min-w-0 flex-1">
+              <CardTitle className="text-sm md:text-base leading-tight truncate lg:whitespace-normal lg:overflow-visible">{task.name}</CardTitle>
+              <CardDescription className="text-xs font-normal leading-tight truncate lg:whitespace-normal lg:overflow-visible">
                 {task.description}
               </CardDescription>
             </div>
