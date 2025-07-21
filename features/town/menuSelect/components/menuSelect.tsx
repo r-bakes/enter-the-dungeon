@@ -21,7 +21,7 @@ export default function MenuSelect({}: Readonly<{}>) {
 
   return (
     <div
-      className={`flex h-full flex-col border-r-4 bg-slate-800 pt-10 pb-2 shadow-xs transition-all duration-300 ${widthClasses}`}
+      className={`flex h-full shrink-0 flex-col border-r-4 bg-slate-800 pt-10 pb-2 shadow-xs transition-all duration-300 ${widthClasses}`}
     >
       {/* Toggle Button - hidden on mobile, visible on desktop */}
       <div

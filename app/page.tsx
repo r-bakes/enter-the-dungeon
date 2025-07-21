@@ -16,11 +16,11 @@ export default function Page() {
   const { selectedMenu, isToastDisabled } = useMenuEngineContext();
 
   return (
-    <div className="flex h-full min-h-min w-full min-w-min">
+    <div className="flex h-full w-full max-w-full overflow-hidden">
       {/* Main content area - full height, sidebar will extend behind notification bar */}
-      <div className="flex h-full w-full">
+      <div className="flex h-full w-full max-w-full">
         {selectedMenu === MenuId.EXPEDITION ? (
-          <div className="bg-secondary-background flex w-full grow p-10 pb-24">
+          <div className="bg-secondary-background flex w-full grow p-10 pb-24 overflow-hidden">
             <ExpeditionEngineProvider>
               <EncounterEngineProvider>
                 <CombatCardEngineProvider>
@@ -32,9 +32,9 @@ export default function Page() {
             </ExpeditionEngineProvider>
           </div>
         ) : (
-          <div className="flex h-full w-full">
+          <div className="flex h-full w-full max-w-full overflow-hidden">
             <MenuSelect />
-            <div className="bg-secondary-background flex min-h-0 flex-1 py-10 pb-24">
+            <div className="bg-secondary-background flex min-h-0 min-w-0 flex-1 py-10 pb-24 lg:pb-24 overflow-x-auto">
               {menuTable[selectedMenu].menu}
             </div>
           </div>

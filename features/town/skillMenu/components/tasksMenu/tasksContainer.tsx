@@ -12,7 +12,7 @@ export default function TasksContainer({
   setTask: React.Dispatch<React.SetStateAction<Task | null>>;
 }>) {
   return (
-    <div className="flex w-full flex-col gap-2 overflow-y-auto">
+    <div className="flex w-full flex-col gap-1 md:gap-2 overflow-y-auto">
       {tasks.map((task) =>
         skillLevel >= task.requiredLevel ? (
           <TaskButton

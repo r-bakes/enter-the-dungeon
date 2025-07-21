@@ -20,32 +20,32 @@ export default function TaskButton({
   const { applySpeedModifier, applyExperienceModifier } = useModifierActions();
 
   return (
-    <Card className="flex h-20 w-full min-w-max">
+    <Card className="flex h-16 md:h-16 w-full min-w-max">
       <Button
-        className="flex h-full w-full flex-col items-center py-4"
+        className="flex h-full w-full flex-col items-center py-3 md:py-4"
         onClick={onClick}
         variant="ghost"
       >
-        <CardHeader className="flex w-full flex-row justify-between gap-6 p-0">
-          <div className="flex h-full flex-row items-center gap-4">
-            {renderIcon(task.icon, 44, {
+        <CardHeader className="flex w-full flex-row justify-between gap-3 md:gap-6 p-0">
+          <div className="flex h-full flex-row items-center gap-2 md:gap-4">
+            {renderIcon(task.icon, 32, {
               ...task.iconStyle,
             })}
-            <div className="flex h-full flex-col gap-1 text-left">
-              <CardTitle className="text-base">{task.name}</CardTitle>
-              <CardDescription className="text-xs font-normal">
+            <div className="flex h-full flex-col gap-0.5 text-left">
+              <CardTitle className="text-sm md:text-base leading-tight">{task.name}</CardTitle>
+              <CardDescription className="text-xs font-normal leading-tight">
                 {task.description}
               </CardDescription>
             </div>
           </div>
-          <div className="flex h-full flex-col justify-center">
-            <div className="flex w-full gap-1">
+          <div className="flex h-full flex-col justify-center min-w-0 shrink-0">
+            <div className="flex w-full gap-1 justify-end">
               <Label className="text-xs">{applySpeedModifier(task.id)}</Label>
               <Label className="text-xs font-normal text-muted-foreground">
                 seconds
               </Label>
             </div>
-            <div className="flex w-28 gap-1">
+            <div className="flex w-full gap-1 justify-end">
               <Label className="text-xs">
                 {applyExperienceModifier(task.id)}
               </Label>

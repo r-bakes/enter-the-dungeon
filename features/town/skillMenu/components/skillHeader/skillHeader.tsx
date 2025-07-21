@@ -28,30 +28,62 @@ export function SkillHeader({
     requiredExpForLevelUp(skillLevel) - requiredExpForLevelUp(skillLevel - 1);
 
   return (
-    <Card className="flex h-40 min-h-40 w-full flex-col">
-      <CardHeader className="flex min-w-max flex-row items-center justify-between gap-4">
-        <div className="flex gap-4">
-          <skill.icon size={44} strokeWidth={1}></skill.icon>
-          <div className="mr-6 flex min-w-max flex-col">
-            <CardTitle>{skill.name}</CardTitle>
-            <CardDescription className="font-normal">
+    <Card className="flex w-full flex-col">
+      <CardHeader className="flex w-full flex-row items-center justify-between gap-2 p-4 lg:gap-4 lg:p-6">
+        <div className="flex min-w-0 flex-1 gap-2 lg:gap-4">
+          <skill.icon
+            size={32}
+            strokeWidth={1}
+            className="shrink-0 lg:hidden"
+          ></skill.icon>
+          <skill.icon
+            size={44}
+            strokeWidth={1}
+            className="hidden shrink-0 lg:block"
+          ></skill.icon>
+          <div className="mr-2 flex min-w-0 flex-1 flex-col lg:mr-4">
+            <CardTitle className="truncate text-sm lg:text-xl">
+              {skill.name}
+            </CardTitle>
+            <CardDescription className="line-clamp-1 text-xs font-normal lg:line-clamp-2 lg:text-sm">
               {skill.description}
             </CardDescription>
           </div>
-          <div className="mr-6 flex min-w-max flex-col">
-            <CardTitle>
+          <div className="mr-2 flex shrink-0 flex-col lg:mr-4">
+            <CardTitle className="text-sm lg:text-xl">
               {skillLevel} / {LEVEL_CAP}
             </CardTitle>
-            <CardDescription className="font-normal">Level</CardDescription>
+            <CardDescription className="text-xs font-normal lg:text-sm">
+              Level
+            </CardDescription>
           </div>
         </div>
-        <div className="flex min-w-max flex-col">
-          <Button className="h-11 w-11 p-0" variant="outline">
-            <FlaskRound strokeWidth={1.5}></FlaskRound>
+        <div className="flex shrink-0 flex-col">
+          <Button className="h-8 w-8 p-0 lg:h-11 lg:w-11" variant="outline">
+            <FlaskRound
+              strokeWidth={1.5}
+              size={16}
+              className="lg:hidden"
+            ></FlaskRound>
+            <FlaskRound
+              strokeWidth={1.5}
+              size={24}
+              className="hidden lg:block"
+            ></FlaskRound>
           </Button>
         </div>
       </CardHeader>
-      <CardContent className="flex flex-col gap-2 pb-0">
+      
+      {/* Mobile: Compact experience bar */}
+      <CardContent className="flex flex-col px-4 pb-4 pt-0 lg:hidden">
+        <Progress
+          className="h-1.5 w-full rounded-sm"
+          value={(expGainedAtLevel / expRemainingForLevelUp) * 100}
+        ></Progress>
+      </CardContent>
+      
+      {/* Desktop: Full experience section */}
+      <CardContent className="hidden flex-col gap-2 pb-0 lg:flex">
         <Progress
           className="h-3 w-full rounded-sm"
           value={(expGainedAtLevel / expRemainingForLevelUp) * 100}

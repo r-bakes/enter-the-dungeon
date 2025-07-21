@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import {
   Card,
@@ -9,12 +10,11 @@ import {
 } from "@/components/ui/card";
 import { Progress } from "@/components/ui/progress";
 import { Label } from "@radix-ui/react-label";
-import { Play, X } from "lucide-react";
+import { Play, X, ChevronDown, ChevronUp } from "lucide-react";
 import { useCharacterEngineContext } from "@/engines/characterEngineContext";
 import TaskDataEntry from "./taskDataEntry";
 import { Separator } from "@/components/ui/separator";
 
-import { itemTable } from "@/data/items/items";
 import { generateDropRates } from "@/features/common/loot/utils/lootUtils";
 import { Item } from "@/types/items";
 import {
@@ -25,19 +25,16 @@ import { ModifierType } from "@/data/modifiers/enums";
 import TaskProducesEntry from "@/features/town/skillMenu/components/taskInfo/taskProducesEntry";
 import { TaskRequiresEntry } from "@/features/town/skillMenu/components/taskInfo/taskRequiresEntry";
 import TaskModifiersEntry from "@/features/town/skillMenu/components/taskInfo/taskModifiersEntry";
-import { StealthTask, Task } from "@/types/tasks";
-import { ItemId } from "@/data/items/enums";
+import { Task } from "@/types/tasks";
 import { useModifierActions } from "@/features/town/modifiers/hooks/useModifierActions";
 import { useModifierEngineContext } from "@/engines/modifierEngineContext";
 import { useWorkingEngineContext } from "@/engines/workingEngineContext";
-import { taskToSkill } from "@/features/common/working/utils/workingUtils";
-import { SkillId } from "@/data/skills/enums";
 import TaskSuccessEntry from "./taskSuccessEntry";
 import { calculateSuccessChance } from "@/features/common/stealth/utils/stealthUtils";
 import useInventoryActions from "@/features/common/inventory/hooks/useInventoryActions";
 
 const rootCardFormat =
-  "flex flex-col grow-0 w-80 min-w-80 max-w-80 items-center";
+  "flex flex-col grow-0 w-full lg:w-80 lg:min-w-80 lg:max-w-80 items-center";
 
 export default function TaskInfo({
   task,
@@ -70,26 +67,38 @@ export default function TaskInfo({
   let requirementsMet = hasItems(task.requires);
 
   return (
-    <Card className={rootCardFormat}>
-      <CardHeader className="flex h-32 w-full flex-row gap-4">
-        {renderIcon(task.icon, 48, task.iconStyle)}
-        <div className="flex flex-col gap-1">
-          <CardTitle className="text-lg">{task.name}</CardTitle>
-          <CardDescription className="font-normal">
-            {task.description}
-          </CardDescription>
+    <div
+      className={`${rootCardFormat} lg:bg-card lg:rounded-lg lg:border lg:shadow-sm`}
+    >
+      <div className="flex h-20 w-full flex-row gap-3 p-4 lg:h-32 lg:gap-4 lg:p-6">
+        <div className="lg:hidden">
+          {renderIcon(task.icon, 32, task.iconStyle)}
         </div>
-      </CardHeader>
-      <CardContent className="flex min-h-0 w-full flex-1 flex-col gap-4">
+        <div className="hidden lg:block">
+          {renderIcon(task.icon, 48, task.iconStyle)}
+        </div>
+        <div className="flex min-w-0 flex-1 flex-col gap-1">
+          <h3 className="truncate text-base leading-tight font-semibold lg:text-lg">
+            {task.name}
+          </h3>
+          <p className="text-muted-foreground line-clamp-2 text-xs leading-tight font-normal lg:line-clamp-2 lg:text-sm">
+            {task.description}
+          </p>
+        </div>
+      </div>
+      <div className="flex min-h-0 w-full flex-1 flex-col gap-4 p-4 lg:p-6">
         <Progress
-          className="h-4 w-full rounded-sm"
+          className="h-3 w-full rounded-sm lg:h-4"
           value={
             task === workingTask
               ? (taskProgress / applySpeedModifier(task.id)) * 100
               : 0
           }
         ></Progress>
+
         <Separator></Separator>
+
+        {/* Time and experience stats */}
         <div className="flex w-full items-center justify-between gap-4">
           <TaskDataEntry
             data={applySpeedModifier(task.id)}
@@ -101,7 +110,9 @@ export default function TaskInfo({
             label={"experience"}
           ></TaskDataEntry>
         </div>
-        <div className="flex grow flex-col gap-4 overflow-y-scroll">
+
+        {/* Task details */}
+        <div className="flex flex-col gap-4 overflow-y-auto">
           {"perception" in task && (
             <TaskSuccessEntry
               value={formatRoundedQuantity(
@@ -120,10 +131,12 @@ export default function TaskInfo({
           <TaskRequiresEntry data={task.requires}></TaskRequiresEntry>
           <TaskModifiersEntry data={modifiers[task.id]}></TaskModifiersEntry>
         </div>
-      </CardContent>
-      <CardFooter className="flex h-24 w-full items-end">
+      </div>
+
+      {/* Desktop only: Show buttons in footer */}
+      <div className="hidden h-24 w-full flex-col items-end gap-2 p-4 pt-0 sm:flex-row sm:gap-0 lg:flex lg:p-6">
         <Button
-          className="w-1/2 text-center"
+          className="w-full text-center sm:w-1/2"
           disabled={!requirementsMet || taskWorkingLocked}
           onClick={() => {
             setWorkingTask(task);
@@ -132,7 +145,7 @@ export default function TaskInfo({
           <Play className="mr-2"></Play>Start
         </Button>
         <Button
-          className="w-1/2 text-center"
+          className="w-full text-center sm:w-1/2"
           variant={task == workingTask ? "destructive" : "secondary"}
           disabled={task != workingTask}
           onClick={() => {
@@ -141,7 +154,7 @@ export default function TaskInfo({
         >
           <X className="mr-2"></X>Stop
         </Button>
-      </CardFooter>
-    </Card>
+      </div>
+    </div>
   );
 }
