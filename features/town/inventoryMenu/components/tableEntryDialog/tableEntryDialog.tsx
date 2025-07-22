@@ -1,14 +1,14 @@
-import { Sheet, SheetContent, SheetFooter } from "@/components/ui/sheet";
+import { Dialog, DialogContent } from "@/components/ui/dialog";
 import { ItemId, ItemType } from "@/data/items/enums";
 import { itemTable } from "@/data/items/items";
 import { useCharacterEngineContext } from "@/engines/characterEngineContext";
-import TableEntrySheetEquipment from "@/features/town/inventoryMenu/components/tableEntrySheet/tableEntrySheetEquipment";
-import TableEntrySheetHeader from "@/features/town/inventoryMenu/components/tableEntrySheet/tableEntrySheetHeader";
-import TableEntryDialogSellEntry from "@/features/town/inventoryMenu/components/tableEntrySheet/tableEntrySheetSellEntry";
+import TableEntryDialogEquipment from "@/features/town/inventoryMenu/components/tableEntryDialog/tableEntryDialogEquipment";
+import TableEntryDialogHeader from "@/features/town/inventoryMenu/components/tableEntryDialog/tableEntryDialogHeader";
+import TableEntryDialogSellEntry from "@/features/town/inventoryMenu/components/tableEntryDialog/tableEntryDialogSellEntry";
 import { Equipment } from "@/types/items";
 import React from "react";
 
-export default function TableEntrySheet({
+export default function TableEntryDialog({
   open,
   itemId,
   setOpen,
@@ -26,25 +26,24 @@ export default function TableEntrySheet({
   let itemAmount = character.inventory[itemId];
 
   return (
-    <Sheet open={open} onOpenChange={setOpen}>
-      <SheetContent className="flex min-h-96 w-[450px] flex-col justify-between">
-        <TableEntrySheetHeader
+    <Dialog open={open} onOpenChange={setOpen}>
+      <DialogContent className="flex flex-col justify-between max-w-md max-h-[90vh] overflow-y-auto">
+        <TableEntryDialogHeader
           item={item}
           itemAmount={itemAmount}
-        ></TableEntrySheetHeader>
+        ></TableEntryDialogHeader>
         {item.type === ItemType.EQUIPMENT ? (
-          <TableEntrySheetEquipment
+          <TableEntryDialogEquipment
             item={item as Equipment}
             setOpen={setOpen}
-          ></TableEntrySheetEquipment>
+          ></TableEntryDialogEquipment>
         ) : null}
         <TableEntryDialogSellEntry
           item={item}
           amountInInventory={itemAmount}
           setOpen={setOpen}
         ></TableEntryDialogSellEntry>
-      </SheetContent>
-      <SheetFooter></SheetFooter>
-    </Sheet>
+      </DialogContent>
+    </Dialog>
   );
 }

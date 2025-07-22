@@ -13,16 +13,18 @@ import { useModifierActions } from "@/features/town/modifiers/hooks/useModifierA
 export default function TaskButton({
   task,
   onClick,
+  isSelected = false,
 }: Readonly<{
   task: Task;
   onClick: React.Dispatch<React.SetStateAction<any>>;
+  isSelected?: boolean;
 }>) {
   const { applySpeedModifier, applyExperienceModifier } = useModifierActions();
 
   return (
     <Card className="flex h-16 md:h-16 w-full lg:min-w-max">
       <Button
-        className="flex h-full w-full flex-col items-center py-3 md:py-4"
+        className={`flex h-full w-full flex-col items-center py-3 md:py-4 ${isSelected ? 'bg-accent text-accent-foreground' : ''}`}
         onClick={onClick}
         variant="ghost"
       >

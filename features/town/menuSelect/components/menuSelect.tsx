@@ -10,7 +10,6 @@ import { Exit } from "@/features/common/exit/exit";
 import { SettingsButton } from "@/features/common/settingsButton/settingsButton";
 import { MenuId } from "@/data/menus/enums";
 import { combatMenus, miscMenus, skillMenus } from "@/data/menus/menus";
-import { DisableNotificationsToggle } from "@/features/common/disableNotificationsToggle/disableNotificationsToggle";
 
 export default function MenuSelect({}: Readonly<{}>) {
   const [isMinimized, setIsMinimized] = useState(false);
@@ -23,46 +22,47 @@ export default function MenuSelect({}: Readonly<{}>) {
     <div
       className={`flex h-full shrink-0 flex-col border-r-4 bg-slate-800 pt-10 pb-2 shadow-xs transition-all duration-300 ${widthClasses}`}
     >
-      {/* Toggle Button - hidden on mobile, visible on desktop */}
-      <div
-        className={`hidden md:flex ${isMinimized ? "mb-4 justify-center" : "mb-2 justify-end pr-2"}`}
-      >
-        <Button
-          onClick={() => setIsMinimized(!isMinimized)}
-          variant="ghost"
-          size="sm"
-          className="h-8 w-8 p-0 text-white hover:bg-slate-700"
-        >
-          {isMinimized ? (
-            <ChevronRight className="h-4 w-4" />
-          ) : (
-            <ChevronLeft className="h-4 w-4" />
-          )}
-        </Button>
-      </div>
-
       {/* Logo - hidden on mobile, conditional on desktop */}
-      <div className="hidden md:block">{!isMinimized && <Logo />}</div>
+      <div className="hidden lg:block">{!isMinimized && <Logo />}</div>
 
       {/* Action Buttons */}
-      <div
-        className={`mt-4 flex w-full ${isMinimized ? "flex-col gap-2 px-2" : "flex-col gap-2 px-2 md:flex-row md:px-2"}`}
-      >
-        <SettingsButton />
-        <div className="hidden md:flex">
-          {!isMinimized && <ThemeToggle />}
-          {!isMinimized && <DisableNotificationsToggle />}
-          {!isMinimized && <Exit />}
+      <div className="mt-4 flex w-full">
+        {/* Mobile: Settings button only, full width */}
+        <div className="flex w-full px-2 md:hidden">
+          <SettingsButton />
+        </div>
+
+        {/* Desktop: Both buttons right-justified when not minimized */}
+        <div
+          className={`hidden w-full md:flex ${isMinimized ? "flex-col justify-center" : "justify-end gap-2 pr-2"}`}
+        >
+          <SettingsButton />
+          <Button
+            onClick={() => setIsMinimized(!isMinimized)}
+            variant="ghost"
+            size="sm"
+            className={`h-10 w-8 p-0 text-white hover:bg-transparent ${isMinimized ? "hidden" : ""}`}
+          >
+            <ChevronLeft className="h-[1.2rem] w-[1.2rem]" color="white" />
+          </Button>
+          {isMinimized && (
+            <Button
+              onClick={() => setIsMinimized(!isMinimized)}
+              variant="ghost"
+              size="sm"
+              className="h-10 w-full p-0 text-white hover:bg-slate-900"
+            >
+              <ChevronRight className="h-[1.2rem] w-[1.2rem]" color="white" />
+            </Button>
+          )}
         </div>
       </div>
 
       {/* Separator - hidden on mobile, conditional on desktop */}
       <div className="hidden md:block">
-        {!isMinimized && (
-          <div className="px-5">
-            <Separator className="my-4" />
-          </div>
-        )}
+        <div className="px-5">
+          <Separator className="my-4" />
+        </div>
       </div>
 
       {/* Menu Content */}

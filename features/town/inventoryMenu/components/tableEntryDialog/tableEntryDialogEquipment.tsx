@@ -12,7 +12,7 @@ import { Heart, Shield, Sword, Zap } from "lucide-react";
 import useEquipmentActions from "../../hooks/useEquipmentActions";
 import { combatCardTable } from "@/data/combatCards/combatCards";
 
-export default function TableEntrySheetEquipment({
+export default function TableEntryDialogEquipment({
   item,
   setOpen,
 }: Readonly<{

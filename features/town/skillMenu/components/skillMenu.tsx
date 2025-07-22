@@ -224,6 +224,7 @@ export default function SkillMenu({ skill }: Readonly<{ skill: Skill }>) {
               tasks={Object.values(skill.tasks)}
               skillLevel={character.skills[skill.id].level}
               setTask={setTask}
+              selectedTask={task}
             />
           </div>
 
@@ -235,6 +236,7 @@ export default function SkillMenu({ skill }: Readonly<{ skill: Skill }>) {
               tasks={Object.values(skill.tasks)}
               skillLevel={character.skills[skill.id].level}
               setTask={setTask}
+              selectedTask={task}
             />
             <VerticalAccent />
           </div>

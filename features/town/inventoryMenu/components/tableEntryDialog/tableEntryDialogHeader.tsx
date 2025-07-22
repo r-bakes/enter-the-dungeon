@@ -1,10 +1,10 @@
 import { Label } from "@/components/ui/label";
 import { Separator } from "@/components/ui/separator";
 import {
-  SheetDescription,
-  SheetHeader,
-  SheetTitle,
-} from "@/components/ui/sheet";
+  DialogDescription,
+  DialogHeader,
+  DialogTitle,
+} from "@/components/ui/dialog";
 import { itemTable } from "@/data/items/items";
 import { Item } from "@/types/items";
 import {
@@ -13,7 +13,7 @@ import {
 } from "@/features/common/utils/formattingUtilities";
 import { Backpack, CircleDollarSign } from "lucide-react";
 
-export default function TableEntrySheetHeader({
+export default function TableEntryDialogHeader({
   item,
   itemAmount,
 }: Readonly<{
@@ -22,13 +22,13 @@ export default function TableEntrySheetHeader({
 }>) {
   return (
     <div>
-      <SheetHeader className="flex flex-row items-center gap-2">
+      <DialogHeader className="flex flex-row items-center gap-2">
         {renderIcon(item.icon, 56, item.iconStyle)}
         <div className="mt-0 flex flex-col justify-center">
-          <SheetTitle>{item.name}</SheetTitle>
-          <SheetDescription>{item.description}</SheetDescription>
+          <DialogTitle>{item.name}</DialogTitle>
+          <DialogDescription>{item.description}</DialogDescription>
         </div>
-      </SheetHeader>
+      </DialogHeader>
       <div className="mt-4 flex w-full items-center">
         <Label className="font-normal text-muted-foreground">
           {formatCapitalCase(item.type)}

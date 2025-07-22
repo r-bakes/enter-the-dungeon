@@ -207,9 +207,21 @@
 
   /* For Firefox */
   * {
-    /* “thin” scrollbars, color = thumb then track */
+    /* "thin" scrollbars, color = thumb then track */
     scrollbar-width: thin;
     scrollbar-color: #6b7280 transparent; /* #6b7280 is Tailwind `gray-500` */
+  }
+
+  /* Disable elastic/bounce scrolling on all browsers */
+  html, body {
+    overscroll-behavior: none;
+    overscroll-behavior-x: none;
+    overscroll-behavior-y: none;
+  }
+  
+  /* Additional mobile browser fixes */
+  * {
+    overscroll-behavior: none;
   }
 }
 

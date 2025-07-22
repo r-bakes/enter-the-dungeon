@@ -38,7 +38,7 @@ import {
 import { ChevronDown, ChevronUp, Backpack } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import { ItemId, ItemType } from "@/data/items/enums";
-import TableEntrySheet from "./tableEntrySheet/tableEntrySheet";
+import TableEntryDialog from "./tableEntryDialog/tableEntryDialog";
 
 type TableData = {
   quantity: number;
@@ -128,15 +128,19 @@ export default function InventoryTable() {
         <div className="flex items-center justify-between pb-2">
           <h3 className="text-sm font-medium">Items ({data.length})</h3>
           <Select
-            onValueChange={(value) => 
-              table.getColumn("type")?.setFilterValue(value === "All" ? "" : value)
+            onValueChange={(value) =>
+              table
+                .getColumn("type")
+                ?.setFilterValue(value === "All" ? "" : value)
             }
           >
-            <SelectTrigger className="w-32 h-8 text-xs">
+            <SelectTrigger className="h-8 w-32 text-xs">
               <SelectValue placeholder="Filter" />
             </SelectTrigger>
             <SelectContent>
-              <SelectItem value="All" className="text-xs">All</SelectItem>
+              <SelectItem value="All" className="text-xs">
+                All
+              </SelectItem>
               {Object.entries(ItemType)
                 .filter(([_, type]) => type !== ItemType.HIDDEN)
                 .map(([_, type]) => (
@@ -147,36 +151,42 @@ export default function InventoryTable() {
             </SelectContent>
           </Select>
         </div>
-        
-        <div className="flex-1 overflow-y-auto overflow-x-hidden space-y-2">
+
+        <div className="flex-1 space-y-2 overflow-x-hidden overflow-y-auto">
           {table.getRowModel().rows.map((row) => (
-            <Card 
+            <Card
               key={row.id}
-              className="p-3 cursor-pointer hover:bg-accent transition-colors w-full max-w-full"
+              className="hover:bg-accent w-full max-w-full cursor-pointer p-3 transition-colors"
               onClick={() => {
                 setSelectedItemId(row.original.id);
                 setOpen(true);
               }}
             >
-              <div className="flex items-center gap-3 w-full max-w-full overflow-hidden">
+              <div className="flex w-full max-w-full items-center gap-3 overflow-hidden">
                 <div className="shrink-0">
                   {renderIcon(row.original.icon, 32, row.original.iconStyle)}
                 </div>
-                <div className="flex-1 min-w-0 max-w-full overflow-hidden">
-                  <div className="flex items-center justify-between gap-2 w-full">
-                    <h4 className="text-sm font-medium truncate flex-1 min-w-0">{row.original.name}</h4>
-                    <span className="text-xs text-muted-foreground whitespace-nowrap">
+                <div className="max-w-full min-w-0 flex-1 overflow-hidden">
+                  <div className="flex w-full items-center justify-between gap-2">
+                    <h4 className="min-w-0 flex-1 truncate text-sm font-medium">
+                      {row.original.name}
+                    </h4>
+                    <span className="text-muted-foreground text-xs whitespace-nowrap">
                       {formatCapitalCase(row.original.type)}
                     </span>
                   </div>
-                  <div className="flex items-center justify-between gap-2 mt-1 w-full">
+                  <div className="mt-1 flex w-full items-center justify-between gap-2">
                     <div className="flex items-center gap-1 whitespace-nowrap">
-                      <span className="text-sm text-green-600">
+                      <span className="text-sm">
                         {formatLargeQuantity(row.original.quantity)}
                       </span>
-                      <Backpack size={12} strokeWidth={1} className="text-muted-foreground" />
+                      <Backpack
+                        size={12}
+                        strokeWidth={1}
+                        className="text-muted-foreground"
+                      />
                     </div>
-                    <span className="text-xs text-muted-foreground truncate min-w-0">
+                    <span className="text-muted-foreground min-w-0 truncate text-xs">
                       {formatLargeQuantity(row.original.value)} gold ea.
                     </span>
                   </div>
@@ -184,10 +194,10 @@ export default function InventoryTable() {
               </div>
             </Card>
           ))}
-          
+
           {table.getRowModel().rows.length === 0 && (
             <div className="flex items-center justify-center py-8">
-              <p className="text-sm text-muted-foreground">No items found</p>
+              <p className="text-muted-foreground text-sm">No items found</p>
             </div>
           )}
         </div>
@@ -251,12 +261,8 @@ export default function InventoryTable() {
           </TableBody>
         </Table>
       </div>
-      
-      <TableEntrySheet
-        open={open}
-        setOpen={setOpen}
-        itemId={selectedItemId}
-      />
+
+      <TableEntryDialog open={open} setOpen={setOpen} itemId={selectedItemId} />
     </Card>
   );
 }

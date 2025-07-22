@@ -17,11 +17,13 @@ export default function TasksMenu({
   tasks,
   skillLevel,
   setTask,
+  selectedTask,
 }: Readonly<{
   skill: Skill;
   tasks: Task[];
   skillLevel: number;
   setTask: React.Dispatch<React.SetStateAction<Task | null>>;
+  selectedTask: Task | null;
 }>) {
   const [selectedTasksCategory, setSelectedTasksCategory] = React.useState(
     Object.values(skill.taskCategories)[0],
@@ -58,6 +60,7 @@ export default function TasksMenu({
         skillLevel={skillLevel}
         tasks={tasks.filter((task) => task.category === selectedTasksCategory)}
         setTask={setTask}
+        selectedTask={selectedTask}
       ></TasksContainer>
     </div>
   );

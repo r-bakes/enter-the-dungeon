@@ -10,7 +10,7 @@ import { CircleDollarSign, Minus, Plus } from "lucide-react";
 import React from "react";
 import useSellItem from "../../hooks/useSellItem";
 
-export default function TableEntrySheetSellEntry({
+export default function TableEntryDialogSellEntry({
   item,
   amountInInventory,
   setOpen,
